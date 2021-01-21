@@ -1,0 +1,378 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection*
+Inlämning
+\end_layout
+
+\begin_layout Standard
+Utgå från laborationsmallen, som går att ladda ned 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Templates/lab_template.R"
+literal "false"
+
+\end_inset
+
+, när du gör inlämningsuppgifterna.
+ Spara denna som l
+\family typewriter
+labb[no]_grupp[no].R
+\family default
+ , t.ex.
+ 
+\family typewriter
+labb5_grupp01.R
+\family default
+ om det är laboration 5 och ni tillhör grupp 1.
+ Ta inte med hakparenteser i filnamnet.
+ Denna fil ska laddas upp på LISAM och ska 
+\series bold
+inte
+\series default
+ innehålla något annat än de aktuella funktionerna, namn- och ID-variabler
+ och ev.
+ kommentarer.
+ Alltså 
+\series bold
+inga
+\series default
+ andra variabler, funktionsanrop för att testa inlämningsuppgifterna eller
+ anrop till markmyassignment-funktioner.
+\end_layout
+
+\begin_layout Subsection*
+Tips!
+\end_layout
+
+\begin_layout Standard
+Inlämningsuppgifterna innebär att konstruera funktioner.
+ Ofta är det bra att bryta ned programmeringsuppgifter i färre små steg
+ och testa att det fungerar i varje steg.
+\end_layout
+
+\begin_layout Enumerate
+Lös uppgiften med vanlig kod direkt i R-Studio (precis som i datorlaborationen
+ ovan) utan att skapa en funktion.
+\end_layout
+
+\begin_layout Enumerate
+Testa att du får samma resultat som testexemplen.
+\end_layout
+
+\begin_layout Enumerate
+Implementera koden du skrivit i 1.
+ ovan som en funktion.
+\end_layout
+
+\begin_layout Enumerate
+Testa att du får samma resultat som i testexemplen, nu med funktionen.
+\end_layout
+
+\begin_layout Subsection*
+Automatisk återkoppling med 
+\family typewriter
+markmyassignment
+\end_layout
+
+\begin_layout Standard
+Som ett komplement för att snabbt kunna få återkoppling på de olika arbetsuppgif
+terna finns paketet 
+\family typewriter
+markmyassignment
+\family default
+.
+ Med detta är det möjligt att direkt få återkoppling på uppgifterna i laboration
+en, oavsett dator.
+ Dock krävs internetanslutning.
+\end_layout
+
+\begin_layout Standard
+Information om hur du installerar och använder 
+\family typewriter
+markmyassignment
+\family default
+ för att få direkt återkoppling på dina laborationer finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/markmyassignment/vignettes/markmyassignment.html"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+Samma information finns också i R och går att läsa genom att först installera
+ 
+\family typewriter
+markmyassignment
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("markmyassignment")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om du ska installera ett paket i PC-pularna så behöver du ange följande:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("markmyassignment",lib="sökväg till en mapp i din hemkatalog")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att i sökvägar till mappar/filer i R i Windowssystem så används
+ 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+
+\backslash
+
+\backslash
+
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+, tex 
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+Josef
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Därefter går det att läsa information om hur du använder 
+\family typewriter
+markmyassignment
+\family default
+ med följande kommando i R:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+vignette("markmyassignment")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det går även att komma åt vignetten 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/markmyassignment/vignettes/markmyassignment.html"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Till sist går det att komma åt hjälpfilerna och dokumentationen i 
+\family typewriter
+markmyassignment
+\family default
+ på följande sätt:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+help(package="markmyassignment")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lycka till!
+\end_layout
+
+\end_body
+\end_document
