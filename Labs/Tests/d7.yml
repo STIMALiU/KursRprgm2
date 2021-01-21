@@ -1,0 +1,8 @@
+# Assignment D7
+name  : D7
+description : "Statistisk programmering med R: Lab 7"
+tasks:
+  my_grouped_test:
+    url: Tasks/my_grouped_test_tests.R
+mandatory:
+  url: mandatory_part2.R

@@ -1,0 +1,14 @@
+# Assignment D3
+name  : D3
+description : "Statistisk programmering med R: Lab 3"
+tasks:
+  bmi:
+    url: Tasks/bmi_tests.R
+  my_matrix_prod:
+    url: Tasks/my_matrix_prod_tests.R
+  babylon :
+    url: Tasks/babylon_tests.R
+  my_moving_average :
+    url: Tasks/my_moving_average_tests.R
+mandatory:
+  url: mandatory.R

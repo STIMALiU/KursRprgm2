@@ -1,0 +1,10 @@
+# Assignment D5
+name  : D5
+description : "Statistisk programmering med R: Lab 5"
+tasks:
+  fast_swe_pop:
+    url: Tasks/fast_swe_pop_tests.R
+  sum_of_random_dice:
+    url: Tasks/sum_of_random_dice_tests.R
+mandatory:
+  url: mandatory_part2.R

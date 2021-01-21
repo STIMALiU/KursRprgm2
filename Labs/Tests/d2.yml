@@ -1,0 +1,16 @@
+# Assignment D2
+name  : D2
+description : "Statistisk programmering med R: Lab 2"
+tasks:
+  leap_year:
+    url: 
+      - Tasks/leap_year_tests.R
+  matrix_trace:
+    url:
+      - Tasks/matrix_trace_tests.R
+  fast_stock_analysis:
+    url: 
+      - Tasks/fast_stock_analysis_tests.R
+mandatory:
+  url:
+    - mandatory.R

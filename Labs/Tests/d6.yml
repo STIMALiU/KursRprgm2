@@ -1,0 +1,12 @@
+# Assignment D6
+name  : D6
+description : "Statistisk programmering med R: Lab 6"
+tasks:
+  apartment:
+    url: Tasks/apartment_tests.R
+  give_blood:
+    url: Tasks/give_blood_tests.R
+  my_ols:
+    url: Tasks/my_ols_tests.R
+mandatory:
+  url: mandatory_part2.R
