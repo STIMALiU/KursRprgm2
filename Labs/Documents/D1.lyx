@@ -3843,6 +3843,28 @@ order()
 order()
 \family default
  kommer vi ha stor nytta av när vi sorterar dataset längre fram.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+sort()
+\family default
+: sorterar värdena i vektor, vi kan välja om vi vill ha stora eller små
+ värden först.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+order()
+\family default
+: generar 
+\shape italic
+indexvektorn
+\shape default
+ för den sorterade vektorn (mer om det längre fram).
 \begin_inset Newline newline
 \end_inset
 
@@ -3872,6 +3894,11 @@ sort(myz, decreasing=TRUE)
 
 \begin_layout Plain Layout
 
+sort(myz, decreasing=FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
 order(myz, decreasing=TRUE)
 \end_layout
 
@@ -3885,6 +3912,7 @@ order(myz, decreasing=TRUE)
 
 \end_layout
 
+\end_deeper
 \begin_layout Enumerate
 Det finns finns ett stort antal statistiska funktioner för vektorer.
  
@@ -3958,6 +3986,11 @@ which.min(myz) # Arg min
 \begin_layout Plain Layout
 
 range(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(myx)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4037,6 +4070,24 @@ Pröva följande beräkningar i R:
 
 \begin_layout Enumerate
 \begin_inset Formula $\sum_{i=1}^{20}i^{2}-\sum_{i=1}^{10}i^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sum_{i=1}^{30}\left(i-i^{2}\right)^{3}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\sum_{i=1}^{5}\left(-1\right)^{i}$
+\end_inset
+
+ och 
+\begin_inset Formula $\sum_{i=1}^{4}\left(-1\right)^{i}$
 \end_inset
 
 
@@ -4123,7 +4174,7 @@ table(myText)
 \end_layout
 
 \begin_layout Enumerate
-(Nästan) alla funktioner för vektorer kan hantera missing data.
+Många funktioner för vektorer kan hantera saknade data (missing data).
  Om vi inte anger något blir resultatet 
 \family typewriter
 NA
@@ -4191,6 +4242,16 @@ status open
 \begin_layout Plain Layout
 
 max(c(mean(myx), median(myx), range(myz)))
+\end_layout
+
+\begin_layout Plain Layout
+
+my_mean<-mean(myx)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(my_mean)
 \end_layout
 
 \begin_layout Plain Layout
@@ -7234,7 +7295,7 @@ Ladda nu ner laborationsmallen, som finns
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Templates/lab_template.R"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R"
 literal "false"
 
 \end_inset
@@ -7297,73 +7358,12 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Tests/d1.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
 \end_layout
 
 \begin_layout Plain Layout
 
 set_assignment(lab_path)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-three_elements()
-\end_layout
-
-\begin_layout Standard
-Skapa en funktion som heter 
-\family typewriter
-\color black
-three_elements()
-\family default
-\color inherit
- 
-\series bold
-utan argument
-\series default
-.
- Funktionen ska beräkna och returnera följande vektor med tre element i
- R.
- 
-\begin_inset Formula 
-\[
-(\ln3,e^{\pi+1},\sin(\frac{\pi}{3}))
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-I exemplet nedan har värdena avrundats något.
- Observera att för att funktionen ge full poäng ska resultatet stämma med
- fler decimaler.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-three_elements()
 \end_layout
 
 \begin_layout Plain Layout
@@ -7740,279 +7740,6 @@ approx_e(N = 2)
 \begin_layout Plain Layout
 
 approx_e(N = 4)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-logical_equality()
-\end_layout
-
-\begin_layout Standard
-Vi ska i denna uppgift skapa en funktion för 
-\begin_inset Quotes eld
-\end_inset
-
-logiskt lika med
-\begin_inset Quotes erd
-\end_inset
-
- med namnet 
-\family typewriter
-logical_equality()
-\family default
-.
- Funktionen ska ta två argument 
-\family typewriter
-A
-\family default
- och 
-\family typewriter
-B
-\family default
- och returnera logiska värden i enlighet med följande logiska tabell:
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\align center
-\begin_inset Tabular
-<lyxtabular version="3" rows="5" columns="3">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-A
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-B
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-logical_equality()
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-FALSE
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\family typewriter
-TRUE
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mer information om logiskt lika med finns 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "[här]"
-target "http://en.wikipedia.org/wiki/Logical_equality"
-literal "false"
-
-\end_inset
-
-
-\series default
-\color inherit
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-logical_equality(A = TRUE, B = FALSE)
-\end_layout
-
-\begin_layout Plain Layout
-
-logical_equality(A = FALSE, B = FALSE)
 \end_layout
 
 \begin_layout Plain Layout
