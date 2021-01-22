@@ -2,9 +2,6 @@
 name  : D1
 description : "Statistisk programmering med R: Lab 1"
 tasks:
-  three_elements:
-    url: 
-      - Tasks/three_elements_tests.R
   mult_first_last:
     url:
       - Tasks/mult_first_last_tests.R
@@ -17,9 +14,6 @@ tasks:
   approx_e:
     url: 
       - Tasks/approx_e_tests.R
-  logical_equality:
-    url: 
-      - Tasks/logical_equality_tests.R
 mandatory:
   url:
     - mandatory.R

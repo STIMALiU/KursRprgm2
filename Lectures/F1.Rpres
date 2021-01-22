@@ -39,10 +39,18 @@ STIMA, Linköpings universitet
 
 *`r Sys.Date()`*
 
+Lärare
+========================================================
+### Lärare och examinator:
+- Josef Wilzén
+
+### Labbassar:
+- Hugo Knape och Sidney Rydström
+
+
 Föreläsning 1: Innehåll 
 ========================================================
 incremental: true
-- Upprop
 - Kursvärdering: 732G45 "Grundläggande statistik och dataanalys"
 - Kursens upplägg och praktisk information
 - R, R-Studio och vetenskaplig programmering
@@ -62,13 +70,12 @@ Kursens upplägg och praktisk information
 ========================================================
 type: section
 
-Lärare
-========================================================
-### Föreläsare:
-- Josef Wilzén
 
-### Labbassar:
-- Andrea Dahl Sturedahl, Faton Rekathati, Hugo Knape och Sidney Rydström
+Corona: Distanskurs 2021
+========================================================
+- Kursen kommer att ske helt på distans
+- Arbeta hemifrån, håll fysikt avständ till andra i kursen
+- Följ regler och rekommendationer från Folkhälsomyndigheten och Liu.
 
 Kursens mål
 ========================================================
@@ -96,7 +103,7 @@ incremental: true
 - En ~~obligatorisk~~ datorlaboration
 - 4 timmar lärarledd laboration + **många timmar eget arbete**
 - Inlämning: 
-  - Labbar: **varje onsdag kl. 18.00** via LISAM
+  - Labbar: **varje söndag kl. 18.00** via LISAM
 
 Del 1: Grundläggande programering
 ========================================================
@@ -128,30 +135,42 @@ Kursens viktigaste moment:
 Praktisk information
 ========================================================
 
-## Kurslogistik 
+## Allmän struktur på kursen 
 
-Hemsidan innehåller bland annat schema, föreläsningar m.m. och finns [[här]](http://www.ida.liu.se/~732G33/). Kursen har också en github-sida [[här]](https://github.com/STIMALiU/KursRprgm)
-
-[LISAM](http://lisam.liu.se/): används för inlämning av labbar och kompletteringar.   
-[Teams](https://teams.microsoft.com/downloads#allDevicesSection): används för kommunikation
+- Kursmaterial på kurshemsidan: [här](http://www.ida.liu.se/~732G33/)
+- Föreläsningar kommer att vara på **Zoom**
+- Kommunikation kommer att ske via [Teams](https://teams.microsoft.com/downloads#allDevicesSection)
+- Labbar:
+    - Ska göras på egen dator hemma.
+    - Hjälp kommer att erbjudas online via **Teams**
+    - Inlämningar kommer att ske på kursen kursrum på [LISAM](http://lisam.liu.se/)
+- Schema finns på [timeedit](https://cloud.timeedit.net/liu/web/schema/ri16X586X89Z04Q6Z56g6Y10y4066Y59105gQY6Q55712055Y14367Q7ZpQc.html#)
 
 Kurskod: **732G33**, **732G83**
 
-## Programvara
-För denna kurs krävs [R](https://cran.r-project.org/) och [R-Studio](https://rstudio.com/products/rstudio/).
 
+Programvara
+========================================================
+
+För denna kurs krävs [R](https://cran.r-project.org/) och [R-Studio](https://rstudio.com/products/rstudio/). 
+
+Se kurshemsidan för hjälp med installation: [här](https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml#r-och-rstudio)
+
+Enkel textredigerare (anteckningar/notes/gedit etc)
 
 
 Kurslitteratur I:
 ========================================================
 
 ## Kursboken
-Kursboken *A first course in statistical programming with R* av Braun och Murdoch, första eller andra upplagan.
+Kurslitteratur: *The Book Of R* av Tilman M. Davies (TD), 2016. 
 
 ## Artiklar 
 - *Dates and Times Made Easy with* ```lubridate``` [[ladda ned]](http://www.jstatsoft.org/v40/i03/paper)
 - *Handling and processing strings in R* [[ladda ned]](http://gastonsanchez.com/Handling_and_Processing_Strings_in_R.pdf)
 - *Best practices for scientific computing* [[ladda ned]](http://arxiv.org/abs/1210.0530)
+
+Mer material på kurshemsidan
 
 Kurslitteratur II: 
 ========================================================
@@ -171,7 +190,7 @@ Det kommer flera reference cards under kursens gång.
 Examination
 ========================================================
 - Datorlabbar, 8 st
-- Datortentamen i datorsal
+- Datortentamen i form av hemtenta
   + *Hjälpmedel:* R reference card v.2 (digitalt) + några till reference cards 
      (exakt vad ni får använda finns på hemsidan) Dessa erhålls digitalt på tentan.
 
