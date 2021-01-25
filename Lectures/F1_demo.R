@@ -88,6 +88,12 @@ f(3)
 f(12)
 f(z = 5)
 
+my_val<-f(z = 4)
+
+my_val
+
+f(z = my_val)
+
 # kolla vad som finns inuti:
 f
 
