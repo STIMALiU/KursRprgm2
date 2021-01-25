@@ -50,20 +50,13 @@ Lärare
 
 Föreläsning 1: Innehåll 
 ========================================================
-incremental: true
+
 - Kursvärdering: 732G45 "Grundläggande statistik och dataanalys"
 - Kursens upplägg och praktisk information
 - R, R-Studio och vetenskaplig programmering
 - Introduktion till programering i R
   - miniräknare,variabler, vektorer, hjälp, funktioner, logik
 
-Kursvärdering: 732G45 
-========================================================
-Gäller programstudenter på "Statistik och dataanalys"
-- 732G45 “Grundläggande statistik och dataanalys”
-- Svara på din dator/mobil
-- Studentmail: sök på 732G45, kursvärdering
-- 5 min
 
 
 Kursens upplägg och praktisk information
@@ -74,8 +67,8 @@ type: section
 Corona: Distanskurs 2021
 ========================================================
 - Kursen kommer att ske helt på distans
-- Arbeta hemifrån, håll fysikt avständ till andra i kursen
-- Följ regler och rekommendationer från Folkhälsomyndigheten och Liu.
+- Arbeta hemifrån, håll fysiskt avstånd till andra i kursen
+- Följ regler och rekommendationer från [Folkhälsomyndigheten](https://www.folkhalsomyndigheten.se/smittskydd-beredskap/utbrott/aktuella-utbrott/covid-19/) och [Liu](https://insidan.liu.se/HR-Personal/coronavirus?l=sv).
 
 Kursens mål
 ========================================================
@@ -92,18 +85,22 @@ Information om kursen finns i **[kursplanen](https://liu.se/studieinfo/kurs/732g
 
 Kursens delar
 ========================================================
-incremental: true
 ### Kursen består av två delar:
 - *Del 1:* Grundläggande programering
 - *Del 2:* Tillämpningar relaterade till statistik, grafik och datahantering
-  
+
+
+Kursens delar
+========================================================
 ### Varje vecka (block):
 
 - En föreläsning
-- En ~~obligatorisk~~ datorlaboration
+- En datorlaboration
+  - Övningsuppgifter
+  - ~~Obligatoriska~~ inlämningsuppgifter
 - 4 timmar lärarledd laboration + **många timmar eget arbete**
 - Inlämning: 
-  - Labbar: **varje söndag kl. 18.00** via LISAM
+  - Labbar: **varje söndag kl. 18.00** på LISAM
 
 Del 1: Grundläggande programering
 ========================================================
@@ -190,35 +187,45 @@ Det kommer flera reference cards under kursens gång.
 Examination
 ========================================================
 - Datorlabbar, 8 st
+  + Betyg: U, G
 - Datortentamen i form av hemtenta
-  + *Hjälpmedel:* R reference card v.2 (digitalt) + några till reference cards 
-     (exakt vad ni får använda finns på hemsidan) Dessa erhålls digitalt på tentan.
+  + Betyg: U, G, VG
+  + Mer info närmare tentan
+  + Anmälan krävs!
 
 Datorlaborationer
 ========================================================
 - Börja direkt!
-- Är ~~obligatoriska~~.
+- Har ~~obligatoriska~~ inlämningsuppgifter
 - ~ 15 h arbete/v
 - Laborationsmall finns på hemsidan, kolla [här](https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Templates/lab_template.R)
 - Labbarna lämnas in via [LISAM](http://lisam.liu.se/) och autorättas
   - R-paketet ```markmyassignment```
   - ~~labbarna måste bli godkända av markmyassignment~~
-- Filer finns på kurshemsidan
-- 100 % rätt för godkänt
-- Vissa labbuppgifter är inspirerade av linjär algebra
+
+
 
 Datorlaborationer
 ========================================================
-- Registrera er på kursen för att få tillgång till kursrummet på LISAM
+- Filer finns på kurshemsidan
+- 100 % rätt för godkänt
+- Vissa labbuppgifter är inspirerade av linjär algebra
 - Arbetstakt:
-  - kursveckorna går måndag till måndag
+  - kursveckorna går måndag till söndag
   - Kursen går på halvfart ~ 20 h/vecka, ca 15 h/vecka till labbar
-  - Mjuk deadline: söndag kväll
-  - Hård deadline: onsdag kl 18.00 veckan efter.
+  - Deadline: söndag kl 18.00  
+
+
+Datorlaborationer
+========================================================
 - Kompletteringar:
   - Labb 1-4: komplettering strax efter halva kursen (se LISAM)
   - Komplettering i samband med tentan och omtentor
     - Detta är hårda deadlines!
+  - Mer info på [kurshemsidan](https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml#komp_ref)
+
+
+
 
 markmyassignment
 ========================================================
@@ -231,7 +238,45 @@ markmyassignment
 set_assignment()
 show_tasks()
 mark_my_assignment()
+mark_my_file()
 ```
+
+
+Kursvärdering: 732G33 våren 2020 
+========================================================
+
+Resultat:
+  - Svarsfrekvens: 19,61%
+  - Helhetsbetyg: 3,5
+  - Fortsätta använda markmyassignment
+  
+Förslag på åtgärder:
+  - länk till kurshemsidan på lisam
+  - minska mängden inlämningsuppgifter
+  - labbassisternas roll
+  - mer interaktiva föreläsningar
+
+Studieteknik
+========================================================
+  - Inlärning "händer" inte av sig själv
+    - kräver **aktivitet** och engagemang
+  - Planera dina studier: skriv upp vilka timmar som är avseeda för kursen varje vecka
+  - Programmering är en färdighet: skriv kod!
+  - Samarbeta
+  - Ha bra tempo i kursen: svårt att ta igen i efterhand
+  - Använd föreläsningar och labbar väl
+    - Fråga om hjälp
+
+
+
+Kursvärdering: 732G45 
+========================================================
+Gäller programstudenter på "Statistik och dataanalys"
+- 732G45 “Grundläggande statistik och dataanalys”
+- Svara på din dator/mobil
+- Studentmail: sök på 732G45, kursvärdering
+- 5 min
+
 
 
 
@@ -240,18 +285,12 @@ Datorn, programering och R
 type: section
 
 
-R och datorn
-========================================================
-- En bra minnesregel är:
-  - Hårddisk = I bokhyllan
-  - Internminne (RAM) = På skrivbordet
 
-**R arbetar på i internminnet (skrivbordet)**
 
 
 Vad är programering?
 ========================================================
-incremental: true
+incremental: false
 - Instruera en dator att utföra uppgifter
 - Mjukvaruutveckling / vetenskaplig programmering
 - Maskinkod / Lågnivåspråk / Högnivåspråk 
@@ -259,7 +298,7 @@ incremental: true
 
 Varför programera?
 ========================================================
-incremental: true
+incremental: false
 - Hantera (stora och komplexa) data
 - Replikerbarhet i analyser
 - Utföra komplexa beräkningar
@@ -278,9 +317,18 @@ Vad är R?
 - Mer information i RP:s video "Overview and Background"
 - Ett "klister" för statistiska analyser
 
+R och datorn
+========================================================
+- En bra minnesregel är:
+  - Hårddisk = I bokhyllan
+  - Internminne (RAM) = På skrivbordet
+
+**R arbetar på i internminnet (skrivbordet)**
+
+
 Ett exempel på ett program
 ========================================================
-incremental: true
+incremental: false
 Skapa ett program som utgår från talet 7 och skriver sedan de följande 3 udda talen på skärmen.  
 Programmet ska avslutas med meddelandet ’Klar!’.
 
@@ -361,7 +409,7 @@ y + x
 
 Att söka hjälp
 ====================================
-incremental: true
+incremental: false
 - Hjälpen i R 
 - Google, Google, Google
 - Stack overflow
@@ -392,7 +440,7 @@ Variabeltyper, översikt
 
 Beskrivning | Synonymer | ```typeof()``` | Exempel i R
 ----- | ---- | ----- | ---- | ----
-Heltal ($\mathbb{Z}$) | ```int``` | ```integer``` | ```-1, 0, 1``` 
+Heltal  ($\mathbb{Z}$) | ```int``` | ```integer``` | ```-1, 0, 1``` 
 Reella tal ($\mathbb{R}$) | ```real```, ```float``` | ```double``` (```numeric```) | ```1.03, -2.872``` 
 Komplexa tal ($\mathbb{C}$) | ```cplx``` | ```complex``` | ```1 + 2i``` 
 Logiska värden | ```boolean```, ```bool```, ```logi``` | ```logical``` | ```TRUE FALSE``` 
@@ -414,7 +462,7 @@ type: section
 
 Introduktion till funktioner
 ========================================================
-incremental: true
+incremental: false
 
 - "Allt som existerar är objekt, allt som sker är funktioner"
 - Tar noll eller flera **argument** 
@@ -439,7 +487,7 @@ En funktion i R består (ofta) av:
 
 Exempel på funktion
 ========================================================
-incremental: true
+incremental: false
 
 ```{r,echo=TRUE,eval=TRUE}
 f <- function(x, y){
@@ -467,7 +515,7 @@ f <- function(x, y){
 
 Lokal miljö II
 ========================================================
-incremental: true
+incremental: false
 
 ```{r,echo=TRUE,eval=TRUE}
 ls()
@@ -496,7 +544,7 @@ type: section
 
 Kort om logik
 ========================================================
-incremental: true
+incremental: false
 - Logik vanligt i programmering
   + Kallas ibland *booleans*
   + Används i if-else
@@ -520,7 +568,7 @@ minVektor[minBool]
 
 Logiska operatorer
 ========================================================
-- Boolsk algebra
+- Boolsk algebra 
 - Operatorer:
 
 | Operator | Symbol | Operator i R |
@@ -531,7 +579,7 @@ Logiska operatorer
 
 Logiska operatorer (forts.)
 ========================================================
-incremental: true
+incremental: false
 
 | Symbol | $A$ | $B$ | $\neg A$ | $A \wedge B$ | $A \vee B$ |
 | --- | --- | --- | --- | --- | --- |
@@ -566,7 +614,7 @@ Relationsoperatorer
 
 Relationsoperatorer (Exempel)
 ========================================================
-incremental: true
+incremental: false
 
 ```{r}
 x <- c(1, 2, 3, 4, 5)
@@ -577,7 +625,7 @@ x > 2
 
 Kort om logik III - Allt på en gång
 ========================================================
-incremental: true
+incremental: false
 
 ```{r}
 minVektor <- c(12,1,2,7,99)
