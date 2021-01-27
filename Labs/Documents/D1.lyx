@@ -7452,7 +7452,30 @@ där
 \end_inset
 
 .
- Mer information om skalärprodukten finns 
+ Exempel, låt 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\left(2,4,7\right)\qquad b=\left(3,9,2\right)
+\]
+
+\end_inset
+
+Då blir 
+\begin_inset Formula 
+\[
+\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=2\cdot3+4\cdot9+7\cdot2=56
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mer information om skalärprodukten finns 
 \series bold
 \color blue
 
@@ -7468,6 +7491,7 @@ literal "false"
 \series default
 \color inherit
 .
+ 
 \end_layout
 
 \begin_layout Standard
@@ -7652,6 +7676,25 @@ literal "false"
 \begin_inset Formula 
 \[
 e=\sum_{n=0}^{N}\frac{1}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Exempel, låt 
+\begin_inset Formula $N=3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{3}\frac{1}{n!}=\frac{1}{0!}+\frac{1}{1!}+\frac{1}{2!}+\frac{1}{3!}
 \]
 
 \end_inset
