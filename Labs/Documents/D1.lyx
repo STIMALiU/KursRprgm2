@@ -196,62 +196,23 @@ Introduktion till R och R-Studio
 \end_layout
 
 \begin_layout Section
-SU-salarna och Ubuntu
+Distanskurs 2021
 \end_layout
 
 \begin_layout Standard
-De schemalagda datorlaborationerna kommer att vara i SU-salarna som har
- Linux (Ubuntu Mate) som operativsystem.
- För att få tillgång till R, Rstudio och de R-paket som kursen använder
- gör du följande:
-\end_layout
+Kursen är en distanskurs våren 2021, så ni ska göra allt kursarbete hemifrån
+ med egen dator.
+ Det går att ansluta till datorsalar på campus hemifrån, se instruktioner
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Computer_rooms/732G33%20%20Linuxdatorer%20i%20SU-salar.pdf"
+literal "false"
 
-\begin_layout Itemize
-Tryck: 
-\family typewriter
-Ctrl+Alt+T
-\family default
- för att öppna en terminal.
- Här kan du skriva olika kommandon, dessa aktiveras när du trycker enter.
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-Skriv: 
-\family typewriter
-module load courses/732G33/2020-01-13.1
-\family default
- och tryck enter
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Detta läser in kursmodulen, som innehåller de programvaror som behövs i
- kursen.
-\end_layout
-
-\end_deeper
-\begin_layout Itemize
-Skriv 
-\family typewriter
-rstudio
-\family default
- i terminalen och tryck enter
-\end_layout
-
-\begin_layout Standard
-Andra program som är bra att känna till
-\end_layout
-
-\begin_layout Itemize
-caja: filhanterare
-\end_layout
-
-\begin_layout Itemize
-pluma: enkel textredigerare, bra att använda för att titta på datafiler
-\end_layout
-
-\begin_layout Itemize
-LibreOffice: kontorsprogram
+.
 \end_layout
 
 \begin_layout Section
@@ -3463,7 +3424,10 @@ sin(myVec3)
 \begin_layout Enumerate
 För situationen då vi har olika vektorer upprepas den kortare vektorn för
  att täcka den längre vektorn.
- 
+ Detta kallas recycling i R.
+ i Många situationer vill vi inte använda recycling, så då är det viktigt
+ att ha koll så att alla vektorer som är med i beräkningen har en lämpligt
+ antal element.
 \begin_inset Newline newline
 \end_inset
 
@@ -6804,7 +6768,7 @@ f(c(0.5, 1, 1.5, 2))
 
 \begin_layout Enumerate
 Vill vi returnera flera resultat sparar vi resultaten först i en lista och
- returnerar sedan listan.
+ returnerar sedan listan (mer om listor kursvecka 2).
  Implementera funktionen nedan och pröva med några olika numeriska vektorer.
  Vad gör funktionen?
 \begin_inset Newline newline
@@ -7466,7 +7430,7 @@ b
  
 \begin_inset Formula 
 \[
-\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=a_{1}b_{1}+a_{2}b_{2}+\dots+a_{n}b_{n}
+\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}+\dots+a_{n}b_{n}
 \]
 
 \end_inset
@@ -7475,7 +7439,20 @@ b
 \end_layout
 
 \begin_layout Standard
-Mer information om skalärprodukten finns 
+där 
+\begin_inset Formula $n$
+\end_inset
+
+ är antalet element i vektorerna 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+.
+ Mer information om skalärprodukten finns 
 \series bold
 \color blue
 

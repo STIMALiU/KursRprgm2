@@ -240,7 +240,7 @@ Utgå från laborationsmallen, som går att ladda ned
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Templates/lab_template.R"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R"
 literal "false"
 
 \end_inset
@@ -310,7 +310,7 @@ fusklapparna
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/KursRprgm/tree/master/Cheetsheats"
+target "https://github.com/STIMALiU/KursRprgm2/tree/master/Cheetsheats"
 literal "false"
 
 \end_inset
