@@ -88,9 +88,11 @@ f(3)
 f(12)
 f(z = 5)
 
-my_val<-f(z = 4)
+my_val <- f(z = 4)
 
 my_val
+
+my_val/2
 
 f(z = my_val)
 
@@ -100,11 +102,17 @@ f
 # Lokal miljö
 f <- function(x, y){
   res <- x+y
+  z<-"hej"
+  print(z)
   return(res)
 }
+
 x <- 5
 y <- 5
-f(2, 2)
+
+m<-f(x = 2, y = 2)
+m
+z
 res
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -116,6 +124,7 @@ install.packages("markmyassignment")
 
 ## Använd paketet
 library(markmyassignment)
+#detach("package:markmyassignment", unload = TRUE)
 
 ## Ställ in uppgift
 assignment_path <- file.path(system.file(package = "markmyassignment"), "extdata", "example_assignment01.yml")
@@ -159,6 +168,7 @@ mark_my_assignment("task2")
 # rätta alla uppgifter samtidigt:
 
 mark_my_assignment()
+mark_my_file(mark_file = "/home/joswi05/Desktop/test.R")
 
 
 #-----------------------------------------------------------------------------------------------------------------------

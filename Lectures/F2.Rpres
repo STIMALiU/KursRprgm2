@@ -1,0 +1,444 @@
+<style type="text/css">
+
+.indent {
+  padding-left: 2em !important;
+}
+
+.emphasize {
+  text-align: center; 
+  width: 100%; 
+  color: red; 
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+
+Programering i R
+========================================================
+transition: rotate
+## Föreläsning 2: Datastrukturer, databearbetning och I/O
+### [Josef Wilzén](mailto:josef.wilzen@liu.se)
+STIMA, 
+Linköpings universitet
+
+
+*`r Sys.Date()`*
+
+Föreläsning 2: Innehåll 
+========================================================
+- Intro
+  - Quiz
+  - labb 2
+- Datastrukturer
+  - Matriser
+  - Data.frame
+  - Listor
+- Grundläggande databearbetning
+- Input och output (I/O) i R
+
+Intro
+========================================================
+type: section
+
+
+Quiz: kahoot
+========================================================
+
+- Repetition av vecka 1
+- Gå till https://kahoot.it/
+  - Mobil, läsplatta, dator
+- Ange gamepin på din enhet
+- Välj smeknamn
+
+
+Lösningar?
+========================================================
+Finns det exakt en lösning till uppgifterna?
+- övningsuppgifter: enkla uppgifter kan ha en lösning, men många har olika lösnignar
+- inlämningsuppgifter: 
+  - Alla testen i markmyassignment måste bli godkända. De exempel på funktionsanrop som finns är till för att ni lättare ska klara testerna.
+  - Ni har rätt mycket frihet vilken kod ni skriver inuti funktioner: 
+  
+```{r,eval=FALSE}
+my_func<-function(){
+  #olika lösningar
+}
+
+```
+
+Labb 2
+========================================================
+- Övningsuppgifterna viktiga!
+- Programmering är både en praktisk och teoretisk färdighet
+
+
+Datastrukturer
+========================================================
+type: section
+
+Datastrukturer
+========================================================
+- Hur datorn lagrar data / information
+- Vi kommer använda:
+  - Vektorer
+  - Matriser
+  - ```data.frame```
+  - Listor
+
+Vektorer
+========================================================
+type: sub-section
+
+Vektorer
+========================================================
+- Element av samma [typ](https://www.ida.liu.se/~732G33/lectures/F1.html#/38)
+- En dimension
+- Vad är index?
+  - Adress till de olika elementen
+  - Varje vektor har en indexvektor
+  - Indexering med ```[ ]```
+
+Exempel
+========================================================
+
+```{r}
+vektor <- seq(1, 3, 0.5)
+vektor
+vektor[2:3] <- c(4,7)
+vektor
+```
+
+Sortera vektorer
+========================================================
+- ```sort()``` och ```order()```
+```{r}
+vektor <- c(5,2,4,3,-1)
+sort(vektor)
+order(vektor, decreasing = FALSE)
+```
+- Alla vektorer har en index-vektor
+
+Faktorvariabel (vektor)
+========================================================
+- Dummyvariabler vid analyser
+- Sparar minnesutrymme  (jmf. med textvektorer)
+- Text till faktor med ```factor()```  
+- Textdata som läses in i R kan konverteras till ```factor``` om ```stringsAsFactors = TRUE```
+
+```{r}
+minText <- c("A", "B", "A", "A")
+minFaktor <- factor(minText)
+minFaktor
+```
+
+Matriser
+========================================================
+type: sub-section
+
+Matriser
+========================================================
+- Tvådimensionell
+- Element av **samma** typ
+- Skapas med ```matrix()```
+- Vanliga operatorer sker elementvis
+- Matrisoperatorer finns, mer om det senare i kursen
+- Indexering med ```[ , ]```
+
+Matrisexempel
+========================================================
+```{r}
+minMatris <- matrix(data=c(1,3,2,4), nrow=2)
+minMatris
+minMatris[, 2] <- c(0, 1)
+minMatris
+```
+
+Demo: Matriser
+========================================================
+type: section
+
+
+Data.frame
+========================================================
+type: sub-section
+
+Data.frame
+========================================================
+incremental: false
+
+- "dataset" i R
+- Ett objekt som andra 
+- Olika kolumner kan ha olika datatyper
+- Indexering av variabler kan göras med variabelnamn ```["min_var"]```
+- Specialfall av listor (mer om det snart)
+- Indexering av rader och kolumner med ```[ , ]```
+
+
+Skapa en data.frames
+========================================================
+incremental: false
+
+```{r set-options, echo=FALSE, cache=FALSE}
+options(width = 10000)
+```
+
+```{r}
+minData <- 
+ data.frame(vikt=c(58,78,98), 
+            namn=c("Lisa","Kim","Max"), 
+            rik=c(TRUE,FALSE,FALSE))
+minData
+```
+
+
+Läsa in interna data (data.frames)
+========================================================
+- Inkluderade datamaterial i R
+- Finns i paketet ```datasets```
+
+```{r}
+data(iris)
+```
+
+
+Iris
+========================================================
+<p align="center">
+  <img src="http://www.twofrog.com/images/iris38a.jpg" alt="Iris setosa"/>
+</p>
+
+
+Undersöka en data.frame
+========================================================
+incremental: false
+
+```{r, eval=FALSE}
+head(iris)
+tail(iris)
+summary(iris)
+dim(iris)
+```
+
+- Använda R-Studios "Environment"
+
+Variabler
+========================================================
+- Är vektorer
+- Olika sätt att "välja" en variabel
+```{r, eval=FALSE}
+iris$Species
+iris[, "Species"]
+iris[["Species"]]
+iris[, 5]
+iris[, colnames(iris) == "Species"]
+```
+
+Skapa en ny variabel
+========================================================
+incremental: false
+
+- Lägger till en ny vektor
+- Som vektorer i övrigt
+```{r}
+iris$Sepal.Length2 <- 
+  iris$Sepal.Length ^ 2 
+iris$Species2 <- c(2,1)
+iris$Species2[1:10]
+```
+
+Ta bort variabler
+========================================================
+- Tillskriver variabeln värdet ```NULL```
+- Negativ indexering
+```{r, eval=FALSE}
+iris$Sepal.Length2 <- NULL
+iris <- iris[, -7]
+```
+
+
+Byta variabelnamn
+========================================================
+incremental: false
+
+- Variabelnamn är en textvektor
+- Bör inte innehålla mellanrum, inga å, ä, ö
+```{r}
+colnames(iris)
+colnames(iris)[1] <- "Oj_EnVariabel"
+colnames(iris)[1:2]
+```
+
+Row ID
+========================================================
+- Rader har enskilda ID
+- Detta är också en textvektor!
+
+```{r}
+rownames(iris)[1:5]
+rownames(iris)[1] <- "Blomma 1"
+rownames(iris)[1:5]
+```
+
+
+Demo: Data.frame
+========================================================
+type: section
+
+
+Listor
+========================================================
+type: sub-section
+
+Listor
+========================================================
+incremental: false
+
+- Som en vektor, men **alla** element är objekt
+- **Tänk:** "lådor" med objekt
+- Kan namnges precis som variabler i ```data.frames```
+
+```{r}
+minLista <- list(Pelles="Pelle Karlsson", c(1,2,3,4))
+minLista
+```
+
+Indexera listor
+========================================================
+incremental: false
+
+- Görs med enkla och dubbla "hakparanteser"
+  - ```[]```: Tänk plocka ut en eller flera "lådor"
+  - ```[[]]```: Tänk öppna och ta innehållet i **en** låda
+- Om namngivna: 
+  - ```lista$list_element_namn```
+  - ```[["list_element_namn"]]```
+
+Indexera listor
+========================================================
+```{r}
+minLista <- list(Perta="Perta Karlsson", c(1,2,3,4))
+minLista[1]
+minLista[[1]]
+```
+
+
+Demo: Listor
+========================================================
+type: section
+
+
+Att studera objekt i R
+========================================================
+type: sub-section
+
+Att studera datatyper i R
+========================================================
+
+| Funktion | Exempel | Kort beskrivning |
+| --- | --- | --- | 
+| ```summary()``` | ```summary(a)``` |Sammanfattar innehållet i ett R-objekt | 
+| ```str()``` | ```str(a)``` | Visar kondenserat (en rad per objekt) alla delar i ett R-objekt | 
+| ```is.``` | ```is.logical(a)``` | Testar om objektet är en given klass. | 
+
+
+Grundläggande databearbetning
+========================================================
+type: section
+
+Sammanfoga data
+========================================================
+
+- "Ni statistiker tror att världen kommer i excelformat"
+- Grundläggande databearbetningar
+  + ```rbind()```
+  + ```cbind()```
+  + ```merge()```
+- Aggregera data används ```aggregate()```
+
+Demo: Databearbetning 
+========================================================
+type: section
+
+Input och output (I/O) i R
+========================================================
+type: section
+
+Input och output (I/O) i R
+========================================================
+#incremental: false
+
+- Olika sätt att läsa in data (input):
+  - Från filer på datorn / nätverket (.csv, .xlsx, .txt, .Rdata,.RDS)
+  - Från filer på webben (```httr```)
+  - Från databaser (med SQL)
+  - Via [API](https://en.wikipedia.org/wiki/Application_programming_interface):er (ex.  [```rOpenGov```](http://ropengov.org/)
+
+Input och output (I/O) i R
+========================================================
+- Olika sätt att leverera (output):
+  - Filer 
+  - Databaser / API:er
+  - Interaktiva webbdatabaser (ex. [Shiny](http://shiny.rstudio.com/gallery/word-cloud.html))
+  - Rapporter / analyser / texter ([knitr](http://yihui.name/knitr/))
+      - mer om det i del 2 i kursen
+
+
+Filhantering i R
+========================================================
+- R läser in i internminnet, men ofta vill vi arbeta med filer från hårddisken
+- R arbetar i *working directory*
+  - För att ta reda på sökvägen ```getwd()```
+  - För att ändra sökvägen ```setwd()```
+  - För att lista filer i katalogen ```dir()```
+- För att snabbt och enkelt få sökvägen till en fil ```file.choose()```
+- Detaljer om hur man kan manipulera kataloger och filer med R finns [[här]](http://astrostatistics.psu.edu/datasets/R/html/base/html/files.html)
+
+Input (I) 
+========================================================
+För att läsa in data finns:
+- ```.csv``` och ```.txt```-filer: ```read.table()```,```read.csv()```, ```read.csv2()```
+- ```.Rdata```-filer: ```load()```
+- ```.rds```-filer: ```readRDS()```
+
+
+Output (O) 
+========================================================
+För att spara data från R till hårddisken finns (bland annat):
+- ```.csv``` - filer: ```write.table()```,```write.csv()```, ```write.csv2()```
+- ```.Rdata``` - filer: ```save()```
+- ```.rds``` - filer: ```saveRDS()```
+
+Andra datakällor
+========================================================
+För andra datakällor finns andra paket:
+
+| R-Paket | Filtyp |
+| --- | --- |  
+| ```readr``` | Olika typer (del av tidyverse)|
+| ```XLConnect```, ```gdata``` | Excel-filer|
+| ```foreign``` | Filer från Epi Info, Minitab, S, SAS, SPSS, Stata, Systat and Weka |
+| ```RODBC```, ```RMySQL``` m.m.| Kontakta databaser från R |
+| ```XML``` | XML - data |
+| ```RJSONIO``` | JSON - data  |
+Länkar om att läsa in olika typer av data: [här](http://www.r-tutor.com/r-introduction/data-frame/data-import) och [här](http://www.r-bloggers.com/read-excel-files-from-r/)
+
+
+Demo: Filhantering, Input och Output (I/O) 
+========================================================
+type: section

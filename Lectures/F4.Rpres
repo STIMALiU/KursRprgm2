@@ -1,0 +1,530 @@
+<style type="text/css">
+
+.indent {
+  padding-left: 2em !important;
+}
+
+.emphasize {
+  text-align: center; 
+  width: 100%; 
+  color: red; 
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+
+Programering i R
+========================================================
+transition: rotate
+## Föreläsning 4: Funktioner och programmering
+### [Josef Wilzén](mailto:josef.wilzen@liu.se)
+STIMA, 
+Linköpings universitet
+
+*`r Sys.Date()`*
+
+Föreläsning 4: Innehåll 
+========================================================
+- Quiz: Kahoot!
+- Inför del 2 i kursen.
+- **Mer om funktioner**
+- Bra och effektiv programmering
+- ```*apply```-funktioner
+- ROxygen
+- R-paket
+
+Quiz
+========================================================
+kahoot!
+ - Quiz, snabba svar ger mer poäng
+ - Ta fram en enhet med webbläsare
+ - Gå till: https://kahoot.it/
+ - Slå in koden som visas
+
+  
+Labbar
+========================================================
+ - Viktigt att göra övningsuppgifterna innan inlämningsuppfiterna.
+   - Tentan utgår ifrån att ni gjort alla övningsuppgifter.
+ - Utnyttja labbtiden, kom förberedd till labben.
+ - Tips: kommentera bort tester/kod mm innan inlämning. ```ctrl+shift+c``` kommenterar/avkommenterar flera rader samtidigt.
+ - För att se fler komandon i RStudio tryck ```alt+shift+k```
+  
+
+Inför del 2 av kursen
+========================================================
+- Labbar ska göras i par 
+  - De som läser om kursen gör labbarna ensam eller tillsammans med någon anna som läser om kursen. 
+- På Teams finns en länk till ett dokument där ni ska fylla i er.
+- Ni blidar grupper själva. Deadline lördag (15/2) kväll.
+
+Mer om funktioner
+========================================================
+type: section
+
+
+Kort repetition
+========================================================
+En funktion i R består av:
+- ett funktionsnamn (ex. ```f```)
+- en funktionsdefinition med   ```function()```
+- 0 eller flera argument / invärden (ex. ```x``` och ```y```)
+- "curly bracers" ```{}```
+- programkod / funktionen (ex. ```x + y```)
+- returnera värde (ex. ```return()```)
+- utvärdet från funktionen (ex. ```f(3,2)``` = **5** )
+
+- *en egen (lokal) miljö där beräkningar görs*
+
+Allmänt om funktioner
+========================================================
+- Funktioner är objekt
+
+```{r}
+f <- function(x,y) {
+  z <- x^2 - y
+  return(z)
+}
+f
+class(f)
+```
+
+Allmänt om funktioner
+========================================================
+- Funktioner har tre delar: 
+  - argument
+  - funktionskropp
+  - lokal miljö och föräldramiljö
+
+
+Exempel
+========================================================
+```{r}
+formals(f)
+body(f)
+```
+
+
+Exempel
+========================================================
+```{r}
+environment(f)
+```
+
+
+Allmänt om funktioner (forts.)
+========================================================
+- Funktioner kan tas som argument
+```{r}
+square_function <- function(x) {
+  return(x^2)
+}
+integrate(square_function, lower = 0, upper = 1)
+```
+
+- Funktioner kan returnera funktioner (se ex. i RP:s video)
+
+Allmänt om funktioner (forts. II)
+========================================================
+- Vi behöver inte namnge argumenten
+```{r}
+f(1,5) # Samma som f(x = 1, y = 5)
+```
+
+- Ordningen spelar ingen roll
+```{r}
+f(y = 5, x = 1) # Samma som f(x = 1, y = 5)
+```
+
+
+Allmänt om funktioner (forts. III)
+========================================================
+- Behöver inte ```return()``` eller ```{ }``` för små funktioner
+```{r}
+f <- function(x) x^2 - 3
+f(3)
+```
+
+Allmänt om funktioner (forts. IV)
+========================================================
+- Defaultvärden
+
+```{r}
+f <- function(x = 10) x^2 - 3
+f(3)
+f()
+```
+
+
+Globala och lokala miljöer i R
+========================================================
+type: sub-section
+
+
+Globala miljöer, lokala miljöer och namespaces
+========================================================
+Objekt kan definieras/skapas i...
+
+- Den global miljön 
+- Lokala miljöer (inne i funktioner)
+- Namespaces (tänk R-paket)
+
+
+Hur vet R vad vi menar?
+========================================================
+- objektnamn och objekt
+
+- R:s söklista:
+  1. Lokala miljöer
+  2. Den global miljön
+  3. Vidare i den ordning ```namespaces``` är laddade
+
+Fria variabler
+========================================================
+
+```{r,eval=FALSE}
+f <- function(x) x + y
+```
+
+> Objektet/värdet för "fria" variabler undersöks i den miljö funktionen var definierad/skapad.
+
+- Sedan söker R på samma sätt som i förra sliden
+
+Exempel på fria variabler
+========================================================
+```{r,eval=FALSE}
+f <- function(x) x + y
+f(3)
+```
+
+```{r,eval=TRUE,echo=FALSE}
+f <- function(x) {
+  cat("Error in f(3) : object 'y' not found")}
+f(3)
+f <- function(x) x + y
+```
+
+```{r, eval=TRUE}
+y <- 2
+f(3)
+```
+
+Hur vet R vad vi menar? II
+========================================================
+- Se R:s söklista: ```search()```
+- Se var en funktion skapats: ```enviroment()```
+- Anropa en funktion i en given namespace/miljö: ```::```
+
+Exempel på search()
+========================================================
+Undersöka laddade namespaces med ```search()```:
+```{r}
+search()
+```
+
+Exempel på :: och environment()
+========================================================
+```{r}
+f<-function(x) x^2
+environment(f)
+environment(base::mean)
+```
+
+Mer om att skapa objekt
+========================================================
+
+Att skapa / definiera objekt kallas att tilldela (assign)
+
+- grunden är ```assign()```
+- ```<-```  : tilldela i aktuell miljö 
+- ```<<-```  : tilldela direkt till global miljö
+- ```=```  : kan användas, men avråds från (används för att definera defaultargument i funktioner)
+
+
+Funktioner i funktioner
+========================================================
+- Ofta vill vi använda funktioner i funktioner
+- Att tänka på:
+  - Var ska funktionen definieras/skapas?
+  - Skicka information inom funktioner
+      - Se ```do.call()``` och ```...``` (Ellipsis) i labben
+
+
+God (vetenskaplig) programmering
+========================================================
+type: section
+Bygger på artikeln *Best practices for scientific computing* som finns [här](http://arxiv.org/abs/1210.0530)
+
+God (vetenskaplig) programmering
+========================================================
+- Kod är stor del av vetenskap/analys
+- Forskare/statistiker spenderar stor del av sin tid med att skriva kod
+- Det är enkelt att det blir fel
+
+8 steg för god programmering
+========================================================
+1. Skriv kod för människor, inte datorer
+2. Låt datorn göra arbetet
+3. Arbeta i små steg
+4. Upprepa aldrig din (eller andras) kod (DRY - principle)
+5. Planera för misstag
+6. Optimera kod först när den fungerar korrekt
+7. Dokumentera 
+8. Samarbeta
+
+
+1. Skriv kod för människor, inte datorer
+========================================================
+- Läsare ska inte behöva hålla allt i huvudet - använd funktioner
+- Använd objektnamn som är tydliga och meningsfulla
+- Använd en kodstil (coding style):
+  - Ex. [Hadley Wickhams](http://adv-r.had.co.nz/Style.html), [Googles](https://google.github.io/styleguide/Rguide.xml)
+
+2. Låt datorn göra arbetet
+========================================================
+- Låt datorn upprepa uppgifter 
+- Återanvänd kod - använd funktioner
+- Automatisera arbetsflödet (one file to rule them all)
+
+3. Arbeta i små steg
+========================================================
+- Skriv kod i små steg, testa och ändra löpande, spara ofta
+- [Versionshantera](https://en.wikipedia.org/wiki/Version_control) din kod (överkurs)
+  - Git finns implementerat direkt i R-Studio [mer info](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/)
+  - Versionshantera ALLT som inte skapas av koden (överkurs)
+    - Data, rapporter, (kurser i [R programmering](https://github.com/STIMALiU/KursRprgm))
+- Det finns enkel versionshantering i OneDrive, Dropbox och Google drive
+
+
+4. Upprepa aldrig din (eller andras) kod (DRY - principle)
+========================================================
+- All data ska bara finnas på ett ställe (ex. konstanter)
+- Skapa funktioner istället för att copy-paste
+- Återvinn (din och andras) kod istället för att skriva egen - **R-paket!**
+
+5. Planera för misstag
+========================================================
+- Skapa kontroller av input och output: ```stop()```
+- Det ska smälla högt och tidigt
+- Använd testpaket (överkurs)
+  - i R: paketet ```testthat```
+- Gör buggar till egna testfall
+- Använd debuggers! 
+    - ```browser()```, ```debug()```
+
+6. Optimera kod först när den fungerar korrekt
+========================================================
+- Se till att ha en kod som löser ditt problem
+- Sen kan du fundera på om den behöver vara:
+    - snabbare
+    - mer minneseffektiv
+    - mer användarvänlig
+- Använd profilers (överkurs)
+  - i R: ```Rprof()```
+  - I RStudio: Klicka på knappen "Profile"
+- Använd högnivåspråk, (använd R =) )
+
+7. Dokumentera
+========================================================
+- Dokumentera syftet med koden, **inte** vad koden gör
+- Gör koden enkel att förstå
+- Kombinera kod och dokumentation
+  - Lägg in mycket inlinedokumentation med ```#```
+  - [literate programming](https://en.wikipedia.org/wiki/Literate_programming)/[knitr](https://en.wikipedia.org/wiki/Knitr) (Miniprojektet)
+  - Paketet [```ROxygen```](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
+
+8. Samarbeta
+========================================================
+- Låt andra titta på/kolla din kod
+- Använd parprogrammering för att:
+  - hjälpa kollegor in i projekt
+  - hantera komplexa programmeringsproblem
+- Använd issue-trackers (överkurs)
+
+
+Mäta körtid i R
+========================================================
+- Ibland vill vi mäta hur lång tid kod tar att köra: ```system.time()```
+```{r}
+system.time(expr=mean(rep(c(1,2),1000000)))
+```
+
+
+R-paket
+========================================================
+type: section
+
+Vad är R-paket?
+========================================================
+
+- R:s största styrka!
+- En samling funktioner
+- MÅNGA utvecklare
+- Finns två huvudsakliga "arkiv" för paket:
+  - [CRAN](https://cran.r-project.org/)
+  - [GitHub](https://github.com/)
+- Det är enkelt att bidra med egna paket!
+- Det är finns också mycket skräp därute!
+- Glöm inte att citera med ```citation()```
+
+Läsa in redan installerade R-paket
+========================================================
+- Läsa in paket görs med ```library()```
+- Anropa funktioner (utan att ladda paket görs med ```::```)
+  - ```base::mean()```
+- Installera paket:
+  - ```install.packages()``` (CRAN)
+  - ```devtools::install_github()``` (GitHub)
+
+
+Läsa in redan installerade R-paket
+========================================================
+- En del paket följer med R 
+- ```ls("package:MASS")``` visar vilka funktioner som finns i paketet MASS.
+- I Rstudio finns en flik för pakethantering
+- Lista alla inlästa paket: ```sessionInfo()```
+
+
+Semantic versioning
+========================================================
+
+- Ett versionsnummer består av tre delar:
+  [MAJOR].[MINOR].[PATCH]
+  - Major: Stora förändringar som **inte** är bakåtkompatibla
+  - Minor: Mindre förändringar som **är** bakåtkompatibla  
+  - Patch: Buggkorrigeringar
+- En majorversion som är 0 innebär "utveckling pågår", större färändringar kan ske.
+
+```{r, eval=TRUE}
+R.version.string
+```
+
+Att hitta rätt paket
+========================================================
+
+- Alla paket håller inte samma kvaliet. Följande tips för att granska:
+  1. Kommer paketet med R eller någon från R Core Team?
+  2. När kom senaste uppdateringen?
+  3. Är paketet en utvecklingsversion?
+  4. Sök på nätet och se om andra använder paktet och till vad 
+  5. Mejla och fråga utvecklaren
+  6. Kontrollräkna centrala funktioner
+
+- För att komma igång med nya paket: vignetter
+- På [cran task view](https://cran.r-project.org/web/views/) finns många paket ordnade efter ämne
+
+
+Installera paket
+========================================================
+
+CRAN:
+
+```{r, eval=FALSE}
+install.packages('lubridate')
+```
+
+GitHub:
+```{r, eval=FALSE}
+devtools::install_github(repo="pxweb", username="rOpenGov")
+```
+
+
+Läsa in paket
+========================================================
+
+```{r, eval=FALSE}
+library(lubridate)
+```
+
+SU-salar: Läsa in paket relaterade till kursen: 
+- kör följande i en terminal:
+  - ```module load courses/732G33/2020-01-13.1```
+- så kommer ni få tillgång till R, RStudio samt de R-paket som behövs i kursen. 
+- Öppna en terminal genom att trycka ctrl+alt+T
+
+
+ROxygen
+========================================================
+type: section
+
+Dokumentera med ROxygen
+========================================================
+- [ROxygen](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) är standard för dokumentation
+- Samma som JavaDoc
+- Skapar automatiskt [```.Rd```](https://cran.r-project.org/doc/manuals/R-exts.html#Rd-format) i paket
+- Använder ```#'```
+
+Dokumentera med ROxygen
+========================================================
+
+ROxygendel | Innehåll
+------------- | -------------
+```@title```  | Anger titel för dokumentet
+```@description```  | En beskrivning vad funktionen gör
+```@details```  | Detaljer om funktionen
+```@param```  | Argument till funktionen
+```@return```  | Vad funktionen returnerar
+```@references```  | Eventuella referenser av intresse
+```@seealso```  | Andra funktioner som kan vara aktuella
+```@examples```  | Exempel på hur funktionen kan användas
+
+Exempel
+========================================================
+```{r}
+#' @title f
+#' @description
+#' En funktion som kvadrerar argumenten i x och y och summerar dem. 
+#' @param x
+#' Den numeriska variabel x som ska kvadreras
+#' @param y
+#' Den numeriska variabel y som ska kvadreras
+#'
+#' @return
+#' Funktionen returnerar en numerisk vektor
+#'
+f <- function(x, y) x^2 + y^2
+```
+
+
+högnivå-funktioner
+========================================================
+type: section
+
+*apply-functioner
+========================================================
+- "High level functions"
+- Ett (snabbare) alternativ till loopar
+- Internt i R: loop i C-kod
+- Funtioner:
+  - ```lapply()``` : loopar över element i en lista
+  - ```tapply()``` : loopar över ett index (ex. ```aggregate()```)
+  - ```apply()```  : loopar över marginaler (ex. ```colSums()```)
+  - det finns fler... se [här](http://nsaunders.wordpress.com/2010/08/20/a-brief-introduction-to-apply-in-r/)
+
+Exempel på lapply()
+========================================================
+```lapply()``` har tre argument:
+- ```X``` listan vi vill loopa över
+- ```FUN``` funktionen att aplicera
+- ```...``` argument till funktionen
+```{r}
+myList <- list(x = 1:10, y = c(NA,12:20))
+str(lapply(X=myList, FUN=mean, na.rm=TRUE))
+```
+
