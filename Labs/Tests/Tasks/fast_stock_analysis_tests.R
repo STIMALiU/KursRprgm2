@@ -35,11 +35,11 @@ test_that("fast_stock_analysis()", {
   testFile <- tempfile(pattern="fast_stock_analysis_test_file", fileext=".csv")
   testFile2 <- tempfile(pattern="fast_stock_analysis_test_file", fileext=".csv")
   if(!file.exists(testFile)) {
-    path <- markmyassignment:::path_type("https://raw.githubusercontent.com/MansMeg/KursRprgm/master/Labs/DataFiles/AppleTest.csv")
+    path <- markmyassignment:::path_type("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTest.csv")
     markmyassignment:::get_file.path_http(path = path, dest = testFile)
   }
   if(!file.exists(testFile2)) {
-    path <- markmyassignment:::path_type("https://raw.githubusercontent.com/MansMeg/KursRprgm/master/Labs/DataFiles/google2.csv")
+    path <- markmyassignment:::path_type("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.csv")
     markmyassignment:::get_file.path_http(path = path, dest = testFile2)
   }
   
