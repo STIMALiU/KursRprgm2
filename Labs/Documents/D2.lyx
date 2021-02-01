@@ -188,7 +188,7 @@ LatexCommand tableofcontents
 \end_layout
 
 \begin_layout Part
-Datorlaboration
+Övningsuppgifter
 \end_layout
 
 \begin_layout Chapter
@@ -2774,14 +2774,13 @@ Skapar vi en ny
 \family typewriter
 data.frame
 \family default
- som innehåller en textvektor kommer textvektorn automatiskt översättas
- till en faktorvariabel.
- För att undvika detta måste en ange argumentet 
+ som innehåller en textvektor kommer textvektorn översättas till en faktorvariab
+el om argumentet 
 \family typewriter
-stringsAsFactors=FALSE
+stringsAsFactors=
 \family default
-.
- 
+TRUE.
+ Jämför fallen nedan.
 \begin_inset Newline newline
 \end_inset
 
@@ -2811,12 +2810,30 @@ myDataFrame2 <- data.frame(text=myText, stringsAsFactors=FALSE)
 
 \begin_layout Plain Layout
 
+myDataFrame3 <- data.frame(text=myText, stringsAsFactors=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Funktionerna 
+\family typewriter
+is.factor()
+\family default
+ testar om en vektor är en factor.
+ Funktonen 
+\family typewriter
+as.factor()
+\family default
+ konverterar en vektor till en factorvariabel.
 \end_layout
 
 \begin_layout Enumerate
@@ -6747,12 +6764,13 @@ TRUE
 \series bold
 Tips
 \series default
-: Använd modulusoperatorn och relationsoperatorer
+: Använd modulusoperatorn (ger resten vid heltalsdivision) och relationsoperator
+er
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
-Se laboration för mer info om modulusoperatorn och relationsoperatorer.
+Se laboration 1 för mer info om modulusoperatorn och relationsoperatorer.
 \end_layout
 
 \end_inset
@@ -6849,7 +6867,17 @@ str(my_result)
 
 \begin_layout Plain Layout
 
-my_result 
+my_result
+\end_layout
+
+\begin_layout Plain Layout
+
+my_result$leap_year
+\end_layout
+
+\begin_layout Plain Layout
+
+my_result[,1]
 \end_layout
 
 \begin_layout Plain Layout
@@ -6972,11 +7000,11 @@ read.csv()
 \series bold
 Tips!
 \series default
- tänk på 
+ tänk på att 
 \family typewriter
 stringsAsFactors
 \family default
- innebär att datumvariablerna blir en faktorvariabel].
+ kontrollerar om datumvariablerna blir en faktorvariabel eller ej.].
  
 \begin_inset Newline newline
 \end_inset
@@ -7346,13 +7374,13 @@ google2.csv"
 
 \begin_layout Plain Layout
 
-apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm2/Labs/DataFiles
+apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFiles
 /AppleTest.csv"
 \end_layout
 
 \begin_layout Plain Layout
 
-google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm2/Labs/DataFile
+google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
 s/google2.csv"
 \end_layout
 
