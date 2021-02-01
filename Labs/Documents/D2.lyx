@@ -6562,7 +6562,7 @@ Gå till Teamet för
 \begin_inset Quotes sld
 \end_inset
 
-Team_732G33_2020_student
+732G33_2021
 \begin_inset Quotes srd
 \end_inset
 
@@ -6570,7 +6570,11 @@ Team_732G33_2020_student
 \end_layout
 
 \begin_layout Enumerate
-Hitta kanalen #sayhello och skriv ett meddelande som innehåller följande:
+Hitta kanalen 
+\series bold
+sayhello
+\series default
+ och skriv ett meddelande som innehåller följande:
 \end_layout
 
 \begin_deeper
@@ -6589,7 +6593,26 @@ OBS: ingen kod från någon inlämningsuppgift!
 \begin_inset Newline newline
 \end_inset
 
-För att få en bra formattering på koden, gör då följande:
+För att få en bra formattering på koden, gör då följande
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Se även här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://support.microsoft.com/en-us/office/send-code-snippets-in-a-message-in-teams-5406fe2b-2771-4b9a-bd73-656914f6ab3c"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+:
 \end_layout
 
 \begin_deeper
@@ -6603,18 +6626,6 @@ Format
 \end_inset
 
 , finns under fältet där du skriver meddelanden.
-\end_layout
-
-\begin_layout Enumerate
-Klicka på 
-\begin_inset Quotes sld
-\end_inset
-
-More options
-\begin_inset Quotes srd
-\end_inset
-
- (har tre små prickar som ikon)
 \end_layout
 
 \begin_layout Enumerate
@@ -6667,7 +6678,11 @@ sayhello
 \end_inset
 
 ), där ni inte ska lämna in nåt.
- Det räcker att ni gör steg 2 på Teams i kanalen #sayhello.
+ Det räcker att ni gör steg 2 på Teams i kanalen 
+\series bold
+sayhello
+\series default
+.
  Notera: För att bli godkänd på denna uppgift måste koden ha korrekt formatterin
 g.
  Notera att det inte är tillåtet att publicera lösningar på inlämningsuppgifter
