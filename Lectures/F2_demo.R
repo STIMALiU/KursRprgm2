@@ -12,6 +12,7 @@
 # -------------------------------------------------------------------------------------------
 A1<-matrix(data = c(1,42,323,11,434,54,34,23,2),nrow = 3,ncol = 3)
 A1
+is.matrix(A1)
 ?matrix
 # ändra namn:
 colnames(A1)
@@ -24,9 +25,17 @@ A1
 
 # indexering:
 A1[1,]
-A1[,1]
+test1<-A1[,1]
+test1
+is.vector(test1)
 A1[1,,drop=FALSE]
-A1[,1,drop=FALSE]
+test2<-A1[,1,drop=FALSE]
+is.matrix(test2)
+
+A1
+A1[1,3]
+A1[1:2,2:3]
+A1[c(3,1),c(1,3)]
 
 
 
@@ -53,11 +62,21 @@ length(A1[,1])
 dim(A1[,1,drop=FALSE])
 
 x[length(x)]
-
+x[3]
 d<-dim(A1)
 d
 d[1]
+
+
+
+dim_val<-dim(A1)
+is.vector(dim_val)
 dim(A1)[1]
+
+dim_val[1]
+dim_val[2]
+A1[dim_val[1],dim_val[2]]
+
 
 A1[dim(A1)[1],dim(A1)[2]]
 
@@ -150,16 +169,21 @@ x<-list(a="hej",b=TRUE,c=5:8)
 x
 y<-list("hej",TRUE,1:4)
 y
+
 x[1]
+
 typeof(x[1])
+
 x[[1]]
 typeof(x[[1]])
 x[1:2]
 typeof(x[1:2])
+x2<-x[1:2]
 
 x$a
 x[[1]]
 y[[1]]
+y[[2]]
 y[[1:2]]
 y[1:2]
 
@@ -178,6 +202,7 @@ b
 
 storList<-list(minLista=a,minMat=b,logi=TRUE)
 storList
+
 str(storList)
 
 storList$minMat[1:2,3:4]
@@ -232,7 +257,7 @@ getwd()
 dir()
 # /home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm/Labs/DataFiles
 setwd(dir = "/home/josef/Dropbox/Josef/732G33_VT2018/temp")
-dir()
+
 
 # -------------------------------------------------------------------------------------------
 # input:
@@ -241,6 +266,7 @@ dir()
 path<-file.choose()
 print(path)
 
+x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",")
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
 str(x1)
