@@ -5508,7 +5508,7 @@ Apple.txt
 \begin_inset CommandInset href
 LatexCommand href
 name "[här]"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/DataFiles/Apple.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/Apple.txt"
 literal "false"
 
 \end_inset
@@ -5548,7 +5548,7 @@ google.csv
 \begin_inset CommandInset href
 LatexCommand href
 name "[här]"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/DataFiles/google.csv"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google.csv"
 literal "false"
 
 \end_inset
@@ -7111,7 +7111,7 @@ google2.csv
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/KursRprgm/tree/master/Labs/DataFiles"
+target "https://github.com/STIMALiU/KursRprgm2/tree/main/Labs/DataFiles"
 literal "false"
 
 \end_inset
