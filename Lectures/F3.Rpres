@@ -1,0 +1,392 @@
+<style type="text/css">
+
+.indent {
+  padding-left: 2em !important;
+}
+
+.emphasize {
+  text-align: center; 
+  width: 100%; 
+  color: red; 
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+
+Programering i R
+========================================================
+transition: rotate
+## Föreläsning 3: Programkontroll
+### [Josef Wilzén](mailto:josef.wilzen@liu.se)
+STIMA, 
+Linköpings universitet
+
+*`r Sys.Date()`*
+
+Föreläsning 3: Innehåll 
+========================================================
+- Programkontroll
+  - Villkorssatser
+  - Loopar
+- Funktionsmeddelanden:
+  message, warning, stop
+- Intro debugging
+
+
+Allmänt
+========================================================
+- Inlämningsuppgifter
+  - Ta inte med markmyassignment-kod 
+  - Ta inte med funktionsanrop
+  - Vecka 2: sayhello på Teams
+- Några frågor så här långt?
+
+
+Programkontroll
+========================================================
+type: section
+
+Programkontroll
+========================================================
+
+- Att kontrollera körning av program / funktioner
+- Det finns olika kontroller vi kan vilja göra, exempelvis:
+  - köra / (åter) använda en annan del av koden
+  - villkorsstyra kod 
+  - köra kod 0 eller fler gånger
+  - köra kod till dess ett villkor är uppfyllt
+  - avbryta ett program
+
+Villkorssatser
+========================================================
+type: section
+
+Villkorssatser - Syntax
+========================================================
+
+[Pseudokod](https://en.wikipedia.org/wiki/Pseudocode):
+```{r, eval=FALSE}
+if ( Villkor ) { 
+  Kod om Villkor == TRUE 
+}
+```
+
+- Om Villkor är en logisk vektor prövas bara det **första** elementet
+- Logisk switch:
+```{r, eval=FALSE}
+if ( Villkor ) {
+  Kod om Villkor == TRUE 
+} else {
+  Kod om Villkor == FALSE 
+}
+```
+
+Villkorssatser - Syntax forts.
+========================================================
+```{r, eval=FALSE}
+if ( Villkor 1 ) { 
+  Kod om Villkor 1 == TRUE 
+} else if ( Villkor 2 ){
+  Kod om Villkor 2 == TRUE 
+} else {
+  Kod om Villkor 1 och 2 == FALSE 
+}
+```
+
+
+Villkorssatser - Exempel
+========================================================
+type: prompt
+```{r, eval=TRUE}
+prgm <- "R"
+if ( prgm == "R" ) { cat("Kul!") }
+```
+```{r, eval=TRUE}
+prgm <- "Excel"
+if ( prgm == "R" ) { cat("Kul!") }
+```
+
+
+Villkorssatser - Exempel II
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+prgm <- "Excel"
+if ( prgm == "R" ) { 
+  print("Kul!")
+} else if ( prgm == "Python"){
+  print("Okej då!")
+} else {
+  print("Ehhh...")
+}
+```
+
+
+Demo: Villkorssatser
+========================================================
+- Villkorssatser
+- Villkorssatser i funktioner
+
+
+Loopar
+========================================================
+type: section
+
+for - loop
+========================================================
+type: sub-section
+
+Vad är en "for-loop"?
+========================================================
+- Kontrollerar upprepningar av (samma) kod
+- I R används ```for```, loopar över en vektor/lista
+```{r, eval=FALSE}
+for ( elem in vektor ) { 
+  # Kod som anropas en gång per element
+  # elem är ett element i vektorn  
+}
+```
+
+- Vilken vektor eller lista som helst kan användas
+- Viktigt koncept: loopens index "elem" är det ENDA som ändras i loopen (innanför "{...}")
+
+Loopar (for-loop): Exempel
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+vektor <- c("Oleg", "Annika", "Lotta")
+for ( element in vektor ) { 
+  print(element) 
+}
+```
+
+
+Loopar (for-loop): Exempel
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+for ( element in 1:5 ) { 
+  print(element) 
+}
+```
+
+
+Loopar (for - loop): Exempel 
+========================================================
+type: prompt
+incremental: true
+Vi kan loopa på flera sätt:
+```{r, eval=FALSE}
+for ( element in vektor ) { 
+  print(element) 
+}
+```
+```{r, eval=FALSE}
+for ( index in seq_along(vektor) ) { 
+  print(vektor[index]) 
+}
+```
+```{r, eval=FALSE}
+for ( index in 1:length(vektor) ) {
+  print(vektor[index])
+}
+```
+
+Demo: for-loopar
+========================================================
+type: sub-section
+
+Nästlade loopar (nested loops)
+========================================================
+- Om vi vill loopa i flera dimensioner/nivåer
+- Delas upp i "Inre" och "yttre" loop
+- Tänk klocka
+  - Timmar: yttersta loopen
+  - Minuter: gör 60 iterationer/ timme
+  - Sekunder: gör 60 iterationer/ minut
+
+
+Nästlade loopar (nested loops)
+========================================================
+type: prompt
+
+```{r eval=TRUE}
+A <- matrix(1:6, nrow = 2)
+for ( i in 1:2 ) {
+  for ( j in 1:3 ) {
+    text<-paste("r:",i,"  k:",j,"  v:",A[i,j])
+    print(text)
+  }
+}
+```
+
+Demo: Nästlade for-loopar
+========================================================
+type: sub-section
+
+Kontrollstrukturer för loopar
+========================================================
+type: sub-section
+
+Kontrollstrukturer för loopar
+========================================================
+- Vi vill ofta kontrollera hur looparna arbetar
+- För detta finns följande kontrollstrukturer:
+
+| Kontrollstruktur | Effekt |
+| --- | --- |
+| ```next()``` | Börjar om med nästa iteration direkt | 
+| ```break()``` | Avbryter den aktuella/innersta loopen. | 
+| ```stop()``` | Avbryter allt och genererar ett felmeddelande (Fungerar även i funktioner) | 
+
+Exempel: next()
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+# skriv ut udda tal:
+for ( i in 1:10 ) {
+  if(i %% 2 == 0) { next() }
+  print(i)
+}
+```
+
+Exempel: break()
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+for ( i in 1:3 ) {
+  for ( letter in c("a","b","c") ) {
+    if(letter == "b") { break() }
+    print(letter)
+  }
+}
+```
+
+Exempel: stop()
+========================================================
+type: prompt
+incremental: true
+```{r, eval=FALSE}
+for ( i in 1:3 ) {
+  for ( letter in c("a","b","c") ) {
+    if(letter == "b") { stop("Mitt fel!") }
+    print(letter)
+  }
+}
+```
+```{r, eval=TRUE, echo=FALSE}
+"a"
+cat("Error: Mitt fel!")
+```
+
+Demo: kontrollstrukturer för loopar
+========================================================
+type: sub-section
+
+Villkorstyrda loopar (while - loop)
+========================================================
+type: sub-section
+
+Villkorstyrda loopar (while - loop)
+========================================================
+- Om vi inte vet antalet iterationer
+```{r, eval=FALSE}
+while ( Villkor ) { 
+  # Kod som anropas så länge Villkor == TRUE
+}
+```
+- **Varning!** Kan fortsätta hur länge som hellst
+- **Obs!** ```Villkor``` måste kunna utvärderas innan loopen startar
+- ```repeat()``` repeterar kod till ```break```
+
+Villkorstyrda loopar: Exempel
+========================================================
+type: prompt
+incremental: true
+```{r, eval=TRUE}
+i <- 1 # Obs!
+while ( i < 5 ) { 
+  print(i)
+  i <- i + 1
+}
+```
+
+Demo: villkorsstyrda loopar
+========================================================
+type: sub-section
+
+
+Varningsmeddelanden och Debugging
+========================================================
+type: section
+
+Varningsmeddelanden
+========================================================
+- ```stop()``` avbryter funktioner/loopar och meddelar ett fel
+- Skapa en varning, som inte avbryter: ```warning()```
+- Varningar sparas och skrivs ut sist
+- ```warnings()```: skriva ut tidigare varningar
+
+
+Varningsmeddelanden
+========================================================
+```{r,eval=FALSE}
+for (i in 1:2){
+  print(i)
+  warning(paste("Farligt värre", i))
+}
+```
+```{r,eval=TRUE,echo=FALSE}
+cat("[1] 1\n[1] 2\nWarning messages:\n1: Farligt värre 1 \n2: Farligt värre 2 ")
+```
+
+Debugging
+========================================================
+Det uppstår ofta [fel](https://en.wikipedia.org/wiki/Software_bug) vid programmering! 
+Debugging handlar om att hitta orsaken till att en kod/funktion inte fungerar som det var tänkt.
+Olika typer av fel:
+- Syntaktiska fel: Felaktig syntax är angiven i koden (ofta stavfel)
+- Semantiska fel: Olämplig använding av objekt/funktioner, tex ```x<-0```, ```y<-3```, ```y/x```. 
+- Logiska fel: Programmet löser inte det tänkta problemmet. Kan vara svåra att lösa.
+
+
+Debugging
+========================================================
+- Använd ```cat()```, ```print()``` eller ```message()``` för att skriva ut värden på olika variabler -> få en uppfattning av vad som händer i en funktion
+  - Använd ```paste()``` för att kombinera text och variabler
+- ```browser()```: "hoopar in i funktionen på valt ställe"
+  - ```n```: kör nästa rad kod
+  - ```c```: kör allt i funktion/loop
+  - ```Q```: avsluta
+- ```debugg()```: "hoopar in i funktionen från början"
+
+
+Demo: debugging
+========================================================
+type: sub-section
+
+
+
+
+
