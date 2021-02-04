@@ -4536,7 +4536,11 @@ hpCategory
 \family typewriter
 mpg
 \family default
- efter vilken typ av växellåda bilen har.
+ efter grupperat efter 
+\family typewriter
+hpCategory
+\family default
+.
  Ta dock bort de tre snabbaste bilarna (sett efter 
 \begin_inset Quotes eld
 \end_inset
@@ -4546,11 +4550,25 @@ mpg
 \end_inset
 
 ) innan du beräknar medelvärdet.
- Döp om den nya variabeln till 
+ 
+\end_layout
+
+\begin_layout Enumerate
+Beräkna medelvärdet för variabeln 
 \family typewriter
-amMpg
+mpg
 \family default
-.
+ grupperat efter vilken typ av växellåda bilen har.
+ Ta dock bort de tre snabbaste bilarna (sett efter 
+\begin_inset Quotes eld
+\end_inset
+
+1/4 mile time
+\begin_inset Quotes erd
+\end_inset
+
+) innan du beräknar medelvärdet.
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -4564,20 +4582,11 @@ hpCategory
 aggregate()
 \family default
 .
- Döp om den nya aggregerade variabeln till 
-\family typewriter
-meanWeight
-\family default
-.
+ 
 \end_layout
 
 \begin_layout Enumerate
-Lägg nu till de nya variabler du skapat till det ursprungliga datamaterialet
- med 
-\family typewriter
-merge()
-\family default
-.
+Ta reda på namnet på de bilar som har manuell växellåda och 8 cylindrar.
 \end_layout
 
 \end_deeper
