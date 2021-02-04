@@ -4554,24 +4554,6 @@ hpCategory
 \end_layout
 
 \begin_layout Enumerate
-Beräkna medelvärdet för variabeln 
-\family typewriter
-mpg
-\family default
- grupperat efter vilken typ av växellåda bilen har.
- Ta dock bort de tre snabbaste bilarna (sett efter 
-\begin_inset Quotes eld
-\end_inset
-
-1/4 mile time
-\begin_inset Quotes erd
-\end_inset
-
-) innan du beräknar medelvärdet.
- 
-\end_layout
-
-\begin_layout Enumerate
 Gör på ett liknande sätt och beräkna den genomsnittliga vikten för bilarna
  efter både kategorin 
 \family typewriter
