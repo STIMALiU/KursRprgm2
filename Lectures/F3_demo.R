@@ -14,6 +14,11 @@
 if(TRUE) print("Ja!")
 if(FALSE) print("Ja!")
 
+if(TRUE){
+  print("Ja!")
+}
+
+
 2 < 4
 
 if(2 < 4) print("Ja!")
@@ -34,9 +39,10 @@ if(x <= 20){
 
 # vad händer nedan?
 x <- 0:10
+length(x)
 if(x >= 1) print("hej")
-
-
+x<-"hej"
+is.numeric(x)
 
 # Detta är ett exempel på kontroll av argument
 f <- function(x){
@@ -52,6 +58,7 @@ f <- function(x){
 }
 
 a<-c(1,2,3,10,87)
+mean(a)
 f(x = a)
 f(x = "R")
 f(x = TRUE)
@@ -60,8 +67,24 @@ f(x = 1:340)
 f(x = "abc")
 mean("abc")
 
+a<-TRUE
+b<-FALSE
+c<-TRUE
+d<-FALSE
+
+
+if( (a&!b)&c ){
+  print("test")
+}
+
+
+
 # Egen version av sign(), testa ?sign
 ?sign
+sign(x = 0)
+sign(x = -3998)
+sign(x = 32)
+
 sign(20)
 sign(-32)
 sign(0)
@@ -101,13 +124,22 @@ a
 vector <- -2:2
 vector
 
+for(i in vector){
+  print(i)
+}
+
+
+for(i in vector){
+  print(my_sign( x = i ))
+}
+
 # beror inte av loop-index "i"
 for(i in vector){
   print(my_sign( x = -10 ))
 }
 
 # beror inte av loop-index "i"
-for(i in 1:3){
+for(i in 1:10){
   print("hello")
 }
 
@@ -118,6 +150,11 @@ for(i in vector){
 
 
 loop_vekt<-1:10
+
+for(i in loop_vekt){
+  print(i)
+}
+
 res<-rep(0,length(loop_vekt))
 x <- 0
 for(i in loop_vekt){
@@ -125,7 +162,7 @@ for(i in loop_vekt){
   res[i] <- x
   print(x)
 }
-res
+res[8]
 sum(loop_vekt)
 
 
@@ -317,7 +354,6 @@ my_mean(x=c(TRUE,FALSE,FALSE))
 
 
 
-
 # -------------------------------------------------------------------------------------------
 # browser och debug
 
@@ -330,7 +366,7 @@ my_mean(x = 1:8)
 my_mean<-function(x){
   print(typeof(x))
   val1<-mean(x)
-  #browser()
+  browser()
   val2<-var(x)
   y<-list(mean=val1,var=val2)
   return(y)
