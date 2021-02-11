@@ -7,10 +7,10 @@ test_that("Assignment: babylon()", {
               info = "Fel: babylon() saknas.")
   
   checkmate::expect_function(babylon, nargs = 3,
-              info = "Fel: babylon är inte en funktion.")
+                             info = "Fel: babylon är inte en funktion.")
   
   expect_function_self_contained(object = babylon,
-                        "Fel: Funktionen innehåller fria variabler")
+                                 "Fel: Funktionen innehåller fria variabler")
   
   expect_function_arguments(babylon, c("x", "init", "tol"))
   
@@ -20,8 +20,8 @@ test_that("Assignment: babylon()", {
   expect_silent(babylon_output <- babylon(x=2, init=1.5, tol=0.01))
   checkmate::expect_names(names(babylon_output), permutation.of = c("iter", "rot"))
   
-  expect_equal(babylon(x=2, init=1.5, tol=0.01)$rot, 1.414216, tolerance = .01,
-              info = "Fel: Approximationen är felaktig för x = 2, init = 1.5 och tol = 0.01.")
+  expect_equal(babylon(x=2, init=1.5, tol=0.01)$rot, 1.414216, tolerance = 1e-6,
+               info = "Fel: Approximationen är felaktig för x = 2, init = 1.5 och tol = 0.01.")
   
   expect_equal(babylon(x=2, init=1.5, tol=0.01)$iter, 2,
                info = "Fel: Antalet iterationer är felaktig för x = 2, init = 1.5 och tol = 0.01.")  
@@ -32,17 +32,25 @@ test_that("Assignment: babylon()", {
                  info = "Fel: Ingen approximation gjorde, utan det exakta värdet används.") 
   }
   
-  expect_equal(babylon(x=15, init=1.5, tol=0.01)$rot, 3.872, tolerance = .01,
+  expect_equal(babylon(x=15, init=1.5, tol=0.01)$rot, 3.872983, tolerance = 1e-6,
                info = "Fel: Approximationen är felaktig för x = 15, init = 1.5 och tol = 0.01.")
   
   expect_equal(babylon(x=15, init=1.5, tol=0.01)$iter, 5,
                info = "Fel: Antalet iterationer är felaktig för x = 15, init = 1.5 och tol = 0.01.")
   
-  expect_equal(babylon(x=15, init=0.1, tol=0.01)$rot, 3.872, tolerance = .01,
+  expect_equal(babylon(x=15, init=0.1, tol=0.01)$rot, 3.872983, tolerance = 1e-6,
                info = "Fel: Approximationen är felaktig för x = 15, init = 1.5 och tol = 0.01.")
   
   expect_equal(babylon(x=15, init=0.1, tol=0.01)$iter, 9,
                info = "Fel: Antalet iterationer är felaktig för x = 15, init = 1.5 och tol = 0.01.")  
+  
+  
+  expect_equal(babylon(x=20, init=18, tol=0.001)$rot, 4.472136, tolerance = 1e-7,
+               info = "Fel: Approximationen är felaktig för x = 20, init = 18 och tol = 0.001.")
+  
+  expect_equal(babylon(x=20, init=18, tol=0.001)$iter, 6,
+               info = "Fel: Antalet iterationer är felaktig för x = 20, init = 18 och tol = 0.001.")
+  
   
   expect_function_code(object = babylon, expected = "return", 
                        info = "Fel: return() saknas i funktionen.") 
