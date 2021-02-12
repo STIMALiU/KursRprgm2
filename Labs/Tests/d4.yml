@@ -6,11 +6,5 @@ tasks:
     url: Tasks/hilbert_matrix_tests.R
   toeplitz_matrix:
     url: Tasks/toeplitz_matrix_tests.R
-  E_discrete:
-    url: Tasks/E_discrete_tests.R
-  V_discrete:
-    url: Tasks/V_discrete_tests.R
-  moment_func:
-    url: Tasks/moment_func_tests.R
 mandatory:
   url: mandatory.R
