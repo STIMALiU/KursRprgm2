@@ -4706,7 +4706,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Tests/d4.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d4.yml"
 \end_layout
 
 \begin_layout Plain Layout
@@ -4742,6 +4742,58 @@ god kodstil
  
 \end_layout
 
+\begin_layout Itemize
+Kodstil:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det viktiga är att koden ska vara 
+\series bold
+tydlig
+\series default
+ och 
+\series bold
+läsbar
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Följ någon av kodstilarna i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Kodstil"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
+ i den stil som ni väljer att använda.
+\end_layout
+
+\begin_layout Itemize
+Tänk särskilt på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enhetlighet och struktur
+\end_layout
+
+\begin_layout Itemize
+Ha lämplig indentering och avstånd
+\end_layout
+
+\begin_layout Itemize
+Ha bra variabelnamn
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Itemize
 Kommentarer:
 \end_layout
@@ -4808,6 +4860,10 @@ Förklara vad funktionen returnerar
 Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
  där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
  Ni behöver inte föklara alla detaljer.
+ Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
+ Dela in koden i grupper (så kallade logiska enheter) med hjälp av luft
+ och kommentarer.
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -4816,54 +4872,6 @@ Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
  Vilka kommentarer behövs då?
 \end_layout
 
-\end_deeper
-\begin_layout Itemize
-Kodstil:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Det viktiga är att koden ska vara 
-\series bold
-tydlig
-\series default
- och 
-\series bold
-läsbar
-\series default
-.
-\end_layout
-
-\begin_layout Itemize
-Följ någon av kodstilarna i 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Kodstil"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
- Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
- i den stil som ni väljer att använda.
-\end_layout
-
-\begin_layout Itemize
-Tänk särskilt på:
-\end_layout
-
-\begin_deeper
-\begin_layout Itemize
-Ha lämplig indentering och avstånd
-\end_layout
-
-\begin_layout Itemize
-Ha bra variabelnamn
-\end_layout
-
-\end_deeper
 \end_deeper
 \begin_layout Standard
 För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
