@@ -617,6 +617,19 @@ Ta reda på hur paket kan avinstalleras i R genom att söka på webben eller
  i R:s dokumentation.
 \end_layout
 
+\begin_layout Enumerate
+Kolla på denna sida 
+\begin_inset CommandInset href
+LatexCommand href
+name "sida"
+target "https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages"
+literal "false"
+
+\end_inset
+
+ för en sammanställning över användbara paket för olika situationer.
+\end_layout
+
 \begin_layout Chapter
 Mer om funktioner
 \end_layout
@@ -1670,21 +1683,31 @@ Funktioner i funktioner
 \begin_layout Standard
 Ibland kan det vara så att vi vill ge en hel funktion som ett argument till
  en annan funktion.
- Ett exempel på detta är om vi vill 
-\begin_inset CommandInset href
-LatexCommand href
-name "integrera"
-target "https://sv.wikipedia.org/wiki/Integral"
-literal "false"
-
-\end_inset
-
-
+ Ett exempel på detta är om vi vill integrera
 \begin_inset Foot
 status collapsed
 
 \begin_layout Plain Layout
 En integral anger arean under en funktionskurva.
+ Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.matteboken.se/lektioner/matte-3/integraler/primitiv-funktion"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.matteboken.se/lektioner/matte-3/integraler/berakning-av-integraler"
+literal "false"
+
+\end_inset
+
+ för mer info om integraler.
 \end_layout
 
 \end_inset
@@ -1699,6 +1722,7 @@ literal "false"
 \end_inset
 
 .
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -3799,9 +3823,313 @@ apply(X = iris[,-5],MARGIN = 2,FUN = quantile,probs=c(0.1,0.5,0.9))
 \end_layout
 
 \begin_layout Chapter
+Kodstil
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Kodstil"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det är viktigt att skriva läsbar och tillgänglig kod.
+ Därför har det skapats olika kodstilar i olika programmeringsspråk.
+ Kolla på de olika stilguiderna för R:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Hadley Wickhams"
+target "http://adv-r.had.co.nz/Style.html"
+literal "false"
+
+\end_inset
+
+: Äldre, men bra sammanfattning
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "R Style Guide"
+target "https://jef.works/R-style-guide/"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "The tidyverse style guide"
+target "https://style.tidyverse.org/"
+literal "false"
+
+\end_inset
+
+: Mer utförlig, läs kap.
+ 1-3
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Googles"
+target "https://google.github.io/styleguide/Rguide.html"
+literal "false"
+
+\end_inset
+
+: Deras variant av 
+\begin_inset Quotes sld
+\end_inset
+
+The tidyverse style guide
+\begin_inset Quotes srd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Notera att dessa stilguider kan ge något olika svar på samma fråga.
+\end_layout
+
+\begin_layout Standard
+Mina åsikter:
+\end_layout
+
+\begin_layout Itemize
+Ok att 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+använda variabelnamn på formen 
+\family typewriter
+r_course laplace_density
+\end_layout
+
+\begin_layout Itemize
+skriva 
+\family typewriter
+if(y==0)
+\end_layout
+
+\begin_layout Itemize
+indexera matriser med 
+\family typewriter
+X[2,3] X[,7]
+\end_layout
+
+\begin_layout Itemize
+loopa över vektorer på formen
+\family typewriter
+ 1:length(x)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Jag anser att ni ska använda 
+\family typewriter
+return()
+\family default
+ för att avsluta era funktioner, så det förväntas att ni gör det i era inlämning
+suppgifter och på tentan.
+\end_layout
+
+\begin_layout Standard
+Svara nu på frågorna nedan:
+\end_layout
+
+\begin_layout Enumerate
+Är 
+\family typewriter
+dayone
+\family default
+ ett bra variabelnamn?
+\end_layout
+
+\begin_layout Enumerate
+Hur ska jag skriva 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+x+y
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+ eller 
+\begin_inset Quotes sld
+\end_inset
+
+
+\family typewriter
+x + y
+\family default
+
+\begin_inset Quotes srd
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+Ska jag välja alt.
+ 1 eller alt.
+ 2?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# alt.
+ 1
+\end_layout
+
+\begin_layout Plain Layout
+
+if (y == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  log(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+} else {   
+\end_layout
+
+\begin_layout Plain Layout
+
+  y ^ x 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# alt.
+ 2
+\end_layout
+
+\begin_layout Plain Layout
+
+if (y == 0) {
+\end_layout
+
+\begin_layout Plain Layout
+
+  log(x) 
+\end_layout
+
+\begin_layout Plain Layout
+
+}  
+\end_layout
+
+\begin_layout Plain Layout
+
+else 
+\end_layout
+
+\begin_layout Plain Layout
+
+{ 
+\end_layout
+
+\begin_layout Plain Layout
+
+  y ^ x 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hur många tecken ska en rad med kod maximalt vara?
+\end_layout
+
+\begin_layout Enumerate
+Hur bör jag kommentera min kod?
+\end_layout
+
+\begin_layout Enumerate
+Vilken operator ska jag använda vid vanlig tilldelning? (Dvs.
+ jag vill att variabeln 
+\family typewriter
+x
+\family default
+ ska ha värdet 5.)
+\end_layout
+
+\begin_layout Enumerate
+Hur ser ett bra filnamn ut?
+\end_layout
+
+\begin_layout Enumerate
+Att diskutera: Varför är det viktigt att ha en bra kodstil? 
+\end_layout
+
+\begin_layout Enumerate
+Att diskutera: Vissa din kod från några övningsuppgifter för någon annan
+ och diskutera hur kodstilen kan förbättras.
+\end_layout
+
+\begin_layout Chapter
 Dokumentation av funktioner - 
 \family typewriter
-ROxygen2
+roxygen2
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Dokumentation-av-funktioner"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3850,7 +4178,7 @@ Vill vi dokumentera våra funktioner utan att skapa egna paket använder vi
  
 \begin_inset CommandInset href
 LatexCommand href
-name "ROxygen2"
+name "roxygen2"
 target "https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html"
 literal "false"
 
@@ -3858,10 +4186,34 @@ literal "false"
 
 .
  Det är ett format för att dokumentera funktioner direkt i R.
- Har vi väl dokumenterat våra funktioner med Roxygen2 kan vi generera R
+ Har vi väl dokumenterat våra funktioner med roxygen2 kan vi generera R
  documentation-filer automatiskt om vi väljer att lägga in funktionen i
  ett paket.
- 
+ Installera roxygen2 på din dator:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+install.packages("roxygen2")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3875,6 +4227,16 @@ status open
 \begin_layout Plain Layout
 
 <<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+#' @title f
+\end_layout
+
+\begin_layout Plain Layout
+
+#'
 \end_layout
 
 \begin_layout Plain Layout
@@ -3895,22 +4257,22 @@ status open
 
 \begin_layout Plain Layout
 
-#' @param x
+#' @param x Den numeriska variabel x som ska kvadreras
 \end_layout
 
 \begin_layout Plain Layout
 
-#' Den numeriska variabel x som ska kvadreras
+#' 
 \end_layout
 
 \begin_layout Plain Layout
 
-#' @param y
+#' @param y Den numeriska variabel y som ska kvadreras
 \end_layout
 
 \begin_layout Plain Layout
 
-#' Den numeriska variabel y som ska kvadreras
+#' 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3925,7 +4287,7 @@ status open
 
 \begin_layout Plain Layout
 
-#' Funktionen returnerar en numerisk vektor
+#' Funktionen returnerar en numerisk vektor med ett elment
 \end_layout
 
 \begin_layout Plain Layout
@@ -3935,7 +4297,48 @@ status open
 
 \begin_layout Plain Layout
 
-f <- function(x, y) x^2 + y^2
+\end_layout
+
+\begin_layout Plain Layout
+
+f <- function(x, y) {
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  x2 <- x^2  # kvaderar x
+\end_layout
+
+\begin_layout Plain Layout
+
+  y2 <- y^2  # kvaderar x
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  sum_val <- x2 +y2  # summerar
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+  return(sum_val)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
 \end_layout
 
 \begin_layout Plain Layout
@@ -4181,218 +4584,26 @@ Exempel på hur funktionen kan användas
 
 \end_layout
 
-\begin_layout Chapter
-Kodstil
-\end_layout
-
 \begin_layout Standard
-Det är viktigt att skriva läsbar och tillgänglig kod.
- Därför har det skapats olika kodstilar i olika programmeringsspråk.
- Kolla på de olika stilguiderna för R:
-\end_layout
-
-\begin_layout Itemize
+Se 
 \begin_inset CommandInset href
 LatexCommand href
-name "Hadley Wickhams"
-target "http://adv-r.had.co.nz/Style.html"
+name "här"
+target "https://style.tidyverse.org/documentation.html"
 literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Itemize
+ för mer info om roxygen, se även 
 \begin_inset CommandInset href
 LatexCommand href
-name "Googles"
-target "http://google-styleguide.googlecode.com/svn/trunk/Rguide.xml"
+name "här"
+target "https://jef.works/R-style-guide/#commenting"
 literal "false"
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Standard
-Notera att dessa två stilguider kan ge något olika svar på samma fråga.
-\end_layout
-
-\begin_layout Standard
-Svara nu på frågorna nedan:
-\end_layout
-
-\begin_layout Enumerate
-Är 
-\family typewriter
-dayone
-\family default
- ett bra variabelnamn?
-\end_layout
-
-\begin_layout Enumerate
-Hur ska jag skriva 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-x+y
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
- eller 
-\begin_inset Quotes sld
-\end_inset
-
-
-\family typewriter
-x + y
-\family default
-
-\begin_inset Quotes srd
-\end_inset
-
-?
-\end_layout
-
-\begin_layout Enumerate
-Ska jag välja alt.
- 1 eller alt.
- 2?
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# alt.
- 1
-\end_layout
-
-\begin_layout Plain Layout
-
-if (y == 0) {
-\end_layout
-
-\begin_layout Plain Layout
-
-  log(x) 
-\end_layout
-
-\begin_layout Plain Layout
-
-} else {   
-\end_layout
-
-\begin_layout Plain Layout
-
-  y ^ x 
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# alt.
- 2
-\end_layout
-
-\begin_layout Plain Layout
-
-if (y == 0) {
-\end_layout
-
-\begin_layout Plain Layout
-
-  log(x) 
-\end_layout
-
-\begin_layout Plain Layout
-
-}  
-\end_layout
-
-\begin_layout Plain Layout
-
-else 
-\end_layout
-
-\begin_layout Plain Layout
-
-{ 
-\end_layout
-
-\begin_layout Plain Layout
-
-  y ^ x 
-\end_layout
-
-\begin_layout Plain Layout
-
-}
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-Hur många tecken ska en rad med kod maximalt vara?
-\end_layout
-
-\begin_layout Enumerate
-Hur bör jag kommentera min kod?
-\end_layout
-
-\begin_layout Enumerate
-Vilken operator ska jag använda vid vanlig tilldelning? (Dvs.
- jag vill att variabeln 
-\family typewriter
-x
-\family default
- ska ha värdet 5.)
-\end_layout
-
-\begin_layout Enumerate
-Hur ser ett bra filnamn ut?
-\end_layout
-
-\begin_layout Enumerate
-Att diskutera: Varför är det viktigt att ha en bra kodstil? 
-\end_layout
-
-\begin_layout Enumerate
-Att diskutera: Vissa din kod från några övningsuppgifter för någon annan
- och diskutera hur kodstilen kan förbättras.
+.
 \end_layout
 
 \begin_layout Standard
@@ -4436,7 +4647,7 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
+solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgmTeacher/Labs/
 exercise_solutions/"
 \end_layout
 
@@ -4513,6 +4724,152 @@ suppressWarnings(set_assignment(lab_path))
 
 \end_layout
 
+\begin_layout Section*
+Dokumentation och kodstil
+\end_layout
+
+\begin_layout Standard
+Från och med denna laboration och de resterade laborationerna i kursen så
+ ska ni förutom att lösa angivna uppgifter också 
+\series bold
+kommentera
+\series default
+ era funktioner och ha en 
+\series bold
+god kodstil
+\series default
+ för att bli godkända.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kommentarer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funktionshuvud: Använd mallen för 
+\family typewriter
+roxygen2
+\family default
+ som ges i kapitlet 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Dokumentation-av-funktioner"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ni ska ha med:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+@title 
+\family default
+Här skriver ni funktionens namn
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@description 
+\family default
+Förklara kort vad funktionen gör
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@param 
+\family default
+Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+ Upprepa detta för alla argument i funktionen.
+ Ex: 
+\family typewriter
+x Numerisk vektor, används vid beräkning av medelvärde.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@return 
+\family default
+Förklara vad funktionen returnerar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+ där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
+ Ni behöver inte föklara alla detaljer.
+\end_layout
+
+\begin_layout Itemize
+Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
+ om ett år.
+ Vilka kommentarer behövs då?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kodstil:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det viktiga är att koden ska vara 
+\series bold
+tydlig
+\series default
+ och 
+\series bold
+läsbar
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Följ någon av kodstilarna i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Kodstil"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
+ i den stil som ni väljer att använda.
+\end_layout
+
+\begin_layout Itemize
+Tänk särskilt på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ha lämplig indentering och avstånd
+\end_layout
+
+\begin_layout Itemize
+Ha bra variabelnamn
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
+ instruktioner för kommentarer och kodstil.
+\end_layout
+
 \begin_layout Section
 
 \family typewriter
@@ -4529,7 +4886,20 @@ H_{ij}=\frac{1}{i+j-1}\label{eq:hilbert}
 
 \end_inset
 
-För mer information om Hilbertmatriser finns 
+
+\end_layout
+
+\begin_layout Standard
+där 
+\begin_inset Formula $i$
+\end_inset
+
+ är radindex och 
+\begin_inset Formula $j$
+\end_inset
+
+ är kolumnindex.
+ För mer information om Hilbertmatriser finns 
 \series bold
 \color blue
 
@@ -4672,6 +5042,25 @@ hilbert_matrix(3, 3)
 \begin_layout Plain Layout
 
 hilbert_matrix(2, 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+B<-hilbert_matrix(nrow = 4, ncol = 6)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(B)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4892,6 +5281,29 @@ D_{-3} & D_{-2} & D_{-1} & D_{0}
 \end_layout
 
 \begin_layout Standard
+Ett annat exempel är 
+\begin_inset Formula $x=\left(\begin{array}{ccc}
+D_{0} & D_{+1} & D_{-1}\end{array}\right)$
+\end_inset
+
+ som ger matrisen:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left(\begin{array}{cc}
+D_{0} & D_{+1}\\
+D_{-1} & D_{0}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Nu ska ni skapa en funktion som ska ta en godtycklig vektor 
 \family typewriter
 x
@@ -5045,6 +5457,35 @@ status open
 \begin_layout Plain Layout
 
 toeplitz_matrix(x="Ett element")
+\end_layout
+
+\begin_layout Plain Layout
+
+toeplitz_matrix(x=c(
+\begin_inset Quotes sld
+\end_inset
+
+diag
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+over
+\begin_inset Quotes srd
+\end_inset
+
+,
+\begin_inset Quotes srd
+\end_inset
+
+under
+\begin_inset Quotes srd
+\end_inset
+
+))
 \end_layout
 
 \begin_layout Plain Layout
