@@ -162,7 +162,6 @@ for(i in loop_vekt){
   res[i] <- x
   print(x)
 }
-res[8]
 sum(loop_vekt)
 
 
