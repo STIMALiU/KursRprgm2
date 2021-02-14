@@ -13,7 +13,7 @@ Namn <- ""
 
 
 # Skiv ditt liu ID här, ex LiuId <- "aliwa123"
-# På del 2 i kursen, när ni arbetar i par, skriv då ID på formen:  
+# På del 2 i kursen, när ni arbetar i par, skriv då ID på formen: 
 # LiuId <- c("adalo456", "aliwa123")
 LiuId  <- ""
 
@@ -22,10 +22,32 @@ LiuId  <- ""
 Grupp<-""
 
 
+#-------------------------------------------------------------------------------
+# Uppgift 1 
+#-------------------------------------------------------------------------------
 
-# Uppgift 1 ----
-uppgift1 <- function(mitt_argument){
-  # Skriv din funktion här
+# exempel på funktionshuvud
+
+#' @title uppgift1 (funktionens namn)
+#'
+#' @description 
+#' Beskrivning av funktionen: vad gör den?
+#'
+#' @param arg1 Beskrivning av första argumentet
+#' 
+#' @param arg2 Beskrivning av andra argumente
+#' 
+#'
+#' @return
+#' Vad returnerar funktionen?
+#' 
+#'
+
+uppgift1 <- function(arg1, arg2){
+  
+  # Kommentera din funktion!
+  # Ha en god kodstil!
+  
 }
 
 # OBS: kommentera bort all kod som inte är de obligatoriska variablerna ovan 
@@ -35,6 +57,13 @@ uppgift1 <- function(mitt_argument){
 # Använda markmyassignment
 # library(markmyassignment)
 # set_assignment("[ANGE LABBUPPGIFTENS SÖKVÄG HÄR (FINNS I LABBEN)]")
+
+# Använd mark_my_file() för att rätta din funktion
+# spara ditt skript med lösningar på din dator, sen anger du sökvägen till din
+# sparade fil:
+# mark_my_file(mark_file = "sökväg till ditt skript")
+
+
 # show_tasks()
 # mark_my_assignment()
 # mark_my_file()
