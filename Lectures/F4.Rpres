@@ -41,38 +41,100 @@ Linköpings universitet
 
 Föreläsning 4: Innehåll 
 ========================================================
-- Quiz: Kahoot!
+- Intro
 - Inför del 2 i kursen.
 - **Mer om funktioner**
 - Bra och effektiv programmering
 - ```*apply```-funktioner
-- ROxygen
+- roxygen2
 - R-paket
-
-Quiz
-========================================================
-kahoot!
- - Quiz, snabba svar ger mer poäng
- - Ta fram en enhet med webbläsare
- - Gå till: https://kahoot.it/
- - Slå in koden som visas
 
   
 Labbar
 ========================================================
  - Viktigt att göra övningsuppgifterna innan inlämningsuppfiterna.
-   - Tentan utgår ifrån att ni gjort alla övningsuppgifter.
+   - Tentan utgår ifrån att ni gjort de flesta övningsuppgifter.
  - Utnyttja labbtiden, kom förberedd till labben.
+ - Labbassar: har lite jour mellan labbtillfällen
+ - Rätta med: ```mark_my_file()```
+
+Labbar
+========================================================
  - Tips: kommentera bort tester/kod mm innan inlämning. ```ctrl+shift+c``` kommenterar/avkommenterar flera rader samtidigt.
- - För att se fler komandon i RStudio tryck ```alt+shift+k```
+ - Andra användbara:
+    - ```ctrl+L``` rensar konsolen
+    - ```ctrl+1``` flytta markören till skript
+    - ```ctrl+2``` flytta markören till konsol
+    - ```F1``` hjälp
+ - För att se fler kommandon i RStudio tryck ```alt+shift+k```
+
+
+Labbar: Vid problem
+========================================================
+
+- Förstår jag uppgiften?
+  - Kolla slides, kursbok, videos mm
+  - Exempel? demokod, övningsuppgifter, kursbok
   
+- Dela upp problemet i små delar
+  - Lös en del i taget (var utanför funktionen vid behov)
+  - Sätt sen ihop allt
+  - Kontrollera att allt fungerar tillsammans
+  - Arbeta kontrollerat och metodiskt
+
+Labbar: Error
+========================================================
+
+- **Error** i konsolen? (ofta syntaxfel)
+  - Kolla så att alla ( [ {  är stängda. 
+  - Kolla så att inte någon . , är på fel ställe
+  
+- Kommentera bort stora delar av koden
+  - testa att det funkar 
+  - sen avkommentera små delar i taget, börja uppifrån
+  
+- Sök på felmeddelandet på internet
+
+Labbar: Error
+========================================================
+
+- Använd debugging!
+  - browser(), debug()
+  - Skriv ut variabler till konsolen
+  - Om det inte ens går att köra funktionen, kommentera bort kod tills det går
+  
+- **Fråga om hjälp!**
+
+if vs. if-else
+========================================================
+När ska jag använda flera if-satser och när ska jag använda if-else?
+
+- Det beror på problemet!
+
+- Vid flera oberoende ja/nej-frågor: upprepade if-satser
+  
+- Vid ja/nej-frågor där svarat **beror** på svaret på tidigare frågor: if-else-sats
+  - Om vi vill täcka in alla möjliga svar/scenarion
+
+if vs. if-else
+========================================================
+**Oberoende** ja/nej-frågor:
+* Vill du ha hamburgare?
+* Vill du ha pommes?
+* Vill du ha läsk?
+
+**Beroende** ja/nej-frågor
+* Vill du ha glass?
+  - Om ja, vill du ha strössel?
+      + Om ja, vill du chokladströssel?
+
 
 Inför del 2 av kursen
 ========================================================
 - Labbar ska göras i par 
-  - De som läser om kursen gör labbarna ensam eller tillsammans med någon anna som läser om kursen. 
+  - De som läser om kursen gör labbarna ensam eller tillsammans med någon annan som läser om kursen. 
 - På Teams finns en länk till ett dokument där ni ska fylla i er.
-- Ni blidar grupper själva. Deadline lördag (15/2) kväll.
+- Ni bildar grupper själva. Deadline lördag (20/2) kväll.
 
 Mer om funktioner
 ========================================================
@@ -293,8 +355,8 @@ God (vetenskaplig) programmering
 ========================================================
 - Läsare ska inte behöva hålla allt i huvudet - använd funktioner
 - Använd objektnamn som är tydliga och meningsfulla
-- Använd en kodstil (coding style):
-  - Ex. [Hadley Wickhams](http://adv-r.had.co.nz/Style.html), [Googles](https://google.github.io/styleguide/Rguide.xml)
+- Bra struktur och indentering
+- Använd en kodstil (coding style)
 
 2. Låt datorn göra arbetet
 ========================================================
@@ -307,9 +369,7 @@ God (vetenskaplig) programmering
 - Skriv kod i små steg, testa och ändra löpande, spara ofta
 - [Versionshantera](https://en.wikipedia.org/wiki/Version_control) din kod (överkurs)
   - Git finns implementerat direkt i R-Studio [mer info](http://www.molecularecologist.com/2013/11/using-github-with-r-and-rstudio/)
-  - Versionshantera ALLT som inte skapas av koden (överkurs)
-    - Data, rapporter, (kurser i [R programmering](https://github.com/STIMALiU/KursRprgm))
-- Det finns enkel versionshantering i OneDrive, Dropbox och Google drive
+- Det finns enkel versionshantering i vanliga molntjänster: OneDrive, Dropbox och Google drive etc
 
 
 4. Upprepa aldrig din (eller andras) kod (DRY - principle)
@@ -347,16 +407,15 @@ God (vetenskaplig) programmering
 - Kombinera kod och dokumentation
   - Lägg in mycket inlinedokumentation med ```#```
   - [literate programming](https://en.wikipedia.org/wiki/Literate_programming)/[knitr](https://en.wikipedia.org/wiki/Knitr) (Miniprojektet)
-  - Paketet [```ROxygen```](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
+  - Paketet [```roxygen2```](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html)
 
 8. Samarbeta
 ========================================================
 - Låt andra titta på/kolla din kod
+  - (dock inte kod till inlämningsuppgifterna!)
 - Använd parprogrammering för att:
   - hjälpa kollegor in i projekt
   - hantera komplexa programmeringsproblem
-- Använd issue-trackers (överkurs)
-
 
 Mäta körtid i R
 ========================================================
@@ -427,7 +486,19 @@ Att hitta rätt paket
   6. Kontrollräkna centrala funktioner
 
 - För att komma igång med nya paket: vignetter
+   - Ex: [här](https://cran.r-project.org/web/packages/glmnet/index.html), [här](https://cran.r-project.org/web/packages/emmeans/index.html)
+
+
+
+Att hitta rätt paket
+========================================================
 - På [cran task view](https://cran.r-project.org/web/views/) finns många paket ordnade efter ämne
+- Listor med användbara paket:
+  - [Quick list of useful R packages](https://support.rstudio.com/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages)
+  - [Great R packages for...](https://www.computerworld.com/article/2921176/great-r-packages-for-data-import-wrangling-visualization.html)
+  - [Essential list of useful...](https://www.r-bloggers.com/2020/04/essential-list-of-useful-r-packages-for-data-scientists/)
+
+
 
 
 Installera paket
@@ -437,11 +508,15 @@ CRAN:
 
 ```{r, eval=FALSE}
 install.packages('lubridate')
+install.packages('devtools')
 ```
 
 GitHub:
 ```{r, eval=FALSE}
-devtools::install_github(repo="pxweb", username="rOpenGov")
+library(devtools)
+install_github('ropengov/pxweb')
+# alt
+devtools::install_github('ropengov/pxweb')
 ```
 
 
@@ -449,14 +524,21 @@ Läsa in paket
 ========================================================
 
 ```{r, eval=FALSE}
+# läsa in:
 library(lubridate)
+# ta bort från aktuell session:
+detach("package:lubridate", unload=TRUE)
 ```
+
+Läsa in paket
+========================================================
 
 SU-salar: Läsa in paket relaterade till kursen: 
 - kör följande i en terminal:
-  - ```module load courses/732G33/2020-01-13.1```
+  - ```module add prog/r-mega-edition/20.08```
 - så kommer ni få tillgång till R, RStudio samt de R-paket som behövs i kursen. 
 - Öppna en terminal genom att trycka ctrl+alt+T
+- Se mer info [här](https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Computer_rooms/732G33%20%20Linuxdatorer%20i%20SU-salar.pdf), finns även på kurshemsidan
 
 
 ROxygen
@@ -465,7 +547,7 @@ type: section
 
 Dokumentera med ROxygen
 ========================================================
-- [ROxygen](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) är standard för dokumentation
+- [roxygen2](https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html) är standard för dokumentation
 - Samma som JavaDoc
 - Skapar automatiskt [```.Rd```](https://cran.r-project.org/doc/manuals/R-exts.html#Rd-format) i paket
 - Använder ```#'```
