@@ -4861,7 +4861,7 @@ Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
  där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
  Ni behöver inte föklara alla detaljer.
  Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
-  Använd luft och kommentarer för att gruppera och strukturera er kod.
+ Använd luft och kommentarer för att gruppera och strukturera er kod.
 \end_layout
 
 \begin_layout Itemize
@@ -5028,7 +5028,7 @@ status open
 
 \begin_layout Plain Layout
 
-hilbert_matrix(5, 2)
+hilbert_matrix(nrow = 5, ncol = 2)
 \end_layout
 
 \begin_layout Plain Layout
