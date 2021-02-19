@@ -109,7 +109,7 @@ R-markdown ska användas.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Miniproject/TemplateMiniprojekt.Rmd"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/TemplateMiniprojekt.Rmd"
 literal "false"
 
 \end_inset
@@ -407,8 +407,8 @@ minst
  utöver kommunnamn.
  Ni väljer själv vilka variabler som ska ingå och vilka områden data ska
  komma ifrån.
- Välj något som intresserar er! Tanken är att i ska göra enklare analyser
- och grafer som baseras på dessa variabler.
+ Tanken är att i ska göra enklare analyser och grafer som baseras på dessa
+ variabler.
  Utöver dessa 4 variabler så ska ni också ladda ner totalt antal invånare
  i kommun som en variabel.
  
@@ -1032,7 +1032,7 @@ Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
 \begin_layout Itemize
 Vissa upp data för 5 kommuner och alla era variabler i en tabell.
  Ta inte med fler kommuner.
- 
+ Ni väljer själv vilka kommuner ni visar i tabellen.
 \end_layout
 
 \end_deeper
