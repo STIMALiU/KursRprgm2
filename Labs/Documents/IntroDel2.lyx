@@ -122,8 +122,12 @@ programmerar
 \series default
 .
  Navigatörens ansvar är att ha ett helhetsperspektiv över koden.
- Byt position var 20:e minut.
- Båda ska vara engagerade i koden.
+ Byt position var 30:e minut.
+ 
+\series bold
+Båda
+\series default
+ ska vara engagerade i koden.
 \end_layout
 
 \begin_layout Itemize
@@ -140,6 +144,65 @@ inte
  tillåtet att titta på andra gruppers lösningar på inlämningsuppgifterna.
 \end_layout
 
+\begin_layout Itemize
+Använd gärna Teams för att ställa frågor.
+ Det finns olika kanaler:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\series bold
+Questions
+\series default
+: Skriv era frågor här.
+ Svar kommer att ges öppet direkt i kanalen.
+ Publicera inte kod till inlämningsuppgifter här (andra kan då se det).
+ Det går bra att skriva frågor om inlämningsuppgifter här så länge ni inte
+ inkluderar kod med lösningar till dessa uppgifter.
+ Det går bra att publicera kod till övningsuppgifter här.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Raise_your_hand
+\series default
+: Skriv här om ni vill ha hjälp men inte ställa er fråga öppet.
+ Skriv något i stil med 
+\begin_inset Quotes eld
+\end_inset
+
+Jag vill ha hjälp
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Då kommer en lärare att kontaka er när de har tid (i chatten på Teams).
+ Vill flera ha hjälp så bildar de olika kommentarerna en kö, och hjälp kommer
+ att ges i ordning efter kön.
+ En 
+\begin_inset Quotes eld
+\end_inset
+
+tumme upp
+\begin_inset Quotes erd
+\end_inset
+
+ på kommentaren innebär att läraren har börjat hjälpa den aktuella studenten.
+ Ett 
+\begin_inset Quotes eld
+\end_inset
+
+hjärta
+\begin_inset Quotes erd
+\end_inset
+
+ på kommentaren innebär att läraren har hjälpt klart studenten.
+ 
+\end_layout
+
+\end_deeper
 \begin_layout Itemize
 Använd inte 
 \family typewriter
@@ -164,7 +227,7 @@ Utgå från laborationsfilen, som går att ladda ned
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Templates/lab_template.R"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Templates/lab_template_comments.R"
 literal "false"
 
 \end_inset
@@ -222,7 +285,7 @@ labb5_grupp01._komp1.R
 \begin_inset CommandInset href
 LatexCommand href
 name "kurshemsidan"
-target "https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml"
+target "https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml#komp_ref"
 literal "false"
 
 \end_inset
@@ -240,7 +303,7 @@ Laborationen består av två delar:
 
 \begin_deeper
 \begin_layout Itemize
-Datorlaborationen
+Övningsuppgifter
 \end_layout
 
 \begin_layout Itemize
@@ -289,7 +352,7 @@ fusklapparna
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://github.com/STIMALiU/KursRprgm/tree/master/Cheetsheats"
+target "https://github.com/STIMALiU/KursRprgm2/tree/main/Cheetsheats"
 literal "false"
 
 \end_inset
