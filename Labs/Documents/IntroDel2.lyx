@@ -221,7 +221,6 @@ Använd inte
 
 \begin_layout Itemize
 Utgå från laborationsfilen, som går att ladda ned 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -233,7 +232,6 @@ literal "false"
 \end_inset
 
 
-\series default
 \color inherit
 , när du gör inlämningsuppgifterna.
  
@@ -318,7 +316,6 @@ I laborationen finns det extrauppgifter markerade med *.
 
 \begin_layout Itemize
 Deadline för laboration framgår på 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -346,7 +343,6 @@ fusklapparna
 \end_inset
 
  som finns 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -358,7 +354,6 @@ literal "false"
 \end_inset
 
 
-\series default
 \color inherit
 .
  Dessa kommer ni också få ha med på tentan.
