@@ -1,0 +1,404 @@
+
+<style type="text/css">
+
+.indent {
+  padding-left: 2em !important;
+}
+
+.emphasize {
+  text-align: center;
+  width: 100%;
+  color: red;
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+
+Programmering i R
+========================================================
+transition: rotate
+## Föreläsning 6: Objektorientering, datum och linjär algebra
+### [Josef Wilzén](mailto:josefwilzen@liu.se)
+
+STIMA,
+Linköpings universitet
+
+*`r Sys.Date()`*
+
+
+Dagens föreläsning:
+========================================================
+
+- Info
+- Kahoot!
+- Programmeringsparadigm
+  - Funktionell programmering
+  - Objektorientering
+- Datum och tid med ```lubridate```
+- Linjär algebra i R
+
+Info:
+========================================================
+- Glöm inte att anmäla er till datortentan!
+- Endast anmälda studenter får skriva
+- Kommer vara i SU-salarna -> bli bekväm med Linux!
+- Komplettering labb 1-4: Sker i samband med ordinarie inlämning för labb 6.
+- Kursmodulen är uppdaterad:
+  - module load courses/732G33
+
+Quiz
+========================================================
+kahoot!
+ - Quiz, snabba svar ger mer poäng
+ - Ta fram en enhet med webbläsare
+ - Gå till: https://kahoot.it/
+ - Slå in koden som visas
+
+
+Programmeringsparadigm och R
+========================================================
+type: section
+
+
+Programmeringsparadigm
+========================================================
+- Det finns många [programmeringsspråk](https://en.wikipedia.org/wiki/Programming_language)
+- [Programmeringsparadigm](https://en.wikipedia.org/wiki/Programming_paradigm) är ett sätt att klassificera programmeringsspråk
+
+- Utmärkande för R är:
+  - [Funktionell programmering](https://en.wikipedia.org/wiki/Functional_programming)
+  - [Objektorienterad programmering (OOP)](https://en.wikipedia.org/wiki/Object-oriented_programming)
+
+Funktionell programmering
+========================================================
+- Funktioner utan sidoeffekter (tänk matematiska funktioner)
+  - En funktions output beror bara på värdena på inargumenten
+- Exempel:
+  - R, Scala, Erlang
+- R har "first class functions":
+  - Funktioner kan manipuleras som andra objekt, sparas i listor mm
+  - Ex. ```apply()```-funktionerna
+- Anonyma funktioner: utan namn
+- För fördjupning i R och FP se [här](http://adv-r.had.co.nz/Functional-programming.html).
+
+
+Objektorientering (OO) i R
+========================================================
+
+
+- Stor skillnad mellan R och andra statistikprogram
+
+> "Allt som existerar är ett objekt, allt som händer är ett funktionsanrop"  (John Chambers)
+
+- OO utgår från klasser
+  - Klass är en "mall" som används för att skapa objekt
+  - Kopplar samman objekt med funktioner (metoder)
+  - Objekt är en specifik realisering av en klass, ex: person (klass) och josef (objekt)
+  - Objekt skapas med en ```konstruktor``` 
+
+Objektorientering i R
+========================================================
+
+- Alla objekt i R har en klass
+  - ```matrix```, ```data.frame```, ```lm```
+- Vi kan undersöka ett objekts klass med ```class()```  
+- Variabeltyper är "atomära" klasser
+- Klasser har (oftast) en ```konstruktor``` (en funktion med samma namn)
+
+
+Objektorientering i R
+========================================================
+- Viktiga koncept:
+  - [Inkapsling](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29) (Encapsulation): Gömma och ordna relaterad data
+  - [Polymorfism](https://en.wikipedia.org/wiki/Polymorphism_%28computer_science%29) (Polymorphism): Generiska funktioner som hanterar olika objekt (ex. ```plot()```)
+  - [Arv](https://en.wikipedia.org/wiki/Inheritance_%28object-oriented_programming%29) (Inheritance): Underlättar specialisering av data och metoder, via underklasser
+
+Objektorientering i R
+========================================================
+
+Olika typer av klasser i R:
+- basklasser
+- S3 (informellt): "lista med klassattribut" -> Den här kursen
+- S4 (formellt): element väljs ut med ```@```, 
+    - ex paketet ```Matrix```
+- reference classes
+
+Generiska funktioner (S3)
+========================================================
+
+
+- OO i R utgår från generiska funktioner (polymorfism).
+- Generisk = allmänn
+- Gör olika saker beroende på objektets klass 
+- Ex. ```plot()```, ```mean()```, ```summary()```, ```names()```
+- Funktionen anropar **metoden** för objektet, detta kallas ["Dynamic dispatch"](https://en.wikipedia.org/wiki/Dynamic_dispatch)
+
+
+Metoder
+========================================================
+
+
+- En funktion för en specifik klass
+- Metoderna utgår från generisk funktion
+- Alla metoder för en generisk funktion: ```methods()```
+- Defaultmetod med  ```mean.default()```
+- Ex. ```mean.difftime()```
+- Metoder kan anropas direkt som vanliga funktioner
+
+
+Objektorientering i R: länkar
+========================================================
+- [Länk 1](https://www.cyclismo.org/tutorial/R/s3Classes.html)
+- [Länk 2](http://www.stat.berkeley.edu/~statcur/WorkshopBC/Presentations/AdvancedProgramming/OOP2x2.pdf): Läs om S3
+- [Fördjupning 1](http://adv-r.had.co.nz/OO-essentials.html)
+- [Fördjupning 2](https://cran.r-project.org/doc/contrib/Genolini-S4tutorialV0-5en.pdf)
+- [Fördjupning 3](https://www.cyclismo.org/tutorial/R/s4Classes.html)
+
+Objektorientering i R: Demo
+========================================================
+
+
+Datum och tid
+========================================================
+type: section
+
+
+Datum och tid
+========================================================
+
+
+- Datum är klurigt att arbeta med - men används extremt mycket
+- Två typer av tid
+  - Relativ tid, längden beror på när de inträffar (ex. år, månad)
+  - Exakt tid (ex. sekunder, minuter, timmar, dagar, veckor) 
+- Enklare funktioner följer med ```base```
+- En introduktion finns i Roger Pengs [video](http://www.youtube.com/watch?v=JFovWLPHI24)
+
+Datum och tid i base
+========================================================
+```{r}
+my_date <- "2012-01-31"
+class(my_date)
+my_date_as_date <- as.Date(my_date)
+my_date_as_date
+```
+
+lubridate
+========================================================
+- Paket för enkel och effektiv datumhantering
+- Sammansatt av "lubricant" och "date"
+- Introduktion: [Dates and Times Made Easy with lubridate](http://www.jstatsoft.org/v40/i03/paper) (kurslitteratur), mer länker på kurshemsidan
+
+
+Paketet lubridate
+======================================================== 
+Tre huvudsakliga delar:
+  1. Läsa in datum (från text) - parsing
+  2. Ändra inlästa datum 
+  3. Göra beräkningar med datum 
+  
+Exempel
+========================================================  
+```{r,}
+library(lubridate)
+test<-ymd("1999-06-17")
+print(test)
+week(test)
+ymd("1999-06-17") + weeks(2)
+```
+
+Paketet lubridate: Parsing 
+========================================================
+
+Elementordning | Funktion
+----- | ---- | 
+år, månad, dag | ```ymd()``` 
+år, dag, månad | ```ydm()``` 
+månad, dag, år | ```mdy()``` 
+timme, minut | ```hm()``` 
+timme, minut, sekund | ```hms()``` 
+år, mån, dag, timme, min, sek | ```ymd_hms``` 
+
+Källa: Grolemund and Wickham (2011, Table 4)
+
+
+Paketet lubridate
+========================================================
+För att “plocka ut” eller ändra delar av ett datum används följande funktioner
+
+Datum | Funktion| Tidsdel | Funktion
+----- | ---- | ----| ----
+år | ```year()``` | timme | ```hour()```
+månad | ```month()``` | minut | ```minute()``` 
+vecka | ```week()``` | sekund | ```second()```
+årsdag | ```yday()``` | tidszon | ```tz()```
+månadsdag | ```mday()```
+veckodag | ```wday()```
+
+Källa: Grolemund and Wickham (2011, Table 5)
+
+
+Exempel
+========================================================  
+```{r,}
+my_date <- ymd("1999-06-17")
+week(my_date)
+wday(my_date, label = TRUE)
+year(my_date) <- 2015
+my_date
+```
+
+
+Paketet lubridate
+========================================================
+- För att räkna med datum finns det fyra olika objekt i lubridate
+  - ```instant``` (sv. tidpunkt)
+  - ```interval``` ( sv. intervall)
+  - ```duration``` (sv. duration)
+  - ```period``` (sv. period)
+- ```interval```, ```duration``` och ```period``` används för att beskriva tidsspann
+
+instant och interval
+========================================================
+- ```instant```
+  - En specifikt tillfälle i tiden
+  - Ex. "2004-02-21 kl 12.33"
+  - Viktiga funktioner: ```now()```, ```today()```
+- ```interval``` 
+  - Tidsspannet mellan två ```instant```.
+  - ```interval(start,end)```
+  
+instant och interval: exempel
+========================================================
+```{r,}
+library(lubridate)
+instant_1 <- ymd("2001-06-17")
+instant_2 <- ymd("2009-01-11")
+my_interval <- interval(start = instant_1, end = instant_2)
+my_interval
+```
+
+
+
+Duration
+========================================================
+- Ett fixt tidsspann som mäts i sekunder 
+- Tänk kontinuerlig tid  
+- Absolut tid i sekunder
+- Börjar med ```d```
+- Konvertera interval med ```as.duration()```
+- Ex: ```duration()```,```dseconds()```, ```dhours()```, ```ddays()``` o.s.v.
+
+Duration: exempel
+========================================================
+```{r,}
+my_interval / ddays(30)
+as.duration(my_interval)
+```
+
+Period
+========================================================
+- Utgår från den aktuella enheten (dagar, månader, år)
+- Tänk diskret tid
+- Relativ tid
+- Vad vi i dagligt tal menar med ex. fem månader
+  - ex. ```period(num=,units=)```, ```minutes()```, ```hours()```, ```days()```, ```weeks()``` o.s.v.  
+
+
+Period: exempel
+========================================================
+```{r}
+months(3) + days(2)
+my_interval %/% years(1)
+as.period(my_interval)
+```
+
+
+Att räkna med tid
+========================================================
+Vi lägger till /drar bort en duration eller period till/från ett datum.
+
+```{r,}
+course_start <- ymd("2019-01-21")
+course_start + weeks(8)
+course_start + months(1)
+course_start + ddays(30)
+```
+
+
+Datum och tid i R: Demo
+========================================================
+
+Linjär algebra
+========================================================
+type: section
+
+Linjär algebra: Matriser
+========================================================
+- Matris är två-dimensionella tabeller.
+- Skapas en 2x3 matris från en vektor ```my_vector```: ```matrix(my_vector,2,3)```
+- ```matrix()``` fyller matrisen kolumnvis
+- ```matrix(myVector, 2, 3, byrow=TRUE)``` fyller radvis.
+
+Linjär algebra
+========================================================
+- Transponat $\mathbf{X}'$ eller $\mathbf{X}^{T}$ : ```t(X)```
+- Diagonalmatris: ```diag(c(1,3,5))```
+- Enhetsmatrisen  $\mathbf{I}$ : ```diag(3)```
+
+
+
+
+Linjär algebra
+========================================================
+- Matrismultiplikation $\mathbf{A}\cdot\mathbf{B}$ eller $\mathbf{AB}$ : ```A%*%B```
+  - Kan bara göras med klassen ```matrix```, ej vektorer
+  - Undvika att en matris blir en vektor med ```X[,1,drop=FALSE]```
+- Invertera matris $X^{-1}$ : ```solve(X)```
+  - Kom ihåg: $XX^{-1}=\mathbf{I}$
+- Lösa ekvationssystem $Ax=b$: ```solve(a=A,b=b)```
+  - $x=A^{-1}b$
+
+Linjär algebra
+========================================================
+- [Egenvärden och egenvektorer](http://sv.wikipedia.org/wiki/Egenv%C3%A4rde,_egenvektor_och_egenrum): ```eigen(X)```
+  - Returnerar en lista med egenvärden och egenvektorer
+- Summera rader eller kolumner: ```rowSums(X)``` och ```colSums(X)```
+- Kombinera matriser: ```rbind(X,Y)``` eller ```cbind(X,Y)```
+
+Linjär algebra: Matrix
+========================================================
+- **Matrix** är ett paket i som implemeterar effektivare/snabbare funktioner för linjär algebra, jämfört med grundfunktionerna i R.
+- Grunden är funktionen ```Matrix()```, vilket är en konstruktor, som skapar matriser med en annan klass jämfört med ```matrix()```.
+- Matriserna i **Matrix** baseras på S4 klasser.
+- I **Matrix** är det skillnad på [glesa](https://sv.wikipedia.org/wiki/Gles_matris) och täta matriser.
+- Kolla på vingetterna [här](https://cran.r-project.org/web/packages/Matrix/index.html) för mer info.
+- Rekomenderas för mer avancerade tillämpningar 
+
+
+Linjär algebra i R: Demo
+========================================================
+
+
+Referenser
+========================================================
+Grolemund, G., Wickham, H., 2011. Dates and times made easy with
+lubridate. Journal of Statistical Software 40 (3), 1–25.
+kan hittas [[här]](http://www.jstatsoft.org/v40/i03/paper)
+
