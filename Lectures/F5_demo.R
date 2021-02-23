@@ -10,12 +10,20 @@
 data("iris")
 head(iris)
 plot(x = iris$Sepal.Length, y = iris$Petal.Length)
+
+plot(x = iris$Sepal.Length, y = iris$Petal.Width)
+
 str(iris)
 plot(iris)
 
+x<-iris$Sepal.Length^2+10
+plot(x = x, y = iris$Petal.Width)
+
+
 plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="red")
 
-plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="red",pch=5)
+plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="blue",pch=5)
+
 
 col_var<-iris$Species
 
@@ -25,22 +33,27 @@ plot(x = iris$Sepal.Length, y = iris$Petal.Length,col=col_var,pch=16,cex=1.5)
 data("AirPassengers")
 y<-as.numeric(AirPassengers)
 
-plot(x=y,t="l",lty=1,lwd=3,main="AirPassengers")
+plot(x=y,type="l",lty=1,lwd=2,main="AirPassengers")
+
+plot(x=y,type="o",lty=1,lwd=2,main="AirPassengers")
+
 plot(x=y,t="l",lty=3,lwd=3,main="AirPassengers")
 
 
 
 # AirPassengers är ett ts-objekt (ts=tidserie), så det går att plotta direkt:
+class(AirPassengers)
+str(AirPassengers)
 plot(AirPassengers)
 
 
-boxplot(y)
+boxplot(y,col="blue")
 
-hist(y,breaks = 15,col="blue",freq = FALSE)
-
+hist(y,col="purple",freq = FALSE)
+hist(y,breaks = 15,col="purple",freq = FALSE)
 ?par
-
-
+par(lwd=1)
+plot(x=y,type="l",lty=1,main="AirPassengers")
 
 # -------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------
@@ -54,19 +67,31 @@ rnorm(n = 5, mean = 10, sd = 1)
 set.seed(20180218)
 rnorm(n=5, mean=10, sd=1)
 
+?Distributions
 
 y<-rnorm(n = 300,mean = 4,sd = 2)
 # relativa frekvenser:
 hist(x = y,breaks = 20,freq = FALSE)
+mean(y)
+sd(y)
 
-y<-rnorm(n = 10000,mean = 4,sd = 2)
+y<-rnorm(n = 100000,mean = 4,sd = 2)
 hist(x = y,breaks = 100,freq = FALSE)
+mean(y)
+sd(y)
+summary(y)
+
+
+y <- rnorm(1000, mean = 0, sd = 1)
+hist(y,freq = FALSE)
 
 
 
-x<-seq(-3,3,length=1000)
+x<-seq(from = -3,to = 3,length=1000)
 y<-dnorm(x = x,mean = 0,sd = 1)
-plot(x,y,t="l")
+plot(x = x,y = y,t="l")
+head(cbind(x,y))
+
 
 
 text <- c("Linköpings", "Universitet","campus","statistik")
@@ -80,16 +105,18 @@ sample(x=iris$Species, size=10, replace=FALSE)
 dim(iris)
 
 # slumpmässigt urval:
-set.seed(4983)
+
 dim(iris)
+iris[15,]
+set.seed(4983)
 rand_index<-sample(x=150, size=10, replace=FALSE)
 rand_index
 iris[rand_index,]
 
 ?Distributions
 
-z
 
+# The Exponential Distribution
 x<-seq(1e-8,10,length=1000)
 y<-dexp(x = x,rate = 1)
 plot(x,y,t="l")
@@ -106,6 +133,11 @@ qexp(p = 0.9,rate = 1)
 qexp(p = 0.5,rate = 1)
 qexp(p = 0.99,rate = 1)
 
+
+# The Poisson Distribution
+Ni <- rpois(100, lambda = 5)
+tN <- table(Ni)
+barplot(tN)
 
 # -------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------
@@ -179,21 +211,16 @@ my_years <- as.numeric(temp)
 plot(x = my_years, y = data2$values, xlab="År", ylab="Antal hästar", type="o",cex=2)
 
 
-plot(x = my_years, y = data2$values, xlab="År", ylab="Antal hästar", type="l",cex=2)
+plot(x = my_years, y = data2$values, xlab="År", ylab="Antal hästar", type="l",lwd=2)
 
 
-Ni <- rpois(100, lambda = 5)
-tN <- table(Ni)
-barplot(tN)
+
 
 barplot_data <- data2$values
 names(barplot_data) <- my_years
 barplot(barplot_data)
 
 
-y <- rnorm(1000, mean = 0, sd = 1)
-hist(y)
-hist(y, probability = TRUE)
 
 
 # Hämta data från ett givet api 
