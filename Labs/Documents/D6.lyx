@@ -4158,54 +4158,7 @@ status open
 
 \begin_layout Plain Layout
 
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Under
-visning/Statistisk programmering i R/KursRprgmTeacher/Labs/exercise_solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
+solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgmTeacher/Labs/
 exercise_solutions/"
 \end_layout
 
@@ -4272,7 +4225,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Tests/d6.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d6.yml"
 \end_layout
 
 \begin_layout Plain Layout
