@@ -1,0 +1,5068 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 6
+\end_layout
+
+\begin_layout Author
+Josef Wilzén och Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroDel2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Datorlaboration
+\end_layout
+
+\begin_layout Chapter
+Introduktion till objektorienterad programmering
+\end_layout
+
+\begin_layout Standard
+
+\color blue
+\begin_inset CommandInset href
+LatexCommand href
+name "Objektorienterad programmering"
+target "http://sv.wikipedia.org/wiki/Objektorienterad_programmering"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ är ett programmeringsparadigm där data vävs ihop med programkod i objekt.
+ Programkoden som är kopplad till ett särskilt objekt kallas metoder.
+ Dessa metoder kan beskrivas som funktioner som bara fungerar för det aktuella
+ objektet.
+ Detta kan ställas mot ett 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "procedurellt programmeringsparadigm"
+target "http://sv.wikipedia.org/wiki/Procedurell_programmering"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ där data och metoder inte vävs ihop på samma sätt.
+ 
+\end_layout
+
+\begin_layout Standard
+När det gäller statistisk programmering är de vanligaste andra programmen
+ ofta procedurella.
+ Vi har ett datamaterial som vi sedan anropar funktioner för.
+ I exempelvis SAS görs skillnad på datasteg (där data bearbetas) och procedurer
+ (funktioner) som anropas för ett givet datamaterial.
+ R skiljer sig från andra statistikprogram på grund av att det är (mer)
+ objektorienterat.
+ 
+\end_layout
+
+\begin_layout Standard
+I R är all data olika former av objekt.
+ De olika objekten har i sin tur olika 
+\series bold
+klasser
+\series default
+.
+ Objekten kan vara av klasser som 
+\family typewriter
+data.frame
+\family default
+, 
+\family typewriter
+function
+\family default
+, 
+\family typewriter
+numeric
+\family default
+, 
+\family typewriter
+matrix
+\family default
+ o.s.v.
+ För dessa olika klasser finns det sedan 
+\series bold
+generiska funktioner
+\series default
+ där en och samma funktion gör olika beräkningar beroende på vad det är
+ för klass objektet har.
+ Dessa typer av funktioner specialiserade för enskilda klasser kallas för
+ 
+\series bold
+metoder
+\series default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Det finns tre olika system för objektorientering i R.
+ Det enklaste (och vanligaste) systemet för objektorientering kallas S3
+ och kan beskrivas som en lättviktsvariant av objektorienterad programmering.
+ För en fördjupning i objektorienterad programmering i R (och de andra objektori
+enterade systemen i R) rekommenderas 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Advanced R"
+target "https://adv-r.hadley.nz/oo.html"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ av Hadley Wickham.
+\end_layout
+
+\begin_layout Section
+Klasser och objekt
+\end_layout
+
+\begin_layout Standard
+I R:s system S3 används attributet 
+\family typewriter
+class()
+\family default
+ för att både undersöka ett objekts klass och för att tillskriva ett objektet
+ en egen klass.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Använd följande kod för att skapa objekt och undersöka dess klasser.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- c(1,2,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- matrix(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+c <- data.frame(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(c)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att tillskriva ett objekt en given klass använder vi också 
+\family typewriter
+class()
+\family default
+.
+ Nedan skapar jag en klass 
+\family typewriter
+student
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+stud_Kalle <- list()
+\end_layout
+
+\begin_layout Plain Layout
+
+class(stud_Kalle) <- "student"
+\end_layout
+
+\begin_layout Plain Layout
+
+str(stud_Kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ofta när vi skapar nya objekt vill vi ha konstruktorfunktioner, funktioner
+ som skapar våra objekt.
+ Exempel på detta är 
+\family typewriter
+data.frame()
+\family default
+, 
+\family typewriter
+matrix()
+\family default
+ och 
+\family typewriter
+factor()
+\family default
+.
+ Vill vi skapa en konstruktorfunktion för vår klass 
+\family typewriter
+student
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+student <- function(name, sex, grade){
+\end_layout
+
+\begin_layout Plain Layout
+
+	p <- list(name, sex, grade) 
+\end_layout
+
+\begin_layout Plain Layout
+
+	class(p) <-"student"
+\end_layout
+
+\begin_layout Plain Layout
+
+	return(p)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+kalle <- student("Kalle", "Man", "Pass")
+\end_layout
+
+\begin_layout Plain Layout
+
+class(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+De olika delarna eller datat i klassen brukar kallas fields, eller fält.
+ I klassen student ovan är 
+\family typewriter
+name
+\family default
+, 
+\family typewriter
+sex
+\family default
+ och 
+\family typewriter
+grade
+\family default
+ fält.
+\end_layout
+
+\begin_layout Enumerate
+För att undersöka om ett objekt är av en specifik klass använder vi 
+\family typewriter
+inherits()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+inherits(kalle, "student")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Generiska funktioner och metoder
+\end_layout
+
+\begin_layout Standard
+För varje klass finns det (oftast) så kallade generiska funktioner.
+ Eller funktioner som fungerar på olika sätt för olika klasser.
+ Vi har redan stött på ett flertal sådana funktioner som 
+\family typewriter
+summary()
+\family default
+, 
+\family typewriter
+print()
+\family default
+ och 
+\family typewriter
+plot()
+\family default
+.
+ Den generiska funktionen anropar sedan specifika metoder - beroende på
+ objektets klass.
+\end_layout
+
+\begin_layout Enumerate
+För att undersöka om en funktion är en generisk funktion är det enklast
+ att studera källkoden för funktionen.
+ Vi kan exempelvis titta på funktionen 
+\family typewriter
+mean()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mean
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Som framgår ovan är funktionen 
+\family typewriter
+mean()
+\family default
+ en generisk funktion då det enda funktionen gör är att anropa metoden för
+ den aktuella klassen.
+ Vi kan se vilka metoder den generiska funktionen 
+\family typewriter
+mean()
+\family default
+ har med 
+\family typewriter
+methods()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+methods(mean)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+I fallet ovan ser vi att den generiska funktionen 
+\family typewriter
+mean()
+\family default
+ kommer anropa olika metoder (funktioner) för olika klasser.
+ Det som definierar en metod i R är att funktionsnamnet har följande struktur
+ 
+\family typewriter
+[generiskt funktionsnamn].[klass]
+\family default
+.
+ I R är dessa metoder i övrigt bara vanliga funktioner.
+ De klasser som finns för 
+\family typewriter
+mean()
+\family default
+ är olika klasser för tider och datum med undantag för klassen 
+\family typewriter
+default
+\family default
+.
+ Metoden 
+\family typewriter
+mean.default
+\family default
+ är den funktion som används om ingen metod finns för den specifika klassen
+ (ex.
+ en numerisk vektor).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Undersök för vilka klasser 
+\family typewriter
+print()
+\family default
+ och 
+\family typewriter
+summary()
+\family default
+ har metoder.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också anropa dessa funktioner direkt om vi vill.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mean.default(1:3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Undersök för vilka klasser 
+\family typewriter
+plot()
+\family default
+ ohar metoder.
+ Testa sen koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data("trees") 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(trees$Girth) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(trees$Girth,trees$Volume)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(trees) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(trees) 
+\end_layout
+
+\begin_layout Plain Layout
+
+data("AirPassengers") 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(AirPassengers) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(AirPassengers)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot.ts(AirPassengers) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot.default(AirPassengers)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Skapa egna generiska funktioner och metoder
+\end_layout
+
+\begin_layout Standard
+Som ett första steg om vi har skapat en egen klass kanske vi vill skapa
+ metoder för vanliga generiska funktioner som 
+\family typewriter
+print()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Att skapa egna generiska funktioner görs på följande sätt.
+ Först skapar vi den generiska funktionen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+min_gen <- function(x) UseMethod("min_gen")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nästa steg blir att skapa en metod för respektive klass.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+min_gen.student <- function(x) print("Min studentklass.")
+\end_layout
+
+\begin_layout Plain Layout
+
+min_gen(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också lägga till en default-metod om vi vill som hanterar de situationer
+ då funktionen inte anropas för vår studentklass.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+min_gen.default <- function(x) print("En annan klass.")
+\end_layout
+
+\begin_layout Plain Layout
+
+min_gen(1:5)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Detta gör att vi också kan använda andra generiska funktioner om vi definierar
+ en metod för denna klass.
+ Vill vi lägga till en egen metod till 
+\family typewriter
+print()
+\family default
+ för vår klass student gör vi på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+print.student <- function(x){
+\end_layout
+
+\begin_layout Plain Layout
+
+  cat("My name is ", x[[1]], ".
+ I got a ", x[[3]], ".", sep="")
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+print(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+print.student(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+print.default(kalle)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+* Extraproblem
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset label
+LatexCommand label
+name "enu:Nu-ska-en-1"
+
+\end_inset
+
+Nu ska en S3 klass skapas som du kallar 
+\family typewriter
+account
+\family default
+ och som har fälten 
+\family typewriter
+changes
+\family default
+ och 
+\family typewriter
+owner
+\family default
+.
+ Fältet 
+\family typewriter
+changes
+\family default
+ ska vara en data.frame med variablerna 
+\family typewriter
+time
+\family default
+ och 
+\family typewriter
+amount.
+
+\family default
+ Fältet 
+\family typewriter
+owner
+\family default
+ ska vara en character-vektor av längd 1.
+ Syftet är att skapa en klass som representerar för en persons bankkonto.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Skapa nu en konstruktor för klassen 
+\family typewriter
+account
+\family default
+, som heter 
+\family typewriter
+account
+\family default
+(
+\family typewriter
+changes
+\family default
+=,
+\family typewriter
+owner
+\family default
+=) och som testar att villkoren i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "enu:Nu-ska-en-1"
+
+\end_inset
+
+ är uppfyllda.
+ Testa sedan att skapa ett objekt av klassen 
+\family typewriter
+account:
+\begin_inset Newline newline
+\end_inset
+
+
+\family default
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-account(changes=data.frame(time="20:01",amount=1000),owner="Elin")
+\end_layout
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\begin_layout Plain Layout
+
+class(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa nu två generiska funktioner 
+\family typewriter
+deposit()
+\family default
+ och 
+\family typewriter
+withdraw()
+\family default
+ som lägger till information om uttag och insättning i 
+\family typewriter
+changes
+\family default
+.
+ Funktionen 
+\family typewriter
+deposit()
+\family default
+ ska lägga till ett positivt numeriskt värde (insättning) i 
+\family typewriter
+amount
+\family default
+ och 
+\family typewriter
+withdraw()
+\family default
+ ska lägga till ett negativt värde (uttag).
+ När 
+\family typewriter
+deposit()
+\family default
+ eller 
+\family typewriter
+withdraw()
+\family default
+ används ska också tidpunkten för detta sparas.
+ [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+Sys.time()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Korrigera nu din metod 
+\family typewriter
+withdraw()
+\family default
+.
+ Det ska bara vara tillåtet att göra ett uttag om det redan finns pengar
+ på kontot, d.v.s.
+ kontot får aldrig som helhet vara negativt.
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Grundläggande linjär algebra
+\end_layout
+
+\begin_layout Standard
+R har en hel del funktioner för att arbeta med matriser.
+ Det som skiljer matriser från data.frames i R är att matriser endast kan
+ ha en atomär klass/variabeltyp, d.v.s.
+ logiska matriser, numeriska matriser och textmatriser.
+ I denna del kommer vi att fokusera på numeriska matrsier och klassisk 
+\begin_inset CommandInset href
+LatexCommand href
+name "linjär algebra"
+target "https://en.wikipedia.org/wiki/Linear_algebra"
+literal "false"
+
+\end_inset
+
+ i R.
+\end_layout
+
+\begin_layout Section
+Skapa matriser
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Skapa-matriser"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Följande funktioner är av intresse för att skapa matriser.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Funktion
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+i R
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skapa matris
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+matrix()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Skapa diagonal/enhetsmatris
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+diag()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Triangulära matriser
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+upper.tri(), lower.tri()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Skapa matriser i R
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att skapa en numerisk matris använder vi 
+\family typewriter
+matrix()
+\family default
+.
+ Där vi kan ange data och matrisens dimensioner.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(data=1:20,nrow=4,ncol=5)
+\end_layout
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Tänk på att om vi indexerar en rad eller column i matrisen reduceras detta
+ till en vektor i R, d.v.s.
+ vi vet inte om det är en rad- eller kolumnvektor.
+ Pröva följande kod.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+X<-matrix(1:20,4,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+X[,1]
+\end_layout
+
+\begin_layout Plain Layout
+
+X[,1,drop=FALSE]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ibland vill vi snabbt kunna skapa diagonalmatriser.
+ För detta används funktionen 
+\family typewriter
+diag()
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- diag(1:3)
+\end_layout
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+På ett liknande sätt kan vi skapa en godtycklig 
+\begin_inset CommandInset href
+LatexCommand href
+name "enhetsmatris"
+target "https://sv.wikipedia.org/wiki/Enhetsmatris"
+literal "false"
+
+\end_inset
+
+ med 
+\family typewriter
+diag()
+\family default
+ på följande sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- diag(4)
+\end_layout
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Har vi redan en matris kan vi använda 
+\family typewriter
+diag()
+\family default
+ för att plocka ut diagonalelementen från matrisen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(1:16, ncol=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+diag(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Använd funktionen 
+\family typewriter
+diag()
+\family default
+ för att:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Skapa en enhetsmatris av storlek 12.
+\end_layout
+
+\begin_layout Enumerate
+Skapa en diagonalmatris som har värdena 
+\begin_inset Formula $2,3,5,7,1,2$
+\end_inset
+
+ på diagonalen.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ibland vill vi skapa en över eller undertriangulär matris.
+ För detta kan vi använda funktionerna 
+\family typewriter
+upper.tri()
+\family default
+ eller 
+\family typewriter
+lower.tri()
+\family default
+.
+ Dessa funktioner skapar en logisk matris som kan användas för att indexera
+ de triangulära elementen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(0, ncol=3, nrow=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+A[upper.tri(A, diag = FALSE)] <- c(1,2,3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Använd trianguleringsfunktionerna för att skapa följande matris.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(0, ncol=3, nrow=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+A[lower.tri(A, diag = TRUE)] <- 1:6
+\end_layout
+
+\begin_layout Plain Layout
+
+A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Blockmatriser
+\end_layout
+
+\begin_layout Standard
+Vi kan även självklart arbeta med blockmatriser för att skapa större matriser.
+ Exempel på blockmatriser är 
+\begin_inset Formula 
+\[
+\mathbf{A}=\left(\begin{array}{c}
+\mathbf{B}\\
+\mathbf{C}
+\end{array}\right)\mbox{, }\mathbf{A}=\left(\begin{array}{cc}
+\mathbf{C} & \mathbf{B}\end{array}\right)\mbox{ och }\mathbf{A}=\left(\begin{array}{cc}
+\mathbf{B} & \mathbf{C}\\
+\mathbf{D} & \mathbf{F}
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+där 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{C}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{D}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{F}$
+\end_inset
+
+ är matriser med lämpliga dimensioner.
+ 
+\end_layout
+
+\begin_layout Enumerate
+För att sätta samman två matriser kolumnvis används 
+\family typewriter
+cbind()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- diag(3)
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- matrix(1:9, ncol=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+cbind(A, B)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att sätta samman två matriser kolumnvis används 
+\family typewriter
+rbind()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+rbind(A, B)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa följande matris genom att använda blockmatriser.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- diag(3)
+\end_layout
+
+\begin_layout Plain Layout
+
+A[lower.tri(A)] <- c(2, 3, 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+C <- diag(2:4)
+\end_layout
+
+\begin_layout Plain Layout
+
+C[upper.tri(C)] <- c(3, 4, 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- matrix(0, ncol=3, nrow=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+rbind(cbind(A, B), cbind(t(B), C))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Matrisalgebra
+\end_layout
+
+\begin_layout Standard
+De flesta matrisoperationer finns redan installerat i R från början.
+\end_layout
+
+\begin_layout Enumerate
+Addition och subtraktion sker elementvis.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(c(1,1,1,1,1,2,1,3,4),ncol=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+B <- matrix(c(-1,2,2,-2,-2,1,1,1,-1),ncol=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+A + B
+\end_layout
+
+\begin_layout Plain Layout
+
+B - A
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Matrismultiplikation"
+target "https://sv.wikipedia.org/wiki/Matris#Matrismultiplikation"
+literal "false"
+
+\end_inset
+
+ görs med 
+\family typewriter
+%*%
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A %*% B
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi 
+\begin_inset CommandInset href
+LatexCommand href
+name "transponera"
+target "https://sv.wikipedia.org/wiki/Matris#Transponat"
+literal "false"
+
+\end_inset
+
+ vår matris använder vi 
+\family typewriter
+t()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+t(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Matrisinversen"
+target "https://sv.wikipedia.org/wiki/Matris#Invers"
+literal "false"
+
+\end_inset
+
+ för en kvadratisk matris 
+\begin_inset Formula $B$
+\end_inset
+
+ betecknas som 
+\begin_inset Formula $B^{-1}$
+\end_inset
+
+, och definars som
+\begin_inset Formula 
+\[
+BB^{-1}=E
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $E$
+\end_inset
+
+ är en enhets matris av lämplig storlek.
+ För att beräkna inversen av en matris används 
+\family typewriter
+solve()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+B
+\end_layout
+
+\begin_layout Plain Layout
+
+solve(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+E<-B%*%solve(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(E)
+\end_layout
+
+\begin_layout Plain Layout
+
+# när vi gör numeriska beräkningar uppstår ofta små beräkningsfel:
+\end_layout
+
+\begin_layout Plain Layout
+
+round(E,8)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+solve()
+\family default
+ kan även användas för att lösa 
+\begin_inset CommandInset href
+LatexCommand href
+name "linjära ekvationssystem"
+target "https://sv.wikipedia.org/wiki/Linj%C3%A4rt_ekvationssystem"
+literal "false"
+
+\end_inset
+
+.
+ Testa 
+\family typewriter
+?solve()
+\family default
+.
+ Säg att vi vill lösa följande ekvationssystem:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+-x_{1}-2x_{2}+x_{3}=1\\
+2x_{1}-2x_{2}+x_{3}=2\\
+2x_{1}-x_{2}-x_{3}=3
+\end{array}
+\]
+
+\end_inset
+
+Eller uttryck med matriser:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+B=\left(\begin{array}{ccc}
+-1 & -2 & 1\\
+2 & -2 & 1\\
+2 & 1 & -1
+\end{array}\right)\quad b=\left(\begin{array}{c}
+1\\
+2\\
+3
+\end{array}\right)\quad x=\left(\begin{array}{c}
+x_{1}\\
+x_{2}\\
+x_{3}
+\end{array}\right)\\
+Bx=b
+\end{array}
+\]
+
+\end_inset
+
+För att räkna ut vilket värde som 
+\begin_inset Formula $x$
+\end_inset
+
+ har kan solve användas enligt nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+print(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+b<-c(1,2,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-solve(a=B,b=b)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Testa att ändra några värden i matrisen 
+\begin_inset Formula $B$
+\end_inset
+
+ och vektorn 
+\begin_inset Formula $b$
+\end_inset
+
+, och lös det nya ekvationssystemet.
+ Notera dock att vissa ekvationssystem saknar unika lösningar.
+\end_layout
+
+\begin_layout Enumerate
+Använd matriserna 
+\series bold
+A
+\series default
+ och 
+\series bold
+B
+\series default
+ ovan.
+ Skapa även följande matriser 
+\series bold
+C
+\series default
+ och 
+\series bold
+D
+\series default
+.
+\begin_inset Formula 
+\[
+\mathbf{C}=\left(\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right),\mathbf{D}=\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 3
+\end{array}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Beräkna följande blockmatris i R
+\begin_inset Formula 
+\[
+\mathbf{X}=\begin{bmatrix}(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1} & -(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1}\mathbf{BD}^{-1}\\
+-\mathbf{D}^{-1}\mathbf{C}(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1} & \mathbf{D}^{-1}+\mathbf{D}^{-1}\mathbf{C}(\mathbf{A}-\mathbf{BD}^{-1}\mathbf{C})^{-1}\mathbf{BD}^{-1}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Beräkna följande blockmatris i R
+\begin_inset Formula 
+\[
+\mathbf{Y}=\begin{bmatrix}\mathbf{A} & \mathbf{B}\\
+\mathbf{C} & \mathbf{D}
+\end{bmatrix}^{-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ ska vara identiska.
+ Detta är ett sätt att invertera matriser på ett enklare sätt genom att
+ invertera delar av matrisen.
+ Testa om 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{Y}$
+\end_inset
+
+ är identiska med 
+\family typewriter
+all.equal()
+\family default
+ eller 
+\family typewriter
+==
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Matrisegenskaper
+\end_layout
+
+\begin_layout Enumerate
+Vill vi ta reda på en matris dimensioner använder vi 
+\family typewriter
+dim()
+\family default
+.
+ Då returneras matrisens dimensioner som en integervektor av längd 2.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi beräkna 
+\begin_inset CommandInset href
+LatexCommand href
+name "determinanten"
+target "https://sv.wikipedia.org/wiki/Determinant"
+literal "false"
+
+\end_inset
+
+ för en given matris använder vi 
+\family typewriter
+det()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+det(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Beräkna följande determinanter.
+\begin_inset Formula 
+\[
+\det\left(\begin{array}{ccc}
+0 & 0 & 0\\
+0 & 0 & 0\\
+0 & 0 & 0
+\end{array}\right),\det\left(\begin{array}{ccc}
+1 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 3
+\end{array}\right),\det(\mathbf{I}_{5})
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\mathbf{I}_{5}$
+\end_inset
+
+ är identitetsmatrisen av storlek 5.
+\end_layout
+
+\begin_layout Section
+Egenvärden och egenvektorer
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Egenvärden-och-egenvektorer"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I R används funktionen 
+\family typewriter
+eigen()
+\family default
+ för att beräkna både 
+\begin_inset CommandInset href
+LatexCommand href
+name "egenvärden och egenvektorer"
+target "https://sv.wikipedia.org/wiki/Egenv%C3%A4rde,_egenvektor_och_egenrum"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Med följande kod kan vi beräkna egenvärdena för följande.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A <- matrix(c(3,-2,2,-2),ncol=2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+egen <- eigen(A) 
+\end_layout
+
+\begin_layout Plain Layout
+
+egen
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Funktionen 
+\family typewriter
+eigen()
+\family default
+ returnerar en lista med egenvärdena (i fallande ordning) och egenvektorerna
+ för respektive egenvärde som kolumner i matrisen med listnamnet 
+\family typewriter
+vectors
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+egen$values
+\end_layout
+
+\begin_layout Plain Layout
+
+egen$vectors
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För matrisen A ovan, kontrollera att definitionen för egenvärden och egenvektore
+r stämmer.
+ D.v.s.
+\begin_inset Formula 
+\[
+\mathbf{A}\mathbf{x}=\lambda\mathbf{x}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ är ett av egenvärdena och 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ är egenvärdets egenvektor.
+ Kontrollera på detta sätt båda egenvärdena.
+\end_layout
+
+\begin_layout Section
+Paketet Matrix
+\end_layout
+
+\begin_layout Standard
+Paketet 
+\family typewriter
+Matrix
+\family default
+ är ett paket som används för att utföra numerisk linjär algebra.
+ Paketet innehållet många specialfunktioner som relaterar till matriser
+ och är 
+\shape italic
+snabbare
+\shape default
+ än grundfunktionerna i R för linjär algebra.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Ladda in paketet i din session.
+\end_layout
+
+\begin_layout Enumerate
+Testa att köra koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+?Matrix
+\end_layout
+
+\begin_layout Plain Layout
+
+a<-Matrix(1:10,5,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+a
+\end_layout
+
+\begin_layout Plain Layout
+
+Matrix(1:10)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Matriser från 
+\family typewriter
+Matrix()
+\family default
+ är av en andra klasser jämfört med matriser skapade med 
+\family typewriter
+matrix()
+\family default
+.
+ Olika metoder är implemnterade för de olika klasserna.
+ Därför är det viktigt att kunna konvertera mellan klasserna, beroende på
+ sammanhanget.
+ Testa koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+b<-matrix(11:20,5,2)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+a2<-as.matrix(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+b2<-Matrix(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(a2)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(b2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+De flesta metoderna för linjär algebra finns implementerade för klasserna
+ i paketet 
+\family typewriter
+Matrix
+\family default
+.
+ Skapa nu några matriser med funktionen 
+\family typewriter
+Matrix()
+\family default
+.
+ Testa sen några av de vanliga matrisfunktionerna från 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Skapa-matriser"
+
+\end_inset
+
+ till 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Egenvärden-och-egenvektorer"
+
+\end_inset
+
+ på dessa matriser.
+\end_layout
+
+\begin_layout Section
+* Extraproblem
+\end_layout
+
+\begin_layout Enumerate
+Skapa ett linjärt ekvationssystem med fyra och sex ekvationer och lös dem
+ sedan med 
+\family typewriter
+solve()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skapa matrisen 
+\family typewriter
+A
+\family default
+,
+\family typewriter
+B
+\family default
+ och
+\family typewriter
+ C
+\family default
+ nedan.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-matrix(1:25,5,5)
+\end_layout
+
+\begin_layout Plain Layout
+
+B<-matrix(11:25,5,3)
+\end_layout
+
+\begin_layout Plain Layout
+
+C<-matrix(c(5,2,1,3,4,5,-2,-2,1),ncol=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gör följande beräkningar.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{A}^{\intercal}\mathbf{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{B}\mathbf{B}^{\intercal}\mathbf{A}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left(\mathbf{B}^{\intercal}\mathbf{B}\right)^{-1}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+ABC
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Funktionen 
+\family typewriter
+generate_matrix()
+\family default
+ nedan skapar slumpmässiga kvadratiska matriser med hjälp av 
+\family typewriter
+sample()
+\family default
+.
+ Skapa och kör 
+\family typewriter
+generate_matrix()
+\family default
+ så att den finns tillgänglig i din workspace.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+generate_matrix<-function(mat_dim=5, numbers=10, seed=12345){ 
+\end_layout
+
+\begin_layout Plain Layout
+
+	set.seed(seed)   
+\end_layout
+
+\begin_layout Plain Layout
+
+	my_size<-mat_dim^2 
+\end_layout
+
+\begin_layout Plain Layout
+
+	temp <- sample(x=numbers, size=my_size,replace=TRUE)  
+\end_layout
+
+\begin_layout Plain Layout
+
+	mat<-matrix(temp,mat_dim, mat_dim)  
+\end_layout
+
+\begin_layout Plain Layout
+
+	return(mat) 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kör koden nedan.
+ Vad innebär resultatet från funktionen 
+\family typewriter
+kappa()
+\family default
+? [
+\series bold
+Tips
+\series default
+ 
+\family typewriter
+?kappa
+\family default
+]
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-generate_matrix(mat_dim=10,numbers=-10:10,seed=398)
+\end_layout
+
+\begin_layout Plain Layout
+
+B<-generate_matrix(mat_dim=100,numbers=-10:10,seed=872)
+\end_layout
+
+\begin_layout Plain Layout
+
+C<-generate_matrix(mat_dim=1000,numbers=-10:10,seed=812) 
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(C)
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+kappa(C)
+\end_layout
+
+\begin_layout Plain Layout
+
+Ainv<-solve(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+Binv<-solve(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+Cinv<-solve(C)
+\end_layout
+
+\begin_layout Plain Layout
+
+det(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+det(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+det(C)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Hur påverkar 
+\begin_inset Formula $\kappa$
+\end_inset
+
+ beräkningarna av matrisinverser?
+\end_layout
+
+\begin_layout Chapter
+Tid och datum med 
+\family typewriter
+lubridate
+\end_layout
+
+\begin_layout Standard
+Att arbeta med datum och tid i R innebär att vi behöver arbeta i två steg.
+ Först behöver vi läsa in datumet i ett korrekt datumformat med paketet
+ 
+\family typewriter
+lubridate
+\family default
+ och sedan kan vi använda det för beräkningar.
+ 
+\end_layout
+
+\begin_layout Section
+Läsa in datum med 
+\family typewriter
+lubridate
+\end_layout
+
+\begin_layout Standard
+Det finns ett antal inläsningsfunktioner för att konvertera textvektorer
+ till datumvektorer.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="8" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Ordning i textvektor
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Inläsningfunktion
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+year, month, day
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+ymd() 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+year, day, month 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+ydm() 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+month, day, year 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+mdy() 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+day, month, year 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+dmy()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hour, minute 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+hm() 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+hour, minute, second 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+hms() 
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+year, month, day, hour, minute, second 
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+ymd_hms()
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\series bold
+Källa:
+\series default
+ Grolemund and Wickham (2011) Dates and time made easy with lubridate
+\end_layout
+
+\begin_layout Enumerate
+Ladda in paktet 
+\family typewriter
+lubridate
+\family default
+ i den aktuella R-sessionen.
+ [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+library()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+För att läsa in datum kan vi exempelvis göra på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(lubridate)
+\end_layout
+
+\begin_layout Plain Layout
+
+ymd("2012-10-10")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Konvertera ditt fördelsedatum som ett datum i R (kalla variabeln 
+\family typewriter
+birth
+\family default
+), pröva med 
+\family typewriter
+ymd()
+\family default
+ och 
+\family typewriter
+mdy()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Pröva funktionen 
+\family typewriter
+now()
+\family default
+ och 
+\family typewriter
+today()
+\family default
+.
+ Vad gör de?
+\end_layout
+
+\begin_layout Enumerate
+Skapa en textvektor med minst 3 textelement med godtyckliga datum.
+ Konvertera dessa till R med en av inläsningfunktionerna ovan.
+\end_layout
+
+\begin_layout Enumerate
+Vill vi plocka ut en viss information ur ett datum kan vi göra det med följande
+ funktioner: 
+\family typewriter
+year()
+\family default
+, 
+\family typewriter
+month()
+\family default
+, 
+\family typewriter
+week()
+\family default
+, 
+\family typewriter
+yday()
+\family default
+, 
+\family typewriter
+mday()
+\family default
+ och 
+\family typewriter
+wday()
+\family default
+.
+ Pröva dessa funktioner på din födelsedag.
+ Vad får du för resultat av respektive funktion?
+\end_layout
+
+\begin_layout Enumerate
+Dessa funktioner kan också användas för att ändra datumvariabler.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+birth <- ymd("2005-03-22")
+\end_layout
+
+\begin_layout Plain Layout
+
+month(birth) <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+wday(birth) <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vad innebär förändringarna ovan med avseende på din födelsedag?
+\end_layout
+
+\begin_layout Section
+Räkna med datum
+\end_layout
+
+\begin_layout Subsection
+Intervall
+\end_layout
+
+\begin_layout Standard
+När vi arbetar med datum finns det tre former av utsträckning i tid att
+ hålla reda på.
+ Först har vi tidpunkter (instants).
+ Det är punkter i tiden, exempelvis ett datum, sedan har vi tidsintervall
+ (intervals) duration (duration) och period (period).
+ Intervallen är datumintervallen mellan två tidpunkter.
+ För att skapa ett intervall gör vi på följande sätt i R:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+date1 <- ymd("2012-10-10")
+\end_layout
+
+\begin_layout Plain Layout
+
+date2 <- ymd("2014-11-03")
+\end_layout
+
+\begin_layout Plain Layout
+
+myInterval <- interval(start=date1, end=date2)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa ett intervall-objekt 
+\family typewriter
+myTime
+\family default
+ som börjar vid din födelsedag och slutar idag.
+\end_layout
+
+\begin_layout Enumerate
+Använd den slumpmässiga vektor med datum du skapat ovan och skapa en vektor
+ med tidsintervall.
+ 
+\end_layout
+
+\begin_layout Subsection
+Duration
+\end_layout
+
+\begin_layout Standard
+Duration och period är istället för intervall definierade som en tidperiod
+ utan tydliga tidpunkter.
+ Om vi mäter en period i sekunder får vi ett sätt att mäta perioder som
+ är oberoende av vilka datum vi talar om.
+ Detta är definitionen av duration i R och för att skapa dessa tidsintervall
+ gör vi exempelvis på följande sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+as.duration(myInterval)
+\end_layout
+
+\begin_layout Plain Layout
+
+dseconds(20)
+\end_layout
+
+\begin_layout Plain Layout
+
+dhours(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+ddays(4)
+\end_layout
+
+\begin_layout Plain Layout
+
+birth + ddays(1000)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Då tiden hela tiden utgår från sekunder är det enkelt att räkna exakt hur
+ många dagar det går på en viss tidsperiod genom att bara dividera med 
+\family typewriter
+ddays(1)
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Räkna ut följande:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Hur många dagar som finns i 
+\family typewriter
+myTime
+\end_layout
+
+\begin_layout Enumerate
+Hur många veckor (som 7-dagarsperioder) som finns i 
+\family typewriter
+myTime
+\end_layout
+
+\begin_layout Enumerate
+Hur många år som finns i 
+\family typewriter
+myTime
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Eftersom alla tidsintervall i duration är konstanta måste år ges ett fixt
+ antal dagar.
+ Räkna ut hur många dagar en 
+\family typewriter
+dyears(1)
+\family default
+ är.
+\end_layout
+
+\begin_layout Subsection
+Period
+\end_layout
+
+\begin_layout Standard
+Den sista typen av tidsintervall är det vi ofta i vanligt tal menar med
+ datumintervall, d.v.s.
+ hur många dagar, veckor eller månader som gått under en given period.
+ Detta sätt att betrakta tid gör att vi kan lägga till olika långa tidsperioder,
+ beroende på vad vi lägger till.
+ Lägger vi till en månad till ett datum i februari blir det en kortare tidsperio
+d (sett som duration) än och vi lägger till en månad i juli.
+\end_layout
+
+\begin_layout Standard
+Detta sätt innebär att en period håller koll på de olika tidsperioderna
+ separat.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod <- as.period(myInterval)
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod / weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod %/% weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med perioder blir det lite svårare att beräkna hur långa vissa tidpunkter
+ är (eftersom det faktisk beror på vilken period vi faktiskt talar om).
+ Detta gör att lubridate uppskattar tidperioderna efter hur många 
+\begin_inset Quotes eld
+\end_inset
+
+hela
+\begin_inset Quotes erd
+\end_inset
+
+ tidsperioder vi har i vår period.
+ Dock kan vi använda perioder och heltalsdivision (%/%) för att beräkna
+ hela perioder för olika intervall.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod / weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myPeriod %/% weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myInterval / weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myInterval %/% weeks(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Pröva att beräkna följande baserat på 
+\family typewriter
+myTime
+\family default
+ (pröva både med och utan heltalsdivision):
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Hur många dagar du levt.
+\end_layout
+
+\begin_layout Enumerate
+Hur många månader du levt.
+\end_layout
+
+\begin_layout Enumerate
+Hur många veckor du levt.
+\end_layout
+
+\begin_layout Enumerate
+Hur många år du levt.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Section
+Sekvenser med datum
+\end_layout
+
+\begin_layout Standard
+Funktionen 
+\family typewriter
+seq()
+\family default
+ är en generisk funktion, som kan användas för att skapa sekvenser med datum.
+ Detta är användbart om vi t.ex.
+ vill skapa en vektor som innehåller alla datum för tio år.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+?seq.Date() 
+\end_layout
+
+\begin_layout Plain Layout
+
+methods(seq)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Testa koden nedan.
+ Vad händer?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(from = ymd('2012-04-07'),to = ymd('2014-03-22'),by='weeks') 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'), by = '1 week') 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'), by = '2 week')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'),by='days') 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'),by='15 days')
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'),by='months') 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(ymd('2012-04-07'),ymd('2014-03-22'),by='years') 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa följande sekvenser:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alla dagar mellan 2014-01-20 till 2017-03-28
+\end_layout
+
+\begin_layout Enumerate
+Varanan dag mellan 2014-01-20 till 2014-03-28, med start på den första dagen
+\end_layout
+
+\begin_layout Enumerate
+Med datumet för alla fredagar under 2020
+\end_layout
+
+\begin_layout Enumerate
+Med datumen för var fjärde vecka under hela 2019, med start 2019-01-01.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Tidserieplottar: Ibland vill vi göra plottar med data som varierar över
+ tid.
+ Då kommer sekvenser med datum väl till pass.
+ Funktionen 
+\family typewriter
+plot()
+\family default
+ kan anpassa sig automatiskt om x-variabeln är av datumklass.
+ Testa koden nedan, och notera x-axeln i plottarna i båda fallen.
+ Detta är användbart i samband med miniprojektet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# skapa tidseriedata: 
+\end_layout
+
+\begin_layout Plain Layout
+
+x1<-seq(ymd("2017-01-01"),ymd("2020-12-31"),by="days") 
+\end_layout
+
+\begin_layout Plain Layout
+
+N<-length(x1) X<-scale(cbind(1:N,(1:N)^2,(1:N)^3)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(403) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-130+2*X[,1]-2*X[,2]-10*X[,3]+rnorm(n = N,sd=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+class(x1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# tidserieplot
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x1,y,t="l") 
+\end_layout
+
+\begin_layout Plain Layout
+
+# vilken skala har x-axeln?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# lite mindre data: 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x1[1:365],y[1:365],t="l") 
+\end_layout
+
+\begin_layout Plain Layout
+
+# vilken skala har x-axeln?
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x2<-1:N 
+\end_layout
+
+\begin_layout Plain Layout
+
+class(x2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot(x2,y,t="l") 
+\end_layout
+
+\begin_layout Plain Layout
+
+# vilken skala har x-axeln?
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mer övningar
+\end_layout
+
+\begin_layout Enumerate
+Skapa fyra vektorer: En som är en instant, en som är av typen interval,
+ en av typen duration och en av typen period.
+ Ni bestämmer själv vilka datum som variablerna ska innehålla.
+ Testa sen att göra minst tre av de beräkningar som finns beskrivna i tabell
+ 6 i 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "artikeln"
+target "http://www.jstatsoft.org/v40/i03/paper"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ om 
+\family typewriter
+lubridate
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Skapa datumet 
+\begin_inset Quotes eld
+\end_inset
+
+2010-04-23 12:33:45
+\begin_inset Quotes erd
+\end_inset
+
+ med funktionen 
+\family typewriter
+ymd_hms()
+\family default
+ och döp den till 
+\family typewriter
+testTimes
+\family default
+.
+ Gör följande beräknigar:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Välj ut året med 
+\family typewriter
+year()
+\end_layout
+
+\begin_layout Enumerate
+Välj ut dagen med 
+\family typewriter
+day()
+\end_layout
+
+\begin_layout Enumerate
+Välj ut timmen med 
+\family typewriter
+hour()
+\end_layout
+
+\begin_layout Enumerate
+Välj ut sekunden med 
+\family typewriter
+second()
+\end_layout
+
+\begin_layout Enumerate
+Kolla i 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "artikeln"
+target "http://www.jstatsoft.org/v40/i03/paper"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+ om lubridate hur ni kan göra avrundningar under sektion 6.
+ Avrunda till:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Nedåt till år
+\end_layout
+
+\begin_layout Enumerate
+Uppåt till dag
+\end_layout
+
+\begin_layout Enumerate
+Närmste heltalsminuten
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Ändra nu följande saker i 
+\family typewriter
+testTimes
+\family default
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Året till 1876
+\end_layout
+
+\begin_layout Enumerate
+Sekunden till 21
+\end_layout
+
+\begin_layout Enumerate
+Månaden till september.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Enumerate
+Vill du ha mer övning på datum och tider? 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gå igenom koden här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "vignette"
+target "https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gå igenom koden här: 
+\begin_inset CommandInset href
+LatexCommand href
+name "Boken R for Data Science: 16 Dates and times"
+target "https://r4ds.had.co.nz/dates-and-times.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+#solution_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+Florence
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2016
+\backslash
+
+\backslash
+KursRprgmTeacher
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+exercise_solutions
+\backslash
+
+\backslash
+"
+\end_layout
+
+\begin_layout Plain Layout
+
+#solution_path<-"/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Under
+visning/Statistisk programmering i R/KursRprgmTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
+exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+För att använda 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration ange:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Tests/d6.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressWarnings(set_assignment(lab_path))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+apartment()
+\end_layout
+
+\begin_layout Standard
+Skapa en konstruktor som skapar ett lägenhetsobjekt med funktionen 
+\family typewriter
+apartment()
+\family default
+.
+ Funktionen ska ha två argument 
+\family typewriter
+rooms
+\family default
+ och 
+\family typewriter
+m2
+\family default
+ som anger hur många rum och hur stor (i 
+\begin_inset Formula $m^{2}$
+\end_inset
+
+) lägenheten är.
+ Denna information ska sparas i en lista.
+ Objektet som returneras ska vara av klassen 
+\family typewriter
+apartment
+\family default
+.
+ Funktionen ska också kontrollera att 
+\family typewriter
+m2
+\family default
+ och 
+\family typewriter
+rooms
+\family default
+ är strikt större än 0 och returnera ett fel om det inträffar.
+ Ni kan välja felmeddelande själva.
+\end_layout
+
+\begin_layout Standard
+Implementera sedan en specifik metod för klassen 
+\family typewriter
+apartment
+\family default
+ till generiska funktionen 
+\family typewriter
+print()
+\family default
+.
+ Ni ska alltså skapa funktionen 
+\family typewriter
+print
+\family default
+.
+\family typewriter
+apartment()
+\family default
+.
+ Används 
+\family typewriter
+print()
+\family default
+ på en enrumslägenhet ska följande skrivas ut:
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+A [m2] square meter studio.
+\end_layout
+
+\begin_layout Standard
+Om fler rum anges ska 
+\family typewriter
+print()
+\family default
+ skriva ut
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+A [m2] square meter [rooms]-room apartment.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+is.function(print.apartment)
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- apartment(1, 25)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+print.apartment(a)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a[[1]]
+\end_layout
+
+\begin_layout Plain Layout
+
+a[[2]]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+apartment(3, 81)
+\end_layout
+
+\begin_layout Plain Layout
+
+b<-apartment(5, 104)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(b)
+\end_layout
+
+\begin_layout Plain Layout
+
+apartment(0, 81)
+\end_layout
+
+\begin_layout Plain Layout
+
+d<-apartment(2, 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+give_blood()
+\end_layout
+
+\begin_layout Standard
+För blodgivare finns vissa regler för när hen får ge blod.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://geblod.nu/fragor-och-svar/"
+literal "false"
+
+\end_inset
+
+ står det vilka regler som gäller.
+ Ni ska skriva en funktion som ska hjälpa en blodgivare att veta när hen
+ får ge blod, utifrån några av reglerna.
+ Funktionen ska heta 
+\family typewriter
+give_blood()
+\family default
+ och ha argumenten:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+lasttime
+\family default
+: ett datum som anger senaste gången blodgivaren gav blod, default ska vara
+ idag.
+ tips: today()
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+holiday
+\family default
+: ska vara antingen: 1) ett interval-objekt som anger start- och slutdatum
+ för en utlandsresa.
+ Startdatum är det datum som personen lämnar Sverige och slutdatum är det
+ datum som personen kommer hem till Sverige.
+ 2) Defaultvärde ska vara 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+hemma
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, vilket indikerar att det inte blir någon resa.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+sex
+\family default
+: antar värdet 
+\begin_inset Quotes eld
+\end_inset
+
+f
+\begin_inset Quotes erd
+\end_inset
+
+ för kvinna och 
+\begin_inset Quotes eld
+\end_inset
+
+m
+\begin_inset Quotes erd
+\end_inset
+
+ för man
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+type_of_travel
+\family default
+: 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+malaria
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indikerar resa till ett land där det finns malaria och 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+other
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ indikerar resa till ett land utan malaria.
+ Ska vara NULL om 
+\family typewriter
+holiday
+\family default
+ har värdet 
+\begin_inset Quotes eld
+\end_inset
+
+hemma
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Alla datum ska vara på formen 
+\series bold
+
+\begin_inset Quotes eld
+\end_inset
+
+year-month-day
+\begin_inset Quotes erd
+\end_inset
+
+
+\series default
+.
+ Funktionen ska givet argumenten räkna ut ett datum när blodgivaren får
+ ge blod igen och returnera datumet.
+ Vi utgår ifrån att blodgivaren vill ge blod så 
+\series bold
+ofta
+\series default
+ som möjligt.
+ Funktionen ska följa följande regler:
+\end_layout
+
+\begin_layout Itemize
+Minsta tid mellan blodgivningstillfällen: kvinnor 4 månader, män 3 månader,
+ båda anger relativ tid.
+ Efter exakt denna tid kan personen ge blod.
+\end_layout
+
+\begin_layout Itemize
+Om personen varit i ett land där det inte finns malaria ska hen vänta (vara
+ i karantän) 4 veckor (relativ tid) efter slutdatum i argumentet 
+\family typewriter
+holiday
+\family default
+ innan hen får ge blod.
+\end_layout
+
+\begin_layout Itemize
+Om personen varit i ett land där det finns malaria ska hen vänta (vara i
+ karantän) 6 månader (relativ tid) efter slutdatum i argumentet 
+\family typewriter
+holiday
+\family default
+ innan hen får ge blod.
+\end_layout
+
+\begin_layout Itemize
+När det gäller karantänen får personen inte ge blod under karantänen utan
+ det är första dagen efter karantänen personen får ge blod.
+\end_layout
+
+\begin_layout Itemize
+Vi utgår ifrån att blodgivningscentralen bara är öppen på vardagar (måndag
+ till fredag), så givet de tidigare reglerna så ska den första möjliga vardagen
+ väljas.
+\end_layout
+
+\begin_layout Standard
+Nedan följer ett förslag på lösningsordning:
+\end_layout
+
+\begin_layout Enumerate
+Undersök om personen varit hemma, på resa i land med malaria eller i land
+ utan malaria.
+ Addera eventuell tilläggstid till slutdatum och spara som 
+\family typewriter
+extraTime
+\family default
+.
+ Tänk på att ta hänsym till fallet då personen inte reser, tex genom att
+ sätta 
+\family typewriter
+extraTime
+\family default
+ till samma datum som 
+\family typewriter
+lasttime
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Tips
+\series default
+: 
+\family typewriter
+int_end(), months(), weeks()
+\end_layout
+
+\begin_layout Enumerate
+Givet om den är en man eller kvinna räkna ut när personen tidigast får ge
+ blod, spara det datumet i variablen 
+\family typewriter
+suggestion
+\family default
+.
+ 
+\series bold
+Tips:
+\series default
+ 
+\family typewriter
+months()
+\end_layout
+
+\begin_layout Enumerate
+Kolla om 
+\family typewriter
+suggestion
+\family default
+ inträffar efter 
+\family typewriter
+extraTime
+\family default
+, om så är fallet ange 
+\family typewriter
+suggestion
+\family default
+ som förslag för blodgivnig.
+ Om så inte är fallet, ange dagen efter 
+\family typewriter
+extraTime
+\family default
+ som förslag.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Kontrollera att den angivna dagen är en vardag, om inte ange nästa vardag
+ som förslag.
+ 
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+Tips!
+\series default
+ 
+\family typewriter
+?wday(), ?days()
+\end_layout
+
+\begin_layout Enumerate
+Returnera förslaget som en text-sträng på formen:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+
+\begin_inset Quotes eld
+\end_inset
+
+year=[året], month=[månaden], day=[dagen], weekday=[veckodagen]
+\begin_inset Quotes erd
+\end_inset
+
+
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+Tex om föreslaget datum är 2014-02-21 så ska strängen bli:
+\begin_inset Newline newline
+\end_inset
+
+
+\family typewriter
+ 
+\begin_inset Quotes eld
+\end_inset
+
+year=2014 month=Feb day=19 weekday=Friday
+\begin_inset Quotes erd
+\end_inset
+
+.
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+ 
+\series bold
+Tips:
+\series default
+ 
+\family typewriter
+year(), month(), day(), paste()
+\end_layout
+
+\begin_layout Standard
+Tips! Det kan vara så att weekday() returnerar veckodagarna på svenska.
+ För att returnera veckodagar på engelska finns följande tips:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Sys.setlocale("LC_TIME", "English")
+\end_layout
+
+\begin_layout Plain Layout
+
+# eller 
+\end_layout
+
+\begin_layout Plain Layout
+
+Sys.setlocale("LC_TIME", "C")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Om ni har svårt att ändra språk (locale) så finns följande tips:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# månad: 
+\end_layout
+
+\begin_layout Plain Layout
+
+# lägg denna funktion utanför give_blood() i filen ni lämnar in
+\end_layout
+
+\begin_layout Plain Layout
+
+wrap_month<-function(x){ month.name[x] }
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+library(lubridate) 
+\end_layout
+
+\begin_layout Plain Layout
+
+# exempel på datum:
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- ymd("2012-03-28") 
+\end_layout
+
+\begin_layout Plain Layout
+
+print(month(x))
+\end_layout
+
+\begin_layout Plain Layout
+
+print(month.name)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# ha denna kod i give_blood().
+\end_layout
+
+\begin_layout Plain Layout
+
+month_name_eng<-substr(x = wrap_month(month(x,label = FALSE)),start = 1,stop
+ = 3)  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# veckodag: 
+\end_layout
+
+\begin_layout Plain Layout
+
+week_name <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+ "Saturday")
+\end_layout
+
+\begin_layout Plain Layout
+
+print(wday(x)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+week_name[wday(x)]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kolla om funktionen uppfyller testfallen nedan:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(lubridate)
+\end_layout
+
+\begin_layout Plain Layout
+
+Sys.setlocale("LC_TIME", "C")
+\end_layout
+
+\begin_layout Plain Layout
+
+# Test 1: 
+\end_layout
+
+\begin_layout Plain Layout
+
+day1<-ymd("2014-02-24") 
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday="hemma",sex="m",type_of_travel=NULL)
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday="hemma",sex="f",type_of_travel=NULL)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Test 2:
+\end_layout
+
+\begin_layout Plain Layout
+
+day2<-ymd("2014-03-23")
+\end_layout
+
+\begin_layout Plain Layout
+
+day3<-ymd("2014-04-24")
+\end_layout
+
+\begin_layout Plain Layout
+
+holiday1<-interval(day2,day3)
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday=holiday1,sex="m",type_of_travel="malaria")
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday=holiday1,sex="f",type_of_travel="malaria")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Test 3:
+\end_layout
+
+\begin_layout Plain Layout
+
+day4<-ymd("2014-04-13")
+\end_layout
+
+\begin_layout Plain Layout
+
+day5<-ymd("2014-05-23")
+\end_layout
+
+\begin_layout Plain Layout
+
+holiday2<-interval(day4, day5)
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday=holiday2,sex="m",type_of_travel="other")
+\end_layout
+
+\begin_layout Plain Layout
+
+give_blood(lasttime=day1,holiday=holiday2,sex="f",type_of_travel="other")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Det var allt för denna laboration!
+\end_layout
+
+\end_body
+\end_document
