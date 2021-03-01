@@ -1,0 +1,374 @@
+
+<style type="text/css">
+
+.indent {
+  padding-left: 2em !important;
+}
+
+.emphasize {
+  text-align: center;
+  width: 100%;
+  color: red;
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+
+Programmering i R
+========================================================
+transition: rotate
+## Föreläsning 7: Grafik, Linjär regression, statistik
+### [Josef Wilzén](mailto:josef.wilzen@liu.se)
+STIMA, 
+Linköpings universitet
+
+*`r Sys.Date()`*
+
+Föreläsning 7: Innehåll 
+========================================================
+- info
+- ggplot2
+- Statistik, (Linjär regression)
+- Miniprojektet
+
+Info
+========================================================
+- labb 3-5 rättade
+- komp1: i samband med ordinarie inlämning för labb 6 nu på onsdag
+- Ok att inkludera hjälpfunktioner i inlämningen
+
+ggplot2
+========================================================
+type: section
+
+ggplot2
+========================================================
+- Baserad på ”Grammar of Gaphics” av Leland Wilkinson
+- Skapad av Hadley Wickham
+- Alternativ till basgrafiken
+- [https://ggplot2.tidyverse.org/](https://ggplot2.tidyverse.org/)
+  - Referens:  [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)
+  - [Inspiration](https://www.r-graph-gallery.com/portfolio/ggplot2-package/)
+- Har egenskapar från basgrafiken men skiljer sig åt
+- Utgår alltid från en ```data.frame``` 
+
+ggplot2
+========================================================
+"Grammatik för grafik"
+- Abstraktioner av grafiska idéer. Jmf med ordklasser/satsdelar i språk
+- Ger ett teoretiskt fundament för hur grafik kan skapas
+- Enkla principer -> avancerade grafer
+
+
+ggplot2
+========================================================
+
+- Bygger upp en graf av flera delar
+  - ```data```: en data.frame med all data
+  - ```aes```: aesthteic mappings (färger, former)
+  - ```geom```: geometriska objekt
+  - ```facets```: skapar subplottar baserat på villkor
+  - ```scales```: skalor för aesthteic mappings
+  - ```coordinate system```
+
+ggplot2
+========================================================
+![alt text](images/grammar-of-graphics.png)
+Bild från denna [källa](https://rfortherestofus.com/2019/07/a-short-overview-of-the-grammar-of-graphics/) 
+  
+
+ggplot2
+========================================================
+- ggplot2 bygger upp en plot med olika lager, när plotten är klar så visas plotten genom att anropa ```print()```
+    - Utgår från funktionen: ```ggplot()```
+        - Returnerar objekt som vi kan spara
+    - Lager adderas med "```+```", 
+        - tex: ```+ geom_line()```
+    - Speciella klasser för ggplot2
+
+
+
+ggplot2
+========================================================
+
+> ”In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system.”
+
+Från "ggplot2 book" av Hadley Wickham 
+
+aes
+========================================================
+- Kopplar färg, form och utseende till data
+
+```aes``` | Beskrivning | 
+----- | ---- | 
+```x``` | x-axel |
+```y``` | y-axel |
+```size``` | storlek |
+```color``` | färg |
+```shape``` | form |
+
+
+geom
+========================================================
+
+- Vilken geometrisk representation ska användas
+
+```geom``` | Beskrivning | 
+----- | ---- | 
+```geom_point``` | Scatterplot |
+```geom_line``` | Line graph |
+```geom_bar``` | Barplot |
+```geom_boxplot``` | Boxplot |
+```geom_histogram``` | Histogram |
+
+
+aes och geoms
+========================================================
+- Finns även speciella aestetics för vissa geoms
+
+```geom``` | ```aes``` | 
+----- | ---- |
+```geom_points``` | point shape, point size |
+```geom_line``` | line type, line size |
+```geom_bar``` |   y min, y max, fill color, outline color |
+
+Exempel
+========================================================
+```{r, echo=FALSE}
+library(ggplot2)
+data(Nile)
+Nile <- as.data.frame(Nile) 
+colnames(Nile) <- "level"
+Nile$years <- 1871:1970
+Nile$period <- "- 1900" 
+Nile$period[Nile$years >= 1900] <- "1900 - 1945"
+Nile$period[Nile$years > 1945] <- "1945 + " 
+Nile$period <- as.factor(Nile$period)
+```
+```{r, echo=TRUE}
+ggplot(data=Nile) + aes(x=years, y=level) + geom_point()
+```
+
+Exempel
+========================================================
+```{r, echo=TRUE}
+ggplot(data=Nile) + aes(x=years, y=level) + geom_line()
+```
+
+Exempel
+========================================================
+```{r, echo=TRUE}
+p <- ggplot(data=Nile) + aes(x=years, y=level, color=period) +  geom_point(aes(shape=period))
+p
+```
+
+Exempel
+========================================================
+```{r, echo=TRUE}
+p <- ggplot(data=Nile) + aes(x=years, y=level, color=period) + geom_line(aes(type=period)) + geom_point()
+p
+```
+
+
+Exempel
+========================================================
+```{r, echo=TRUE}
+p <- ggplot(data=Nile) + aes(x=years, y=level) + facet_grid(period~.) + geom_line()
+p
+```
+
+
+Exempel
+========================================================
+```{r, echo=TRUE}
+p <- ggplot(data=Nile) + aes(x=years, y=level) + facet_grid(~period) + geom_line()
+p
+```
+
+
+Exempel: Teman
+========================================================
+```{r, echo=TRUE}
+p + theme_bw()
+```
+
+Exempel: Teman
+========================================================
+```{r, echo=TRUE}
+p + theme_classic()
+```
+
+Exempel: Teman
+========================================================
+```{r, echo=TRUE}
+p + theme_grey()
+```
+
+
+ggplot2
+========================================================
+ - ```qplot()```: Liknar ```plot()``` från basgrafiken.
+ - Bra för snabba grafer.
+ - Se Roger Pengs video för en [introduktion](https://www.youtube.com/watch?v=HeqHMM4ziXA)
+ - För mer kontroll använd  ```ggplot() ```
+
+
+ggplot2 i R: Demo
+========================================================
+
+Statistik
+========================================================
+type: section
+
+
+Enklare statistiska tester
+========================================================
+
+- Det finns många statistiska modeller/metoder i R, se [CRAN Task Views](https://cran.r-project.org/web/views/) för ex.
+- ${\chi}^2$-tester görs på (**Obs!**) _tabeller_ med: 
+  - ```chisq.test()```, ```fisher.test()```
+- För t-tester används ```t.test()```
+- Korrelation och kovarians beräknas med: 
+  - ```cor()``` och ```cov()``` och testas med
+  - ```cor.test()```
+
+Exempel: t-test
+========================================================
+```{r, echo=TRUE}
+data("chickwts")
+horsebean <- chickwts$weight[chickwts$feed == "horsebean"]
+sunflower <- chickwts$weight[chickwts$feed == "sunflower"]
+
+mean(horsebean)
+mean(sunflower)
+```
+
+Exempel: One Sample t-test
+========================================================
+```{r, echo=TRUE}
+t.test(horsebean,alternative="two.sided", mu = 150, conf.level = 0.95)
+```
+
+
+
+Exempel: Two Sample t-test
+========================================================
+```{r, echo=TRUE}
+t.test(horsebean, sunflower,alternative="two.sided", mu = 0, conf.level = 0.95)
+```
+
+
+statistik i R: Demo
+========================================================
+
+Miniprojekt del 2
+========================================================
+type: section
+
+
+Miniprojekt del 2
+========================================================
+- Samma data som i del 1.
+- Inlämning: Rmd-fil och pdf/html
+- Enklare statistika analyser
+- All grafik med ggplot2
+- [Instruktioner](https://github.com/STIMALiU/KursRprgm/blob/master/Miniproject/Instruktioner.pdf?raw=true) 
+
+Frivillig fördjupning: Linjär regression
+========================================================
+type: section
+
+Frivillig fördjupning: Linjär regression
+========================================================
+
+- R skiljer sig från andra statistikprogram
+- Objektorienteringen i R
+- Grunden är formelobjektet ```y ~ x1 + x2```
+  Används på flera håll i R (ex. facet-grid)
+- Att arbeta med modeller i R innebär fyra delar/steg:
+  1. Anpassa/träna vår modell och spara som ett objekt
+  2. Analysera/studera resultatet
+  3. Diagnostisera
+  4. Använda modellen och resultaten
+
+
+Anpassa en modell: formula
+========================================================
+
+- Kräver formel och data (med samma variabeler)
+
+```{r}
+library(MASS)
+library(car)
+data(Prestige)
+```
+```{r}
+mod1 <- lm(prestige ~ income + women + education, data=Prestige)
+```
+```{r}
+mod2 <- lm(prestige ~ income + women + education - 1, data=Prestige)
+```
+```{r}
+mod3 <- lm(prestige ~ income:women + education, data=Prestige)
+```
+
+
+Analysera resultatet
+========================================================
+
+- Använder följande funktioner för att studera resultatet:
+  - ```summary()```
+  - ```anova()```
+
+Exempel:
+```{r, eval=FALSE}
+summary(mod1)
+anova(mod1)
+anova(mod3, mod1, test="Chisq")
+```
+
+
+Diagnosticera modellen
+========================================================
+
+- Finns ett stort antal metoder för detta, ex:
+
+```{r, eval=FALSE}
+plot(mod1)
+durbinWatsonTest(mod1)
+qqPlot(mod1)  
+```
+
+
+Använda modellen
+========================================================
+
+- Vi kan göra olika saker med en färdig modell som
+  - Publicera resultat
+  - Studera residualer
+  - Prediktion
+  - Generera "fina" tabeller
+- Vi kan spara vår modell och sedan använda funktioner som
+  - ```resid()```
+  - ```predict()```
+
+
+
+
+
