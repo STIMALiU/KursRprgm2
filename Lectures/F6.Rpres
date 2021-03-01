@@ -46,29 +46,23 @@ Dagens föreläsning:
 ========================================================
 
 - Info
-- Kahoot!
 - Programmeringsparadigm
   - Funktionell programmering
   - Objektorientering
 - Datum och tid med ```lubridate```
 - Linjär algebra i R
 
+
 Info:
 ========================================================
 - Glöm inte att anmäla er till datortentan!
 - Endast anmälda studenter får skriva
-- Kommer vara i SU-salarna -> bli bekväm med Linux!
 - Komplettering labb 1-4: Sker i samband med ordinarie inlämning för labb 6.
-- Kursmodulen är uppdaterad:
-  - module load courses/732G33
-
-Quiz
-========================================================
-kahoot!
- - Quiz, snabba svar ger mer poäng
- - Ta fram en enhet med webbläsare
- - Gå till: https://kahoot.it/
- - Slå in koden som visas
+- Miniprojekt
+  - Kommundata: fix tidpunkt (= ett år)
+  - Tidseriedata: formatera x-axel i plot
+      + labb 5: 1.2.2 uppgift 6)
+      + labb 6: 3.3 Sekvenser med datum
 
 
 Programmeringsparadigm och R
@@ -95,7 +89,7 @@ Funktionell programmering
   - Funktioner kan manipuleras som andra objekt, sparas i listor mm
   - Ex. ```apply()```-funktionerna
 - Anonyma funktioner: utan namn
-- För fördjupning i R och FP se [här](http://adv-r.had.co.nz/Functional-programming.html).
+- För fördjupning i R och FP se [här](https://adv-r.hadley.nz/fp.html).
 
 
 Objektorientering (OO) i R
@@ -166,7 +160,7 @@ Objektorientering i R: länkar
 ========================================================
 - [Länk 1](https://www.cyclismo.org/tutorial/R/s3Classes.html)
 - [Länk 2](http://www.stat.berkeley.edu/~statcur/WorkshopBC/Presentations/AdvancedProgramming/OOP2x2.pdf): Läs om S3
-- [Fördjupning 1](http://adv-r.had.co.nz/OO-essentials.html)
+- [Fördjupning 1](https://adv-r.hadley.nz/oo.html)
 - [Fördjupning 2](https://cran.r-project.org/doc/contrib/Genolini-S4tutorialV0-5en.pdf)
 - [Fördjupning 3](https://www.cyclismo.org/tutorial/R/s4Classes.html)
 
