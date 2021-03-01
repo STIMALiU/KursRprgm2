@@ -109,24 +109,28 @@ class(x)
 library(lubridate)
 
 x<-ymd("2015-01-01")
+x
 class(x)
 
 
-a<-interval(ymd("2015-01-01"),ymd("2015-01-06"))
+a<-interval(start = ymd("2015-01-01"),end = ymd("2015-01-06"))
 a
+class(a)
+
 
 b<-ymd("2015-01-01")%--%ymd("2015-01-06")
 a==b
 all.equal(a,b)
 
 print(a)
-
+str(a)
 a@start
 
 class(a)
 str(a)
 
 a/days(1)
+
 a/ddays(1)
 
 ymd("2016-01-01")+dweeks(20)
@@ -134,15 +138,18 @@ ymd("2016-01-01")+weeks(20)
 
 
 b<-dyears(120)
+b
 class(b)
 str(b)
-b
+b@.Data
 
 b2<-years(120)
 class(b2)
 b2
 str(b2)
+
 day(b2)
+year(b2)
 
 b2@day
 b2@year
@@ -191,6 +198,8 @@ b%*%d
 
 e<-b%*%a
 e
+dim(a)
+dim(t(a))
 e<-t(a)%*%a
 e<-matrix(c(1,2,3,4),2,2)
 e
