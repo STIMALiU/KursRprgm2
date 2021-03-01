@@ -5,6 +5,14 @@
 #-------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------
 
+data("iris")
+
+class(iris)
+
+class(1:10)
+
+class(matrix(10,2,5))
+
 # Skapa en klass i R
 
 my_object1<-list(name="Ali",age=42,company="liu")
@@ -15,11 +23,17 @@ class(my_object1)
 my_object1$name
 my_object1$age
 
+
+print(my_object1)
+methods(print)
+
+
 print.employee<-function(x){
   cat(paste("Name:",x$name,"Age:",x$age,"Company:",x$company))
 }
 methods(print)
 print(my_object1)
+print.employee(my_object1)
 
 my_object2<-list(name="Elin",age=34,company="liu",data=iris,data_name="iris")
 class(my_object2)<-c("statistician","employee")
@@ -51,7 +65,7 @@ age <- function(x) {
 }
 
 age.default<-function(x) "No method available!"
-
+methods(age)
 age(x = 1:10)
 
 
@@ -62,6 +76,8 @@ age.employee<-function(x){
 age(x = 1:2)
 age(x = iris)
 age(my_object1)
+
+class(my_object2)
 age(my_object2)
 str(my_object1)
 
@@ -99,8 +115,9 @@ class(x)
 a<-interval(ymd("2015-01-01"),ymd("2015-01-06"))
 a
 
-ymd("2015-01-01")%--%ymd("2015-01-06")
-
+b<-ymd("2015-01-01")%--%ymd("2015-01-06")
+a==b
+all.equal(a,b)
 
 print(a)
 
@@ -114,6 +131,7 @@ a/ddays(1)
 
 ymd("2016-01-01")+dweeks(20)
 ymd("2016-01-01")+weeks(20)
+
 
 b<-dyears(120)
 class(b)
