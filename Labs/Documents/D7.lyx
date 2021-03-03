@@ -1,0 +1,6391 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 7
+\end_layout
+
+\begin_layout Author
+Josef Wilzén och Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroDel2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Datorlaboration
+\end_layout
+
+\begin_layout Chapter
+Introduktion till 
+\family typewriter
+ggplot2
+\end_layout
+
+\begin_layout Standard
+Paketet 
+\family typewriter
+ggplot2
+\family default
+ skiljer sig från den grundläggande grafikfunktionaliteten som finns implementer
+at i R.
+ Paketet bygger på vad som brukar kallas 
+\begin_inset Quotes eld
+\end_inset
+
+The grammar of graphics
+\begin_inset Quotes erd
+\end_inset
+
+ (därav 
+\family typewriter
+gg
+\family default
+ i 
+\family typewriter
+ggplot2
+\family default
+) och är ett försök till ett formellt språk för att uttrycka hur en visualiserin
+g ska se ut.
+ Mer teori bakom denna gramatik går att finna i 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "wilkinson2006grammar,wilkinson2012grammar,wickham2010layered"
+literal "true"
+
+\end_inset
+
+ och är grunden bakom exempelvis SPSS grafiksystem.
+ Genom att ha en grundläggande förståelse för denna grammatik kan vi enkelt
+ och snabbt skapa mycket komplicerade visualiseringar.
+\end_layout
+
+\begin_layout Standard
+I R:s basgrafiksystem kunde man se grafikfunktionaliteten lite som ett papper
+ vi ritar på.
+ Vi ritar initialt upp vår graf och kan sedan lägga till/rita 
+\begin_inset Quotes eld
+\end_inset
+
+ovanpå
+\begin_inset Quotes erd
+\end_inset
+
+ det befintliga pappret.
+ 
+\family typewriter
+ggplot
+\family default
+ är annorlunda.
+ Med 
+\family typewriter
+ggplot
+\family default
+ skapar vi ett grafikobjekt och vi kan lägga till bit för bit av grafen
+ för att när vi sedan är klar med vår graf visualisera den.
+ Det gör det enklare att bygga upp komplicerade grafer utan att behöva använda
+ särskilt mycket kod.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+\color blue
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "http://shiny.stat.ubc.ca/r-graph-catalog/"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+ och 
+\series bold
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.r-graph-gallery.com/portfolio/ggplot2-package/"
+literal "false"
+
+\end_inset
+
+
+\series default
+ finns bra kataloger över de flesta graferna i 
+\family typewriter
+ggplot2
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Grunden i 
+\family typewriter
+ggplot2
+\end_layout
+
+\begin_layout Standard
+Till skillnad från basgrafiken utgår ggplot 
+\series bold
+alltid
+\series default
+ från en 
+\family typewriter
+data.frame
+\family default
+.
+ Baserat på denna data.frame skapas sedan grafen med två huvudsakliga komponenter
+: 
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+aes
+\family default
+ (aestetic) som handlar om utseendet på grafen, färger, former m.m.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+geom
+\family default
+ (geometrics) som beskriver vilken typ av graf vi vill ha (bar, line, points)
+\end_layout
+
+\begin_layout Standard
+Vi lägger sedan till dessa komponenter till vår graf och 
+\family typewriter
+data.frame
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+När det gäller de olika geometriska argumenten, d.v.s.
+ de olika typer av grafer som går att skapa, finns det ett mycket stor antal
+ vi kan använda oss av.
+ Några exempel är:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\series bold
+geom
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beskrivning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_point
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scatterplot
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_line
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Line graph
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_bar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Barplot
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_boxplot
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Boxplot
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_histogram
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Histogram
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+Exakt hur dessa geometriska figurer ska se ut styrs sedan med 
+\family typewriter
+aes
+\family default
+.
+ Nedan finns några exempel:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\series bold
+aes
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Beskrivning
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+x
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+x-axel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+y
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+y-axel
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+storlek
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+col
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+färg
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+shape
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+form
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+De enskilda geometriska figurerna kan i sin tur ha ett antal olika aestetics.
+ Nedan finns lite exempel.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+\series bold
+geom
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Specifika aestetics
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_points
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+point 
+\family typewriter
+shape
+\family default
+, point 
+\family typewriter
+size
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_line
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+linetype
+\family default
+, line 
+\family typewriter
+size
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family typewriter
+geom_bar
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+y 
+\family typewriter
+min
+\family default
+, y 
+\family typewriter
+max
+\family default
+, 
+\family typewriter
+fill
+\family default
+ color, 
+\family typewriter
+outline
+\family default
+ color
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Med dessa verktyg har vi en grund för att bygga upp ett mycket stort antal
+ visualiseringar.
+\end_layout
+
+\begin_layout Subsection
+Skapa en ggplot (linje eller scatter)
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att läsa in the datamaterialet 
+\family typewriter
+Nile
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggplot2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+data(Nile) 
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile <- data.frame(level=as.vector(Nile))  
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile$years <- 1871:1970
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att skapa en 
+\family typewriter
+ggplot
+\family default
+ börjar vi med att skapa grunden för plotten med funktionen 
+\family typewriter
+ggplot()
+\family default
+.
+ Nedan är ett exempel på att skapa en 
+\family typewriter
+ggplot
+\family default
+ med 
+\family typewriter
+Nile
+\family default
+, sedan lägger vi till att 
+\family typewriter
+x
+\family default
+ ska utgöras av variabeln 
+\family typewriter
+years
+\family default
+ och 
+\family typewriter
+level
+\family default
+.
+ Sedan lägger vi till att plotten ska utgöras av punkter.
+ Vi sparar grafen som variabeln 
+\family typewriter
+p
+\family default
+.
+ För att skapa grafen tittar vi bara på 
+\family typewriter
+p
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, fig.height=3, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi ändra till en linjegraf (vilket känns bättre) här byter vi bara
+ ut geometrin:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi lägga till både punkter och linjer i samma graf kan vi bara ta 
+\family typewriter
+p
+\family default
+ och lägga till punkter.
+ Här blir det tydligt hur vi i 
+\family typewriter
+ggplot
+\family default
+ lägger till lager på lager och sedan producerar en visualisering:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- p + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+På samma sätt kan vi också lägga till rubriker och axelettiketter:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- p + xlab("Years") + ylab("Water level") + ggtitle("Nile series")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Enklare modifikationer av ett 
+\family typewriter
+ggplot
+\family default
+-objekt
+\end_layout
+
+\begin_layout Enumerate
+Vill vi ändra färg och form på olika delar i en graf behöver vi ange exakt
+ var dessa förändringar ska ske.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line(color="red",
+ size=3)+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_point(color="blue", size=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Om vi vill att färgen på någon del av grafen ska bero av en annan variabel
+ så behöver vi ändra 
+\family typewriter
+aes
+\family default
+ i den delen som berörs.
+ T.ex.
+ om vi vill att färgen på punkterna ska bero på en kategorisk variabel 
+\family typewriter
+cat_var
+\family default
+, så anger vi 
+\family typewriter
+geom_line(aes(color=cat_var))
+\family default
+.
+ Notera skillnaden om vi vill ha en 
+\begin_inset Quotes sld
+\end_inset
+
+fix
+\begin_inset Quotes srd
+\end_inset
+
+ färg, då vi anger 
+\family typewriter
+geom_line(color="red")
+\family default
+ utan att anävnda 
+\family typewriter
+aes
+\family default
+.
+ Nu ska färgen på vår graf ändras, skapa först en ny faktorvariabel.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile$period <- "- 1900" 
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile$period[Nile$years >= 1900] <- "1900 - 1945"
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile$period[Nile$years > 1945] <- "1945 + " 
+\end_layout
+
+\begin_layout Plain Layout
+
+Nile$period <- as.factor(Nile$period)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nu låter vi färgen på linjen bero på variabeln 
+\family typewriter
+period
+\family default
+ genom att ändra 
+\family typewriter
+aes
+\family default
+ på lämpligt ställe.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line(aes(color=period))
+ + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi istället modifiera punkterna lägger vi till det i 
+\family typewriter
+geom_point()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line() + geom_point(aes(co
+lor=period))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi lägga det i hela grafen kan vi lägga till färgen i den huvudsakliga
+ styrningen av aestetics i grafen.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level, color=period) + geom_line()
+ + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Baserat på graferna ovan pröva att göra följande 
+\begin_inset Quotes sld
+\end_inset
+
+fixa
+\begin_inset Quotes srd
+\end_inset
+
+ förändringar.
+ Alltså om ni ändrar typ av linje så ska typen vara samma för all data i
+ grafen.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Ändra typ av linje i grafen [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+linetype
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Ändra typ av punkter i grafen [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+shape
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Gör punkterna transparaenta [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+alpha
+\family default
+]
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Gå nu till dokumentationen för 
+\family typewriter
+geom_point()
+\family default
+ och 
+\family typewriter
+geom_line()
+\family default
+.
+ Läs under rubriken 
+\begin_inset Quotes sld
+\end_inset
+
+Aesthetics
+\begin_inset Quotes srd
+\end_inset
+
+ och ta reda på vilka mer saker som ni kan styra genom att ändra aes.
+ Testa nu att låta följande saker bero på variabeln 
+\family typewriter
+period
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Typen av linje i grafen 
+\end_layout
+
+\begin_layout Enumerate
+Typen av punkter i grafen 
+\end_layout
+
+\begin_layout Enumerate
+Punkternas storlek
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Lägga till räta linjer: Ibland vill vi lägga till räta linjer till plottar,
+ t.ex.
+ som referenslinjer.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-scale(1:100) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(4939) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-2+4*x+rnorm(n = 100) 
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-data.frame(x=x,y=y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+p<-ggplot(data = A,mapping = aes(x=x,y=y))+geom_point() 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_hline(yintercept=0,linetype=3) p+geom_hline(yintercept=-5:5,linetype=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_vline(xintercept=c(-1,0,1),linetype=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_abline(slope = 4,intercept = 2,linetype=2,col=
+\begin_inset Quotes srd
+\end_inset
+
+blue
+\begin_inset Quotes srd
+\end_inset
+
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_abline(slope = 4,intercept =2,linetype=1,size=1.5,col="red") 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_vline(xintercept=0,linetype=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_hline(yintercept=0,linetype=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi kan även lägga till regressionslinjer med hjälp av 
+\family typewriter
+geom_smooth()
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Linjär regression:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-scale(1:100) 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(4939) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-2+4*x+rnorm(n = 100,sd=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-data.frame(x=x,y=y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# anpassade värden från linjär regression:
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_smooth(method = lm, se = FALSE) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# med osäkerhetsband:
+\end_layout
+
+\begin_layout Plain Layout
+
+p+geom_smooth(method = lm, se = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Icke-linjär regression
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# linjär regression: 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(method = lm,se=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# icke-linjär regression: 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(method = loess,se=TRUE)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Barplot
+\end_layout
+
+\begin_layout Standard
+För att pröva dessa diagram använder vi oss av datamaterialet mtcars.
+ Vi börjar med att läsa in datamaterialet mtcars.
+ För att få mer information om detta datamaterial, använd 
+\family typewriter
+?mtcars
+\family default
+.
+ Vi gör också om ett par variabler:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(mtcars)
+\end_layout
+
+\begin_layout Plain Layout
+
+mtcars$cyl <- as.factor(mtcars$cyl)
+\end_layout
+
+\begin_layout Plain Layout
+
+mtcars$gear <- as.factor(mtcars$gear)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Till skillnad från basgrafiken använder vi inte olika funktioner för olika
+ plottar utan vi använder bara olika 
+\family typewriter
+geoms
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Stapeldiagram utgår från kategoriska variabler.
+ Vill vi exempelvis skapa ett stapeldiagram anger vi bara en axel och ett
+ annat geom, men i övrigt är det inge större skillnad mot en linjegraf:
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=mtcars) + aes(x=cyl) + geom_bar()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också enkelt lägga till funktionen 
+\family typewriter
+coord_flip()
+\family default
+ för att skapa ett liggande stapelidagram istälet för ett stående.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p + coord_flip()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skillnaden ligger i att det finns lite andra aestetics för stapeldiagram
+ än för övriga diagram som 
+\family typewriter
+fill
+\family default
+.
+ Läs under 
+\begin_inset Quotes sld
+\end_inset
+
+Aesthetics
+\begin_inset Quotes srd
+\end_inset
+
+ i dokumentationen för 
+\family typewriter
+geom_bar()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=mtcars) + aes(x=cyl) + geom_bar(fill="darkblue", colour="red")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att skapa stapeldiagram med flera grupper behöver vi dels lägga till
+ en till variabel som indikerar att vi vill ha ex.
+ olika färger för olika grupper samt ange hur dessa diagram ska se ut.
+ Pröva exemplen nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p1 <- ggplot(data=mtcars) + aes(x=cyl, fill=gear) + geom_bar(position="stack")
+\end_layout
+
+\begin_layout Plain Layout
+
+p2 <- ggplot(data=mtcars) + aes(x=cyl, fill=gear) + geom_bar(position="dodge")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p1 + scale_fill_discrete(name="Testa
+\backslash
+nDetta")
+\end_layout
+
+\begin_layout Plain Layout
+
+p1 + scale_fill_manual(values=c("black", "blue", "red"))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p2 + scale_fill_discrete(name="Testa
+\backslash
+nDetta")
+\end_layout
+
+\begin_layout Plain Layout
+
+p2 + scale_fill_manual(values=c("black", "blue", "red"))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Histogram
+\end_layout
+
+\begin_layout Enumerate
+När vi vill göra histogram så utgår vi ifrån en kontinuerlig variabel.
+ Om vi vill göra ett histogram så använder vi oss av 
+\family typewriter
+geom_histogram()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=mtcars) + aes(x=mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_histogram(fill="yellow", colour="red",binwidth=7) 
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_histogram(fill="yellow", colour="red",binwidth=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det går också att skapa histogram med 
+\family typewriter
+geom_bar()
+\family default
+, men det är bättre att använda 
+\family typewriter
+geom_histogram()
+\family default
+.
+ Den egentliga skillnaden mellan ett stapeldiagram och ett histogram är
+ bara huruvida variabeln är kontinuerlig eller inte.
+\end_layout
+
+\begin_layout Enumerate
+Ibland vill vi ha en relativ skala på y-axeln när vi gör histogram.
+ Detta kan göras med att lägga till 
+\family typewriter
+aes(y=..density..)
+\family default
+ Testa koden nedan.
+ Notera hur skalan på y-axeln ändras.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=mtcars) + aes(x=mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+p + geom_histogram(aes(y=..density..),fill="yellow", colour="red",binwidth=3)
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Density plots: Vi kan representera fördelningen över olika värden med histogram.
+ Vi kan tänka att den övre kanten av histogrammet är approxiamtion av en
+ underliggande täthetsfunktion.
+ Det finns statistika metoder som kan skatta den underliggande tätheten
+ (se t.ex.
+ funktionen 
+\family typewriter
+density()
+\family default
+).
+ Ibland vill vi plotta dessa täthetsfunktioner,och då kan vi använda geom_densit
+y().
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# skapa data:
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(4390) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+y<-c(rnorm(n = 1000,mean = 7,sd = 1),
+\end_layout
+
+\begin_layout Plain Layout
+
+rnorm(n = 200,mean = 4,sd = 0.1),
+\end_layout
+
+\begin_layout Plain Layout
+
+rgamma(n = 2000,shape = 1,rate = 1))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Y<-data.frame(var1=y) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# vanligt histogram:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1,y=..density..))+geom_histogram(,binwidth = 0.3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# density plots:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density() 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density(adjust=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density(adjust=0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density(adjust=1.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# fler ex:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density(adjust=0.1,alpha=0.5,fill="red")
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1))+geom_density(adjust=0.1,alpha=0.1,fill="blue")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# kombinera:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = Y,aes(x=var1,y=..density..))+geom_histogram(,binwidth = 0.3)+geom_densi
+ty(adjust=0.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utgå från irisdata.
+ Gör ett histogram för varje numerisk variabel.
+ Ändra 
+\family typewriter
+binwidth
+\family default
+ så att figuerna ser bra ut.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Boxplot
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Boxplottar"
+target "https://sv.wikipedia.org/wiki/L%C3%A5dagram"
+literal "false"
+
+\end_inset
+
+ kan användas när vi vill plotta en kontinuerlig variabel eller när vi vill
+ gruppera en kontinuerlig efter en kategorisk variabel.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+En kontinuerlig variabel:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE, fig.height=4, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+?chickwts 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = chickwts,aes(y=weight))+geom_boxplot(fill="green") 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,aes(y=Sepal.Length))+geom_boxplot(fill="yellow")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gruppera:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = chickwts,aes(y=weight,x=feed))+geom_boxplot(fill="green")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,aes(y=Sepal.Length,x=Species))+geom_boxplot(fill="yellow")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Vi kan sen lägga till fler lager till våra plottar.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=mtcars,aes(x=cyl, y=mpg)) + geom_boxplot()
+\end_layout
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\begin_layout Plain Layout
+
+p + coord_flip() + xlab("X") + ggtitle("Hejsan") 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Grafiska teman/profiler 
+\end_layout
+
+\begin_layout Standard
+En av de stora fördelarna med att ggplot skiljer ut själva plotten från
+ utseendet är att det är enkelt att skapa strukturer för olika delar av
+ en graf som vi vill använda flera gånger.
+ En av de bästa exemplen på detta är teman i 
+\family typewriter
+ggplot
+\family default
+.
+ Ett tema är en uppsättning med inställningar för en grafisk profil som
+ vi vill använda i 
+\family typewriter
+ggplot2
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Den stora fördelen är att har vi väl skapat ett tema (vilket kan ta lite
+ tid) kan temat läggas till mycket enkelt till samtliga grafer.
+ Detta underlättar kopplingen mellan exempelvis grafiska profiler och de
+ grafer som produceras, vilket gör att 
+\family typewriter
+ggplot2
+\family default
+ är mycket populärt i företag och organisationer.
+ Ett exempel på rapport som använder 
+\family typewriter
+ggplot2
+\family default
+ genomgående är Pensionsmyndighetens 
+\begin_inset CommandInset href
+LatexCommand href
+name "Orange rapport"
+target "https://www.pensionsmyndigheten.se/om-pensionsmyndigheten/vart-uppdrag-och-organisation/arsredovisningar"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Med 
+\family typewriter
+ggplot2
+\family default
+ kommer en del teman förinstallerade och precis som allt annat i R är det
+ enkelt att bara lägga till den grafiska profilen efter att vi skapat en
+ graf.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.height=2.5, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line() + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\begin_layout Plain Layout
+
+p <- p + theme_bw()
+\end_layout
+
+\begin_layout Plain Layout
+
+p
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Pröva på liknande sätt följande teman: 
+\family typewriter
+theme_grey()
+\family default
+, 
+\family typewriter
+theme_classic()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Ett tema i 
+\family typewriter
+ggplot2
+\family default
+ är bara en funktion, så det är enkelt att titta på hur temat ser ut och
+ sedan utgå från ett befintligt tema för att anpassa det till det utseende
+ vi själva vill ha.
+ Sedan kan detta tema enkelt spridas till alla som arbetar med visualisering
+ med 
+\family typewriter
+ggplot
+\family default
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+theme_bw
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Att ändra den grafiska profilen innebär då bara att ändra denna temafunktion
+ (även om det kan innebära en del jobb).
+\end_layout
+
+\begin_layout Enumerate
+Det finns också ett separat R-paket med ett antal vanliga teman kallat 
+\family typewriter
+ggthemes
+\family default
+.
+ De olika teman som är installerade i 
+\family typewriter
+ggtheme
+\family default
+s framgår 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+Med dessa går det enkelt att skapa olika färgsättningar för samma graf.
+ I 
+\family typewriter
+ggtheme
+\family default
+s-paketet finns också färgpaletter som passar bra för personer som är färgblinda.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.height=2.5, fig.width=4, fig.align='center'>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggthemes)
+\end_layout
+
+\begin_layout Plain Layout
+
+p + theme_excel()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + theme_economist()
+\end_layout
+
+\begin_layout Plain Layout
+
+p + theme_tufte()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Kombinera plottar
+\end_layout
+
+\begin_layout Subsection
+facet_grid()
+\end_layout
+
+\begin_layout Standard
+Det finns olika sätt att kombinera flera plottar eller skapa subplots med
+ ggplot2.
+ Ett sätt är att använda 
+\family typewriter
+facet_grid()
+\family default
+.
+ 
+\family typewriter
+facet_grid()
+\family default
+ är bra när vi vill skapa subplots baserat på olika kategoriska variabler
+ i datasetet.
+ 
+\end_layout
+
+\begin_layout Enumerate
+\noindent
+
+\family typewriter
+facet_grid()
+\family default
+ utgår från ett formelobjekt, som kommer att styra hur våra subplottar skapas.
+ Låt 
+\family typewriter
+var1
+\family default
+ och 
+\family typewriter
+var2
+\family default
+ vara två kategoriska variabler i vår data.frame med minst två unika värden.
+ Beroende på hur vi definerar formelobjektet så kommer 
+\family typewriter
+facet_grid()
+\family default
+ att dela upp data i olika delar och skapa samma sorts plot men för olika
+ delmängder av data i de olika delplottarna.
+ Nedan följer exempel på hur formelobjeten kan skapas
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\family typewriter
+var1~.
+
+\family default
+ skapar rader med plottar där data delas upp baserat på värdena i 
+\family typewriter
+var1
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+.~var1
+\family default
+ skapar kolumner med plottar där data delas upp baserat på värdena i 
+\family typewriter
+var1
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+var1~var2
+\family default
+ skapar rader och kolumner med plottar där data delas upp baserat på värdena
+ i både 
+\family typewriter
+var1
+\family default
+ och 
+\family typewriter
+var2
+\family default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Utgå från Iris-data.
+ Vi vill gör subplots baserat på variablen 
+\begin_inset Quotes sld
+\end_inset
+
+species
+\begin_inset Quotes srd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Vi börjar med att göra histogram över variabeln 
+\begin_inset Quotes sld
+\end_inset
+
+Sepal.Length
+\begin_inset Quotes srd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# all data i samma plot:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = Sepal.Length)) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_histogram(binwidth = 0.2,fill="green",col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# kolumner: 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = iSepal.Length)) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_histogram(binwidth = 0.2,fill="green",col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(.~Species) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# rader: 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = Sepal.Length))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_histogram(binwidth = 0.2,fill="green",col="black") 
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(Species~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nu vill vi göra scatter plots mellan 
+\begin_inset Quotes sld
+\end_inset
+
+Sepal.Length
+\begin_inset Quotes srd
+\end_inset
+
+ och 
+\begin_inset Quotes sld
+\end_inset
+
+Sepal.Width
+\begin_inset Quotes srd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# all data i samma plot:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = Sepal.Length,y=Sepal.Width)
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# rader: 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = Sepal.Length,y=Sepal.Width)) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=3)+facet_grid(Species~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# med regressionslinje:
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = iris,mapping = aes(x = Sepal.Length,y=Sepal.Width)) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=3)+facet_grid(Species~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_smooth(method = lm,se=FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Nedan följer några exempel med mpg-data.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+mpg<-as.data.frame(mpg) 
+\end_layout
+
+\begin_layout Plain Layout
+
+head(mpg) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=1)
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(cyl~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=1)
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(cyl~drv) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=0.8)
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(trans~class) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+cowplot
+\end_layout
+
+\begin_layout Standard
+Ibland vill vi kombinera godtyckliga plottar till subplottar.
+ Detta kan göras med paket cowplot.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Vill vi skapa subplots så använder vi funktionen 
+\family typewriter
+plot_grid()
+\family default
+.
+ Kolla i dokumentationen för 
+\family typewriter
+plot_grid()
+\family default
+.
+ Anta att vi har sparat tre ggplot2-objekt som vi kallar 
+\family typewriter
+p1
+\family default
+, 
+\family typewriter
+p2
+\family default
+ och 
+\family typewriter
+p3
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Alternativ 1: Skriv in alla plot-objekt direkt som objekt 
+\family typewriter
+plot_grid(p1,p2,p3)
+\family default
+.
+ Detta är ofta smidigt om vill skapa enstaka plottar med subplots.
+\end_layout
+
+\begin_layout Enumerate
+Alternativ 2: Lägg alla plottarna i en lista 
+\family typewriter
+plot_grid(plotlist=list(p1,p2,p3)
+\family default
+).
+ Detta är ofta avnändbart om vi vill använda i 
+\family typewriter
+plot_grid()
+\family default
+ en loop eller en funktion.
+ Andra fall då 
+\family typewriter
+plotlist=
+\family default
+ är bra är om mängden plottar eller deras namn varierar.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skapa först några ggplot2-objekt och spara dessa.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+library(cowplot) 
+\end_layout
+
+\begin_layout Plain Layout
+
+mpg<-as.data.frame(mpg) 
+\end_layout
+
+\begin_layout Plain Layout
+
+head(mpg)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p0<-ggplot(data = mpg,mapping = aes(x =  cty ))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_histogram(binwidth = 2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p1<-ggplot(data = mpg,mapping = aes(x =  cty ,y=hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p2<-ggplot(data = mpg,mapping = aes(x =  cty ,y=hwy)) 
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=1)
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid( cyl~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p3<-ggplot(data = mpg,mapping = aes(x =  cty ,y=hwy))
+\end_layout
+
+\begin_layout Plain Layout
+
++ geom_point(size=0.8)
+\end_layout
+
+\begin_layout Plain Layout
+
++ facet_grid(drv ~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nu sätter vi samman dessa plottar:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(p0,p1)
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(p1,p0)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+g1<-plot_grid(p3,p1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+print(g1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(p0,p1,nrow = 1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(p0,p1,nrow = 2,labels = "AUTO") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(p0,p1,nrow = 2,labels = c("ABC","123"))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+p_list<-list(p0,p1,p2,p3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+plot_grid(plotlist = p_list,nrow = 2,ncol = 2,labels = "AUTO") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Skapa nu minst tre plottar baserat på iris-data som ni sätter ihop med 
+\family typewriter
+plot_grid()
+\family default
+.
+\end_layout
+
+\begin_layout Section
+Mer övningar
+\end_layout
+
+\begin_layout Standard
+Det finns en stor mängd guider och introduktioner till ggplot2 på internet.
+ Nedan följer några tips om ni vill öva mer:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "R Graphics Cookbook, 2nd edition"
+target "https://r-graphics.org/"
+literal "false"
+
+\end_inset
+
+: Finns kaptiel för olika typer av plottar t.ex.
+ Bar Graph.
+ Här finns mycket information om hur ni kan kontrollera detaljer i plottarna.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "An Introduction to ggplot2"
+target "https://uc-r.github.io/ggplot_intro"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "3 Data visualisation"
+target "https://r4ds.had.co.nz/data-visualisation.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "28 Graphics for communication"
+target "https://r4ds.had.co.nz/graphics-for-communication.html"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Enklare statistisk analys
+\end_layout
+
+\begin_layout Section
+Enklare statistiska metoder mm
+\end_layout
+
+\begin_layout Subsection
+Kombinatorik
+\end_layout
+
+\begin_layout Enumerate
+Det finns inbyggda funktioner i R för kombinatorik.
+ Testa att köra 
+\family typewriter
+?Special
+\family default
+.
+ Leta reda på 
+\family typewriter
+factorial()
+\family default
+ och 
+\family typewriter
+choose()
+\family default
+ och läs om dem.
+\end_layout
+
+\begin_layout Enumerate
+Faktulet: Beräkna nu 
+\begin_inset Formula $3!$
+\end_inset
+
+, 
+\begin_inset Formula $6!$
+\end_inset
+
+, och 
+\family typewriter
+
+\begin_inset Formula $12!$
+\end_inset
+
+
+\family default
+ med funktionen 
+\family typewriter
+factorial()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset CommandInset href
+LatexCommand href
+name "Binomialkoefficienter"
+target "https://sv.wikipedia.org/wiki/Binomialkoefficient"
+literal "false"
+
+\end_inset
+
+: Räkna nu ut följande 
+\begin_inset Formula $\left(\begin{array}{c}
+10\\
+2
+\end{array}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\begin{array}{c}
+4\\
+2
+\end{array}\right)$
+\end_inset
+
+och 
+\begin_inset Formula $\left(\begin{array}{c}
+20\\
+5
+\end{array}\right)$
+\end_inset
+
+med funktionen 
+\family typewriter
+choose()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Skapa nu en egen funktion för binomialkoefficienter utan att använda 
+\family typewriter
+choose()
+\family default
+.
+ Tips 
+\family typewriter
+?factorial()
+\end_layout
+
+\begin_layout Enumerate
+Nu ska ni implementera en funktion som ska beräkna täthetsfunktionen för
+ för binomialfördelningen.
+ Titta i 
+\family typewriter
+?dbinom
+\family default
+ eller 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://sv.wikipedia.org/wiki/Binomialf%C3%B6rdelning"
+literal "false"
+
+\end_inset
+
+ och se hur tätheten ska beräknas.
+ Ni kan sedan använda 
+\family typewriter
+dbinom()
+\family default
+ för att se om funktionen räknar rätt.
+ Testa med några olika värden för 
+\family typewriter
+n
+\family default
+ och 
+\family typewriter
+p
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Korstabulering och 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-tester
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att läsa in det interna datasetet 
+\family typewriter
+iris
+\family default
+ med 
+\family typewriter
+data(iris)
+\family default
+ i R.
+ Vi ska nu använda detta dataset för att pröva att analysera data i R.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(iris)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Som ett första steg vill vi pröva att producera korstabeller.
+ I 
+\family typewriter
+iris
+\family default
+ finns bara en kategorisk variabel, därför klassindelar vi två kontinuerliga
+ variabler på följande sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+iris$Petal.Length.Cat <- cut(iris$Petal.Length, breaks=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+iris$Sepal.Length.Cat <- cut(iris$Sepal.Length, breaks=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att skapa en korstabell på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+table(iris$Petal.Length.Cat, iris$Species)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+När vi vill använda flera kategoriska variabler är 
+\family typewriter
+ftable()
+\family default
+ lämpligt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ftable(iris$Petal.Length.Cat, iris$Sepal.Length.Cat, iris$Species)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+För att göra ett 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test använder vi funktionen 
+\family typewriter
+chisq.test()
+\family default
+.
+ Funktionen behöver en tabell att testa, så vi skapar och sparar tabellen
+ ovan och testar den sedan..
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+tab <- table(iris$Petal.Length.Cat, iris$Species)
+\end_layout
+
+\begin_layout Plain Layout
+
+chisq.test(tab)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Om vi tittar på tabellen ovan är det många värden som är 0 (d.v.s.
+ mindre än 5).
+ Då behöver vi korrigera vårt test med 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Yates korrektion"
+target "http://en.wikipedia.org/wiki/Yates%27s_correction_for_continuity"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ Detta kan vi göra i R genom att lägga till argumentet 
+\family typewriter
+correct=TRUE
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+chisq.test(tab, correct=TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ett annat sätt är att använda 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "Fishers exakta test"
+target "http://en.wikipedia.org/wiki/Fisher%27s_exact_test"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+ istället.
+ Det görs på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+fisher.test(tab)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+t-test
+\end_layout
+
+\begin_layout Enumerate
+Vill vi jämföra två grupper avseende en kontinuerlig variabel använder vi
+ funktionen 
+\family typewriter
+t.test()
+\family default
+.
+ Inledningvis kan vi testa om 
+\family typewriter
+Sepal.Length
+\family default
+ för 
+\family typewriter
+iris
+\family default
+ versicolor är mindre 6.
+ Vi börjar med att plocka ut elementen för de olika arterna:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+versLength <- iris$Sepal.Length[iris$Species=="versicolor"]
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(x=versLength, alternative="greater", mu=6)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Om vi nu vill testa om skillnaden mellan två blomsterarter är olika anger
+ vi två vektorer, en för varje art:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+virginLength <- iris$Sepal.Length[iris$Species=="virginica"]  
+\end_layout
+
+\begin_layout Plain Layout
+
+t.test(x=versLength, y=virginLength)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sambandsmått
+\end_layout
+
+\begin_layout Standard
+För att studera samband mellan två eller flera kontinuerliga variabler studerar
+ vi ofta korrelation och kovarians.
+\end_layout
+
+\begin_layout Enumerate
+För att beräkna kovarians och korrelation används 
+\family typewriter
+cov()
+\family default
+ och 
+\family typewriter
+cor()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cor(iris$Petal.Length, iris$Petal.Width) 
+\end_layout
+
+\begin_layout Plain Layout
+
+cov(iris$Petal.Length, iris$Petal.Width)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också enkelt skapa kovarians- och korrelationsmatriser på samma sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cor(iris[,1:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+cov(iris[,1:4])
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi göra ett enkelt hypotestest för korrelationen använder vi 
+\family typewriter
+cor.test()
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+cor.test(iris$Petal.Length, iris$Petal.Width)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Beskrivande statistik
+\end_layout
+
+\begin_layout Enumerate
+Hitta det hösta och minsta värdet i 
+\family typewriter
+iris
+\family default
+ (för alla variabler).
+ Ta reda på vilken rad dessa värden finns på med relationsoperatorn == och
+ 
+\family typewriter
+which.max()
+\family default
+.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Beräkna medelvärden för alla kolumnerna med 
+\family typewriter
+colMeans()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna nu kvartiler för 
+\family typewriter
+Petal.Width
+\family default
+ med funktionen 
+\family typewriter
+quantiles()
+\family default
+.
+ Beräkna den 1 och 99 procentiga percentilen? [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+?quantile]
+\end_layout
+
+\begin_layout Enumerate
+Beräkna nu kvartiler för samtliga variabler.
+\end_layout
+
+\begin_layout Enumerate
+Testa nu att använda funktionen 
+\family typewriter
+summary()
+\family default
+ på 
+\family typewriter
+Petal.Width
+\family default
+ först och sedan på hela datasetet.
+ Vad får du för resultat?
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skapa en logisk vektor som anger om en variabeln 
+\family typewriter
+Petal.Width
+\family default
+ är större än 2.
+ Spara denna variabel som 
+\family typewriter
+small
+\family default
+ på följande sätt.
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+table()
+\family default
+ för att se vilka arter (variabeln 
+\family typewriter
+Species
+\family default
+) som är 
+\family typewriter
+small
+\family default
+.
+\end_layout
+
+\begin_layout Section
+* Extraproblem
+\end_layout
+
+\begin_layout Enumerate
+Skapa en funktion som beräknar värdet på en 
+\begin_inset CommandInset href
+LatexCommand href
+name "hypergeometrisk fördelning"
+target "https://sv.wikipedia.org/wiki/Hypergeometrisk_f%C3%B6rdelning"
+literal "false"
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skapa en funktion som beräknar värdet på en 
+\begin_inset CommandInset href
+LatexCommand href
+name "Geometrisk fördelning"
+target "https://sv.wikipedia.org/wiki/Geometrisk_f%C3%B6rdelning"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Pokerhänder: Räkna ut sannolikheten för ett par, triss och 
+\begin_inset Quotes sld
+\end_inset
+
+Royal flush
+\begin_inset Quotes srd
+\end_inset
+
+ i en pokerhand på 5 kort.
+ Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://en.wikipedia.org/wiki/Poker_probability#Frequency_of_5-card_poker_hands"
+literal "false"
+
+\end_inset
+
+ för mer info.
+\end_layout
+
+\begin_layout Enumerate
+I vissa fall vill vi simulera data från en given sannolikhetsmodell.
+ Det kan exempelvis vara en linjär modell som ser ut på följande sätt:
+\begin_inset Formula 
+\[
+y_{i}=\alpha+\beta x_{i}+\epsilon_{i}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\epsilon_{i}\sim\mathcal{N}(0,\sigma)$
+\end_inset
+
+.
+ Detta görs enklast i flera steg.
+ I detta fall simulerar jag även 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ samt sätter 
+\begin_inset Formula $\alpha=2,\beta=4,\sigma=1$
+\end_inset
+
+ och 
+\begin_inset Formula $n=100$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+alpha <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+beta <- 4
+\end_layout
+
+\begin_layout Plain Layout
+
+sigma <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 100
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rnorm(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- alpha + beta*x + rnorm(n, sd=sigma)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Kör koden ovan och visualisera det simulerade datamaterialet i ett spridningsdia
+gram [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+ggplot()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Pröva lite olika värden för 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, 
+\begin_inset Formula $\beta$
+\end_inset
+
+ och 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ och visualisera de olika datamaterialen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Nu ska vi utöka modellen oven till: 
+\begin_inset Formula $y_{i}=\alpha+\beta_{1}x_{i}+\beta_{2}x_{i}^{2}+\epsilon_{i}$
+\end_inset
+
+ Kör koden nedan.Testa nu att ändra 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{1}$
+\end_inset
+
+, 
+\begin_inset Formula $\beta_{2}$
+\end_inset
+
+ och 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ Testa att ändra värdet på 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ på ett sådant sätt att den kvadratiska sambandet blir väl synligt och blir
+ svårt att se.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+alpha <- 2
+\end_layout
+
+\begin_layout Plain Layout
+
+beta <- c(2,4)
+\end_layout
+
+\begin_layout Plain Layout
+
+sigma <- 1
+\end_layout
+
+\begin_layout Plain Layout
+
+n <- 100
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- rnorm(n)
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- alpha + beta[1]*x+beta[2]*x^2 + rnorm(n, sd=sigma)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Housing data
+\end_layout
+
+\begin_layout Enumerate
+Ni ska nu analysera datamaterialet HUS, som innehåller information om en
+ mängd hus.
+ Följande variabler finns i data:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Försäljningspris (dollar)
+\end_layout
+
+\begin_layout Itemize
+Bostadsyta (kvadratfot)
+\end_layout
+
+\begin_layout Itemize
+Antal sovrum
+\end_layout
+
+\begin_layout Itemize
+Antal badrum
+\end_layout
+
+\begin_layout Itemize
+Förekomst av luftkonditionering, 1 = luftkonditionering finns, 0 annars
+\end_layout
+
+\begin_layout Itemize
+Antal bilar som garaget är konstruerat för
+\end_layout
+
+\begin_layout Itemize
+Förekomst av pool, 1 = pool finns, 0 annars
+\end_layout
+
+\begin_layout Itemize
+Byggår 
+\end_layout
+
+\begin_layout Itemize
+Tomtstorlek (kvadratfot) 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Läs in datamaterialet 
+\begin_inset Quotes eld
+\end_inset
+
+HUS.csv
+\begin_inset Quotes erd
+\end_inset
+
+ och spara det som 
+\family typewriter
+HUS
+\family default
+.
+ Det finns även ett dataset 
+\begin_inset Quotes eld
+\end_inset
+
+HUS_eng.csv
+\begin_inset Quotes erd
+\end_inset
+
+, som har engelska namn på variablerna men innehåller samma data.
+ Materialet finns att tillgå 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://github.com/MansMeg/KursRprgm/tree/master/Labs/DataFiles"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Enumerate
+Gör följande med 
+\family typewriter
+HUS
+\family default
+.
+ Använd ggplot2 för att skapa figurerna.
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Plotta en boxplot över variabeln 
+\family typewriter
+Försäljningspris.
+
+\family default
+ Ta fram besrkivande statistik med 
+\family typewriter
+summary()
+\family default
+ för 
+\family typewriter
+Försäljningspris.
+
+\family default
+ Det verkar finnas en del outliers (extremt stora värden), dessa vill vi
+ ta bort från data, kör följande kod:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# ta bort alla hus som har pris större än 3:e kvartilen:
+\end_layout
+
+\begin_layout Plain Layout
+
+index<-HUS[,1]<quantile(HUS[,1])[4] 
+\end_layout
+
+\begin_layout Plain Layout
+
+HUS<-HUS[index,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Plotta ett histogram för 
+\family typewriter
+Försäljningspris
+\family default
+, (bonusfråga: ser fördelningen symmetrisk ut?)
+\end_layout
+
+\begin_layout Enumerate
+Gör en scatter plot mellan 
+\family typewriter
+Försäljningspris
+\family default
+ och 
+\family typewriter
+Bostadsyta
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Låt färgen på punkterna bero på värdet på 
+\family typewriter
+Antal.sovrum
+\end_layout
+
+\begin_layout Enumerate
+Låt färgen på punkterna bero på värdet på 
+\family typewriter
+Luftkonditionering
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+facet_grid()
+\family default
+ för att skapa subplots som beror på värdet på 
+\family typewriter
+Luftkonditionering.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Beräkna ett tvåsidigt konfidensintervall (KI) med 
+\begin_inset Formula $\alpha=0.05$
+\end_inset
+
+ för 
+\family typewriter
+Försäljningspris
+\family default
+ (tips 
+\family typewriter
+?t.test()
+\family default
+ ) spara i 
+\family typewriter
+testPris.
+\end_layout
+
+\begin_layout Enumerate
+Välj ut KI från 
+\family typewriter
+testPris
+\family default
+.
+ tips: 
+\family typewriter
+?t.test()
+\family default
+ och läs under rubriken 
+\begin_inset Quotes eld
+\end_inset
+
+Value
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Kör sedan 
+\family typewriter
+str(testPris).
+
+\family default
+ Testa 
+\family typewriter
+class(testPris)
+\end_layout
+
+\begin_layout Enumerate
+Beräkna ett tvåsidigt KI med 
+\begin_inset Formula $\alpha=0.10$
+\end_inset
+
+ för 
+\family typewriter
+Försäljningspris
+\end_layout
+
+\begin_layout Enumerate
+Beräkna ett enkelsidigt (undre) KI med 
+\begin_inset Formula $\alpha=0.01$
+\end_inset
+
+ för 
+\family typewriter
+Försäljningspris
+\end_layout
+
+\begin_layout Enumerate
+Kör koden nedan, vad blir resutlatet? Hur ska medelvärdet för variabeln
+ 
+\family typewriter
+Luftkonditionering
+\family default
+ tolkas?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(HUS)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skapa följande frekvenstabeller från HUS (tips: 
+\family typewriter
+?table()
+\family default
+ )
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+För 
+\family typewriter
+Antal.sovrum
+\end_layout
+
+\begin_layout Enumerate
+För 
+\family typewriter
+Luftkonditionering
+\end_layout
+
+\begin_layout Enumerate
+Mellan variablerna 
+\family typewriter
+Antal.sovrum
+\family default
+ och 
+\family typewriter
+Luftkonditionering
+\family default
+, spara som 
+\family typewriter
+sovLuftTab.
+ Testa class(sovLuftTab)
+\end_layout
+
+\begin_layout Enumerate
+Mellan variablerna 
+\family typewriter
+Antal.sovrum
+\family default
+ och 
+\family typewriter
+Antal.badrum
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Kör 
+\family typewriter
+prop.table(sovLuftTab)
+\family default
+ och 
+\family typewriter
+prop.table(sovLuftTab,margin=1)
+\family default
+.
+ Vad händer med tabellen?
+\end_layout
+
+\begin_layout Enumerate
+Beräkna fishers exakta test för tabellen 
+\family typewriter
+sovLuftTab
+\family default
+, använd 
+\series bold
+
+\begin_inset Formula $\alpha=0.05$
+\end_inset
+
+,
+\series default
+ vad är noll-hypotesen? Kan vi förkasta den? (tips: 
+\family typewriter
+?fisher.test
+\family default
+() ) 
+\end_layout
+
+\begin_layout Enumerate
+Antag att variablen 
+\family typewriter
+Försäljningspris
+\family default
+ representerar en hel population med hus.
+ Dra ett slumpmässigt stickprov med 20 hus utan återläggning.
+ Beräkna ett tvåsidigt KI (
+\begin_inset Formula $\alpha=0.01$
+\end_inset
+
+) utifrån stickprovet för populationsmedelvärdet.
+\end_layout
+
+\begin_layout Enumerate
+Antag nu att hela datasetet HUS är alla hus i en population.
+ Dra ett stickprov slumpmässigt (dvs välj rader) på 40 hus utan återläggning.
+ Gör följande beräkningar utifrån stickprovet:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Numeriska variaber: Beräkna ett tvåsidigt KI med 
+\begin_inset Formula $\alpha=0.01$
+\end_inset
+
+ för populationsmedelvärdet.
+\end_layout
+
+\begin_layout Enumerate
+Binära(0/1) variaber: Beräkna ett tvåsidigt KI med 
+\begin_inset Formula $\alpha=0.01$
+\end_inset
+
+ för populationsandelen.
+ Tips: 
+\family typewriter
+?prop.test(), ?table()
+\end_layout
+
+\end_deeper
+\begin_layout Chapter
+Frivillig fördjupning: Introduktion till linjär regression
+\end_layout
+
+\begin_layout Standard
+Denna laboration kommer inte gå in i teorin bakom (multipel) linjär regression
+ utan kommer fokusera hur man anpassar regressionmodeller, analyserar resultatet
+ och gör diagnostiska tester i R.
+\end_layout
+
+\begin_layout Section
+Anpassa en regressionsmodell
+\end_layout
+
+\begin_layout Standard
+Den vanliga regressionmodellen bygger på modellen
+\begin_inset Formula 
+\begin{equation}
+y_{i}=\beta_{0}+\beta_{1}x_{1}+...+\beta_{p}x_{p}+\epsilon_{i}\label{eq:lm eq}
+\end{equation}
+
+\end_inset
+
+eller med matrisnotation
+\begin_inset Formula 
+\[
+\mathbf{y}=\mathbf{B}\mathbf{x}+\mathbf{\epsilon}
+\]
+
+\end_inset
+
+där 
+\begin_inset Formula $\epsilon\sim\mathcal{N}(\mathbf{0},\sigma^{2})$
+\end_inset
+
+ där de okända parametrarna är 
+\begin_inset Formula $\beta$
+\end_inset
+
+ samt 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ i modellen och baserat på våra data vill vi uppskatta dessa parametrar.
+ 
+\end_layout
+
+\begin_layout Standard
+I R (och till skillnad mot de flesta statistikprogram) skiljer vi på att
+ anpassa (eller skatta) en modell och studera resultatet från modellen eller
+ använda den för ex.
+ prediktion.
+ För att anpassa en modell använder vi funktionen 
+\family typewriter
+lm()
+\family default
+.
+ Det gör att vi kan anpassa en linjär modell och sedan spara den som ett
+ vanligt R-objekt.
+ Sedan kan vi studera detta objekt på ett stort antal sätt, skriva egna
+ funktioner för specifik analys, eller för att grafiskt visualisera modellen.
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att läsa in datasetet 
+\family typewriter
+Prestige
+\family default
+ som finns i paketet 
+\family typewriter
+car
+\family default
+ .
+ Vi behöver också paketet 
+\family typewriter
+MASS
+\family default
+.
+ Installera dessa paket om du inte har dem installerade.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(car)
+\end_layout
+
+\begin_layout Plain Layout
+
+data(Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Läs på kort om de variabler som finns i datasetet med 
+\family typewriter
+?Prestige
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Börja med att visualisera sambandet mellan 
+\family typewriter
+prestige
+\family default
+ och 
+\family typewriter
+income
+\family default
+.
+ [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+plot()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Vi ska nu anpassa vår första linjära regressionsmodell.
+ För att anpassa en modell i R behöver vi ange två saker, dels en 
+\family typewriter
+formula
+\family default
+ som beskriver hur modellen ser ut, och sedan vilket dataset som innehåller
+ variablerna vi vill ha i vår modell.
+ För att anpassa en linjär regression med inkomst som oberoende variabel
+ gör vi på följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell <- lm(prestige ~ income, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Om vi tittar på det resulterande objektet ser vi regressionskoefficienternas
+ värden.
+ Detta är bra för en snabb koll, men senare kommer vi gå in mer på hur vi
+ kan få ut mer utförliga resultat.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+prestige ~ income
+\family default
+ är ett objekt av klass 
+\family typewriter
+fomula
+\family default
+.
+ 
+\family typewriter
+fomula
+\family default
+-objekt används i många funktioner i R för att specificera statistiska modeller
+ på ett flexibelt sätt.
+ Testa att köra 
+\family typewriter
+class(prestige ~ income)
+\family default
+ och 
+\family typewriter
+str(prestige ~ income)
+\family default
+.
+ Likt andra objekt kan 
+\family typewriter
+fomula
+\family default
+-objekt sparas och manipuleras.
+ Kör koden nedan.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x<-prestige ~ income
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell <- lm(x, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det går också att bara ange vektorer (de behöver inte heller ligga i samma
+ 
+\family typewriter
+data.frame
+\family default
+):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell2 <- lm(Prestige$prestige ~ Prestige$income)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vill vi lägga till flera variabler (andel kvinnor, utbildning) gör vi på
+ följande sätt:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell3 <- lm(prestige ~ income + women + education, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi kan på detta sätt enkelt lägga till ett stort antal variabler.
+ Som standard så inkluderas alltid en intercept (
+\begin_inset Formula $\beta_{0}$
+\end_inset
+
+ i 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:lm eq"
+
+\end_inset
+
+) i modellen, vill vi ta bort denna använder lägger vi till 
+\family typewriter
+-1
+\family default
+:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell4 <- lm(prestige ~ income + women - 1, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Nu kommer också fördelarna med att ha definierat faktorvariabler.
+ Lägger vi in en faktorvariabel förstår R detta automatiskt och 
+\begin_inset Quotes eld
+\end_inset
+
+under the hood
+\begin_inset Quotes erd
+\end_inset
+
+ skapas 
+\begin_inset CommandInset href
+LatexCommand href
+name "dummyvariabler"
+target "https://en.wikipedia.org/wiki/Dummy_variable_%28statistics%29"
+literal "false"
+
+\end_inset
+
+ för vilka koefficienter skattas.
+ Dummyvariabler kommer att förklaras närmare i senare kurser om regression.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell5 <- lm(prestige ~ income + type, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Till sist kan det vara så att vi vill lägga till 
+\begin_inset CommandInset href
+LatexCommand href
+name "interaktionseffekter"
+target "https://en.wikipedia.org/wiki/Interaction_(statistics)"
+literal "false"
+
+\end_inset
+
+ i modellen.
+ Detta görs enkelt med 
+\family typewriter
+:
+\family default
+ på följande sätt (detta inkluderar både additiva och multiplikativa effekter):
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minModell6 <- lm(prestige ~ income:women, data=Prestige)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Analysera resultatet från en linjär regression
+\end_layout
+
+\begin_layout Standard
+Nu har vi anpassat (och smygtittat på) lite olika modeller baserat på datasetet
+ 
+\family typewriter
+Prestige
+\family default
+.
+ Vi ska nu studera de resultat vi fått lite mer.
+ Nu har vi stor nytta av R:s objektorienterade uppbyggnad och generiska
+ funktioner.
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att använda funktionen 
+\family typewriter
+summary()
+\family default
+.
+ Se exemplet nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+summary(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Med denna får vi en sammanfattning av de flesta resultat i modellanpassningen.
+ Pröva denna funktion på 
+\family typewriter
+minModell3
+\family default
+.
+ Hitta följande storheter i sammanfattningen av modellen:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\beta$
+\end_inset
+
+, 
+\begin_inset Formula $\sigma$
+\end_inset
+
+, 
+\begin_inset Formula $R^{2}$
+\end_inset
+
+, 
+\begin_inset Formula $F$
+\end_inset
+
+-statistikan samt p-värdena för de olika 
+\begin_inset Formula $\beta$
+\end_inset
+
+-koefficienterna.
+\end_layout
+
+\begin_layout Enumerate
+Pröva att analysera modell 5 och 6 på samma sätt.
+ Hur ser en kategorisk variabel samt interaktionseffekter ut i R?
+\end_layout
+
+\begin_layout Enumerate
+Funktionen 
+\family typewriter
+summary()
+\family default
+ ger en bra bild av resultatet, men vi vill ofta också studera en ANOVA-tabell
+ för vår modells ingående variabler.
+ För detta används funktionen 
+\family typewriter
+anova()
+\family default
+.
+ Pröva den på modellerna 3, 5 och 6.
+\end_layout
+
+\begin_layout Enumerate
+De flesta (icke-bayesianska) statistiker och forskare är mycket förtjusta
+ i p-värden.
+ För att få ut p-värden till ANOVA-tabellen använder vi oss av argumentet
+ 
+\family typewriter
+test='Chisq'
+\family default
+.
+ Pröva att på detta sätt testa för variabler i modell 5.
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också inkludera flera modeller i en ANOVA-tabell.
+ Vad ger det för resultat?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+anova(minModell, minModell3, test="Chisq")
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Använda parametrar och resultat för vidare analys
+\end_layout
+
+\begin_layout Standard
+Vill vi använda vissa speciella delar av en modell kan vi plocka ut delar
+ från modellen med olika funktioner.
+ Exempelvis kanske vi är intresserad av att använda 
+\begin_inset Formula $\beta$
+\end_inset
+
+-koefficenterna i modellen till något annat.
+ Eller använda modellen för att göra prediktioner på nya data.
+\end_layout
+
+\begin_layout Enumerate
+Pröva att använda funktionen 
+\family typewriter
+coef()
+\family default
+ på modellobjekt 3 ovan.
+ Pröva att spara ned resultatet som ett nytt objekt.
+ Vad får du för resultat? Jämför med 
+\family typewriter
+print()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+På ett liknande sätt kan vi snabbt få ut alla 
+\begin_inset CommandInset href
+LatexCommand href
+name "residualer"
+target "https://en.wikipedia.org/wiki/Errors_and_residuals"
+literal "false"
+
+\end_inset
+
+ (om vi vill studera dessa) med funktionen 
+\family typewriter
+resid()
+\family default
+.
+ Pröva denna funktion på modell 3 ovan och plotta resiudalerna i ett histogram.
+ Är residualerna normalfördelade? [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+hist()
+\family default
+,
+\family typewriter
+geom_histogram()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Pröva att med hjälp av residualvektorn och relationsoperatorer ta fram vilket
+ yrke har den största negativa residualen (d.v.s.
+ lägst prestige kontrollerat för utbildning, inkomst och könsfördelning).
+ [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+which.min()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också få ut de predicerade värdena för varje observation med 
+\family typewriter
+predict()
+\family default
+.
+ Pröva att på detta sätt se vilket yrke som har den högsta respektive lägsta
+ förvänatade prestigen.
+ [
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+which.max()
+\family default
+]
+\end_layout
+
+\begin_layout Enumerate
+Vi kan också använda 
+\family typewriter
+predict()
+\family default
+ för att skapa prediktioner på nya data.
+ Då behöver vi ta ett nytt dataset (men med samma variabelnamn och variabeltyper
+) och ange detta data med argumentet 
+\family typewriter
+newdata
+\family default
+.
+ Pröva att ta de fem första raderna i datasetet 
+\family typewriter
+Prestige
+\family default
+ och spara det som 
+\family typewriter
+newPrestige
+\family default
+.
+ Pröva att predicera variabeln 
+\family typewriter
+prestige
+\family default
+ för detta dataset med modell 6.
+\end_layout
+
+\begin_layout Section
+Tester och diagnostik
+\end_layout
+
+\begin_layout Standard
+I linjär regression görs ett stort antal antagande om i modellen som ligger
+ till grund för att kunna dra slutsatser från materialet.
+ Nedan följer ett antal tester och visualiseringar för att diagnostisera
+ ett antal centrala antaganden i linjär regression.
+ 
+\end_layout
+
+\begin_layout Standard
+Observera att syftet med denna del är att testa lite olika funktionalitet
+ i R, för mer fördjupad genomgång av de olika antagandena och hur dessa
+ problem avhjälpes se dokumentationen till funktionerna eller i litteratur
+ på området (en bra sammanfattning är
+\series bold
+\color blue
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "http://en.wikipedia.org/wiki/Linear_regression#Assumptions"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+).
+\end_layout
+
+\begin_layout Standard
+Välj en godtycklig modell ovan (eller skapa en egen ny modell) och utför
+ följande diagnostik:
+\end_layout
+
+\begin_layout Enumerate
+Det första och enklaste sättet att diagnostisera vår modell är att vi använder
+ funktionen 
+\family typewriter
+plot()
+\family default
+ på vårt modellobjekt.
+ Pröva 
+\family typewriter
+plot()
+\family default
+ på modell 3, 5 och 6.
+\end_layout
+
+\begin_layout Enumerate
+Nedan finns lite olika diagnostiska verktyg och kodexempel.
+ Pröva på detta sätt att...
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Identifiera uteliggare
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+outlierTest(minModell) 
+\end_layout
+
+\begin_layout Plain Layout
+
+qqPlot(minModell)  
+\end_layout
+
+\begin_layout Plain Layout
+
+leveragePlots(minModell) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Identifiera observationer med starkt inflytande på modellen
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+avPlot(minModell) 
+\end_layout
+
+\begin_layout Plain Layout
+
+influencePlot(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Utvärdera linjäritetsantagande för regressionkoefficienterna
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+crPlots(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+ceresPlots(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Studera multikollinearitet mellan regressionskoefficienterna
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+vif(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Oberoende feltermer (framförallt för tidsserieregression)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+durbinWatsonTest(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Residualernas fördelning
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+qqPlot(minModell) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Konstant varians (homoscedasticitet)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ncvTest(minModell) 
+\end_layout
+
+\begin_layout Plain Layout
+
+spreadLevelPlot(minModell)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Pröva att baserat på dessa tester att anpassa den modell för variabeln 
+\family typewriter
+prestige
+\family default
+ som du själv tror mest på.
+ Vad är dina slutsatser?
+\end_layout
+
+\begin_layout Subsection
+Anscombes data
+\end_layout
+
+\begin_layout Standard
+Vi ska nu pröva ett klassiskt exempel när det gäller linjär regression,
+ 
+\family typewriter
+anscombe
+\family default
+s data.
+ Materialet består av fyra 
+\begin_inset Formula $x$
+\end_inset
+
+-variabler och fyra 
+\begin_inset Formula $y$
+\end_inset
+
+-variabler där materialet ser mycket olika ut, även om de enskilda regressionsmo
+dellerna har exakt samma resultat.
+\end_layout
+
+\begin_layout Enumerate
+Börja med att läsa in materialet i R med 
+\family typewriter
+data()
+\family default
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+data(anscombe)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Anpassa nu följande fyra regressionsmodeller i R utan att plotta materialet.
+\begin_inset Formula 
+\begin{eqnarray*}
+y_{1} & = & \beta_{0}+\beta_{1}x_{1}+\epsilon\\
+y_{2} & = & \beta_{0}+\beta_{1}x_{2}+\epsilon\\
+y_{3} & = & \beta_{0}+\beta_{1}x_{3}+\epsilon\\
+y_{4} & = & \beta_{0}+\beta_{1}x_{4}+\epsilon
+\end{eqnarray*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Studera koefficienterna i modellerna.
+ De ska vara nästan identiska.
+\end_layout
+
+\begin_layout Enumerate
+Pröva nu att plotta datamaterialet och använd de diagnostiska verktygen
+ ovan.
+ Vilka antaganden är problematiska i respektive modell, och vilka diagnostiska
+ verktyg fångar upp detta?
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+Florence
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2016
+\backslash
+
+\backslash
+KursRprgmTeacher
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+exercise_solutions
+\backslash
+
+\backslash
+"
+\end_layout
+
+\begin_layout Plain Layout
+
+#solution_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+joswi05
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2016
+\backslash
+
+\backslash
+KursRprgmTeacher
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+exercise_solutions
+\backslash
+
+\backslash
+"
+\end_layout
+
+\begin_layout Plain Layout
+
+#solution_path<-"/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Under
+visning/Statistisk programmering i #R/KursRprgmTeacher/Labs/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
+exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+För att använda 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration ange:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d7.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressWarnings(set_assignment(lab_path))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+my_grouped_test()
+\end_layout
+
+\begin_layout Standard
+Nu ska ni skapa en funktion som ska beräkna gruppvisa konfindesintervall
+ (KI) för en variabel.
+ Innan ni börjar se till att HUS-data är inläst och kör koden nedan för
+ att ta bort de extremt stora värdena:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Download
+\end_layout
+
+\begin_layout Plain Layout
+
+file_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/HUS.
+csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+HUS <- repmis::source_data(file_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Small corrections (removing outliers)
+\end_layout
+
+\begin_layout Plain Layout
+
+index<-HUS[,1] < quantile(HUS[,1])[4] 
+\end_layout
+
+\begin_layout Plain Layout
+
+HUS<-HUS[index,]
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktion ska heta 
+\family typewriter
+my_grouped_test()
+\family default
+ och ha argumenten:
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+data_vector
+\family default
+ - är en numerisk vektor
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+my_groups
+\family default
+ - är en factor/character-vektor som grupperar 
+\family typewriter
+data_vector
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+alpha
+\family default
+ - är signifikansnivån för intervallet, 
+\family typewriter
+alpha=0.05
+\family default
+ ska ge ett 95 % konfidensintervall.
+\end_layout
+
+\begin_layout Standard
+Funktionen ska returnera en matris 
+\family typewriter
+result
+\family default
+ där raderna motsvarar grupperna i 
+\family typewriter
+my_groups
+\family default
+ och har fyra kolumner: Undre gräns för KI, medelvärdet, övre gräns för
+ KI och antal observationer i varje grupp.
+ Se testfallen för namen på kolumnerna.
+ Raderna ska ha samma namn som grupperna 
+\family typewriter
+my_groups
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Förslag till lösning:
+\end_layout
+
+\begin_layout Enumerate
+Se till att my_groups är en faktor.
+ Räkna ut hur många grupper som finns i my_groups.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+?levels() ?table()
+\end_layout
+
+\begin_layout Enumerate
+Skapa en tom matris av rätt storlek, kalla den 
+\family typewriter
+result
+\family default
+.
+ Ge den lämpliga namn.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+?colnames(), ?rownames()
+\end_layout
+
+\begin_layout Enumerate
+Spara antalet observationer för varje grupp i den fjärde variabeln i 
+\family typewriter
+result
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+by()
+\family default
+ kombinerat med 
+\family typewriter
+t.test()
+\family default
+ för att beräkna gruppvisa KI, spara i 
+\family typewriter
+group_test
+\family default
+.
+ Testa 
+\family typewriter
+?by()
+\family default
+, ni ser att det finns ett argument som heter 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+...
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ för funktionen 
+\family typewriter
+by()
+\family default
+.
+ Dessa tre punkter kan ersättas med argument som behövs till funtionen 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+FUN
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Mer tips: 
+\family typewriter
+str(
+\begin_inset Quotes eld
+\end_inset
+
+objekt från t.test
+\begin_inset Quotes erd
+\end_inset
+
+)
+\family default
+ och 
+\family typewriter
+?by
+\family default
+ läs under rubriken 
+\begin_inset Quotes eld
+\end_inset
+
+value
+\begin_inset Quotes erd
+\end_inset
+
+ för att kolla vad 
+\family typewriter
+by()
+\family default
+ returnerar.
+ Det går också att använda en for-loop och loopa över grupperna, plocka
+ ut rätt observations och sen använda 
+\family typewriter
+t.test()
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Loopa över antalet grupper och välj ut KI och medelvärde för varje grupp
+ som är sparat från steg 4.
+ Spara på rätt ställen i 
+\family typewriter
+result
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Returnera 
+\family typewriter
+result
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Notera att det inte är tillåtet att använda någon funktion som direkt beräknar
+ grupperade t-test i denna uppgift.
+ Testa om testfallen nedan fungerar:
+\end_layout
+
+\begin_layout Standard
+
+\lang english
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+df<-my_grouped_test(data_vector=HUS[,1],my_groups=HUS$Luftkonditionering,alpha=0.
+01)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+my_grouped_test(HUS[,2],HUS$Pool,0.10)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Chickwts-data
+\end_layout
+
+\begin_layout Plain Layout
+
+data(chickwts)
+\end_layout
+
+\begin_layout Plain Layout
+
+my_grouped_test(chickwts[,1],chickwts[,2],0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Miniprojektet del 2
+\end_layout
+
+\begin_layout Standard
+En del av denna laboration är att genomföra miniprojektet del 2.
+ Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "denna"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/miniprojekt_instruktioner.pdf"
+literal "false"
+
+\end_inset
+
+ pdf för detaljer, finns även länk på kurshemsidan.
+ Notera att det är en separat inlämning för miniprojektet del 2 på Lisam.
+ I miniprojekt får ni använda det gamla eller det nya gränssnittet till
+ 
+\family typewriter
+pxweb
+\family default
+, så länge ni har kod som fungerar och ni lyckas skapa reproducerbara rapporter.
+ Notera att ni ska använda samma datamaterial som i del 1.
+ OBS: inga varningar ska synas i er färdiga rapport!
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Nu är du klar! 
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "References"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
