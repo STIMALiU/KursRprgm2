@@ -1598,7 +1598,7 @@ Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
 \end_layout
 
 \begin_layout Section
-Del II: Analys (ej uppdaterad)
+Del II: Analys 
 \end_layout
 
 \begin_layout Standard
@@ -1610,6 +1610,14 @@ I den första delen av minprojektet har ni valt ut och beskrivit olika variabler
  i 
 \family typewriter
 ggplot2.
+ 
+\family default
+\series bold
+Obs!!! alla plottar i del 2 ska vara med 
+\family typewriter
+ggplot2
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1675,46 +1683,18 @@ Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
 Dataanalys av kommundata
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset label
-LatexCommand label
-name "enu:Slå-samman-dataseten"
-
-\end_inset
-
-Slå samman de era dataset med kommundata så det blir ett dataset som innehåller
- variablerna från alla dataset.
- Om ni gör rätt här så ska ni få ett dataset med en variabel över kommun
- och minst 4 andra variabler.
- Varje rad motsvarar en kommun, och en kommun är en observation i ert datamateri
-al.
- Detta kan göras på olika sätt, ett är att använda funktionen 
-\family typewriter
-merge()
-\family default
-.
- [
-\begin_inset CommandInset href
-LatexCommand href
-name "Här"
-target "http://www.youtube.com/watch?v=rkmIASiE8iI"
-literal "false"
-
-\end_inset
-
-] finns en video för hur ni kan använda 
-\family typewriter
-merge()
-\family default
-.
- 
-\end_layout
-
 \begin_layout Itemize
 Skriv en kort inledning där ni beskriver era variabler.
  Kan vara samma som i del 1.
  Om ni gör nya transformationer av variablerna i del 2 måste de beskrivas
  också.
+\end_layout
+
+\begin_layout Itemize
+Ta med från del 1: Vissa upp data för 5 kommuner och alla era variabler
+ i en tabell.
+ Ta inte med fler kommuner.
+ Ni väljer själv vilka kommuner ni visar i tabellen.
 \end_layout
 
 \begin_layout Standard
@@ -1734,16 +1714,6 @@ Alla variabler som är relaterade till folkmängd på något sätt ska normalise
 \end_layout
 
 \begin_layout Enumerate
-Producera minst en scatterplot mellan två variabler.
- Beskriv i text vad ni drar för slutsats.
-\end_layout
-
-\begin_layout Enumerate
-Producera minst ett histogram.
- Beskriv i text vad ni drar för slutsats.
-\end_layout
-
-\begin_layout Enumerate
 Producera minst en barplot, om ni bara har kontinuerliga variabler kan ni
  använda 
 \family typewriter
@@ -1751,16 +1721,92 @@ cut()
 \family default
 .
  Beskriv i text vad ni drar för slutsats.
+ Notera! Gör inte en plot där varje kommun har en egen stapel, alltså ingen
+ barplot med 290 staplar.
 \end_layout
 
 \begin_layout Enumerate
-Hypotestest:
+Producera minst ett histogram.
+ Lägg till vertikala linjer för följande punkter på x-axeln: medianen, första
+ kvartilen och tredje kvartilen.
+ Beskriv i text vad ni drar för slutsats.
+ Tips: 
+\family typewriter
+geom_vline()
+\family default
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.sthda.com/english/wiki/ggplot2-add-straight-lines-to-a-plot-horizontal-vertical-and-regression-lines"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
-\begin_deeper
 \begin_layout Enumerate
-Gör minst ett hypotestest, där ni ställer upp en nollhypotes och sen testar
- om ni kan förkasta den.
+Producera minst en scatterplot mellan två variabler.
+ Lägg till en regressionslinje med 
+\family typewriter
+stat_smooth(method="lm", se=FALSE)
+\family default
+.
+ Beskriv i text vad ni drar för slutsats
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+För tips på tolkning: Se kap 13.2.5 i kursboken, speciellt figur 13-5.
+ Se även 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://chartio.com/learn/charts/what-is-a-scatter-plot/#when-you-should-use-a-scatter-plot"
+literal "false"
+
+\end_inset
+
+ för tips på hur scatter plots kan tolkas.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna korrelationer mellan de två variabler som ni använde i scatter plott
+ i steget ovan.
+ Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler
+ är noll (=de är linjärt oberoende).
+ Ni ska alltså använda hypoteserna:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+H_{0}:cor\left(x_{1},x_{2}\right)=0\\
+H_{a}:cor\left(x_{1},x_{2}\right)\ne0
+\end{array}
+\]
+
+\end_inset
+
+Tips: 
+\family typewriter
+cor.test()
+\family default
+.
+ Presentera relevant information i en eller flera tabeller.
+ Beskriv kort hur ni tolkar resultatet.
+ Ni ska alltså presentera både den skattade korrelationen och information
+ från testet i rapporten.
+ Ni får testa korrelationen mellan fler variabler om ni vill.
+\end_layout
+
+\begin_layout Enumerate
+Hypotestest: Gör minst ett hypotestest (ej korrelationstest här), där ni
+ ställer upp en nollhypotes och sen testar om ni kan förkasta den.
  Ni väljer själva vilken nollhypotes ni vill anävnda.
  Beroende på hur er data ser ut så kan det vara ett t-test, ett 
 \begin_inset Formula $\chi^{2}$
@@ -1831,81 +1877,12 @@ pop_grupp
 \family default
 .
  Detta ger er två grupper av observationer.
- Gör nu minst ett statistiskt test där ni jämför de två grupperna.
- Ni ska göra testet på någon annan variabel än totalt antal invånare.
- Ett exempel kan vara att göra ett two-sample t-test där ni testar om medelvärde
-t för en variabel är olika mellan grupperna.
- Presentera relevant information från testet/testen i en eller flera tabeller.
- Beskriv kort hur ni tolkar resultatet.
-\begin_inset Newline newline
-\end_inset
-
-
-\shape italic
-Exempel:
-\shape default
- Ni har variabeln energiförbrukning per invånare i kommunerna.
- Ni testar då om medelvärdet över energiförbrukning skiljer sig mellan de
- små och stora kommunerna.
- Detta kan göras med ett two-sample t-test.
- Låt 
-\begin_inset Formula $\mu_{små}$
-\end_inset
-
- vara medelvärdet över de små kommunerna och låt 
-\begin_inset Formula $\mu_{stor}$
-\end_inset
-
- vara medelvärdet över de stora kommunerna.
- Ni sätter då upp hypoteserna 
-\begin_inset Formula 
-\[
-\begin{array}{c}
-H_{0}:\mu_{sm\mathring{a}}-\mu_{stor}=0\\
-H_{a}:\mu_{sm\mathring{a}}-\mu_{stor}\ne0
-\end{array}
-\]
-
-\end_inset
-
-och testar sedan om ni kan förkasta 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-(nollhypotesen).
  
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Beräkna korrelationer mellan minst två variabler (fler går bra).
- Gör minst ett hypotestest där ni testar om korrelationen mellan två variabler
- är noll (=de är linjärt oberoende).
- Ni ska alltså använda hypoteserna:
-\begin_inset Formula 
-\[
-\begin{array}{c}
-H_{0}:cor\left(x_{1},x_{2}\right)=0\\
-H_{a}:cor\left(x_{1},x_{2}\right)\ne0
-\end{array}
-\]
-
-\end_inset
-
-Tips: 
-\family typewriter
-cor.test()
-\family default
-.
- Presentera relevant information i en eller flera tabeller.
- Beskriv kort hur ni tolkar resultatet.
- Ni ska alltså presentera både den skattade korrelationen och information
- från testet i rapporten.
 \end_layout
 
 \begin_layout Enumerate
 Mer plottar.
- Ni ska nu skapa två till plottar som beror på variabeln 
+ Ni ska nu följande plottar som beror på variabeln 
 \family typewriter
 pop_grupp
 \family default
@@ -1914,8 +1891,7 @@ pop_grupp
 
 \begin_deeper
 \begin_layout Enumerate
-Gör en scatterplot/histogram/barplot/boxplot där färgen på observationerna
- ska bero på variabeln 
+Gör en scatterplot där färgen på observationerna ska bero på variabeln 
 \family typewriter
 pop_grupp
 \family default
@@ -1927,8 +1903,17 @@ pop_grupp
 \end_layout
 
 \begin_layout Enumerate
-Gör en scatterplot/histogram/barplot/boxplot som är uppdelad i två plottar
- med 
+Gör minst ett histogram/barplot/boxplot som är grupperat på 
+\family typewriter
+pop_grupp
+\family default
+, där grupperna har olika färger.
+ Beskriv i text vad ni drar för slutsats.
+\end_layout
+
+\begin_layout Enumerate
+Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i två
+ plottar med 
 \family typewriter
 facet_grid()
 \family default
