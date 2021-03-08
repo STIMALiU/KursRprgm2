@@ -1,6 +1,6 @@
 
 
-
+rm(list=ls())
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
 # ggplot()
@@ -21,9 +21,11 @@ data(mpg)
 
 
 
-plot
 # Quick plot:
 qplot(x = mpg$displ, y = mpg$hwy)
+# compare:
+plot(x = mpg$displ, y = mpg$hwy)
+
 
 qplot(x = mpg$displ, y = mpg$hwy,geom = "point")
 
@@ -41,31 +43,42 @@ p
 print(p)
 
 # kolla 
+class(p)
 str(p)
 summary(p)
-class(p)
+
 
 # lägg til regressionslinje
-p + geom_smooth()
-p + geom_smooth(method="lm")
+p + geom_smooth(method="lm",se=FALSE)
+p + geom_smooth(se=FALSE)
+
 
 # dela upp data i subplots:
 p + facet_grid(.~drv)
 
-p + geom_smooth(method="lm") + facet_grid(.~drv)
+p + geom_smooth(method="lm",se=FALSE) + facet_grid(.~drv)
 
-p + geom_smooth(method="lm") + facet_grid(drv~.)
+p + geom_smooth(method="lm",se=FALSE) + facet_grid(drv~.)
 
-p + geom_smooth(method="loess") + facet_grid(.~drv)
+p + geom_smooth(method="loess",se=FALSE) + facet_grid(.~drv)
 
 # För lite data för alla celler
 p + facet_grid(fl~drv)
 
 
+# alt:
+?facet_wrap()
+head(mpg)
+p + facet_wrap(.~drv)
+p + facet_wrap(drv~.)
+# jämför:
+p + facet_grid(cyl~drv)
+p + facet_wrap(cyl~drv)
+
+p + facet_grid(fl~drv)
+p + facet_wrap(fl~drv)
 
 
-names(mpg)
-?mpg
 
 
 # Använda andra aestetics:
@@ -180,6 +193,8 @@ a
 a <- a + facet_grid(.~feed)
 a
 
+a0 + geom_histogram(binwidth = 30)+ facet_grid(.~feed)
+
 # boxplot
 
 ggplot(data = chickwts,aes(y = weight))+geom_boxplot()
@@ -195,9 +210,12 @@ ggplot(data = chickwts,aes(x = feed,y = weight))+geom_boxplot()
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
 
+rm(list=ls())
 # cov() och cor()
 data("trees")
 head(trees)
+summary(trees)
+
 var(trees$Girth)
 var(trees$Height)
 
@@ -206,13 +224,14 @@ cov(trees$Girth,trees$Height)
 cov(trees)
 
 cor(trees$Girth,trees$Height)
+
 cor(trees)
 
 ?cor.test
 cor.test(x = trees$Girth,y = trees$Height)
 a<-cor.test(x = trees$Girth,y = trees$Height)
 str(a)
-
+a
 a$statistic
 a$p.value
 a$estimate
@@ -221,14 +240,14 @@ a$conf.int[1]
 
 # t.test:
 
-summary(trees)
-
 # trees data:
 
 # vi vill testa om höjden är skild från 73 feet
 b<-t.test(x = trees$Height,alternative = "two.sided",mu = 73)
 b
-
+b$statistic
+b$p.value
+b$conf.int
 
 # vi vill testa om höjden är större än 73 feet
 
@@ -267,6 +286,7 @@ A
 #----------------------------------------------------------------------------
 ?lm
 
+data("trees")
 # Run linear model
 x <- lm(formula = Volume ~ Girth, data = trees)
 class(x)
