@@ -106,7 +106,7 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
   scale_colour_manual(values = c("red","brown","blue"))
   
 
-
+# xlab(), ylab(), ggtitle()
 ggplot(data = mpg, aes(displ,hwy)) + 
   geom_point(aes(shape=drv),size=2) + 
   xlab("Displacement") + 
@@ -121,7 +121,42 @@ ggplot(data = mpg, aes(displ,hwy)) +
 # Styra x labels och y labels
 
 
+#-------------------------------------------------------------------------------
+# overplotting
+#-------------------------------------------------------------------------------
+no_obs<-100
+set.seed(234)
+x<-rnorm(n = no_obs,sd = 0.5)
+y<-x*3+5+rnorm(n = no_obs)
+df<-data.frame(x=x,y=y)
+ggplot(data =df,aes(x = x,y = y))+geom_point()
+
+
+no_obs<-1000
+set.seed(234)
+x<-rnorm(n = no_obs,sd = 0.5)
+y<-x*3+5+rnorm(n = no_obs)
+df<-data.frame(x=x,y=y)
+ggplot(data =df,aes(x = x,y = y))+geom_point()
+
+
+no_obs<-5000
+set.seed(234)
+x<-rnorm(n = no_obs,sd = 0.5)
+y<-x*3+5+rnorm(n = no_obs)
+df<-data.frame(x=x,y=y)
+ggplot(data =df,aes(x = x,y = y))+geom_point()
+# transparens
+ggplot(data =df,aes(x = x,y = y))+geom_point(alpha=0.2)
+# mindre storlek på punkter:
+ggplot(data =df,aes(x = x,y = y))+geom_point(size=0.2)
+
+ggplot(data =df,aes(x = x,y = y))+geom_point(size=0.6,alpha=0.4)
+
+
+#-------------------------------------------------------------------------------
 # Linjegrafer
+#-------------------------------------------------------------------------------
 library(ggplot2)
 #install.packages("ggthemes")
 library(ggthemes)
