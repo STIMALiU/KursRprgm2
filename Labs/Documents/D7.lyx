@@ -5994,6 +5994,16 @@ suppressWarnings(set_assignment(lab_path))
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg_kodstil.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 
 \family typewriter
@@ -6359,6 +6369,7 @@ literal "false"
 \end_inset
 
  pdf för detaljer, finns även länk på kurshemsidan.
+ Kommentera koden och ha en god kodstil.
  Notera att det är en separat inlämning för miniprojektet del 2 på Lisam.
  I miniprojekt får ni använda det gamla eller det nya gränssnittet till
  
@@ -6366,7 +6377,11 @@ literal "false"
 pxweb
 \family default
 , så länge ni har kod som fungerar och ni lyckas skapa reproducerbara rapporter.
- Notera att ni ska använda samma datamaterial som i del 1.
+ Notera att ni ska använda 
+\series bold
+samma
+\series default
+ datamaterial som i del 1.
  OBS: inga varningar ska synas i er färdiga rapport!
 \end_layout
 
