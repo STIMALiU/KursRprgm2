@@ -6,6 +6,13 @@ rm(list=ls())
 # ggplot()
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
+
+
+data("trees")
+head(trees)
+ggplot(data = trees,aes(x = Girth,y = Volume))+geom_point()
+
+
 library(ggplot2)
 ?ggplot()
 
@@ -23,14 +30,20 @@ data(mpg)
 
 # Quick plot:
 qplot(x = mpg$displ, y = mpg$hwy)
+qplot(x = displ, y = hwy,data = mpg)
+qplot(x = displ, y = hwy,data = mpg,geom = "point",xlab="x var")
 # compare:
-plot(x = mpg$displ, y = mpg$hwy)
+plot(x = mpg$displ, y = mpg$hwy,xlab="x var")
 
 
 qplot(x = mpg$displ, y = mpg$hwy,geom = "point")
 
+
 qplot(displ, hwy, data=mpg, facets=.~drv)
 qplot(displ, hwy, data=mpg, facets=drv~.)
+
+
+
 
 # How to do this the "correct" way
 class(mpg)
@@ -65,15 +78,19 @@ p + geom_smooth(method="loess",se=FALSE) + facet_grid(.~drv)
 # För lite data för alla celler
 p + facet_grid(fl~drv)
 
+p + facet_grid(rows = vars(drv))
+p + facet_grid(cols = vars(drv))
 
 # alt:
 ?facet_wrap()
 head(mpg)
 p + facet_wrap(.~drv)
+p + facet_wrap(facets = vars(drv))
 p + facet_wrap(drv~.)
 # jämför:
 p + facet_grid(cyl~drv)
 p + facet_wrap(cyl~drv)
+p + facet_wrap(facets = vars(cyl,drv))
 
 p + facet_grid(fl~drv)
 p + facet_wrap(fl~drv)
@@ -83,7 +100,7 @@ p + facet_wrap(fl~drv)
 
 # Använda andra aestetics:
 ggplot(data = mpg, mapping = aes(x = displ,y = hwy)) + 
-  geom_point(color="steelblue") +
+  geom_point(color="blue",shape=3) +
   geom_smooth(method="lm")
 
 
@@ -92,8 +109,14 @@ ggplot(data = mpg, mapping = aes(x = displ,y = hwy)) +
   geom_smooth(method="lm")
 
 ggplot(data = mpg, aes(displ,hwy)) + 
-  geom_point(color="green", size=3, alpha=0.1) +
+  geom_point(color="green", size=3, alpha=0.7) +
   geom_smooth(method="lm")
+
+ggplot(data = mpg, aes(displ,hwy)) + 
+  geom_point(color="green", size=3, alpha=0.1) +
+  geom_smooth()
+
+# y = k*x+ m
 
 
 # Använda färg och form som aestetic
@@ -105,6 +128,11 @@ ggplot(data = mpg, aes(x = displ, y = hwy)) +
   geom_point(aes(color=drv),size=3) + 
   scale_colour_manual(values = c("red","brown","blue"))
   
+data("trees")
+head(trees)
+ggplot(data = trees,mapping = aes(x = Girth,y = Volume))+
+  geom_point(aes(color=Height))
+
 
 # xlab(), ylab(), ggtitle()
 ggplot(data = mpg, aes(displ,hwy)) + 
@@ -146,12 +174,14 @@ x<-rnorm(n = no_obs,sd = 0.5)
 y<-x*3+5+rnorm(n = no_obs)
 df<-data.frame(x=x,y=y)
 ggplot(data =df,aes(x = x,y = y))+geom_point()
+
 # transparens
 ggplot(data =df,aes(x = x,y = y))+geom_point(alpha=0.2)
 # mindre storlek på punkter:
 ggplot(data =df,aes(x = x,y = y))+geom_point(size=0.2)
 
 ggplot(data =df,aes(x = x,y = y))+geom_point(size=0.6,alpha=0.4)
+
 
 
 #-------------------------------------------------------------------------------
@@ -171,7 +201,7 @@ Nile2$period[Nile2$years >= 1900] <- "1900 - 1928"
 Nile2$period[Nile2$years >= 1929] <- "1929 - 1946"
 Nile2$period[Nile2$years > 1946] <- "1946 + " 
 Nile2$period <- as.factor(Nile2$period)
-
+table(Nile2$period)
 head(Nile2)
 
 table(Nile2$period)
@@ -184,7 +214,8 @@ ggplot(data=Nile2) + aes(x=years, y=level) +
 ggplot(data=Nile2) + aes(x=years, y=level) + 
   geom_line(aes(linetype = period))
 
-ggplot(data=Nile2) + aes(x=years, y=level) + geom_line(aes(linetype = period))
+ggplot(data=Nile2) + aes(x=years, y=level) + 
+  geom_line(aes(linetype = period))
 
 # Teman
 ggplot(data=Nile2) + 
@@ -216,6 +247,7 @@ ggplot(data=Nile2) +
 data(longley)
 ggplot(data=longley) + aes(Year, GNP.deflator) + geom_line()
 ggplot(data=longley) + aes(Year, GNP.deflator) + geom_line()+geom_smooth()
+
 
 # ggplot och histgram:
 data(chickwts)
