@@ -1923,6 +1923,10 @@ Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i två
 \family typewriter
 facet_grid()
 \family default
+ eller 
+\family typewriter
+facet_wrap()
+\family default
 .
  Uppdelningen ska bero på variabeln 
 \family typewriter
