@@ -265,21 +265,6 @@ ggplot
 \begin_layout Standard
 
 \series bold
-\color blue
-\begin_inset CommandInset href
-LatexCommand href
-name "Här"
-target "http://shiny.stat.ubc.ca/r-graph-catalog/"
-literal "false"
-
-\end_inset
-
-
-\series default
-\color inherit
- och 
-\series bold
-
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -290,7 +275,7 @@ literal "false"
 
 
 \series default
- finns bra kataloger över de flesta graferna i 
+ finns en bra katalog över de flesta graferna i 
 \family typewriter
 ggplot2
 \family default
@@ -2425,7 +2410,6 @@ ggthemes
 ggtheme
 \family default
 s framgår 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -2437,7 +2421,6 @@ literal "false"
 \end_inset
 
 
-\series default
 \color inherit
 .
 \end_layout
@@ -3589,7 +3572,6 @@ chisq.test(tab)
 Om vi tittar på tabellen ovan är det många värden som är 0 (d.v.s.
  mindre än 5).
  Då behöver vi korrigera vårt test med 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -3601,7 +3583,6 @@ literal "false"
 \end_inset
 
 
-\series default
 \color inherit
 .
  Detta kan vi göra i R genom att lägga till argumentet 
@@ -3638,7 +3619,6 @@ chisq.test(tab, correct=TRUE)
 
 \begin_layout Enumerate
 Ett annat sätt är att använda 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
@@ -3650,7 +3630,6 @@ literal "false"
 \end_inset
 
 
-\series default
 \color inherit
  istället.
  Det görs på följande sätt:
@@ -4312,19 +4291,17 @@ HUS_eng.csv
 
 , som har engelska namn på variablerna men innehåller samma data.
  Materialet finns att tillgå 
-\series bold
 \color blue
 
 \begin_inset CommandInset href
 LatexCommand href
-name "[här]"
-target "https://github.com/MansMeg/KursRprgm/tree/master/Labs/DataFiles"
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/HUS.csv"
 literal "false"
 
 \end_inset
 
 
-\series default
 \color inherit
 .
 \end_layout
@@ -5424,16 +5401,17 @@ Observera att syftet med denna del är att testa lite olika funktionalitet
 \series bold
 \color blue
  
+\series default
+
 \begin_inset CommandInset href
 LatexCommand href
-name "[här]"
+name "här"
 target "http://en.wikipedia.org/wiki/Linear_regression#Assumptions"
 literal "false"
 
 \end_inset
 
 
-\series default
 \color inherit
 ).
 \end_layout
