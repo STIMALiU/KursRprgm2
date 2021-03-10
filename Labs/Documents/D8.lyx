@@ -668,6 +668,16 @@ suppressWarnings(set_assignment(lab_path))
 
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg_kodstil.lyx"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 
 \family typewriter
