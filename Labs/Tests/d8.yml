@@ -4,9 +4,5 @@ description : "Statistisk programmering med R: Lab 8"
 tasks:
   wordcount:
     url: Tasks/wordcount_tests.R
-  pnr_sex:
-    url: Tasks/pnr_sex_tests.R
-  pnr_ctrl:
-    url: Tasks/pnr_ctrl_tests.R
 mandatory:
   url: mandatory_part2.R
