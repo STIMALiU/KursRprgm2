@@ -1,0 +1,1636 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package auto
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\branch removed
+\selected 0
+\filename_suffix 0
+\color #faf0e6
+\end_branch
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Datorlaboration 8
+\end_layout
+
+\begin_layout Author
+Josef Wilzén och Måns Magnusson
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressMessages(library(pxweb))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "IntroDel2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Datorlaboration
+\end_layout
+
+\begin_layout Chapter
+Texthantering och regular expression i R med 
+\family typewriter
+stringr
+\family default
+ 
+\end_layout
+
+\begin_layout Standard
+Gå igenom följande delar i 
+\shape italic
+Handling and Processing Strings in R
+\shape default
+ (av Gaston Sanchez) och testa koden i exemplen.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+2
+\series default
+ Hela
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+3
+\series default
+ 3.1, 3.3
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+4
+\series default
+ 4.2.1 - 4.2.3
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+5
+\series default
+ 5 - 5.2.2, 5.2.6, 5.3.1-5.3.2
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+6
+\series default
+ 6-6.1.3, 6.2.2, 6.4-6.4.10
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+
+\series bold
+Kap
+\begin_inset space ~
+\end_inset
+
+7
+\series default
+ 7.1, 7.2
+\end_layout
+
+\begin_layout Standard
+Boken finns fritt tillgänglig 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://gotellilab.github.io/Bio381/Scripts/Feb07/HandlingAndProcessingStringsInR.pdf"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Chapter
+Modern datahantering
+\end_layout
+
+\begin_layout Standard
+I följande kapitel gås de verktyg som idag är state-of-the-art för att snabbt
+ och effektivt bearbeta stora datamängder i R.
+ 
+\end_layout
+
+\begin_layout Section
+Piping med 
+\family typewriter
+%>%
+\end_layout
+
+\begin_layout Standard
+När vi arbetar med databearbetning av stora datamaterial kan innebär det
+ ofta ett stort antal funktionsanrop.
+ För att göra en databearbetningsprocess överskådlig och snabb finns så
+ kallade pipes, eller 
+\begin_inset Quotes sld
+\end_inset
+
+rör
+\begin_inset Quotes srd
+\end_inset
+
+ i R för att skicka datamaterial i ett flöde av olika modifikationer.
+ Pipingoperatorn innbär att
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- a %>% fun1(b) %>% fun2(c) %>% fun3()
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+är exakt samma sak som
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+x <- fun(a, b) 
+\end_layout
+
+\begin_layout Plain Layout
+
+y <- fun(x, c)
+\end_layout
+
+\begin_layout Plain Layout
+
+z <- fun3(y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Detta flöde kan ofta göra det tydligare hur data bearbetas i olika databearbetni
+ngssteg.
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+tidyr
+\end_layout
+
+\begin_layout Standard
+Datamaterial kan många gånger komma i ett otal olika tabellstrukturer.
+ Alla statistiska metoder, databearbetningsverktyg som 
+\family typewriter
+dplyr
+\family default
+ och visualiseringspaket som 
+\family typewriter
+ggplot2
+\family default
+ kräver att datamaterialet är i ett så kallat 
+\family typewriter
+tidy
+\family default
+ format.
+ För att konvertera olika tabeller och datamaterial till ett 
+\family typewriter
+tidy
+\family default
+ format används paketet 
+\family typewriter
+tidyr
+\family default
+ och funktionen 
+\family typewriter
+gather()
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Gå igenom och reproducera koden i följande 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "introduktionstext"
+target "https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+dplyr
+\end_layout
+
+\begin_layout Standard
+R-paketet dplyr har under kort tid att bli det huvudsakliga verktyget för
+ att arbeta med större datamängder i R.
+ Det finns framförallt tre anledningar till dess popularitet.
+\end_layout
+
+\begin_layout Enumerate
+Paketet har bara ett fåtal funktioner för att arbeta med data vilket gör
+ det snabbt att lära sig.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+dplyr
+\family default
+ är skrivet i kraftigt optimerad C++ kod vilket gör hanteringen av stora
+ datamängder snabbare än något annat statistik- eller analysverktyg.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+dplyr
+\family default
+ kan kopplas mot databaser för att direkt bearbeta större datamängder.
+ dplyrs verb används också i 
+\family typewriter
+sparlyr
+\family default
+, vilket är ett paket för att hantera data som inte får plats på enskilda
+ datorer.
+ Att lära sig 
+\family typewriter
+dplyr
+\family default
+ är således en approach som möjliggör att hantera i princip hur stora datamateri
+al som helst.
+\end_layout
+
+\begin_layout Standard
+Gå igenom och reproducera koden i följande 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "introduktionstext"
+target "https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg_del2.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgmTeacher/Labs/
+exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) {
+\end_layout
+
+\begin_layout Plain Layout
+
+source(file = paste0(solution_path, sol_file), echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+För att använda 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration ange:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d8.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressWarnings(set_assignment(lab_path))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+wordcount()
+\end_layout
+
+\begin_layout Standard
+Nu är uppgiften att skapa en funktion som ska kunna räkna hur många gånger
+ olika ord förekommer i texten.
+ Funktionen ska heta 
+\family typewriter
+wordcount()
+\family default
+ och ha argumentet 
+\family typewriter
+text
+\family default
+ som ska vara en 
+\family typewriter
+character
+\family default
+-vektor.
+ Funktionen ska ta en text (i form av en text vektor) och returnera en 
+\family typewriter
+data.frame
+\family default
+ med två variabler 
+\family typewriter
+word
+\family default
+ (textvariabel) och 
+\family typewriter
+freq
+\family default
+ (integervariabel).
+ 
+\end_layout
+
+\begin_layout Standard
+I variabeln 
+\family typewriter
+word
+\family default
+ ska respektive ord ingå, men med små bokstäver, och i variabeln 
+\family typewriter
+freq
+\family default
+ ska frekvensen av orden framgå.
+ Den 
+\family typewriter
+data.frame
+\family default
+ som returneras ska vara sorterad efter variabeln 
+\family typewriter
+word
+\family default
+.
+ Funktionen ska också skriva ut meningen 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+The most common word is '[ord]' and it occured [antal] times.
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ med 
+\family typewriter
+message()
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+table()
+\end_layout
+
+\begin_layout Standard
+Nedan är ett förslag på hur ni kan implementera funktionen.
+\end_layout
+
+\begin_layout Enumerate
+Läs in paktet i 
+\family typewriter
+stringr
+\family default
+ i den aktuella R-sessionen.
+ OBS: ej installera paktet.
+\end_layout
+
+\begin_layout Enumerate
+Börja med att sätta ihop de olika textelementen till en textsträng, men
+ denna gång använd mellanslag som avskiljare istället för 
+\family typewriter
+
+\backslash
+n
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Ta bort punkter och kommatecken i textsträngen.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Gör om alla ord till endast gemener.
+\end_layout
+
+\begin_layout Enumerate
+Dela upp teckensträngen med 
+\family typewriter
+str_split()
+\family default
+ för att få ut respektive ord.
+ [
+\series bold
+Tips!
+\series default
+ Tänk på att du får ut en lista med denna funktion, inte en vektor.
+ 
+\family typewriter
+unlist()
+\family default
+ kan då vara till hjälp.]
+\end_layout
+
+\begin_layout Enumerate
+Räkna respektive ord och skapa en data.frame med respektive ord i kolumn
+ 1 och antalet förekomster av detta ord i kolumn 2.
+ Döp kolumn 1 till 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+word
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+, och kolumn 2 till 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+freq
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Sortera datasetet efter 
+\family typewriter
+word
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Använd 
+\family typewriter
+str_c()
+\family default
+ och 
+\family typewriter
+message()
+\family default
+ för att baserat på datsetet ovan skriva ut följande mening 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+The most common word is '[ord]' and it occured [antal] times.
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Returnera din 
+\family typewriter
+data.frame
+\family default
+.
+\end_layout
+
+\begin_layout Standard
+Funktionen 
+\family typewriter
+word()
+\family default
+ är inte tillåten på denna uppgift.
+ Kolla om testfallen nedan fungerar:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Laddar ned testdata
+\end_layout
+
+\begin_layout Plain Layout
+
+library(downloader) 
+\end_layout
+
+\begin_layout Plain Layout
+
+transtrommer_remote <-
+\end_layout
+
+\begin_layout Plain Layout
+
+  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/tra
+nstrom.txt" 
+\end_layout
+
+\begin_layout Plain Layout
+
+transtrommer_local <- paste0(getwd(), "/transtrom.txt")
+\end_layout
+
+\begin_layout Plain Layout
+
+download(url = transtrommer_remote, destfile = transtrommer_local)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Test
+\end_layout
+
+\begin_layout Plain Layout
+
+text<-readLines("transtrom.txt")
+\end_layout
+
+\begin_layout Plain Layout
+
+worddata<-wordcount(text=text)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+head(worddata)
+\end_layout
+
+\begin_layout Plain Layout
+
+head(worddata[order(worddata[,2], decreasing=TRUE),])
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+head(wordcount(text=rep("a",10)))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(39) 
+\end_layout
+
+\begin_layout Plain Layout
+
+random_text<-sample(month.name,size = 60,replace = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+A<-wordcount(text=random_text)
+\end_layout
+
+\begin_layout Plain Layout
+
+head(A)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch removed
+inverted 0
+status collapsed
+
+\begin_layout Section
+
+\family typewriter
+henify()
+\end_layout
+
+\begin_layout Standard
+Med hjälp av funktionerna i 
+\family typewriter
+stringr
+\family default
+ ska ni skriva en funktion som ska byta ut 
+\begin_inset Quotes eld
+\end_inset
+
+han
+\begin_inset Quotes erd
+\end_inset
+
+ och 
+\begin_inset Quotes eld
+\end_inset
+
+hon
+\begin_inset Quotes erd
+\end_inset
+
+ i en text mot 
+\begin_inset Quotes eld
+\end_inset
+
+hen
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Detta kan göras med hjälp av regular expressions.
+ Det ska gå att göra denna operation med endast ett regular expression (om
+ vi ignorerar versaler i hen).
+ Det är dock inte ett måste att implementera detta med bara en rad kod.
+\end_layout
+
+\begin_layout Standard
+Funktionen ska heta 
+\family typewriter
+henify(text)
+\end_layout
+
+\begin_layout Itemize
+argumentet 
+\family typewriter
+text
+\family default
+ ska antingen ange sökvägen till den textfil som ska användas som då slutar
+ på 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.txt
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ eller vara en teckenvektor innehållande en text.
+\end_layout
+
+\begin_layout Standard
+Arbetsordning:
+\end_layout
+
+\begin_layout Enumerate
+Läs in paktet i stringr i den aktuella R-sessionen.
+ OBS: ej installera paktet.
+\end_layout
+
+\begin_layout Enumerate
+Iakttag följade fall:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Om 
+\family typewriter
+text
+\family default
+ är en sökväg till en fil så ska filen med texten läsas in som och sparas
+ i en character-vektor.
+ Detta kan du kolla med om de fyra sista teckenen är 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.txt
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+str_sub()
+\family default
+, 
+\family typewriter
+readLines()
+\family default
+.
+ Glöm inte att 
+\family typewriter
+.
+
+\family default
+ är ett metatecken.
+\end_layout
+
+\begin_layout Enumerate
+Om första elementet i text inte slutar på 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+.txt
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ så ska text användas som en textvektor i resten av funktionen.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Använd nu 
+\family typewriter
+str_replace_all()
+\family default
+ för att ersätta Han/han och Hon/hon med Hen/hen.
+ Här behöver ni använda regular expressions.
+ Iakttag följande:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tänk på att han/hon ska kunna börja med stor eller liten bokstav.
+\end_layout
+
+\begin_layout Itemize
+Han/hon kan komma först i strängen, någonstans i mitten, eller sist.
+\end_layout
+
+\begin_layout Itemize
+Vi ska inte välja ord där han/hon är en del av ordet, tex 
+\begin_inset Quotes eld
+\end_inset
+
+storhandla
+\begin_inset Quotes erd
+\end_inset
+
+ ska inte bli 
+\begin_inset Quotes eld
+\end_inset
+
+storhendla
+\begin_inset Quotes erd
+\end_inset
+
+ eller att 
+\begin_inset Quotes eld
+\end_inset
+
+hona
+\begin_inset Quotes erd
+\end_inset
+
+ ska blir 
+\begin_inset Quotes eld
+\end_inset
+
+hena
+\begin_inset Quotes erd
+\end_inset
+
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Returnera den ändrade texten.
+\end_layout
+
+\begin_layout Standard
+Kolla om testfallen nedan fungerar:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(downloader) 
+\end_layout
+
+\begin_layout Plain Layout
+
+transtrommer_remote <-
+\end_layout
+
+\begin_layout Plain Layout
+
+  "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/DataFiles/tran
+strom2.txt" 
+\end_layout
+
+\begin_layout Plain Layout
+
+transtrommer_local <- paste0(getwd(), "/transtrom2.txt") 
+\end_layout
+
+\begin_layout Plain Layout
+
+download(url = transtrommer_remote, destfile = transtrommer_local)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# test 1:
+\end_layout
+
+\begin_layout Plain Layout
+
+henify(text="transtrom2.txt")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# test 2:
+\end_layout
+
+\begin_layout Plain Layout
+
+txt1<-c("Hon, hankar handskar, han", "handlar du honorarer?","honartad hona
+ han.")
+\end_layout
+
+\begin_layout Plain Layout
+
+txt1
+\end_layout
+
+\begin_layout Plain Layout
+
+henify(txt1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Branch removed
+inverted 0
+status collapsed
+
+\begin_layout Section
+Minsta editeringsavstånd
+\end_layout
+
+\begin_layout Standard
+En viktig uppgift i texthantering på datorer är att mäta avstånd mellan
+ olika textsträngar.
+ Vanliga användningsområden är stavningskontroller och optical character
+ recognition (OCR).
+ 
+\end_layout
+
+\begin_layout Standard
+Ett vanligt mått på avståndet mellan två strängar är Levenshtein-avståndet,
+ ibland kallat 
+\begin_inset Quotes sld
+\end_inset
+
+minimum editing distance
+\begin_inset Quotes srd
+\end_inset
+
+ eller minsta editeringsavstånd.
+ Enkelt uttryckt beskriver detta mått hur många tecken vi måste lägga till,
+ ta bort eller ändra för att gå från den ena strängen till den andra.
+ En introduktion till 
+\begin_inset Quotes sld
+\end_inset
+
+Levenshtein distance
+\begin_inset Quotes srd
+\end_inset
+
+ finns på Wikipedia 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://en.wikipedia.org/wiki/Levenshtein_distance"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection*
+Exempel:
+\end_layout
+
+\begin_layout Standard
+Levenshtein-avståndet mellan 
+\begin_inset Quotes sld
+\end_inset
+
+hoppa
+\begin_inset Quotes srd
+\end_inset
+
+ och 
+\begin_inset Quotes sld
+\end_inset
+
+jobbar
+\begin_inset Quotes srd
+\end_inset
+
+ är fyra, då vi behöver ta följande fyra steg:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+h
+\series default
+oppa 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\series bold
+j
+\series default
+oppa
+\end_layout
+
+\begin_layout Enumerate
+jo
+\series bold
+p
+\series default
+pa 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ jo
+\series bold
+b
+\series default
+pa
+\end_layout
+
+\begin_layout Enumerate
+job
+\series bold
+p
+\series default
+a 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ job
+\series bold
+b
+\series default
+a
+\end_layout
+
+\begin_layout Enumerate
+jobba 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ jobba
+\series bold
+r
+\end_layout
+
+\begin_layout Subsection*
+Wagner-Fishers algoritm:
+\end_layout
+
+\begin_layout Standard
+Wagner-Fishers algoritm är en metod för att räkna ut Levenshtein-avståndet
+ från två godtyckliga textsträngar.
+ En introduktion till algoritmen samt pseudokod finns på Wikipedia 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://en.wikipedia.org/wiki/Wagner%E2%80%93Fischer_algorithm"
+literal "false"
+
+\end_inset
+
+.
+ 
+\series bold
+Tips!
+\series default
+ Läs igenom denna sida och förstå algoritmen innan du börjar.
+ Det finns massa olika implementationer av denna algoritm i andra språk
+ än R.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "[Här]"
+target "https://gist.github.com/marcinwyszynski/541969df59d02f039945"
+literal "false"
+
+\end_inset
+
+ finns en implementation i språket Go och 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://gist.github.com/kylebgorman/1081951/9b38b7743a3cb5167ab2c6608ac8eea7fc629dca"
+literal "false"
+
+\end_inset
+
+ finns en i Python, de skiljer sig lite från pseudokoden, men kan vara alternati
+v kod att titta på om man kör fast.
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "[Här]"
+target "https://www.youtube.com/watch?v=Xxx0b7djCrs"
+literal "false"
+
+\end_inset
+
+och 
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "https://www.youtube.com/watch?v=M3MQt9GJPW0"
+literal "false"
+
+\end_inset
+
+ finns två olika video-material som förklarar algoritmen lite mer utförligt.
+\end_layout
+
+\begin_layout Standard
+Uppgiften är att implementera en funktion kallad 
+\family typewriter
+minimum_editing_distance(x, y)
+\family default
+ som tar två stycken strängar, 
+\family typewriter
+x
+\family default
+ och 
+\family typewriter
+y
+\family default
+ och räknar ut Lewenstein-avståndet mellan dessa två strängar.
+ Funktionen ska avbryta om 
+\family typewriter
+x
+\family default
+ och 
+\family typewriter
+y
+\family default
+ inte är textsträngar.
+ Notera att funktionen 
+\family typewriter
+adist()
+\family default
+ inte är tillåten i denna uppgift.
+ Här är ett testexempel på hur funktionen ska fungera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE, echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance(x="jobbar",y="hoppa")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("kitten", "sitting")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance(" ", "R!")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("Josef Wilzen", "Mans Magnusson")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("programmering", "statistik")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("matematik", "statistik")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("programmering", "matematik")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance(1, "matematik")
+\end_layout
+
+\begin_layout Plain Layout
+
+minimum_editing_distance("programmering", TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Nu är ni klara!
+\end_layout
+
+\end_body
+\end_document
