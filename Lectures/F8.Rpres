@@ -45,18 +45,25 @@ Dagens föreläsning:
 ========================================================
 - Inför tentamen
 - Texthantering
-- Frivillig fördjupning: Modern databearbetning 
+- Modern databearbetning 
 
 
 Inför tentamen
 ========================================================
-- Tenta i datorsal
-- Tentan kommer likna de gamla tentorna, som ni hittar [[här]](https://github.com/STIMALiU/KursRprgm/tree/master/OldExams), det finns lösningar till dessa
-- Hjälpmedel: 
-  - Den inbyggda hjälpen i R (ej internet)
-  - Samtliga "fusklappar" som finns på Github
+- **Tentan ligger kvar på orginaltiden 26/3 kl 08:00-12:00**
+- Tentan kommer likna de gamla tentorna, som ni hittar [här](https://github.com/STIMALiU/KursRprgm2/tree/master/OldExams), det finns lösningar till dessa
+- Hjälpmedel
 - **Endast anmälda studenter bereds plats på tentamen.**
-- Återkommer med mer info
+- Återkommer med mer info efter att anmälningstiden har gått ut
+
+Ändringar i schema  
+========================================================
+- Labben fredag flyttar till torsdag kl 15-17
+- Sista föreläsningen: 22/3 kl 10:15-12:00
+  - Kommer att gå igenom delar av denna [tenta](https://github.com/STIMALiU/KursRprgm2/tree/main/OldExams/20200327)
+- Labbar tentaveckan (repetition): ha kolla på timeedit 
+
+
 
 Texthantering i R
 ========================================================
@@ -192,7 +199,7 @@ stringr | base | Användning
 `str_replace()` | `gsub()` | identifierar pattern, och ersätter detta med ny text
 `str_extract_all` | - | Plocka ut alla strängar som uppfyller `pattern`
 
-- För exempel på några av dessa funktioner kolla på Roger Pengs [video](http://www.youtube.com/watch?v=q8SzNKib5-4)
+- För exempel på några av dessa funktioner från base, kolla på Roger Pengs [video](http://www.youtube.com/watch?v=q8SzNKib5-4)
 
 
 regular expression: demo
