@@ -41,6 +41,8 @@ print(a)
 ?Constants
 LETTERS
 letters
+# se även month.name, month.abb
+
 
 my_letters <- str_c(letters, collapse = "")
 my_letters
@@ -48,12 +50,13 @@ str_length(my_letters)
 str_length(letters)
 
 # str_sub
+str_sub(string = my_letters, start = 1, end = 3)
 str_sub(string = my_letters, start = 3, end = 6)
 
 
 # negativa index: 
 # Från "stringr: modern, consistent stringprocessing":
-#  "It also accepts negativepositions, which are calculated from the left ofthe last character.
+#  "It also accepts negative positions, which are calculated from the left ofthe last character.
 # The end position defaults to-1, which corresponds to the last character."
 
 str_sub(string = my_letters, start = -3, end = -1)
@@ -135,19 +138,17 @@ str_locate_all(string = d, pattern = "hi")
 
 # mer regexp
 x <- "[a-z]{3} "
-x <- "(^| )[a-z]{3} "
+x <- "(^| )[a-z]{3} " # mellanslag på slutet
 x <- "(^| )[a-z]{3}"
 str_locate_all(string ="hud hej hejhej",pattern = x)
+
+str_extract_all(string ="hud hej hejhej",pattern = x)
 
 
 # str_replace
 x <- "(^| )[a-z]{3} "
 str_replace(string =" hej hejhej",pattern = x, replacement = "A")
 
-
-# str_extract_all
-
-y<-" hej"
 
 ?str_extract
 ?str_extract_all
@@ -166,6 +167,9 @@ y<-" hej"
 shopping_list <- c("apples x4", "bag of flour", "bag of sugar", "milk x2")
 str_extract(shopping_list, "\\d")
 str_extract(shopping_list, "\\D")
+
+str_extract_all(shopping_list, "\\d")
+str_extract_all(shopping_list, "\\D")
 
 str_extract(shopping_list, "[a-z]+")
 str_extract_all(shopping_list, "[a-z]+")
@@ -273,32 +277,28 @@ library(tidyr)
 library(dplyr)
 
 # Multiple observations per row
+# a and b are different treatments, values are heartrate
 messy <- data.frame(
   name = c("Wilbur", "Petunia", "Gregory"),
   a = c(67, 80, 64),
   b = c(56, 90, 50)
 )
 
-tidy <- gather(data = messy, key = drug, value = heartrate, a:b)
+messy
+
+# old style:
+# gather(data = messy, key = drug, value = heartrate, a:b)
+tidy<-pivot_longer(data = messy,c("a","b"),names_to="drug",values_to="heartrate")
+
 tidy
 
 # Make multiple observations per row again
-spread(tidy, key = drug, value = heartrate)
 
-# Multiple variables in same columns
-set.seed(10)
-messy <- data.frame(
-  id = 1:4,
-  trt = sample(rep(c('control', 'treatment'), each = 2)),
-  work.T1 = runif(4),
-  home.T1 = runif(4),
-  work.T2 = runif(4),
-  home.T2 = runif(4)
-)
 
-tidier <- gather(data = messy, key = key, value = time, -id, -trt)
-# Can use stringr or...
-tidy <- separate(tidier, key, into = c("location", "time"), sep = "\\.") 
+# old style:
+# spread(tidy, key = drug, value = heartrate)
+pivot_wider(data = tidy,names_from="drug",values_from = "heartrate")
+messy
 
 
 
@@ -345,6 +345,8 @@ summarise(flights,
 # Group by
 daily <- group_by(flights, year, month, day)
 per_day   <- summarise(daily, flights = n(), delay = mean(dep_delay, na.rm = TRUE))
+
+per_day
 
 # Join
 # There are different joins for different purposes, see ?join
