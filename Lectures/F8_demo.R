@@ -17,16 +17,19 @@ library(stringr)
 # from doc:
 #----------------------------------------------------------------------------
 
+
 # str_c
 
 str_c("a","b","c",sep = "")
+str_c("a","b","c",sep = " ")
 
 paste("a","b","c",sep = " ")
 paste0("a","b","c")
 
+
 str_c("a","b","c",sep = "--")
 
-str_c("a","b",TRUE,sep = "--")
+str_c("a","b",TRUE,3244,sep = "--")
 
 # vektorisering:
 str_c(c("a","b","c"),c("d","e","f"),sep = "--")
@@ -45,6 +48,7 @@ letters
 
 
 my_letters <- str_c(letters, collapse = "")
+#str_c(letters,"12", sep = "")
 my_letters
 str_length(my_letters)
 str_length(letters)
@@ -83,8 +87,8 @@ str_pad(string = "HEJ!",width = 10,side ="left")
 
 str_pad(string = "HEJ!",width = 10,side ="right")
 
-str_pad(string = "HEJ!",width = 10,side ="both")
-
+a<-str_pad(string = "HEJ!",width = 10,side ="both")
+str_length(a)
 
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
@@ -97,6 +101,9 @@ str_pad(string = "HEJ!",width = 10,side ="both")
 
 # str_split
 # vektor av längd 1
+
+str_split(string = "abcbd",pattern = "b")
+
 a<-str_split(string = c("hej, hur är det?"), pattern = "[:space:]")
 print(a)
 a[[1]][1]
@@ -123,6 +130,8 @@ my_letters
 
 # finns mönster?
 str_detect(string = my_letters, pattern = "ab")
+str_detect(string = my_letters, pattern = "ba")
+
 str_detect(string = my_letters, pattern = "cd")
 
 a<-str_locate(string = my_letters, pattern = "hi")
@@ -137,13 +146,15 @@ d
 str_locate_all(string = d, pattern = "hi")
 
 # mer regexp
-x <- "[a-z]{3} "
+x <- "[a-z]{3}"
 x <- "(^| )[a-z]{3} " # mellanslag på slutet
 x <- "(^| )[a-z]{3}"
+
 str_locate_all(string ="hud hej hejhej",pattern = x)
 
 str_extract_all(string ="hud hej hejhej",pattern = x)
 
+"ab[2-4]{3} ab"
 
 # str_replace
 x <- "(^| )[a-z]{3} "
@@ -165,7 +176,7 @@ str_replace(string =" hej hejhej",pattern = x, replacement = "A")
 
 # str_extract {stringr}
 shopping_list <- c("apples x4", "bag of flour", "bag of sugar", "milk x2")
-str_extract(shopping_list, "\\d")
+str_extract(string = shopping_list, pattern = "\\d")
 str_extract(shopping_list, "\\D")
 
 str_extract_all(shopping_list, "\\d")
@@ -247,7 +258,7 @@ class(loc)
 str_sub(string = strings,start =  loc[, "start"], end = loc[, "end"])
 
 # Or more conveniently:
-str_extract(strings, phone)
+str_extract(string = strings, pattern = phone)
 
 # Pull out the three components of the match
 str_match(strings, phone)
@@ -273,6 +284,7 @@ str_replace(strings, phone, replacement = "XXX-XXX-XXXX")
 #----------------------------------------------------------------------------
 
 
+library(tidyverse)
 library(tidyr)
 library(dplyr)
 
@@ -288,17 +300,22 @@ messy
 
 # old style:
 # gather(data = messy, key = drug, value = heartrate, a:b)
-tidy<-pivot_longer(data = messy,c("a","b"),names_to="drug",values_to="heartrate")
+tidy<-pivot_longer(data = messy,cols = c("a","b"),names_to="drug",values_to="heartrate")
 
 tidy
+class(tidy)
+
+#as.data.frame(tidy)
 
 # Make multiple observations per row again
 
-
 # old style:
 # spread(tidy, key = drug, value = heartrate)
-pivot_wider(data = tidy,names_from="drug",values_from = "heartrate")
+messy2<-pivot_wider(data = tidy,names_from="drug",values_from = "heartrate")
+messy2
 messy
+
+all.equal(as.data.frame(messy2),messy)
 
 
 
@@ -313,16 +330,23 @@ library(dplyr)
 library(nycflights13)
 
 data(flights)
+?flights
+flights
 class(flights)
 
-# Select
+# Select: välj kolumn
 select(.data = flights, day, year, dep_delay)
 
-# Filter
+flights %>%
+  select(day, year, dep_delay)
+
+# Filter: välj rader
 filter(flights, day == 1 & dep_delay > 60)
 
-# Arrange
+# Arrange: sortera/arrangera rader
 arrange(flights, desc(dep_delay))
+arrange(flights, dep_delay)
+
 system.time(
 arrange(flights, dep_delay)
 )
@@ -331,18 +355,19 @@ system.time(
 flights[order(flights$dep_delay, decreasing = TRUE),]
 )
 
-# Mutate
+# Mutate: skapa nya kolumner
 flights <- 
   mutate(flights,
          gain = arr_delay - dep_delay,
          speed = distance / air_time * 60)
+
 select(flights, gain, speed)
 
 # Summarise
 summarise(flights,
           delay = mean(dep_delay, na.rm = TRUE))
 
-# Group by
+# Group_by: gruppera för “split-apply-combine”/aggregera
 daily <- group_by(flights, year, month, day)
 per_day   <- summarise(daily, flights = n(), delay = mean(dep_delay, na.rm = TRUE))
 
@@ -350,6 +375,7 @@ per_day
 
 # Join
 # There are different joins for different purposes, see ?join
+?join
 flights2 <- left_join(flights, per_day)
 select(flights2, dep_delay, delay)
 
