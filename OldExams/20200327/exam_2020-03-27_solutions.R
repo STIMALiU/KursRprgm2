@@ -12,33 +12,70 @@
 
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
-# 1: Statistik och beräkningar: Gammafördelning
+# 1: Statistik och ber?kningar: Gammaf?rdelning
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 
+#' @title estimate_gamma
+#'
+#' @description 
+#' En funktion som skattar parametrarna (theta och shape) fÃ¶r en GammafÃ¶rdelning,
+#' baserat pÃ¥ ett sample med data
+#'
+#' @param x Numerisk vektor med data
+#' 
+#' @param na.rm Logisk variabel, styr om saknade vÃ¤rden ska tas bort innan berÃ¤kning
+#' 
+#'
+#' @return
+#' Funktionen returnerar en lista med elementen:
+#'  - N: antal obs i data
+#'  - k_hat: skattning av shape parameter
+#'  - theta_hat: skattning av scale parameter
+#'  - x: data vektorn
+#' 
+
 estimate_gamma<-function(x,na.rm){
-  
+  #-----------------------------------------------------------------------------
+  # om na.rm=TRUE, ta bort de obs som har na:
   index<-is.na(x)
   if(na.rm){
     x<-x[!index]
   }else{
+    # Returnerar NA om na.rm=FALSE och det finns NA i data
     return(NA)
   }
+  
+  # testar om nÃ¥got vÃ¤rde Ã¤r <=0:
   if(!all(x>0)) stop("Some elements in x are <=0")
   
-  N<-length(x)
   
+  
+  
+  #-----------------------------------------------------------------------------
+  # berÃ¤kna k_hat och theta_hat baserat pÃ¥ formler i tentan
+  #-----------------------------------------------------------------------------
+  N<-length(x) # antal obs
+  
+  # k_bar: 
+  # tÃ¤ljare
   part1<-N*sum(x)
-  
+  # nÃ¤mnare:
   part2<-N*sum(x*log(x))-(sum(log(x))*sum(x))
-  
+  # berÃ¤kna:
   k_bar<-part1/part2
+  #-----------------------------------------------------------------------------
   
+  #-----------------------------------------------------------------------------
+  # berÃ¤kning av k_hat basera pÃ¥ k_bar:
   k_hat<-k_bar-(1/N) * ( 3*k_bar-(2/3)*(k_bar/(1+k_bar))-(4/5)*(k_bar/(1+k_bar)^2) )
   
+  # berÃ¤kning av k_hat:
   theta_hat<-(N/(N-1))*(part2/(N^2))
   
   
+  #-----------------------------------------------------------------------------
+  # samlar ihop alla delar i en lista med rÃ¤tt namn:
   res_list<-list(N=N,k_hat=k_hat,theta_hat=theta_hat,x=x)
   
   return(res_list)
@@ -60,8 +97,8 @@ estimate_gamma(x = c(1,2,-1,4),na.rm = TRUE)
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 library(stringr)
-# går även att använda casefold() eller str_to_upper()
-# nedan följer en lösning utan kunskap om dessa funktioner
+# g?r ?ven att anv?nda casefold() eller str_to_upper()
+# nedan f?ljer en l?sning utan kunskap om dessa funktioner
 
 change_letters<-function(text,first=TRUE,last=TRUE){
   text_upper<-toupper(text)
@@ -238,16 +275,16 @@ poll<-read.csv(file = path,stringsAsFactors = FALSE)
 
 
 # a)
-# hur många NA finns det i data för varje variabel?
+# hur m?nga NA finns det i data f?r varje variabel?
 apply(poll,2,FUN = function(x){sum(is.na(x))})
 
 index<-(!is.na(poll$n))&(!is.na(poll$PublDate))&(!is.na(poll$collectPeriodFrom))&(!is.na(poll$collectPeriodTo))
 sum(index)
 poll2<-poll[index,]
-# complete.cases() kan också användas.
+# complete.cases() kan ocks? anv?ndas.
 
 dim(poll2)
-# testa om vi gjort rätt:
+# testa om vi gjort r?tt:
 apply(poll2[,13:16],2,FUN = function(x){sum(is.na(x))})
 
 
@@ -263,10 +300,10 @@ sd_days
 date_vect<-ymd(poll2$PublDate)
 tab<-table(month(date_vect,label = TRUE,abbr = FALSE))
 
-# vilken månad är det minst?
+# vilken m?nad ?r det minst?
 names(which.min(tab)) # juli
 
-# vilken månad är det flest?
+# vilken m?nad ?r det flest?
 names(which.max(tab)) # september
 
 # d)
