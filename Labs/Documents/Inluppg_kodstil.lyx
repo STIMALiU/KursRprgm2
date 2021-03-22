@@ -1,0 +1,237 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+Dokumentation och kodstil
+\end_layout
+
+\begin_layout Standard
+Från och med denna laboration och de resterade laborationerna i kursen så
+ ska ni förutom att lösa angivna uppgifter också 
+\series bold
+kommentera
+\series default
+ era funktioner och ha en 
+\series bold
+god kodstil
+\series default
+ för att bli godkända.
+ 
+\end_layout
+
+\begin_layout Itemize
+Kodstil:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det viktiga är att koden ska vara 
+\series bold
+tydlig
+\series default
+ och 
+\series bold
+läsbar
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Följ någon av kodstilarna i kapitlel 
+\begin_inset Quotes eld
+\end_inset
+
+Kodstil
+\begin_inset Quotes erd
+\end_inset
+
+ i datorlaboration 4.
+ Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
+ i den stil som ni väljer att använda.
+\end_layout
+
+\begin_layout Itemize
+Tänk särskilt på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enhetlighet och struktur
+\end_layout
+
+\begin_layout Itemize
+Ha lämplig indentering och avstånd
+\end_layout
+
+\begin_layout Itemize
+Ha bra variabelnamn
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Kommentarer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funktionshuvud: Använd mallen för 
+\family typewriter
+roxygen2
+\family default
+ som ges i kapitlel 
+\begin_inset Quotes eld
+\end_inset
+
+Dokumentation av funktioner - 
+\family typewriter
+roxygen2
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ i datorlaboration 4.
+ Ni ska ha med:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+@title 
+\family default
+Här skriver ni funktionens namn
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@description 
+\family default
+Förklara kort vad funktionen gör
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@param 
+\family default
+Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+ Upprepa detta för alla argument i funktionen.
+ Ex: 
+\family typewriter
+x Numerisk vektor, används vid beräkning av medelvärde.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@return 
+\family default
+Förklara vad funktionen returnerar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+ där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
+ Ni behöver inte föklara alla detaljer.
+ Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
+ Använd luft och kommentarer för att gruppera och strukturera er kod.
+\end_layout
+
+\begin_layout Itemize
+Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
+ om ett år.
+ Vilka kommentarer behövs då?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
+ instruktioner för kommentarer och kodstil.
+ 
+\end_layout
+
+\end_body
+\end_document

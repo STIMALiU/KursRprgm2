@@ -1,0 +1,125 @@
+
+<style type="text/css">
+  
+  .indent {
+    padding-left: 2em !important;
+  }
+
+.emphasize {
+  text-align: center;
+  width: 100%;
+  color: red;
+  font-weight:bold;
+  line-height:400%;
+}
+
+.sep {
+  line-height:400%;
+}
+
+.large {
+  font-size: 1.2em !important;
+  line-height: 64px !important;
+}
+
+.reveal section del {
+  color: red;
+  font-weight:bold;
+  width: 100%;
+}
+
+</style>
+  
+Programmering i R
+========================================================
+transition: rotate
+## Föreläsning 9: Repetition
+### [Josef Wilzén](mailto:josef.wilzen@liu.se)
+
+Stima,Linköpings universitet
+
+*Uppdaterad `r Sys.Date()`*
+
+Dagens föreläsning:
+========================================================
+- Kompletteringar
+- Inför tentamen
+- R i andra kurser
+- Gammal tenta
+
+Kompletteringar av labbar
+========================================================
+- Deadline för kompletteringar finns [kurshemsidan](https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml#komp_ref)
+  - komp2: 2021-04-18 kl 18:00
+- Ev underkända labbar markeras med `komplettering` under ordinarie inlämning på Lisam. 
+- Kompletteringar lämnas då in på samma labb som är underkänd. OBS: missa inte deadline!
+- Om någon labb inte är godkänd efter **alla** kompletteringar måste alla labbar och miniprojektet göras om nästa gång kursen ges. 
+  - Vänta inte till sista kompletteringen!
+
+
+Utvärdering
+========================================================
+- Efter tentan kommer det att skickas ut en utvärdering om kursen 
+- Vi vill förbättra kursen, vi behöver era svar!
+
+
+Inför tentamen
+========================================================
+- Hemtenta på Lisam
+- Mail har gått ut med detaljerade instruktioner
+- Finns även på Teams, filken "Files" på #General på Teams
+
+Inför tentamen
+========================================================
+- Rekommenderade hjälpmedel: 
+  - Den inbyggda hjälpen i R 
+  - Referenskort: [här](https://github.com/STIMALiU/KursRprgm2/tree/master/Cheetsheats)
+  - Tentan är anonym
+- Ni ska lämna in en textfil: ```.txt```
+  - urkund för plagiatkontroll
+- God kodstil
+- Dokumentation: Funktionshuvud och kommentarer i funktionen
+  
+
+R i andra kurser
+========================================================
+Årskurs 1 och 2:
+- Grundläggande tidsserieanalys
+- Regressions- och variansanalys
+- Databaser: design och programmering
+
+Årskurs 3:
+- Bayesiansk statistik
+- Statistisk analys av komplexa data
+- Data-Mining
+
+
+R i andra kurser
+========================================================
+Kan användas på eget initiativ i många kurser, kolla [här](https://cran.r-project.org/web/views/) för uppslag på metoder.
+Tex:
+ - Projektarbete i statistik
+ - Kandidatuppstats
+
+
+R i framtiden...
+========================================================
+- Programmering är en färskvara
+- Viktigt att programmera regelbundet för att hålla färdigheten vid liv
+- Se rubriken "Efter kursen" på [kurhemsidan](https://www.ida.liu.se/~732G33/info/courseinfo.sv.shtml#efter-kursen) för inspiration för fortsatt inlärning
+- På masterprogrammet: [732A94 Advanced Programming in R](https://www.ida.liu.se/~732A94/info/courseinfo.en.shtml)
+
+
+Gammal tenta
+========================================================
+Tentan "732G33_732G83_exam_2020-03-27.pdf", finns  [här](https://github.com/STIMALiU/KursRprgm2/tree/main/OldExams/20200327/)
+
+Vad har vi lärt oss?
+- Variabler, tilldelning, typer
+- Datastrukturer
+- Kontrollstrukturer
+- Funktioner, miljöer, objekt 
+- Tillämpningar: grafik, statistik, texthantering, etc
+
+
+
