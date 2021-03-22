@@ -18,34 +18,72 @@
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 
+#' @title estimate_gamma
+#'
+#' @description 
+#' En funktion som skattar parametrarna (theta och shape) för en Gammafördelning,
+#' baserat på ett sample med data
+#'
+#' @param x Numerisk vektor med data
+#' 
+#' @param na.rm Logisk variabel, styr om saknade värden ska tas bort innan beräkning
+#' 
+#'
+#' @return
+#' Funktionen returnerar en lista med elementen:
+#'  - N: antal obs i data
+#'  - k_hat: skattning av shape parameter
+#'  - theta_hat: skattning av scale parameter
+#'  - x: data vektorn
+#' 
+
 estimate_gamma<-function(x,na.rm){
-  
+  #-----------------------------------------------------------------------------
+  # om na.rm=TRUE, ta bort de obs som har na:
   index<-is.na(x)
   if(na.rm){
     x<-x[!index]
   }else{
+    # Returnerar NA om na.rm=FALSE och det finns NA i data
     return(NA)
   }
+  
+  # testar om något värde är <=0:
   if(!all(x>0)) stop("Some elements in x are <=0")
   
-  N<-length(x)
+ 
   
+  
+  #-----------------------------------------------------------------------------
+  # beräkna k_hat och theta_hat baserat på formler i tentan
+  #-----------------------------------------------------------------------------
+  N<-length(x) # antal obs
+  
+  # k_bar: 
+  # täljare
   part1<-N*sum(x)
-  
+  # nämnare:
   part2<-N*sum(x*log(x))-(sum(log(x))*sum(x))
-  
+  # beräkna:
   k_bar<-part1/part2
+  #-----------------------------------------------------------------------------
   
+  #-----------------------------------------------------------------------------
+  # beräkning av k_hat basera på k_bar:
   k_hat<-k_bar-(1/N) * ( 3*k_bar-(2/3)*(k_bar/(1+k_bar))-(4/5)*(k_bar/(1+k_bar)^2) )
   
+  # beräkning av k_hat:
   theta_hat<-(N/(N-1))*(part2/(N^2))
   
   
+  #-----------------------------------------------------------------------------
+  # samlar ihop alla delar i en lista med rätt namn:
   res_list<-list(N=N,k_hat=k_hat,theta_hat=theta_hat,x=x)
   
   return(res_list)
   
 }
+
 set.seed(342)
 x1<-rgamma(n = 100000,shape = 4,scale = 10)
 a1<-estimate_gamma(x = x1,na.rm = TRUE)
