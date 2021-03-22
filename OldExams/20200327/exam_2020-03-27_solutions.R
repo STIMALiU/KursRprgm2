@@ -41,7 +41,7 @@ estimate_gamma<-function(x,na.rm){
   index<-is.na(x)
   if(na.rm){
     x<-x[!index]
-  }else{
+  }else if(any(index)){
     # Returnerar NA om na.rm=FALSE och det finns NA i data
     return(NA)
   }

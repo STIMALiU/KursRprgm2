@@ -14,9 +14,10 @@
 
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
-# 1: Statistik och ber?kningar: Gammaf?rdelning
+# 1: Statistik och beräkningar: Gammafördelning
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
+
 
 #' @title estimate_gamma
 #'
@@ -43,7 +44,7 @@ estimate_gamma<-function(x,na.rm){
   index<-is.na(x)
   if(na.rm){
     x<-x[!index]
-  }else{
+  }else if(any(index)){
     # Returnerar NA om na.rm=FALSE och det finns NA i data
     return(NA)
   }
@@ -62,6 +63,7 @@ estimate_gamma<-function(x,na.rm){
   # k_bar: 
   # täljare
   part1<-N*sum(x)
+  
   # nämnare:
   part2<-N*sum(x*log(x))-(sum(log(x))*sum(x))
   # beräkna:
@@ -70,10 +72,12 @@ estimate_gamma<-function(x,na.rm){
   
   #-----------------------------------------------------------------------------
   # beräkning av k_hat basera på k_bar:
-  k_hat<-k_bar-(1/N) * ( 3*k_bar-(2/3)*(k_bar/(1+k_bar))-(4/5)*(k_bar/(1+k_bar)^2) )
+  
+  part3<-( 3*k_bar-(2/3)*(k_bar/(1+k_bar))-(4/5)*(k_bar/(1+k_bar)^2) )
+  k_hat<-k_bar-(1/N) * part3
   
   # beräkning av k_hat:
-  theta_hat<-(N/(N-1))*(part2/(N^2))
+  theta_hat<-(N/(N-1))*(1/(N^2))*part2
   
   
   #-----------------------------------------------------------------------------
@@ -86,11 +90,15 @@ estimate_gamma<-function(x,na.rm){
 
 set.seed(342)
 x1<-rgamma(n = 100000,shape = 4,scale = 10)
+hist(x1)
 a1<-estimate_gamma(x = x1,na.rm = TRUE)
+str(a1)
 a1[2:3]
 
 
 estimate_gamma(x = c(1,2,-1,4),na.rm = TRUE) 
+
+
 
 
 
@@ -100,33 +108,51 @@ estimate_gamma(x = c(1,2,-1,4),na.rm = TRUE)
 #---------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------
 library(stringr)
-# g?r ?ven att anv?nda casefold() eller str_to_upper()
-# nedan f?ljer en l?sning utan kunskap om dessa funktioner
+# går även att använda casefold() eller str_to_upper()
+# nedan följer en lösning utan kunskap om dessa funktioner
 
-change_letters<-function(text,first=TRUE,last=TRUE){
-  text_upper<-toupper(text)
-  text2<-text
-  if(first){
-    replace_first<-str_sub(string = text_upper,start = 1,end = 1)
-    text2<-str_replace(string = text,pattern = "^[[a-z]]",replacement = replace_first)
-  }
-  if(last){
-    replace_last<-str_sub(string = text_upper,start = -1,end = -1)
-    text2<-str_replace(string = text2,pattern = "[[a-z]]$",replacement = replace_last)
-  }
-  return(text2)
-}
-
-# alt:
 change_letters <- function(text, first=TRUE, last=TRUE){
+  #-----------------------------------------------------------------------------
+  # två oberende ja/nej-frågor:
+  #-----------------------------------------------------------------------------
+  # first=TRUE
   if(first){
     str_sub(text, 1,1) <- toupper(str_sub(text,1,1))
   }
+  # last=TRUE
   if(last){
     str_sub(text, -1,-1) <- toupper(str_sub(text,-1,-1))
   }
   return(text)
 }
+
+# alt:
+
+change_letters<-function(text,first=TRUE,last=TRUE){
+  text_upper<-toupper(text)
+  text2<-text
+  
+  #-----------------------------------------------------------------------------
+  # två oberende ja/nej-frågor:
+  #-----------------------------------------------------------------------------
+  # first=TRUE
+  if(first){
+    replace_first<-str_sub(string = text_upper,start = 1,end = 1)
+    # [[a-z]]$ -> liten bokstav i början av texten
+    text2<-str_replace(string = text,pattern = "^[[a-z]]",replacement = replace_first)
+  }
+  #-----------------------------------------------------------------------------
+  # last=TRUE
+  if(last){
+    replace_last<-str_sub(string = text_upper,start = -1,end = -1)
+    # [[a-z]]$ -> liten bokstav i slutet av texten
+    text2<-str_replace(string = text2,pattern = "[[a-z]]$",replacement = replace_last)
+  }
+  return(text2)
+}
+
+
+
 
 
 
@@ -275,7 +301,8 @@ path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Exams/732G33 e
 
 poll<-read.csv(file = path,stringsAsFactors = FALSE)
 
-
+head(poll)
+dim(poll)
 
 # a)
 # hur m?nga NA finns det i data f?r varje variabel?
@@ -284,7 +311,8 @@ apply(poll,2,FUN = function(x){sum(is.na(x))})
 index<-(!is.na(poll$n))&(!is.na(poll$PublDate))&(!is.na(poll$collectPeriodFrom))&(!is.na(poll$collectPeriodTo))
 sum(index)
 poll2<-poll[index,]
-# complete.cases() kan ocks? anv?ndas.
+
+# complete.cases() kan också? användas.
 
 dim(poll2)
 # testa om vi gjort r?tt:
@@ -303,14 +331,16 @@ sd_days
 date_vect<-ymd(poll2$PublDate)
 tab<-table(month(date_vect,label = TRUE,abbr = FALSE))
 
-# vilken m?nad ?r det minst?
+# vilken månad är det minst?
 names(which.min(tab)) # juli
 
-# vilken m?nad ?r det flest?
+# vilken månad är det flest?
 names(which.max(tab)) # september
 
 # d)
 obj<-cor.test(x = poll2$n,y = no_days)
+obj
+
 cor_val<-obj$estimate
 cor_val
 p_val<-obj$p.value
