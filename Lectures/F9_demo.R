@@ -111,17 +111,27 @@ library(stringr)
 # går även att använda casefold() eller str_to_upper()
 # nedan följer en lösning utan kunskap om dessa funktioner
 
+
+x<-str_sub(string = "hej",start = 1,end = 1)
+toupper(x = x)
+
+
+
 change_letters <- function(text, first=TRUE, last=TRUE){
   #-----------------------------------------------------------------------------
   # två oberende ja/nej-frågor:
   #-----------------------------------------------------------------------------
   # first=TRUE
   if(first){
-    str_sub(text, 1,1) <- toupper(str_sub(text,1,1))
+    letter<-str_sub(text,1,1)
+    new_letter<-toupper(letter)
+    str_sub(text, 1,1) <- new_letter
   }
   # last=TRUE
   if(last){
     str_sub(text, -1,-1) <- toupper(str_sub(text,-1,-1))
+    #str_sub(text, nchar(text),nchar(text)) <- toupper(str_sub(text,-1,-1))
+    
   }
   return(text)
 }
@@ -182,22 +192,66 @@ change_letters(text = c("penna","apa","skola","program"),first = TRUE,last = FAL
 # a)
 
 # helper function
+
+
+
+#' @title f
+#'
+#' @description 
+#' Hjälpfunktion  till funktionen while_func(). Beräknar funktionen:
+#' 
+#'
+#' @param t 
+#' @param l 
+#' @param w
+#' 
+#' @return Funktionens värde 
+
 f<-function(t,l,w){
   y<-exp(-l*t)*cos(w*t)
 }
-# t<-0:30
-# y<-f(t = t,l = 0.2,w = 1)
-# plot(t,y,t="l")
+
+t<-0:30
+y<-f(t = t,l = 0.2,w = 1)
+plot(t,y,t="o")
+
+
+
+#' @title while_func
+#'
+#' @description 
+#' Funktion som med hjälp av en while-loop beräknar antalet steg som krävs innan
+#' |f(t-1)-f(t)| < tol, se ovan för f()
+#'
+#' @param tol tolerans innan loopen avbryter 
+#' @param l parameter till f()
+#' @param w parameter till f()
+#' 
+#' @return lista med 
+#'  - iter: antalet iterationer
+#'  - y_last: sista värdet på f(t)
+#'  - y_second: näst sista värdet på f(t)
 
 while_func<-function(tol,l,w){
-  t_var<-0
+  
+  # starta på tid (t=tid) noll:
+  t_var<-0 # steg 0
+  
+  # y_old: näst sista värdet på f(t)
   y_old<-f(t = t_var,l = l,w = w)
-  y_new<-100
+  
+  # y_new: sista värdet på f(t)
+  y_new<-1e10
+
   while(abs(y_new-y_old)>=tol){
+    # öka tiden med ett:
     t_var<-t_var+1
+    # uppdatera y_old
     y_old<-y_new
+    # uppdatera y_new
     y_new<-f(t = t_var,l = l,w = w)
   }
+  # samla i lista:
   res<-list(iter=t_var-1,y_last=y_new,y_second_last=y_old)
   return(res)
 }
@@ -206,7 +260,10 @@ while_func<-function(tol,l,w){
 # testar
 a<-while_func(tol = 0.001,l = 1,w = 1) 
 a 
-a$y_last-a$y_second_last
+
+abs(a$y_last-a$y_second_last)
+abs(a$y_last-a$y_second_last)<0.001
+
 while_func(tol = 0.1,l = 1,w = 0.1) 
 while_func(tol = 0.01,l = 0.1,w = 1) 
 while_func(tol = 0.001,l = 0.1,w = 0.1)
@@ -215,10 +272,15 @@ while_func(tol = 0.001,l = 0.1,w = 0.1)
 # b)
 
 matrix_func<-function(n,m){
-  A<-matrix(0,n,m)
-  for(i in 1:n){
-    for(j in 1:m){
+  
+  A<-matrix(NA,nrow = n,ncol = m)
+  
+  for(i in 1:n){ # rader
+    
+    for(j in 1:m){ # kolumner
+      
       temp<-(i*j)^2
+      
       if(temp%%4==0){
         A[i,j]<-temp
       }else{
