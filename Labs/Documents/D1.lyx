@@ -31,7 +31,7 @@ knitr
 \end_modules
 \maintain_unincluded_children false
 \language swedish
-\language_package auto
+\language_package default
 \inputencoding auto
 \fontencoding default
 \font_roman "default" "default"
@@ -109,7 +109,7 @@ Datorlaboration 1
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -193,26 +193,6 @@ Datorlaboration
 
 \begin_layout Chapter
 Introduktion till R och R-Studio
-\end_layout
-
-\begin_layout Section
-Distanskurs 2021
-\end_layout
-
-\begin_layout Standard
-Kursen är en distanskurs våren 2021, så ni ska göra allt kursarbete hemifrån
- med egen dator.
- Det går att ansluta till datorsalar på campus hemifrån, se instruktioner
- 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Computer_rooms/732G33%20%20Linuxdatorer%20i%20SU-salar.pdf"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section
@@ -366,12 +346,12 @@ status open
 
 \begin_layout Plain Layout
 
-13 %/% 3 
+13 %/% 3 # Heltalsdivision
 \end_layout
 
 \begin_layout Plain Layout
 
-13 %% 3
+13 %% 3 # Modulo
 \end_layout
 
 \begin_layout Plain Layout
@@ -556,30 +536,6 @@ sign(-3)
 \begin_layout Plain Layout
 
 factorial(3)
-\end_layout
-
-\begin_layout Plain Layout
-
-7 %/% 3  # heltalsdivision
-\end_layout
-
-\begin_layout Plain Layout
-
-7 %% 3  # modulus
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-10 %/% 5 
-\end_layout
-
-\begin_layout Plain Layout
-
-10 %% 5  
 \end_layout
 
 \begin_layout Plain Layout
@@ -933,12 +889,54 @@ status open
 
 \begin_layout Plain Layout
 
-minNum <- 2013
+minNum <- 2022
 \end_layout
 
 \begin_layout Plain Layout
 
 minText <- "Mer R till alla"
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Man kan även använda -> för att tilldela en variabel värdet 
+\begin_inset Quotes sld
+\end_inset
+
+åt andra hållet
+\begin_inset Quotes srd
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+2022 -> minNum
+\end_layout
+
+\begin_layout Plain Layout
+
+"Mer R till alla" -> minText
 \end_layout
 
 \begin_layout Plain Layout
@@ -968,7 +966,7 @@ status open
 
 \begin_layout Plain Layout
 
-2var <- 2013
+2var <- 2022
 \end_layout
 
 \begin_layout Plain Layout
@@ -7218,8 +7216,16 @@ exercise_solutions
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
-exercise_solutions/"
+solution_path<-
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
+solutions/
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -7312,7 +7318,7 @@ library(markmyassignment)
 
 \begin_layout Plain Layout
 
-library(markmyassignment,lib="sökväg till en mapp i din hemkatalog")
+library(markmyassignment,lib="mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Plain Layout
@@ -7343,14 +7349,14 @@ set_assignment(lab_path)
 \begin_layout Section
 
 \family typewriter
-mult_first_last()
+add_first_last()
 \end_layout
 
 \begin_layout Standard
 Skapa en funktion som heter 
 \family typewriter
 \color black
-mult_first_last()
+add_first_last()
 \family default
 \color inherit
  med argumentet 
@@ -7360,8 +7366,8 @@ vektor
 \family default
 \color inherit
 .
- Funktionen ska returnera produkten av det första och det sista elementet
- i 
+ Funktionen ska returnera summan av det första och det sista elementet i
+ 
 \family typewriter
 \color black
 vektor
@@ -7382,12 +7388,12 @@ status open
 
 \begin_layout Plain Layout
 
-mult_first_last(vektor = c(3,1,12,2,4))
+add_first_last(vektor = c(3,1,12,2,4))
 \end_layout
 
 \begin_layout Plain Layout
 
-mult_first_last(vektor = c(3,1,12))
+add_first_last(vektor = c(3,1,12))
 \end_layout
 
 \begin_layout Plain Layout
@@ -7531,21 +7537,28 @@ orth_scalar_prod(a = c(-1,3), b = c(-3,-1))
 \begin_layout Section
 
 \family typewriter
-lukes_father()
+hi_name()
 \end_layout
 
 \begin_layout Standard
 Skapa en funktion 
 \family typewriter
 \color black
-lukes_father()
+hi_name()
 \family default
 \color inherit
  som tar argumentet namn.
  Funktionen ska skriva ut 
 \family typewriter
 \color black
-[namn], I am your father.
+
+\begin_inset Quotes sld
+\end_inset
+
+Hi [namn]! Keep coding!
+\begin_inset Quotes srd
+\end_inset
+
 
 \family default
 \color inherit
@@ -7603,12 +7616,7 @@ status open
 
 \begin_layout Plain Layout
 
-lukes_father(namn = "Luke")
-\end_layout
-
-\begin_layout Plain Layout
-
-lukes_father(namn = "Leia")
+hi_name(namn = "Johan")
 \end_layout
 
 \begin_layout Plain Layout

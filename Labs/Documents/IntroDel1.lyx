@@ -124,14 +124,14 @@ rna.
 
 \begin_layout Itemize
 Använd gärna Teams för att ställa frågor.
- Det finns olika kanaler:
+ 
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
 
 \series bold
-Questions
+Frågor
 \series default
 : Skriv era frågor här.
  Svar kommer att ges öppet direkt i kanalen.
@@ -144,7 +144,7 @@ Questions
 \begin_layout Itemize
 
 \series bold
-Raise_your_hand
+Räck upp handen
 \series default
 : Skriv här om ni vill ha hjälp men inte ställa er fråga öppet.
  Skriv något i stil med 

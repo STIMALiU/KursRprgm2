@@ -2,15 +2,15 @@
 name  : D1
 description : "Statistisk programmering med R: Lab 1"
 tasks:
-  mult_first_last:
+  add_first_last:
     url:
-      - Tasks/mult_first_last_tests.R
+      - Tasks/add_first_last_tests.R
   orth_scalar_prod:
     url: 
       - Tasks/orth_scalar_prod_tests.R
   lukes_father:
     url: 
-      - Tasks/lukes_father_tests.R
+      - Tasks/hi_name_tests.R
   approx_e:
     url: 
       - Tasks/approx_e_tests.R
