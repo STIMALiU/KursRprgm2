@@ -8,7 +8,7 @@ tasks:
   orth_scalar_prod:
     url: 
       - Tasks/orth_scalar_prod_tests.R
-  lukes_father:
+  hi_name:
     url: 
       - Tasks/hi_name_tests.R
   approx_e:
