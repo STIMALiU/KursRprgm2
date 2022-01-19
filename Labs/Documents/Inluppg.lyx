@@ -228,7 +228,7 @@ status open
 
 \begin_layout Plain Layout
 
-install.packages("markmyassignment",lib="sökväg till en mapp i din hemkatalog")
+install.packages("markmyassignment",lib="mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Plain Layout

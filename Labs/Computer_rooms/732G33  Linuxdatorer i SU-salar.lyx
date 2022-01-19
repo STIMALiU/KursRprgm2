@@ -111,7 +111,7 @@ knitr
 \end_layout
 
 \begin_layout Author
-Josef Wilzén
+Johan Alenlöv
 \end_layout
 
 \begin_layout Standard
@@ -154,34 +154,6 @@ options(digits = 5)
 \end_inset
 
 
-\end_layout
-
-\begin_layout Section*
-Distanskurs 2021
-\end_layout
-
-\begin_layout Standard
-Våren 2021 så ges 732G33 och 732G83 som 
-\series bold
-distanskurs
-\series default
-.
- Det innebär att det inte finns några fysiska träffar på kursen.
- 
-\series bold
-Allt kursarbete ska göras hemifrån
-\series default
-.
- Var noga med att följa de regler som Liu har under Cornapandemin, se 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://insidan.liu.se/HR-Personal/coronavirus?l=sv"
-literal "false"
-
-\end_inset
-
-.
 \end_layout
 
 \begin_layout Section*
