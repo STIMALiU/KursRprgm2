@@ -7318,7 +7318,7 @@ library(markmyassignment)
 
 \begin_layout Plain Layout
 
-library(markmyassignment,lib="sökväg till en mapp i din hemkatalog")
+library(markmyassignment,lib="en mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Plain Layout
@@ -7328,7 +7328,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d1.yml"
 \end_layout
 
 \begin_layout Plain Layout
