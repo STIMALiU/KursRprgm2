@@ -1,4 +1,4 @@
-### Assignment : mult_first_last ###
+### Assignment : add_first_last ###
 
 context("add_first_last()")
 

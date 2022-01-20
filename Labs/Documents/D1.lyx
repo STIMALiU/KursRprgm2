@@ -7318,7 +7318,7 @@ library(markmyassignment)
 
 \begin_layout Plain Layout
 
-library(markmyassignment,lib="mapp i din hemkatalog")
+library(markmyassignment,lib="sökväg till en mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Plain Layout
@@ -7349,14 +7349,14 @@ set_assignment(lab_path)
 \begin_layout Section
 
 \family typewriter
-add_first_last()
+return_first_last()
 \end_layout
 
 \begin_layout Standard
 Skapa en funktion som heter 
 \family typewriter
 \color black
-add_first_last()
+return_first_last()
 \family default
 \color inherit
  med argumentet 
@@ -7366,14 +7366,7 @@ vektor
 \family default
 \color inherit
 .
- Funktionen ska returnera summan av det första och det sista elementet i
- 
-\family typewriter
-\color black
-vektor
-\family default
-\color inherit
-.
+ Funktionen ska returnera en vektor som består av det första och sista talet.
  
 \end_layout
 
@@ -7388,12 +7381,12 @@ status open
 
 \begin_layout Plain Layout
 
-add_first_last(vektor = c(3,1,12,2,4))
+return_first_last(vektor = c(3,1,12,2,4))
 \end_layout
 
 \begin_layout Plain Layout
 
-add_first_last(vektor = c(3,1,12))
+return_first_last(vektor = c(3,1,12))
 \end_layout
 
 \begin_layout Plain Layout
