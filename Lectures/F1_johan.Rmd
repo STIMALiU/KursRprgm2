@@ -1,0 +1,442 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 1"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-01-24'
+fontsize: 10pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Föreläsning 1:
+
+- Introduktion till kursen
+- R, R-studio
+- Introduktion till R-programering
+  * Miniräknare
+  * Variabler
+  * Vektorer
+  * Hjälp
+  * Funktioner
+  * Logik
+
+## Vilka är vi
+
+**Föreläsare**:
+- Johan Alenlöv
+
+**Labbassistent**:
+- Rasmus Säfvenborg
+
+## Kursens mål
+
+Information om kursen finns i kursplanen.
+
+**Lärandemål**
+
+- skapa enkla program i programspråket R med hjälp av grundläggande programmeringstekniker som inläsning och utskrift av data, tilldelning och manipulation av datastrukturer, skriva egna funktioner, upprepningar och villkorsstyrda satser.
+
+\pause Vi sammanfattar detta till
+
+- Bli bekväm med att använda R
+- Hantera data med R
+- Skriva program i R
+
+## Tidigare år
+
+Kollar man på tidigare kursutvärderingar har kursen fungerat bra.
+
+1. Kursens ämnesinnehåll har gett mig möjlighet att uppnå kursens lärandemål. 4.09
+3. Kursens examinerande moment har varit relevanta i relation till kursens lärandemål. 3.95
+9. Vilket helhetsbetyg ger du kursen? 3.70
+
+Ny föreläsare och examinator i år. Mindre förändringar kommer att ske i föreläsningar/laborationer. Inga planerade ändringar i innehåll eller upplägget av kursen.
+
+
+## Kursupplägg
+
+### Kursen består av **två** delar:
+
+- Del 1: Grundläggande programering
+- Del 2: Tillämpningar relaterade till statistik, grafik och datahantering
+
+\pause
+
+### Varje vecka
+
+- En föreläsning
+- En \textcolor{red}{obligatorisk} datorlaboration
+- 4 timmar lärarledd laboration
+- Inlämning:
+  - Labbar: varje \textcolor{red}{onsdag kl. 18:00} via LISAM
+
+## Del 1: Grundläggande programering
+
+- Grunderna i R
+  - Lära sig hantera R-studio
+- Fyra föreläsningar
+- Fyra inlämningar (datorlaborationer)
+- Labbarna görs **en och en**
+
+## Del 2: Tillämpningar
+
+- Statistisk analys med R
+- Fyra föreläsningar
+- Fyra inlämningar
+- Labbarna förs genom **parprogrammering** (grupper om två)
+- **miniprojekt** i två delar (del av labb 5 och labb 7)
+
+\pause
+
+\textcolor{red}{Jobba med materialet och skriv egen kod!}
+
+## Praktisk information
+
+### Kurslogistik
+
+Hemsidan innehåller föreläsningar, labbar m.m.
+
+LISAM används för inlämning av labbar och kompletteringar
+
+Teams används för kommunikation
+
+### Programvara
+
+I denna kurs använder vi **R** och **R-studio**
+
+## Kurslitteratur I:
+
+### Kursboken
+
+The Book Of R av Tilman M. Davies, 2016
+
+Den finns som e-bok via biblioteket.
+
+### Artiklar
+
+Dessa finns tillgängliga via kurshemsidan
+
+- Dates and Times Made Easy with \texttt{lubridate}
+- Handling and processing string in R
+- Best practices for scientific computing
+
+## Kurslitteratur II:
+
+### Videoföreläsningar
+
+- Google Developers videomaterial
+- Roger Pengs föreläsningar
+
+Länkar finns på kurshemsidan
+
+### Reference cards:
+
+Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
+
+## Examination
+
+- Datorlaborationer, 8st
+- Datortentamen i datorsal
+  - Hjälpmedel: R reference card (digitalt) + några fler. Information om vilka kommer komma på kurshemsidan. Dessa erhålls digitalt på tentamenstillfället, ni ska inte ta med er några papper.
+  
+## Datorlaborationer
+
+- Börja direkt
+- Är \textcolor{red}{obligatoriska}
+- Ungefär 15 h arbete per vecka.
+- Laborationsmall finns på hemsidan
+- Laborationer lämnas in via LISAM
+- Autorättning används på en del av uppgifterna, se till att följa instruktionerna.
+- 100% rätt för att bli godkänd
+
+## Datorlaborationer
+
+- Arbetstakt:
+  - Kursveckorna går måndag till måndag
+  - Kursen går på halvfart ~20h/vecka. Ungefär 15h/vecka till labbar.
+  - Mjuk deadline: söndag kväll
+  - Hård deadline: onsdag kl 18:00 veckan efter
+- Kompletteringar:
+  - Labb 1-4: komplettering strax efter halva kursen. Se kurshemsidan för info.
+  - Komplettering i samband med tentan och omtentor.
+  - Hårda deadlines.
+
+## Programmering
+
+>- Instruera en dator att utföra uppgifter
+>- Mjukvaruutveckling - vetenskaplig programmering
+>- Maskinkod - Lågnivåspråk - Högnivåspråk
+>- Kompileranmde - Intepreterande språk
+
+## Varför lära sig programera?
+
+>- Hantera \textcolor{red}{stora} datormängder
+>- Replikerbarhet
+>- Komplexa beräkningar
+>- Automatisera
+
+## Vad är R?
+
+>- R är ett populärt programmeringsspråk för statistiker
+>- Öppen källkod
+>- Många utvecklare
+>- Högnivåspråk
+
+## Ett exempel på ett program i R
+
+Skapa ett program som skriver ut talen från 10 till 1 och sen skriver "kör!".
+
+\pause
+
+I R ser det ut på följande sätt
+
+```{r,echo=TRUE,eval=FALSE}
+start <- 10
+for (i in 1:10) {
+  print(start)
+  start <- start - 1
+}
+print("Kör!")
+```
+
+## Resultatet
+
+Kör vi koden i R får vi följande resultat
+
+```{r,echo=FALSE,eval=TRUE}
+start <- 10
+for (i in 1:10) {
+  print(start)
+  start <- start - 1
+}
+print("Kör!")
+```
+
+## R och R-Studio
+
+- R är både ett program och ett programeringsspråk
+- R-Studio är en IDE för R
+- Båda är gratis och går att ladda ner och installera på er egna dator. Se kurshemsidan för information.
+
+## Att hitta hjälp
+
+- Inbyggd hjälp i R
+- Sök i Google
+- Sök på \textcolor{red}{ENGELSKA}
+- Kolla på felmeddelandet
+```{r,echo=FALSE,eval=TRUE}
+cat("Error in eval(expr, envir, enclos) : object 'x' not found")
+```
+
+
+## Variabler och vektorer
+
+- Variabler kan spara värden
+  - Sätts med \texttt{<-} (eller \texttt{->})
+- Vektorer är en samling av likadana element
+  - Skapas med \texttt{c()}
+  - Välj element med \texttt{[ ]}
+
+Exempel:
+```{r,echo=TRUE,eval=TRUE}
+a <- 1
+a
+testVektor <- c(2,3,5,7,11,13)
+testVektor[c(1,3)]
+```
+
+## Räkna med vektorer
+
+- Beräkningar sker elementvis
+
+```{r,echo=TRUE,eval=TRUE}
+testVektor <- c(2,3,5,7,11,13)
+testVektor+1
+```
+
+- Beräkningar mellan vektorer sker cykliskt
+
+```{r,echo=TRUE,eval=TRUE}
+testVektor <- c(2,3,5,7,11,13)
+testVektor+c(1,2)
+```
+
+## Olika typer av värden
+
+- Värden kan vara en av flera olika typer
+  - t.ex. heltal, flyttal, textsträngar etc.
+- Dessa typer kallas atomära klasser
+- Kan kolla vilken typ det är med \texttt{typeof( )}
+- Kan konvertera med \texttt{as.}
+
+```{r,echo=TRUE,eval=TRUE}
+as.character(4:8)
+```
+
+\pause
+
+Beskrivning | Synonymer | ```typeof()``` | Exempel i R
+----- | ---- | ----- | ---- | ----
+Heltal  ($\mathbb{Z}$) | ```int``` | ```integer``` | ```-1, 0, 1``` 
+Reella tal ($\mathbb{R}$) | ```real```, ```float``` | ```double``` | ```1.03, -2.872``` 
+Komplexa tal ($\mathbb{C}$) | ```cplx``` | ```complex``` | ```1 + 2i``` 
+Logiska värden | ```boolean```, ```bool``` | ```logical``` | ```TRUE FALSE``` 
+Textsträngar | ```string```, ```char``` | ```character``` |  ```En textsträng``` 
+
+
+## Funktioner i R
+
+- En funktion utför något
+- Tar noll eller flera \textcolor{blue}{argument}
+- Funktioner samlas i R-paket
+- Många små funktioner, en funktion gör en sak.
+
+## Funktioner i R II
+
+En funktion i R är uppbyggd av
+
+- ett funktionsnamn, t.ex. \texttt{area}
+- en funktionsdefinition: \texttt{function( )}
+- 0 eller flera argument, t.ex. \texttt{hojd} och \texttt{bredd}
+- "måsvingar" \texttt{ \{ \} }
+- kod, t.ex. \texttt{area <- hojd * bredd}
+- returnera värde, t.ex. \texttt{return(area)}
+
+## Exempel på funktion i R
+
+```{r,echo=TRUE,eval=TRUE}
+area <- function(hojd, bredd){
+  area <- hojd * bredd
+  return(area)
+}
+```
+
+```{r,echo=TRUE,eval=TRUE}
+area(hojd = 2, bredd = 3)
+area(hojd = 5, bredd = 11)
+```
+
+## Lokal miljö
+
+"Det som sker i en funktion stannar i funktionen"
+
+```{r,echo=TRUE,eval=TRUE}
+f <- function(x, y){
+  z <- 5
+  svar <- z*x + y 
+  return(svar)
+}
+```
+
+\texttt{z} och \texttt{svar} kan \textcolor{red}{inte} användas utanför funktionen.
+
+## Lokal miljö II
+
+```{r,echo=TRUE,eval=TRUE}
+ls()
+f(1,2)
+ls()
+```
+
+## Att tänka på
+
+- Funktionen måste läsas in innan den fungerar.
+- \texttt{return()} avslutar funktionen
+- \textcolor{red}{Skriv funktionen i flera delar}
+  - Skriv kod som gör det du vill
+  - Lyft in koden i funktionen
+  - Pröva funktionen
+  
+## Logik
+
+- Logik är vanligt i programmering
+  - Används i \texttt{if}-satser
+- I R finns de logiska värdena \texttt{TRUE}, \texttt{FALSE}, och \texttt{NA}
+- Skapas på två olika sätt
+  - Som vnaliga vektorer
+  - Genom relationsoperatorer
+- Kan användas för att välja element i vektorer
+
+## Logik i R
+Kan skapa en vektor med värdena \texttt{TRUE} och \texttt{FALSE}
+```{r,echo=TRUE,eval=TRUE}
+testVektor <- c(2,3,5,7,11,13)
+boolVektor <- c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
+```
+```{r,echo=TRUE,eval=FALSE}
+testVektor[boolVektor]
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+testVektor[boolVektor]
+```
+\pause
+Kan också skapa vektor genom en relation
+```{r,echo=TRUE,eval=TRUE}
+testVektor > 5
+```
+
+## Relationsoperatorer
+
+- Relationer används för att jämförelser
+- Skapar logiska vektorer
+
+| Beskrivning | Operatorer i R |
+| ----- | ---- |
+| Lika med | \texttt{==} |
+| Inte lika med | \texttt{!=} |
+| Större än | \texttt{>} |
+| Mindre än | \texttt{<} |
+| Större än eller lika med | \texttt{>=} |
+| Mindre än eller lika med | \texttt{<=} |
+| Finns i | \texttt{\%in\%} |
+
+## Logiska operatorer
+
+- Boolsk algebra
+- Operatorer:
+
+| Operator | Symbol | Operator i R |
+| ----- | ---- | ----- |
+| och | $\wedge{}$ | \texttt{\&} |
+| eller | $\vee{}$ | \texttt{|} |
+| inte | $\neg{}$ | \texttt{!} |
+
+\pause
+
+
+| Symbol | $A$ | $B$ | $\neg A$ | $A \wedge B$ | $A \vee B$ |
+| --- | --- | --- | --- | --- | --- |
+| i R | ```A``` | ```B``` | ```!A``` | ```A & B``` | ```A``` $|$ ```B``` |
+|  | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` | ```TRUE``` |
+|  | ```TRUE``` | ```FALSE``` | ```FALSE``` | ```FALSE``` | ```TRUE``` |
+|  | ```FALSE``` | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` |
+|  | ```FALSE``` | ```FALSE``` | ```TRUE``` | ```FALSE``` | ```FALSE``` |
+
+## Logik exempel
+
+```{r,echo=TRUE,eval=TRUE}
+testVektor <- c(2,3,5,7,11,13,17,19,23,29,31)
+boolVektor <- testVektor < 6 | !(testVektor < 20)
+```
+Vad blir följande uttryck?
+```{r,echo=TRUE,eval=FALSE}
+testVektor[boolVektor]
+```
+
+\pause
+
+```{r,echo=FALSE,eval=TRUE}
+testVektor[boolVektor]
+```
