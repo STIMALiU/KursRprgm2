@@ -109,7 +109,7 @@ Datorlaboration 2
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv, Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -353,6 +353,49 @@ Beräkna resten (modulo) för elementen i matrisen om matrisen divideras med
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+Vill man istället ha matrismultiplikation används %*%.
+ R har stöd för matrisalgebra och alla typer av matrisberäkningar som behövs
+ inom t.ex.
+ linjär algebra.
+ Mer om detta kommer att komma i Datorlaboration 6.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- matrix(c(1,0,0,1), ncol =2)
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- matrix(1:4,ncol = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+a%*%b
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Enumerate
 För att kombinera matriser till en blockmatris används 
 \family typewriter
@@ -946,7 +989,7 @@ min_matris[,1 ,drop=TRUE]
 
 \begin_layout Plain Layout
 
-#Testa att köra: ?"["
+#Testa: ?"["
 \end_layout
 
 \begin_layout Plain Layout
@@ -6427,8 +6470,8 @@ exercise_solutions
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
-exercise_solutions/"
+#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
+/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -6470,6 +6513,20 @@ exercise_solutions
 
 \backslash
 "
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
+solutions/
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6558,144 +6615,58 @@ set_assignment(lab_path)
 \end_layout
 
 \begin_layout Section
-Bli bekväm med Teams
+product_of_corners()
 \end_layout
 
 \begin_layout Standard
-Du ska nu logga in på Teams och göra följande:
-\end_layout
-
-\begin_layout Enumerate
-Gå till Teamet för 
-\begin_inset Quotes sld
-\end_inset
-
-732G33_2021
-\begin_inset Quotes srd
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Hitta kanalen 
-\series bold
-sayhello
-\series default
- och skriv ett meddelande som innehåller följande:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-ditt liu-ID och ditt för- och efternamn.
-\end_layout
-
-\begin_layout Enumerate
-En kort R-kod (1-5 rader) med nått som du har lärt dig under vecka 1 eller
- 2.
- 
-\series bold
-OBS: ingen kod från någon inlämningsuppgift!
-\series default
-
+Skapa en funktion product_of_corners() som tar argumentet A, där A är en
+ matris med tal.
+ Funktionen ska returnera produkten av de fyra talen som är i hörnen, om
+ antalet rader eller kolonner är lika med 1 ska elementen vara med dubbelt.
 \begin_inset Newline newline
 \end_inset
 
-För att få en bra formattering på koden, gör då följande
-\begin_inset Foot
-status collapsed
+
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Se även här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://support.microsoft.com/en-us/office/send-code-snippets-in-a-message-in-teams-5406fe2b-2771-4b9a-bd73-656914f6ab3c"
-literal "false"
 
-\end_inset
+<<eval=TRUE, echo=TRUE>>=
+\end_layout
 
+\begin_layout Plain Layout
 
+en_matris = matrix(c(2,2),nrow=2,ncol=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+product_of_corners(A = en_matris)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+en_matris = matrix(1:16,nrow=4,ncol=4)
+\end_layout
+
+\begin_layout Plain Layout
+
+product_of_corners(A = en_matris)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
 \end_layout
 
 \end_inset
 
-:
-\end_layout
 
-\begin_deeper
-\begin_layout Enumerate
-Klicka på 
-\begin_inset Quotes sld
-\end_inset
-
-Format
-\begin_inset Quotes srd
-\end_inset
-
-, finns under fältet där du skriver meddelanden.
-\end_layout
-
-\begin_layout Enumerate
-Klicka på 
-\begin_inset Quotes sld
-\end_inset
-
-Code snippet
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Enumerate
-I rullistan uppe till höger: välj 
-\begin_inset Quotes sld
-\end_inset
-
-R
-\begin_inset Quotes srd
-\end_inset
-
- 
-\end_layout
-
-\begin_layout Enumerate
-Skriv in din kod och klicka på 
-\begin_inset Quotes sld
-\end_inset
-
-Insert
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\end_deeper
-\end_deeper
-\begin_layout Standard
-När du har gjort steg 2.
- så är du godkänd på denna uppgift.
- Uppgiften examineras med en inlämning på Lisam (som heter 
-\begin_inset Quotes sld
-\end_inset
-
-sayhello
-\begin_inset Quotes srd
-\end_inset
-
-), där ni inte ska lämna in nåt.
- Det räcker att ni gör steg 2 på Teams i kanalen 
-\series bold
-sayhello
-\series default
-.
- Notera: För att bli godkänd på denna uppgift måste koden ha korrekt formatterin
-g.
- Notera att det inte är tillåtet att publicera lösningar på inlämningsuppgifter
- på Teams i någon publik kanal, det går bra att göra det i direktchattar
- med lärare/laborationsassistenter.
 \end_layout
 
 \begin_layout Section
@@ -7365,14 +7336,42 @@ google2.csv"
 
 \begin_layout Plain Layout
 
-apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFiles
-/AppleTest.csv"
+#apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
+s/AppleTest.csv"
 \end_layout
 
 \begin_layout Plain Layout
 
-google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
-s/google2.csv"
+#google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFil
+es/google2.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+apple_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/Apple
+Test.csv
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+google_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/googl
+e2.csv
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout

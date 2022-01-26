@@ -365,12 +365,12 @@ suppressWarnings({
 
 \begin_layout Plain Layout
 
-	mitt_data <- get_pxweb_data(url = "en sökväg",
+	mitt_data <- get_pxweb_data(url = "webadress",
 \end_layout
 
 \begin_layout Plain Layout
 
-	dims = list("lista med lämpliga element"),clean = TRUE)   
+	dims = list("lista med element"),clean = TRUE)   
 \end_layout
 
 \begin_layout Plain Layout

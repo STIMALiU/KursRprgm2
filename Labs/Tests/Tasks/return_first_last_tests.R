@@ -19,6 +19,8 @@ test_that("Kontroll av return_first_last", {
                info = "Fel: Funktionen returnerar inte rätt värde för vektor = 5:10.")
   expect_equal(return_first_last(vektor=c(8,1,1,1,0,5)), c(8,5),
                info = "Fel: Funktionen returnerar inte rätt värde för vektor = c(8,1,1,1,0,5).")
+  expect_equal(return_first_last(vektor=c(8,5)), c(8,5),
+               info = "Fel: Funktionen returnerar inte rätt värde för vektor = c(8,5).")
   expect_function_code(object = return_first_last, expected = "return", 
                        info = "Fel: return() saknas i funktionen.")
 })
