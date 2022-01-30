@@ -1,5 +1,5 @@
 #### Programmering i R ####
-#### Datorlaboration1 ####
+#### Datorlaboration 1 ####
 
 # spara denna fil enligt:
 # del 1: labb1_josad732.R om ditt liu-ID är josad732 och det är labb 1 .

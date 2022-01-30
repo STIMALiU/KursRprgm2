@@ -14,6 +14,8 @@ test_that("Kontroll av hi_name", {
   
   expect_output(hi_name("Johan"), "Johan!",
                 info = "Fel: Funktionen skriver inte ut namnet.")
+  expect_output(hi_name("Lisa"), "Lisa!",
+                info = "Fel: Funktionen skriver inte ut namnet.")
   expect_output(hi_name("Johan"), "Hi",
                 info = "Fel: Funktionen skriver inte ut Hi.")
   expect_output(hi_name("Johan"), "Keep coding!",

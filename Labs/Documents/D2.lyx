@@ -6622,7 +6622,8 @@ product_of_corners()
 Skapa en funktion product_of_corners() som tar argumentet A, där A är en
  matris med tal.
  Funktionen ska returnera produkten av de fyra talen som är i hörnen, om
- antalet rader eller kolonner är lika med 1 ska elementen vara med dubbelt.
+ antalet rader eller kolonner är lika med 1 ska elementen vara med dubbelt
+ i produkten, se exemplena nedan.
 \begin_inset Newline newline
 \end_inset
 
@@ -7106,14 +7107,30 @@ status open
 
 \begin_layout Plain Layout
 
-apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm2/Labs/DataFiles
-/AppleTest.csv"
+apple_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/Apple
+Test.csv
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
 
-google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm2/Labs/DataFile
-s/google2.csv"
+google_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/googl
+e2.csv
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout

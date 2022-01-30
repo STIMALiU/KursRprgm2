@@ -1,0 +1,326 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 2"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-01-31'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Föreläsning 2:
+
+- Sammanfattning Föreläsning 1
+- Datastrukturer:
+  - Matriser
+  - Data.frame
+  - Listor
+- Databearbetning
+- Input och output (I/O)
+
+# Sammanfattning Föreläsning 1
+
+## Variabler, vektorer och typer
+
+- Variabler använder vi för att spara värden
+  - Sätts med \texttt{<-} (eller \texttt{->})
+- Vektorer är en samling av likadana element
+  - Skapas med \texttt{c()}
+  - Välj element med \texttt{[ ]}
+- Beräkningar med vektorer sker elementvis och cykliskt
+- Värden kan vara av olika typer
+  - Kollar typ med \texttt{typeof( )}
+  - Byter typ med \texttt{as.}
+  
+## Funktioner
+
+- En funktion utför något
+- En funktion i R är uppbyggd av
+  - ett funktionsnamn, t.ex. \texttt{area}
+  - en funktionsdefinition: \texttt{function( )}
+  - 0 eller flera argument, t.ex. \texttt{hojd} och \texttt{bredd}
+  - "måsvingar" \texttt{ \{ \} }
+  - kod, t.ex. \texttt{area <- hojd * bredd}
+  - returnera värde, t.ex. \texttt{return(area)}
+
+## Logik
+
+- Logik är vanligt i programmering
+  - Används i \texttt{if}-satser
+- I R finns de logiska värdena \texttt{TRUE}, \texttt{FALSE}, och \texttt{NA}
+- Skapas på två olika sätt
+  - Som vnaliga vektorer
+  - Genom relationsoperatorer
+- Kan användas för att välja element i vektorer
+
+## Logik i R
+Kan skapa en vektor med värdena \texttt{TRUE} och \texttt{FALSE}
+```{r,echo=TRUE,eval=TRUE}
+testVektor <- c(2,3,5,7,11,13)
+boolVektor <- c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
+```
+```{r,echo=TRUE,eval=FALSE}
+testVektor[boolVektor]
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+testVektor[boolVektor]
+```
+\pause
+Kan också skapa vektor genom en relation
+```{r,echo=TRUE,eval=TRUE}
+testVektor > 5
+```
+
+## Relationsoperatorer
+
+- Relationer används för att jämförelser
+- Skapar logiska vektorer
+
+| Beskrivning | Operatorer i R |
+| ----- | ---- |
+| Lika med | \texttt{==} |
+| Inte lika med | \texttt{!=} |
+| Större än | \texttt{>} |
+| Mindre än | \texttt{<} |
+| Större än eller lika med | \texttt{>=} |
+| Mindre än eller lika med | \texttt{<=} |
+| Finns i | \texttt{\%in\%} |
+
+## Logiska operatorer
+
+- Boolsk algebra
+- Operatorer:
+
+| Operator | Symbol | Operator i R |
+| ----- | ---- | ----- |
+| och | $\wedge{}$ | \texttt{\&} |
+| eller | $\vee{}$ | \texttt{|} |
+| inte | $\neg{}$ | \texttt{!} |
+
+\pause
+
+
+| Symbol | $A$ | $B$ | $\neg A$ | $A \wedge B$ | $A \vee B$ |
+| --- | --- | --- | --- | --- | --- |
+| i R | ```A``` | ```B``` | ```!A``` | ```A & B``` | ```A``` $|$ ```B``` |
+|  | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` | ```TRUE``` |
+|  | ```TRUE``` | ```FALSE``` | ```FALSE``` | ```FALSE``` | ```TRUE``` |
+|  | ```FALSE``` | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` |
+|  | ```FALSE``` | ```FALSE``` | ```TRUE``` | ```FALSE``` | ```FALSE``` |
+
+# Datastrukturer
+
+## Datastrukturer
+
+- Lagring och hantering av data
+- Vi kommer att diskuttera:
+  - Vektorer (Föreläsning 1)
+  - Matriser
+  - \texttt{data.frame}
+  - Listor
+  
+# Matriser
+
+## Matriser
+
+- En tvådimensionell vektor
+- Alla element har \imp{samma} typ
+- Skapas med \texttt{matrix( )}
+- \texttt{+, -, *, /} etc. sker elementvis
+- Matrisoperationer finns, kommer prata mer om det senare
+- Hitta index med \texttt{[ "rad" , "kolumn" ]}
+  - Om \texttt{rad} eller \texttt{kolumn} saknas väljs hela raden/kolumnen.
+
+## Matriser, exempel
+
+```{r,echo=TRUE,eval=TRUE}
+en_matris <- matrix(data = 5:8, ncol = 2)
+en_matris
+```
+
+\pause
+
+```{r,echo=TRUE,eval=TRUE}
+en_matris[1, ] <- en_matris[2, ]
+en_matris
+```
+
+# data.frame
+
+## data.frame
+
+- Dataset i R
+- Olika kolumner han ha \textcolor{red}{olika} datatyper
+  - Varje kolumn är en vektor
+- Indexering av variabler kan göras med variabelnamn \texttt{["mittNamn"]}
+- Kan också indexera med \texttt{[ "rad" , "kolumn" ]}
+- Finns många inbyggda datasets i paketet \texttt{datasets}
+  - ladda in med funktionen \texttt{data( )}
+
+## Exempel på inbyggt dataset
+
+![New York](images/ny.jpeg){width=50%}
+
+Ladda in och undersök data
+```{r,echo=TRUE,eval=FALSE}
+data("airquality")
+head(airquality)
+tail(airquality)
+summary(airquality)
+dim(airquality)
+```
+
+
+## Skapa en data.frame
+
+```{r,echo=TRUE,eval=TRUE}
+minData <- data.frame(
+  namn = c('Johan', 'Therese', 'Hugo'), 
+  vuxen = c(TRUE,TRUE,FALSE), 
+  langd = c(180,172,110))
+minData
+```
+
+## Variabler
+
+- Varje kolumn är en vektor
+- Kan välja en kolumn på olika sätt, följande tar fram samma kolumn.
+```{r,echo=TRUE,eval=FALSE}
+minData$langd
+minData[, "langd"]
+minData[["langd"]]
+minData[, 3]
+minData[, colnames(minData) == "langd"]
+```
+
+## Nya variabler
+
+- Lägga till en ny vektor
+- Fungerar som vektorer
+```{r,echo=TRUE,eval=TRUE}
+minData$langdMeter <- c(1.8, 1.7, 1.1)
+minData$rolig <- "Ja"
+minData
+```
+
+## Ta bort variabler
+
+- Byt ut variabeln till \texttt{NULL}
+- Kan också plocka bort med negativ indexering
+```{r,echo=TRUE,eval=TRUE}
+minData <- minData[, -4] 
+minData$rolig <- NULL
+minData
+```
+
+## Variabelnamn
+
+- Variabelnamn är text som sparas i en vektor
+
+```{r,echo=TRUE,eval=TRUE}
+colnames(minData)
+```
+
+- Kan byta genom att skriva över värdet
+
+```{r,echo=TRUE,eval=TRUE}
+colnames(minData)[2] <- "Inte Barn"
+minData
+```
+
+## Rader
+
+- Varje rad har sitt egna ID
+- Alla rad IDn är en textvektor
+```{r,echo=TRUE,eval=TRUE}
+rownames(minData)
+```
+- Kan byta precis som med variabler
+```{r,echo=TRUE,eval=TRUE}
+rownames(minData)[1] <- "Person 1"
+minData
+```
+
+# Listor
+
+## Listor
+
+- En lista är en samling objekt
+- Tänk en vektor där varje element är en låda
+  - Lådan kan innehålla "vad som helst"
+```{r,echo=TRUE,eval=TRUE}
+minLista <- list(namn = "Ash Ketchum",
+                 c("Pikachu", "Caterpie", "Charmander"))
+minLista
+```
+
+## Indexering i listor
+
+- Indexering görs med hakparanteser
+  - För att komma åt ett eller flera objekt: \texttt{[ ]}
+  - För att komma åt innehållet i ett objekt: \texttt{[[ ]]}
+- Om namngivna objekt:
+  - \texttt{minLista$namn}
+  - \texttt{minList[["namn"]]}
+```{r,echo=TRUE,eval=TRUE}
+minLista[1]
+minLista[[1]]
+```
+
+# Databearbetning
+
+## Sammanfoga data
+
+- Man vill ofta kombinera olika dataset
+- Vanliga sammanslagningar
+  - Kombinera rader \texttt{rbind( )}
+  - Kombinera kolumner \texttt{cbind( )}
+  - Kombinera datasets \texttt{merge( )}
+- Om man vill aggregera data används \texttt{aggregate( )}
+
+# Input och Output
+
+## Input
+
+- Att läsa in data
+  - Från filer på datorn/nätverket (\texttt{.csv .xlsx .txt .Rdata .RDS})
+  - Filer från webben (\texttt{httr})
+  - Från databaser (\texttt{SQL})
+  - Via något API (\texttt{rOpenGov})
+
+- För att läsa in filer i R använder vi
+  - \texttt{.csv} och \texttt{.txt}
+    - \texttt{read.table( )}, \texttt{read.csv( )} och \texttt{read.csv2( )}
+  - \texttt{.Rdata}
+    - \texttt{load( )}
+  - \texttt{.RDS}
+    - \texttt{readRDS( )}
+
+## Output
+
+- Att leverera data
+  - Filer
+  - Databaser/API
+  - Interaktiva webbdatabaser (\texttt{Shiny})
+  - Rapporter/analyser/texter (\texttt{knitr})
+    - Detta kommer i miniprojekten
+  
+- För att spara filer i R använder vi
+  - \texttt{.csv}
+    - \texttt{write.table( )}, \texttt{write.csv( )} och \texttt{write.csv2( )}
+  - \texttt{.Rdata}
+    - \texttt{save( )}
+  - \texttt{.RDS}
+    - \texttt{saveRDS( )}

@@ -49,3 +49,4 @@ F*-figure
 *cache*
 *figure*
 *.Rapp.*
+*.log

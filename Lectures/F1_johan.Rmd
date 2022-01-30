@@ -12,7 +12,7 @@ output:
     latex_engine: "xelatex"
     includes:
       in_header: metropolis_preamble.tex
-classoption: "handout"
+#classoption: "handout"
 ---
 
 ```{r setup, include=FALSE}
@@ -33,11 +33,14 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Vilka är vi
 
-**Föreläsare**:
+**Föreläsare och examinator**:
+
 - Johan Alenlöv
 
-**Labbassistent**:
-- Rasmus Säfvenborg
+**Labbassistenter**:
+
+- Josef Wilzén
+- Rasmus Säfvenberg
 
 ## Kursens mål
 
