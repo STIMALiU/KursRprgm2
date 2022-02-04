@@ -6,7 +6,7 @@ tasks:
     url: Tasks/my_matrix_prod_tests.R
   babylon :
     url: Tasks/babylon_tests.R
-  my_moving_average :
-    url: Tasks/my_moving_average_tests.R
+  blood_match :
+    url: Tasks/blood_match_tests.R
 mandatory:
   url: mandatory.R
