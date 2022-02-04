@@ -114,7 +114,7 @@ Datorlaboration 3
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv, Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -3813,13 +3813,27 @@ exercise_solutions
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
-exercise_solutions/"
+#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
+/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
 
 #solution_path<- "../KursRprgmTeacher/Labs/exercise_solutions/" 
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
+solutions/
+\begin_inset Quotes srd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -3882,7 +3896,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d3.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d3.yml"
 \end_layout
 
 \begin_layout Plain Layout
@@ -3928,6 +3942,323 @@ debug
 \family default
  för att stega igenom funktionerna.
  Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+blood_match()
+\end_layout
+
+\begin_layout Standard
+Vid en 
+\begin_inset CommandInset href
+LatexCommand href
+name "blodtransfusion"
+target "https://www.1177.se/Ostergotland/behandling--hjalpmedel/fler-behandlingar/blodtransfusion/"
+literal "false"
+
+\end_inset
+
+ är det viktigt att hålla koll på givarens och mottagarens 
+\begin_inset CommandInset href
+LatexCommand href
+name "blodgrupp"
+target "https://www.1177.se/Ostergotland/liv--halsa/sa-fungerar-kroppen/blodgrupper/"
+literal "false"
+
+\end_inset
+
+.
+ Blodgrupperna delas in i AB0 och Rh systemet.
+\end_layout
+
+\begin_layout Standard
+För AB0 systemet gäller att en person kan antingen vara typ A, B, AB eller
+ 0.
+ En person med typ AB kan ta emot blod från alla typer, en person med typ
+ A kan bara ta emot från någon med typ A eller 0, en person med typ B kan
+ bara ta emot från någon med typ B eller 0 och en person med typ 0 kan bara
+ ta emot från en person med typ 0.
+\end_layout
+
+\begin_layout Standard
+För Rh systemet gäller att en person kan antingen vara positiv (+) eller
+ negativ (-), en person som är positiv kan ta emot blod från båda typerna,
+ en person som är negativ kan bara ta emot blod från någon som är negativ.
+\end_layout
+
+\begin_layout Standard
+Er uppgift är att skriva en funktion som talar om ifall en person kan ta
+ emot en annan persons blod baserat på deras blodgrupp.
+ Ni får givet en lista 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{patients}
+\end_layout
+
+\end_inset
+
+ som ska innehålla två listor som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{giver}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{reciever}
+\end_layout
+
+\end_inset
+
+, en för varje person.
+ Varje person har två variabler, som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+ som båda innehåller en textsträng, där textsträngarna ska vara A,B,AB eller
+ 0 för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och + eller - för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+.
+ Funktionen ska skriva ut textraden 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are a match}
+\end_layout
+
+\end_inset
+
+ om transfusionen är möjlig.
+ Om det inte är möjligt ska texten 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are not a match}
+\end_layout
+
+\end_inset
+
+ skrivas ut tillsammans med 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible rh}
+\end_layout
+
+\end_inset
+
+ eller 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0 and rh}
+\end_layout
+
+\end_inset
+
+ beroende på vad som inte matchade.
+\end_layout
+
+\begin_layout Standard
+Om det är så att patients 
+\series bold
+inte
+\series default
+ är en lista ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Not a list
+\end_layout
+
+\begin_layout Standard
+Om det är så att någon av värdena i AB0 och rh 
+\series bold
+inte
+\series default
+ är korrekta (t.ex.
+ AB0 skulle vara C) ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Wrong bloodtype
+\series default
+ 
+\end_layout
+
+\begin_layout Standard
+Här kommer ett exempel på hur funktionen ska fungera:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "0", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsB)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Om ingen lista
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(
+\begin_inset Quotes sld
+\end_inset
+
+
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -4558,1067 +4889,6 @@ sqrt(51)
 \begin_layout Plain Layout
 
 @
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Branch my_moving_average
-inverted 0
-status open
-
-\begin_layout Section
-
-\family typewriter
-my_moving_average()
-\end_layout
-
-\begin_layout Standard
-I denna uppgift ska vi skapa en funktion som beräknar 
-\begin_inset CommandInset href
-LatexCommand href
-name "glidande medelvärden"
-target "https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average"
-literal "false"
-
-\end_inset
-
- som du kallar 
-\family typewriter
-my_moving_average().
-
-\family default
- Glidande medelvärde är en statistisk metod som ofta används på tidserier.
- Genom denna metod kan en tidserie transformeras så att den varierar mer
- mjukt över tiden.
-\end_layout
-
-\begin_layout Standard
-Funktionen ska kunna ta en godtycklig numerisk vektor 
-\family typewriter
-x
-\family default
-, och ett argument 
-\family typewriter
-n
-\family default
-.
- Först ska den kontrollera att vektorn är numerisk.
- Är vektorn inte numerisk ska funktionen 
-\series bold
-avbrytas
-\series default
- och skriva ut felmeddelandet 
-\family typewriter
-
-\begin_inset Quotes sld
-\end_inset
-
-Not a numeric vector!
-\begin_inset Quotes srd
-\end_inset
-
-
-\family default
-.
- Annars ska funktionen beräkna det glidande medelvärdet på vektorn 
-\family typewriter
-x
-\family default
-.
- Vi kan tänka att 
-\begin_inset Formula $x$
-\end_inset
-
- är en vektor med värden som har observaerats över tid, elementen i vektorn
- 
-\family typewriter
-x
-\family default
- går från 
-\begin_inset Formula $x_{i}\quad i=1,\ldots,T$
-\end_inset
-
- där indexet anger olika tidpunkter.
- Det glidande medelvärdet för tidpunkt 
-\begin_inset Formula $t$
-\end_inset
-
- beräknas genom formeln:
-\begin_inset Formula 
-\begin{equation}
-y_{t}=\frac{x_{t}+\cdots+x_{t-(n-1)}}{n}\label{eq:MA}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-där 
-\begin_inset Formula $y_{t}$
-\end_inset
-
- är medelvärdet för 
-\begin_inset Formula $t$
-\end_inset
-
-:e tidpunkten i vektorn som ska returneras.
- Detta innebär att vektorn 
-\begin_inset Formula $y$
-\end_inset
-
- är 
-\begin_inset Formula $n-1$
-\end_inset
-
- element kortare än 
-\begin_inset Formula $x$
-\end_inset
-
-.
- Exempel: Låt 
-\begin_inset Formula $n=4$
-\end_inset
-
-, det 
-\begin_inset Formula $t$
-\end_inset
-
-:e värdet av 
-\begin_inset Formula $y$
-\end_inset
-
- beräknas genom:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-y_{t}=\frac{x_{t}+x_{t-1}+x_{t-2}+x_{t-3}}{4}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Om vi vill beräkna 
-\begin_inset Formula $y_{t}$
-\end_inset
-
- för 
-\begin_inset Formula $t=4$
-\end_inset
-
- erhålls formeln:
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-y_{4}=\frac{x_{4}+x_{3}+x_{2}+x_{1}}{4}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Tabellen nedan visar specifika exempel på beräkningar av 
-\begin_inset Formula $y$
-\end_inset
-
- i fallet 
-\begin_inset Formula $n=4$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Tabular
-<lyxtabular version="3" rows="10" columns="4">
-<features tabularvalignment="middle">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<column alignment="center" valignment="top">
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-Tidpunkt (index för 
-\begin_inset Formula $x$
-\end_inset
-
-)
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-Beräkning av 
-\begin_inset Formula $y$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-1
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{1}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-(inget värde)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-2
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{2}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-(inget värde)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-3
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{3}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size small
-(inget värde)
-\end_layout
-
-\end_inset
-</cell>
-<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-4
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{4}=\frac{x_{4}+x_{3}+x_{2}+x_{1}}{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-5
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{5}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{5}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{5}=\frac{x_{5}+x_{4}+x_{3}+x_{2}}{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-6
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{6}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{6}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{6}=\frac{x_{6}+x_{5}+x_{4}+x_{3}}{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-10
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $x_{10}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{10}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $y_{10}=\frac{x_{10}+x_{9}+x_{8}+x_{7}}{4}$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\size larger
-\begin_inset Formula $\vdots$
-\end_inset
-
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-</lyxtabular>
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace 1cm
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Här kommer ett förslag på hur funktionen kan implementeras:
-\end_layout
-
-\begin_layout Enumerate
-Testa först om 
-\family typewriter
-x
-\family default
- är numerisk
-\end_layout
-
-\begin_layout Enumerate
-Skapa en tom vektor 
-\family typewriter
-y
-\family default
- med rätt antal element.
-\end_layout
-
-\begin_layout Enumerate
-Beräkningen av glidande medelvärde kan nu göras på två likvärdiga sätt:
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-Utgå från index för 
-\family typewriter
-x
-\family default
- och loopa över alla element i 
-\family typewriter
-x
-\family default
- och genomför beräkningen i 
-\begin_inset CommandInset ref
-LatexCommand eqref
-reference "eq:MA"
-
-\end_inset
-
- och spara värdet på rätt ställe i vektorn 
-\family typewriter
-y
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Utgå från index för 
-\family typewriter
-y
-\family default
- och loopa över alla element i 
-\family typewriter
-y
-\family default
- och genomför beräkningen
-\begin_inset Formula 
-\[
-y_{t}=\frac{x_{t}+\cdots+x_{t+(n-1)}}{n}
-\]
-
-\end_inset
-
-och spara värdet på rätt ställe i vektorn 
-\family typewriter
-y
-\family default
-.
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset Newline newline
-\end_inset
-
-Notera att looparna använder olika index i fall (a) och fall (b).
-\end_layout
-
-\end_deeper
-\begin_layout Enumerate
-Returnera 
-\family typewriter
-y
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-I denna uppgift är det inte tillåtet att använda sig av inbyggda funktioner
- eller R-paket som direkt beräknar glidande medelvärden, utan ni måste skapa
- funktionen själva enligt instruktionerna ovan.
- Exempel på otillåtna funktioner är: 
-\family typewriter
-filter()
-\family default
-, 
-\family typewriter
-ma()
-\family default
- i 
-\family typewriter
-forecast
-\family default
-, 
-\family typewriter
-rollmean()
-\family default
- i 
-\family typewriter
-zoo
-\family default
-, 
-\family typewriter
-SMA()
-\family default
- i 
-\family typewriter
-TTR
-\family default
- och 
-\family typewriter
-sma()
-\family default
- i 
-\family typewriter
-smooth
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Här är testexempel på hur funktionen ska fungera.
- De blå linjerna i figuerna är det uträknade glidande medelvärdet.
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-my_moving_average(x = "ABC", n=2)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_moving_average(x = TRUE, n=3)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_moving_average(x = 1:6, n=2)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_moving_average(x = 5:15,n = 4)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_x<-c(10,12,7,6,7,5,10,15,20,22,21,28,30,34,39,45)
-\end_layout
-
-\begin_layout Plain Layout
-
-length(my_x)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_y<-my_moving_average(x = my_x, n=4)
-\end_layout
-
-\begin_layout Plain Layout
-
-length(my_y)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_y
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# riktig tidserie:
-\end_layout
-
-\begin_layout Plain Layout
-
-# ?AirPassengers
-\end_layout
-
-\begin_layout Plain Layout
-
-data(AirPassengers) 
-\end_layout
-
-\begin_layout Plain Layout
-
-air_pass<-as.numeric(AirPassengers) 
-\end_layout
-
-\begin_layout Plain Layout
-
-time_index<-1:length(air_pass)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# ex 1:
-\end_layout
-
-\begin_layout Plain Layout
-
-no_lags<-5 
-\end_layout
-
-\begin_layout Plain Layout
-
-ma_air1<-my_moving_average(x = air_pass,n = no_lags) 
-\end_layout
-
-\begin_layout Plain Layout
-
-summary(ma_air1)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-ma_index1<-(no_lags):length(air_pass)
-\end_layout
-
-\begin_layout Plain Layout
-
-plot(x = time_index,y = air_pass,t="l",main=paste("n =",no_lags)) 
-\end_layout
-
-\begin_layout Plain Layout
-
-lines(x = ma_index1,y = ma_air1,col="blue")  # lägger till glidande medelvärde
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# ex 2:
-\end_layout
-
-\begin_layout Plain Layout
-
-no_lags<-20 
-\end_layout
-
-\begin_layout Plain Layout
-
-ma_air2<-my_moving_average(x = air_pass,n = no_lags) 
-\end_layout
-
-\begin_layout Plain Layout
-
-summary(ma_air2)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-ma_index2<-(no_lags):length(air_pass)
-\end_layout
-
-\begin_layout Plain Layout
-
-plot(x = time_index,y = air_pass,t="l",main=paste("n =",no_lags)) 
-\end_layout
-
-\begin_layout Plain Layout
-
-lines(x = ma_index2,y = ma_air2,col="blue")  # lägger till glidande medelvärde
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \end_inset
