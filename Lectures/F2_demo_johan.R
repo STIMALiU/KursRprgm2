@@ -1,4 +1,4 @@
-# == Demo kod Föreläsning 1 == #
+# == Demo kod Föreläsning 2 == #
 # == Johan Alenlöv == #
 
 # == Matriser == #
