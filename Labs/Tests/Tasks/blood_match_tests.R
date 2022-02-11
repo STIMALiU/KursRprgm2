@@ -33,7 +33,7 @@ test_that("Assignment: blood_match()", {
                 info = "Fel: Funktionen ger fel output för 0+ till B-")
   expect_output(blood_match(test_patientsC), "Incompatible rh",
                 info = "Fel: Funktionen ger fel output för 0+ till B-")
-  expect_error(blood_match(""), "not a list",
+  expect_error(blood_match(""), "Not a list",
                info = "Fel: Inget fel om patients inte är en lista")
   expect_error(blood_match(test_patientsD), "Wrong bloodtype",
                info = "Fel: Inget fel om rh värde är felaktigt")

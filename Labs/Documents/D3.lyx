@@ -3989,8 +3989,9 @@ För Rh systemet gäller att en person kan antingen vara positiv (+) eller
 \end_layout
 
 \begin_layout Standard
-Er uppgift är att skriva en funktion som talar om ifall en person kan ta
- emot en annan persons blod baserat på deras blodgrupp.
+Er uppgift är att skapa en funktion blood_match() med argumentet patients
+ som talar om ifall en person kan ta emot en annan persons blod baserat
+ på deras blodgrupp.
  Ni får givet en lista 
 \begin_inset ERT
 status open
@@ -4181,8 +4182,34 @@ stoppas
  och returnera felmeddelandet 
 \series bold
 Wrong bloodtype
-\series default
+\end_layout
+
+\begin_layout Standard
+Exempel på hur man kan implementera är:
+\end_layout
+
+\begin_layout Enumerate
+Testa så att argumentet patients är en lista.
  
+\end_layout
+
+\begin_layout Enumerate
+Kolla så att AB0 och rh-värdena är tillåtna.
+ *tips: skapa en vektor med tillåtna värden och använda %in% för att se
+ om det givna värdet finns i denna vektor*.
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if - else del för att testa om AB0 värdena stämmer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if -else del för att testa om rh värdena stämmer.
+\end_layout
+
+\begin_layout Enumerate
+Kombinera resultaten från punkt 3 och 4 för att få rätt utskrift.
 \end_layout
 
 \begin_layout Standard
@@ -4227,6 +4254,36 @@ test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ),
 \begin_layout Plain Layout
 
 blood_match(test_patientsB)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsC = list(giver = list(AB0 = "0", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "B", rh = "-"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsC)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsD = list(giver = list(AB0 = "A", rh = "H" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsD)
 \end_layout
 
 \begin_layout Plain Layout
