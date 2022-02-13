@@ -4,7 +4,5 @@ description : "Statistisk programmering med R: Lab 4"
 tasks:
   hilbert_matrix:
     url: Tasks/hilbert_matrix_tests.R
-  toeplitz_matrix:
-    url: Tasks/toeplitz_matrix_tests.R
 mandatory:
   url: mandatory.R

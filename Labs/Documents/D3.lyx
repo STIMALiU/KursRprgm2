@@ -4195,8 +4195,10 @@ Testa så att argumentet patients är en lista.
 
 \begin_layout Enumerate
 Kolla så att AB0 och rh-värdena är tillåtna.
- *tips: skapa en vektor med tillåtna värden och använda %in% för att se
- om det givna värdet finns i denna vektor*.
+ 
+\emph on
+tips: skapa en vektor med tillåtna värden och använda %in% för att se om
+ det givna värdet finns i denna vektor
 \end_layout
 
 \begin_layout Enumerate
