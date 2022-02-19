@@ -445,6 +445,7 @@ f <- function(x, y) x^2 + y^2
 ```{r,echo=TRUE,eval=TRUE}
 myList <- list(x=1:10, y = c(NA,12:20))
 str(lapply(X=myList, FUN=mean, na.rm=TRUE))
+# Detta är ett test å ä ö
 ```
 
 

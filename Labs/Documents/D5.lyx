@@ -31,7 +31,7 @@ knitr
 \end_modules
 \maintain_unincluded_children false
 \language swedish
-\language_package auto
+\language_package default
 \inputencoding auto
 \fontencoding default
 \font_roman "default" "default"
@@ -109,7 +109,7 @@ Datorlaboration 5
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv, Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -3454,6 +3454,201 @@ Detta är ett klassiskt exempel på centrala gränsvärdessatsen.
 \end_layout
 
 \end_deeper
+\begin_layout Section
+Stora talens lag och Monte Carlo
+\end_layout
+
+\begin_layout Standard
+En annan användning av slumptal är den så kallade Monte Carlo metoden.
+ I denna metod så använder vi slumptal för att uppskatta väntevärden eller
+ sannolikheter.
+ Dessa väntevärden/sannolikheter skattas genom att vi gör en massa simuleringar
+ och tar medelvärdet av dessa.
+ En simulering kan t.ex.
+ vara att dra ett slumptal, det kan också vara lite mer komplicerat.
+\end_layout
+
+\begin_layout Enumerate
+Om vi har ett slumptal från 
+\begin_inset Formula $\mathcal{U}(\min=0,\max=1)$
+\end_inset
+
+så kan vi räkna ut att väntevärdet är 
+\begin_inset Formula $\frac{1}{2}$
+\end_inset
+
+ .
+ Testa om Monte Carlo metoden fungerar genom att köra följande.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(1234)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Vi simulerar 10 slumptal från fördelningen och räknar ut medelvärdet med
+ mean()
+\end_layout
+
+\begin_layout Plain Layout
+
+u <- runif(10,min=0,max=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mean(u))
+\end_layout
+
+\begin_layout Plain Layout
+
+# Nu simulerar vi istället 10 000 slumptal från fördelningen och räknar
+ ut medelvärdet med mean()
+\end_layout
+
+\begin_layout Plain Layout
+
+u <- runif(10000,min=0,max=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mean(u))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi fortsätter med slumptal från 
+\begin_inset Formula $\mathcal{U}(\min=0,\max=1)$
+\end_inset
+
+ så kan vi räkna ut att sannolikheten att få ett tal större än 
+\begin_inset Formula $\frac{3}{4}$
+\end_inset
+
+ är 
+\begin_inset Formula $\frac{1}{4}$
+\end_inset
+
+.
+ Vi kan räkna ut detta genom Monte Carlo metoden på följande sätt.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(1234)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Vi simulerar 10 slumptal
+\end_layout
+
+\begin_layout Plain Layout
+
+u <- runif(10,min=0,max=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Vi skapar en logisk vektor med TRUE / FALSE om värdet är större eller
+ mindre än 3/4
+\end_layout
+
+\begin_layout Plain Layout
+
+probs <- u > 3/4
+\end_layout
+
+\begin_layout Plain Layout
+
+# Vi uppskattar sannolikheten genom att räkna medelvärdet på denna logiska
+ vektor.
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mean(probs))
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Vi upprepar allting med 10 000 slumptal också
+\end_layout
+
+\begin_layout Plain Layout
+
+u <- runif(10000,min=0,max=1)
+\end_layout
+
+\begin_layout Plain Layout
+
+probs <- u > 3/4
+\end_layout
+
+\begin_layout Plain Layout
+
+print(mean(probs))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Upprepa exemplena ovan och räkna ut medelvärdet för en normalfördelad med
+ parametrarna 
+\family typewriter
+mean=4,
+\family default
+ 
+\family typewriter
+sd=5 
+\family default
+samt räkna ut sannolikheten att variabeln är större än 9.
+\end_layout
+
 \begin_layout Chapter
 Introduktion till R markdown och knitr
 \end_layout
@@ -5118,7 +5313,7 @@ Google docs eller google drive är en molntjänst för kalkylblad i molnet.
 \begin_inset CommandInset href
 LatexCommand href
 name "Här"
-target "https://docs.google.com/spreadsheets/d/16uE3bb_7rHt_g4zOBXAVHM40N3YqRIXLPQwsE1yenAQ/pubhtml"
+target "https://docs.google.com/spreadsheets/d/1ZDJQXUiYg_QPNY38SNyTHyOtco6kbwePmTHWkqxnXxA"
 literal "false"
 
 \end_inset
@@ -5127,16 +5322,12 @@ literal "false"
 \color inherit
  finns dokumentet vi ska läsa in (det är samma data som faithful-datasetet
  i R).
- I sökvägen kan vi se textsträngen 
-\family typewriter
-16uE3bb_7rHt_g4zOBXAVHM40N3YqRIXLPQwsE1yenAQ
-\family default
-.
+ I sökvägen kan vi se textsträngen 1ZDJQXUiYg_QPNY38SNyTHyOtco6kbwePmTHWkqxnXxA.
  Detta är det unika id:t för detta google-kalkylblad.
 \end_layout
 
 \begin_layout Standard
-Vi kommer använda paketet RGoogleDoc som klarar att göra mycket med google
+Vi kommer använda paketet googlesheets4 som klarar att göra mycket med google
  docs (som att spara dataset, läsa textfiler m.m.).
  Vi kommer dock endast använda det för att läsa in data i R.
 \end_layout
@@ -5146,8 +5337,7 @@ För att läsa in vårt material gör vi det i tre steg.
 \end_layout
 
 \begin_layout Enumerate
-Först läser vi in paketet och skapar vi en koppling till det unika google
- doc id:t.
+Först läser vi in paketet.
 \begin_inset Newline newline
 \end_inset
 
@@ -5162,23 +5352,7 @@ status open
 
 \begin_layout Plain Layout
 
-# för att installera:
-\end_layout
-
-\begin_layout Plain Layout
-
-devtools::install_github("duncantl/RGoogleDocs")
-\end_layout
-
-\begin_layout Plain Layout
-
-library(RGoogleDocs) 
-\end_layout
-
-\begin_layout Plain Layout
-
-google_ws_object <- publicWorksheet("16uE3bb_7rHt_g4zOBXAVHM40N3YqRIXLPQwsE1yenA
-Q")
+library(googlesheets4) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5194,11 +5368,10 @@ Q")
 \begin_layout Enumerate
 I nästa steg laddar vi ned information om det aktuella kalkylbladet (hur
  många blad m.m.).
- Under con anger vi en koppling till google doc.
- Är ett dokument öppet kan vi ange NULL.
- Annars behöver vi ange vårt google acount om vi exempelvis vill komma åt
- dokument som inte är publika (ex.
- våra egna data från ett google forms).
+ I detta fall är det ett publikt datablad och vi behöver inte ange några
+ användarnamn, däröfr kör vi gs4_deauth() först för att paketet inte ska
+ fråga efter inloggning.
+ För egna blad behöver vi logga in och skapa en koppling till vårt konto.
  
 \begin_inset Newline newline
 \end_inset
@@ -5214,7 +5387,20 @@ status open
 
 \begin_layout Plain Layout
 
-google_worksheets <- getWorksheets(google_ws_object, con = NULL)
+gs4_deauth()
+\end_layout
+
+\begin_layout Plain Layout
+
+google_worksheets <- read_sheet(
+\begin_inset Quotes sld
+\end_inset
+
+1ZDJQXUiYg_QPNY38SNyTHyOtco6kbwePmTHWkqxnXxA
+\begin_inset Quotes srd
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5228,8 +5414,7 @@ google_worksheets <- getWorksheets(google_ws_object, con = NULL)
 \end_layout
 
 \begin_layout Enumerate
-Det sista steget är att läsa in dokumentet i R.
- Det kan vi göra genom att ange vilket blad vi vill läsa in.
+Nu är bladet inläst och vi kan komma åt de olika kolumnerna som vanligt
 \begin_inset Newline newline
 \end_inset
 
@@ -5244,13 +5429,7 @@ status open
 
 \begin_layout Plain Layout
 
-my_faithful <- sheetAsMatrix(google_worksheets[[1]], con = NULL, header
- = TRUE)
-\end_layout
-
-\begin_layout Plain Layout
-
-head(my_faithful)
+head(google_worksheets)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5353,7 +5532,7 @@ vignette(topic="pxweb")
 \end_layout
 
 \begin_layout Section
-Navigera i SCB:s API (gamla gränssnittet)
+Navigera i SCB:s API
 \end_layout
 
 \begin_layout Standard
@@ -5391,9 +5570,8 @@ Välja ut delar av datamaterialet vi vill ladda ned.
 
 \begin_layout Enumerate
 För att navigera i Statistiska centralbyråns API kan vi använda funktionen
- 
 \family typewriter
-interactive_pxweb()
+ pxweb_interactive()
 \family default
  som listar förinstallerade api:er och ger möjlighet att välja vilket api
  vi vill hämta data från.
@@ -5411,7 +5589,7 @@ status open
 
 \begin_layout Plain Layout
 
-mitt_data <- interactive_pxweb()
+mitt_data <- pxweb_interactive()
 \end_layout
 
 \begin_layout Plain Layout
@@ -5425,34 +5603,13 @@ mitt_data <- interactive_pxweb()
 \end_layout
 
 \begin_layout Enumerate
-För att anknyta direkt till Statistiska centralbyråns api kan då följande
- kod användas:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE>>=
+För att navigera skrivs kommandon, siffror anger vilket menyval vi vill
+ göra, bokstäver och tecken används för att backa/lista alla osv.
 \end_layout
 
-\begin_layout Plain Layout
-
-mitt_data <- interactive_pxweb(api = 'api.scb.se', version = 'v1', lang =
- 'sv') 
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
+\begin_layout Enumerate
+För att komma åt SCB välj först 1, sen 1 igen för att välja version 1, sen
+ välj 2 för att ha på svenska och slutligen 1 för att komma åt databsen.
 \end_layout
 
 \begin_layout Enumerate
@@ -5463,7 +5620,7 @@ n och spara ned detta som ett datamaterial i R.
 \family typewriter
 2
 \family default
- för att gå vidare till menyn för statistik om arbetsmarknad: 
+ för att gå vidare till menyn för statistik om Näringsverksamhet: 
 \end_layout
 
 \begin_layout Enumerate
@@ -5484,11 +5641,7 @@ b
 \family typewriter
 Arbetsmarknad
 \family default
- och sen 
-\family typewriter
-Arbetskraftsundersökningarna (AKU)
-\family default
-.
+, använd a för att se alla alternativ om de är dolda.
 \end_layout
 
 \begin_layout Enumerate
@@ -5500,38 +5653,7 @@ Navigera dig fram till följande datamaterial som vi ska läsa in:
 \family typewriter
 [NAKUArblosaTAr] Arbetslösa 15-74 år (AKU) efter arbetslöshetstidens längd,
  kön och ålder.
- År 2005 - 2020
-\end_layout
-
-\begin_layout Enumerate
-Vi ska nu ladda ned detta datamaterial till vår R-session.
- R frågan nu om du vill ladda ned datamaterialet (eller om vi bara vill
- ha kod för att ladda ned materialet längre fram).
- Ange 
-\family typewriter
-y
-\family default
- (yes).
-\end_layout
-
-\begin_layout Enumerate
-Nästa steg efterfrågas om du vill ha materialet i orginalformat eller som
- en färdigformaterad data.frame i R.
- Ange 
-\family typewriter
-y
-\family default
- (yes).
-\end_layout
-
-\begin_layout Enumerate
-Som ett sista steg efterfrågas nu om du vill ha koden för att ladda ned
- denna data direkt i R.
- Ange 
-\family typewriter
-y
-\family default
- (yes).
+ År 2005 - 2021
 \end_layout
 
 \begin_layout Enumerate
@@ -5613,7 +5735,7 @@ För variabel
 \begin_layout Enumerate
 För variabel 
 \family typewriter
-TABELLINNEHÅLL
+CONTENTSCODE
 \family default
  ang
 \family typewriter
@@ -5625,10 +5747,9 @@ TABELLINNEHÅLL
 \begin_layout Enumerate
 Variabeln 
 \family typewriter
-MÅNAD
+TID
 \family default
  innehåller många kategorier.
- Om det är fler än 10 kategorier så döljs de mittersta kategorierna.
  För att se alla kategorierer, ange 
 \family typewriter
 a
@@ -5639,16 +5760,49 @@ a
 \begin_layout Enumerate
 Välj nu ut tidsperioden 
 \family typewriter
-2018M01
+2011
 \family default
  till 
 \family typewriter
-2020M12
+202
+\family default
+1.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Nu kommer det komma en massa frågor om hur du vill ladda ner datamaterialet.
+ Först frågar den om du vill få koden för att ladda ner data direkt, välj
+ y.
+\end_layout
+
+\begin_layout Enumerate
+Sen frågar den om du vill ha resultatet som en JSON format eller R list,
+ välj n.
+\end_layout
+
+\begin_layout Enumerate
+R frågar nu om du vill ladda ned datamaterialet, ange 
+\family typewriter
+y
 \family default
 .
 \end_layout
 
-\end_deeper
+\begin_layout Enumerate
+Nästa steg efterfrågas om du vill ha materialet i orginalformat eller som
+ en färdigformaterad data.frame i R., välj 
+\family typewriter
+y
+\family default
+.
+\end_layout
+
+\begin_layout Enumerate
+Som ett sista steg efterfrågas nu om du vill ha citeringen för datamaterialet,
+ välj y.
+\end_layout
+
 \begin_layout Enumerate
 Nu ska materialet laddas ned.
  Du borde också få ut följande kod:
@@ -5666,49 +5820,66 @@ status open
 
 \begin_layout Plain Layout
 
-myDataSetName <-    get_pxweb_data(
+# PXWEB query  
 \end_layout
 
 \begin_layout Plain Layout
 
-url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAKUArblosaTM",
-              
+pxweb_query_list <-
 \end_layout
 
 \begin_layout Plain Layout
 
-dims = list(Arbetsloshetstid = c('*'),Kon = c('1+2'),Alder = c('15-24',
- '25-54', '55-74'),
+   list("Arbetsloshetstid"=c("TOT","1V","2V","3-4V","5-26V","27V-","uppgsakn"),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-ContentsCode = c('AM0401AV'),Tid = c('2018M01', '2018M02', '2018M03', '2018M04',
+      "Kon"=c("1+2"),        "Alder"=c("15-24","25-54","55-74"), 
 \end_layout
 
 \begin_layout Plain Layout
 
-'2018M05', '2018M06', '2018M07', 	'2018M08', '2018M09', '2018M10', '2018M11',
+      "ContentsCode"=c("AM0401G0"), 
 \end_layout
 
 \begin_layout Plain Layout
 
-'2018M12', '2019M01', '2019M02', '2019M03', '2019M04', '2019M05','2019M06',
+      "Tid"=c("2011","2012","2013","2014","2015","2016","2017","2018","2019","20
+20","2021"))
 \end_layout
 
 \begin_layout Plain Layout
 
-'2019M07', '2019M08', '2019M09', '2019M10', '2019M11', '2019M12', '2020M01',
+# Download data  
 \end_layout
 
 \begin_layout Plain Layout
 
-'2020M02', '2020M03', 	'2020M04', '2020M05', '2020M06', '2020M07', 
+px_data <-
 \end_layout
 
 \begin_layout Plain Layout
 
-'2020M08', '2020M09', '2020M10', '2020M11', '2020M12')),clean = TRUE)
+   pxweb_get(url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAK
+UArblosaTAr", 
+\end_layout
+
+\begin_layout Plain Layout
+
+           query = pxweb_query_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Convert to data.frame  
+\end_layout
+
+\begin_layout Plain Layout
+
+px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.value.type
+ = "text") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5739,29 +5910,7 @@ ess där vi använder de senaste data från SCB.
 \begin_layout Enumerate
 Spara ned koden du fick ovan och kör den för att ladda ned datamaterialet
  direkt.
- (Nu sparas den som 
-\family typewriter
-myDataSetName
-\family default
-).
-\end_layout
-
-\begin_layout Enumerate
-Pröva att ändra argumentet clean till 
-\family typewriter
-FALSE
-\family default
-.
- Studera hur materialet ser ut.
- Detta är den 
-\begin_inset Quotes eld
-\end_inset
-
-råa
-\begin_inset Quotes erd
-\end_inset
-
- data som laddas ned från SCB.
+ (Nu sparas den som px_data_frame).
 \end_layout
 
 \begin_layout Enumerate
@@ -5773,116 +5922,15 @@ Vi vill nu ladda ned data för alla tidpunkter.
  och ladda ned datat på nytt.
 \end_layout
 
-\begin_layout Standard
-Det gamla gränssnittet generar varningar, som kan döljas med:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-suppressWarnings(a<-interactive_pxweb())
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-Det nya gränssnittet
-\end_layout
-
-\begin_layout Standard
-Med det nya gränssnittet så laddas data ner interaktivt med:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-mitt_data <- pxweb_interactive()
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-För att få in data direkt används funktionen
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-pxweb_get()
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Kolla i denna 
-\begin_inset CommandInset href
-LatexCommand href
-name "vignette"
-target "https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html"
-literal "false"
-
-\end_inset
-
- för detaljer kring de nya funktionerna.
-\end_layout
-
-\begin_layout Section
-Namnstatistik 2019
+Namnstatistik 2021
 \end_layout
 
 \begin_layout Standard
 Använd pxweb för att ta reda på vilka namn som var vanliga att ge till nyfödda
- barn 2020.
+ barn 2021.
  Målet är att hitta de 5 vanligaste flicknamnen och de 5 vanligste pojknamnen
- som gavs till nyfödda barn 2020.
+ som gavs till nyfödda barn 2021.
  Detta datamaterial finns under 
 \begin_inset Quotes sld
 \end_inset
@@ -6124,8 +6172,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
-exercise_solutions/"
+solution_path<-"/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeache
+r/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -6193,6 +6241,167 @@ lab_path <-
 \begin_layout Plain Layout
 
 suppressWarnings(set_assignment(lab_path))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+estimate_pi()
+\end_layout
+
+\begin_layout Standard
+Talet 
+\begin_inset Formula $\pi$
+\end_inset
+
+ är en matematisk konstant som dyker upp lite här och var, framförallt när
+ man jobbar med cirklar och sfärer men även inom sannolikhetslära och fysik
+ är den viktig.
+ Talet är ett så kallat irrationellt tal, det betyder att det har en oändlig
+ decimalutveckling utan repetitioner och saknar ett exakt uttryck.
+ Man vill ofta försöka approximera denna konstant och nu ska vi göra det
+ med hjälp av slumptal och Monte Carlo metoden.
+\end_layout
+
+\begin_layout Standard
+Om vi tänker oss att vi väljer ett x och y värde slumpmässigt mellan -1
+ och 1.
+ Om vi tar dessa värden tillsammans blir det en punkt i kvadraten med sidlängd
+ 2 centrerat runt origo.
+ Inuti denna kvadrat kan vi rita in enhetscirkeln, det är cirkeln med radie
+ 1 centrerad i origo.
+ Vi kan nu beräkna sannolikheten att vår slumässigt utvalda punkt (x,y)
+ hamnar inuti denna cirkel, den sannolikheten är 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+, arean av cirkeln (där vi vill hamna) delat med arean av kvadraten (där
+ vi kan hamna).
+ För att uppskatta 
+\begin_inset Formula $\pi$
+\end_inset
+
+ kan vi då slumpa massa (x,y) punkter räkna ut hur många av de som är inom
+ enhetscirkeln, kvoten mellan de inom enhetscirkeln och antalet punkter
+ totalt blir vår uppskattning av 
+\begin_inset Formula $\frac{\pi}{4}$
+\end_inset
+
+.
+ Multiplicera kvoten med 4 för att få ett estimat av 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+ Ett tips, för att se om en punkt (x,y) är inom enhetscirkeln kan vi testa
+ om 
+\begin_inset Formula $x^{2}+y^{2}\leq1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skriva en funktion estimate_pi() som tar argumenten:
+\end_layout
+
+\begin_layout Itemize
+N: är ett positivt heltal som är antalet slumpade punkter (x,y).
+\end_layout
+
+\begin_layout Itemize
+my_seed värdet som styr slumptalsgeneratorn, default ska vara NULL.
+\end_layout
+
+\begin_layout Standard
+Funktionen ska returnera en lista som innehåller två variabler:
+\end_layout
+
+\begin_layout Itemize
+est: ert estimat på 
+\begin_inset Formula $\pi$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+punkter som är en data.frame med två kolumner, en är x och den andra y.
+ Dessa kolumner ska innehålla alla era slumpade värden.
+\end_layout
+
+\begin_layout Standard
+Ett förslag på implementation kan vara följande:
+\end_layout
+
+\begin_layout Itemize
+Ändra seeden till: set.seed(my_seed)
+\end_layout
+
+\begin_layout Itemize
+Slumpa x och y värden med runif().
+ Tänk på att min=-1, max=1.
+\end_layout
+
+\begin_layout Itemize
+Stoppa in era slumpade värden i en data.frame.
+\end_layout
+
+\begin_layout Itemize
+Skapa en logisk vektor med TRUE eller FALSE om punkterna är inom enhetscirkeln
+ eller inte.
+\end_layout
+
+\begin_layout Itemize
+Beräkna ert estimat genom att räkna medelvärdet på den logiska vektorn.
+\end_layout
+
+\begin_layout Itemize
+Skapa och returnera en lista med rätt namn.
+ list(est = ...
+ , punkter = ...
+ )
+\end_layout
+
+\begin_layout Standard
+Här kommer exempel på hur den kan fungera:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+estimate_pi(N = 5, my_seed = 1234)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+output <- estimate_pi(N = 10000, my_seed = 1234)
+\end_layout
+
+\begin_layout Plain Layout
+
+output$est
 \end_layout
 
 \begin_layout Plain Layout

@@ -6,7 +6,7 @@ test_that("Assignment: sum_of_random_dice()", {
   
   expect_true(exists("sum_of_random_dice"))
   checkmate::expect_function(sum_of_random_dice, nargs = 3,
-                             info = "Fel: babylon är inte en funktion.")
+                             info = "Fel: sum_of_random_dice är inte en funktion.")
   expect_function_arguments(sum_of_random_dice, c("K","lambda","my_seed"))
   
   expect_silent(res <- sum_of_random_dice(K=10,lambda=2,my_seed=4711))
