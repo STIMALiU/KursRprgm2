@@ -320,7 +320,7 @@ Till miniprojektet behöver två olika typer av datamaterial, ett material
  med kommunala data och ett material som innehåller en tidsserie.
  Det är okej att välja data på lännivå istället för kommunnivå om ni vill.
  Beskrivningen nedan utgår från kommunala data.
- I miniprojekt får ni använda det gamla eller det nya
+ I miniprojekt ska ni använda pxweb
 \begin_inset Foot
 status collapsed
 
@@ -339,11 +339,7 @@ literal "false"
 
 \end_inset
 
- gränssnittet till 
-\family typewriter
-pxweb
-\family default
-, så länge ni har kod som fungerar och ni lyckas skapa reproducerbara rapporter.
+, i filen ska ni ha kod som fungerar och ger reproducerbara rapporter.
  Om ni vill dölja varningar kan ni använda
 \end_layout
 
@@ -1036,9 +1032,13 @@ Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
 
 \end_deeper
 \begin_layout Itemize
-Vissa upp data för 5 kommuner och alla era variabler i en tabell.
- Ta inte med fler kommuner.
- Ni väljer själv vilka kommuner ni visar i tabellen.
+Vissa upp data för 
+\series bold
+5
+\series default
+ kommuner och alla era variabler i en tabell.
+ Ta inte med fler kommuner i tabellen, alla kommuner ska självklart vara
+ med i datasetet när ni gör er statistik nedan.
 \end_layout
 
 \end_deeper

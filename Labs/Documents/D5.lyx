@@ -6314,11 +6314,19 @@ Vi ska nu skriva en funktion estimate_pi() som tar argumenten:
 \end_layout
 
 \begin_layout Itemize
-N: är ett positivt heltal som är antalet slumpade punkter (x,y).
+
+\family typewriter
+N
+\family default
+ är ett positivt heltal som är antalet slumpade punkter (x,y).
 \end_layout
 
 \begin_layout Itemize
-my_seed värdet som styr slumptalsgeneratorn, default ska vara NULL.
+
+\family typewriter
+my_seed
+\family default
+ värdet som styr slumptalsgeneratorn, default ska vara NULL.
 \end_layout
 
 \begin_layout Standard
@@ -6326,7 +6334,11 @@ Funktionen ska returnera en lista som innehåller två variabler:
 \end_layout
 
 \begin_layout Itemize
-est: ert estimat på 
+
+\family typewriter
+est
+\family default
+ ert estimat på 
 \begin_inset Formula $\pi$
 \end_inset
 
@@ -6334,7 +6346,23 @@ est: ert estimat på
 \end_layout
 
 \begin_layout Itemize
-punkter som är en data.frame med två kolumner, en är x och den andra y.
+
+\family typewriter
+punkter
+\family default
+ som är en 
+\family typewriter
+data.frame
+\family default
+ med två kolumner, en är 
+\family typewriter
+x
+\family default
+ och den andra 
+\family typewriter
+y
+\family default
+.
  Dessa kolumner ska innehålla alla era slumpade värden.
 \end_layout
 
@@ -6343,21 +6371,46 @@ Ett förslag på implementation kan vara följande:
 \end_layout
 
 \begin_layout Itemize
-Ändra seeden till: set.seed(my_seed)
+Ändra seeden till: 
+\family typewriter
+set.seed(my_seed)
 \end_layout
 
 \begin_layout Itemize
-Slumpa x och y värden med runif().
- Tänk på att min=-1, max=1.
+Slumpa x och y värden med 
+\family typewriter
+runif()
+\family default
+.
+ Tänk på att 
+\family typewriter
+min=-1
+\family default
+, 
+\family typewriter
+max=1
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
-Stoppa in era slumpade värden i en data.frame.
+Stoppa in era slumpade värden i en 
+\family typewriter
+data.frame
+\family default
+.
 \end_layout
 
 \begin_layout Itemize
-Skapa en logisk vektor med TRUE eller FALSE om punkterna är inom enhetscirkeln
- eller inte.
+Skapa en logisk vektor med 
+\family typewriter
+TRUE
+\family default
+ eller 
+\family typewriter
+FALSE
+\family default
+ om punkterna är inom enhetscirkeln eller inte.
 \end_layout
 
 \begin_layout Itemize
@@ -6366,7 +6419,10 @@ Beräkna ert estimat genom att räkna medelvärdet på den logiska vektorn.
 
 \begin_layout Itemize
 Skapa och returnera en lista med rätt namn.
- list(est = ...
+ Använd t.ex.
+ 
+\family typewriter
+list(est = ...
  , punkter = ...
  )
 \end_layout
@@ -6396,12 +6452,44 @@ estimate_pi(N = 5, my_seed = 1234)
 
 \begin_layout Plain Layout
 
+output <- estimate_pi(N = 100, my_seed = 1234)
+\end_layout
+
+\begin_layout Plain Layout
+
+output$est
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 output <- estimate_pi(N = 10000, my_seed = 1234)
 \end_layout
 
 \begin_layout Plain Layout
 
 output$est
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+output <- estimate_pi(N = 10000, my_seed = 445)
+\end_layout
+
+\begin_layout Plain Layout
+
+output$est
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
