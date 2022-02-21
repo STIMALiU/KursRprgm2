@@ -1,0 +1,388 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 3"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-02-07'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+#classoption: "handout"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Föreläsning 3:
+
+**Nästa vecka är vi tillbaka på campus** Föreläsningen kommer att parallellt ges på Zoom.
+
+- Sammanfattning Föreläsning 2
+- Villkorssatser
+- Loopar
+- Funktionsmeddelanden
+- Debugging
+
+# Sammanfattning föreläsning 2
+
+## Matriser
+
+- Två dimensionell vektor, alla element av samma typ
+- Välj index med \texttt{[ "rad" , "kolumn" ]}
+  - Saknas \texttt{rad} eller \texttt{kolumn} väljs hela.
+  - Om man väljer ut bara är en rad eller kolumn görs resultatet om till en vektor.
+    - För att behålla matrisstrukturen använd \texttt{drop = FALSE}
+- \texttt{length} ger antal element
+- \texttt{dim} ger dimensionerna
+
+## data.frame
+
+- Dataset, där varje variabel (kolumn) kan ha olika typer.
+- Varje variabel har ett namn.
+  - Komma åt variabler via namnet eller ordningen.
+- Varje rad innehåller ett värde per kolumn.
+- Lätt att lägga till och ta bort kolumner.
+
+## Listor
+
+- Tänk vektor där varje element kan vara vad som helst.
+- Möjligt att namnge element.
+- \texttt{[ ]} tar fram en del av listan
+- \texttt{[[ ]]} tar fram elementet
+
+# Programkontroll
+
+## Programkontroll
+
+- Kontrollera körningen av program eller funktioner
+- Olika typer av kontroller vi kan göra:
+  - Köra en annan del av koden
+  - Vilkorsstyra kod
+  - Kör kod upprepade antal gånger
+  - Köra kod tills ett villkor är uppfyllt
+  - Avbryta ett program i förtid
+
+# Villkorssatser
+
+## Vilkorssatser (if-else)
+
+- Välja att utföra något baserat på logiskt villkor
+```{r,echo=TRUE,eval=FALSE}
+if ( Villkor ) {
+  Kod om Villkor == TRUE
+} else {
+  Kod om Villkor == FALSE
+}
+```
+- Villkor ska vara någon logik
+  - Tal större än noll är vanligtvis sanna.
+- Om villkor är en vektor kommer den bara kolla på \imp{första} elementet
+
+## If - else if - else
+
+- Det är inte alltid man bara vill ha två olika utfall
+
+```{r,echo=TRUE,eval=FALSE}
+if ( Villkor1 ) {
+  Kod om Villkor1 == TRUE
+} else if ( Villkor2 ) {
+  Kod om Villkor2 == TRUE
+} else if ( Villkor3 ) {
+  Kod om Villkor3 == TRUE
+} else {
+  Kod om Villkor1 och Villkor2 och Villkor3 == FALSE
+}
+```
+- Kommer välja den \imp{första} som är sann
+
+## Villkorssatser - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+prgm <- "R"
+if ( prgm == "R") { cat("Kul med",prgm)}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+prgm <- "R"
+if ( prgm == "R") { cat("Kul med",prgm)}
+```
+\pause
+```{r,echo=TRUE,eval=FALSE}
+prgm <- "Excel"
+if ( prgm == "R") { cat("Kul med",prgm)}
+```
+
+## Villkorssatser - Exempel II
+
+```{r,echo=TRUE,eval=FALSE}
+prgm <- "Excel"
+if ( prgm == "R") { 
+  cat("Kul med",prgm)
+} else if ( prgm == "Python" ) {
+  print("Okej")
+} else {
+  print("Hmm...")
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+prgm <- "Excel"
+if ( prgm == "R") { 
+  cat("Kul med",prgm)
+} else if ( prgm == "Python" ) {
+  print("Okej")
+} else {
+  print("Hmm...")
+}
+```
+
+# Loopar (for-loop)
+
+## For-loop
+
+- Upprepningar av kod
+- I R används \texttt{for} för loopar över vektor/lista
+```{r,echo=TRUE,eval=FALSE}
+for ( elem in vektor ) {
+  # Kod som anropas en gång per element
+  # elem är ett element i vektorn
+}
+```
+- Vilken vektor eller lista kan användas
+- Viktigt koncept: Loopens index (\texttt{elem}) är det ENDA som ändras i loopen.
+
+## For-loop - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+vektor <- 3:5
+for ( element in vektor ) {
+  print( element*2 )
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+vektor <- 3:5
+for ( element in vektor ) {
+  print( element*2 )
+}
+```
+
+## For-loop - Exempel II
+
+```{r,echo=TRUE,eval=FALSE}
+vektor <- c("a","b","c","d")
+for ( element in vektor ) {
+  print( element )
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+vektor <- c("a","b","c","d")
+for ( element in vektor ) {
+  print( element )
+}
+```
+
+## For-loop - Exempel III
+- Kan loopa på flera olika sätt
+```{r,echo=TRUE,eval=FALSE}
+for ( element in vektor ) {
+  print( element )
+}
+```
+```{r,echo=TRUE,eval=FALSE}
+for ( index in seq_along(vektor) ) {
+  print( vektor[index] )
+}
+```
+```{r,echo=TRUE,eval=FALSE}
+for ( index in 1:length(vektor) ) {
+  print( vektor[index] )
+}
+```
+
+# Nästlade loopar
+
+## Nästlade loopar
+
+- Om vi vill loopa i flera nivåer
+- Delas ofta upp i yttre och inre loop
+- Tänk som en klocka
+  - Timmar: Yttersta loopen
+  - Minuter: Inre loop, gör 60 iterationer / timme
+  - Sekunder: Innsersta loopen, gör 60 iteration / minut
+
+## Nästlade loopar - Exmepel
+```{r,echo=TRUE,eval=FALSE}
+A <- matrix(1:6, nrow = 2)
+for ( i in 1:2 ) {
+  for ( j in 1:3 ) {
+    text <- paste("rad:",i," kolumn:",j,
+                  "värde:",A[i,j])
+    print(text)
+  }
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+A <- matrix(1:6, nrow = 2)
+for ( i in 1:2 ) {
+  for ( j in 1:3 ) {
+    text <- paste("rad:",i," kolumn:",j,
+                  "värde:",A[i,j])
+    print(text)
+  }
+}
+```
+
+# while-loop
+
+## while-loop
+
+- Om vi inte vet antalet iterationer på förhand
+```{r,echo=TRUE,eval=FALSE}
+while ( Villkor ) {
+  # Kod som anropas så länge Villkor == TRUE
+}
+```
+- \imp{Varning!} Kan fortsätta hur länge som helst
+- \imp{Obs!} \text{Villkor} måste kunna utvärderas innan loopen startar
+- \texttt{repeat} repeterar kod till \texttt{break}
+
+## while-loop - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+i <- 1 # Obs!
+while ( i < 5 ) {
+  print(i)
+  i <- i + 1
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+i <- 1 # Obs!
+while ( i < 5 ) {
+  print(i)
+  i <- i + 1
+}
+```
+
+# Kontrollstrukturer för loopar
+
+## Kontrollstrukturer för loopar
+
+- Vill ofta kontrollera hur looparna arbetar
+- Finns följande kontrollstrukturer:
+
+| **Kontrollstruktur** | **Effet** | 
+| ----- | ---- | 
+| \texttt{next()} | Börja med nästa iteration direkt | 
+| \texttt{break()} | Avbryt den aktuella / innersta loopen | 
+| \texttt{stop()} | Avbryter allt och genererar ett felmeddelande | 
+
+## next() - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+i <- 0
+while ( i < 11 ) {
+  i <- i + 1
+  if ( i %% 2 == 0) { next() }
+  print(i)
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+i <- 0
+while ( i < 11 ) {
+  i <- i + 1
+  if ( i %% 2 == 0) { next() }
+  print(i)
+}
+```
+
+## break() - exempel
+
+```{r,echo=TRUE,eval=FALSE}
+for ( i in 1:3 ) {
+  for ( letter in c("a","b","c") ) {
+    if ( letter == "b" ) { break() }
+    print(letter)
+  }
+}
+```
+\pause
+```{r,echo=FALSE,eval=TRUE}
+for ( i in 1:3 ) {
+  for ( letter in c("a","b","c") ) {
+    if ( letter == "b" ) { break() }
+    print(letter)
+  }
+}
+```
+
+## stop() - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+for ( i in 1:3 ) {
+  for ( letter in c("a","b","c") ) {
+    if ( letter == "b" ) { stop("Det blev fel!") }
+    print(letter)
+  }
+}
+```
+\pause
+```{r, eval=TRUE, echo=FALSE}
+"a"
+cat("Error: Det blev fel!")
+```
+
+# Varningsmeddelanden och debugg
+
+## Varningsmeddelanden
+
+- \texttt{stop()} avbryter funktioner/loopar och meddelar ett fel
+- \texttt{warning()} skapar en varning, som inte avbryter
+- Varningar sparas och skrivs ut sist
+- \texttt{warnings()} skriver ut tidigare varningar
+
+## Varningsmeddelanden - Exempel
+
+```{r,echo=TRUE,eval=FALSE}
+for ( chr in c("a","b") ) {
+  print(chr)
+  warning( paste("Farligt värde",chr) )
+}
+```
+\pause
+```{r,echo=TRUE,eval=FALSE}
+"a"
+"b"
+Warning messages:
+1: Farligt värde a 
+2: Farligt värde b 
+```
+
+## Debugging
+
+- Det uppstår ofta fel vid programmering
+- Debugging handlar om att hitta orsaken
+- Olika typer av fel:
+  - Syntaktiska fel: Felaktig syntax i koden
+  - Semantiska fel: Olämplig användning av objekt/funktioner
+  - Logiska fel: Programmet löser inte det tänkta problemet
+
+## Debugging II
+
+- Använd \texttt{cat()}, \texttt{print()} eller \texttt{message()} för att skriva ut värden under körning.
+  - Använd \texttt{paste()} för att kombinera text och variabler till en sträng.
+- \texttt{browser()} Hoppar in i funktionen
+  - \texttt{n}: kör nästa rad
+  - \texttt{c}: kör allt i funktion / loop
+  - \texttt{Q}: avsluta
+- \texttt{debugg()} Hoppa in i funktionen från början

@@ -1,0 +1,193 @@
+\RequirePackage{amsmath, amssymb}
+\RequirePackage{bbm}
+%\RequirePackage{newtxmath}
+
+
+% Convenience macro for referring to data source
+\newcommand\sourceurl[2]{\small \grey{Data from \href{#1}{#2}}}
+
+% Abbreviations
+\RequirePackage{xspace}
+\newcommand\pdf{pdf\xspace}
+\newcommand\ifft{iff\xspace}
+\newcommand\ex{\textbf{ex)}\xspace}
+
+% General time series notation
+\newcommand\T{n}  % Length of time series
+\newcommand\rtheta{{\red{\theta}}}  % Parameter (color coded)
+\newcommand\rthetah{{\red{\widehat\theta}}}  % Estimate (color coded)
+
+% Neural netowkrs
+\newcommand\h{\mathbf{h}} % Hidden state variable
+\newcommand\zz{\mathbf{z}} % Generic input (vector)
+
+% For OLS/AR
+\newcommand\noise{\varepsilon}  % This is the noise in AR, but should it be the same as measurement noise in SSM?
+\newcommand\noisevar{\sigma^2_\noise}
+\newcommand\noisevarhat{\widehat\sigma^2_\noise}
+\newcommand\X{\Phi}
+\newcommand\y{\mathbf{y}}
+\newcommand\bphi{\bm\phi}
+
+% State space models
+\newcommand\z{\alpha}  % State vector, general SSM
+\newcommand{\obsnoise}{\varepsilon}
+\newcommand{\statenoise}{\eta}
+\newcommand{\varobs}{\sigma^2_{\varepsilon}}
+\newcommand{\varstate}{\sigma^2_{\eta}}
+% For structural time series
+\newcommand{\trendnoise}{\zeta}
+\newcommand{\seasnoise}{\omega}
+\newcommand{\vartrend}{\sigma^2_{\trendnoise}}
+\newcommand{\varseas}{\sigma^2_{\seasnoise}}
+
+%
+\newcommand\FF{T}
+\newcommand\GG{R}
+\newcommand\HH{Z}
+\newcommand{\covobs}{\sigma_\epsilon^2}
+\newcommand{\covstate}{Q}
+\newcommand\initmean{a_1}
+\newcommand\initcov{P_1}
+% Kalman filter
+\newcommand{\zpart}[2]{\z_{#1}^{#2}}
+\newcommand{\wgt}[2]{\omega_{#1}^{#2}}
+\newcommand{\wgtsum}[1]{\Omega_{#1}}
+\newcommand\zhat[2]{\hat\z_{#1|#2}}
+\newcommand\Phat[2]{P_{#1|#2}}
+\newcommand\zpred[1]{\zhat{#1}{#1-1}}
+\newcommand\Ppred[1]{\Phat{#1}{#1-1}}
+\newcommand\zfilt[1]{\zhat{#1}{#1}}
+\newcommand\Pfilt[1]{\Phat{#1}{#1}}
+\newcommand\ypred[1]{\hat y_{#1|#1-1}}
+\newcommand\Spred[1]{F_{#1|#1-1}}
+\newcommand\Spredinv[1]{\Spred{#1}^{-1}}
+\newcommand\epshat[2]{\hat{\obsnoise}_{#1|#2}}
+\newcommand\etahat[2]{\hat{\statenoise}_{#1|#2}}
+
+\newcommand{\statefun}{T}
+\newcommand{\obsfun}{Z}
+\newcommand{\estfun}{h}
+
+\newcommand{\qd}{q} %State density
+\newcommand{\md}{g} %Measure density
+
+\newcommand{\rmd}{\mathrm{d}}
+
+% SMC
+\newcommand{\Np}{N}           % Number of particles
+\newcommand{\Mp}{M}           % Number of particles in backward simulation
+
+
+
+%\RequirePackage{color}
+%\newcommand{\flnote}[1]{{\color{red}\textbf{[#1]}}} % Used for notes in text - color red
+%\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after; This is moved to beamer preamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            COMMANDS IN TEXT                                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\numtext[2]{#1\textsuperscript{#2}}
+\newcommand\thsnd[1]{\ensuremath{#1\thinspace000}}
+\newcommand{\peqref}[1]{\eqref{#1} on page~\pageref{#1}} % Page referencing for equations: "(1) on page 1"
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                            SPECIFIC MATH                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Models etc.
+%\newcommand{\T}{T}            % Number of samples in data record
+\newcommand{\parspace}{\Theta}                                   % Parameter space
+\newcommand{\parameter}{\theta}                                  % Parameter
+% Spaces
+\newcommand{\setX}{\ensuremath{\mathsf{X}}}                      % State-space X
+\newcommand{\sigmaX}{\ensuremath{\mathcal{X}}}                   % Sigma algebra on X
+\newcommand{\setY}{\ensuremath{\mathsf{Y}}}                      % State-space Y
+\newcommand{\sigmaY}{\ensuremath{\mathcal{Y}}}                   % Sigma algebra on Y
+\newcommand{\setZ}{\ensuremath{\mathsf{Z}}}                      % State-space Z
+\newcommand{\sigmaZ}{\ensuremath{\mathcal{Z}}}                   % Sigma algebra on Z
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                           GENERAL MATH                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ======== Miscellaneous symbols ========
+\newcommand\eqdef{:=}
+\newcommand\defeq{=:}
+\newcommand\const{\text{const.}}
+%\newcommand\eqdef{\stackrel{\text{\scriptsize def}}{=}}
+
+\newcommand\iid{iid}
+\newcommand{\iidsim}{\stackrel{\text{\iid}}{\sim}} % iid simulation
+\newcommand{\process}[1]{\{#1\}_{t\geq 1}}       % Process (time index t)
+\newcommand{\range}[2]{#1, \, \dots, \, #2}      % Range = 1, ..., N
+\newcommand{\crange}[2]{\{#1, \, \dots, \, #2\}} % Curly range = {1, ..., N}
+\newcommand{\prange}[2]{(#1, \, \dots, \, #2)}   % Parenthesised range = (1, ..., N)
+\newcommand{\bwdrange}[2]{#1 : -1 : #2}          % Range = N, ..., 1
+\newcommand{\approxpropto}{\stackrel{\sim}\propto}
+
+% Tight dots between \int and \int in a multidimensional integral
+\newcommand{\tightcdots}{\hspace*{-0.38em}\cdot\hspace*{-0.3em}\cdot\hspace*{-0.3em}\cdot\hspace*{-0.38em}}
+
+% Arrows - convergence and mappings
+% \mapsto                                                     % Mappings, x \mapsto f(x)
+\newcommand{\fromto}{\rightarrow}                             % Mapping from set A to set B; f: A \fromto B
+\newcommand{\goesto}{\rightarrow}                             % limits used in n \goesto \infty
+\newcommand{\goestosmall}{\to}                                % limits used in \lim_{n \goestosmall \infty}
+\newcommand{\convP}{\stackrel{\probab}\longrightarrow}        % Convergence in probability
+\newcommand{\convD}{\stackrel{\textrm{D}}\longrightarrow}     % Convergence in distribution
+
+% ======== Standard spaces  ========
+\newcommand{\naturals}{\ensuremath{\mathbb{N}}}               % Natural numbers
+\newcommand{\reals}{\ensuremath{\mathbb{R}}}                  % Real numbers
+\newcommand{\nonnegatives}{\reals_{\smaller +}}               % Nonnegative numbers
+\newcommand{\positives}{\reals_{\smaller ++}}                 % Positive numbers
+\newcommand{\nonnegativedefinites}[1]{S_{\smaller +}(#1)}     % Nonnegative #1 x #1 matrices
+\newcommand{\positivedefinites}[1]{S_{++}(#1)}                % Positive #1 x #1 matrices
+
+% ======== Matrices ========
+\newcommand{\eye}[1]{I_{#1}}                     % Identity matrix
+\newcommand{\+}{\mathsf{T}}                      % Transpose
+\newcommand{\kronecker}{\raisebox{1pt}{\ensuremath{\otimes}}} % Kronecker product
+\DeclareMathOperator*\diag{diag}
+\DeclareMathOperator*\trace{tr}
+
+% ======== Operators, calculus etc. ========
+\newcommand{\Ordo}{O}                            % Big ordo
+\newcommand{\supnorm}[1]{\|#1\|_\infty}          % Supremum norm
+\newcommand\osc{\text{osc}}                      % Oscillator norm
+\newcommand{\grad}{\nabla}                       % Gradient
+\newcommand{\complementof}[1]{\ensuremath{#1^\mathsf{c}}} % Set complement
+\renewcommand\vec{\text{vec}}
+\DeclareMathOperator*\supp{supp}                          % Support
+\DeclareMathOperator*\card{card}                          % Set cardinality
+\DeclareMathOperator*\rank{rank}                          % Rank
+\DeclareMathOperator*\sign{sign}                          % Signum function
+\DeclareMathOperator*\argmax{arg\,max}
+\DeclareMathOperator*\argmin{arg\,min}
+
+% ======== Probability ========
+\newcommand{\Prb}{\ensuremath{\mathbb{P}}}                       % Probability
+\newcommand{\E}{\ensuremath{\mathbb{E}}}                         % Expectation
+\newcommand{\var}{\ensuremath{\mathrm{Var}}}                     % Variance
+\newcommand{\cov}{\ensuremath{\mathrm{Cov}}}                     % Covariance
+\newcommand{\cor}{\ensuremath{\mathrm{Corr}}}                     % Correlation
+\newcommand{\I}{\ensuremath{\mathbbm{1}}}						 % Indicator function
+
+%\newcommand{\abscont}{\ensuremath{\ll}}          % Absolute continuity
+\renewcommand\mid{\,\vert\,} % I don't really like that \mid produces rubber lengths. Sometimes, we get very large white spaces p(x    |   y), and it can produce line breaks after "p(x |" . Is the non-rubber definition here better?
+\newcommand\Mid{\,\middle\vert\,} % Stretchable |, to use with \left \right - N.B. This produces a longer | in general. Does that look better than a standard \mid?
+
+
+% Distributions
+\newcommand{\N}{\ensuremath{\mathcal{N}}}        % Normal
+\newcommand{\uni}{\ensuremath{\mathcal{U}}}      % Uniform
+\newcommand\MN{\mathcal{MN}}                     % Matrix normal
+\newcommand\IW{\mathcal{IW}}                     % Inverse-Wishart
+\newcommand\GP{\mathcal{GP}}                     % Gaussian process
+\DeclareMathOperator*\Mult{Mult}                 % Multinomial
+\DeclareMathOperator*\cat{Cat}                   % Categorical
+\DeclareMathOperator*\Discrete{Discrete}         % Categorical/alternative name
+\DeclareMathOperator*\bin{Bin}                   % Binomial
+\DeclareMathOperator*\gam{Gam}                   % Gamma
+\DeclareMathOperator*\St{St}                     % Student's t
+\DeclareMathOperator*\po{Po}                   % Binomial

@@ -1,0 +1,333 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 4"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-02-15'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Föreläsning 5
+
+## Innehåll föreläsning 5
+
+- Information del 2
+- Grafik
+- Slumptal och simulering
+- knitr och markdown
+- Externa data och pxweb
+
+# Information del 2
+
+## R-programmering - del 2
+
+- Del 1: Grunderna i programmering:
+  - Variabler och tilldelning
+  - Datastrukturer
+  - Kontrollstrukturer
+  - Funktioner
+  - Debugging
+  - Dokumentation
+- Del 2: Tillämpningar
+
+## R-programmering - del 2
+
+- Del 1: Grunderna i programmering:
+- Del 2: Tillämpningar
+  - Grafik
+  - Slumptal
+  - Statistik och analys
+  - Externa data
+  - Datum
+  - Texthantering och regular expression
+  - Linjär algebra
+  - knitr, markdown, literate programming
+  
+## R-programmering - del 2
+
+- Labbarna görs nu i par
+- Parprogrammering:
+  - \imp{Turas om att skriva koden}
+  - Den som inte kodar är engagerad i koden och problemet
+  - Byt vem som kodar var 20:e minut
+  - Viktigt att kommentra koden: ROxygen och inline
+  - \imp{Båda} är delaktiga i programmeringen
+
+## Miniprojekt - del 1
+
+Info finns på kurshemsidan.
+
+- Hitta data på webben (eller lägg upp eget)
+  - Kommunala (tvärsnitt) data
+  - Tidsseriedata
+- Presentera med basgrafik, knitr och markdown
+- Rapporten ska vara reproducerbar
+- Lämna in som \imp{PDF} och \imp{Rmd}
+- Miniprojektet har egen inlämning
+- Två veckor per del
+  - Del 1 börjar denna vecka
+  - Del 2 börjar vecka 7
+
+# Basgrafik
+
+## Grafik i R
+
+- Grafik är en styrka med R
+- Massa olika paket: \texttt{ggplot2}, \texttt{lattice} m.m.
+- Hög nivå (funktioner, \texttt{plot})
+- Låg nivå (bygga upp en plot steg för steg)
+- Använd grafik för att:
+  - Sammanfatta tabeller visuellt
+  - Jämföra olika dataset
+  - Rita ut funktioner
+
+## Enkel grafik: plot()
+
+- \texttt{plot()} - kan plotta många olika objekt
+  - \texttt{plot(x,y)} - ger en scatterplot
+  - \texttt{plot(x)} - om \texttt{x} en \texttt{data.frame} så skapas en matrix-plot.
+  - Vanliga argument:
+    - \texttt{type = } Hur plotten ska se ut
+    - \texttt{main = } Titel på plotten
+    - \texttt{xlab = } Text på x-axeln
+    - \texttt{ylab = } Text på y-axeln
+    - \texttt{xlim = } Gränserna på x-axeln
+    - \texttt{ylim = } Gränserna på y-axeln
+    - \texttt{col = } Färgerna som ska användas
+
+## plot() - exempel
+
+```{r, fig.width=5, fig.height=3, echo=TRUE,eval=TRUE}
+data(iris)
+plot(x = iris$Sepal.Length, 
+     y = iris$Petal.Length, main = "Iris")
+```
+
+## Diagramtyper
+
+- \texttt{hist(x = , breaks = )} ger ett histogram,
+  - \texttt{x} är en numerisk vektor.
+  - \texttt{breaks} antalet intervall som data delas in i.
+- \texttt{boxplot(x = )} ger boxplots
+- \texttt{barplot(height = )} ger stapeldiagram
+- \texttt{pie(x = )} geren piechart
+- Använd hjälpen för att se exempel och fler argument
+
+## hist() - exempel
+
+```{r, fig.width=3, fig.height=3,echo=TRUE,eval=TRUE}
+hist(iris$Sepal.Length)
+```
+
+## bokxplot() - exempel
+
+```{r, fig.width=3, fig.height=4,echo=TRUE,eval=TRUE}
+boxplot(iris$Sepal.Length)
+```
+
+## barplot() - exempel
+
+```{r, fig.width=5, fig.height=3.5,echo=TRUE,eval=TRUE}
+tab <- table(iris$Species)
+barplot(tab)
+```
+
+## pie() - exempel
+
+```{r, fig.width=5, fig.height=5,echo=TRUE,eval=TRUE}
+tab <- table(iris$Species)
+pie(tab)
+```
+
+## Lågnivågrafik
+
+- Kan användas för att bygga upp en graf från grunden
+- Kör lager på lager:
+  - \texttt{points(x, y)} lägger till punkter
+  - \texttt{lines(x, y)} lägger till linjer
+  - \texttt{abline(a, b, h, v)} lägger till räta linjer
+  - \texttt{legend(x, y, legend)} lägger till en förklaringsruta
+  - \texttt{par()} fler grafiska alternativ
+- Går att bygga upp många olika sorters plottar och grafik
+- Mycket smidigare att använda \texttt{ggplot2}
+
+# Slumptal och simulering
+
+## Slumptal och simulering - I
+
+- R har en stor uppsättning funktioner för fördelningar
+
+prefix | Beskrivning | Exempel
+----- | ---- | ----- 
+```r``` | simulera från fördelningen | ```runif()```
+```d``` | täthetsfunktionen (pdf) | ```dunif()```
+```p``` | kulmulativ fördelninsgfunktion (cdf) | ```punif()```
+```q``` | inversa kulmulativa fördelningsfunktionen | ```qunif()```
+
+- Se \texttt{?Distributions} för fler fördelningar
+
+## Slumptal och simulering - II
+
+- Observera att: \imp{Det finns ingen riktig slump i datorer}
+- Det finns slumptalsgeneratorer
+  - Algoritmer där output ser slumpmässigt ut
+- Kan styra slumpen genom att bestämma startvärdet, "slumpfröet"
+  - i R använder vi \texttt{set.seed( )}
+- För att dra ett slumpmässigt urval använder vi \texttt{sample( )}
+
+## Slumptal och simulering - Exempel
+
+```{r, echo=TRUE, eval=FALSE}
+runif(n = 3, min = -1, max = 1)
+```
+\pause
+```{r, echo=FALSE, eval=TRUE}
+runif(n = 3, min = -1, max = 1)
+```
+\pause
+```{r, echo=TRUE, eval=FALSE}
+set.seed(20220221)
+runif(n = 3, min = -1, max = 1)
+```
+\pause
+```{r, echo=FALSE, eval=TRUE}
+set.seed(20220221)
+runif(n = 3, min = -1, max = 1)
+```
+\pause
+```{r, echo=TRUE, eval=FALSE}
+set.seed(20220221)
+runif(n = 3, min = -1, max = 1)
+```
+\pause
+```{r, echo=FALSE, eval=TRUE}
+set.seed(20220221)
+runif(n = 3, min = -1, max = 1)
+```
+
+## Slumptal och simulering - Exempel
+
+```{r, echo=TRUE, eval=FALSE}
+text <- c("Johan", "Josef", "Rasmus")
+set.seed(20220221)
+sample(x = text, size = 5, replace = TRUE)
+```
+\pause
+```{r, echo=FALSE, eval=TRUE}
+text <- c("Johan", "Josef", "Rasmus")
+set.seed(20220221)
+sample(x = text, size = 5, replace = TRUE)
+```
+\pause
+```{r, echo=TRUE, eval=FALSE}
+sample(x = text, size = 5, replace = TRUE)
+```
+\pause
+```{r, echo=FALSE, eval=TRUE}
+sample(x = text, size = 5, replace = TRUE)
+```
+
+# R-Markdown, knitr och Notebooks
+
+## R-Markdown, knitr och Notebooks
+
+- Kombinera text, kod och grafik i en fil
+- Förenkla för era laborationer i denna och andra kurser
+- Inbyggd del av R-studio
+- Två delar:
+  - R-Markdown (för text)
+  - knitR (för R-kod)
+- Kan producera, PDF, Word och/eller HTML filer
+  - Alla slides och kurshemsidan är skapad med detta.
+  - Laborationerna använder knitR med lyx istället för R-Markdown
+  
+## R-Markdown
+
+- Markupspråk
+  - Markup används på Teams, Forum, Discord, Slack m.m.
+- Väldigt enkelt att skriva
+- Kan hantera matematik och matematiska formler (via LaTeX)
+- Integrerat med R-Studio
+  - Kan behöva installera LaTeX för att skapa PDFer
+    - MikTex för Windows
+    - MacTex för OS X
+    - TexLive för Linux
+
+## knitr
+
+- Kör R-kod och ersätter texten med resultatet
+- Sätter ihop text och kod
+- Ger dynamiska rapporter
+- Skapa tabeller med \texttt{kable( )}
+- Kan hantera R och Python (och annat)
+
+## R-Studio Notebooks
+
+- Rmd-filer (samma som R-Markdown)
+- Kan köras interaktivt direkt i R-Studio
+- Inspirerat av Jupyter Notebooks
+- Skillnad mellan R-Markdown och Notebooks:
+  - Samma kod
+  - i R-Markdown körs all kod när du genererar dokumentet
+  - i Notebook körs en rad i taget
+  - i Notebooks kan du köra kod direkt och se resultatet
+
+# Externa data och pxweb
+
+## Externa data
+
+- Mer och mer data finns på webben
+- Vill kunna hantera data programtiskt
+  - Vill kunna säga åt koden vilken data som ska användas
+  - Samma data varje gång även om källmaterialet uppdateras
+  - Inte vara beroende av en specifik nerladdad fil
+- Kan vara lite klurigt i början
+- Central del av reproducerbarheten i rapporter
+
+## Ladda ner och läsa in från webben
+
+- Vill vi bara ladda ner: \texttt{downloader}
+- Vill vi ladda in direkt i R: \texttt{repmis}
+
+\texttt{repmis} hanterar:
+
+- \texttt{.Rdata}
+- \texttt{.csv}
+- \texttt{.txt}
+
+## Vanliga källor för data
+
+- Dropbox
+- Google Docs
+- Github
+
+## pxweb api
+
+- Ett api är en dörr till ett system
+- \texttt{pxweb} är ett paket för att gå in genom dörren
+- Många myndigheter använder \texttt{pxweb} api
+  - Till exempel SCB
+- Kan användas för:
+  - Navigera i datalager
+  - Ladda ner förutbestämd data med kod
+  
+## pxweb
+
+```{r, echo=TRUE, eval=FALSE}
+install.packages("pxweb")
+library(pxweb)
+
+min_data <- pxweb_interactive()
+```
