@@ -26,4 +26,8 @@ test_that("Assignment: estimate_pi()", {
   out <- estimate_pi(N=10000,my_seed = 5555)
   expect_equal( out$est , 4*mean(out$punkter$x^2 + out$punkter$y^2 <= 1),
                 info = "Fel: Ert estimat för pi stämmer inte med era punkter.")
+  expect_silent(estimate_pi(N = 1000))
+  out <- estimate_pi(N=1000)
+  expect_equal( out$est , 4*mean(out$punkter$x^2 + out$punkter$y^2 <= 1),
+                info = "Fel: Ert estimat för pi stämmer inte med era punkter när inget seed är satt.")
 })
