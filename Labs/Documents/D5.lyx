@@ -5536,20 +5536,11 @@ Navigera i SCB:s API
 \end_layout
 
 \begin_layout Standard
-Det finns två olika sätt (gränssnitt) att komma åt data med 
-\family typewriter
-pxweb
-\family default
-.
- Här beskrivs det gamla, se nedan för det nya.
-\end_layout
-
-\begin_layout Standard
 Ofta vet vi inte exakt vad för data vi vill ha utan vill navigera igenom
  SCB:s databaser på ett effektivt sätt.
- Detta gör vi med funktionen 
+ Detta gör vi med funktionen pxweb_interactive
 \family typewriter
-interactive_pxweb()
+()
 \family default
 .
  Vill vi leta upp ett givet datamaterial som vi vill spara måste vi tillskriva
@@ -6856,12 +6847,11 @@ literal "false"
 
  pdf för detaljer, finns även länk på kurshemsidan.
  Notera att det är en separat inlämning för miniprojektet del 1 på Lisam.
- I miniprojekt får ni använda det gamla eller det nya gränssnittet till
- 
+ I miniprojektet får (ska) ni använda 
 \family typewriter
 pxweb
 \family default
-, så länge ni har kod som fungerar och ni lyckas skapa reproducerbara rapporter.
+, ni ska ha kod som fungerar och skapar reproducerbara rapporter.
  OBS: inga varningar ska synas i er färdiga rapport!
 \end_layout
 
