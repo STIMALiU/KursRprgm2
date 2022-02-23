@@ -21,8 +21,11 @@ test_that("Assignment: estimate_pi()", {
   expect_equal( out$est , 4*mean(out$punkter$x^2 + out$punkter$y^2 <= 1),
                info = "Fel: Ert estimat för pi stämmer inte med era punkter.")
   out <- estimate_pi(N=1000,my_seed = 1234)
+  out2 <- estimate_pi(N=1000, my_seed = 1234)
   expect_equal( out$est , 4*mean(out$punkter$x^2 + out$punkter$y^2 <= 1),
                 info = "Fel: Ert estimat för pi stämmer inte med era punkter.")
+  expect_equal( out$est, out2$est,
+                info = "Fel: Använder inte my_seed, får olika resultat när jag använder samma seed.")
   out <- estimate_pi(N=10000,my_seed = 5555)
   expect_equal( out$est , 4*mean(out$punkter$x^2 + out$punkter$y^2 <= 1),
                 info = "Fel: Ert estimat för pi stämmer inte med era punkter.")
