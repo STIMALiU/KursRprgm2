@@ -109,7 +109,7 @@ Datorlaboration 6
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv, Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -4158,8 +4158,8 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgmTeacher/Labs/
-exercise_solutions/"
+solution_path<-"/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeache
+r/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
@@ -4244,135 +4244,74 @@ suppressWarnings(set_assignment(lab_path))
 \end_layout
 
 \begin_layout Section
-
-\family typewriter
-apartment()
+classroom()
 \end_layout
 
 \begin_layout Standard
-Skapa en konstruktor som skapar ett lägenhetsobjekt med funktionen 
-\family typewriter
-apartment()
-\family default
-.
- Funktionen ska ha två argument 
-\family typewriter
-rooms
-\family default
- och 
-\family typewriter
-m2
-\family default
- som anger hur många rum och hur stor (i 
-\begin_inset Formula $m^{2}$
-\end_inset
-
-) lägenheten är.
+Skapa en konstruktor som skapar ett klassrumsobjekt med funktionen classroom().
+ Funktionen ska ha två argument, seats and whiteboards, som anger hur många
+ platser och hur många tavlor som finns i rummet.
  Denna information ska sparas i en lista.
- Objektet som returneras ska vara av klassen 
-\family typewriter
-apartment
-\family default
-.
- Funktionen ska också kontrollera att 
-\family typewriter
-m2
-\family default
- och 
-\family typewriter
-rooms
-\family default
- är strikt större än 0 och returnera ett fel om det inträffar.
+ Objektet som returneras ska vara av klassen classroom.
+ Funktionen ska också kontrollera att seats är strikt större än 0 och att
+ whiteboard är större eller lika med 0.
  Ni kan välja felmeddelande själva.
 \end_layout
 
 \begin_layout Standard
-Implementera sedan en specifik metod för klassen 
-\family typewriter
-apartment
-\family default
- till generiska funktionen 
-\family typewriter
-print()
-\family default
-.
- Ni ska alltså skapa funktionen 
-\family typewriter
-print
-\family default
-.
-\family typewriter
-apartment()
-\family default
-.
- Används 
-\family typewriter
-print()
-\family default
- på en enrumslägenhet ska följande skrivas ut:
+Implementera sedan en specifik metod för klassen classroom till generiska
+ funktionen print().
+ Ni ska alltså skapa funktionen print.classroom().
+ Beroende på antalet sittplatser ska följande skrivas ut:
 \end_layout
 
-\begin_layout Standard
-
-\family typewriter
-A [m2] square meter studio.
+\begin_layout Itemize
+10 eller färre sittplatser: A group room for [seats] students with [whiteboard]
+ whiteboards.
 \end_layout
 
-\begin_layout Standard
-Om fler rum anges ska 
-\family typewriter
-print()
-\family default
- skriva ut
+\begin_layout Itemize
+11 till 50 sittplatser: A classroom for [seats] students with [whiteboard]
+ whiteboards.
 \end_layout
 
-\begin_layout Standard
-
-\family typewriter
-A [m2] square meter [rooms]-room apartment.
+\begin_layout Itemize
+fler än 50 sittplatser: A lecture room for [seats] students with [whiteboard]
+ whiteboards.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Itemize
+Om antalet whiteboards är noll ska istället för siffran 0, ordet no användas.
+\begin_inset Newline newline
+\end_inset
+
+
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE,echo=TRUE>>=
+<<eval=TRUE, echo=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-is.function(print.apartment)
+is.function(print.classroom)
 \end_layout
 
 \begin_layout Plain Layout
 
-a <- apartment(1, 25)
+cr1 <- classroom(10,0)
 \end_layout
 
 \begin_layout Plain Layout
 
-print(a)
+print(cr1)
 \end_layout
 
 \begin_layout Plain Layout
 
-print.apartment(a)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-a[[1]]
-\end_layout
-
-\begin_layout Plain Layout
-
-a[[2]]
+print.classroom(cr1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4381,32 +4320,54 @@ a[[2]]
 
 \begin_layout Plain Layout
 
-apartment(3, 81)
+cr1[[1]]
 \end_layout
 
 \begin_layout Plain Layout
 
-b<-apartment(5, 104)
+cr1[[2]]
 \end_layout
 
 \begin_layout Plain Layout
 
-print(b)
 \end_layout
 
 \begin_layout Plain Layout
 
-class(b)
+classroom(40,4)
 \end_layout
 
 \begin_layout Plain Layout
 
-apartment(0, 81)
 \end_layout
 
 \begin_layout Plain Layout
 
-d<-apartment(2, 0)
+cr2 <- classroom(150,12)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(cr2)
+\end_layout
+
+\begin_layout Plain Layout
+
+class(cr2)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+classroom(0,10)
+\end_layout
+
+\begin_layout Plain Layout
+
+classroom(15,-1)
 \end_layout
 
 \begin_layout Plain Layout

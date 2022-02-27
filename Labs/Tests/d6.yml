@@ -2,8 +2,8 @@
 name  : D6
 description : "Statistisk programmering med R: Lab 6"
 tasks:
-  apartment:
-    url: Tasks/apartment_tests.R
+  classroom:
+    url: Tasks/classroom_tests.R
   give_blood:
     url: Tasks/give_blood_tests.R
 mandatory:

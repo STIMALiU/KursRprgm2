@@ -1,0 +1,51 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 6"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-02-28'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Föreläsning 6
+
+## Innehåll föreläsning 6
+
+- Information
+- Sammanfattning föreläsning 5
+- Programmeringsparadigm
+  - Funktionell programmering
+  - Objektorientering
+- Datum och tid med \texttt{lubridate}
+- Linjär algebra i R
+
+# Information
+
+## Information
+
+- Kom ihåg att anmäla er till datortentan
+  - Endast anmälda får skriva tentan
+- Datortentan kommer att vara på plats
+  - Tenta i SU-sal
+  - Testsession, 23/3 10:15-12:00 i SU-17/18
+- Komplettering labb 1-4: första tillfället samtidigt som inlämning för labb 6.
+  - Se kurshemsidan för information
+
+# Programmeringsparadigm
+
+## Programmeringsparadigm
+
+- Finns många olika sätt att se på \imp{hur} program ska skrivas.
+- Olika programmeringsspråk följer olika paradigmer.

@@ -1,6 +1,6 @@
 ---
 title: "R-programmering VT2022"
-subtitle: "Föreläsning 4"
+subtitle: "Föreläsning 5"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
 date: '2022-02-15'
