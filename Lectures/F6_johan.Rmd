@@ -24,7 +24,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Innehåll föreläsning 6
 
 - Information
-- Sammanfattning föreläsning 5
 - Programmeringsparadigm
   - Funktionell programmering
   - Objektorientering
@@ -49,3 +48,266 @@ knitr::opts_chunk$set(echo = FALSE)
 
 - Finns många olika sätt att se på \imp{hur} program ska skrivas.
 - Olika programmeringsspråk följer olika paradigmer.
+
+- Pratar ofta om två för R:
+  - Funktionell programmering
+  - Objektorienterad programmering
+  
+## Funktionell programmering
+
+- I funktionell programmering pratar man om två saker.
+  - "Rena" funktioner.
+    - Output beror bara på inargumenten.
+    - Funktionen har inga sidoeffekter.
+  - "First-class functions".
+    - Funktioner ska bete sig som alla andra objekt
+    - Kunna spara funktioner, returnera funktioner etc.
+- Exempel:
+  - Scala, Erland, Haskell
+  
+## Objektorientering
+
+- Objektorientering åtgår från klasser:
+  - En klass är en mall som används för att skapa objekt
+  - Kopplar samman objekt med funktioner
+  - Objekt är en specifik realisering av en klass
+  - Objekt skapas med en konstruktor
+
+- Viktiga koncept:
+  - **Inkapsling**: Gömma och ordna relaterad data.
+  - **Polymorfism**: Generiska funktioner som hanterar olika objekt.
+  - **Arv**: Underlättar specialisering av data och metoder via underklasser.
+
+
+  
+## Objektorientering
+
+- i R:
+  - Alla objekt ha en klass
+  - Kan undersöka ett objekts klass med \texttt{class( )}
+  - Variabeltyper är "atomära" klasser
+  - Klasser har en konstruktor
+  
+- Olika typer av klasser i R:
+  - Basklasser
+  - S3 (informellt): "lista med klassattribut"
+  - S4 (formellt): element väljs ut med @
+  - Regerence classes
+
+## Generiska funktioner (S3)
+
+- Objektorientering i R utgår från generiska funktioner
+- Funktioner som gör olika saker beroende på objektets klass
+- Ex:
+  - \texttt{plot( )}
+  - \texttt{mean( )}
+  - \texttt{summary( )}
+  - \texttt{names( )}
+- Funktionerna anropar metoden för objektet när de används.
+
+## Metoder
+
+- En funktion för en specifik klass
+- Metoderna utgår från generisk funktion
+- Alla metoder för en generisk funktion hittas med \texttt{methods( )}
+- T.ex. funktionen \texttt{mean( )}
+  - Defaultmetoden finns med \texttt{mean.default( )}
+  - Specifik med \texttt{mean.difftime( )}
+- Metoder kan också anropas direkt som vanliga funktioner.
+
+# Datum och tid
+
+## Datum och tid
+
+- Datum är klurigt att arbeta med, men används extremt mycket.
+- Två typer av tid:
+  - Relativ tid
+  - Exakt tid
+- Enklare funktioner för datum finns i \texttt{base}
+
+## Datum och tid - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+my_date <- "2022-02-28"
+class(my_date)
+```
+
+```{r,echo=TRUE,eval=TRUE}
+my_date_as_date <- as.Date(my_date)
+my_date_as_date
+class(my_date_as_date)
+```
+
+## lubridate
+
+- Paket för enkel och effektiv datumhantering
+- Sammansatt av "lubricant" och "date"
+
+Tre huvudsakliga delar:
+
+1. Läsa in datum
+2. Ändra inlästa datum
+3. Göra beräkningar med datum
+
+
+## lubridate - Exempel
+
+```{r,echo=TRUE,eval=TRUE,message=FALSE}
+library(lubridate)
+idag <- ymd("2022-02-28")
+print(idag)
+week(idag)
+idag + weeks(2)
+```
+
+## lubridate
+
+Elementordning | Funktion
+----- | ---- | 
+år, månad, dag | ```ymd()``` 
+år, dag, månad | ```ydm()``` 
+månad, dag, år | ```mdy()``` 
+timme, minut | ```hm()``` 
+timme, minut, sekund | ```hms()``` 
+år, mån, dag, timme, min, sek | ```ymd_hms()``` 
+
+Källa: Grolemund and Wickham (2011, Table 4)
+
+## lubridate
+
+För att “plocka ut” eller ändra delar av ett datum används följande funktioner
+
+Datum | Funktion| Tidsdel | Funktion
+----- | ---- | ----| ----
+år | ```year()``` | timme | ```hour()```
+månad | ```month()``` | minut | ```minute()``` 
+vecka | ```week()``` | sekund | ```second()```
+årsdag | ```yday()``` | tidszon | ```tz()```
+månadsdag | ```mday()```
+veckodag | ```wday()```
+
+Källa: Grolemund and Wickham (2011, Table 5)
+
+## lubridate - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+idag <- ymd("2022-02-28")
+week(idag)
+wday(idag, label = TRUE)
+year(idag) <- 2019
+idag
+```
+
+## lubridate
+
+- För att räkna med datum finns det fyra olika objekt i \texttt{lubridate}
+  - \texttt{instant}
+  - \texttt{interval}
+  - \texttt{duration}
+  - \texttt{period}
+
+## instant och interval
+
+**Instant**
+
+- Ett spcifikt tillfälle i tiden
+- Viktiga funktioner:
+  - \texttt{now( )}
+  - \texttt{today( )}
+
+**Interval**
+
+- Tidsspannet mellan två \texttt{instant}
+- \texttt{interval(start,end)}
+
+## instant och interval - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+inst_1 <- ymd("2020-02-29")
+inst_2 <- today()
+my_interval <- interval(start = inst_1, end = inst_2)
+my_interval
+```
+
+## duration
+
+- Ett fixt tidsspann som mäts i sekunder
+- Tänk kontinuerlig tid
+- Absolut tid i sekunder
+- Funktioner börjar med \texttt{d}
+- Konvertera ett interval med \texttt{as.duration( )}
+- Ex:
+  - \texttt{duration( )}
+  - \texttt{dseconds( )}
+  - \texttt{dhours( )}
+
+## duration - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+my_interval / ddays(30)
+as.duration(my_interval)
+```
+
+## Period
+
+- Utgår från den aktuella enheten (dagar, månader, år)
+- Tänk diskret tid
+- Relativ tid
+- Vad vi i dagligt tal menar med ex. två veckor
+- Ex:
+  - \texttt{period(num = , units = )}
+  - \texttt{minutes( )}
+  - \texttt{hours( )}
+  - \texttt{weeks( )}
+
+## Period - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+months(3) + weeks(2) + days(1)
+my_interval %/% months(4)
+as.period(my_interval)
+```
+
+## Att räknamed tid - Exempel
+
+```{r,echo=TRUE,eval=TRUE}
+course_start <- ymd("2022-01-24")
+course_start + weeks(5)
+course_start + months(1)
+course_start + ddays(30)
+```
+
+# Linjär algebra
+
+## Matriser
+
+- Matriser är två-dimensionella vektorer
+- Har jobbat med matriser förut.
+- Skapa en matris med
+  - \texttt{matrix( data = , nrow = , ncol = , byrow = )}
+  - Kom ihåg cirkulering
+  - \texttt{byrow = FALSE} per deafult
+- Transponat fås med \texttt{t( )}
+- Diagonalmatris med \texttt{diag( vektor )}
+- Enhetsmatrisen med \texttt{diag( nummer )}
+
+## Linjär algebra
+
+- Matrismultiplikation görs med \texttt{\%*\%}
+- Invertera en matris med \texttt{solve( )}
+  - Notera att \texttt{A \%*\% solve(A)} blir en enhetsmatris
+- Lösa ekvationssystem $Ax = b$ med \texttt{solve(a=A,b=b)}
+  - Notera att om $A$ inverterbar är svaret $x = A^{-1}b$.
+- Egenvärden och egenvektorer med \texttt{eigen( )}
+  - Returnerar en lista med egenvärden och egenvektorer
+- Summera rader eler kolumner med \texttt{rowSums( )} och \texttt{colSums( )}
+- Kombinera matriser med \texttt{rbind( , )} eller \texttt{cbind( , )}
+
+## Linjär algebra - paketet Matrix
+
+- Matrix är ett paket som implementerar effektivare/snabbre funktioner för linjär algebra.
+- Grunden är funktionen \texttt{Matrix( )}, vilket är en konstruktor som skapar matriser.
+- Matriserna i **Matrix** är S4 klasser.
+- I **Matrix** är det skillnad på glesa och täta matriser.
+- Kolla dokumentation för mer information.
+- Rekomenderas för avancerade tillämpningar.
