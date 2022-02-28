@@ -38,7 +38,7 @@ knitr::opts_chunk$set(echo = FALSE)
   - Endast anmälda får skriva tentan
 - Datortentan kommer att vara på plats
   - Tenta i SU-sal
-  - Testsession, 23/3 10:15-12:00 i SU-17/18
+  - Testsession, 22/3 10:15-12:00 i SU-17/18
 - Komplettering labb 1-4: första tillfället samtidigt som inlämning för labb 6.
   - Se kurshemsidan för information
 
@@ -305,7 +305,7 @@ course_start + ddays(30)
 
 ## Linjär algebra - paketet Matrix
 
-- Matrix är ett paket som implementerar effektivare/snabbre funktioner för linjär algebra.
+- Matrix är ett paket som implementerar effektivare/snabbare funktioner för linjär algebra.
 - Grunden är funktionen \texttt{Matrix( )}, vilket är en konstruktor som skapar matriser.
 - Matriserna i **Matrix** är S4 klasser.
 - I **Matrix** är det skillnad på glesa och täta matriser.
