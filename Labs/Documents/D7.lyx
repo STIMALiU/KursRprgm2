@@ -6359,12 +6359,12 @@ literal "false"
  pdf för detaljer, finns även länk på kurshemsidan.
  Kommentera koden och ha en god kodstil.
  Notera att det är en separat inlämning för miniprojektet del 2 på Lisam.
- I miniprojekt får ni använda det gamla eller det nya gränssnittet till
- 
+ I miniprojekt ska ni använda 
 \family typewriter
 pxweb
 \family default
-, så länge ni har kod som fungerar och ni lyckas skapa reproducerbara rapporter.
+, se till att ni har kod som fungerar och ni lyckas skapa reproducerbara
+ rapporter.
  Notera att ni ska använda 
 \series bold
 samma
