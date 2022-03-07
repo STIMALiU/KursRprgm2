@@ -12,7 +12,7 @@ output:
     latex_engine: "xelatex"
     includes:
       in_header: metropolis_preamble.tex
-classoption: "handout"
+#classoption: "handout"
 ---
 
 ```{r setup, include=FALSE}
@@ -20,6 +20,11 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Föreläsning 2:
+
+**Vi kör på distans en vecka till.**
+Föreläsning 7/2 och labbar 9/2, 11/2 på distans.
+
+**Schemaflytt** på fredag är labben 8:15-10:00
 
 - Sammanfattning Föreläsning 1
 - Datastrukturer:
@@ -42,6 +47,7 @@ knitr::opts_chunk$set(echo = FALSE)
 - Värden kan vara av olika typer
   - Kollar typ med \texttt{typeof( )}
   - Byter typ med \texttt{as.}
+  - Testa typ med \texttt{is.}
   
 ## Funktioner
 
@@ -232,7 +238,7 @@ minData
 ```{r,echo=TRUE,eval=TRUE}
 colnames(minData)
 ```
-
+\pause
 - Kan byta genom att skriva över värdet
 
 ```{r,echo=TRUE,eval=TRUE}
@@ -247,6 +253,7 @@ minData
 ```{r,echo=TRUE,eval=TRUE}
 rownames(minData)
 ```
+\pause
 - Kan byta precis som med variabler
 ```{r,echo=TRUE,eval=TRUE}
 rownames(minData)[1] <- "Person 1"
@@ -262,7 +269,7 @@ minData
   - Lådan kan innehålla "vad som helst"
 ```{r,echo=TRUE,eval=TRUE}
 minLista <- list(namn = "Ash Ketchum",
-                 c("Pikachu", "Caterpie", "Charmander"))
+             c("Pikachu", "Caterpie", "Charmander"))
 minLista
 ```
 
@@ -300,6 +307,8 @@ minLista[[1]]
   - Från databaser (\texttt{SQL})
   - Via något API (\texttt{rOpenGov})
 
+\pause
+
 - För att läsa in filer i R använder vi
   - \texttt{.csv} och \texttt{.txt}
     - \texttt{read.table( )}, \texttt{read.csv( )} och \texttt{read.csv2( )}
@@ -316,7 +325,9 @@ minLista[[1]]
   - Interaktiva webbdatabaser (\texttt{Shiny})
   - Rapporter/analyser/texter (\texttt{knitr})
     - Detta kommer i miniprojekten
-  
+
+\pause
+
 - För att spara filer i R använder vi
   - \texttt{.csv}
     - \texttt{write.table( )}, \texttt{write.csv( )} och \texttt{write.csv2( )}

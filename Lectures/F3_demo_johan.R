@@ -262,7 +262,7 @@ my_mean(c(TRUE,FALSE))
 undebug(my_mean)
 
 h <- function(x){
-  mu_x <- my_mean(x)
+  mu_x <- mean(x)
   print(mu_x)
   y <- mu_x*2
   z <- y^2

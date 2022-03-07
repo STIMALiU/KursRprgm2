@@ -1,0 +1,62 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 7"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-03-07'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Föreläsning 7
+
+## Innehåll föreläsning 7
+
+- Grafik med \texttt{ggplot2}
+- Grundläggande statistik
+- Linjär regression
+
+# ggplot2
+
+## ggplot2
+
+- Skapat av Hadley Wickham för över 10 år sedan
+- Baseras på "Grammar of Graphics" av Leland Wilkinson
+- Alternativ till basgrafiken
+- Grunden är alltid en \texttt{data.frame}
+
+## Grammar of Graphics
+
+- Abstraktion av grafiska idéer
+  - Tänk språk med ordklasser/satsdeelar
+- Ger ett teoretiskt ramverk för att bygga grafik.
+- Bygga upp grafik lager för lager
+
+## ggplot2
+
+- Bygger upp en graf av flera delar:
+  - \texttt{data}: en \texttt{data.frame} med **all** data
+  - \texttt{aes}: asethetic mappings
+  - \texttt{geom}: geometriska objekt
+  - \texttt{facets}: subplottar
+  - \texttt{scales}: skalor
+  - \texttt{coordinate system}: koordinatsystem
+
+## Grammar of Graphics
+
+> ”In brief, the grammar tells us that a statistical graphic is a mapping from data to aesthetic attributes (colour, shape, size) of geometric objects (points, lines, bars). The plot may also contain statistical transformations of the data and is drawn on a specific coordinate system.”
+
+_Från "ggplot2 book" av Hadley Wickham_
+
+
+

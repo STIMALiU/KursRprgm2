@@ -1,0 +1,934 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R-programmering VT2022},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
+
+%%% USEFUL PACKAGES
+%\usepackage{showframe} % For debugging positioning
+\usepackage{etex} % If too many packages
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{natbib}
+%\usepackage{booktabs}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+%\usepackage{animate} % Animations
+\usepackage{bm} % Bold math
+\usepackage{bbm}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{ulem} % Used for strikeouts \sout
+%\usepackage{stackengine}
+%\usepackage{enumitem}
+%\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+%\usepackage{colortbl} % Used for colored rows in tables
+
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+
+%%% COLORS
+\setbeamercolor{background canvas}{bg=white}
+\def\BlankFrame{
+	\bgroup
+	%\pdfpageheight 29.7cm
+	\setbeamercolor{background canvas}{bg=}
+	\begin{frame}[plain]
+	\end{frame}
+	%\makeatletter
+	%\pdfpageheight \beamer@paperheight
+	%\makeatother
+	\egroup}
+
+\usepackage{xcolor}
+\definecolor{DarkGreen}{HTML}{00B200}
+\definecolor{LightBlue}{HTML}{0090D9}
+\definecolor{gold}{rgb}{.812,.710,.231}
+% Text markup
+%\setbeamercolor{alerted text}{fg=red}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\grey}[1]{\textcolor{gray}{#1}}
+\newcommand{\orange}[1]{\textcolor{mLightBrown}{#1}}
+\newcommand\myheading[1]{\textbf{#1}}
+\newcommand\myemph[1]{\underline{\emph{#1}}}
+\newcommand\textexample[1]{\textit{\textbf{#1}}}
+
+%%% SPACING
+\newcommand\vws[1][1]{\vspace{#1\baselineskip}} % vertical white space
+%\newcommand\strt[1][1.5ex]{\rule[-.05\baselineskip]{0pt}{#1}} % strut
+\newcommand\strt[2]{\rule[-#1ex]{0pt}{#2ex}} % strut
+\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after
+
+%%% MISC
+\newcommand\articleref[4]{\noindent\begin{minipage}[t]{0.04\textwidth}
+		\vspace{0pt} 
+		\pgfuseimage{beamericonarticle}
+	\end{minipage}%
+	\begin{minipage}[t]{0.96\textwidth}
+		\vspace{0pt}
+		#1. \textbf{#2.} \textit{#3}, #4.
+	\end{minipage}}
+
+%%% METROPOLIS THEME SPECIFIC
+\makeatletter
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\makeatother
+%\setbeamercolor{progress bar}{fg=red,bg=red!50}
+
+
+%%% TEXTPOS
+\usepackage[absolute,overlay]{textpos} % option showboxes is useful in draft mode
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\textblockorigin{0pt}{10mm} % start everything at top-left, below gray 
+
+
+%%% TIKZ/PGFPLOTS
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc,shapes.geometric}
+%\usetikzlibrary{arrows,calc,shapes.geometric,decorations.pathmorphing,backgrounds,positioning,fit,petri,decorations.pathreplacing}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat = 1.3}
+
+
+%%% BLOCKS AND BOXES
+% Changing colors of blocks
+%\setbeamercolor{block title alerted}{bg=UURed,fg=palette primary.fg}
+%\setbeamercolor{block body alerted}{bg=UURed!15}
+\setbeamercolor{block title alerted}{bg=mLightBrown,fg=palette primary.fg}
+\setbeamercolor{block body alerted}{bg=mLightBrown!15}
+%\setbeamercolor{block title example}{bg=UUGreen,fg=palette primary.fg}
+%\setbeamercolor{block body example}{bg=UUGreen!10}
+% \mybox is a rectangular box
+\usepackage{boxedminipage}
+\setlength\fboxrule{2pt}
+\setlength\fboxsep{2\fboxsep}
+\newcommand\mybox[3][\textwidth]{
+  {\color{#2}
+    \begin{boxedminipage}{#1}
+      {\color{palette primary.bg} #3}
+    \end{boxedminipage}}%
+}   
+\usepackage{tcolorbox}
+\tcbset{arc=1mm,grow to left by=3mm,grow to right by=3mm,left=2mm}
+%\newenvironment{redbox}{%
+%	\begin{tcolorbox}[colback=UURed!15,colframe=UURed]}{%
+%	\end{tcolorbox}}
+%\newenvironment{greenbox}{%
+%	\begin{tcolorbox}[colback=UUGreen!15,colframe=UUGreen]}{%
+%	\end{tcolorbox}}
+\newenvironment{redbox}{%
+	\begin{tcolorbox}[colback=red!15,colframe=red]}{%
+	\end{tcolorbox}}
+\newenvironment{greenbox}{%
+	\begin{tcolorbox}[colback=DarkGreen!15,colframe=DarkGreen]}{%
+	\end{tcolorbox}}
+\newenvironment{graybox}{%
+	\begin{tcolorbox}[colback=mDarkTeal!5,colframe=mDarkTeal]}{%
+	\end{tcolorbox}}
+\newenvironment{orangebox}{%
+\begin{tcolorbox}[colback=mLightBrown!15,colframe=mLightBrown]}{%
+	\end{tcolorbox}}
+\newenvironment{bwbox}{%
+	\begin{tcolorbox}[colback=white,colframe=black]}{%
+\end{tcolorbox}}
+\newenvironment{bluebox}{%
+	\begin{tcolorbox}[colback=LightBlue!15,colframe=LightBlue]}{%
+\end{tcolorbox}}
+
+
+%%%%%%%%% NEW MACROS
+
+\newcommand\imp[1]{\alert{\textbf{#1}}}
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+\newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
+\newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{R-programmering VT2022}
+\subtitle{Föreläsning 3}
+\author{Johan Alenlöv}
+\date{2022-02-07}
+\institute{Linköpings Universitet}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Föreläsning 3:}
+\protect\hypertarget{fuxf6reluxe4sning-3}{}
+\textbf{Nästa vecka är vi tillbaka på campus} Föreläsningen kommer att
+parallellt ges på Zoom.
+
+\begin{itemize}
+\tightlist
+\item
+  Sammanfattning Föreläsning 2
+\item
+  Villkorssatser
+\item
+  Loopar
+\item
+  Funktionsmeddelanden
+\item
+  Debugging
+\end{itemize}
+\end{frame}
+
+\hypertarget{sammanfattning-fuxf6reluxe4sning-2}{%
+\section{Sammanfattning föreläsning
+2}\label{sammanfattning-fuxf6reluxe4sning-2}}
+
+\begin{frame}{Matriser}
+\protect\hypertarget{matriser}{}
+\begin{itemize}
+\tightlist
+\item
+  Två dimensionell vektor, alla element av samma typ
+\item
+  Välj index med \texttt{[ "rad" , "kolumn" ]}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Saknas \texttt{rad} eller \texttt{kolumn} väljs hela.
+  \item
+    Om man väljer ut bara är en rad eller kolumn görs resultatet om till
+    en vektor.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      För att behålla matrisstrukturen använd \texttt{drop = FALSE}
+    \end{itemize}
+  \end{itemize}
+\item
+  \texttt{length} ger antal element
+\item
+  \texttt{dim} ger dimensionerna
+\end{itemize}
+\end{frame}
+
+\begin{frame}{data.frame}
+\protect\hypertarget{data.frame}{}
+\begin{itemize}
+\tightlist
+\item
+  Dataset, där varje variabel (kolumn) kan ha olika typer.
+\item
+  Varje variabel har ett namn.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Komma åt variabler via namnet eller ordningen.
+  \end{itemize}
+\item
+  Varje rad innehåller ett värde per kolumn.
+\item
+  Lätt att lägga till och ta bort kolumner.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Listor}
+\protect\hypertarget{listor}{}
+\begin{itemize}
+\tightlist
+\item
+  Tänk vektor där varje element kan vara vad som helst.
+\item
+  Möjligt att namnge element.
+\item
+  \texttt{[ ]} tar fram en del av listan
+\item
+  \texttt{[[ ]]} tar fram elementet
+\end{itemize}
+\end{frame}
+
+\hypertarget{programkontroll}{%
+\section{Programkontroll}\label{programkontroll}}
+
+\begin{frame}{Programkontroll}
+\protect\hypertarget{programkontroll-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Kontrollera körningen av program eller funktioner
+\item
+  Olika typer av kontroller vi kan göra:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Köra en annan del av koden
+  \item
+    Vilkorsstyra kod
+  \item
+    Kör kod upprepade antal gånger
+  \item
+    Köra kod tills ett villkor är uppfyllt
+  \item
+    Avbryta ett program i förtid
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{villkorssatser}{%
+\section{Villkorssatser}\label{villkorssatser}}
+
+\begin{frame}[fragile]{Vilkorssatser (if-else)}
+\protect\hypertarget{vilkorssatser-if-else}{}
+\begin{itemize}
+\tightlist
+\item
+  Välja att utföra något baserat på logiskt villkor
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ ( Villkor ) \{}
+\NormalTok{  Kod om Villkor }\SpecialCharTok{==} \ConstantTok{TRUE}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  Kod om Villkor }\SpecialCharTok{==} \ConstantTok{FALSE}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Villkor ska vara någon logik
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tal större än noll är vanligtvis sanna.
+  \end{itemize}
+\item
+  Om villkor är en vektor kommer den bara kolla på \imp{första}
+  elementet
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{If - else if - else}
+\protect\hypertarget{if---else-if---else}{}
+\begin{itemize}
+\tightlist
+\item
+  Det är inte alltid man bara vill ha två olika utfall
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ ( Villkor1 ) \{}
+\NormalTok{  Kod om Villkor1 }\SpecialCharTok{==} \ConstantTok{TRUE}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ ( Villkor2 ) \{}
+\NormalTok{  Kod om Villkor2 }\SpecialCharTok{==} \ConstantTok{TRUE}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ ( Villkor3 ) \{}
+\NormalTok{  Kod om Villkor3 }\SpecialCharTok{==} \ConstantTok{TRUE}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  Kod om Villkor1 och Villkor2 och Villkor3 }\SpecialCharTok{==} \ConstantTok{FALSE}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Kommer välja den \imp{första} som är sann
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Villkorssatser - Exempel}
+\protect\hypertarget{villkorssatser---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prgm }\OtherTok{\textless{}{-}} \StringTok{"R"}
+\ControlFlowTok{if}\NormalTok{ ( prgm }\SpecialCharTok{==} \StringTok{"R"}\NormalTok{) \{ }\FunctionTok{cat}\NormalTok{(}\StringTok{"Kul med"}\NormalTok{,prgm)\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## Kul med R
+\end{verbatim}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prgm }\OtherTok{\textless{}{-}} \StringTok{"Excel"}
+\ControlFlowTok{if}\NormalTok{ ( prgm }\SpecialCharTok{==} \StringTok{"R"}\NormalTok{) \{ }\FunctionTok{cat}\NormalTok{(}\StringTok{"Kul med"}\NormalTok{,prgm)\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Villkorssatser - Exempel II}
+\protect\hypertarget{villkorssatser---exempel-ii}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{prgm }\OtherTok{\textless{}{-}} \StringTok{"Excel"}
+\ControlFlowTok{if}\NormalTok{ ( prgm }\SpecialCharTok{==} \StringTok{"R"}\NormalTok{) \{ }
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Kul med"}\NormalTok{,prgm)}
+\NormalTok{\} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ ( prgm }\SpecialCharTok{==} \StringTok{"Python"}\NormalTok{ ) \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Okej"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"Hmm..."}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "Hmm..."
+\end{verbatim}
+\end{frame}
+
+\hypertarget{loopar-for-loop}{%
+\section{Loopar (for-loop)}\label{loopar-for-loop}}
+
+\begin{frame}[fragile]{For-loop}
+\protect\hypertarget{for-loop}{}
+\begin{itemize}
+\tightlist
+\item
+  Upprepningar av kod
+\item
+  I R används \texttt{for} för loopar över vektor/lista
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( elem }\ControlFlowTok{in}\NormalTok{ vektor ) \{}
+  \CommentTok{\# Kod som anropas en gång per element}
+  \CommentTok{\# elem är ett element i vektorn}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Vilken vektor eller lista kan användas
+\item
+  Viktigt koncept: Loopens index (\texttt{elem}) är det ENDA som ändras
+  i loopen.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{For-loop - Exempel}
+\protect\hypertarget{for-loop---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vektor }\OtherTok{\textless{}{-}} \DecValTok{3}\SpecialCharTok{:}\DecValTok{5}
+\ControlFlowTok{for}\NormalTok{ ( element }\ControlFlowTok{in}\NormalTok{ vektor ) \{}
+  \FunctionTok{print}\NormalTok{( element}\SpecialCharTok{*}\DecValTok{2}\NormalTok{ )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] 6
+## [1] 8
+## [1] 10
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{For-loop - Exempel II}
+\protect\hypertarget{for-loop---exempel-ii}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{,}\StringTok{"d"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ ( element }\ControlFlowTok{in}\NormalTok{ vektor ) \{}
+  \FunctionTok{print}\NormalTok{( element )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "a"
+## [1] "b"
+## [1] "c"
+## [1] "d"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{For-loop - Exempel III}
+\protect\hypertarget{for-loop---exempel-iii}{}
+\begin{itemize}
+\tightlist
+\item
+  Kan loopa på flera olika sätt
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( element }\ControlFlowTok{in}\NormalTok{ vektor ) \{}
+  \FunctionTok{print}\NormalTok{( element )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( index }\ControlFlowTok{in} \FunctionTok{seq\_along}\NormalTok{(vektor) ) \{}
+  \FunctionTok{print}\NormalTok{( vektor[index] )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( index }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(vektor) ) \{}
+  \FunctionTok{print}\NormalTok{( vektor[index] )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\hypertarget{nuxe4stlade-loopar}{%
+\section{Nästlade loopar}\label{nuxe4stlade-loopar}}
+
+\begin{frame}{Nästlade loopar}
+\protect\hypertarget{nuxe4stlade-loopar-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Om vi vill loopa i flera nivåer
+\item
+  Delas ofta upp i yttre och inre loop
+\item
+  Tänk som en klocka
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Timmar: Yttersta loopen
+  \item
+    Minuter: Inre loop, gör 60 iterationer / timme
+  \item
+    Sekunder: Innsersta loopen, gör 60 iteration / minut
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Nästlade loopar - Exmepel}
+\protect\hypertarget{nuxe4stlade-loopar---exmepel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{ ) \{}
+  \ControlFlowTok{for}\NormalTok{ ( j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
+\NormalTok{    text }\OtherTok{\textless{}{-}} \FunctionTok{paste}\NormalTok{(}\StringTok{"rad:"}\NormalTok{,i,}\StringTok{" kolumn:"}\NormalTok{,j,}
+                  \StringTok{"värde:"}\NormalTok{,A[i,j])}
+    \FunctionTok{print}\NormalTok{(text)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "rad: 1  kolumn: 1 värde: 1"
+## [1] "rad: 1  kolumn: 2 värde: 3"
+## [1] "rad: 1  kolumn: 3 värde: 5"
+## [1] "rad: 2  kolumn: 1 värde: 2"
+## [1] "rad: 2  kolumn: 2 värde: 4"
+## [1] "rad: 2  kolumn: 3 värde: 6"
+\end{verbatim}
+\end{frame}
+
+\hypertarget{while-loop}{%
+\section{while-loop}\label{while-loop}}
+
+\begin{frame}[fragile]{while-loop}
+\protect\hypertarget{while-loop-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Om vi inte vet antalet iterationer på förhand
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{while}\NormalTok{ ( Villkor ) \{}
+  \CommentTok{\# Kod som anropas så länge Villkor == TRUE}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \imp{Varning!} Kan fortsätta hur länge som helst
+\item
+  \imp{Obs!} \text{Villkor} måste kunna utvärderas innan loopen startar
+\item
+  \texttt{repeat} repeterar kod till \texttt{break}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{while-loop - Exempel}
+\protect\hypertarget{while-loop---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1} \CommentTok{\# Obs!}
+\ControlFlowTok{while}\NormalTok{ ( i }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{ ) \{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+\end{verbatim}
+\end{frame}
+
+\hypertarget{kontrollstrukturer-fuxf6r-loopar}{%
+\section{Kontrollstrukturer för
+loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
+
+\begin{frame}{Kontrollstrukturer för loopar}
+\protect\hypertarget{kontrollstrukturer-fuxf6r-loopar-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Vill ofta kontrollera hur looparna arbetar
+\item
+  Finns följande kontrollstrukturer:
+\end{itemize}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+\textbf{Kontrollstruktur} & \textbf{Effet} \\
+\midrule
+\endhead
+\texttt{next()} & Börja med nästa iteration direkt \\
+\texttt{break()} & Avbryt den aktuella / innersta loopen \\
+\texttt{stop()} & Avbryter allt och genererar ett felmeddelande \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{next() - Exempel}
+\protect\hypertarget{next---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{0}
+\ControlFlowTok{while}\NormalTok{ ( i }\SpecialCharTok{\textless{}} \DecValTok{11}\NormalTok{ ) \{}
+\NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1}
+  \ControlFlowTok{if}\NormalTok{ ( i }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{ }\ControlFlowTok{next}\NormalTok{() \}}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] 1
+## [1] 3
+## [1] 5
+## [1] 7
+## [1] 9
+## [1] 11
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{break() - exempel}
+\protect\hypertarget{break---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
+  \ControlFlowTok{for}\NormalTok{ ( letter }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{) ) \{}
+    \ControlFlowTok{if}\NormalTok{ ( letter }\SpecialCharTok{==} \StringTok{"b"}\NormalTok{ ) \{ }\ControlFlowTok{break}\NormalTok{() \}}
+    \FunctionTok{print}\NormalTok{(letter)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "a"
+## [1] "a"
+## [1] "a"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{stop() - Exempel}
+\protect\hypertarget{stop---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
+  \ControlFlowTok{for}\NormalTok{ ( letter }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{) ) \{}
+    \ControlFlowTok{if}\NormalTok{ ( letter }\SpecialCharTok{==} \StringTok{"b"}\NormalTok{ ) \{ }\FunctionTok{stop}\NormalTok{(}\StringTok{"Det blev fel!"}\NormalTok{) \}}
+    \FunctionTok{print}\NormalTok{(letter)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "a"
+\end{verbatim}
+
+\begin{verbatim}
+## Error: Det blev fel!
+\end{verbatim}
+\end{frame}
+
+\hypertarget{varningsmeddelanden-och-debugg}{%
+\section{Varningsmeddelanden och
+debugg}\label{varningsmeddelanden-och-debugg}}
+
+\begin{frame}{Varningsmeddelanden}
+\protect\hypertarget{varningsmeddelanden}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{stop()} avbryter funktioner/loopar och meddelar ett fel
+\item
+  \texttt{warning()} skapar en varning, som inte avbryter
+\item
+  Varningar sparas och skrivs ut sist
+\item
+  \texttt{warnings()} skriver ut tidigare varningar
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Varningsmeddelanden - Exempel}
+\protect\hypertarget{varningsmeddelanden---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( chr }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{) ) \{}
+  \FunctionTok{print}\NormalTok{(chr)}
+  \FunctionTok{warning}\NormalTok{( }\FunctionTok{paste}\NormalTok{(}\StringTok{"Farligt värde"}\NormalTok{,chr) )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"a"}
+\StringTok{"b"}
+\NormalTok{Warning messages}\SpecialCharTok{:}
+\DecValTok{1}\SpecialCharTok{:}\NormalTok{ Farligt värde a }
+\DecValTok{2}\SpecialCharTok{:}\NormalTok{ Farligt värde b }
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Debugging}
+\protect\hypertarget{debugging}{}
+\begin{itemize}
+\tightlist
+\item
+  Det uppstår ofta fel vid programmering
+\item
+  Debugging handlar om att hitta orsaken
+\item
+  Olika typer av fel:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Syntaktiska fel: Felaktig syntax i koden
+  \item
+    Semantiska fel: Olämplig användning av objekt/funktioner
+  \item
+    Logiska fel: Programmet löser inte det tänkta problemet
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Debugging II}
+\protect\hypertarget{debugging-ii}{}
+\begin{itemize}
+\tightlist
+\item
+  Använd \texttt{cat()}, \texttt{print()} eller \texttt{message()} för
+  att skriva ut värden under körning.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Använd \texttt{paste()} för att kombinera text och variabler till en
+    sträng.
+  \end{itemize}
+\item
+  \texttt{browser()} Hoppar in i funktionen
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{n}: kör nästa rad
+  \item
+    \texttt{c}: kör allt i funktion / loop
+  \item
+    \texttt{Q}: avsluta
+  \end{itemize}
+\item
+  \texttt{debugg()} Hoppa in i funktionen från början
+\end{itemize}
+\end{frame}
+
+\end{document}

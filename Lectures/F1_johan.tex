@@ -1,0 +1,1178 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R-programmering VT2022},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
+
+%%% USEFUL PACKAGES
+%\usepackage{showframe} % For debugging positioning
+\usepackage{etex} % If too many packages
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{natbib}
+%\usepackage{booktabs}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+%\usepackage{animate} % Animations
+\usepackage{bm} % Bold math
+\usepackage{bbm}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{ulem} % Used for strikeouts \sout
+%\usepackage{stackengine}
+%\usepackage{enumitem}
+%\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+%\usepackage{colortbl} % Used for colored rows in tables
+
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+
+%%% COLORS
+\setbeamercolor{background canvas}{bg=white}
+\def\BlankFrame{
+	\bgroup
+	%\pdfpageheight 29.7cm
+	\setbeamercolor{background canvas}{bg=}
+	\begin{frame}[plain]
+	\end{frame}
+	%\makeatletter
+	%\pdfpageheight \beamer@paperheight
+	%\makeatother
+	\egroup}
+
+\usepackage{xcolor}
+\definecolor{DarkGreen}{HTML}{00B200}
+\definecolor{LightBlue}{HTML}{0090D9}
+\definecolor{gold}{rgb}{.812,.710,.231}
+% Text markup
+%\setbeamercolor{alerted text}{fg=red}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\grey}[1]{\textcolor{gray}{#1}}
+\newcommand{\orange}[1]{\textcolor{mLightBrown}{#1}}
+\newcommand\myheading[1]{\textbf{#1}}
+\newcommand\myemph[1]{\underline{\emph{#1}}}
+\newcommand\textexample[1]{\textit{\textbf{#1}}}
+
+%%% SPACING
+\newcommand\vws[1][1]{\vspace{#1\baselineskip}} % vertical white space
+%\newcommand\strt[1][1.5ex]{\rule[-.05\baselineskip]{0pt}{#1}} % strut
+\newcommand\strt[2]{\rule[-#1ex]{0pt}{#2ex}} % strut
+\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after
+
+%%% MISC
+\newcommand\articleref[4]{\noindent\begin{minipage}[t]{0.04\textwidth}
+		\vspace{0pt} 
+		\pgfuseimage{beamericonarticle}
+	\end{minipage}%
+	\begin{minipage}[t]{0.96\textwidth}
+		\vspace{0pt}
+		#1. \textbf{#2.} \textit{#3}, #4.
+	\end{minipage}}
+
+%%% METROPOLIS THEME SPECIFIC
+\makeatletter
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\makeatother
+%\setbeamercolor{progress bar}{fg=red,bg=red!50}
+
+
+%%% TEXTPOS
+\usepackage[absolute,overlay]{textpos} % option showboxes is useful in draft mode
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\textblockorigin{0pt}{10mm} % start everything at top-left, below gray 
+
+
+%%% TIKZ/PGFPLOTS
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc,shapes.geometric}
+%\usetikzlibrary{arrows,calc,shapes.geometric,decorations.pathmorphing,backgrounds,positioning,fit,petri,decorations.pathreplacing}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat = 1.3}
+
+
+%%% BLOCKS AND BOXES
+% Changing colors of blocks
+%\setbeamercolor{block title alerted}{bg=UURed,fg=palette primary.fg}
+%\setbeamercolor{block body alerted}{bg=UURed!15}
+\setbeamercolor{block title alerted}{bg=mLightBrown,fg=palette primary.fg}
+\setbeamercolor{block body alerted}{bg=mLightBrown!15}
+%\setbeamercolor{block title example}{bg=UUGreen,fg=palette primary.fg}
+%\setbeamercolor{block body example}{bg=UUGreen!10}
+% \mybox is a rectangular box
+\usepackage{boxedminipage}
+\setlength\fboxrule{2pt}
+\setlength\fboxsep{2\fboxsep}
+\newcommand\mybox[3][\textwidth]{
+  {\color{#2}
+    \begin{boxedminipage}{#1}
+      {\color{palette primary.bg} #3}
+    \end{boxedminipage}}%
+}   
+\usepackage{tcolorbox}
+\tcbset{arc=1mm,grow to left by=3mm,grow to right by=3mm,left=2mm}
+%\newenvironment{redbox}{%
+%	\begin{tcolorbox}[colback=UURed!15,colframe=UURed]}{%
+%	\end{tcolorbox}}
+%\newenvironment{greenbox}{%
+%	\begin{tcolorbox}[colback=UUGreen!15,colframe=UUGreen]}{%
+%	\end{tcolorbox}}
+\newenvironment{redbox}{%
+	\begin{tcolorbox}[colback=red!15,colframe=red]}{%
+	\end{tcolorbox}}
+\newenvironment{greenbox}{%
+	\begin{tcolorbox}[colback=DarkGreen!15,colframe=DarkGreen]}{%
+	\end{tcolorbox}}
+\newenvironment{graybox}{%
+	\begin{tcolorbox}[colback=mDarkTeal!5,colframe=mDarkTeal]}{%
+	\end{tcolorbox}}
+\newenvironment{orangebox}{%
+\begin{tcolorbox}[colback=mLightBrown!15,colframe=mLightBrown]}{%
+	\end{tcolorbox}}
+\newenvironment{bwbox}{%
+	\begin{tcolorbox}[colback=white,colframe=black]}{%
+\end{tcolorbox}}
+\newenvironment{bluebox}{%
+	\begin{tcolorbox}[colback=LightBlue!15,colframe=LightBlue]}{%
+\end{tcolorbox}}
+
+
+%%%%%%%%% NEW MACROS
+
+\newcommand\imp[1]{\alert{\textbf{#1}}}
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+\newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
+\newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{R-programmering VT2022}
+\subtitle{Föreläsning 1}
+\author{Johan Alenlöv}
+\date{2022-01-24}
+\institute{Linköpings Universitet}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Föreläsning 1:}
+\protect\hypertarget{fuxf6reluxe4sning-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Introduktion till kursen
+\item
+  R, R-studio
+\item
+  Introduktion till R-programering
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Miniräknare
+  \item
+    Variabler
+  \item
+    Vektorer
+  \item
+    Hjälp
+  \item
+    Funktioner
+  \item
+    Logik
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vilka är vi}
+\protect\hypertarget{vilka-uxe4r-vi}{}
+\textbf{Föreläsare och examinator}:
+
+\begin{itemize}
+\tightlist
+\item
+  Johan Alenlöv
+\end{itemize}
+
+\textbf{Labbassistenter}:
+
+\begin{itemize}
+\tightlist
+\item
+  Josef Wilzén
+\item
+  Rasmus Säfvenberg
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Kursens mål}
+\protect\hypertarget{kursens-muxe5l}{}
+Information om kursen finns i kursplanen.
+
+\textbf{Lärandemål}
+
+\begin{itemize}
+\tightlist
+\item
+  skapa enkla program i programspråket R med hjälp av grundläggande
+  programmeringstekniker som inläsning och utskrift av data, tilldelning
+  och manipulation av datastrukturer, skriva egna funktioner,
+  upprepningar och villkorsstyrda satser.
+\end{itemize}
+
+\pause Vi sammanfattar detta till
+
+\begin{itemize}
+\tightlist
+\item
+  Bli bekväm med att använda R
+\item
+  Hantera data med R
+\item
+  Skriva program i R
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Tidigare år}
+\protect\hypertarget{tidigare-uxe5r}{}
+Kollar man på tidigare kursutvärderingar har kursen fungerat bra.
+
+\begin{enumerate}
+\tightlist
+\item
+  Kursens ämnesinnehåll har gett mig möjlighet att uppnå kursens
+  lärandemål. 4.09
+\item
+  Kursens examinerande moment har varit relevanta i relation till
+  kursens lärandemål. 3.95
+\item
+  Vilket helhetsbetyg ger du kursen? 3.70
+\end{enumerate}
+
+Ny föreläsare och examinator i år. Mindre förändringar kommer att ske i
+föreläsningar/laborationer. Inga planerade ändringar i innehåll eller
+upplägget av kursen.
+\end{frame}
+
+\begin{frame}{Kursupplägg}
+\protect\hypertarget{kursuppluxe4gg}{}
+\begin{block}{Kursen består av \textbf{två} delar:}
+\protect\hypertarget{kursen-bestuxe5r-av-tvuxe5-delar}{}
+\begin{itemize}
+\tightlist
+\item
+  Del 1: Grundläggande programering
+\item
+  Del 2: Tillämpningar relaterade till statistik, grafik och
+  datahantering
+\end{itemize}
+
+\pause
+\end{block}
+
+\begin{block}{Varje vecka}
+\protect\hypertarget{varje-vecka}{}
+\begin{itemize}
+\tightlist
+\item
+  En föreläsning
+\item
+  En \textcolor{red}{obligatorisk} datorlaboration
+\item
+  4 timmar lärarledd laboration
+\item
+  Inlämning:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Labbar: varje \textcolor{red}{onsdag kl. 18:00} via LISAM
+  \end{itemize}
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Del 1: Grundläggande programering}
+\protect\hypertarget{del-1-grundluxe4ggande-programering}{}
+\begin{itemize}
+\tightlist
+\item
+  Grunderna i R
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Lära sig hantera R-studio
+  \end{itemize}
+\item
+  Fyra föreläsningar
+\item
+  Fyra inlämningar (datorlaborationer)
+\item
+  Labbarna görs \textbf{en och en}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Del 2: Tillämpningar}
+\protect\hypertarget{del-2-tilluxe4mpningar}{}
+\begin{itemize}
+\tightlist
+\item
+  Statistisk analys med R
+\item
+  Fyra föreläsningar
+\item
+  Fyra inlämningar
+\item
+  Labbarna förs genom \textbf{parprogrammering} (grupper om två)
+\item
+  \textbf{miniprojekt} i två delar (del av labb 5 och labb 7)
+\end{itemize}
+
+\pause
+
+\textcolor{red}{Jobba med materialet och skriv egen kod!}
+\end{frame}
+
+\begin{frame}{Praktisk information}
+\protect\hypertarget{praktisk-information}{}
+\begin{block}{Kurslogistik}
+\protect\hypertarget{kurslogistik}{}
+Hemsidan innehåller föreläsningar, labbar m.m.
+
+LISAM används för inlämning av labbar och kompletteringar
+
+Teams används för kommunikation
+\end{block}
+
+\begin{block}{Programvara}
+\protect\hypertarget{programvara}{}
+I denna kurs använder vi \textbf{R} och \textbf{R-studio}
+\end{block}
+\end{frame}
+
+\begin{frame}{Kurslitteratur I:}
+\protect\hypertarget{kurslitteratur-i}{}
+\begin{block}{Kursboken}
+\protect\hypertarget{kursboken}{}
+The Book Of R av Tilman M. Davies, 2016
+
+Den finns som e-bok via biblioteket.
+\end{block}
+
+\begin{block}{Artiklar}
+\protect\hypertarget{artiklar}{}
+Dessa finns tillgängliga via kurshemsidan
+
+\begin{itemize}
+\tightlist
+\item
+  Dates and Times Made Easy with \texttt{lubridate}
+\item
+  Handling and processing string in R
+\item
+  Best practices for scientific computing
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}{Kurslitteratur II:}
+\protect\hypertarget{kurslitteratur-ii}{}
+\begin{block}{Videoföreläsningar}
+\protect\hypertarget{videofuxf6reluxe4sningar}{}
+\begin{itemize}
+\tightlist
+\item
+  Google Developers videomaterial
+\item
+  Roger Pengs föreläsningar
+\end{itemize}
+
+Länkar finns på kurshemsidan
+\end{block}
+
+\begin{block}{Reference cards:}
+\protect\hypertarget{reference-cards}{}
+Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
+\end{block}
+\end{frame}
+
+\begin{frame}{Examination}
+\protect\hypertarget{examination}{}
+\begin{itemize}
+\tightlist
+\item
+  Datorlaborationer, 8st
+\item
+  Datortentamen i datorsal
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hjälpmedel: R reference card (digitalt) + några fler. Information om
+    vilka kommer komma på kurshemsidan. Dessa erhålls digitalt på
+    tentamenstillfället, ni ska inte ta med er några papper.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Datorlaborationer}
+\protect\hypertarget{datorlaborationer}{}
+\begin{itemize}
+\tightlist
+\item
+  Börja direkt
+\item
+  Är \textcolor{red}{obligatoriska}
+\item
+  Ungefär 15 h arbete per vecka.
+\item
+  Laborationsmall finns på hemsidan
+\item
+  Laborationer lämnas in via LISAM
+\item
+  Autorättning används på en del av uppgifterna, se till att följa
+  instruktionerna.
+\item
+  100\% rätt för att bli godkänd
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Datorlaborationer}
+\protect\hypertarget{datorlaborationer-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Arbetstakt:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kursveckorna går måndag till måndag
+  \item
+    Kursen går på halvfart \textasciitilde20h/vecka. Ungefär 15h/vecka
+    till labbar.
+  \item
+    Mjuk deadline: söndag kväll
+  \item
+    Hård deadline: onsdag kl 18:00 veckan efter
+  \end{itemize}
+\item
+  Kompletteringar:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Labb 1-4: komplettering strax efter halva kursen. Se kurshemsidan
+    för info.
+  \item
+    Komplettering i samband med tentan och omtentor.
+  \item
+    Hårda deadlines.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Programmering}
+\protect\hypertarget{programmering}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Instruera en dator att utföra uppgifter
+\item
+  Mjukvaruutveckling - vetenskaplig programmering
+\item
+  Maskinkod - Lågnivåspråk - Högnivåspråk
+\item
+  Kompileranmde - Intepreterande språk
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Varför lära sig programera?}
+\protect\hypertarget{varfuxf6r-luxe4ra-sig-programera}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  Hantera \textcolor{red}{stora} datormängder
+\item
+  Replikerbarhet
+\item
+  Komplexa beräkningar
+\item
+  Automatisera
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Vad är R?}
+\protect\hypertarget{vad-uxe4r-r}{}
+\begin{itemize}[<+->]
+\tightlist
+\item
+  R är ett populärt programmeringsspråk för statistiker
+\item
+  Öppen källkod
+\item
+  Många utvecklare
+\item
+  Högnivåspråk
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Ett exempel på ett program i R}
+\protect\hypertarget{ett-exempel-puxe5-ett-program-i-r}{}
+Skapa ett program som skriver ut talen från 10 till 1 och sen skriver
+``kör!''.
+
+\pause
+
+I R ser det ut på följande sätt
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{start }\OtherTok{\textless{}{-}} \DecValTok{10}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{) \{}
+  \FunctionTok{print}\NormalTok{(start)}
+\NormalTok{  start }\OtherTok{\textless{}{-}}\NormalTok{ start }\SpecialCharTok{{-}} \DecValTok{1}
+\NormalTok{\}}
+\FunctionTok{print}\NormalTok{(}\StringTok{"Kör!"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Resultatet}
+\protect\hypertarget{resultatet}{}
+Kör vi koden i R får vi följande resultat
+
+\begin{verbatim}
+## [1] 10
+## [1] 9
+## [1] 8
+## [1] 7
+## [1] 6
+## [1] 5
+## [1] 4
+## [1] 3
+## [1] 2
+## [1] 1
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "Kör!"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{R och R-Studio}
+\protect\hypertarget{r-och-r-studio}{}
+\begin{itemize}
+\tightlist
+\item
+  R är både ett program och ett programeringsspråk
+\item
+  R-Studio är en IDE för R
+\item
+  Båda är gratis och går att ladda ner och installera på er egna dator.
+  Se kurshemsidan för information.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Att hitta hjälp}
+\protect\hypertarget{att-hitta-hjuxe4lp}{}
+\begin{itemize}
+\tightlist
+\item
+  Inbyggd hjälp i R
+\item
+  Sök i Google
+\item
+  Sök på \textcolor{red}{ENGELSKA}
+\item
+  Kolla på felmeddelandet
+\end{itemize}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos) : object 'x' not found
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Variabler och vektorer}
+\protect\hypertarget{variabler-och-vektorer}{}
+\begin{itemize}
+\tightlist
+\item
+  Variabler kan spara värden
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sätts med \texttt{<-} (eller \texttt{->})
+  \end{itemize}
+\item
+  Vektorer är en samling av likadana element
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Skapas med \texttt{c()}
+  \item
+    Välj element med \texttt{[ ]}
+  \end{itemize}
+\end{itemize}
+
+Exempel:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{testVektor[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 5
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Räkna med vektorer}
+\protect\hypertarget{ruxe4kna-med-vektorer}{}
+\begin{itemize}
+\tightlist
+\item
+  Beräkningar sker elementvis
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{testVektor}\SpecialCharTok{+}\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3  4  6  8 12 14
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Beräkningar mellan vektorer sker cykliskt
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{testVektor}\SpecialCharTok{+}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  3  5  6  9 12 15
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Olika typer av värden}
+\protect\hypertarget{olika-typer-av-vuxe4rden}{}
+\begin{itemize}
+\tightlist
+\item
+  Värden kan vara en av flera olika typer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    t.ex. heltal, flyttal, textsträngar etc.
+  \end{itemize}
+\item
+  Dessa typer kallas atomära klasser
+\item
+  Kan kolla vilken typ det är med \texttt{typeof( )}
+\item
+  Kan konvertera med \texttt{as.}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.character}\NormalTok{(}\DecValTok{4}\SpecialCharTok{:}\DecValTok{8}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "4" "5" "6" "7" "8"
+\end{verbatim}
+
+\pause
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+Beskrivning & Synonymer & \texttt{typeof()} & Exempel i R & \\
+\midrule
+\endhead
+Heltal (\(\mathbb{Z}\)) & \texttt{int} & \texttt{integer} &
+\texttt{-1,\ 0,\ 1} & \\
+Reella tal (\(\mathbb{R}\)) & \texttt{real}, \texttt{float} &
+\texttt{double} & \texttt{1.03,\ -2.872} & \\
+Komplexa tal (\(\mathbb{C}\)) & \texttt{cplx} & \texttt{complex} &
+\texttt{1\ +\ 2i} & \\
+Logiska värden & \texttt{boolean}, \texttt{bool} & \texttt{logical} &
+\texttt{TRUE\ FALSE} & \\
+Textsträngar & \texttt{string}, \texttt{char} & \texttt{character} &
+\texttt{En\ textsträng} & \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Funktioner i R}
+\protect\hypertarget{funktioner-i-r}{}
+\begin{itemize}
+\tightlist
+\item
+  En funktion utför något
+\item
+  Tar noll eller flera \textcolor{blue}{argument}
+\item
+  Funktioner samlas i R-paket
+\item
+  Många små funktioner, en funktion gör en sak.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funktioner i R II}
+\protect\hypertarget{funktioner-i-r-ii}{}
+En funktion i R är uppbyggd av
+
+\begin{itemize}
+\tightlist
+\item
+  ett funktionsnamn, t.ex. \texttt{area}
+\item
+  en funktionsdefinition: \texttt{function( )}
+\item
+  0 eller flera argument, t.ex. \texttt{hojd} och \texttt{bredd}
+\item
+  ``måsvingar'' \texttt{ \{ \} }
+\item
+  kod, t.ex. \texttt{area <- hojd * bredd}
+\item
+  returnera värde, t.ex. \texttt{return(area)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exempel på funktion i R}
+\protect\hypertarget{exempel-puxe5-funktion-i-r}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{area }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(hojd, bredd)\{}
+\NormalTok{  area }\OtherTok{\textless{}{-}}\NormalTok{ hojd }\SpecialCharTok{*}\NormalTok{ bredd}
+  \FunctionTok{return}\NormalTok{(area)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{area}\NormalTok{(}\AttributeTok{hojd =} \DecValTok{2}\NormalTok{, }\AttributeTok{bredd =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{area}\NormalTok{(}\AttributeTok{hojd =} \DecValTok{5}\NormalTok{, }\AttributeTok{bredd =} \DecValTok{11}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 55
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Lokal miljö}
+\protect\hypertarget{lokal-miljuxf6}{}
+``Det som sker i en funktion stannar i funktionen''
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+\NormalTok{  z }\OtherTok{\textless{}{-}} \DecValTok{5}
+\NormalTok{  svar }\OtherTok{\textless{}{-}}\NormalTok{ z}\SpecialCharTok{*}\NormalTok{x }\SpecialCharTok{+}\NormalTok{ y }
+  \FunctionTok{return}\NormalTok{(svar)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{z} och \texttt{svar} kan \textcolor{red}{inte} användas utanför
+funktionen.
+\end{frame}
+
+\begin{frame}[fragile]{Lokal miljö II}
+\protect\hypertarget{lokal-miljuxf6-ii}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a"          "area"       "f"          "i"          "start"     
+## [6] "testVektor"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ls}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "a"          "area"       "f"          "i"          "start"     
+## [6] "testVektor"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Att tänka på}
+\protect\hypertarget{att-tuxe4nka-puxe5}{}
+\begin{itemize}
+\tightlist
+\item
+  Funktionen måste läsas in innan den fungerar.
+\item
+  \texttt{return()} avslutar funktionen
+\item
+  \textcolor{red}{Skriv funktionen i flera delar}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Skriv kod som gör det du vill
+  \item
+    Lyft in koden i funktionen
+  \item
+    Pröva funktionen
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Logik}
+\protect\hypertarget{logik}{}
+\begin{itemize}
+\tightlist
+\item
+  Logik är vanligt i programmering
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Används i \texttt{if}-satser
+  \end{itemize}
+\item
+  I R finns de logiska värdena \texttt{TRUE}, \texttt{FALSE}, och
+  \texttt{NA}
+\item
+  Skapas på två olika sätt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Som vnaliga vektorer
+  \item
+    Genom relationsoperatorer
+  \end{itemize}
+\item
+  Kan användas för att välja element i vektorer
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Logik i R}
+\protect\hypertarget{logik-i-r}{}
+Kan skapa en vektor med värdena \texttt{TRUE} och \texttt{FALSE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{)}
+\NormalTok{boolVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor[boolVektor]}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1]  2  7 13
+\end{verbatim}
+
+\pause
+
+Kan också skapa vektor genom en relation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\SpecialCharTok{\textgreater{}} \DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Relationsoperatorer}
+\protect\hypertarget{relationsoperatorer}{}
+\begin{itemize}
+\tightlist
+\item
+  Relationer används för att jämförelser
+\item
+  Skapar logiska vektorer
+\end{itemize}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Beskrivning & Operatorer i R \\
+\midrule
+\endhead
+Lika med & \texttt{==} \\
+Inte lika med & \texttt{!=} \\
+Större än & \texttt{>} \\
+Mindre än & \texttt{<} \\
+Större än eller lika med & \texttt{>=} \\
+Mindre än eller lika med & \texttt{<=} \\
+Finns i & \texttt{\%in\%} \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Logiska operatorer}
+\protect\hypertarget{logiska-operatorer}{}
+\begin{itemize}
+\tightlist
+\item
+  Boolsk algebra
+\item
+  Operatorer:
+\end{itemize}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+Operator & Symbol & Operator i R \\
+\midrule
+\endhead
+och & \(\wedge{}\) & \texttt{\&} \\
+eller & \(\vee{}\) & \texttt{|} \\
+inte & \(\neg{}\) & \texttt{!} \\
+\bottomrule
+\end{longtable}
+
+\pause
+
+\begin{longtable}[]{@{}llllll@{}}
+\toprule
+Symbol & \(A\) & \(B\) & \(\neg A\) & \(A \wedge B\) & \(A \vee B\) \\
+\midrule
+\endhead
+i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
+\texttt{A} \(|\) \texttt{B} \\
+& \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} & \texttt{TRUE} &
+\texttt{TRUE} \\
+& \texttt{TRUE} & \texttt{FALSE} & \texttt{FALSE} & \texttt{FALSE} &
+\texttt{TRUE} \\
+& \texttt{FALSE} & \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} &
+\texttt{TRUE} \\
+& \texttt{FALSE} & \texttt{FALSE} & \texttt{TRUE} & \texttt{FALSE} &
+\texttt{FALSE} \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Logik exempel}
+\protect\hypertarget{logik-exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{23}\NormalTok{,}\DecValTok{29}\NormalTok{,}\DecValTok{31}\NormalTok{)}
+\NormalTok{boolVektor }\OtherTok{\textless{}{-}}\NormalTok{ testVektor }\SpecialCharTok{\textless{}} \DecValTok{6} \SpecialCharTok{|} \SpecialCharTok{!}\NormalTok{(testVektor }\SpecialCharTok{\textless{}} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Vad blir följande uttryck?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor[boolVektor]}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1]  2  3  5 23 29 31
+\end{verbatim}
+\end{frame}
+
+\end{document}

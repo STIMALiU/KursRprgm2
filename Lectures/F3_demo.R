@@ -397,7 +397,7 @@ h<-function(x){
   x_sum<-sum(x)
   print(x_mean)
   print(x_sum)
-  #browser()
+  browser()
   x2<-x^2
   z<-5
   x3<-exp(x2)

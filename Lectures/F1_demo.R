@@ -130,11 +130,11 @@ library(markmyassignment)
 assignment_path <- file.path(system.file(package = "markmyassignment"), "extdata", "example_assignment01.yml")
 
 set_assignment(assignment_path)
-
+  
 show_assignment()
 ## Uppgift:
 # Mandatory: Assign you name to my_name 
-my_name <- "Mans Magnusson"
+my_name <- "Johan Alenlöv"
 
 ## task1: Create a vector with the values pi and e
 pi
@@ -210,9 +210,9 @@ x[index]
 # Uppgift 1: Three elements
 
 lab_path <-
-  "https://raw.githubusercontent.com/STIMALiU/KursRprgm/master/Labs/Tests/d1.yml"
+  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
 
 set_assignment(lab_path)
-Namn <- "Mans"
-LiuId <- "manma97"
-mark_my_assignment(tasks = "three_elements")
+Namn <- "Johan Alenlöv"
+LiuId <- "johal95"
+mark_my_assignment(tasks = "add_first_last")

@@ -109,7 +109,7 @@ Datorlaboration 7
 \end_layout
 
 \begin_layout Author
-Josef Wilzén och Måns Magnusson
+Johan Alenlöv, Josef Wilzén och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -5891,8 +5891,18 @@ visning/Statistisk programmering i #R/KursRprgmTeacher/Labs/exercise_solutions/"
 
 \begin_layout Plain Layout
 
-solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs/
-exercise_solutions/"
+#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
+/exercise_solutions/"
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- 
+\begin_inset Quotes sld
+\end_inset
+
+/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
+solutions/"
 \end_layout
 
 \begin_layout Plain Layout

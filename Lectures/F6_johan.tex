@@ -1,0 +1,1049 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  ignorenonframetext,
+  handout]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R-programmering VT2022},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
+
+%%% USEFUL PACKAGES
+%\usepackage{showframe} % For debugging positioning
+\usepackage{etex} % If too many packages
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{natbib}
+%\usepackage{booktabs}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+%\usepackage{animate} % Animations
+\usepackage{bm} % Bold math
+\usepackage{bbm}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{ulem} % Used for strikeouts \sout
+%\usepackage{stackengine}
+%\usepackage{enumitem}
+%\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+%\usepackage{colortbl} % Used for colored rows in tables
+
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+
+%%% COLORS
+\setbeamercolor{background canvas}{bg=white}
+\def\BlankFrame{
+	\bgroup
+	%\pdfpageheight 29.7cm
+	\setbeamercolor{background canvas}{bg=}
+	\begin{frame}[plain]
+	\end{frame}
+	%\makeatletter
+	%\pdfpageheight \beamer@paperheight
+	%\makeatother
+	\egroup}
+
+\usepackage{xcolor}
+\definecolor{DarkGreen}{HTML}{00B200}
+\definecolor{LightBlue}{HTML}{0090D9}
+\definecolor{gold}{rgb}{.812,.710,.231}
+% Text markup
+%\setbeamercolor{alerted text}{fg=red}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\grey}[1]{\textcolor{gray}{#1}}
+\newcommand{\orange}[1]{\textcolor{mLightBrown}{#1}}
+\newcommand\myheading[1]{\textbf{#1}}
+\newcommand\myemph[1]{\underline{\emph{#1}}}
+\newcommand\textexample[1]{\textit{\textbf{#1}}}
+
+%%% SPACING
+\newcommand\vws[1][1]{\vspace{#1\baselineskip}} % vertical white space
+%\newcommand\strt[1][1.5ex]{\rule[-.05\baselineskip]{0pt}{#1}} % strut
+\newcommand\strt[2]{\rule[-#1ex]{0pt}{#2ex}} % strut
+\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after
+
+%%% MISC
+\newcommand\articleref[4]{\noindent\begin{minipage}[t]{0.04\textwidth}
+		\vspace{0pt} 
+		\pgfuseimage{beamericonarticle}
+	\end{minipage}%
+	\begin{minipage}[t]{0.96\textwidth}
+		\vspace{0pt}
+		#1. \textbf{#2.} \textit{#3}, #4.
+	\end{minipage}}
+
+%%% METROPOLIS THEME SPECIFIC
+\makeatletter
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\makeatother
+%\setbeamercolor{progress bar}{fg=red,bg=red!50}
+
+
+%%% TEXTPOS
+\usepackage[absolute,overlay]{textpos} % option showboxes is useful in draft mode
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\textblockorigin{0pt}{10mm} % start everything at top-left, below gray 
+
+
+%%% TIKZ/PGFPLOTS
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc,shapes.geometric}
+%\usetikzlibrary{arrows,calc,shapes.geometric,decorations.pathmorphing,backgrounds,positioning,fit,petri,decorations.pathreplacing}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat = 1.3}
+
+
+%%% BLOCKS AND BOXES
+% Changing colors of blocks
+%\setbeamercolor{block title alerted}{bg=UURed,fg=palette primary.fg}
+%\setbeamercolor{block body alerted}{bg=UURed!15}
+\setbeamercolor{block title alerted}{bg=mLightBrown,fg=palette primary.fg}
+\setbeamercolor{block body alerted}{bg=mLightBrown!15}
+%\setbeamercolor{block title example}{bg=UUGreen,fg=palette primary.fg}
+%\setbeamercolor{block body example}{bg=UUGreen!10}
+% \mybox is a rectangular box
+\usepackage{boxedminipage}
+\setlength\fboxrule{2pt}
+\setlength\fboxsep{2\fboxsep}
+\newcommand\mybox[3][\textwidth]{
+  {\color{#2}
+    \begin{boxedminipage}{#1}
+      {\color{palette primary.bg} #3}
+    \end{boxedminipage}}%
+}   
+\usepackage{tcolorbox}
+\tcbset{arc=1mm,grow to left by=3mm,grow to right by=3mm,left=2mm}
+%\newenvironment{redbox}{%
+%	\begin{tcolorbox}[colback=UURed!15,colframe=UURed]}{%
+%	\end{tcolorbox}}
+%\newenvironment{greenbox}{%
+%	\begin{tcolorbox}[colback=UUGreen!15,colframe=UUGreen]}{%
+%	\end{tcolorbox}}
+\newenvironment{redbox}{%
+	\begin{tcolorbox}[colback=red!15,colframe=red]}{%
+	\end{tcolorbox}}
+\newenvironment{greenbox}{%
+	\begin{tcolorbox}[colback=DarkGreen!15,colframe=DarkGreen]}{%
+	\end{tcolorbox}}
+\newenvironment{graybox}{%
+	\begin{tcolorbox}[colback=mDarkTeal!5,colframe=mDarkTeal]}{%
+	\end{tcolorbox}}
+\newenvironment{orangebox}{%
+\begin{tcolorbox}[colback=mLightBrown!15,colframe=mLightBrown]}{%
+	\end{tcolorbox}}
+\newenvironment{bwbox}{%
+	\begin{tcolorbox}[colback=white,colframe=black]}{%
+\end{tcolorbox}}
+\newenvironment{bluebox}{%
+	\begin{tcolorbox}[colback=LightBlue!15,colframe=LightBlue]}{%
+\end{tcolorbox}}
+
+
+%%%%%%%%% NEW MACROS
+
+\newcommand\imp[1]{\alert{\textbf{#1}}}
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+\newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
+\newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{R-programmering VT2022}
+\subtitle{Föreläsning 6}
+\author{Johan Alenlöv}
+\date{2022-02-28}
+\institute{Linköpings Universitet}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{fuxf6reluxe4sning-6}{%
+\section{Föreläsning 6}\label{fuxf6reluxe4sning-6}}
+
+\begin{frame}{Innehåll föreläsning 6}
+\protect\hypertarget{innehuxe5ll-fuxf6reluxe4sning-6}{}
+\begin{itemize}
+\tightlist
+\item
+  Information
+\item
+  Programmeringsparadigm
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Funktionell programmering
+  \item
+    Objektorientering
+  \end{itemize}
+\item
+  Datum och tid med \texttt{lubridate}
+\item
+  Linjär algebra i R
+\end{itemize}
+\end{frame}
+
+\hypertarget{information}{%
+\section{Information}\label{information}}
+
+\begin{frame}{Information}
+\protect\hypertarget{information-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Kom ihåg att anmäla er till datortentan
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Endast anmälda får skriva tentan
+  \end{itemize}
+\item
+  Datortentan kommer att vara på plats
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tenta i SU-sal
+  \item
+    Testsession, 22/3 10:15-12:00 i SU-17/18
+  \end{itemize}
+\item
+  Komplettering labb 1-4: första tillfället samtidigt som inlämning för
+  labb 6.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Se kurshemsidan för information
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{programmeringsparadigm}{%
+\section{Programmeringsparadigm}\label{programmeringsparadigm}}
+
+\begin{frame}{Programmeringsparadigm}
+\protect\hypertarget{programmeringsparadigm-1}{}
+\begin{itemize}
+\item
+  Finns många olika sätt att se på \imp{hur} program ska skrivas.
+\item
+  Olika programmeringsspråk följer olika paradigmer.
+\item
+  Pratar ofta om två för R:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Funktionell programmering
+  \item
+    Objektorienterad programmering
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Funktionell programmering}
+\protect\hypertarget{funktionell-programmering}{}
+\begin{itemize}
+\tightlist
+\item
+  I funktionell programmering pratar man om två saker.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``Rena'' funktioner.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Output beror bara på inargumenten.
+    \item
+      Funktionen har inga sidoeffekter.
+    \end{itemize}
+  \item
+    ``First-class functions''.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Funktioner ska bete sig som alla andra objekt
+    \item
+      Kunna spara funktioner, returnera funktioner etc.
+    \end{itemize}
+  \end{itemize}
+\item
+  Exempel:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Scala, Erland, Haskell
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objektorientering}
+\protect\hypertarget{objektorientering}{}
+\begin{itemize}
+\tightlist
+\item
+  Objektorientering åtgår från klasser:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    En klass är en mall som används för att skapa objekt
+  \item
+    Kopplar samman objekt med funktioner
+  \item
+    Objekt är en specifik realisering av en klass
+  \item
+    Objekt skapas med en konstruktor
+  \end{itemize}
+\item
+  Viktiga koncept:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \textbf{Inkapsling}: Gömma och ordna relaterad data.
+  \item
+    \textbf{Polymorfism}: Generiska funktioner som hanterar olika
+    objekt.
+  \item
+    \textbf{Arv}: Underlättar specialisering av data och metoder via
+    underklasser.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Objektorientering}
+\protect\hypertarget{objektorientering-1}{}
+\begin{itemize}
+\tightlist
+\item
+  i R:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Alla objekt ha en klass
+  \item
+    Kan undersöka ett objekts klass med \texttt{class( )}
+  \item
+    Variabeltyper är ``atomära'' klasser
+  \item
+    Klasser har en konstruktor
+  \end{itemize}
+\item
+  Olika typer av klasser i R:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Basklasser
+  \item
+    S3 (informellt): ``lista med klassattribut''
+  \item
+    S4 (formellt): element väljs ut med @
+  \item
+    Regerence classes
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Generiska funktioner (S3)}
+\protect\hypertarget{generiska-funktioner-s3}{}
+\begin{itemize}
+\tightlist
+\item
+  Objektorientering i R utgår från generiska funktioner
+\item
+  Funktioner som gör olika saker beroende på objektets klass
+\item
+  Ex:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{plot( )}
+  \item
+    \texttt{mean( )}
+  \item
+    \texttt{summary( )}
+  \item
+    \texttt{names( )}
+  \end{itemize}
+\item
+  Funktionerna anropar metoden för objektet när de används.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Metoder}
+\protect\hypertarget{metoder}{}
+\begin{itemize}
+\tightlist
+\item
+  En funktion för en specifik klass
+\item
+  Metoderna utgår från generisk funktion
+\item
+  Alla metoder för en generisk funktion hittas med \texttt{methods( )}
+\item
+  T.ex. funktionen \texttt{mean( )}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Defaultmetoden finns med \texttt{mean.default( )}
+  \item
+    Specifik med \texttt{mean.difftime( )}
+  \end{itemize}
+\item
+  Metoder kan också anropas direkt som vanliga funktioner.
+\end{itemize}
+\end{frame}
+
+\hypertarget{datum-och-tid}{%
+\section{Datum och tid}\label{datum-och-tid}}
+
+\begin{frame}{Datum och tid}
+\protect\hypertarget{datum-och-tid-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Datum är klurigt att arbeta med, men används extremt mycket.
+\item
+  Två typer av tid:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Relativ tid
+  \item
+    Exakt tid
+  \end{itemize}
+\item
+  Enklare funktioner för datum finns i \texttt{base}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Datum och tid - Exempel}
+\protect\hypertarget{datum-och-tid---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_date }\OtherTok{\textless{}{-}} \StringTok{"2022{-}02{-}28"}
+\FunctionTok{class}\NormalTok{(my\_date)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_date\_as\_date }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(my\_date)}
+\NormalTok{my\_date\_as\_date}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-28"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(my\_date\_as\_date)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Date"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{lubridate}
+\protect\hypertarget{lubridate}{}
+\begin{itemize}
+\tightlist
+\item
+  Paket för enkel och effektiv datumhantering
+\item
+  Sammansatt av ``lubricant'' och ``date''
+\end{itemize}
+
+Tre huvudsakliga delar:
+
+\begin{enumerate}
+\tightlist
+\item
+  Läsa in datum
+\item
+  Ändra inlästa datum
+\item
+  Göra beräkningar med datum
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{lubridate - Exempel}
+\protect\hypertarget{lubridate---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lubridate)}
+\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}02{-}28"}\NormalTok{)}
+\FunctionTok{print}\NormalTok{(idag)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-28"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{week}\NormalTok{(idag)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idag }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-03-14"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{lubridate}
+\protect\hypertarget{lubridate-1}{}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Elementordning & Funktion \\
+\midrule
+\endhead
+år, månad, dag & \texttt{ymd()} \\
+år, dag, månad & \texttt{ydm()} \\
+månad, dag, år & \texttt{mdy()} \\
+timme, minut & \texttt{hm()} \\
+timme, minut, sekund & \texttt{hms()} \\
+år, mån, dag, timme, min, sek & \texttt{ymd\_hms()} \\
+\bottomrule
+\end{longtable}
+
+Källa: Grolemund and Wickham (2011, Table 4)
+\end{frame}
+
+\begin{frame}[fragile]{lubridate}
+\protect\hypertarget{lubridate-2}{}
+För att ``plocka ut'' eller ändra delar av ett datum används följande
+funktioner
+
+\begin{longtable}[]{@{}llll@{}}
+\toprule
+Datum & Funktion & Tidsdel & Funktion \\
+\midrule
+\endhead
+år & \texttt{year()} & timme & \texttt{hour()} \\
+månad & \texttt{month()} & minut & \texttt{minute()} \\
+vecka & \texttt{week()} & sekund & \texttt{second()} \\
+årsdag & \texttt{yday()} & tidszon & \texttt{tz()} \\
+månadsdag & \texttt{mday()} & & \\
+veckodag & \texttt{wday()} & & \\
+\bottomrule
+\end{longtable}
+
+Källa: Grolemund and Wickham (2011, Table 5)
+\end{frame}
+
+\begin{frame}[fragile]{lubridate - Exempel}
+\protect\hypertarget{lubridate---exempel-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}02{-}28"}\NormalTok{)}
+\FunctionTok{week}\NormalTok{(idag)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{wday}\NormalTok{(idag, }\AttributeTok{label =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Mån
+## Levels: Sön < Mån < Tis < Ons < Tor < Fre < Lör
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{year}\NormalTok{(idag) }\OtherTok{\textless{}{-}} \DecValTok{2019}
+\NormalTok{idag}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2019-02-28"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{lubridate}
+\protect\hypertarget{lubridate-3}{}
+\begin{itemize}
+\tightlist
+\item
+  För att räkna med datum finns det fyra olika objekt i
+  \texttt{lubridate}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{instant}
+  \item
+    \texttt{interval}
+  \item
+    \texttt{duration}
+  \item
+    \texttt{period}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{instant och interval}
+\protect\hypertarget{instant-och-interval}{}
+\textbf{Instant}
+
+\begin{itemize}
+\tightlist
+\item
+  Ett spcifikt tillfälle i tiden
+\item
+  Viktiga funktioner:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{now( )}
+  \item
+    \texttt{today( )}
+  \end{itemize}
+\end{itemize}
+
+\textbf{Interval}
+
+\begin{itemize}
+\tightlist
+\item
+  Tidsspannet mellan två \texttt{instant}
+\item
+  \texttt{interval(start,end)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{instant och interval - Exempel}
+\protect\hypertarget{instant-och-interval---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{inst\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2020{-}02{-}29"}\NormalTok{)}
+\NormalTok{inst\_2 }\OtherTok{\textless{}{-}} \FunctionTok{today}\NormalTok{()}
+\NormalTok{my\_interval }\OtherTok{\textless{}{-}} \FunctionTok{interval}\NormalTok{(}\AttributeTok{start =}\NormalTok{ inst\_1, }\AttributeTok{end =}\NormalTok{ inst\_2)}
+\NormalTok{my\_interval}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2020-02-29 UTC--2022-02-28 UTC
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{duration}
+\protect\hypertarget{duration}{}
+\begin{itemize}
+\tightlist
+\item
+  Ett fixt tidsspann som mäts i sekunder
+\item
+  Tänk kontinuerlig tid
+\item
+  Absolut tid i sekunder
+\item
+  Funktioner börjar med \texttt{d}
+\item
+  Konvertera ett interval med \texttt{as.duration( )}
+\item
+  Ex:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{duration( )}
+  \item
+    \texttt{dseconds( )}
+  \item
+    \texttt{dhours( )}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{duration - Exempel}
+\protect\hypertarget{duration---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_interval }\SpecialCharTok{/} \FunctionTok{ddays}\NormalTok{(}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 24.33333
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.duration}\NormalTok{(my\_interval)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "63072000s (~2 years)"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Period}
+\protect\hypertarget{period}{}
+\begin{itemize}
+\tightlist
+\item
+  Utgår från den aktuella enheten (dagar, månader, år)
+\item
+  Tänk diskret tid
+\item
+  Relativ tid
+\item
+  Vad vi i dagligt tal menar med ex. två veckor
+\item
+  Ex:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{period(num = , units = )}
+  \item
+    \texttt{minutes( )}
+  \item
+    \texttt{hours( )}
+  \item
+    \texttt{weeks( )}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Period - Exempel}
+\protect\hypertarget{period---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{months}\NormalTok{(}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{days}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "3m 15d 0H 0M 0S"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my\_interval }\SpecialCharTok{\%/\%} \FunctionTok{months}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.period}\NormalTok{(my\_interval)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "1y 11m 30d 0H 0M 0S"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Att räknamed tid - Exempel}
+\protect\hypertarget{att-ruxe4knamed-tid---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}01{-}24"}\NormalTok{)}
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-28"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{months}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-24"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{ddays}\NormalTok{(}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-23"
+\end{verbatim}
+\end{frame}
+
+\hypertarget{linjuxe4r-algebra}{%
+\section{Linjär algebra}\label{linjuxe4r-algebra}}
+
+\begin{frame}{Matriser}
+\protect\hypertarget{matriser}{}
+\begin{itemize}
+\tightlist
+\item
+  Matriser är två-dimensionella vektorer
+\item
+  Har jobbat med matriser förut.
+\item
+  Skapa en matris med
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{matrix( data = , nrow = , ncol = , byrow = )}
+  \item
+    Kom ihåg cirkulering
+  \item
+    \texttt{byrow = FALSE} per deafult
+  \end{itemize}
+\item
+  Transponat fås med \texttt{t( )}
+\item
+  Diagonalmatris med \texttt{diag( vektor )}
+\item
+  Enhetsmatrisen med \texttt{diag( nummer )}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linjär algebra}
+\protect\hypertarget{linjuxe4r-algebra-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Matrismultiplikation görs med \texttt{\%*\%}
+\item
+  Invertera en matris med \texttt{solve( )}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Notera att \texttt{A \%*\% solve(A)} blir en enhetsmatris
+  \end{itemize}
+\item
+  Lösa ekvationssystem \(Ax = b\) med \texttt{solve(a=A,b=b)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Notera att om \(A\) inverterbar är svaret \(x = A^{-1}b\).
+  \end{itemize}
+\item
+  Egenvärden och egenvektorer med \texttt{eigen( )}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Returnerar en lista med egenvärden och egenvektorer
+  \end{itemize}
+\item
+  Summera rader eler kolumner med \texttt{rowSums( )} och
+  \texttt{colSums( )}
+\item
+  Kombinera matriser med \texttt{rbind( , )} eller \texttt{cbind( , )}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Linjär algebra - paketet Matrix}
+\protect\hypertarget{linjuxe4r-algebra---paketet-matrix}{}
+\begin{itemize}
+\tightlist
+\item
+  Matrix är ett paket som implementerar effektivare/snabbare funktioner
+  för linjär algebra.
+\item
+  Grunden är funktionen \texttt{Matrix( )}, vilket är en konstruktor som
+  skapar matriser.
+\item
+  Matriserna i \textbf{Matrix} är S4 klasser.
+\item
+  I \textbf{Matrix} är det skillnad på glesa och täta matriser.
+\item
+  Kolla dokumentation för mer information.
+\item
+  Rekomenderas för avancerade tillämpningar.
+\end{itemize}
+\end{frame}
+
+\end{document}
