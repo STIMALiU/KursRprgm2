@@ -1,0 +1,250 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 8"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-03-14'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Föreläsning 8
+
+## Innehåll föreläsning 8
+
+- Tentainfo
+- Texthantering
+  - \texttt{stringr}
+  - regex
+- Modern databearbetning
+  - \texttt{tidyr}
+  - \texttt{dplyr}
+
+## Tentainfo
+
+- Tentamen är **31/3 kl 8:00 -- 12:00**.
+- Skrivplats är en SU-sal.
+- Endast anmälda studenter får skriva tentan!
+- Tentan kommer att likna de gamla tentorna som finns på kurshemsidan.
+- Hjälpmedel kommer vara ett antal "cheatsheets", de kommer finnas som pdf, ni ska **INTE** ta med några papper.
+- Inlämning är en R-fil per uppgift.
+- **testsession** 22/3 8-10 i SU-17/18.
+
+# Texthantering i R
+
+## Arbeta med strängar
+
+- En sträng är en samling bokstäver
+- R har ett antal inbyggda funktioner för att hantera text
+  - \texttt{paste()}
+  - \texttt{substr()}
+  - \texttt{nchar()}
+- Använder hellre paketet \texttt{stringr}
+  - Enklare
+  - Enhetligt
+
+## Arbeta med strängar - II
+
+- \texttt{readLines(con = , encoding = )} används för att läsa in en text.
+  - \texttt{con} är "connection" t.ex. vart en fil ligger
+  - \texttt{encoding} är vilken text-kodning som används
+    - \texttt{"latin1"} och \texttt{"utf8"} är vanligast.
+
+# Paketet stringr
+
+## Paketet stringr
+
+- Ett paket med funktioner för strängar
+  - Optimerade och effektiva funktioner
+  - Funktioner börjar med \texttt{str\_}
+- Två delar:
+  - Standard funktioner
+  - Mönstermatchande funktioner
+
+## Grundläggande strängfunktioner
+
++---------------+---------------+------------------------+
+| `stringr`     | `base`        | Användning             |
++===============+===============+========================+
+| `str_sub()`   | `substr`      | substring, välj ut en av |
+|               |               | en sträng (regex)      |
++---------------+---------------+--------------------+
+| `str_c()`     | `paste()`     | Slår ihop strängar   |
+|               | `paste0()`    |                    |
++---------------+---------------+--------------------+
+| `str_split()` | `strsplit()`  | Dela upp en sträng i flera element (regex)   |
+|               |               |                    |
++---------------+---------------+--------------------+
+| `str_length()`| `nchar()`     | Antal tecken       |
+|               |               |                    |
++---------------+---------------+--------------------+
+| `str_trim()`  |               | Tar bort mellanslag   |
+|               |               |                    |
++---------------+---------------+--------------------+
+| `str_pad()`   |               | Lägger till mellanslag   |
+|               |               |                    |
++---------------+---------------+--------------------+
+
+# Mönstermatchning
+
+## Regular expression (regex)
+Från Wikipedia:
+
+> A regular expression (shortened as regex) is a sequence of characters that specifies a search pattern in text. Usually such patterns are used by string-searching algorithms for "find" or "find and replace" operations on strings, or for input validation. It is a technique developed in theoretical computer science and formal language theory.
+
+- Notation för att beskriva strängar
+  - Hitta en specifik del som uppfyller ett villkor
+  - Textmanipulation
+- Byggs upp av
+  - literals: Vanliga bokstäver och siffror
+  - metacharacters: Speciella regler
+
+## Regular expression: Metacharachters
+
+Tecken| Betydelse
+----- | ---- | 
+```.``` | samtliga tecken (exkl. det “tomma” tecknet “”)  
+```^``` | det "tomma" tecknet i början av en text
+```$``` | det "tomma" tecknet i slutet text
+```*``` | föregående tecken 0 eller fler gånger
+```+``` | föregående tecken 1 eller fler gånger
+```?``` | föregående tecken är valfritt
+```{n,m}``` | föregående tecken ```n``` eller max ```m``` gånger
+```[...]``` | teckenlista (character list)
+ &#124;  | ELLER
+```(...)``` | Gruppering
+```\``` | Används för att "undvika" metatecken/specialtecken. 
+
+**Obs!** I R krävs: ```\\``` 
+
+## Regular expression: teckenklass
+
+- Med `[ ]` skapas en lista över tänkbara tecken.
+- Används för att identifiera en mängd av tecken
+- Inom `[ ]` har bara följande meta-tecken en särskild betydelse
+
+Tecken| Betydelse| Exempel
+----- | ---- | ----|
+```-``` | tecken | A-Z a-z 0-9 
+```^``` | ICKE | `\^0-9`
+```\``` | specialtecken | `\t\n`
+
+**Obs!** I R krävs: ```\\``` 
+
+## Regular expression: teckenklass - II
+
+Vanliga fördefinerade klasser, (se `?regexp`)
+
+- `[:digit:]` Nummer
+- `[:lower:]` gemener
+- `[:upper:]` VERSALER
+- `[:punct:]` tecken, ej bokstäver och siffror
+- `[:space:]` mellanslag, tab, radbrytning, m.m.
+- i R behöver vi ange att det är en teckenklass `[[:space:]]`
+
+## Lära sig regular expression
+
+- Testa dina expressions
+  - **https://regexr.com**
+  - **https://www.regexpal.com**
+- Roliga lekar med regex
+  - Regex Golf **https://alf.nu/RegexGolf**
+  - Regex crossword **https://regexcrossword.com**
+  
+## Mönstermatchning i R
+
+- `pattern` är ett regular expression i R
+
++---------------------+---------------+------------------------+
+| `stringr`           | `base`        | Användning             |
++=====================+===============+========================+
+| `str_detect()`      | `grepl()`     | Identifiera `pattern`, returnera logisk vektor |
++---------------------+---------------+--------------------+
+| `str_locate()`      | `gregexpr()`  | Identifiera `pattern`, returnera position i texten |
++---------------------+---------------+--------------------+
+| `str_replace()`     | `gsub()`      | Identifiera `pattern`, ersätter med ny text |
++---------------------+---------------+--------------------+
+| `str_extract_all()` |               | Plocka ut alla strängar som uppfyller `pattern` |
++---------------------+---------------+--------------------+
+
+# Modern databearbetning
+
+## Varför databeartbetning
+
+- Datamängder blir bara större och större
+- Smart hantering minskar arbetsbördan
+- Smart hantering för bearbetningen snabb
+- Analysfunktioner kräver särskilt format
+- Skriv kod för människor
+
+## piping
+
+Piping görs med `%>%`
+
+```{r, echo=TRUE, eval=FALSE}
+z <- a %>%
+  fun1(b) %>%
+  fun3()
+```
+
+är samma som
+
+```{r, echo=TRUE, eval=FALSE}
+x <- fun1(a,b)
+z <- fun3(x)
+```
+
+
+## tidyr: Tidy data
+
+- Data är ofta "messy"
+- Tidy data:
+  - Varje kolumn en variabel
+  - Varje rad en observation
+- `tidyr` är ett paket för att konvertera "messy" till "tidy"
+- Effektivt både minnesmässigt och beräkningsmässigt
+- kommer bespara er mycket tid
+
+## dplyr
+
+- Paket i R för att hantera **stora** datamängder.
+- En liten uppsättning funktioner (verb) för datahantering.
+- Väldigt optimerad kod för snabb och minneseffektiv hantering.
+- Går att koppla till databaser och Spark.
+- Lägger på klassen `tbl_df` till `data.frame`
+
+## dplyr verb
+
+verb | beskrivning
+--- | ----- |  
+`select()` | välj kolumn
+`filter()` | filtrera rader
+`arrange()` | arrangera rader
+`mutate()` | skapa nya kolumner
+`summarise()` | aggregera rader över grupp
+`group_by()` | gruppera för "split-apply-combine"/aggregera 
+`join` | kombindera olika dataset
+`bind_rows` | kombindera dataset "på höjden"
+`bind_cols` | kombindera dataset "på bredden"
+
+## dplyr joins
+
+- Slå ihop data är oftast centralt
+- Inom databser talar man om "joins"
+
+funktion | beskrivning
+--- | ----- |  
+`left_join()` | slå ihop efter variabel, behåll obs. i vänstra data.frame
+`right_join()` | slå ihop efter variabel, behåll obs. i högra data.frame
+`full_join()` | slå ihop efter variabel, behåll alla obs.
+`anti_join()` | slå ihop efter variabel, behåll obs. som inte finns i båda
