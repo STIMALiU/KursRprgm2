@@ -741,7 +741,7 @@ word
 
 
 \family typewriter
-The most common word is '[ord]' and it occured [antal] times.
+The most common word is '[ord]' and it occurred [antal] times.
 \family default
 
 \begin_inset Quotes erd
@@ -869,7 +869,7 @@ message()
 
 
 \family typewriter
-The most common word is '[ord]' and it occured [antal] times.
+The most common word is '[ord]' and it occurred [antal] times.
 \family default
 
 \begin_inset Quotes erd

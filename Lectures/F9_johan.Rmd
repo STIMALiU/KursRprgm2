@@ -1,0 +1,104 @@
+---
+title: "R-programmering VT2022"
+subtitle: "Föreläsning 9"
+author: "Johan Alenlöv"
+institute: "Linköpings Universitet"
+date: '2022-03-21'
+fontsize: 11pt
+output:
+  beamer_presentation:
+    slide_level: 2
+    keep_tex: true
+    latex_engine: "xelatex"
+    includes:
+      in_header: metropolis_preamble.tex
+classoption: "handout"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Föreläsning 9
+
+## Innehåll föreläsning 9
+
+- Kompletteringar
+- Tentainfo
+- R i andra kurser
+- Gammal tenta
+
+## Kompletteringar
+
+- Deadline för kompletteringar finns på kurshemsidan
+  - Nästa komplettering 2022-04-15
+- Underkända labbar markeras med `komplettering` och kompletteringar lämnas in på samma lab.
+- Alla labbar måste vara godkända efter sista kompletteringstillfället.
+  - Annars måste man göra om **alla** labbar nästa kursomgång.
+  - Vänta inte till sista kompletteringen.
+
+## Kursutvärdering
+
+- Efter tentan kommer det skickas ut en kursutvärdering.
+- Svara på den, kom gärna med kreativ kritik om vilka delar som kan bli förbättrade.
+- Skriv även vad som varit och fungerat bra.
+
+## Tentainfo
+
+- Tentamen är **31/3 kl 8:00 -- 12:00**.
+- Skrivplats är en SU-sal.
+- Endast anmälda studenter får skriva tentan!
+- Tentan kommer att likna de gamla tentorna som finns på kurshemsidan.
+- Hjälpmedel kommer vara ett antal "cheatsheets", de kommer finnas som pdf, ni ska **INTE** ta med några papper.
+- Inlämning är en R-fil per uppgift.
+- **testsession** 22/3 8-10 i SU-17/18.
+
+## R i andra kurser
+
+Årskurs 1 och 2:
+
+- Grundläggande tidsserieanalys
+- Regressions- och variansanalys
+- Databaser: design och programmering
+
+Årskurs 3:
+
+- Bayesiansk statistik
+- Statistisk analys av komplexa data
+- Data-Mining
+
+## R i andra kurser
+
+Kan användas i:
+
+- Projektarbete i statistik
+- Kandidatuppsats
+
+Masterprogrammet:
+
+- Advanced Programming in R
+
+## R i framtiden
+
+- Programmering är en färskvara
+- Viktigt att programmera regelbundet
+  - Finns många programmeringspussel på nätet
+    - Project Euler
+    - Advent of Code
+- Se "Efter kursen" på kurshemsidan
+
+## Gammal tenta
+
+Tentan "732G33_732G83_exam_2020-03-27.pdf"
+
+Vad har vi lärt oss i kursen?
+
+- Variabler, tilldelning, typer
+- Datastrukturer
+- Kontrollstrukturer
+- Funktioner, miljöer, objekt
+- Tillämpningar:
+  - Grafik
+  - Statistik
+  - Texthantering
+  - Datum
+  - ....
