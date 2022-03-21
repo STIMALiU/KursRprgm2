@@ -56,7 +56,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 Årskurs 1 och 2:
 
-- Grundläggande tidsserieanalys
+- Surveymetodik med teori
 - Regressions- och variansanalys
 - Databaser: design och programmering
 
