@@ -10,11 +10,11 @@ context("give_blood()")
 
 
 test_that("Assignment: give_blood()", {
-  error_info <- function(parameters, funcName){
+  error_info <- function(parameters, funcName,output){
     index<-sapply(X=parameters,FUN=is.null)
     parameters[index]<-"NULL"
     parameters<-lapply(X=parameters,FUN=as.character)
-    x<-paste("Problem with ",funcName,"() when called with: ",paste(paste(names(parameters),"=",parameters[names(parameters)],sep=""),collapse="  "),sep="")
+    x<-paste("Problem with ",funcName,"() when called with: ",paste(paste(names(parameters),"=",parameters[names(parameters)]," your output: ",output,sep=""),collapse="  "),sep="")
     return(x)
   }
   # set locale:
@@ -120,27 +120,27 @@ test_that("Assignment: give_blood()", {
   
   expect_true(tolower(do.call(give_blood, test_list[[1]])) == tolower(test_results_swe[1]) | 
                 tolower(do.call(give_blood, test_list[[1]])) == tolower(test_results_eng[1]),
-              info = error_info(parameters=test_list[[1]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[1]],funcName="give_blood",output = do.call(give_blood, test_list[[1]])))
   
   expect_true(tolower(do.call(give_blood, test_list[[2]])) == tolower(test_results_swe[2]) | 
                 tolower(do.call(give_blood, test_list[[2]])) == tolower(test_results_eng[2]),
-              info = error_info(parameters=test_list[[2]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[2]],funcName="give_blood",output = do.call(give_blood, test_list[[2]])))
   
   expect_true(tolower(do.call(give_blood, test_list[[3]])) == tolower(test_results_swe[3]) | 
                 tolower(do.call(give_blood, test_list[[3]])) == tolower(test_results_eng[3]),
-              info = error_info(parameters=test_list[[3]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[3]],funcName="give_blood",output = do.call(give_blood, test_list[[3]])))
   
   expect_true(tolower(do.call(give_blood, test_list[[4]])) == tolower(test_results_swe[4]) | 
                 tolower(do.call(give_blood, test_list[[4]])) == tolower(test_results_eng[4]),
-              info = error_info(parameters=test_list[[4]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[4]],funcName="give_blood",output = do.call(give_blood, test_list[[4]])))
   
   expect_true(tolower(do.call(give_blood, test_list[[5]])) == tolower(test_results_swe[5]) | 
                 tolower(do.call(give_blood, test_list[[5]])) == tolower(test_results_eng[5]),
-              info = error_info(parameters=test_list[[5]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[5]],funcName="give_blood",output = do.call(give_blood, test_list[[5]])))
   
   expect_true(tolower(do.call(give_blood, test_list[[6]])) == tolower(test_results_swe[6]) | 
                 tolower(do.call(give_blood, test_list[[6]])) == tolower(test_results_eng[6]),
-              info = error_info(parameters=test_list[[6]],funcName="give_blood"))
+              info = error_info(parameters=test_list[[6]],funcName="give_blood",output = do.call(give_blood, test_list[[6]])))
   
   expect_silent(object = do.call(give_blood, test_list[[1]]))
   
