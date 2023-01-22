@@ -192,18 +192,18 @@ Datorlaboration
 \end_layout
 
 \begin_layout Chapter
-Introduktion till R och R-Studio
+Introduktion till R och RStudio
 \end_layout
 
 \begin_layout Section
-R och R-Studio
+R och RStudio
 \end_layout
 
 \begin_layout Standard
 R är det programmeringsspråk vi kommer att använda i dessa laborationer.
- För att på ett bekvämt sätt arbeta i R använder vi programmet R-Studio.
- R och R-Studio är två olika program.
- R-Studio är en så kallad 
+ För att på ett bekvämt sätt arbeta i R använder vi programmet RStudio.
+ R och RStudio är två olika program.
+ RStudio är en så kallad 
 \series bold
 \color blue
 
@@ -220,12 +220,12 @@ literal "false"
 \color inherit
  (Integrated development enviroment).
  En kan se det lite som en verktygslåda för att enkelt arbeta med R.
- Detta innebär att R-Studio kräver R för att fungera, men det går att använda
- R utan R-Studio.
+ Detta innebär att RStudio kräver R för att fungera, men det går att använda
+ R utan RStudio.
 \end_layout
 
 \begin_layout Standard
-I R-Studio finns ett antal flikar med olika funktioner.
+I RStudio finns ett antal flikar med olika funktioner.
  Vi kommer inledningsvis använda 
 \begin_inset Quotes eld
 \end_inset
@@ -365,6 +365,179 @@ status open
 \end_layout
 
 \begin_layout Enumerate
+Två matematiska funktioner som är användbara i programmering är heltalsdivision
+ och modulos.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Heltalsdivision: Ger oss det tal som är det största heltal som kan dela
+ täljaren med nämnaren utan att det blir ett decimaltal.
+ Testa koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+13 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+13 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+15 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+15 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+17 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+17 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+\color blue
+\begin_inset CommandInset href
+LatexCommand href
+name "Modulus"
+target "http://en.wikipedia.org/wiki/Modulo_operation"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+: Ger oss resten vid heltalsdivision.
+ Om det inte blir någon rest vid heltalsdivisionen så blir modulos lika
+ med noll.
+ Testa koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+13 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+13 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+13 %% 3 # Modulo
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+12 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+12 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+12 %% 3 # Modulo
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+17 / 3 
+\end_layout
+
+\begin_layout Plain Layout
+
+17 %/% 3 # Heltalsdivision
+\end_layout
+
+\begin_layout Plain Layout
+
+17 %% 3 # Modulo
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
 Utöver numeriska värden finns också en del konstanter av intresse som 
 \begin_inset Formula $\pi$
 \end_inset
@@ -455,32 +628,8 @@ Inf
 
 \begin_layout Enumerate
 Självklart finns alla tänkbara matematiska funktioner som kvadratroten,
- absolutbelopp, logaritmer (i olika baser), heltalsdivision, 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "modulus"
-target "http://en.wikipedia.org/wiki/Modulo_operation"
-literal "false"
-
-\end_inset
-
-
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Ger resten vid heltalsdivision
-\end_layout
-
-\end_inset
-
-
-\series default
-\color inherit
- och trigonometriska funktioner.
+ absolutbelopp, logaritmer (i olika baser), heltalsdivision, och trigonometriska
+ funktioner.
  
 \series bold
 Det som definierar funktioner i R är att de följs direkt av en parentes.
@@ -526,16 +675,55 @@ log(4, base = 2)
 
 \begin_layout Plain Layout
 
+log(3, base = 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 sign(-3)
 \end_layout
 
 \begin_layout Plain Layout
 
+sign(3)
+\end_layout
+
+\begin_layout Plain Layout
+
+sign(0)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# fakultet: skrivs med ! i matematiken
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1! = 1, 2! = 1*2, 3! = 1*2*3, 4! = 1*2*3*4, osv
+\end_layout
+
+\begin_layout Plain Layout
+
+factorial(2)
 \end_layout
 
 \begin_layout Plain Layout
 
 factorial(3)
+\end_layout
+
+\begin_layout Plain Layout
+
+factorial(4)
 \end_layout
 
 \begin_layout Plain Layout
@@ -579,7 +767,7 @@ I R finns två ytterligare värden för att definiera olika typer av saknade
 \family typewriter
 NA
 \family default
- (Not appliciable) används för saknade värden.
+ (Not Available) används för saknade värden.
  
 \family typewriter
 NaN
@@ -626,6 +814,11 @@ Inf - Inf
 
 \begin_layout Plain Layout
 
+sqrt(-4)
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -635,7 +828,9 @@ Inf - Inf
 \end_layout
 
 \begin_layout Enumerate
-Vi kan självklart kombinera våra beräkningar för mer komplicerade beräkningar.
+Vi kan självklart kombinera våra beräkningar för att göra mer komplicerade
+ beräkningar.
+ Med hjälp av parenteser så kan vi sätta samman olika steg i våra beräkningar.
  Gör följande beräkning i R (se kod nedan):
 \begin_inset Formula 
 \[
@@ -694,7 +889,7 @@ History
 \begin_inset Quotes erd
 \end_inset
 
- i R-Studio.
+ i RStudio.
 \end_layout
 
 \begin_layout Section
@@ -713,8 +908,8 @@ R-filer och kodkommentarer
 \end_layout
 
 \begin_layout Enumerate
-Skapa en ny R - fil.
- [
+Skapa en ny R-fil.
+ 
 \series bold
 Tips:
 \series default
@@ -727,7 +922,9 @@ Tips:
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- R Script].
+ R Script, går även att trycka 
+\family typewriter
+Ctrl+Shift+N
 \end_layout
 
 \begin_layout Enumerate
@@ -917,6 +1114,12 @@ Man kan även använda -> för att tilldela en variabel värdet
 \end_inset
 
 .
+ Rekommendationen är att bara använda tilldelning åt rätt håll 
+\family typewriter
+<-
+\family default
+.
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1205,7 +1408,56 @@ A
 \end_layout
 
 \begin_layout Enumerate
-* En sista variabeltyp är komplexa tal.
+Vi kan skapa heltal i R.
+ Detta gör vi genom att skriva en heltalssiffra och sen ett L efter
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+1L
+\end_layout
+
+\begin_layout Plain Layout
+
+432L
+\end_layout
+
+\begin_layout Plain Layout
+
+# 1L är heltalet ett och 1 är decimaltalet ett.
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+* En sista variabeltyp är 
+\begin_inset CommandInset href
+LatexCommand href
+name "komplexa tal"
+target "https://sv.wikipedia.org/wiki/Komplexa_tal"
+literal "false"
+
+\end_inset
+
+.
  För att skapa ett komplext tal måste både den reella delen och den imaginära
  delen anges.
  Den imaginära delen anges som ett vanligt tal som avslutas med 
@@ -1990,8 +2242,8 @@ literal "false"
 
 \series default
 \color inherit
-) vilket innebär att om vi stänger av R/R-Studio försvinner allt arbete
- vi gjort om vi inte sparat det.
+) vilket innebär att om vi stänger av R/RStudio försvinner allt arbete vi
+ gjort om vi inte sparat det.
 \end_layout
 
 \begin_layout Standard
@@ -2065,7 +2317,7 @@ rm()
 \family typewriter
 ls()
 \family default
- och vad du ser i Global enviroment i R-Studio.
+ och vad du ser i Global enviroment i RStudio.
 \begin_inset Newline newline
 \end_inset
 
@@ -2158,7 +2410,7 @@ Clear
 \begin_inset Quotes erd
 \end_inset
 
- i R-Studio (under fliken 
+ i RStudio (under fliken 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2175,7 +2427,7 @@ Pröva att skapa en ny variabel som du kallar
 a
 \family default
 .
- Starta om R-Studio och kontrollera om variabeln finns kvar.
+ Starta om RStudio och kontrollera om variabeln finns kvar.
  
 \begin_inset Newline newline
 \end_inset
@@ -2184,7 +2436,7 @@ a
 \series bold
 Obs!
 \series default
- R-Studio kan fråga om du vill spara variablerna i ditt workspace.
+ RStudio kan fråga om du vill spara variablerna i ditt workspace.
  Svara 
 \begin_inset Quotes eld
 \end_inset
@@ -2201,8 +2453,8 @@ Hjälp och dokumentation
 \end_layout
 
 \begin_layout Standard
-Precis som R:s enviroment kan hjälpen både användas från R-Studio eller
- genom att köra kod i 
+Precis som R:s enviroment kan hjälpen både användas från RStudio eller genom
+ att köra kod i 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2251,7 +2503,7 @@ För att genom programkod komma åt hjälpen för en viss funktion använder
 ?
 \family default
 .
- Pröva: 
+ Pröva att köra 
 \family typewriter
 ?log
 \end_layout
@@ -2286,7 +2538,7 @@ För att få fram hjälp på vissa specialla funktioner (operatorer) så krävs
 
 \end_deeper
 \begin_layout Enumerate
-På samma sätt kan vi söka efter funktionen i R-Studios panel 
+På samma sätt kan vi söka efter funktionen i RStudios panel 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2320,12 +2572,16 @@ Obs:
 \end_layout
 
 \begin_layout Enumerate
-I R-Studio kan vi komma åt hjälpen med F1.
+I RStudio kan vi komma åt hjälpen med F1.
  Skriv 
 \family typewriter
 log
 \family default
- i R-Studio och klicka på F1.
+ i RStudio och klicka på F1 när musmarkören står i 
+\family typewriter
+log
+\family default
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -2797,7 +3053,8 @@ Vektorer
 
 \begin_layout Standard
 Vektorer är grunden för analyser i R.
- Vektorer påminner om vektorer inom matematiken men med vissa mindre skillnader.
+ Vektorer påminner om vektorer inom matematiken (linjär algebra) men med
+ vissa mindre skillnader.
  Kortfattat kan en vektor beskrivas som en lista med ett antal element med
  olika värden.
  Ett exempel på vektor är 
@@ -3179,6 +3436,63 @@ e<-rep(2:3,each=3)
 \end_layout
 
 \begin_layout Enumerate
+Funktionen 
+\family typewriter
+seq()
+\family default
+ har fyra argument, där vi bestämmer tre av dem: 
+\family typewriter
+seq(from=, to=, by= length=)
+\family default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(from=1,to=10,by=2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(from=1,to=10,length=4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(to=10,by=2, length=5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(from=100,by=50, length=5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+seq(from=100,by=-10,length=5)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
 Dessa funktioner går också att kombinera för att skapa mer komplexa vektorer.
 \begin_inset Newline newline
 \end_inset
@@ -3260,8 +3574,8 @@ täcka
 \end_inset
 
  den längre vektorn, detta kallas i R för recycling.
- Är den långa vektorn inte en multipel av den kortare vektorn får vi en
- varning.
+ Är den långa vektorn inte en jämn multipel av den kortare vektorn får vi
+ en varning.
 \end_layout
 
 \begin_layout Enumerate
@@ -3877,7 +4191,8 @@ order(myz, decreasing=TRUE)
 \end_deeper
 \begin_layout Enumerate
 Det finns finns ett stort antal statistiska funktioner för vektorer.
- 
+ Tips: kolla i dokumentationen om ni är osäkra på vad funktionerna nedan
+ gör!
 \begin_inset Newline newline
 \end_inset
 
@@ -3893,11 +4208,6 @@ status open
 \begin_layout Plain Layout
 
 mean(myx)
-\end_layout
-
-\begin_layout Plain Layout
-
-weighted.mean(x=myx, w=myw)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4083,7 +4393,12 @@ quantile(myz)
 
 \begin_layout Plain Layout
 
-quantile(myz, probs=c(0.99, 0.56))
+quantile(myz, probs=c(0.5)) # samma som median(myz)
+\end_layout
+
+\begin_layout Plain Layout
+
+quantile(myz, probs=c(0.25,0.5,0.75)) # kvartiler
 \end_layout
 
 \begin_layout Plain Layout
@@ -4097,8 +4412,9 @@ quantile(myz, probs=c(0.99, 0.56))
 \end_layout
 
 \begin_layout Enumerate
-För textvektorer kan många av de numeriska värdena inte användas.
- Vill vi då ha frekvenser använder vi funktionen 
+För textvektorer kan många funktionerna ovan inte användas.
+ Vill vi då ha frekvenser för de olika värden som finns i textvektorn använder
+ vi funktionen 
 \family typewriter
 table()
 \family default
@@ -4127,6 +4443,16 @@ table(myText)
 
 \begin_layout Plain Layout
 
+#andelar
+\end_layout
+
+\begin_layout Plain Layout
+
+table(myText)/sum(table(myText))
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -4146,7 +4472,7 @@ NA
 \family typewriter
 rm.na=TRUE
 \family default
-.
+ (när det finns).
 \begin_inset Newline newline
 \end_inset
 
@@ -4187,7 +4513,7 @@ mean(myx, na.rm=TRUE)
 \begin_layout Enumerate
 Självklart går det också att kombinera resultaten från en statistisk funktion.
  Det som returneras är numeriska värden så dessa kan användas som ett numeriskt
- värde.
+ värde i senare beräkningar.
  Pröva koden nedan.
 \begin_inset Newline newline
 \end_inset
@@ -4214,6 +4540,16 @@ my_mean<-mean(myx)
 \begin_layout Plain Layout
 
 print(my_mean)
+\end_layout
+
+\begin_layout Plain Layout
+
+my_mean2<-my_mean+100
+\end_layout
+
+\begin_layout Plain Layout
+
+print(my_mean2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4307,7 +4643,13 @@ Hur många unika värden har
 \family typewriter
 newVec
 \family default
-.
+? 
+\family typewriter
+unique()
+\family default
+, 
+\family typewriter
+length()
 \end_layout
 
 \end_deeper
@@ -4474,6 +4816,11 @@ status open
 \begin_layout Plain Layout
 
 <<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+print(length(minVec))
 \end_layout
 
 \begin_layout Plain Layout
@@ -5262,12 +5609,12 @@ b <- FALSE
 
 \begin_layout Plain Layout
 
-a & b # a and b (are TRUE)
+a & b # a och b (är TRUE)
 \end_layout
 
 \begin_layout Plain Layout
 
-a | b # a or b (are TRUE)
+a | b # a eller b (är TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5278,6 +5625,19 @@ a | b # a or b (are TRUE)
 \begin_layout Plain Layout
 
 !b
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+(TRUE|FALSE)&(!FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5633,27 +5993,27 @@ status open
 
 \begin_layout Plain Layout
 
-num <- 1:15
+num <- 1:10
 \end_layout
 
 \begin_layout Plain Layout
 
-num < 10
+num < 5
 \end_layout
 
 \begin_layout Plain Layout
 
-num != 5
+num != 2
 \end_layout
 
 \begin_layout Plain Layout
 
-num %in% c(1,2,7)
+num %in% c(1,2,9,10)
 \end_layout
 
 \begin_layout Plain Layout
 
-!(num == 10)
+!(num == 3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5679,19 +6039,7 @@ minaNummer
 \family typewriter
 minBoolean
 \family default
-, där 
-\family typewriter
-minBoolean
-\family default
- är vektor 
-\family typewriter
-a
-\family default
- och 
-\family typewriter
-b
-\family default
- ovan.
+.
  
 \begin_inset Newline newline
 \end_inset
@@ -5703,6 +6051,24 @@ status open
 \begin_layout Plain Layout
 
 <<prompt=TRUE, eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+a <- c(TRUE, TRUE, FALSE, FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+b <- c(TRUE, FALSE, TRUE, FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5778,7 +6144,7 @@ minText
 \family typewriter
 minaNummer
 \family default
- är inte 7.
+ är inte 6.
  
 \begin_inset Newline newline
 \end_inset
@@ -6051,6 +6417,48 @@ sum(x)
 \begin_layout Plain Layout
 
 sum(!x)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+mean()
+\family default
+ kan användas för att räkna ut andelen 
+\family typewriter
+TRUE
+\family default
+ det finns i en vektor.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(x) # andelen TRUE
+\end_layout
+
+\begin_layout Plain Layout
+
+mean(!x) # andelen FALSE
 \end_layout
 
 \begin_layout Plain Layout
@@ -6877,7 +7285,7 @@ source(
 \begin_inset Quotes eld
 \end_inset
 
-sökväg
+sökväg till filen
 \begin_inset Quotes erd
 \end_inset
 
@@ -6942,7 +7350,7 @@ source(file="minRfil.R",echo=TRUE)
 \end_layout
 
 \begin_layout Enumerate
-Uppe till höger i source-fönstret i R-Studio finns finns en knapp där det
+Uppe till höger i source-fönstret i RStudio finns finns en knapp där det
  står 
 \begin_inset Quotes eld
 \end_inset
@@ -7093,135 +7501,12 @@ status open
 
 \begin_layout Plain Layout
 
-#solution_path <- "C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Wollstonecraft
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2017
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2017
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
 solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
-solutions/
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
 \begin_inset Quotes srd
 \end_inset
 
@@ -7283,9 +7568,6 @@ labb1_[ditt liuID].R
 labb1_joswi123.R
 \family default
  .
- Det är denna fil som du sedan lämnar in på LISAM.
- Tänk på att filen endast ska innehålla de obligatoriska funktionerna nedan
- och inget annat.
 \end_layout
 
 \begin_layout Standard
@@ -7347,56 +7629,148 @@ set_assignment(lab_path)
 \end_layout
 
 \begin_layout Section
-
-\family typewriter
-return_first_last()
+Lösa inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Skapa en funktion som heter 
-\family typewriter
-\color black
-return_first_last()
-\family default
-\color inherit
- med argumentet 
-\family typewriter
-\color black
-vektor
-\family default
-\color inherit
-.
- Funktionen ska returnera en vektor som består av det första och sista talet.
+Här kommer lite tips till när ni ska lösa inlämningsuppgifter.
+\end_layout
+
+\begin_layout Itemize
+Inlämningsuppgifter utgår ifrån att ni har gjort 
+\series bold
+övningsuppgifterna
+\series default
+ ovan först.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
+ inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+Se först till att ni förstår 
+\begin_inset Quotes sld
+\end_inset
+
+problemet
+\begin_inset Quotes srd
+\end_inset
+
+ i uppgiften.
+ Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vissa problem är det bra att bryta ner i mindre delproblem.
  
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\begin_layout Itemize
+Börja med att lösa problemet (eller det första delproblemet) med vanlig
+ kod (dvs inte i en funktion) i ett R-script.
 \end_layout
 
-\begin_layout Plain Layout
-
-return_first_last(vektor = c(3,1,12,2,4))
+\begin_deeper
+\begin_layout Itemize
+Lös ett delproblem i taget vid behov.
+ Sätt sedan samman lösningarna på delproblemen.
+ Under sök om koden fungerar som den ska.
 \end_layout
 
-\begin_layout Plain Layout
-
-return_first_last(vektor = c(3,1,12))
+\end_deeper
+\begin_layout Itemize
+Sätt sedan in er kod i en funktion.
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
+ (testfallen).
+ Se till att funktionen har rätt namn och rätt namn på argumenten.
 \end_layout
 
-\begin_layout Plain Layout
-
-@
+\begin_layout Itemize
+Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+ Skapa variablerna 
+\family typewriter
+Namn
+\family default
+ och 
+\family typewriter
+LiuId
+\family default
+ med rätt innehåll.
+ Spara filen med rätt namn.
 \end_layout
 
+\begin_layout Itemize
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
+ och ID-variabler och ev.
+ kommentarer.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta minskar risken för fel.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testa nu att använda markmyassignment för att rätta er funktion.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Använd markmyassignment bara när er funktionen är 
+\begin_inset Quotes sld
 \end_inset
 
+hyfsat klar
+\begin_inset Quotes srd
+\end_inset
 
+, annars kommer ni att få många fel i markmyassignment, och det är svårt
+ att veta var man ska börja kolla.
+\end_layout
+
+\begin_layout Itemize
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
+ kommer ni att få många fel i markmyassignment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
+ som ni får.
+ Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
+\end_layout
+
+\begin_layout Itemize
+Innan ni lämnar in:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
+ten.
+ Ibland måste en viss metod användas för att lösa uppgiften.
+ Ibland är vissa funktioner inte tillåtna i en viss uppgift.
+ Så läs noga i varje uppgift vad som gäller.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni klarar alla tester i markmyassignment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Innan inlämning på Lisam: döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil
+\end_layout
+
+\begin_layout Itemize
+Lämna sedan in er 
+\series bold
+.txt
+\series default
+ fil på Lisam.
 \end_layout
 
 \begin_layout Section
@@ -7412,7 +7786,7 @@ Skapa en funktion som heter
 orth_scalar_prod()
 \family default
 \color inherit
- som beräknar skalärprodukten mellan två vektorer , 
+ som beräknar skalärprodukten mellan två vektorer, 
 \family typewriter
 \color black
 a
@@ -7614,6 +7988,19 @@ hi_name(namn = "Johan")
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+hi_name(namn = "Florence")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -7760,7 +8147,21 @@ approx_e(N = 2)
 
 \begin_layout Plain Layout
 
+approx_e(N = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
 approx_e(N = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+# jämför med exp(1)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -7788,6 +8189,22 @@ inget
 \series default
  annat.
  Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb1_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb1_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
 \end_layout
 
 \begin_layout Standard

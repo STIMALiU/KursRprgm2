@@ -2,9 +2,6 @@
 name  : D1
 description : "Statistisk programmering med R: Lab 1"
 tasks:
-  return_first_last:
-    url:
-      - Tasks/return_first_last_tests.R
   orth_scalar_prod:
     url: 
       - Tasks/orth_scalar_prod_tests.R
