@@ -1,0 +1,22 @@
+\frametitle{Logik exempel}
+\protect\hypertarget{logik-exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{19}\NormalTok{,}\DecValTok{23}\NormalTok{,}\DecValTok{29}\NormalTok{,}\DecValTok{31}\NormalTok{)}
+\NormalTok{boolVektor }\OtherTok{\textless{}{-}}\NormalTok{ testVektor }\SpecialCharTok{\textless{}} \DecValTok{6} \SpecialCharTok{|} \SpecialCharTok{!}\NormalTok{(testVektor }\SpecialCharTok{\textless{}} \DecValTok{20}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Vad blir följande uttryck?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{testVektor[boolVektor]}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1]  2  3  5 23 29 31
+\end{verbatim}
