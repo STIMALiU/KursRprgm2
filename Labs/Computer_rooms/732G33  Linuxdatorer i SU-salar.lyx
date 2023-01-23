@@ -111,7 +111,7 @@ knitr
 \end_layout
 
 \begin_layout Author
-Johan Alenlöv
+Josef Wilzén
 \end_layout
 
 \begin_layout Standard
@@ -233,7 +233,7 @@ Ctrl+Alt+T
 Skriv: 
 \family typewriter
 \lang english
-module add prog/r-mega-edition/21.10
+module add courses/732G33
 \family default
 \lang swedish
  och tryck enter
