@@ -11,7 +11,7 @@
 # i RStudio kör en rad (eller markerad kod) genom att trycka ctrl+enter
 # för mer genvägar tryck: alt+shift+k
 
-# mer hjälp: http://www.rstudio.com/wp-content/uploads/2016/01/rstudio-IDE-cheatsheet.pdf
+# mer hjälp: https://raw.githubusercontent.com/rstudio/cheatsheets/main/rstudio-ide.pdf
 
 # Koden skrivs i console eller i ett script (här tex)
 
@@ -25,7 +25,7 @@
 
 
 my_variable <- "Calle"
-myVariable <- "Calle"
+myVariable <- "Calle2"
 my variable <- "Calle"
 
 
@@ -33,18 +33,19 @@ my variable <- "Calle"
 my_vector <- c("Calle", "Blomqvist")
 my_vector
 my_vector[1]
-num_vec <- c(1, 1, 2)
+num_vec <- c(1, 1, 2, 2)
 my_vector[num_vec]
 
 length(my_variable)
 length(num_vec)
 
 
-my_vector[length(my_vector)]
+my_vector[length(my_vector)] # sista elementet
+my_vector[2]
 
 my_num <- 1:10
 my_num
-
+print(my_num)
 length(my_num)
 
 ## Variabeltyper
@@ -59,6 +60,7 @@ y<-5
 typeof(x)
 typeof(y)
 
+print("hej!")
 
 #-----------------------------------------------------------------------------------------------------------------------
 # functions 
