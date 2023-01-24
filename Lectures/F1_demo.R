@@ -93,13 +93,23 @@ f(z = 5)
 my_val <- f(z = 4)
 
 my_val
+my_val/2
 
+my_val <- f(z = 40)
 my_val/2
 
 f(z = my_val)
 
 # kolla vad som finns inuti:
 f
+
+
+# rensa
+rm(list=ls())
+
+ls()
+a<-10
+
 
 # Lokal miljö
 f <- function(x, y){
@@ -154,15 +164,19 @@ mark_my_assignment("task1")
 ## task2: Create a function that returns the sum of the first and last element
 x<-c(2,4,1)
 length(x)
+x<-1:10
+length(x)
 
 task2 <- function(vector){
-  vector[2] + vector[length(vector)] # Wrong
+  z<-vector[2] + vector[length(vector)] # Wrong
+  return(z)
 }
 
 mark_my_assignment("task2")
 
 task2 <- function(vector){
-  vector[1] + vector[length(vector)] # Correct
+  z<-vector[1] + vector[length(vector)] # Correct
+  return(z)
 }
 
 mark_my_assignment("task2")
@@ -188,6 +202,7 @@ minVektor[minBool]
 x<-TRUE
 y<-FALSE
 !x
+!!x
 
 x&y
 x|y
@@ -198,9 +213,9 @@ x <- 1:10
 y <- x != 5
 z <- x > 2
 x[y & !z]
+x[y & z]
 
-
-index<-y & !z
+index<-y & z
 x[index]
 
 
@@ -208,13 +223,39 @@ x[index]
 # markmyassignment: lab 1 ex
 #-----------------------------------------------------------------------------------------------------------------------
 
-# Datorlabb 1 ----
-# Uppgift 1: Three elements
 
-lab_path <-
-  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
+#-----------------------------------------------------------------------------------------------------------------------
+# Datorlabb 1 
+
+# Uppgift 1: orth_scalar_prod
+
+# mall: https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R
+
+rm(list=ls()) # rensar den globala miljön
+
+library(markmyassignment)
+
+# ställer in vilken labb jag ska rätta:
+lab_path <-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
 
 set_assignment(lab_path)
-Namn <- "Johan Alenlöv"
-LiuId <- "johal95"
-mark_my_assignment(tasks = "add_first_last")
+
+# namn och liu-ID
+Namn <- "Josef Wilzén"
+LiuId <- "joswi123"
+
+# min funktion (ej korrekt):
+orth_scalar_prod <- function(a,b){
+  
+  y<-a[1]^2 + b[2]^2
+  
+  return(y)
+}
+
+
+# rättar en uppgift
+mark_my_assignment(tasks = "orth_scalar_prod")
+
+
+# rättar alla uppgifter
+mark_my_assignment()
