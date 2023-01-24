@@ -3599,7 +3599,7 @@ myVec1 <- 1:5
 
 \begin_layout Plain Layout
 
-myVec2 <- rep(x=10, times=8)
+myVec2 <- rep(x=10, times=9)
 \end_layout
 
 \begin_layout Plain Layout
