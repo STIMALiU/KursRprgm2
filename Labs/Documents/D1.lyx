@@ -8110,7 +8110,19 @@ N
 \begin_inset Formula $e$
 \end_inset
 
- till och med fjärde decimalen.
+ till och med fjärde decimalen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Detta ska inte redovisas i inlämningen.
+ Det viktiga är att ni klarar testerna i markmyassignment.
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
