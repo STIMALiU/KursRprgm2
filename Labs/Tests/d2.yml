@@ -2,9 +2,6 @@
 name  : D2
 description : "Statistisk programmering med R: Lab 2"
 tasks:
-  product_of_corners:
-    url:
-      - Tasks/product_of_corners_tests.R
   leap_year:
     url: 
       - Tasks/leap_year_tests.R

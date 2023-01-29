@@ -6486,59 +6486,148 @@ set_assignment(lab_path)
 \end_layout
 
 \begin_layout Section
-product_of_corners()
+Lösa inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Skapa en funktion product_of_corners() som tar argumentet A, där A är en
- matris med tal.
- Funktionen ska returnera produkten av de fyra talen som är i hörnen, om
- antalet rader eller kolonner är lika med 1 ska elementen vara med dubbelt
- i produkten, se exemplena nedan.
-\begin_inset Newline newline
+Här kommer lite tips till när ni ska lösa inlämningsuppgifter.
+\end_layout
+
+\begin_layout Itemize
+Inlämningsuppgifter utgår ifrån att ni har gjort 
+\series bold
+övningsuppgifterna
+\series default
+ ovan först.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
+ inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+Se först till att ni förstår 
+\begin_inset Quotes sld
 \end_inset
 
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE, echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-en_matris = matrix(c(2,2),nrow=2,ncol=1)
-\end_layout
-
-\begin_layout Plain Layout
-
-product_of_corners(A = en_matris)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-en_matris = matrix(1:16,nrow=4,ncol=4)
-\end_layout
-
-\begin_layout Plain Layout
-
-product_of_corners(A = en_matris)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
+problemet
+\begin_inset Quotes srd
 \end_inset
 
+ i uppgiften.
+ Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vissa problem är det bra att bryta ner i mindre delproblem.
+ 
+\end_layout
 
+\begin_layout Itemize
+Börja med att lösa problemet (eller det första delproblemet) med vanlig
+ kod (dvs inte i en funktion) i ett R-script.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lös ett delproblem i taget vid behov.
+ Sätt sedan samman lösningarna på delproblemen.
+ Under sök om koden fungerar som den ska.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sätt sedan in er kod i en funktion.
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
+ (testfallen).
+ Se till att funktionen har rätt namn och rätt namn på argumenten.
+\end_layout
+
+\begin_layout Itemize
+Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+ Skapa variablerna 
+\family typewriter
+Namn
+\family default
+ och 
+\family typewriter
+LiuId
+\family default
+ med rätt innehåll.
+ Spara filen med rätt namn.
+\end_layout
+
+\begin_layout Itemize
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
+ och ID-variabler och ev.
+ kommentarer.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta minskar risken för fel.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testa nu att använda markmyassignment för att rätta er funktion.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Använd markmyassignment bara när er funktionen är 
+\begin_inset Quotes sld
+\end_inset
+
+hyfsat klar
+\begin_inset Quotes srd
+\end_inset
+
+, annars kommer ni att få många fel i markmyassignment, och det är svårt
+ att veta var man ska börja kolla.
+\end_layout
+
+\begin_layout Itemize
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
+ kommer ni att få många fel i markmyassignment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
+ som ni får.
+ Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
+\end_layout
+
+\begin_layout Itemize
+Innan ni lämnar in:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
+ten.
+ Ibland måste en viss metod användas för att lösa uppgiften.
+ Ibland är vissa funktioner inte tillåtna i en viss uppgift.
+ Så läs noga i varje uppgift vad som gäller.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni klarar alla tester i markmyassignment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Innan inlämning på Lisam: döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil
+\end_layout
+
+\begin_layout Itemize
+Lämna sedan in er 
+\series bold
+.txt
+\series default
+ fil på Lisam.
 \end_layout
 
 \begin_layout Section
@@ -6780,6 +6869,16 @@ period_length
 \family default
 .
  Syftet är att snabbt analysera de senaste dagarnas aktiekurs.
+ Vi utgår att data har följande struktur: 
+\end_layout
+
+\begin_layout Itemize
+Variabler (i given ordning): Date, Open, High, Low, Close, Volume, Adj.Close
+\end_layout
+
+\begin_layout Itemize
+Rader är dagar med observerade data.
+ Raderna är sorterade så att de nyligaste dagarna är högst upp.
 \end_layout
 
 \begin_layout Standard
@@ -6960,6 +7059,8 @@ Raw
 \end_inset
 
  och spara ned filen.
+ Notera vi testar funktionen på dessa filer, men funktionen ska fungera
+ på godtyckliga dataset som har samma struktur som dessa två filer.
  Här är testexempel på hur funktionen ska fungera (
 \series bold
 Obs!
@@ -7336,12 +7437,28 @@ inget
 \series default
  annat.
  Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb2_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb2_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
 \end_layout
 
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar! 
+Grattis! Nu är du klar!
 \end_layout
 
 \end_body
