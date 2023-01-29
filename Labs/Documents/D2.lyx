@@ -196,8 +196,9 @@ Datastruktur: Matriser
 \end_layout
 
 \begin_layout Standard
-Matriser är ytterligare en datastruktur som används flitigt i R.
- Den stora skillnaden mot vektorer är att vi har två dimensioner, rader
+Förutom vektorer (Datorlaboration 1) är matriser ytterligare en datastruktur
+ som används flitigt i R.
+ Den stora skillnaden mot vektorer är att vi har två dimensioner; rader
  och kolumner.
  Precis som vektorer kan vi bara ha en typ av värden i en matris.
  Det betyder att vi kan ha textmatriser, logiska matriser, numeriska matriser
@@ -490,7 +491,8 @@ stor_matris <- cbind(a,b,c,d)
 \end_layout
 
 \begin_layout Enumerate
-Vill vi skapa en textmatris gör vi ett liknande sätt som med numeriska matriser.
+Om vi vill skapa en textmatris gör vi på ett liknande sätt som med numeriska
+ matriser.
  Pröva att skapa följande numeriska matris.
 \begin_inset Newline newline
 \end_inset
@@ -526,8 +528,8 @@ mina_namn <- matrix(text, nrow=2, ncol=2)
 
 \begin_layout Enumerate
 Statistiska funktioner fungerar på matriser precis som på vektorer.
- Det R gör är att R först konverterar matrisen till en vektor och utför
- sedan beräkningen.
+ Det R gör är att R först konverterar matrisen till en vektor och sedan
+ utför beräkningen.
  
 \begin_inset Newline newline
 \end_inset
@@ -880,7 +882,7 @@ För att indexera matriser och dataset behöver radindex OCH kolumnindex anges.
 \begin_inset Quotes eld
 \end_inset
 
-hakparantes
+hakparentes
 \begin_inset Quotes erd
 \end_inset
 
@@ -1075,12 +1077,12 @@ Kolumn 1 till 3
 \end_deeper
 \begin_layout Enumerate
 Indexering kan även ske med numeriska matriser.
- För att det ska gå behöver vi skapa en matris med två kolumner och godtykligt
+ För att det ska gå behöver vi skapa en matris med två kolumner och godtyckligt
  antal rader.
  Låt oss kalla denna matris för indexmatris.
  Första kolumnen i indexmatrisen motsvarar rader och andra kolumnen i indexmatri
 sen motsvarar kolumner i den ursprungliga matrisen.
- Varje rad indexmatrisen motsvarar ett element i den ursprungliga matrisen.
+ Varje rad i indexmatrisen motsvarar ett element i den ursprungliga matrisen.
  Se koden nedan för ett exempel.
  
 \begin_inset Newline newline
@@ -1144,7 +1146,7 @@ index_mat
 \end_deeper
 \begin_layout Enumerate
 Precis som med vektorer kan logiska värden användas för att välja ut värden.
- Stoppa då in en logisk matris av samma storlek i innanför hakparanteserna.
+ Stoppa då in en logisk matris av samma storlek innanför hakparenteserna.
  
 \begin_inset Newline newline
 \end_inset
@@ -1994,7 +1996,7 @@ data.frame
  vi arbetar med.
  I de första tre fallen använder vi variabelnamnet och den sista metoden
  använder vi vilken kolumn som är variabeln av intresse.
- Hakparanteser används här för att 
+ Hakparenteser används här för att 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2347,7 +2349,7 @@ iris$newCat[iris$Petal.Width > 2] <- "2 +"
 
 \begin_layout Enumerate
 Gå igenom koden ovan och se vad som händer i varje steg.
- Rent faktiskt indexerar vi en del av variabeln med hakparantesen och relationso
+ Rent faktiskt indexerar vi en del av variabeln med hakparentesen och relationso
 peratorn och tillskriver denna del av vektorn ett visst värde.
  Att göra det manuellt kan tyckas onödigt, men i många fall kanske vi vill
  göra mindre korrigeringar av variabler och då är detta sätt ofta enkelt.
@@ -2871,12 +2873,12 @@ Funktionerna
 \family typewriter
 is.factor()
 \family default
- testar om en vektor är en factor.
+ testar om en vektor är en faktor.
  Funktonen 
 \family typewriter
 as.factor()
 \family default
- konverterar en vektor till en factorvariabel.
+ konverterar en vektor till en faktorvariabel.
 \end_layout
 
 \begin_layout Enumerate
@@ -3131,14 +3133,14 @@ OCH
 \begin_inset Quotes eld
 \end_inset
 
-hakparantes
+hakparentes
 \begin_inset Quotes erd
 \end_inset
 
 .
  Radindex anges först och sedan kolumnindex.
  Tänk matriser.
- De olika index separeras med ett komma.
+ De olika indexen separeras med ett komma.
  Lämnas ett index tomt innebär det att alla rader/kolumner väljs ut.
  
 \end_layout
@@ -3932,7 +3934,7 @@ faithful
 \end_layout
 
 \begin_layout Enumerate
-Vill vi istälet lägga ihop två data.frames kolumnvis gör vi det med 
+Vill vi istället lägga ihop två data.frames kolumnvis gör vi det med 
 \family typewriter
 cbind()
 \family default
@@ -4946,7 +4948,7 @@ Precis som med vektorer kan vi indexera listor.
 
 \begin_layout Standard
 För att välja ut en del av en lista (men fortfarande som en lista) används
- som vanligt hakparantes.
+ som vanligt hakparentes.
 \end_layout
 
 \begin_layout Standard
@@ -4954,7 +4956,7 @@ Vill vi däremot välja ut objektet
 \series bold
 inne i
 \series default
- listan används dubbel hakparantes.
+ listan används dubbel hakparentes.
  Då kan vi dock bara välja ut ett enda objekt i taget.
 \end_layout
 
@@ -5051,7 +5053,7 @@ weekPlan
 
 \begin_layout Enumerate
 Precis som med vektorer kan vi ändra element i en lista genom att använda
- hakparanteser:
+ hakparenteser:
 \begin_inset Newline newline
 \end_inset
 
@@ -5270,11 +5272,11 @@ mean(mtcars$wt[mtcars$am==1])
 \end_layout
 
 \begin_layout Enumerate
-Ta bort från elementet 
+Ta bort elementet 
 \family typewriter
 meanMPG 
 \family default
-listan.
+från listan.
 \end_layout
 
 \end_deeper
@@ -6347,8 +6349,8 @@ rm()
 \end_layout
 
 \begin_layout Enumerate
-Vad är skillnaden mellan Rdata-filer och rds-filer? Formulera svarat i egna
- ord och skriv ner det.
+Vad är skillnaden mellan Rdata-filer och rds-filer? Formulera svaret med
+ egna ord och skriv ner det.
 \end_layout
 
 \begin_layout Standard
@@ -6486,7 +6488,7 @@ set_assignment(lab_path)
 \end_layout
 
 \begin_layout Section
-Lösa inlämningsuppgifter
+Att lösa inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
@@ -6527,7 +6529,7 @@ Börja med att lösa problemet (eller det första delproblemet) med vanlig
 \begin_layout Itemize
 Lös ett delproblem i taget vid behov.
  Sätt sedan samman lösningarna på delproblemen.
- Under sök om koden fungerar som den ska.
+ Undersök om koden fungerar som den ska.
 \end_layout
 
 \end_deeper
@@ -6585,8 +6587,8 @@ hyfsat klar
 \end_layout
 
 \begin_layout Itemize
-Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
- kommer ni att få många fel i markmyassignment.
+Det är viktigt att funktionen har rätt namn och har rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
 \end_layout
 
 \end_deeper
