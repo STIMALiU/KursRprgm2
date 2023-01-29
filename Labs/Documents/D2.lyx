@@ -6873,12 +6873,38 @@ period_length
 \end_layout
 
 \begin_layout Itemize
-Variabler (i given ordning): Date, Open, High, Low, Close, Volume, Adj.Close
+Variabler (i given ordning): 
+\family typewriter
+Date
+\family default
+, 
+\family typewriter
+Open
+\family default
+, 
+\family typewriter
+High
+\family default
+, 
+\family typewriter
+Low
+\family default
+, 
+\family typewriter
+Close
+\family default
+, 
+\family typewriter
+Volume
+\family default
+, 
+\family typewriter
+Adj.Close
 \end_layout
 
 \begin_layout Itemize
 Rader är dagar med observerade data.
- Raderna är sorterade så att de nyligaste dagarna är högst upp.
+ Raderna är sorterade så att de nyligaste dagarna är högst upp i filen.
 \end_layout
 
 \begin_layout Standard
