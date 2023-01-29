@@ -6388,141 +6388,12 @@ status open
 
 \begin_layout Plain Layout
 
-#solution_path <- "C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2018
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
-/exercise_solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Wollstonecraft
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2018
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-solution_path <- 
+solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
-solutions/
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
 \begin_inset Quotes srd
 \end_inset
 
@@ -7111,8 +6982,7 @@ apple_path <-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/Apple
-Test.csv
+/home/josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/AppleTest.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -7125,8 +6995,7 @@ google_path <-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/googl
-e2.csv
+/home/josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/google2.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -7369,8 +7238,7 @@ apple_path <-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/Apple
-Test.csv
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/AppleTest.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -7383,8 +7251,7 @@ google_path <-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgm2/Labs/DataFiles/googl
-e2.csv
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/google2.csv
 \begin_inset Quotes srd
 \end_inset
 
