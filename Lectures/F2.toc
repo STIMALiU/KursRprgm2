@@ -1,0 +1,8 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Sammanfattning Föreläsning 1}{3}{0}{1}
+\beamer@sectionintoc {2}{Datastrukturer}{7}{0}{2}
+\beamer@sectionintoc {3}{Matriser}{9}{0}{3}
+\beamer@sectionintoc {4}{data.frame}{13}{0}{4}
+\beamer@sectionintoc {5}{Listor}{24}{0}{5}
+\beamer@sectionintoc {6}{Databearbetning}{27}{0}{6}
+\beamer@sectionintoc {7}{Input och Output}{29}{0}{7}
