@@ -10,10 +10,15 @@
 # -------------------------------------------------------------------------------------------
 # Matriser
 # -------------------------------------------------------------------------------------------
+
+?matrix
+
 A1<-matrix(data = c(1,42,323,11,434,54,34,23,2),nrow = 3,ncol = 3)
 A1
+
 is.matrix(A1)
-?matrix
+
+
 # ändra namn:
 colnames(A1)
 colnames(A1)<-c("x","y","z")
@@ -99,11 +104,31 @@ str(A2)
 is.matrix(A1)
 is.list(A1)
 
+
+A3<-matrix(1:8,2,4)
+A4<-matrix(10,2,4) 
+
+A3+A4
+A3/A4
+
+log(A3)
+
 # -------------------------------------------------------------------------------------------
 # Data.frame
 # -------------------------------------------------------------------------------------------
 
 data()
+
+
+data("airquality")
+?airquality
+head(airquality)
+tail(airquality)
+summary(airquality)
+dim(airquality)
+
+
+
 ?iris
 data(iris)
 ?head
@@ -114,10 +139,18 @@ dim(iris)
 iris
 colnames(iris)
 iris$Species
-is.factor(iris$Species)
-x<-iris$Species
-table(x)
-table(iris$Species)
+
+# -------------------------------------------------------------------------------------------
+# faktorvariabler
+?factor
+
+text_vect<-rep(c("a","a","b","c"),each=2)
+factor_vect<-factor(x = text_vect)
+levels(factor_vect)
+
+
+
+
 
 y<-factor(c("a","a","c","d","d"))
 y
@@ -128,6 +161,11 @@ is.factor(y)
 is.character(y)
 z<-as.character(y)
 z
+
+is.factor(iris$Species)
+x<-iris$Species
+table(x)
+table(iris$Species)
 
 typeof(iris$Species)
 typeof(iris$Sepal.Length)
@@ -159,6 +197,9 @@ is.data.frame(mtcars)
 is.list(mtcars)
 is.matrix(mtcars)
 is.vector(mtcars)
+
+
+
 
 
 # -------------------------------------------------------------------------------------------
