@@ -18,6 +18,8 @@ A1
 
 is.matrix(A1)
 
+is.matrix(FALSE)
+is.vector(FALSE)
 
 # ändra namn:
 colnames(A1)
@@ -30,12 +32,15 @@ A1
 
 # indexering:
 A1[1,]
-test1<-A1[,1]
+
+test1<-A1[1,]
 test1
 is.vector(test1)
 A1[1,,drop=FALSE]
 test2<-A1[,1,drop=FALSE]
+test1
 is.matrix(test2)
+is.matrix(test1)
 
 A1
 A1[1,3]
@@ -44,11 +49,23 @@ A1[c(3,1),c(1,3)]
 
 
 
+A<-matrix(data = c(1,9,6,2),2,2)
+A
+B<-matrix(data = c(TRUE,FALSE,TRUE,FALSE),2,2)
+B
+A[B]
+
+A>4
+
+
 a1<-A1[1,]
 a2<-A1[1,,drop=FALSE]
 a1
 a2
 dim(A1)
+ncol(A1)
+nrow(A1)
+
 dim(a2)
 dim(a1)
 is.vector(a1)
