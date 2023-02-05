@@ -3649,187 +3649,12 @@ status open
 
 \begin_layout Plain Layout
 
-#solution_path <- "C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Wollstonecraft
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2017
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
-/exercise_solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<- "../KursRprgmTeacher/Labs/exercise_solutions/" 
-\end_layout
-
-\begin_layout Plain Layout
-
 solution_path <- 
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
-solutions/
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
 \begin_inset Quotes srd
 \end_inset
 
@@ -3945,6 +3770,179 @@ debug
 \end_layout
 
 \begin_layout Section
+Att lösa inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+Här kommer lite tips till när ni ska lösa inlämningsuppgifter.
+\end_layout
+
+\begin_layout Itemize
+Inlämningsuppgifter utgår ifrån att ni har gjort 
+\series bold
+övningsuppgifterna
+\series default
+ ovan först.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
+ inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+Se först till att ni förstår 
+\begin_inset Quotes sld
+\end_inset
+
+problemet
+\begin_inset Quotes srd
+\end_inset
+
+ i uppgiften.
+ Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vissa problem är det bra att bryta ner i mindre delproblem.
+ 
+\end_layout
+
+\begin_layout Itemize
+Börja med att lösa problemet (eller det första delproblemet) med vanlig
+ kod (dvs inte i en funktion) i ett R-script.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lös ett delproblem i taget vid behov.
+ Sätt sedan samman lösningarna på delproblemen.
+ Undersök om koden fungerar som den ska.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sätt sedan in er kod i en funktion.
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
+ (testfallen).
+ Se till att funktionen har rätt namn och rätt namn på argumenten.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Om era funktioner inte fungerar som de ska testa debuggging! Använd 
+\family typewriter
+print
+\family default
+, 
+\family typewriter
+cat
+\family default
+ eller 
+\family typewriter
+message
+\family default
+ för att skriva ut relevanta värden.
+ Använd 
+\family typewriter
+browser
+\family default
+/
+\family typewriter
+debug
+\family default
+ för att stega igenom funktionerna.
+ Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+ Skapa variablerna 
+\family typewriter
+Namn
+\family default
+ och 
+\family typewriter
+LiuId
+\family default
+ med rätt innehåll.
+ Spara filen med rätt namn.
+\end_layout
+
+\begin_layout Itemize
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
+ och ID-variabler och ev.
+ kommentarer.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta minskar risken för fel.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testa nu att använda markmyassignment för att rätta er funktion.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Använd markmyassignment bara när er funktionen är 
+\begin_inset Quotes sld
+\end_inset
+
+hyfsat klar
+\begin_inset Quotes srd
+\end_inset
+
+, annars kommer ni att få många fel i markmyassignment, och det är svårt
+ att veta var man ska börja kolla.
+\end_layout
+
+\begin_layout Itemize
+Det är viktigt att funktionen har rätt namn och har rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
+ som ni får.
+ Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
+\end_layout
+
+\begin_layout Itemize
+Innan ni lämnar in:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
+ten.
+ Ibland måste en viss metod användas för att lösa uppgiften.
+ Ibland är vissa funktioner inte tillåtna i en viss uppgift.
+ Så läs noga i varje uppgift vad som gäller.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni klarar alla tester i markmyassignment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Innan inlämning på Lisam: döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil
+\end_layout
+
+\begin_layout Itemize
+Lämna sedan in er 
+\series bold
+.txt
+\series default
+ fil på Lisam.
+\end_layout
+
+\begin_layout Section
 
 \family typewriter
 blood_match()
@@ -3976,20 +3974,48 @@ literal "false"
 \begin_layout Standard
 För AB0 systemet gäller att en person kan antingen vara typ A, B, AB eller
  0.
- En person med typ AB kan ta emot blod från alla typer, en person med typ
- A kan bara ta emot från någon med typ A eller 0, en person med typ B kan
- bara ta emot från någon med typ B eller 0 och en person med typ 0 kan bara
- ta emot från en person med typ 0.
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person med typ AB kan ta emot blod från alla typer
+\end_layout
+
+\begin_layout Itemize
+En person med typ A kan bara ta emot från någon med typ A eller 0
+\end_layout
+
+\begin_layout Itemize
+En person med typ B kan bara ta emot från någon med typ B eller 0 
+\end_layout
+
+\begin_layout Itemize
+En person med typ 0 kan bara ta emot från en person med typ 0.
 \end_layout
 
 \begin_layout Standard
 För Rh systemet gäller att en person kan antingen vara positiv (+) eller
- negativ (-), en person som är positiv kan ta emot blod från båda typerna,
- en person som är negativ kan bara ta emot blod från någon som är negativ.
+ negativ (-).
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person som är positiv kan ta emot blod från båda typerna.
+\end_layout
+
+\begin_layout Itemize
+En person som är negativ kan bara ta emot blod från någon som är negativ.
 \end_layout
 
 \begin_layout Standard
-Er uppgift är att skapa en funktion blood_match() med argumentet patients
+Er uppgift är att skapa en funktion 
+\family typewriter
+blood_match()
+\family default
+ med argumentet 
+\family typewriter
+patients
+\family default
  som talar om ifall en person kan ta emot en annan persons blod baserat
  på deras blodgrupp.
  Ni får givet en lista 
@@ -4303,295 +4329,11 @@ blood_match(
 \begin_inset Quotes sld
 \end_inset
 
-
+hej!
 \begin_inset Quotes srd
 \end_inset
 
 )
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-my_matrix_prod()
-\end_layout
-
-\begin_layout Standard
-En central del inom den linjära algebran är 
-\begin_inset CommandInset href
-LatexCommand href
-name "matrismultiplikation"
-target "https://sv.wikipedia.org/wiki/Matris#Matrismultiplikation"
-literal "false"
-
-\end_inset
-
- , d.v.s.
- att multiplicera två matriser med varandra.
- Du ska nu skapa en funktion kallad 
-\family typewriter
-\lang english
-my_matrix_prod
-\lang swedish
-()
-\family default
- med argumenten 
-\begin_inset Formula $A$
-\end_inset
-
- och 
-\begin_inset Formula $B$
-\end_inset
-
- som multiplicerar två matriser med varandra på följande sätt:
-\begin_inset Formula 
-\[
-\texttt{my\_matrix\_prod(A, B)}=\mathbf{A}\cdot\mathbf{B}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Om dimensionerna inte gör det möjligt att multiplicera matriserna ska funktionen
- 
-\series bold
-stoppas
-\series default
- och returnera felmeddelandet 
-\family typewriter
-Matrix dimensions mismatch
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-Säg att vi vill beräkna 
-\begin_inset Formula $C=A\cdot B$
-\end_inset
-
-.
- Matrismultiplikation defineras så att element 
-\begin_inset Formula $C\left[i,j\right]=A\left[i,\right]\cdot B\left[,j\right]$
-\end_inset
-
- om vi använder R:s notation för indexering.
- Om vi vill beräkna elementet på rad 3 och kolumn 4 i 
-\begin_inset Formula $C$
-\end_inset
-
- så tar vi 
-\begin_inset CommandInset href
-LatexCommand href
-name "skalärprodukten"
-target "https://sv.wikipedia.org/wiki/Skal%C3%A4rprodukt"
-literal "false"
-
-\end_inset
-
- mellan vektorerna 
-\begin_inset Formula $a_{3}$
-\end_inset
-
- och 
-\begin_inset Formula $b_{4}$
-\end_inset
-
-.
- Där 
-\begin_inset Formula $a_{3}$
-\end_inset
-
- är vektorn som utgörs av rad 3 i matrisen 
-\begin_inset Formula $A$
-\end_inset
-
- och 
-\begin_inset Formula $b_{4}$
-\end_inset
-
- är vektorn som utgörs av kolumn 4 i matrisen 
-\begin_inset Formula $B$
-\end_inset
-
-.
- För att få alla element i 
-\begin_inset Formula $C$
-\end_inset
-
- måste vi uppreda denna procedur för alla kombinationer av rader från 
-\begin_inset Formula $A$
-\end_inset
-
- och kolumner från 
-\begin_inset Formula $B$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Observera att det 
-\series bold
-inte
-\series default
- är tillåtet att använda R:s funktion för matrismultiplikation 
-\family typewriter
-%*%
-\family default
- eller någon annan inbyggd funktion som direkt beräknar matrismultiplikation.
- Du får dock använda 
-\family typewriter
-%*%
-\family default
- för att generera fler testfall för att testa att din funktion räknar rätt.
-\end_layout
-
-\begin_layout Standard
-De steg funktionen kan gå igenom är följande:
-\end_layout
-
-\begin_layout Enumerate
-Pröva om dimensionerna av matris 
-\series bold
-
-\begin_inset Formula $\mathbf{A}$
-\end_inset
-
-
-\series default
- och 
-\series bold
-
-\begin_inset Formula $\mathbf{B}$
-\end_inset
-
-
-\series default
- innebär att de kan multipliceras med varandra, stoppa annars funktionen
- och returnera felmeddelandet (se nedan).
-\end_layout
-
-\begin_layout Enumerate
-Skapa en ny matris (ex.
- kallad 
-\series bold
-
-\begin_inset Formula $\mathbf{C}$
-\end_inset
-
-
-\series default
-) med de dimensioner som produkten av A och B har.
-\end_layout
-
-\begin_layout Enumerate
-Loopa över elementen i 
-\series bold
-
-\begin_inset Formula $\mathbf{C}$
-\end_inset
-
-
-\series default
- och räkna ut varje element för sig.
- Detta kan göras med en nästalad for-loop, där ena loopen går över rader
- och den andra går över kolumner.
- [
-\series bold
-Tips!
-\series default
- Här kan du använda din kod från 
-\family typewriter
-orth_scalar_prod()
-\family default
-]
-\end_layout
-
-\begin_layout Standard
-Här är textexempel på hur funktionen ska fungera:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-X <- matrix(1:6, nrow=2, ncol=3) 
-\end_layout
-
-\begin_layout Plain Layout
-
-Y <- matrix(6:1, nrow=3, ncol=2) 
-\end_layout
-
-\begin_layout Plain Layout
-
-my_matrix_prod(A = X, B = Y)
-\end_layout
-
-\begin_layout Plain Layout
-
-# jämför med 
-\end_layout
-
-\begin_layout Plain Layout
-
-X%*%Y
-\end_layout
-
-\begin_layout Plain Layout
-
-test_mat<-my_matrix_prod(A = Y, B = X)
-\end_layout
-
-\begin_layout Plain Layout
-
-test_mat
-\end_layout
-
-\begin_layout Plain Layout
-
-# jämför med 
-\end_layout
-
-\begin_layout Plain Layout
-
-Y%*%X
-\end_layout
-
-\begin_layout Plain Layout
-
-my_matrix_prod(A = X, B = X)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_matrix_prod(A = matrix(1:5,5,1), B = matrix(1:5,1,5))
-\end_layout
-
-\begin_layout Plain Layout
-
-my_matrix_prod(A = matrix(1:5,1,5), B = matrix(1:5,5,1))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4986,6 +4728,13 @@ debug
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
  och funktionerna i inlämningsuppgifterna och 
 \series bold
@@ -4993,6 +4742,26 @@ inget
 \series default
  annat.
  Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb3_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb3_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
