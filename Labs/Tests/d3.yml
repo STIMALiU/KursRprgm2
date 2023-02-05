@@ -2,8 +2,6 @@
 name  : D3
 description : "Statistisk programmering med R: Lab 3"
 tasks:
-  my_matrix_prod:
-    url: Tasks/my_matrix_prod_tests.R
   babylon :
     url: Tasks/babylon_tests.R
   blood_match :
