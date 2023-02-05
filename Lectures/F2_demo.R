@@ -139,11 +139,12 @@ data()
 
 data("airquality")
 ?airquality
-head(airquality)
+head(airquality,3)
 tail(airquality)
-summary(airquality)
 dim(airquality)
 
+
+summary(airquality)
 
 
 ?iris
@@ -155,6 +156,10 @@ tail(iris)
 dim(iris)
 iris
 colnames(iris)
+
+iris$Sepal.Length
+
+iris$Sepal.Length[1:5]
 iris$Species
 
 # -------------------------------------------------------------------------------------------
@@ -162,9 +167,9 @@ iris$Species
 ?factor
 
 text_vect<-rep(c("a","a","b","c"),each=2)
+is.character(text_vect)
 factor_vect<-factor(x = text_vect)
 levels(factor_vect)
-
 
 
 
@@ -189,7 +194,10 @@ typeof(iris$Sepal.Length)
 
 
 mean(iris$Sepal.Length)
+
 iris[1:10,-5]
+
+head(iris)
 colMeans(iris[,-5])
 rowMeans(iris[,-5])
 colSums(iris[,-5])
@@ -229,6 +237,12 @@ y<-list("hej",TRUE,1:4)
 y
 
 x[1]
+y[1]
+
+
+x[[1]]
+y[[1]]
+
 
 typeof(x[1])
 
@@ -246,6 +260,7 @@ y[[1:2]]
 y[1:2]
 
 x[[3]][4]
+
 x[[3]][4]<-4746
 x$c[4]
 x
@@ -281,6 +296,8 @@ cbind(a,b)
 rbind(a,b)
 rbind(b,a)
 
+rbind(a,a,a)
+
 ?merge
 # från example(merge)
 
@@ -314,8 +331,10 @@ aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 getwd()
 dir()
 # /home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm/Labs/DataFiles
-setwd(dir = "/home/josef/Dropbox/Josef/732G33_VT2018/temp")
+setwd(dir = "/home/joswi05/Desktop/temp/")
 
+# github: 
+# https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt
 
 # -------------------------------------------------------------------------------------------
 # input:
@@ -327,12 +346,17 @@ print(path)
 x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",")
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
+
+read.table("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt",header = TRUE,sep = ";",dec = ",")
+
 str(x1)
 typeof(x1[,1])
 x2<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",",stringsAsFactors = FALSE)
 typeof(x2[,1])
 str(x2)
 typeof(x2[,1])
+
+
 
 
 ?read.csv()
