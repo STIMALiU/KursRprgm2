@@ -3,7 +3,7 @@
 
 # Hur gör man för att få years till en numerisk vektor?
 
-x<-as.numeric("1993abc")
+x<-as.numeric("1993")
 print(x)
 is.numeric(x)
 x<-as.numeric("1993abc")
