@@ -1,0 +1,9 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Sammanfattning föreläsning 2}{3}{0}{1}
+\beamer@sectionintoc {2}{Programkontroll}{7}{0}{2}
+\beamer@sectionintoc {3}{Villkorssatser}{9}{0}{3}
+\beamer@sectionintoc {4}{Loopar (for-loop)}{17}{0}{4}
+\beamer@sectionintoc {5}{Nästlade loopar}{24}{0}{5}
+\beamer@sectionintoc {6}{while-loop}{28}{0}{6}
+\beamer@sectionintoc {7}{Kontrollstrukturer för loopar}{32}{0}{7}
+\beamer@sectionintoc {8}{Varningsmeddelanden och debugg}{40}{0}{8}
