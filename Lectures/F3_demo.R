@@ -15,6 +15,7 @@ if(FALSE) print("Ja!")
 
 if(TRUE){
   print("Ja!")
+  print("nej")
 }
 
 
@@ -28,6 +29,7 @@ if(2 > 4) print("Nej!")
 # if-esle:
 x <- 10
 x <- 40
+x <- 20
 
 if(x <= 20){
   print("litet x")
@@ -40,7 +42,10 @@ if(x <= 20){
 x <- 0:10
 length(x)
 if(x >= 1) print("hej")
+if(x[3] >= 1) print("hej")
+
 x<-"hej"
+as.numeric(x)
 is.numeric(x)
 
 # Detta är ett exempel på kontroll av argument
@@ -81,7 +86,7 @@ if( (a&!b)&c ){
 # Egen version av sign(), testa ?sign
 ?sign
 sign(x = 0)
-sign(x = -3998)
+sign(x = -399800)
 sign(x = 32)
 
 sign(20)
@@ -89,6 +94,7 @@ sign(-32)
 sign(0)
 
 my_sign<-function(x){
+  
   if(is.numeric(x)){
     
     if(x > 0){
@@ -154,6 +160,12 @@ for(i in loop_vekt){
   print(i)
 }
 
+for(i in 1:10){
+  print(i)
+}
+
+
+
 res<-rep(0,length(loop_vekt))
 x <- 0
 for(i in loop_vekt){
@@ -161,8 +173,10 @@ for(i in loop_vekt){
   res[i] <- x
   print(x)
 }
-sum(loop_vekt)
 
+res
+sum(loop_vekt)
+cumsum(loop_vekt)
 
 
 vec <- c("I", "love", "R", "and", "Python")
@@ -348,7 +362,7 @@ my_mean<-function(x){
 }
 my_mean(x = 1:8)
 my_mean(x=c(TRUE,FALSE,FALSE))
-
+my_mean(x=c("a","j"))
 
 
 
@@ -377,9 +391,9 @@ h<-function(x){
   x_sum<-sum(x)
   print(x_mean)
   print(x_sum)
-  x2<-x^2
+  x2<-x_mean^2
   z<-5
-  x3<-exp(x2)
+  x3<-log(x2+10)
   y<-x3<-z
   return(y)
 }
