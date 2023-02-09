@@ -4112,7 +4112,51 @@ texttt{rh}
 \end_inset
 
 .
- Funktionen ska skriva ut textraden 
+ Ett exempel på en sådan lista visas nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# exempel på lista som ges som input till funktionen:
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+str(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionen ska skriva ut textraden 
 \begin_inset ERT
 status open
 
@@ -4179,6 +4223,15 @@ texttt{Incompatible AB0 and rh}
 \end_inset
 
  beroende på vad som inte matchade.
+ Funktionen ska alltså använda 
+\family typewriter
+print()
+\family default
+ för att ge denna output, ni ska inte använda
+\family typewriter
+ return()
+\family default
+ i denna funktion.
 \end_layout
 
 \begin_layout Standard
