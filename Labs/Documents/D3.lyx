@@ -1875,7 +1875,7 @@ for (element in myList){
 
 \begin_layout Plain Layout
 
-	if(typeof(element) != "numeric"){ next() }
+	if(!is.numeric(element)){ next() }
 \end_layout
 
 \begin_layout Plain Layout
