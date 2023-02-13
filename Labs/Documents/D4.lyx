@@ -5107,9 +5107,79 @@ print(B)
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\series bold
+Kom ihåg:
+\series default
+ Om era funktioner inte fungerar som de ska testa debuggging! Använd 
+\family typewriter
+print
+\family default
+, 
+\family typewriter
+cat
+\family default
+ eller 
+\family typewriter
+message
+\family default
+ för att skriva ut relevanta värden.
+ Använd 
+\family typewriter
+browser
+\family default
+/
+\family typewriter
+debug
+\family default
+ för att stega igenom funktionerna.
+ Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
+ och funktionerna i inlämningsuppgifterna och 
+\series bold
+inget
+\series default
+ annat.
+ Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb3_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb3_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar! 
+Grattis! Nu är du klar!
 \end_layout
 
 \end_body
