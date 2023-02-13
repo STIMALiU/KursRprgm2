@@ -4643,17 +4643,25 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
 
-\begin_layout Plain Layout
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
+\begin_inset Quotes srd
+\end_inset
 
-solution_path<-"/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeache
-r/Labs/exercise_solutions/"
+
 \end_layout
 
 \begin_layout Plain Layout
 
 solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5024,6 +5032,24 @@ status open
 \begin_layout Plain Layout
 
 <<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+hilbert_matrix(nrow = 1, ncol = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+hilbert_matrix(nrow = 3, ncol = 1)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
