@@ -1,0 +1,36 @@
+\frametitle{Exempel på lapply()}
+\protect\hypertarget{exempel-puxe5-lapply}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lapply()} har tre argument:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{x} listan vi vill loopa över.
+  \item
+    \texttt{FUN} funktionen att applicera.
+  \item
+    \texttt{...} argument till funktionen
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myList }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{x=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{,}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{))}
+\FunctionTok{str}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(}\AttributeTok{X=}\NormalTok{myList, }\AttributeTok{FUN=}\NormalTok{mean, }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 2
+##  $ x: num 5.5
+##  $ y: num 16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Detta är ett test å ä ö}
+\end{Highlighting}
+\end{Shaded}

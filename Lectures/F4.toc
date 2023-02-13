@@ -1,0 +1,8 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Sammanfattning föreläsning 3}{3}{0}{1}
+\beamer@sectionintoc {2}{Inför del 2 av kursen}{9}{0}{2}
+\beamer@sectionintoc {3}{Mer om funktioner}{11}{0}{3}
+\beamer@sectionintoc {4}{Globala och lokala miljöer i R}{22}{0}{4}
+\beamer@sectionintoc {5}{Bra och effektiv kod}{27}{0}{5}
+\beamer@sectionintoc {6}{R-paket}{38}{0}{6}
+\beamer@sectionintoc {7}{Dokumentation med ROxygen}{46}{0}{7}

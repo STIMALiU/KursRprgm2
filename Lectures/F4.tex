@@ -1,0 +1,1305 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R-programmering VT2022},
+  pdfauthor={Josef Wilzén},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
+
+%%% USEFUL PACKAGES
+%\usepackage{showframe} % For debugging positioning
+\usepackage{etex} % If too many packages
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{natbib}
+%\usepackage{booktabs}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+%\usepackage{animate} % Animations
+\usepackage{bm} % Bold math
+\usepackage{bbm}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{ulem} % Used for strikeouts \sout
+%\usepackage{stackengine}
+%\usepackage{enumitem}
+%\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+%\usepackage{colortbl} % Used for colored rows in tables
+
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+
+%%% COLORS
+\setbeamercolor{background canvas}{bg=white}
+\def\BlankFrame{
+	\bgroup
+	%\pdfpageheight 29.7cm
+	\setbeamercolor{background canvas}{bg=}
+	\begin{frame}[plain]
+	\end{frame}
+	%\makeatletter
+	%\pdfpageheight \beamer@paperheight
+	%\makeatother
+	\egroup}
+
+\usepackage{xcolor}
+\definecolor{DarkGreen}{HTML}{00B200}
+\definecolor{LightBlue}{HTML}{0090D9}
+\definecolor{gold}{rgb}{.812,.710,.231}
+% Text markup
+%\setbeamercolor{alerted text}{fg=red}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\grey}[1]{\textcolor{gray}{#1}}
+\newcommand{\orange}[1]{\textcolor{mLightBrown}{#1}}
+\newcommand\myheading[1]{\textbf{#1}}
+\newcommand\myemph[1]{\underline{\emph{#1}}}
+\newcommand\textexample[1]{\textit{\textbf{#1}}}
+
+%%% SPACING
+\newcommand\vws[1][1]{\vspace{#1\baselineskip}} % vertical white space
+%\newcommand\strt[1][1.5ex]{\rule[-.05\baselineskip]{0pt}{#1}} % strut
+\newcommand\strt[2]{\rule[-#1ex]{0pt}{#2ex}} % strut
+\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after
+
+%%% MISC
+\newcommand\articleref[4]{\noindent\begin{minipage}[t]{0.04\textwidth}
+		\vspace{0pt} 
+		\pgfuseimage{beamericonarticle}
+	\end{minipage}%
+	\begin{minipage}[t]{0.96\textwidth}
+		\vspace{0pt}
+		#1. \textbf{#2.} \textit{#3}, #4.
+	\end{minipage}}
+
+%%% METROPOLIS THEME SPECIFIC
+\makeatletter
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\makeatother
+%\setbeamercolor{progress bar}{fg=red,bg=red!50}
+
+
+%%% TEXTPOS
+\usepackage[absolute,overlay]{textpos} % option showboxes is useful in draft mode
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\textblockorigin{0pt}{10mm} % start everything at top-left, below gray 
+
+
+%%% TIKZ/PGFPLOTS
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc,shapes.geometric}
+%\usetikzlibrary{arrows,calc,shapes.geometric,decorations.pathmorphing,backgrounds,positioning,fit,petri,decorations.pathreplacing}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat = 1.3}
+
+
+%%% BLOCKS AND BOXES
+% Changing colors of blocks
+%\setbeamercolor{block title alerted}{bg=UURed,fg=palette primary.fg}
+%\setbeamercolor{block body alerted}{bg=UURed!15}
+\setbeamercolor{block title alerted}{bg=mLightBrown,fg=palette primary.fg}
+\setbeamercolor{block body alerted}{bg=mLightBrown!15}
+%\setbeamercolor{block title example}{bg=UUGreen,fg=palette primary.fg}
+%\setbeamercolor{block body example}{bg=UUGreen!10}
+% \mybox is a rectangular box
+\usepackage{boxedminipage}
+\setlength\fboxrule{2pt}
+\setlength\fboxsep{2\fboxsep}
+\newcommand\mybox[3][\textwidth]{
+  {\color{#2}
+    \begin{boxedminipage}{#1}
+      {\color{palette primary.bg} #3}
+    \end{boxedminipage}}%
+}   
+\usepackage{tcolorbox}
+\tcbset{arc=1mm,grow to left by=3mm,grow to right by=3mm,left=2mm}
+%\newenvironment{redbox}{%
+%	\begin{tcolorbox}[colback=UURed!15,colframe=UURed]}{%
+%	\end{tcolorbox}}
+%\newenvironment{greenbox}{%
+%	\begin{tcolorbox}[colback=UUGreen!15,colframe=UUGreen]}{%
+%	\end{tcolorbox}}
+\newenvironment{redbox}{%
+	\begin{tcolorbox}[colback=red!15,colframe=red]}{%
+	\end{tcolorbox}}
+\newenvironment{greenbox}{%
+	\begin{tcolorbox}[colback=DarkGreen!15,colframe=DarkGreen]}{%
+	\end{tcolorbox}}
+\newenvironment{graybox}{%
+	\begin{tcolorbox}[colback=mDarkTeal!5,colframe=mDarkTeal]}{%
+	\end{tcolorbox}}
+\newenvironment{orangebox}{%
+\begin{tcolorbox}[colback=mLightBrown!15,colframe=mLightBrown]}{%
+	\end{tcolorbox}}
+\newenvironment{bwbox}{%
+	\begin{tcolorbox}[colback=white,colframe=black]}{%
+\end{tcolorbox}}
+\newenvironment{bluebox}{%
+	\begin{tcolorbox}[colback=LightBlue!15,colframe=LightBlue]}{%
+\end{tcolorbox}}
+
+
+%%%%%%%%% NEW MACROS
+
+\newcommand\imp[1]{\alert{\textbf{#1}}}
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+\newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
+\newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{R-programmering VT2022}
+\subtitle{Föreläsning 4}
+\author{Josef Wilzén}
+\date{2022-02-15}
+\institute{Linköpings Universitet}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Föreläsning 4:}
+\protect\hypertarget{fuxf6reluxe4sning-4}{}
+\begin{itemize}
+\tightlist
+\item
+  Sammanfattning Föreläsning 3
+\item
+  Inför del 2 av kursen
+\item
+  Mer om funktioner
+\item
+  Globala och lokala miljöer i R
+\item
+  Bra och effektiv kod
+\item
+  R-paket
+\item
+  Dokumentation av kod
+\item
+  *apply-funktioner
+\end{itemize}
+\end{frame}
+
+\hypertarget{sammanfattning-fuxf6reluxe4sning-3}{%
+\section{Sammanfattning föreläsning
+3}\label{sammanfattning-fuxf6reluxe4sning-3}}
+
+\begin{frame}{If - else if - else}
+\protect\hypertarget{if---else-if---else}{}
+\begin{itemize}
+\tightlist
+\item
+  Används för att testa påstående och köra kod beroende på svaret.
+\item
+  Flera if-satser mot if - else och if - else if - else satser:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Använd flera if-satser vid oberoende frågor
+  \item
+    Använd if - else och nästla om frågorna beror på svaret av förra
+  \item
+    Använd if - else if - else om det finns mer än 2 möjliga utfall
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{For loopar}
+\protect\hypertarget{for-loopar}{}
+\begin{itemize}
+\tightlist
+\item
+  Används för att loopa (köra samma kod flera gånger) när vi vet hur
+  många iterationer som behövs.
+\item
+  Loopar över vektorer / listor
+\item
+  Kan nästla loopar, innersta loopen kommer jobba ``snabbast''
+\end{itemize}
+\end{frame}
+
+\begin{frame}{While loopar}
+\protect\hypertarget{while-loopar}{}
+\begin{itemize}
+\tightlist
+\item
+  Används för att loopa när vi inte vet hur många iterationer som
+  behövs.
+\item
+  Ett villkor behövs som testas vid början av varje iteration
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Om sant så kör vi en iteration till.
+  \item
+    Om falskt så avbryts loopen.
+  \end{itemize}
+\item
+  Finns risk för oändliga loopar.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Loopkontroll}
+\protect\hypertarget{loopkontroll}{}
+\begin{itemize}
+\tightlist
+\item
+  Händer ofta att vi vill avbryta loopar i förtid eller hoppa över
+  iterationer.
+\item
+  break() avbryter den innersta loopen.
+\item
+  next() hoppar direkt till nästa iteration.
+\item
+  stop() avbryter alla loopar (och funktioner) och genererar ett
+  felmeddelande.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Debugging}
+\protect\hypertarget{debugging}{}
+\begin{itemize}
+\tightlist
+\item
+  Använd print() och cat() för att skriva ut variabler när funktionen
+  kör.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Skriv ut vad en variabel är.
+  \item
+    Skriv ett meddelande om man kommer in i en if-sats.
+  \end{itemize}
+\item
+  Använd debug() eller browser() för att komma in i debugg-läge.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Stega igenom funktionen rad för rad.
+  \item
+    Kolla värden på variabler.
+  \item
+    Testa uttryck.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{infuxf6r-del-2-av-kursen}{%
+\section{Inför del 2 av kursen}\label{infuxf6r-del-2-av-kursen}}
+
+\begin{frame}{Inför del 2 ava kursen}
+\protect\hypertarget{infuxf6r-del-2-ava-kursen}{}
+\begin{itemize}
+\tightlist
+\item
+  Under del 2 av kursen görs labbarna i \textbf{par}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    De som läser om kursen gör labbarna med andra som läser om kursen
+    eller ensamma.
+  \end{itemize}
+\item
+  Ni bildar grupper själva.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Anmäl er: Lisam $\Rightarrow$ Anmälan
+  \item
+    Finns en kanal i Teams om man vill hitta en gruppkamrat.
+  \item
+    Man måste vara i en grupp för att kunna lämna in labb 5 till 8.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{mer-om-funktioner}{%
+\section{Mer om funktioner}\label{mer-om-funktioner}}
+
+\begin{frame}{Funktioner - repetition}
+\protect\hypertarget{funktioner---repetition}{}
+Vi påminner oss om att en funktion i R består av
+
+\begin{itemize}
+\tightlist
+\item
+  ett funktionsnamn
+\item
+  en funktionsdefinition \texttt{function()}
+\item
+  argument (0 eller flera)
+\item
+  måsvingar
+\item
+  programkod
+\item
+  \texttt{return()}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Allmänt I}
+\protect\hypertarget{funktioner---allmuxe4nt-i}{}
+\begin{itemize}
+\tightlist
+\item
+  Funktioner är objekt.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x,y) \{}
+\NormalTok{  z }\OtherTok{\textless{}{-}}\NormalTok{ x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{{-}}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2}
+  \FunctionTok{return}\NormalTok{(z)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{typeof}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "closure"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{class}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "function"
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Funktioner - Allmänt II}
+\protect\hypertarget{funktioner---allmuxe4nt-ii}{}
+\begin{itemize}
+\tightlist
+\item
+  Funktioner har tre delar:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    argument
+  \item
+    funktionskropp
+  \item
+    miljö
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Argument}
+\protect\hypertarget{funktioner---argument}{}
+\begin{itemize}
+\tightlist
+\item
+  Argument är insignalerna
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{formals}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $x
+## 
+## 
+## $y
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Funktionskropp}
+\protect\hypertarget{funktioner---funktionskropp}{}
+\begin{itemize}
+\tightlist
+\item
+  Kroppen är koden som körs
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{body}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## {
+##     z <- x^2 - y^2
+##     return(z)
+## }
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Miljö}
+\protect\hypertarget{funktioner---miljuxf6}{}
+\begin{itemize}
+\tightlist
+\item
+  Miljön är vart funktioner finns
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{environment}\NormalTok{(f)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <environment: R_GlobalEnv>
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Allmänt III}
+\protect\hypertarget{funktioner---allmuxe4nt-iii}{}
+\begin{itemize}
+\tightlist
+\item
+  En funktion kan ha en funktion som argument
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{complex\_function }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+  \FunctionTok{return}\NormalTok{(x }\SpecialCharTok{*} \FunctionTok{exp}\NormalTok{(}\SpecialCharTok{{-}}\NormalTok{x))}
+\NormalTok{\}}
+\FunctionTok{integrate}\NormalTok{(complex\_function, }\AttributeTok{lower =} \DecValTok{0}\NormalTok{, }\AttributeTok{upper =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 0.2642411 with absolute error < 2.9e-15
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Funktioner kan returnera funktioner
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Allmänt IV}
+\protect\hypertarget{funktioner---allmuxe4nt-iv}{}
+\begin{itemize}
+\tightlist
+\item
+  Vi behöver inte namnge argumenten
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\NormalTok{, }\AttributeTok{y =} \DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -24
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Ordningen spelar ingen roll
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{(}\AttributeTok{y =} \DecValTok{5}\NormalTok{, }\AttributeTok{x =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -24
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Allmänt V}
+\protect\hypertarget{funktioner---allmuxe4nt-v}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{return()} och måsvingar behövs inte för små funktioner
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) }\DecValTok{3}\SpecialCharTok{*}\NormalTok{x }\SpecialCharTok{{-}} \DecValTok{5}
+\FunctionTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Funktioner - Allmänt VI}
+\protect\hypertarget{funktioner---allmuxe4nt-vi}{}
+\begin{itemize}
+\tightlist
+\item
+  Vi kan sätta defaultvärden
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{x =} \DecValTok{10}\NormalTok{) }\DecValTok{3}\SpecialCharTok{*}\NormalTok{x }\SpecialCharTok{{-}} \DecValTok{5}
+\FunctionTok{f}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{f}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 25
+\end{verbatim}
+\end{frame}
+
+\hypertarget{globala-och-lokala-miljuxf6er-i-r}{%
+\section{Globala och lokala miljöer i
+R}\label{globala-och-lokala-miljuxf6er-i-r}}
+
+\begin{frame}{Miljöer i R}
+\protect\hypertarget{miljuxf6er-i-r}{}
+\begin{itemize}
+\tightlist
+\item
+  Objekt kan definerass/skapas i
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Den globala miljön
+  \item
+    Lokala miljön
+  \item
+    Namespaces
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hur vet R vad vi menar}
+\protect\hypertarget{hur-vet-r-vad-vi-menar}{}
+\begin{itemize}
+\tightlist
+\item
+  R:s söklista:
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Lokala miljöer
+  \item
+    Globala miljön
+  \item
+    Vidare i den ordning \texttt{namespaces} är laddade
+  \end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Fria vaariabler}
+\protect\hypertarget{fria-vaariabler}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+}\NormalTok{ y}
+\end{Highlighting}
+\end{Shaded}
+
+Objektet/värdet för ``fria'' variabler undersöks först i den miljön
+funktionen var definerad/skapad.
+
+Efter det söker R i samma ordning som förra sliden.
+\end{frame}
+
+\begin{frame}[fragile]{Fria variabler - Exempel}
+\protect\hypertarget{fria-variabler---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+}\NormalTok{ y}
+\FunctionTok{f}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Error in f(3) : object 'y' not found"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{2}
+\FunctionTok{f}\NormalTok{(}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+\end{frame}
+
+\hypertarget{bra-och-effektiv-kod}{%
+\section{Bra och effektiv kod}\label{bra-och-effektiv-kod}}
+
+\begin{frame}{God (vetenskaplig) programmering}
+\protect\hypertarget{god-vetenskaplig-programmering}{}
+\begin{itemize}
+\tightlist
+\item
+  Programmering är en viktig del av analys
+\item
+  Forskare/statistiker spenderar stor del av sin tid med att skriva kod
+  -Det är enkelt att det blir fel
+\end{itemize}
+\end{frame}
+
+\begin{frame}{8 steg för god programmering}
+\protect\hypertarget{steg-fuxf6r-god-programmering}{}
+\begin{enumerate}
+\tightlist
+\item
+  Skriv kod för människor, inte datorer
+\item
+  Låt datorn gör arbetet
+\item
+  Ta små steg
+\item
+  Upprepa aldrig dig själv (eller andra)
+\item
+  Planera för misstag
+\item
+  Optimera kod först när den fungerar
+\item
+  Dokumentera
+\item
+  Samarbeta
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{1. Skriv kod för människor, inte datorer}
+\protect\hypertarget{skriv-kod-fuxf6r-muxe4nniskor-inte-datorer}{}
+\begin{itemize}
+\tightlist
+\item
+  En läsare ska inte behöva hålla allt i minnet.
+\item
+  Ge funktioner och variabler meningsfulla namn.
+\item
+  Använd en konsekvent kodstil och formatering
+\end{itemize}
+\end{frame}
+
+\begin{frame}{2. Låt datorn gör arbetet}
+\protect\hypertarget{luxe5t-datorn-guxf6r-arbetet}{}
+\begin{itemize}
+\tightlist
+\item
+  Låt datorn upprepa uppgifter.
+\item
+  Skriv inte samma kod flera gånger.
+\item
+  Automatisera arbetsflödet.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{3. Ta små steg}
+\protect\hypertarget{ta-smuxe5-steg}{}
+\begin{itemize}
+\tightlist
+\item
+  Gör små ändringar, bygg upp funktionen i små steg.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Testa ofta!
+  \end{itemize}
+\item
+  Versionshantera din kod (överkurs).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Git finns inbyggt stöd för i R-studio.
+  \item
+    Finns enkel versionshantering i de vaniga molntjänsterna.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{4. Upprepa aldrig dig själv (eller andra)}
+\protect\hypertarget{upprepa-aldrig-dig-sjuxe4lv-eller-andra}{}
+\begin{itemize}
+\tightlist
+\item
+  All data ska bara finnas på ett ställe.
+\item
+  Undivk att klippa och klistra din kod, skriv en funktion istället.
+\item
+  Återvinn kod istället för att skriva ny.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{5. Planera för misstag}
+\protect\hypertarget{planera-fuxf6r-misstag}{}
+\begin{itemize}
+\tightlist
+\item
+  Skapa kontroller av input (och output).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hitta fel så tidigt som möjligt och avbryt.
+  \end{itemize}
+\item
+  Använd ett testpaket (överkurs)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    i R finns \texttt{testthat}
+  \end{itemize}
+\item
+  Gör om buggar till testfall.
+\item
+  Använd debuggers!
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{browser()}
+  \item
+    \texttt{debug()}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{6. Optimera kod först när den fungerar}
+\protect\hypertarget{optimera-kod-fuxf6rst-nuxe4r-den-fungerar}{}
+\begin{itemize}
+\tightlist
+\item
+  Se till att koden fungerar och löser uppgiften först.
+\item
+  Först efter det kan du fundera på om den behöver vara:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    snabbare
+  \item
+    mer minneseffektiv
+  \item
+    mer användarvänlig
+  \end{itemize}
+\item
+  Använd profileringsverktyg (överkurs).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    i R finns \texttt{Rprof()}
+  \item
+    i R-studio kan man klicka på ``Profile''.
+  \end{itemize}
+\item
+  Använd ett högnivåspråk, som R.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{7. Dokumentera}
+\protect\hypertarget{dokumentera}{}
+\begin{itemize}
+\tightlist
+\item
+  Dokumentera syftet med koden, inte vad koden gör.
+\item
+  Gör koden lätt att förstå.
+\item
+  Kombinera kod och dokumentation.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Lägg in många kommentarer med \#
+  \item
+    Använd \texttt{knitr} (miniprojektet)
+  \item
+    Generera dokumentation med \texttt{roxygen2}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{8. Samarbeta}
+\protect\hypertarget{samarbeta}{}
+\begin{itemize}
+\tightlist
+\item
+  Låt andra titta på din kod. (inte på inlämningsuppgifterna)
+\item
+  Använd parprogrammering för att:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    hjälpa kollegor in i projekt
+  \item
+    hantera komplexa programmeringsproblem
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{r-paket}{%
+\section{R-paket}\label{r-paket}}
+
+\begin{frame}{Vad är R-paket?}
+\protect\hypertarget{vad-uxe4r-r-paket}{}
+\begin{itemize}
+\tightlist
+\item
+  R:s största styrka!
+\item
+  En samlig funktioner.
+\item
+  Många utveklare
+\item
+  Två huvudsakliga ``arkiv'' av paket:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    CRAN
+  \item
+    GitHub
+  \end{itemize}
+\item
+  Det är enkelt att bidra med egna paket!
+\item
+  Finns många riktigt bra paket.
+\item
+  Finns också mycket skräp.
+\item
+  Glöm inte att citera med \texttt{citation()}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{R-paket - I}
+\protect\hypertarget{r-paket---i}{}
+\begin{itemize}
+\tightlist
+\item
+  Läsa in paket görs med \texttt{library()}
+\item
+  Anropa funktioner utan att ladda paket görs med \texttt{::}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{base::mean()}
+  \end{itemize}
+\item
+  Installera paket
+
+  \begin{itemize}
+  \tightlist
+  \item
+    CRAN: \texttt{install.packages()}
+  \item
+    GitHub: \texttt{devtools::install\_github()}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{R-paket - II}
+\protect\hypertarget{r-paket---ii}{}
+\begin{itemize}
+\tightlist
+\item
+  En del paket följer med R
+\item
+  \texttt{ls("package:MASS")} visar vilka funktioner som finns i paketet
+  MASS.
+\item
+  I Rstudio finns en flik för pakethantering.
+\item
+  Lista alla inläsa paket: \texttt{sessionInfo()}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Att hitta rätt paket}
+\protect\hypertarget{att-hitta-ruxe4tt-paket}{}
+\begin{itemize}
+\tightlist
+\item
+  Alla paket håller inte samma kvalitet.
+\item
+  Följande tips för att se om det är ett bra paket:
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Kommer paketet med R eller från R Core Team?
+  \item
+    När kom senaste uppdateringen?
+  \item
+    Är paketet en utvecklingsversion?
+  \item
+    Sök på nätet och se om andra använder paketet och till vad.
+  \item
+    Mejla och fråga utvecklaren.
+  \item
+    Kontrollräkna centrala funktioner.
+  \end{enumerate}
+\item
+  För att komma igång med nya paket: vignetter
+\item
+  På cran task view finns många paket ordnade efter ämne
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Installera paket}
+\protect\hypertarget{installera-paket}{}
+CRAN:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.package}\NormalTok{(}\StringTok{"lubridate"}\NormalTok{)}
+\FunctionTok{install.package}\NormalTok{(}\StringTok{"devtools"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+GitHub:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(devtools)}
+\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ropengov/pxweb"}\NormalTok{)}
+\CommentTok{\# alternativt}
+\NormalTok{devtools}\SpecialCharTok{::}\FunctionTok{install\_github}\NormalTok{(}\StringTok{"ropengov/pxweb"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Läsa in paket}
+\protect\hypertarget{luxe4sa-in-paket}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# läsa in}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\CommentTok{\# ta bort från aktuell session}
+\FunctionTok{detach}\NormalTok{(}\StringTok{"package:lubridate"}\NormalTok{, }\AttributeTok{unload =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Läsa in paket}
+\protect\hypertarget{luxe4sa-in-paket-1}{}
+\begin{itemize}
+\tightlist
+\item
+  I SU-salarna finns många paket redan installerade.
+\item
+  Kör följande i en terminal:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{module add prog/r-mega-edition/21.10}
+  \end{itemize}
+\item
+  Då får ni tillgång till R, R-Studio samt många paket.
+\end{itemize}
+\end{frame}
+
+\hypertarget{dokumentation-med-roxygen}{%
+\section{Dokumentation med ROxygen}\label{dokumentation-med-roxygen}}
+
+\begin{frame}{Dokumentation med ROxygen}
+\protect\hypertarget{dokumentation-med-roxygen-1}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{roxygen2} är standard för dokumentation
+\item
+  Samma som JavaDoc
+\item
+  Skapar automatiskt \texttt{.Rd} i paket
+\item
+  Använder \#'
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dokumentation med ROxygen}
+\protect\hypertarget{dokumentation-med-roxygen-2}{}
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+ROxygendel & Innehåll \\
+\midrule
+\endhead
+\texttt{@title} & Anger titel för dokumentet \\
+\texttt{@description} & En beskrivning vad funktionen gör \\
+\texttt{@details} & Detaljer om funktionen \\
+\texttt{@param} & Argument till funktionen \\
+\texttt{@return} & Vad funktionen returnerar \\
+\texttt{@references} & Eventuella referenser av intresse \\
+\texttt{@seealso} & Andra funktioner som kan vara aktuella \\
+\texttt{@examples} & Exempel på hur funktionen kan användas \\
+\bottomrule
+\end{longtable}
+\end{frame}
+
+\begin{frame}[fragile]{Dokumentation med ROxygen - Exempel}
+\protect\hypertarget{dokumentation-med-roxygen---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\textquotesingle{} @title f}
+\CommentTok{\#\textquotesingle{} @description}
+\CommentTok{\#\textquotesingle{} En funktion som kvadrerar argumenten }
+\CommentTok{\#\textquotesingle{} i x och y och summerar dem. }
+\CommentTok{\#\textquotesingle{} @param x}
+\CommentTok{\#\textquotesingle{} Den numeriska variabel x som ska kvadreras}
+\CommentTok{\#\textquotesingle{} @param y}
+\CommentTok{\#\textquotesingle{} Den numeriska variabel y som ska kvadreras}
+\CommentTok{\#\textquotesingle{}}
+\CommentTok{\#\textquotesingle{} @return}
+\CommentTok{\#\textquotesingle{} Funktionen returnerar en numerisk vektor}
+\CommentTok{\#\textquotesingle{}}
+\NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y) x}\SpecialCharTok{\^{}}\DecValTok{2} \SpecialCharTok{+}\NormalTok{ y}\SpecialCharTok{\^{}}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{*apply-funktioner}
+\protect\hypertarget{apply-funktioner}{}
+\begin{itemize}
+\tightlist
+\item
+  ``Högnivåfunktioner''.
+\item
+  Ett (snabbare) alternativ till loopar.
+\item
+  Internt i R: loop i C-kod.
+\item
+  Funktioner:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{lapply()} : loopar över element i en lista.
+  \item
+    \texttt{tapply()} : loopar över ett index (ex. \texttt{aggregate()})
+  \item
+    \texttt{apply()} : loopar över marginaler (ex. \texttt{colSums()})
+  \item
+    Finns fler
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Exempel på lapply()}
+\protect\hypertarget{exempel-puxe5-lapply}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{lapply()} har tre argument:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{x} listan vi vill loopa över.
+  \item
+    \texttt{FUN} funktionen att applicera.
+  \item
+    \texttt{...} argument till funktionen
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{myList }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{x=}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{, }\AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\ConstantTok{NA}\NormalTok{,}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{))}
+\FunctionTok{str}\NormalTok{(}\FunctionTok{lapply}\NormalTok{(}\AttributeTok{X=}\NormalTok{myList, }\AttributeTok{FUN=}\NormalTok{mean, }\AttributeTok{na.rm=}\ConstantTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## List of 2
+##  $ x: num 5.5
+##  $ y: num 16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Detta är ett test å ä ö}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\end{document}
