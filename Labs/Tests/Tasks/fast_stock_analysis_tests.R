@@ -88,7 +88,7 @@ test_that("fast_stock_analysis()", {
 #                info="Fel: Elementet 'datum' är fel.")
   
   #-----------------------------------------------------------------------------------------------
-  # Testa för AppleTest.csv och period_length=5
+  # Testa för AppleTest.csv och period_length=3
   # Create myList2
   myList2 <- fast_stock_analysis(file_path=testFile, period_length=3)
   expect_equal(myList2$total_spridning, 8.9, tolerance = 0.01, 
