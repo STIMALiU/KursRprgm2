@@ -4963,17 +4963,18 @@ Skapa en nästlad for-loop, där en loop går över rader och en över kolumner
 \end_inset
 
 .
+ Se till att ha olika namn på de två loopvariablerna.
 \end_layout
 
 \begin_layout Enumerate
-Beräkna 
+Använd formel 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:hilbert"
 
 \end_inset
 
- för varje element i 
+ för att beräkna varje element i matrisen 
 \begin_inset Formula $H$
 \end_inset
 
