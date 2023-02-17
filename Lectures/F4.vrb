@@ -29,8 +29,4 @@
 ##  $ y: num 16
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# Detta är ett test å ä ö}
-\end{Highlighting}
-\end{Shaded}
+
