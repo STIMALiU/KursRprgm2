@@ -875,6 +875,15 @@ minst 10 år
  Data ska alltså innehålla två kolumner, en med variabeln som vi är intresserade
  av och en med tidpunkterna.
  
+\begin_inset CommandInset href
+LatexCommand href
+name "Här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/F%C3%B6rslag%20p%C3%A5%20tidseriedata%20som%20%C3%A4r%20p%C3%A5%20m%C3%A5nadsniv%C3%A5.pdf"
+literal "false"
+
+\end_inset
+
+ finns en lista över några olika tidserier som används tidigare år.
 \end_layout
 
 \begin_layout Standard
@@ -1615,7 +1624,7 @@ Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
 \end_layout
 
 \begin_layout Section
-Del II: Analys 
+Del II: Analys (ej uppdaterad)
 \end_layout
 
 \begin_layout Standard
