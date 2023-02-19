@@ -109,7 +109,7 @@ R-markdown ska användas.
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/TemplateMiniprojekt.Rmd"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/TemplateProjekt.Rmd"
 literal "false"
 
 \end_inset
@@ -361,12 +361,7 @@ suppressWarnings({
 
 \begin_layout Plain Layout
 
-	mitt_data <- get_pxweb_data(url = "webadress",
-\end_layout
-
-\begin_layout Plain Layout
-
-	dims = list("lista med element"),clean = TRUE)   
+	# min kod här  
 \end_layout
 
 \begin_layout Plain Layout

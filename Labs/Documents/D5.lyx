@@ -6064,7 +6064,7 @@ ktige jämfört med alla kommuner i Sverige.
  Sen ska ni upprepa detta för Moderaterna, Sverigedemokraterna och alla
  andra partier som sitter i riksdagen
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Vi struntar i alla lokala partier som finns i kommunerna här.
@@ -6833,7 +6833,7 @@ En del av denna laboration är att genomföra Projektet del 1.
 \begin_inset CommandInset href
 LatexCommand href
 name "denna"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/miniprojekt_instruktioner.pdf"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/projekt_instruktioner.pdf"
 literal "false"
 
 \end_inset
