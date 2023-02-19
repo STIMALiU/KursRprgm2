@@ -121,6 +121,25 @@ inga
  anrop till markmyassignment-funktioner.
 \end_layout
 
+\begin_layout Standard
+Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb1_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb1_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
+\end_layout
+
 \begin_layout Subsection*
 Tips!
 \end_layout

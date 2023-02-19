@@ -2311,7 +2311,7 @@ Old faithful
 \end_layout
 
 \begin_layout Enumerate
-Det verkar finnas två tydliga kluster.
+Det verkar finnas två tydliga kluster (grupper).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -4333,12 +4333,13 @@ Ofta vill vi beskriva våra beräkningar med matematiska ekvationer.
  I markdown finns det möjlighet att skriva ekvationer med \SpecialChar LaTeX
  ekvationsystem.
  För exempel på hur det går att skriva \SpecialChar LaTeX
--ekvationer, se följande 
+-ekvationer, se följande länkar:
+ 
 \color blue
 
 \begin_inset CommandInset href
 LatexCommand href
-name "minihandbok"
+name "här"
 target "http://en.wikibooks.org/wiki/LaTeX/Mathematics"
 literal "false"
 
@@ -4346,7 +4347,16 @@ literal "false"
 
 
 \color inherit
-.
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://tug.ctan.org/info/short-math-guide/short-math-guide.pdf"
+literal "false"
+
+\end_inset
+
+ 
 \end_layout
 
 \begin_layout Standard
@@ -4491,7 +4501,7 @@ infty}_{0}x^{2}_{a}dx}{10}$$
 \end_layout
 
 \begin_layout Enumerate
-Skapa nu följande ekvationer i R markdown, ta hjälp av minihandboken vid
+Skapa nu följande ekvationer i R markdown, ta hjälp av länkarna ovan vid
  behov.
 \end_layout
 
@@ -4515,6 +4525,10 @@ Skapa nu följande ekvationer i R markdown, ta hjälp av minihandboken vid
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+En valfri ekvation med minst fyra olika grekiska bokstäver.
 \end_layout
 
 \end_deeper
@@ -5183,8 +5197,13 @@ library(downloader)
 
 \begin_layout Plain Layout
 
-apple_remote <- "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/D
-ataFiles/Apple.txt" 
+apple_remote <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/Apple.tx
+t" 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5369,7 +5388,7 @@ library(googlesheets4)
 I nästa steg laddar vi ned information om det aktuella kalkylbladet (hur
  många blad m.m.).
  I detta fall är det ett publikt datablad och vi behöver inte ange några
- användarnamn, däröfr kör vi gs4_deauth() först för att paketet inte ska
+ användarnamn, därför kör vi gs4_deauth() först för att paketet inte ska
  fråga efter inloggning.
  För egna blad behöver vi logga in och skapa en koppling till vårt konto.
  
@@ -5461,7 +5480,7 @@ pxweb
 \end_layout
 
 \begin_layout Enumerate
-Börja med att installera paketet 
+Om ni arbetar vid egen dator: Börja med att installera paketet 
 \family typewriter
 pxweb
 \family default
@@ -5538,9 +5557,9 @@ Navigera i SCB:s API
 \begin_layout Standard
 Ofta vet vi inte exakt vad för data vi vill ha utan vill navigera igenom
  SCB:s databaser på ett effektivt sätt.
- Detta gör vi med funktionen pxweb_interactive
+ Detta gör vi med funktionen 
 \family typewriter
-()
+pxweb_interactive()
 \family default
 .
  Vill vi leta upp ett givet datamaterial som vi vill spara måste vi tillskriva
@@ -5596,6 +5615,7 @@ mitt_data <- pxweb_interactive()
 \begin_layout Enumerate
 För att navigera skrivs kommandon, siffror anger vilket menyval vi vill
  göra, bokstäver och tecken används för att backa/lista alla osv.
+ Exempel: När konsolen är markerad, tryck 1 och tryck sen enter.
 \end_layout
 
 \begin_layout Enumerate
@@ -5611,7 +5631,9 @@ n och spara ned detta som ett datamaterial i R.
 \family typewriter
 2
 \family default
- för att gå vidare till menyn för statistik om Näringsverksamhet: 
+ för att gå vidare till menyn för statistik om 
+\family typewriter
+Arbetsmarknad.
 \end_layout
 
 \begin_layout Enumerate
@@ -5628,11 +5650,15 @@ gå tillbaka
 b
 \family default
 .
- Gå sen in på 
+ Gå sen tillbaka in på 
 \family typewriter
 Arbetsmarknad
 \family default
-, använd a för att se alla alternativ om de är dolda.
+, använd 
+\family typewriter
+a
+\family default
+ för att se alla alternativ om de är dolda.
 \end_layout
 
 \begin_layout Enumerate
@@ -5644,7 +5670,7 @@ Navigera dig fram till följande datamaterial som vi ska läsa in:
 \family typewriter
 [NAKUArblosaTAr] Arbetslösa 15-74 år (AKU) efter arbetslöshetstidens längd,
  kön och ålder.
- År 2005 - 2021
+ År 2005 - 2022
 \end_layout
 
 \begin_layout Enumerate
@@ -5751,19 +5777,24 @@ a
 \begin_layout Enumerate
 Välj nu ut tidsperioden 
 \family typewriter
-2011
+2012
 \family default
  till 
 \family typewriter
 202
 \family default
-1.
+2.
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Nu kommer det komma en massa frågor om hur du vill ladda ner datamaterialet.
- Först frågar den om du vill få koden för att ladda ner data direkt, välj
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Först frågar den om du vill få koden för att ladda ner data direkt, välj
  y.
 \end_layout
 
@@ -5794,8 +5825,13 @@ Som ett sista steg efterfrågas nu om du vill ha citeringen för datamaterialet,
  välj y.
 \end_layout
 
+\end_deeper
 \begin_layout Enumerate
-Nu ska materialet laddas ned.
+Nu ska materialet laddas ned och sparas i variabeln 
+\family typewriter
+mitt_data
+\family default
+.
  Du borde också få ut följande kod:
 \begin_inset Newline newline
 \end_inset
@@ -5821,24 +5857,26 @@ pxweb_query_list <-
 
 \begin_layout Plain Layout
 
-   list("Arbetsloshetstid"=c("TOT","1V","2V","3-4V","5-26V","27V-","uppgsakn"),
- 
+list("Arbetskraftstillh"=c("ALÖS"),"Kon"=c("1+2"),"Alder"=c("tot15-74"),
 \end_layout
 
 \begin_layout Plain Layout
 
-      "Kon"=c("1+2"),        "Alder"=c("15-24","25-54","55-74"), 
+"ContentsCode"=c("AM04011O"),
 \end_layout
 
 \begin_layout Plain Layout
 
-      "ContentsCode"=c("AM0401G0"), 
+"Tid"=c("2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2
+022"))
 \end_layout
 
 \begin_layout Plain Layout
 
-      "Tid"=c("2011","2012","2013","2014","2015","2016","2017","2018","2019","20
-20","2021"))
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5848,18 +5886,26 @@ pxweb_query_list <-
 
 \begin_layout Plain Layout
 
-px_data <-
+px_data <-pxweb_get(
 \end_layout
 
 \begin_layout Plain Layout
 
-   pxweb_get(url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAK
-UArblosaTAr", 
+url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAKUArblheltids
+tudAr",
 \end_layout
 
 \begin_layout Plain Layout
 
-           query = pxweb_query_list)
+query = pxweb_query_list)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5869,8 +5915,12 @@ UArblosaTAr",
 
 \begin_layout Plain Layout
 
-px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.value.type
- = "text") 
+px_data_frame <- 
+\end_layout
+
+\begin_layout Plain Layout
+
+as.data.frame(px_data, column.name.type = "text", variable.value.type = "text")
 \end_layout
 
 \begin_layout Plain Layout
@@ -5881,6 +5931,11 @@ px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.valu
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Koden ovan kan användas för att ladda ner det valda data materialet direkt,
+ utan att använda det interaktiva gränssnittet.
 \end_layout
 
 \begin_layout Enumerate
@@ -5913,15 +5968,19 @@ Vi vill nu ladda ned data för alla tidpunkter.
  och ladda ned datat på nytt.
 \end_layout
 
+\begin_layout Enumerate
+Testa att ändra variablen kön till 1 eller 2 (inte båda).
+\end_layout
+
 \begin_layout Section
-Namnstatistik 2021
+Namnstatistik 2022
 \end_layout
 
 \begin_layout Standard
 Använd pxweb för att ta reda på vilka namn som var vanliga att ge till nyfödda
  barn 2021.
  Målet är att hitta de 5 vanligaste flicknamnen och de 5 vanligste pojknamnen
- som gavs till nyfödda barn 2021.
+ som gavs till nyfödda barn 2022.
  Detta datamaterial finns under 
 \begin_inset Quotes sld
 \end_inset
@@ -5938,12 +5997,12 @@ Använd pxweb för att ta reda på vilka namn som var vanliga att ge till nyföd
 \end_layout
 
 \begin_layout Section
-Partistorlek i valet till kommunfullmäktige 2018
+Partistorlek i valet till kommunfullmäktige 2022
 \end_layout
 
 \begin_layout Standard
 Målet är nu att undersöka hur stora olika partier blev i kommunfullmäktige
- i valet 2018.
+ i valet 2022.
  Ni ska använda datamaterialet 
 \begin_inset Newline newline
 \end_inset
@@ -5956,7 +6015,7 @@ Målet är nu att undersöka hur stora olika partier blev i kommunfullmäktige
 \family typewriter
 [ME0104T1] Kommunfullmäktigval - valresultat efter region och parti mm.
  Antal och andelar.
- Valår 1973 - 2018
+ Valår 1973 - 2022
 \family default
 
 \begin_inset Quotes srd
@@ -5983,7 +6042,7 @@ Detta datamaterial finns under
 ktige jämfört med alla kommuner i Sverige.
  Om ni tittar på ett parti, tex Socialdemokraterna, då vill ni ta reda på
  vilken kommun där de fick högst andel röster (jämfört med alla kommuner)
- i valet till kommunfullmäktige 2018.
+ i valet till kommunfullmäktige 2022.
  Sen ska ni upprepa detta för Moderaterna, Sverigedemokraterna och alla
  andra partier som sitter i riksdagen.
  I slutändan så ska ni få fram 8 kommuner, en för varje parti.
@@ -6012,7 +6071,7 @@ Tips på lösningsförslag:
 
 \begin_layout Itemize
 Ladda ner det datamaterialet från SCB med pxweb.
- Välj andelar och år 2018.
+ Välj andelar och år 2022.
  Spara som en data.frame.
 \end_layout
 
@@ -6047,12 +6106,12 @@ Spara sedan ert resultat i en data.frame med tre kolumner: en med parti,
 \end_layout
 
 \begin_layout Section
-* Extraproblem: Partistorlek i valet till kommunfullmäktige 2014
+* Extraproblem: Partistorlek i valet till kommunfullmäktige 2018
 \end_layout
 
 \begin_layout Standard
-Upprepa uppgiften ovan, men för valet 2014.
- Jämför sedan resultatet mellan 2014 och 2018.
+Upprepa uppgiften ovan, men för valet 2018.
+ Jämför sedan resultatet mellan 2018 och 2022.
 \end_layout
 
 \begin_layout Section
@@ -6062,8 +6121,11 @@ Upprepa uppgiften ovan, men för valet 2014.
 \begin_layout Standard
 Vi har nu prövat Statistiska centralbyråns API, men allt fler offentliga
  myndigheter (och företag) lägger ut sina resultat i form av ett pxweb-api.
- Med api_catalogue() är det möjligt att se vilka andra api:er som nu finns
- inkluderade.
+ Med 
+\family typewriter
+api_catalogue()
+\family default
+ är det möjligt att se vilka andra api:er som nu finns inkluderade.
 \end_layout
 
 \begin_layout Enumerate
@@ -6155,21 +6217,25 @@ status open
 
 \begin_layout Plain Layout
 
-\end_layout
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
 
-\begin_layout Plain Layout
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
+\begin_inset Quotes srd
+\end_inset
 
-\end_layout
 
-\begin_layout Plain Layout
-
-solution_path<-"/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeache
-r/Labs/exercise_solutions/"
 \end_layout
 
 \begin_layout Plain Layout
 
 solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6244,253 +6310,157 @@ suppressWarnings(set_assignment(lab_path))
 
 \end_layout
 
-\begin_layout Section
-estimate_pi()
+\begin_layout Section*
+Dokumentation och kodstil
 \end_layout
 
 \begin_layout Standard
-Talet 
-\begin_inset Formula $\pi$
-\end_inset
-
- är en matematisk konstant som dyker upp lite här och var, framförallt när
- man jobbar med cirklar och sfärer men även inom sannolikhetslära och fysik
- är den viktig.
- Talet är ett så kallat irrationellt tal, det betyder att det har en oändlig
- decimalutveckling utan repetitioner och saknar ett exakt uttryck.
- Man vill ofta försöka approximera denna konstant och nu ska vi göra det
- med hjälp av slumptal och Monte Carlo metoden.
-\end_layout
-
-\begin_layout Standard
-Om vi tänker oss att vi väljer ett x och y värde slumpmässigt mellan -1
- och 1.
- Om vi tar dessa värden tillsammans blir det en punkt i kvadraten med sidlängd
- 2 centrerat runt origo.
- Inuti denna kvadrat kan vi rita in enhetscirkeln, det är cirkeln med radie
- 1 centrerad i origo.
- Vi kan nu beräkna sannolikheten att vår slumässigt utvalda punkt (x,y)
- hamnar inuti denna cirkel, den sannolikheten är 
-\begin_inset Formula $\frac{\pi}{4}$
-\end_inset
-
-, arean av cirkeln (där vi vill hamna) delat med arean av kvadraten (där
- vi kan hamna).
- För att uppskatta 
-\begin_inset Formula $\pi$
-\end_inset
-
- kan vi då slumpa massa (x,y) punkter räkna ut hur många av de som är inom
- enhetscirkeln, kvoten mellan de inom enhetscirkeln och antalet punkter
- totalt blir vår uppskattning av 
-\begin_inset Formula $\frac{\pi}{4}$
-\end_inset
-
-.
- Multiplicera kvoten med 4 för att få ett estimat av 
-\begin_inset Formula $\pi$
-\end_inset
-
-.
- Ett tips, för att se om en punkt (x,y) är inom enhetscirkeln kan vi testa
- om 
-\begin_inset Formula $x^{2}+y^{2}\leq1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-Vi ska nu skriva en funktion estimate_pi() som tar argumenten:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-N
-\family default
- är ett positivt heltal som är antalet slumpade punkter (x,y).
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-my_seed
-\family default
- värdet som styr slumptalsgeneratorn, default ska vara NULL.
-\end_layout
-
-\begin_layout Standard
-Funktionen ska returnera en lista som innehåller två variabler:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-est
-\family default
- ert estimat på 
-\begin_inset Formula $\pi$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-punkter
-\family default
- som är en 
-\family typewriter
-data.frame
-\family default
- med två kolumner, en är 
-\family typewriter
-x
-\family default
- och den andra 
-\family typewriter
-y
-\family default
-.
- Dessa kolumner ska innehålla alla era slumpade värden.
-\end_layout
-
-\begin_layout Standard
-Ett förslag på implementation kan vara följande:
-\end_layout
-
-\begin_layout Itemize
-Ändra seeden till: 
-\family typewriter
-set.seed(my_seed)
-\end_layout
-
-\begin_layout Itemize
-Slumpa x och y värden med 
-\family typewriter
-runif()
-\family default
-.
- Tänk på att 
-\family typewriter
-min=-1
-\family default
-, 
-\family typewriter
-max=1
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-Stoppa in era slumpade värden i en 
-\family typewriter
-data.frame
-\family default
-.
-\end_layout
-
-\begin_layout Itemize
-Skapa en logisk vektor med 
-\family typewriter
-TRUE
-\family default
- eller 
-\family typewriter
-FALSE
-\family default
- om punkterna är inom enhetscirkeln eller inte.
-\end_layout
-
-\begin_layout Itemize
-Beräkna ert estimat genom att räkna medelvärdet på den logiska vektorn.
-\end_layout
-
-\begin_layout Itemize
-Skapa och returnera en lista med rätt namn.
- Använd t.ex.
+Från och med denna laboration och de resterade laborationerna i kursen så
+ ska ni förutom att lösa angivna uppgifter också 
+\series bold
+kommentera
+\series default
+ era funktioner och ha en 
+\series bold
+god kodstil
+\series default
+ för att bli godkända.
  
+\end_layout
+
+\begin_layout Itemize
+Kodstil:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Det viktiga är att koden ska vara 
+\series bold
+tydlig
+\series default
+ och 
+\series bold
+läsbar
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Följ någon av kodstilarna i kapitlel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Kodstil"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
+ i den stil som ni väljer att använda.
+\end_layout
+
+\begin_layout Itemize
+Tänk särskilt på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enhetlighet och struktur
+\end_layout
+
+\begin_layout Itemize
+Ha lämplig indentering och avstånd
+\end_layout
+
+\begin_layout Itemize
+Ha bra variabelnamn
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+Kommentarer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funktionshuvud: Använd mallen för 
 \family typewriter
-list(est = ...
- , punkter = ...
- )
+roxygen2
+\family default
+ som ges i kapitlel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "chap:Dokumentation-av-funktioner"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Ni ska ha med:
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+@title 
+\family default
+Här skriver ni funktionens namn
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@description 
+\family default
+Förklara kort vad funktionen gör
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@param 
+\family default
+Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+ Upprepa detta för alla argument i funktionen.
+ Ex: 
+\family typewriter
+x Numerisk vektor, används vid beräkning av medelvärde.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@return 
+\family default
+Förklara vad funktionen returnerar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+ där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
+ Ni behöver inte föklara alla detaljer.
+ Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
+ Använd luft och kommentarer för att gruppera och strukturera er kod.
+\end_layout
+
+\begin_layout Itemize
+Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
+ om ett år.
+ Vilka kommentarer behövs då?
+\end_layout
+
+\end_deeper
 \begin_layout Standard
-Här kommer exempel på hur den kan fungera:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-estimate_pi(N = 5, my_seed = 1234)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-output <- estimate_pi(N = 100, my_seed = 1234)
-\end_layout
-
-\begin_layout Plain Layout
-
-output$est
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-output <- estimate_pi(N = 10000, my_seed = 1234)
-\end_layout
-
-\begin_layout Plain Layout
-
-output$est
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-output <- estimate_pi(N = 10000, my_seed = 445)
-\end_layout
-
-\begin_layout Plain Layout
-
-output$est
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
+ instruktioner för kommentarer och kodstil.
+ 
 \end_layout
 
 \begin_layout Section
@@ -6705,6 +6675,7 @@ Obs!
 sum_of_dice()
 \family default
  ska vara inkluderad i filen som ni lämnar in.
+ De vanliga kraven på kodstil och kommentarer gäller för den funktionen.
 \end_layout
 
 \begin_layout Standard
@@ -6731,6 +6702,15 @@ status open
 \begin_layout Plain Layout
 
 <<fig.height=3, fig.width=4>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+sum_of_random_dice(K=2,lambda=10,my_seed=987)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -6769,6 +6749,11 @@ sum_of_random_dice(K=5,lambda=3)
 \begin_layout Plain Layout
 
 x <- sum_of_random_dice(K=300,lambda=5,my_seed=42)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -6831,11 +6816,11 @@ plot(y$dice, y$value)
 \end_layout
 
 \begin_layout Section
-Miniprojektet del 1
+Projektet del 1
 \end_layout
 
 \begin_layout Standard
-En del av denna laboration är att genomföra miniprojektet del 1.
+En del av denna laboration är att genomföra Projektet del 1.
  Se 
 \begin_inset CommandInset href
 LatexCommand href
@@ -6846,8 +6831,8 @@ literal "false"
 \end_inset
 
  pdf för detaljer, finns även länk på kurshemsidan.
- Notera att det är en separat inlämning för miniprojektet del 1 på Lisam.
- I miniprojektet får (ska) ni använda 
+ Notera att det är en separat inlämning för Projektet del 1 på Lisam.
+ I Projektet ska ni använda 
 \family typewriter
 pxweb
 \family default
