@@ -1,0 +1,2182 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 0
+\use_package mhchem 1
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Projekt: Programmering i R
+\end_layout
+
+\begin_layout Standard
+Som en del av kursen i R-programmering ska ni göra en rapport i Rmarkdown.
+ Projektet är uppdelat i två delar.
+ Den första delen handlar om att läsa in och bearbeta data från externa
+ datakällor och beskriva dessa data.
+\end_layout
+
+\begin_layout Standard
+I den andra delen av projektet ska mer utförlig analys genomföras samt bearbeta
+ och analysera denna data vidare.
+ 
+\end_layout
+
+\begin_layout Standard
+För båda delarna gäller att:
+\end_layout
+
+\begin_layout Itemize
+R-markdown ska användas.
+ En mall kan ni hitta 
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/TemplateMiniprojekt.Rmd"
+literal "false"
+
+\end_inset
+
+
+\color inherit
+.
+\end_layout
+
+\begin_layout Itemize
+Undvik att använda 
+\series bold
+å
+\series default
+,
+\series bold
+ä
+\series default
+ eller 
+\series bold
+ö
+\series default
+ i variabelnamn i er R-kod.
+\end_layout
+
+\begin_layout Itemize
+Spara er fil i UTF-8 kodning.
+ I Rstudio gör ni: 
+\begin_inset Quotes eld
+\end_inset
+
+File
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\begin_inset Quotes eld
+\end_inset
+
+Save with Encoding
+\begin_inset Quotes erd
+\end_inset
+
+ välj UTF-8 och klicka OK.
+\end_layout
+
+\begin_layout Itemize
+Ha en god kodstil och kommentera er kod.
+ Se datorlaboration 4 för detaljer.
+ 
+\end_layout
+
+\begin_layout Itemize
+Rapporterna ska lämnas in som både 
+\series bold
+PDF
+\series default
+ och 
+\series bold
+.Rmd
+\series default
+-fil.
+ Om ni har problem att skapa PDF så går det bra att lämna in som 
+\series bold
+HTML
+\series default
+-fil.
+ Notera att PDF är att föredra.
+ Det är ok att skapa en HTML som ni sedan sparar/skriver ut som PDF
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Detta går att göra i de flesta webbläsare, välj skriv ut och sen skriv till
+ pdf.
+\end_layout
+
+\end_inset
+
+.
+ Filerna ska kallas: 
+\family typewriter
+
+\begin_inset Newline newline
+\end_inset
+
+[liu id 1]_[liu id 2]_part[del av projektet]_miniproject.pdf
+\family default
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+Exempel på inlämning av projekt del 1 är följande 
+\series bold
+två
+\series default
+ filer: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+joswi71_manma97_part1_miniproject.Rmd
+\family default
+ och
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+joswi71_manma97_part1_miniproject.pdf
+\family default
+.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Samtliga material ska laddas in i R från webben som 
+\series bold
+externa datakällor
+\series default
+.
+ Vill ni använda ett eget material får ni lägga upp det öppet på github,
+ dropbox, google docs eller dylikt och läsa in det därifrån i R.
+ Syftet är att rapporten ska vara helt reproducerbar och kunna återskapas
+ på godtycklig dator.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
+ i dokumentet.
+
+\series default
+ Antingen skapar ni tabeller (med 
+\family typewriter
+kable()
+\family default
+) eller grafer.
+ T.ex.
+ kan ni ange 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+message=FALSE, warning=FALSE
+\end_layout
+
+\end_inset
+
+ i chunk options när ni skapar chunks med R-kod.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Rmd
+\series default
+-filen ska kunna köras och reproducera era resultat på godtycklig dator.
+ D.v.s.
+ den ska innehålla all er kod som behövs för att ladda ner data, era beräkningar
+ och er rapporttext.
+ 
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Namn
+\series default
+, 
+\series bold
+liu-id
+\series default
+ och 
+\series bold
+gruppnummer
+\series default
+ ska framgå i början av rapporten.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Tänk på att kommentera er kod och ha god kodstil!
+\end_layout
+
+\begin_layout Section
+Del I: Deskriptiv analys
+\end_layout
+
+\begin_layout Standard
+Den första delen av projektet är att samla in datamaterial och beskriva
+ materialet kortfattat i en första del av rapporten.
+\end_layout
+
+\begin_layout Standard
+Till projektet behöver två olika typer av datamaterial, ett material med
+ kommunala data och ett material som innehåller en tidsserie.
+ Det är okej att välja data på lännivå istället för kommunnivå om ni vill.
+ Beskrivningen nedan utgår från kommunala data.
+ I projekt ska ni använda pxweb
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html"
+literal "false"
+
+\end_inset
+
+ för mer info.
+\end_layout
+
+\end_inset
+
+, i filen ska ni ha kod som fungerar och ger reproducerbara rapporter.
+ Om ni vill dölja varningar kan ni använda
+\end_layout
+
+\begin_layout Standard
+
+\lang swedish
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+suppressWarnings({   
+\end_layout
+
+\begin_layout Plain Layout
+
+	mitt_data <- get_pxweb_data(url = "webadress",
+\end_layout
+
+\begin_layout Plain Layout
+
+	dims = list("lista med element"),clean = TRUE)   
+\end_layout
+
+\begin_layout Plain Layout
+
+})
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att välja material ni själva tycker är intressant!
+\end_layout
+
+\begin_layout Paragraph
+Kommunala data
+\end_layout
+
+\begin_layout Standard
+Ni ska ladda ner kommunala data, där ni i slutändan har minst 4 variabler
+ på kommunnivå (d.s.v.
+ för alla 290 kommuner) Ett exempel skulle kunna vara antal arbetslösa i
+ varje kommun.
+ Spara er data i en eller flera data.frames.
+ Totalt ska dataseten ska ha 
+\series bold
+minst
+\series default
+ 
+\series bold
+4 variabler
+\series default
+ utöver kommunnamn.
+ Ni väljer själv vilka variabler som ska ingå och vilka områden data ska
+ komma ifrån.
+ Tanken är att i ska göra enklare analyser och grafer som baseras på dessa
+ variabler.
+ Utöver dessa 4 variabler så ska ni också ladda ner totalt antal invånare
+ i kommun som en variabel.
+ 
+\end_layout
+
+\begin_layout Standard
+När ni har valt ut era variabler ska ni ha en data.frame där 
+\series bold
+varje rad motsvarar en kommun
+\series default
+ och där det finns minst 5 kolumner med variabler.
+ Kommuner är alltså 
+\series bold
+observationer
+\series default
+ i era analyser.
+ Kolumnerna motsvarar era variabler.
+ Notera att många av de variabler som finns på SCB:s databas är frekvenser,
+ exempel: antal arbetslösa i varje kommun.
+ Tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:stuktur data"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ visar ett exempel med hur data ska vara strukturerat.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Radnamn
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Totalt antal invånare
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Linköping
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Norrköping
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Mjölby
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Motala
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+\begin_inset Formula $\vdots$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:stuktur data"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Paragraph
+Tidsseriedata
+\end_layout
+
+\begin_layout Standard
+Hitta ett dataset som innehåller en 
+\series bold
+tidserie
+\series default
+, det innebär att det finns en variabel som har observerats över tiden.
+ Kravet är att data ska innehålla data på 
+\series bold
+månadsnivå
+\series default
+ och innehålla data från 
+\series bold
+minst 10 år
+\series default
+ (120 månder).
+ Här ska ni alltså hitta en variabel som observerats under minst 120 tidpunkter,
+ men fler går bra.
+ Data ska alltså innehålla två kolumner, en med variabeln som vi är intresserade
+ av och en med tidpunkterna.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ Tidsperioden ska vara fix, d.v.s ex.
+ jan 2005 - jan 2015.
+ Detta innebär att ni måste ange ett fixt tidsintervall när ni laddar ner
+ data med 
+\family typewriter
+pxweb
+\family default
+.
+ Om ni laddar ner data en månad senare ska ni erhålla samma data med samma
+ kod.
+ Om ni laddar ner data från SCB/pxweb så ska ni 
+\series bold
+inte
+\series default
+ ange 
+\begin_inset Quotes eld
+\end_inset
+
+
+\family typewriter
+*
+\family default
+
+\begin_inset Quotes erd
+\end_inset
+
+ på tiden.
+\end_layout
+
+\begin_layout Subsection
+Inlämning av del I
+\end_layout
+
+\begin_layout Standard
+Den första inlämningsuppgiften handlar om att läsa in i R och beskriva de
+ material ni valt med R-markdown.
+ Notera att kommuner ska vara observationer i ert datamaterial med kommunala
+ data, alltså en kommun motsvarar en rad i era data.frames/matriser med data.
+\end_layout
+
+\begin_layout Standard
+Ni ska beskriva era material i text samt sammanfatta de variabler ni valt
+ med de beskrivande statistiska mått.
+ Ta fram beskrivande statistik för 
+\series bold
+alla
+\series default
+ variabler i data.
+ Beroende på hur data ser ut så kan det vara medelvärden, medianer frekvenstabel
+ler mm.
+ Ni kan göra relevanta transformationer av era variabler om ni vill, tex
+ göra en numeriska variabel till en binär och räkna med andelar eller dela
+ in kommunerna i stora, medelstora och små när det gäller befolkning.
+ Men se till att ha minst två variabler som är numeriska/frekvenser.
+ 
+\end_layout
+
+\begin_layout Standard
+Rapporten ska var 
+\series bold
+ordnad
+\series default
+ och 
+\series bold
+strukturerad
+\series default
+, med lämpliga rubriker.
+ Tänk på:
+\end_layout
+
+\begin_layout Itemize
+Tabeller ska vara 
+\begin_inset Quotes eld
+\end_inset
+
+riktiga
+\begin_inset Quotes erd
+\end_inset
+
+ tabeller (med ex.
+ 
+\family typewriter
+kable()
+\family default
+), inte utskrifter i R-kod.
+ Avrunda till ett lämpligt antal decimaler i tabellerna.
+\end_layout
+
+\begin_layout Itemize
+Se till att plottarna ni har ser snygga ut och har lämpliga axeltexter mm.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
+ i dokumentet.
+\end_layout
+
+\begin_layout Standard
+Ni ska ha med:
+\end_layout
+
+\begin_layout Itemize
+Kort inledning
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Beskrivning av alla era variabler och eventuella transformationer av dessa.
+ 
+\end_layout
+
+\begin_layout Itemize
+Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras
+ med hjälp av totalt antal invånare i varje kommun.
+ Detta eftersom det oftast är intressant att kolla på andelar istället för
+ absoluta antal.
+ T.ex.
+ andelen arbetslösa i en kommun istället för antalet arbetslösa.
+ I de fall då det är relevant att normalisera en variabel, då ska ni använda
+ den normaliserade variabeln i plottar mm.
+ Vissa variabler är inte relaterade till folkmängd, exempel 
+\begin_inset Quotes eld
+\end_inset
+
+Antal höns
+\begin_inset Quotes erd
+\end_inset
+
+ eller 
+\begin_inset Quotes eld
+\end_inset
+
+Medelålder
+\begin_inset Quotes erd
+\end_inset
+
+, sådana variabler behöver inte normaliseras.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
+ gör denna beräkning för varje kommun.
+ För många variabler med som har små andeler så passar det att skapa variabler
+ av typen 
+\begin_inset Quotes eld
+\end_inset
+
+antal per 10 000/100 000 invånare
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Då räknar vi ut det som (antal/totalt antal invånare)*10 000.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Vissa upp data för 
+\series bold
+5
+\series default
+ kommuner och alla era variabler i en tabell.
+ Ta inte med fler kommuner i tabellen, alla kommuner ska självklart vara
+ med i datasetet när ni gör er statistik nedan.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Beskrivande statistik av alla variabler och en kort tolkning av statistiken
+ i en eller flera tabeller.
+ Ta inte med all rådata i en tabell.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Ni ska ha åtminstone ha med: medelvärde, median, standardavvikelse, minimum
+ och maximum.
+ Om någon variabel är kategorisk så kan ni ha en frekvenstabell för den
+ variabeln istället.
+ Så ni ska ha med en tabell likt den som finns i tabell 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab: beskrivande statistik"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+
+\size footnotesize
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Variabel 4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Totalt antal invånare
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Medelvärde
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Median
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Standardavvikelse
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Minimum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\size scriptsize
+Maximum
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\size default
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab: beskrivande statistik"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+De plottar som beskrivs nedan.
+\end_layout
+
+\begin_layout Itemize
+Skriv en kort kommentar/tolkning till alla era tabeller och plottar.
+\end_layout
+
+\begin_layout Standard
+Följande saker ska ni göra med data med basgrafiken i R:
+\end_layout
+
+\begin_layout Enumerate
+Ni ska minst ha ett histogram, barplot eller boxplot per variabel i kommundata,
+ ni måste inte göra det för 
+\begin_inset Quotes eld
+\end_inset
+
+Totalt antal invånare
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Skriv en kort kommentar till varje plot.
+\end_layout
+
+\begin_layout Enumerate
+Minst en scatter plot mellan två av era variabler.
+ Skriv en kort kommentar
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://chartio.com/learn/charts/what-is-a-scatter-plot/#when-you-should-use-a-scatter-plot"
+literal "false"
+
+\end_inset
+
+ för tips på hur scatter plots kan tolkas.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Enumerate
+En tidsseriegraf/linjediagram för tidseriedata.
+ Skriv en kort kommentar.
+ Se till att det är lämplig tidskala på x-axeln (se 
+\begin_inset Quotes eld
+\end_inset
+
+Linjediagram
+\begin_inset Quotes erd
+\end_inset
+
+ i datorlaboration 5 för tips).
+\end_layout
+
+\begin_layout Standard
+Ibland innehåller data några väldigt stora eller väldigt små värden (kallas
+ outliers), och dessa kan göra att det är svårt att göra snygga plottar.
+ Det är ok att ta bort några sådana värden i era plottar för kommundata,
+ men skriv då att ni har gjort det, varför det var nödvändigt och vilka
+ kommuner som ni tog bort.
+\end_layout
+
+\begin_layout Standard
+Lämna in rapporten både som en fullt reproducerbar 
+\series bold
+Rmd
+\series default
+-fil och som 
+\series bold
+PDF
+\series default
+ i LISAM.
+ Tänk på följande:
+\end_layout
+
+\begin_layout Itemize
+I denna del ska samtliga grafer vara skapade med basgrafiken i R.
+\end_layout
+
+\begin_layout Itemize
+Tabeller ska vara 
+\begin_inset Quotes eld
+\end_inset
+
+riktiga
+\begin_inset Quotes erd
+\end_inset
+
+ tabeller (med ex.
+ 
+\family typewriter
+kable()
+\family default
+ i paketet 
+\family typewriter
+knitr
+\family default
+), inte utskrifter av R-kod.
+ Avrunda till ett lämpligt antal decimaler i tabellerna.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
+ i dokumentet.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Del II: Analys 
+\end_layout
+
+\begin_layout Standard
+I den första delen av minprojektet har ni valt ut och beskrivit olika variabler.
+ Nu ska vi fortsätta detta arbete med analyser av materialen.
+ Ni som grupp kommer att ha en del frihet i hur ni utför datanalysen som
+ beskrivs nedan.
+ Det ni ska göra är att bearbeta data, några enkla analyser och olika grafer
+ i 
+\family typewriter
+ggplot2.
+ 
+\family default
+\series bold
+Obs!!! alla plottar i del 2 ska vara med 
+\family typewriter
+ggplot2
+\family default
+.
+\end_layout
+
+\begin_layout Subsection
+Inlämning del II
+\end_layout
+
+\begin_layout Standard
+Den fulla rapporten ska lämnas in som en fullt reproducerbar 
+\series bold
+Rmd
+\series default
+-fil och som ett 
+\series bold
+PDF
+\series default
+-dokument i LISAM.
+ Nedan framgår exakt vilka analyser som ska genomföras.
+ Ta 
+\series bold
+inte
+\series default
+ med del 1 av projektet i Rmd-filen och i PDF för del 2.
+\end_layout
+
+\begin_layout Itemize
+Rapporten ska var ordnad och strukturerad, med lämpliga rubriker.
+\end_layout
+
+\begin_layout Itemize
+I denna del ska samtliga grafer vara skapade med 
+\family typewriter
+ggplot2
+\end_layout
+
+\begin_layout Itemize
+Tabeller ska vara 
+\begin_inset Quotes eld
+\end_inset
+
+riktiga
+\begin_inset Quotes erd
+\end_inset
+
+ tabeller (med ex.
+ 
+\family typewriter
+kable()
+\family default
+), inte utskrifter i R-kod.
+ All statistik, information från statistiska test, korrelationer etc ska
+ presenteras i markdowntabeller eller med inline-kod.
+ Avrunda till ett lämpligt antal decimaler i tabellerna.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
+ i dokumentet.
+\end_layout
+
+\begin_layout Subsubsection
+Dataanalys av kommundata
+\end_layout
+
+\begin_layout Itemize
+Skriv en kort inledning där ni beskriver era variabler.
+ Kan vara samma som i del 1.
+ Om ni gör nya transformationer av variablerna i del 2 måste de beskrivas
+ också.
+\end_layout
+
+\begin_layout Itemize
+Ta med från del 1: Vissa upp data för 5 kommuner och alla era variabler
+ i en tabell.
+ Ta inte med fler kommuner.
+ Ni väljer själv vilka kommuner ni visar i tabellen.
+\end_layout
+
+\begin_layout Standard
+Följande saker ska ni göra/ta med:
+\end_layout
+
+\begin_layout Enumerate
+Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras
+ med hjälp av totalt antal invånare i varje kommun/län.
+ Detta eftersom det oftast är intressant att kolla på andelar istället för
+ absoluta antal.
+ T.ex.
+ andelen arbetslösa i en kommun istället för antalet arbetslösa.
+ Alla plottar ska använda de normaliserade variablerna.
+ I uppgift 5 och 6 får ni välja om ni vill ha de normaliserade eller ej
+ normaliserade variablerna.
+\end_layout
+
+\begin_layout Enumerate
+Producera minst en barplot, om ni bara har kontinuerliga variabler kan ni
+ använda 
+\family typewriter
+cut()
+\family default
+.
+ Beskriv i text vad ni drar för slutsats.
+ Notera! Gör inte en plot där varje kommun har en egen stapel, alltså ingen
+ barplot med 290 staplar.
+\end_layout
+
+\begin_layout Enumerate
+Producera minst ett histogram.
+ Lägg till vertikala linjer för följande punkter på x-axeln: medianen, första
+ kvartilen och tredje kvartilen.
+ Beskriv i text vad ni drar för slutsats.
+ Tips: 
+\family typewriter
+geom_vline()
+\family default
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.sthda.com/english/wiki/ggplot2-add-straight-lines-to-a-plot-horizontal-vertical-and-regression-lines"
+literal "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Producera minst en scatterplot mellan två variabler.
+ Lägg till en regressionslinje med 
+\family typewriter
+stat_smooth(method="lm", se=FALSE)
+\family default
+.
+ Beskriv i text vad ni drar för slutsats
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+För tips på tolkning: Se kap 13.2.5 i kursboken, speciellt figur 13-5.
+ Se även 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://chartio.com/learn/charts/what-is-a-scatter-plot/#when-you-should-use-a-scatter-plot"
+literal "false"
+
+\end_inset
+
+ för tips på hur scatter plots kan tolkas.
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna korrelationer mellan de två variabler som ni använde i scatter plott
+ i steget ovan.
+ Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler
+ är noll (=de är linjärt oberoende).
+ Ni ska alltså använda hypoteserna:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+H_{0}:cor\left(x_{1},x_{2}\right)=0\\
+H_{a}:cor\left(x_{1},x_{2}\right)\ne0
+\end{array}
+\]
+
+\end_inset
+
+Tips: 
+\family typewriter
+cor.test()
+\family default
+.
+ Presentera relevant information i en eller flera tabeller.
+ Beskriv kort hur ni tolkar resultatet.
+ Ni ska alltså presentera både den skattade korrelationen och information
+ från testet i rapporten.
+ Ni får testa korrelationen mellan fler variabler om ni vill.
+\end_layout
+
+\begin_layout Enumerate
+Hypotestest: Gör minst ett hypotestest (ej korrelationstest här), där ni
+ ställer upp en nollhypotes och sen testar om ni kan förkasta den.
+ Ni väljer själva vilken nollhypotes ni vill anävnda.
+ Beroende på hur er data ser ut så kan det vara ett t-test, ett 
+\begin_inset Formula $\chi^{2}$
+\end_inset
+
+-test eller test av andelar
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+Se kurshemsidan för referenser på hur olika test kan göras i R.
+\end_layout
+
+\end_inset
+
+.
+ Har ni inte några kategoriska variabler kan ni använda funktionen 
+\family typewriter
+cut()
+\family default
+.
+ Ni får själva välja vilken nollhypotes ni vill testa.
+ Presentera relevant information från testet/testen i en eller flera tabeller.
+ Beskriv kort hur ni tolkar resultatet.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\shape italic
+Exempel:
+\shape default
+ Ni har variabeln medelålder i kommunerna.
+ Ni vill testa om medelvärdet för medelåldern är signifikant skilld från
+ 40 år.
+ Låt 
+\begin_inset Formula $\mu$
+\end_inset
+
+ vara medelvärdet för medelåldern.
+ Ni sätter då upp hypoteserna 
+\begin_inset Formula 
+\[
+\begin{array}{c}
+H_{0}:\mu-40=0\\
+H_{a}:\mu-40\ne0
+\end{array}
+\]
+
+\end_inset
+
+och testar sedan om ni kan förkasta 
+\begin_inset Formula $H_{0}$
+\end_inset
+
+(nollhypotesen).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skapa en kategorisk variabel baserat på totalt antal invånare: Utgå från
+ medianen, och låt alla kommuner/län som är mindre än (eller lika med) medianen
+ vara en grupp och låt låt alla kommuner/län som är större än medianen vara
+ en grupp.
+ Kalla denna kategoriska variabel för 
+\family typewriter
+pop_grupp
+\family default
+.
+ Detta ger er två grupper av observationer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Mer plottar.
+ Ni ska nu följande plottar som beror på variabeln 
+\family typewriter
+pop_grupp
+\family default
+.
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Gör en scatterplot där färgen på observationerna ska bero på variabeln 
+\family typewriter
+pop_grupp
+\family default
+.
+ T.ex.
+ om ni gör en scatterplot så har alla punkterna olika färger beroende på
+ vilken grupp de tillhör.
+ Beskriv i text vad ni drar för slutsats.
+\end_layout
+
+\begin_layout Enumerate
+Gör minst ett histogram/barplot/boxplot som är grupperat på 
+\family typewriter
+pop_grupp
+\family default
+, där grupperna har olika färger.
+ Beskriv i text vad ni drar för slutsats.
+\end_layout
+
+\begin_layout Enumerate
+Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i två
+ plottar med 
+\family typewriter
+facet_grid()
+\family default
+ eller 
+\family typewriter
+facet_wrap()
+\family default
+.
+ Uppdelningen ska bero på variabeln 
+\family typewriter
+pop_grupp
+\family default
+.
+ Beskriv i text vad ni drar för slutsats.
+\end_layout
+
+\end_deeper
+\begin_layout Subsubsection
+Dataanalys av tidseriedata
+\end_layout
+
+\begin_layout Standard
+Låt 
+\family typewriter
+Y
+\family default
+ vara er variabel i tidsseriematerialet.
+ Utför nu följande:
+\end_layout
+
+\begin_layout Enumerate
+Gör en linjeplot mellan 
+\family typewriter
+Y
+\family default
+ och er tidsvariabel.
+ Skalan på x-axeln ska vara en lämplig tidsskala.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Beräkna medelvärden per månad och spara dessa i 
+\family typewriter
+month_means
+\family default
+.
+ Presentera dessa i en tabell och skriv en kort kommentar.
+ Ni ska alltså beräkna ett medelvärde för alla värden för januari och sen
+ upprepa detta för alla månader.
+ 
+\series bold
+Tips!
+\series default
+ 
+\family typewriter
+aggregate()
+\end_layout
+
+\begin_layout Enumerate
+Använd funktionen 
+\family typewriter
+summary()
+\family default
+ för att fram beskrivande statistik för varje år (det ska vara minst tio
+ år i data).
+ Presentera statistiken i en tabell och skriv en kort kommentar.
+\end_layout
+
+\begin_layout Enumerate
+Subtrahera månadsmedelvärden från 
+\family typewriter
+Y
+\family default
+, så ni tar bort säsongsvariationen i data.
+ Månadsmedelvärdet för januari ska subtraheras från alla januarivärden i
+ data, och likadant för de andra månaderna.
+ Spara den nya tidserie som 
+\family typewriter
+new_
+\family default
+Y.
+ Addera medelvärdet för 
+\shape italic
+hela 
+\shape default
+tidserien
+\family typewriter
+ Y
+\family default
+ till 
+\family typewriter
+new_
+\family default
+Y för att ge 
+\family typewriter
+new_
+\family default
+Y rätt skala.
+ Se nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+Y_new<-Y_new+mean(Y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Gör en linjeplot mellan 
+\family typewriter
+new_Y
+\family default
+ och tid i 
+\family typewriter
+ggplot2
+\family default
+.
+ Lägg också till 
+\family typewriter
+Y
+\family default
+ i samma graf som jämförelse.
+\end_layout
+
+\begin_layout Enumerate
+Ni ska nu beräkna glindande medelvärde av den typ som ni gjorde i labb 3.
+ Använd er funktion 
+\family typewriter
+my_moving_average()
+\family default
+ från tidigare labb, eller annan likvärdig funktion i ett R-paket och beräkna
+ 
+\family typewriter
+moving_average_Y
+\family default
+.
+ Lägg till variabel i samma graf som ovan.
+ Totalt ska grafen ha tre linjer i olika färger.
+ Det ska framgå i en legend eller i texten vilken färg som är vilken linje.
+ Det ska tydligt framgå i vilket värde på 
+\begin_inset Formula $n$
+\end_inset
+
+ (längden på det glidande medelvärdet) som ni använder.
+ Notera att 
+\family typewriter
+moving_average_Y
+\family default
+ kommer att vara 
+\begin_inset Formula $n-1$
+\end_inset
+
+ element kortare jämfört med 
+\family typewriter
+Y
+\family default
+ och 
+\family typewriter
+new_Y
+\family default
+, och ska således börja lite längre fram på x-axeln.
+\end_layout
+
+\begin_layout Enumerate
+Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden, eller
+ är data konstant över tid.
+ Finns det någon säsongsvariation i data?
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Exempel på säsongsvariation: December har ofta ett mycket högre värde än
+ öviga månader, sommarhalvåret har alltid lägre värden.
+\end_layout
+
+\end_inset
+
+ Dra er slutsats och skriv ned den i dokumentet.
+\end_layout
+
+\begin_layout Standard
+Lämna in rapporten både som en fullt reproducerbar 
+\series bold
+Rmd
+\series default
+-fil och som 
+\series bold
+PDF/HTML
+\series default
+ i LISAM.
+ Tänk på följande:
+\end_layout
+
+\begin_layout Itemize
+I denna del ska samtliga grafer vara skapade med 
+\family typewriter
+ggplot2
+\family default
+.
+\end_layout
+
+\begin_layout Itemize
+Tabeller ska vara 
+\begin_inset Quotes eld
+\end_inset
+
+riktiga
+\begin_inset Quotes erd
+\end_inset
+
+ tabeller (med ex.
+ 
+\family typewriter
+kable()
+\family default
+), inte utskrifter i R-kod.
+ All statistik, information från statistiska test, korrelationer etc ska
+ presenteras i markdowntabeller eller med inline-kod.
+ Avrunda till ett lämpligt antal decimaler i tabellerna.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
+ i dokumentet.
+\end_layout
+
+\end_body
+\end_document
