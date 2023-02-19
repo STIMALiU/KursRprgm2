@@ -218,11 +218,11 @@ literal "true"
 \begin_layout Standard
 I base-paketet fungerar grafiken på så sätt att vi lägger till lager för
  lager i en visualisering av data.
- Tänk dig att du ritar med en penna.
+ Tänk dig att ni ritar med en penna.
  Vi kommer i denna del använda oss av en del av de dataset som installeras
  tillsammans med R.
  Läs in dessa dataset på följande sätt.
- Undrar du vad materialen innehåller kan du använda 
+ Undrar ni vad materialen innehåller kan ni använda 
 \family typewriter
 ?iris
 \family default
@@ -1207,7 +1207,7 @@ Studera hur
 \family typewriter
 colVector
 \family default
- ser ut ovan så du förstår hur vektorn används för att styra färgen på punkterna.
+ ser ut ovan så ni förstår hur vektorn används för att styra färgen på punkterna.
  Pröva att använd ytterligare än färg till punkterna efter 1945.
 \end_layout
 
@@ -1941,7 +1941,7 @@ abline(h=900, lty=10)
 \end_layout
 
 \begin_layout Enumerate
-Vad händer om du ändrar värdet i 
+Vad händer om ni ändrar värdet i 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2248,7 +2248,7 @@ eruptions
 breaks
 \family default
  i histogrammen.
- Hur ser det ut om du har väldigt många eller vädigt få?
+ Hur ser det ut om ni har väldigt många eller vädigt få?
 \end_layout
 
 \begin_layout Enumerate
@@ -2925,7 +2925,7 @@ Säg att vi vill ta reda på vilket
 qnorm()
 \family default
 .
- Kolla i dokumentation hur du ska använda 
+ Kolla i dokumentation hur ni ska använda 
 \family typewriter
 qnorm()
 \family default
@@ -3166,7 +3166,7 @@ dim(mtcars)
 \begin_layout Enumerate
 Vi kan på samma sätt dra slumpmässiga element från andra vektorer (exempelvis
  textvektorer).
- Tänk dig att du och några vänner ska organisera en fest.
+ Tänk dig att ni och några vänner ska organisera en fest.
  Skapa vektorn 
 \family typewriter
 namn
@@ -3198,7 +3198,7 @@ Upprepa uppgiften ovan två gånger, blir resultatet det samma? Upprepa två
 set.seed(1234)
 \family default
  innan varje gång.
- Får du nu samma resultat?
+ Får ni nu samma resultat?
 \end_layout
 
 \begin_layout Enumerate
@@ -3206,7 +3206,7 @@ Upprepa nu uppgiften ovan igen, men ändra argumentet
 \family typewriter
 prob
 \family default
- så att de olika personer har olika sannolikhet att bli vald samt att du
+ så att de olika personer har olika sannolikhet att bli vald samt att ni
  har sannolikheten 0 att bli vald.
  ;)
 \end_layout
@@ -5668,13 +5668,20 @@ Navigera dig fram till följande datamaterial som vi ska läsa in:
 
 
 \family typewriter
-[NAKUArblosaTAr] Arbetslösa 15-74 år (AKU) efter arbetslöshetstidens längd,
- kön och ålder.
- År 2005 - 2022
+Arbetslösa samt därav heltidsstuderande 15-74 år (AKU) efter kön och ålder.
+ År 2001 - 2022
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Tips: 
+\family typewriter
+Arbetskraftsundersökningarna (AKU)
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
-Nu är vi inne i den del av API:et som anger vilka delar av materialet du
+Nu är vi inne i den del av API:et som anger vilka delar av materialet ni
  vill ladda ned.
  Varje variabel kommer nu dyka upp och vi får ange vilka data vi vill ha.
 \begin_inset Newline newline
@@ -5693,7 +5700,7 @@ Vill vi bara ha en kategori anger vi den siffran, vill vi ha allt material
 \family typewriter
 ,
 \family default
-.
+ .
 \begin_inset Separator latexpar
 \end_inset
 
@@ -5704,17 +5711,13 @@ Vill vi bara ha en kategori anger vi den siffran, vill vi ha allt material
 \begin_layout Enumerate
 För variabel 
 \family typewriter
-ARBETSLÖSHETSTID
+Arbetskraftstillh
 \family default
  ange 
-\series bold
-allt
-\series default
- (med 
 \family typewriter
-*
+arbetslösa
 \family default
-) som den del av materialet du vill ha.
+ som den del av materialet ni vill ha.
 \end_layout
 
 \begin_layout Enumerate
@@ -5726,7 +5729,7 @@ KÖN
 \family typewriter
 totalt
 \family default
- som den del du vill ha
+ som den del ni vill ha
 \end_layout
 
 \begin_layout Enumerate
@@ -5734,19 +5737,11 @@ För variabel
 \family typewriter
 ÅLDER
 \family default
- ange grupperna 
+ ange gruppen 
 \family typewriter
-15-24
+totalt 16-64 år
 \family default
-, 
-\family typewriter
-25-54
-\family default
- och 
-\family typewriter
-55-74
-\family default
- som den del du vill ha.
+ som den del ni vill ha.
 \end_layout
 
 \begin_layout Enumerate
@@ -5754,11 +5749,11 @@ För variabel
 \family typewriter
 CONTENTSCODE
 \family default
- ang
+ ange
 \family typewriter
- Arbetslösa, 1000-tal
+ Procent
 \family default
- som den variabel du vill ha.
+ som den variabel ni vill ha.
 \end_layout
 
 \begin_layout Enumerate
@@ -5777,7 +5772,7 @@ a
 \begin_layout Enumerate
 Välj nu ut tidsperioden 
 \family typewriter
-2012
+2005
 \family default
  till 
 \family typewriter
@@ -5788,23 +5783,23 @@ Välj nu ut tidsperioden
 
 \end_deeper
 \begin_layout Enumerate
-Nu kommer det komma en massa frågor om hur du vill ladda ner datamaterialet.
+Nu kommer det komma en massa frågor om hur ni vill ladda ner datamaterialet.
  
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Först frågar den om du vill få koden för att ladda ner data direkt, välj
+Först frågar den om ni vill få koden för att ladda ner data direkt, välj
  y.
 \end_layout
 
 \begin_layout Enumerate
-Sen frågar den om du vill ha resultatet som en JSON format eller R list,
+Sen frågar den om ni vill ha resultatet som en JSON format eller R list,
  välj n.
 \end_layout
 
 \begin_layout Enumerate
-R frågar nu om du vill ladda ned datamaterialet, ange 
+R frågar nu om ni vill ladda ned datamaterialet, ange 
 \family typewriter
 y
 \family default
@@ -5812,7 +5807,7 @@ y
 \end_layout
 
 \begin_layout Enumerate
-Nästa steg efterfrågas om du vill ha materialet i orginalformat eller som
+Nästa steg efterfrågas om ni vill ha materialet i orginalformat eller som
  en färdigformaterad data.frame i R., välj 
 \family typewriter
 y
@@ -5821,7 +5816,7 @@ y
 \end_layout
 
 \begin_layout Enumerate
-Som ett sista steg efterfrågas nu om du vill ha citeringen för datamaterialet,
+Som ett sista steg efterfrågas nu om ni vill ha citeringen för datamaterialet,
  välj y.
 \end_layout
 
@@ -5832,7 +5827,7 @@ Nu ska materialet laddas ned och sparas i variabeln
 mitt_data
 \family default
 .
- Du borde också få ut följande kod:
+ ni borde också få ut följande kod:
 \begin_inset Newline newline
 \end_inset
 
@@ -5857,18 +5852,22 @@ pxweb_query_list <-
 
 \begin_layout Plain Layout
 
-list("Arbetskraftstillh"=c("ALÖS"),"Kon"=c("1+2"),"Alder"=c("tot15-74"),
+list("Arbetskraftstillh"=c("ALÖS"),"Kon"=c("1+2"),"Alder"=c("tot16-64"),
 \end_layout
 
 \begin_layout Plain Layout
 
-"ContentsCode"=c("AM04011O"),
+"ContentsCode"=c("AM04011Q"),
 \end_layout
 
 \begin_layout Plain Layout
 
-"Tid"=c("2012","2013","2014","2015","2016","2017","2018","2019","2020","2021","2
-022"))
+"Tid"=c("2005","2006","2007","2008","2009","2010","2011","2012","2013",
+\end_layout
+
+\begin_layout Plain Layout
+
+"2014","2015","2016","2017","2018","2019","2020","2021","2022"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -5886,7 +5885,12 @@ list("Arbetskraftstillh"=c("ALÖS"),"Kon"=c("1+2"),"Alder"=c("tot15-74"),
 
 \begin_layout Plain Layout
 
-px_data <-pxweb_get(
+px_data <-
+\end_layout
+
+\begin_layout Plain Layout
+
+pxweb_get(
 \end_layout
 
 \begin_layout Plain Layout
@@ -5939,9 +5943,19 @@ Koden ovan kan användas för att ladda ner det valda data materialet direkt,
 \end_layout
 
 \begin_layout Enumerate
-Titta på det material du laddat ned.
+Titta på det material ni laddat ned.
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+Ta reda på vilket av åren som arbetslösheten var lägst och högst.
+\end_layout
+
+\begin_layout Enumerate
+Gör ett linjediagram mellan år och arbetslöshet i procent.
+\end_layout
+
+\end_deeper
 \begin_layout Subsection
 Ladda ned data från SCB direkt med kod 
 \end_layout
@@ -5954,9 +5968,13 @@ ess där vi använder de senaste data från SCB.
 \end_layout
 
 \begin_layout Enumerate
-Spara ned koden du fick ovan och kör den för att ladda ned datamaterialet
+Spara ned koden ni fick ovan och kör den för att ladda ned datamaterialet
  direkt.
- (Nu sparas den som px_data_frame).
+ (Nu sparas den som 
+\family typewriter
+px_data_frame
+\family default
+).
 \end_layout
 
 \begin_layout Enumerate
@@ -6044,7 +6062,17 @@ ktige jämfört med alla kommuner i Sverige.
  vilken kommun där de fick högst andel röster (jämfört med alla kommuner)
  i valet till kommunfullmäktige 2022.
  Sen ska ni upprepa detta för Moderaterna, Sverigedemokraterna och alla
- andra partier som sitter i riksdagen.
+ andra partier som sitter i riksdagen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Vi struntar i alla lokala partier som finns i kommunerna här.
+\end_layout
+
+\end_inset
+
+.
  I slutändan så ska ni få fram 8 kommuner, en för varje parti.
  Ni vill alltså svara på frågorna: 
 \begin_inset Quotes sld
@@ -6346,17 +6374,7 @@ läsbar
 \end_layout
 
 \begin_layout Itemize
-Följ någon av kodstilarna i kapitlel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Kodstil"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
+Följ någon av kodstilarna som tas upp i Datorlaboration 4.
  Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
  i den stil som ni väljer att använda.
 \end_layout
@@ -6390,17 +6408,7 @@ Funktionshuvud: Använd mallen för
 \family typewriter
 roxygen2
 \family default
- som ges i kapitlel 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "chap:Dokumentation-av-funktioner"
-plural "false"
-caps "false"
-noprefix "false"
-
-\end_inset
-
-.
+ som ges i Datorlaboration 4.
  Ni ska ha med:
 \end_layout
 
@@ -6683,9 +6691,9 @@ sum_of_dice()
 \series bold
 Obs!
 \series default
- Om du inte implementerar funktionen på detta sätt kan den fortfarande fungera
+ Om ni inte implementerar funktionen på detta sätt kan den fortfarande fungera
  korrekt, men eftersom slumptalen används i olika ordning kan det vara så
- att du inte får samma resultat som i exemplen nedan.
+ att ni inte får samma resultat som i exemplen nedan.
 \end_layout
 
 \begin_layout Standard
