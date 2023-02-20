@@ -35,8 +35,9 @@ plot(x = iris$Sepal.Length, y = iris$Petal.Length,col=col_var,pch=16,cex=1.5)
 
 x<-seq(-10,10,length=1000)
 y<-x^2-x+4
-y<-2*sin(x)
 plot(x,y,t="l")
+y<-2*sin(x)
+plot(x,y,t="l",ylab="y = sin(x)",main="En sinuskurva")
 
 
 data("AirPassengers")
@@ -58,7 +59,7 @@ plot(AirPassengers)
 
 boxplot(y,col="blue")
 
-
+?boxplot
 # Exempel från dok:
 
 ## boxplot on a formula:
@@ -111,6 +112,8 @@ rnorm(n = 5, mean = 10, sd = 1)
 set.seed(20180218)
 rnorm(n=5, mean=10, sd=1)
 
+rnorm(n=30, mean=10, sd=1)
+
 ?Distributions
 
 y<-rnorm(n = 300,mean = 4,sd = 2)
@@ -127,18 +130,19 @@ summary(y)
 
 
 y <- rnorm(1000, mean = 0, sd = 1)
-hist(y,freq = FALSE)
+hist(y,breaks = 50,freq = FALSE)
 
-
-
-x<-seq(from = -3,to = 3,length=1000)
+x<-seq(from = -5,to = 5,length=1000)
 y<-dnorm(x = x,mean = 0,sd = 1)
 plot(x = x,y = y,t="l")
 head(cbind(x,y))
 
+pnorm(q = -0.5,mean = 0,sd = 1)
+
+qnorm(p = 0.3085375,mean = 0,sd = 1)
 
 
-text <- c("Linköpings", "Universitet","campus","statistik")
+text <- c("Linköpings", "Universitet","Campus","Statistik")
 set.seed(20180218)
 sample(x=text, size=5, replace=TRUE)
 sample(x=text, size=5, replace=TRUE)
@@ -152,9 +156,11 @@ dim(iris)
 
 dim(iris)
 iris[15,]
+# vi skapar en slumpmässig indexvektor för att välja ut 10 obs i Iris-data
 set.seed(4983)
 rand_index<-sample(x=150, size=10, replace=FALSE)
 rand_index
+# Väljer ut 10 slumpmässiga blommor från Iris-data
 iris[rand_index,]
 
 ?Distributions
@@ -179,9 +185,18 @@ qexp(p = 0.99,rate = 1)
 
 
 # The Poisson Distribution
-Ni <- rpois(100, lambda = 5)
+# En diskret sannolikhetsfördelning för heltalen: 0,1,2,3,4,...
+Ni <- rpois(100, lambda = 5) # testa att ändra lambda!
+mean(Ni)
+var(Ni)
 tN <- table(Ni)
 barplot(tN)
+# relativa frekvenser:
+tN <- table(Ni)
+tN<-tN/sum(tN)
+sum(tN)
+barplot(tN)
+
 
 # -------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------
@@ -220,5 +235,39 @@ library(pxweb)
 
 mitt_data<-pxweb_interactive()
 
-# ladda ner data med
-# pxweb_get()
+head(mitt_data$data)
+
+pop_test<-mitt_data$data
+
+# kod nedan för att automatiskt ladda ner data:
+# (genererades från pxweb_interactive())
+
+# befolkningsdata från SCB:
+
+# PXWEB query 
+pxweb_query_list <- 
+  list("Alder"=c("tot"),
+       "Kon"=c("1","2"),
+       "ContentsCode"=c("0000053A"),
+       "Tid"=c("2000","2001","2002","2003","2004","2005","2006","2007","2008","2009","2010","2011","2012","2013","2014","2015","2016","2017","2018","2019","2020","2021"))
+
+# Download data 
+px_data <- 
+  pxweb_get(url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningR1860N",
+            query = pxweb_query_list)
+
+# Convert to data.frame 
+px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.value.type = "text")
+
+# Get pxweb data comments 
+px_data_comments <- pxweb_data_comments(px_data)
+px_data_comments_df <- as.data.frame(px_data_comments)
+
+# väljer ut kvinnor:
+pop_female<-px_data_frame[px_data_frame$kön=="kvinnor",]
+
+# hur ser befolkningsutvecklingen ut för kvinnor i Sverige sen år 2000?
+plot(pop_female$år,pop_female$Folkmängd,t="o",ylab="Folkmängd, kvinnor",xlab="år")
+
+
+
