@@ -1,0 +1,61 @@
+---
+title: "Min Rmd-fil"
+author: "Josef"
+date: "2023-02-20"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Ett stycke text
+Testar formler:
+
+$$y=\beta+\alpha+\gamma$$
+Formel för medelvärde:
+
+$$mean(x)=\frac{1}{N} \cdot \sum_{i=1}^{N}x_i$$
+
+Vi kan ha formler inuti texten så här $\alpha=10$ och $\psi=-7$. 
+
+
+### En mindre rubrik
+
+Min kod finns nedan:
+
+```{r echo=TRUE}
+print("hej")
+print(25^4)
+```
+
+Nedan gömmer jag koden och visar bara output:
+
+```{r ,fig.height=4,fig.width=5,echo=FALSE}
+
+#head(iris)
+plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="darkgreen")
+
+```
+
+
+
+## En till rubrik
+Tester formatering:
+
+**ett ord**
+
+*test*
+
+Gör en tabell baserat på data.frame nedan:
+```{r ,fig.height=4,fig.width=5,echo=TRUE}
+
+knitr::kable(head(iris),caption = "Min första tabell")
+
+
+```
+
+
+
