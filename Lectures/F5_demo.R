@@ -11,6 +11,8 @@ data("iris")
 head(iris)
 plot(x = iris$Sepal.Length, y = iris$Petal.Length)
 
+plot(x = iris$Sepal.Length, y = iris$Sepal.Width)
+
 plot(x = iris$Sepal.Length, y = iris$Petal.Width)
 
 str(iris)
@@ -18,17 +20,23 @@ is.data.frame(iris)
 plot(iris)
 
 x<-iris$Sepal.Length^2+10
+plot(x = iris$Sepal.Length, y = x)
 plot(x = x, y = iris$Petal.Width)
 
 
 plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="red")
 
 plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="blue",pch=5)
-
+plot(x = iris$Sepal.Length, y = iris$Petal.Length,col="blue",pch=16)
 
 col_var<-iris$Species
 
 plot(x = iris$Sepal.Length, y = iris$Petal.Length,col=col_var,pch=16,cex=1.5)
+
+x<-seq(-10,10,length=1000)
+y<-x^2-x+4
+y<-2*sin(x)
+plot(x,y,t="l")
 
 
 data("AirPassengers")
@@ -40,7 +48,7 @@ plot(x=y,type="o",lty=1,lwd=2,main="AirPassengers")
 
 plot(x=y,t="l",lty=3,lwd=3,main="AirPassengers")
 
-
+?par
 
 # AirPassengers är ett ts-objekt (ts=tidserie), så det går att plotta direkt:
 class(AirPassengers)
@@ -50,14 +58,27 @@ plot(AirPassengers)
 
 boxplot(y,col="blue")
 
+
+# Exempel från dok:
+
+## boxplot on a formula:
+boxplot(count ~ spray, data = InsectSprays, col = "lightgray")
+# *add* notches (somewhat funny here <--> warning "notches .. outside hinges"):
+boxplot(count ~ spray, data = InsectSprays,
+        notch = TRUE, add = TRUE, col = "blue")
+
+
+
+
 hist(y,col="purple",freq = FALSE)
 hist(y,breaks = 5,col="purple",freq = FALSE)
 hist(y,breaks = 20,col="purple",freq = FALSE)
+hist(y,breaks = 20,col="purple",freq = TRUE)
 ?par
 par(lwd=3)
 plot(x=y,type="l",lty=1,main="AirPassengers")
 par(lwd=1)
-
+plot(x=y,type="l",lty=1,main="AirPassengers")
 
 # bonus:
 ?volcano
