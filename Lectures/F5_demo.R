@@ -14,6 +14,7 @@ plot(x = iris$Sepal.Length, y = iris$Petal.Length)
 plot(x = iris$Sepal.Length, y = iris$Petal.Width)
 
 str(iris)
+is.data.frame(iris)
 plot(iris)
 
 x<-iris$Sepal.Length^2+10
@@ -50,10 +51,32 @@ plot(AirPassengers)
 boxplot(y,col="blue")
 
 hist(y,col="purple",freq = FALSE)
-hist(y,breaks = 15,col="purple",freq = FALSE)
+hist(y,breaks = 5,col="purple",freq = FALSE)
+hist(y,breaks = 20,col="purple",freq = FALSE)
 ?par
-par(lwd=1)
+par(lwd=3)
 plot(x=y,type="l",lty=1,main="AirPassengers")
+par(lwd=1)
+
+
+# bonus:
+?volcano
+image(volcano)
+?filled.contour
+x <- 10*1:nrow(volcano)
+y <- 10*1:ncol(volcano)
+filled.contour(x, y, volcano,
+               color.palette = function(n) hcl.colors(n, "terrain"),
+               plot.title = title(main = "The Topography of Maunga Whau",
+                                  xlab = "Meters North", ylab = "Meters West"),
+               plot.axes = { axis(1, seq(100, 800, by = 100))
+                 axis(2, seq(100, 600, by = 100)) },
+               key.title = title(main = "Height\n(meters)"),
+               key.axes = axis(4, seq(90, 190, by = 10)))  # maybe also asp = 1
+mtext(paste("filled.contour(.) from", R.version.string),
+      side = 1, line = 4, adj = 1, cex = .66)
+
+
 
 # -------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------
@@ -169,66 +192,6 @@ barplot(tN)
 #install.packages("pxweb")
 library(pxweb)
 
-# -------------------------------------------------------------------------------------------
-# det finns två gränsnitt till pxweb
-# -------------------------------------------------------------------------------------------
-
-# -------------------------------------------------------------------------------------------
-# de gamla funktionerna
-my_data <- interactive_pxweb()
-
-
-head(my_data)
-
-
-
-myDataSetName <- 
-  get_pxweb_data(url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/BE/BE0101/BE0101A/BefolkningR1860",
-                 dims = list(Alder = c('*'),
-                             Kon = c('1', '2'),
-                             ContentsCode = c('BE0101C£'),
-                             Tid = c('1860', '2017')),
-                 clean = TRUE)
-
-
-
-
-# Ladda ned husdjur
-my_data <- get_pxweb_data(url = "http://api.scb.se/OV0104/v1/doris/sv/ssd/JO/JO0103/HusdjurL",
-                 dims = list(Region = c('00'),
-                             Djurslag = c('70'),
-                             ContentsCode = c('JO0103L1'),
-                             Tid = c('*')),
-                 clean = TRUE)
-
-# Visualisera över tid
-dim(my_data)
-index <- !is.na(my_data$values)
-data2 <- my_data[index,]
-temp <- as.character(data2$Tid)
-my_years <- as.numeric(temp)
-
-plot(x = my_years, y = data2$values, xlab="År", ylab="Antal hästar", type="o",cex=2)
-
-
-plot(x = my_years, y = data2$values, xlab="År", ylab="Antal hästar", type="l",lwd=2)
-
-
-
-
-barplot_data <- data2$values
-names(barplot_data) <- my_years
-barplot(barplot_data)
-
-
-
-
-# Hämta data från ett givet api 
-my_data2 <- interactive_pxweb(api = 'api.scb.se', version = 'v1', lang = 'sv')
-
-
-# -------------------------------------------------------------------------------------------
-# de nya funktionerna
 
 # se här för mer detaljer:
 # https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html
