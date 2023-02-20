@@ -1,0 +1,7 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Föreläsning 5}{2}{0}{1}
+\beamer@sectionintoc {2}{Information del 2}{4}{0}{2}
+\beamer@sectionintoc {3}{Basgrafik}{9}{0}{3}
+\beamer@sectionintoc {4}{Slumptal och simulering}{19}{0}{4}
+\beamer@sectionintoc {5}{R-Markdown, knitr och Notebooks}{24}{0}{5}
+\beamer@sectionintoc {6}{Externa data och pxweb}{29}{0}{6}

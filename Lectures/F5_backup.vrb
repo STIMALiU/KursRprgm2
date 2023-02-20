@@ -1,0 +1,10 @@
+\frametitle{pxweb}
+\protect\hypertarget{pxweb}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pxweb"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(pxweb)}
+
+\NormalTok{min\_data }\OtherTok{\textless{}{-}} \FunctionTok{pxweb\_interactive}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}

@@ -1,0 +1,3 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Föreläsning 5}{2}{0}{1}
+\beamer@sectionintoc {2}{Information del 2}{4}{0}{2}

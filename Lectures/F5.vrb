@@ -1,0 +1,22 @@
+\frametitle{pxweb}
+\protect\hypertarget{pxweb}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pxweb"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(pxweb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mitt\_data}\OtherTok{\textless{}{-}}\FunctionTok{pxweb\_interactive}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+Se även denna
+\emph{\href{https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html}{vignette}}

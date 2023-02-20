@@ -1,0 +1,1037 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+  ignorenonframetext,
+  handout]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={R-programmering VT2022},
+  pdfauthor={Josef Wilzén},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
+
+%%% USEFUL PACKAGES
+%\usepackage{showframe} % For debugging positioning
+\usepackage{etex} % If too many packages
+% Encoding and language
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{natbib}
+%\usepackage{booktabs}
+%\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{caption}
+%\usepackage{animate} % Animations
+\usepackage{bm} % Bold math
+\usepackage{bbm}
+%\usepackage{url}
+%\usepackage{pifont}
+%\usepackage{ulem} % Used for strikeouts \sout
+%\usepackage{stackengine}
+%\usepackage{enumitem}
+%\setlist[description]{leftmargin=\parindent,labelindent=\parindent}
+%\usepackage{colortbl} % Used for colored rows in tables
+
+
+%%% GRAPHICS
+\usepackage{graphicx}
+\graphicspath{{./figs/}}
+
+
+%%% COLORS
+\setbeamercolor{background canvas}{bg=white}
+\def\BlankFrame{
+	\bgroup
+	%\pdfpageheight 29.7cm
+	\setbeamercolor{background canvas}{bg=}
+	\begin{frame}[plain]
+	\end{frame}
+	%\makeatletter
+	%\pdfpageheight \beamer@paperheight
+	%\makeatother
+	\egroup}
+
+\usepackage{xcolor}
+\definecolor{DarkGreen}{HTML}{00B200}
+\definecolor{LightBlue}{HTML}{0090D9}
+\definecolor{gold}{rgb}{.812,.710,.231}
+% Text markup
+%\setbeamercolor{alerted text}{fg=red}
+\newcommand{\blue}[1]{\textcolor{blue}{#1}}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\grey}[1]{\textcolor{gray}{#1}}
+\newcommand{\orange}[1]{\textcolor{mLightBrown}{#1}}
+\newcommand\myheading[1]{\textbf{#1}}
+\newcommand\myemph[1]{\underline{\emph{#1}}}
+\newcommand\textexample[1]{\textit{\textbf{#1}}}
+
+%%% SPACING
+\newcommand\vws[1][1]{\vspace{#1\baselineskip}} % vertical white space
+%\newcommand\strt[1][1.5ex]{\rule[-.05\baselineskip]{0pt}{#1}} % strut
+\newcommand\strt[2]{\rule[-#1ex]{0pt}{#2ex}} % strut
+\newcommand\Hrule{\vspace{1ex} \hrule \vspace{1ex}} % Horisontal rule with some space after
+
+%%% MISC
+\newcommand\articleref[4]{\noindent\begin{minipage}[t]{0.04\textwidth}
+		\vspace{0pt} 
+		\pgfuseimage{beamericonarticle}
+	\end{minipage}%
+	\begin{minipage}[t]{0.96\textwidth}
+		\vspace{0pt}
+		#1. \textbf{#2.} \textit{#3}, #4.
+	\end{minipage}}
+
+%%% METROPOLIS THEME SPECIFIC
+\makeatletter
+\setlength{\metropolis@progressonsectionpage@linewidth}{1pt}
+\makeatother
+%\setbeamercolor{progress bar}{fg=red,bg=red!50}
+
+
+%%% TEXTPOS
+\usepackage[absolute,overlay]{textpos} % option showboxes is useful in draft mode
+\setlength{\TPHorizModule}{\paperwidth}
+\setlength{\TPVertModule}{\paperheight}
+\textblockorigin{0pt}{10mm} % start everything at top-left, below gray 
+
+
+%%% TIKZ/PGFPLOTS
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,calc,shapes.geometric}
+%\usetikzlibrary{arrows,calc,shapes.geometric,decorations.pathmorphing,backgrounds,positioning,fit,petri,decorations.pathreplacing}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat = 1.3}
+
+
+%%% BLOCKS AND BOXES
+% Changing colors of blocks
+%\setbeamercolor{block title alerted}{bg=UURed,fg=palette primary.fg}
+%\setbeamercolor{block body alerted}{bg=UURed!15}
+\setbeamercolor{block title alerted}{bg=mLightBrown,fg=palette primary.fg}
+\setbeamercolor{block body alerted}{bg=mLightBrown!15}
+%\setbeamercolor{block title example}{bg=UUGreen,fg=palette primary.fg}
+%\setbeamercolor{block body example}{bg=UUGreen!10}
+% \mybox is a rectangular box
+\usepackage{boxedminipage}
+\setlength\fboxrule{2pt}
+\setlength\fboxsep{2\fboxsep}
+\newcommand\mybox[3][\textwidth]{
+  {\color{#2}
+    \begin{boxedminipage}{#1}
+      {\color{palette primary.bg} #3}
+    \end{boxedminipage}}%
+}   
+\usepackage{tcolorbox}
+\tcbset{arc=1mm,grow to left by=3mm,grow to right by=3mm,left=2mm}
+%\newenvironment{redbox}{%
+%	\begin{tcolorbox}[colback=UURed!15,colframe=UURed]}{%
+%	\end{tcolorbox}}
+%\newenvironment{greenbox}{%
+%	\begin{tcolorbox}[colback=UUGreen!15,colframe=UUGreen]}{%
+%	\end{tcolorbox}}
+\newenvironment{redbox}{%
+	\begin{tcolorbox}[colback=red!15,colframe=red]}{%
+	\end{tcolorbox}}
+\newenvironment{greenbox}{%
+	\begin{tcolorbox}[colback=DarkGreen!15,colframe=DarkGreen]}{%
+	\end{tcolorbox}}
+\newenvironment{graybox}{%
+	\begin{tcolorbox}[colback=mDarkTeal!5,colframe=mDarkTeal]}{%
+	\end{tcolorbox}}
+\newenvironment{orangebox}{%
+\begin{tcolorbox}[colback=mLightBrown!15,colframe=mLightBrown]}{%
+	\end{tcolorbox}}
+\newenvironment{bwbox}{%
+	\begin{tcolorbox}[colback=white,colframe=black]}{%
+\end{tcolorbox}}
+\newenvironment{bluebox}{%
+	\begin{tcolorbox}[colback=LightBlue!15,colframe=LightBlue]}{%
+\end{tcolorbox}}
+
+
+%%%%%%%%% NEW MACROS
+
+\newcommand\imp[1]{\alert{\textbf{#1}}}
+\newcommand\bfit[1]{\textbf{\textit{#1}}}
+\newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
+\newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
+
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{R-programmering VT2022}
+\subtitle{Föreläsning 5}
+\author{Josef Wilzén}
+\date{2022-02-20}
+\institute{Linköpings Universitet}
+
+\begin{document}
+\frame{\titlepage}
+
+\hypertarget{fuxf6reluxe4sning-5}{%
+\section{Föreläsning 5}\label{fuxf6reluxe4sning-5}}
+
+\begin{frame}{Innehåll föreläsning 5}
+\protect\hypertarget{innehuxe5ll-fuxf6reluxe4sning-5}{}
+\begin{itemize}
+\tightlist
+\item
+  Information del 2
+\item
+  Grafik
+\item
+  Slumptal och simulering
+\item
+  knitr och markdown
+\item
+  Externa data och pxweb
+\end{itemize}
+\end{frame}
+
+\hypertarget{information-del-2}{%
+\section{Information del 2}\label{information-del-2}}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-programmering - del 2}
+\protect\hypertarget{r-programmering---del-2}{}
+\begin{itemize}
+\tightlist
+\item
+  Del 1: Grunderna i programmering:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Variabler och tilldelning
+  \item
+    Datastrukturer
+  \item
+    Kontrollstrukturer
+  \item
+    Funktioner
+  \item
+    Debugging
+  \item
+    Dokumentation
+  \end{itemize}
+\item
+  Del 2: Tillämpningar
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-programmering - del 2}
+\protect\hypertarget{r-programmering---del-2-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Del 1: Grunderna i programmering:
+\item
+  Del 2: Tillämpningar
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Grafik
+  \item
+    Slumptal
+  \item
+    Statistik och analys
+  \item
+    Externa data
+  \item
+    Datum
+  \item
+    Texthantering och regular expression
+  \item
+    Linjär algebra
+  \item
+    knitr, markdown, literate programming
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-programmering - del 2}
+\protect\hypertarget{r-programmering---del-2-2}{}
+\begin{itemize}
+\tightlist
+\item
+  Labbarna görs nu i par
+\item
+  Parprogrammering:
+
+  \begin{itemize}
+  \item
+    \imp{Turas om att skriva koden}
+  \item
+    Den som inte kodar är engagerad i koden och problemet
+  \item
+    Byt vem som kodar var 20/30:e minut
+  \item
+    Viktigt att kommentra koden: ROxygen och inline
+  \item
+    \imp{Båda} är delaktiga i programmeringen
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Miniprojekt - del 1}
+\protect\hypertarget{miniprojekt---del-1}{}
+Info finns på kurshemsidan.
+
+\begin{itemize}
+\tightlist
+\item
+  Hitta data på webben (eller lägg upp eget)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kommunala (tvärsnitt) data
+  \item
+    Tidsseriedata
+  \end{itemize}
+\item
+  Presentera med basgrafik, knitr och markdown
+\item
+  Rapporten ska vara reproducerbar
+\item
+  Lämna in som \imp{PDF} och \imp{Rmd}
+\item
+  Miniprojektet har egen inlämning
+\item
+  Två veckor per del
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Del 1 börjar denna vecka
+  \item
+    Del 2 börjar vecka 7
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{basgrafik}{%
+\section{Basgrafik}\label{basgrafik}}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Grafik i R}
+\protect\hypertarget{grafik-i-r}{}
+\begin{itemize}
+\tightlist
+\item
+  Grafik är en styrka med R
+\item
+  Massa olika paket: \texttt{ggplot2}, \texttt{lattice} m.m.
+\item
+  Hög nivå (funktioner, \texttt{plot})
+\item
+  Låg nivå (bygga upp en plot steg för steg)
+\item
+  Använd grafik för att:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sammanfatta tabeller visuellt
+  \item
+    Jämföra olika dataset
+  \item
+    Rita ut funktioner
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Enkel grafik: plot()}
+\protect\hypertarget{enkel-grafik-plot}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{plot()} - kan plotta många olika objekt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{plot(x,y)} - ger en scatterplot
+  \item
+    \texttt{plot(x)} - om \texttt{x} en \texttt{data.frame} så skapas en
+    matrix-plot.
+  \item
+    Vanliga argument:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \texttt{type = } Hur plotten ska se ut
+    \item
+      \texttt{main = } Titel på plotten
+    \item
+      \texttt{xlab = } Text på x-axeln
+    \item
+      \texttt{ylab = } Text på y-axeln
+    \item
+      \texttt{xlim = } Gränserna på x-axeln
+    \item
+      \texttt{ylim = } Gränserna på y-axeln
+    \item
+      \texttt{col = } Färgerna som ska användas
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{plot() - exempel}
+\protect\hypertarget{plot---exempel}{}
+<<fig.height=4>>=
+data(iris)
+plot(x=iris$Sepal.Length,y=iris$Petal.Length)
+@
+
+
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Diagramtyper}
+\protect\hypertarget{diagramtyper}{}
+\begin{itemize}
+\tightlist
+\item
+  \texttt{hist(x = , breaks = )} ger ett histogram,
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{x} är en numerisk vektor.
+  \item
+    \texttt{breaks} antalet intervall som data delas in i.
+  \end{itemize}
+\item
+  \texttt{boxplot(x = )} ger boxplots
+\item
+  \texttt{barplot(height = )} ger stapeldiagram
+\item
+  \texttt{pie(x = )} geren piechart
+\item
+  Använd hjälpen för att se exempel och fler argument
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{hist() - exempel}
+\protect\hypertarget{hist---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-2-1.pdf}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{bokxplot() - exempel}
+\protect\hypertarget{bokxplot---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-3-1.pdf}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{barplot() - exempel}
+\protect\hypertarget{barplot---exempel}{}
+
+<<fig.height=4>>=
+hist(iris$Sepal.Length)
+@
+
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{pie() - exempel}
+\protect\hypertarget{pie---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
+\FunctionTok{pie}\NormalTok{(tab)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-5-1.pdf}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Lågnivågrafik}
+\protect\hypertarget{luxe5gnivuxe5grafik}{}
+\begin{itemize}
+\tightlist
+\item
+  Kan användas för att bygga upp en graf från grunden
+\item
+  Kör lager på lager:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{points(x, y)} lägger till punkter
+  \item
+    \texttt{lines(x, y)} lägger till linjer
+  \item
+    \texttt{abline(a, b, h, v)} lägger till räta linjer
+  \item
+    \texttt{legend(x, y, legend)} lägger till en förklaringsruta
+  \item
+    \texttt{par()} fler grafiska alternativ
+  \end{itemize}
+\item
+  Går att bygga upp många olika sorters plottar och grafik
+\item
+  Mycket smidigare att använda \texttt{ggplot2}
+\end{itemize}
+\end{frame}
+
+\hypertarget{slumptal-och-simulering}{%
+\section{Slumptal och simulering}\label{slumptal-och-simulering}}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{Slumptal och simulering - I}
+\protect\hypertarget{slumptal-och-simulering---i}{}
+\begin{itemize}
+\tightlist
+\item
+  R har en stor uppsättning funktioner för fördelningar
+\end{itemize}
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+prefix & Beskrivning & Exempel \\
+\midrule
+\endhead
+\texttt{r} & simulera från fördelningen & \texttt{runif()} \\
+\texttt{d} & täthetsfunktionen (pdf) & \texttt{dunif()} \\
+\texttt{p} & kulmulativ fördelninsgfunktion (cdf) & \texttt{punif()} \\
+\texttt{q} & inversa kulmulativa fördelningsfunktionen &
+\texttt{qunif()} \\
+\bottomrule
+\end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  Se \texttt{?Distributions} för fler fördelningar
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Slumptal och simulering - II}
+\protect\hypertarget{slumptal-och-simulering---ii}{}
+\begin{itemize}
+\tightlist
+\item
+  Observera att: \imp{Det finns ingen riktig slump i datorer}
+\item
+  Det finns slumptalsgeneratorer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Algoritmer där output ser slumpmässigt ut
+  \end{itemize}
+\item
+  Kan styra slumpen genom att bestämma startvärdet, ``slumpfröet''
+
+  \begin{itemize}
+  \tightlist
+  \item
+    i R använder vi \texttt{set.seed( )}
+  \end{itemize}
+\item
+  För att dra ett slumpmässigt urval använder vi \texttt{sample( )}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{Slumptal och simulering - Exempel}
+\protect\hypertarget{slumptal-och-simulering---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{runif}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{min =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] -0.8404220 -0.4314460 -0.2533269
+\end{verbatim}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{20220221}\NormalTok{)}
+\FunctionTok{runif}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{min =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] -0.2819856 -0.7837770 -0.4418922
+\end{verbatim}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{20220221}\NormalTok{)}
+\FunctionTok{runif}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{min =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] -0.2819856 -0.7837770 -0.4418922
+\end{verbatim}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{Slumptal och simulering - Exempel}
+\protect\hypertarget{slumptal-och-simulering---exempel-1}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{text }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Johan"}\NormalTok{, }\StringTok{"Josef"}\NormalTok{, }\StringTok{"Rasmus"}\NormalTok{)}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{20220221}\NormalTok{)}
+\FunctionTok{sample}\NormalTok{(}\AttributeTok{x =}\NormalTok{ text, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "Josef"  "Johan"  "Johan"  "Josef"  "Rasmus"
+\end{verbatim}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sample}\NormalTok{(}\AttributeTok{x =}\NormalTok{ text, }\AttributeTok{size =} \DecValTok{5}\NormalTok{, }\AttributeTok{replace =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{verbatim}
+## [1] "Rasmus" "Josef"  "Josef"  "Josef"  "Josef"
+\end{verbatim}
+\end{frame}
+
+\hypertarget{r-markdown-knitr-och-notebooks}{%
+\section{R-Markdown, knitr och
+Notebooks}\label{r-markdown-knitr-och-notebooks}}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-Markdown, knitr och Notebooks}
+\protect\hypertarget{r-markdown-knitr-och-notebooks-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Kombinera text, kod och grafik i en fil
+\item
+  Förenkla för era laborationer i denna och andra kurser
+\item
+  Inbyggd del av R-studio
+\item
+  Två delar:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R-Markdown (för text)
+  \item
+    knitR (för R-kod)
+  \end{itemize}
+\item
+  Kan producera, PDF, Word och/eller HTML filer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Alla slides och kurshemsidan är skapad med detta.
+  \item
+    Laborationerna använder knitR med lyx istället för R-Markdown
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-Markdown}
+\protect\hypertarget{r-markdown}{}
+\begin{itemize}
+\tightlist
+\item
+  Markupspråk
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Markup används på Teams, Forum, Discord, Slack m.m.
+  \end{itemize}
+\item
+  Väldigt enkelt att skriva
+\item
+  Kan hantera matematik och matematiska formler (via LaTeX)
+\item
+  Integrerat med R-Studio
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kan behöva installera LaTeX för att skapa PDFer
+
+    \begin{itemize}
+    \tightlist
+    \item
+      MikTex för Windows
+    \item
+      MacTex för OS X
+    \item
+      TexLive för Linux
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{knitr}
+\protect\hypertarget{knitr}{}
+\begin{itemize}
+\tightlist
+\item
+  Kör R-kod och ersätter texten med resultatet
+\item
+  Sätter ihop text och kod
+\item
+  Ger dynamiska rapporter
+\item
+  Skapa tabeller med \texttt{kable( )}
+\item
+  Kan hantera R och Python (och annat)
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{R-Studio Notebooks}
+\protect\hypertarget{r-studio-notebooks}{}
+\begin{itemize}
+\tightlist
+\item
+  Rmd-filer (samma som R-Markdown)
+\item
+  Kan köras interaktivt direkt i R-Studio
+\item
+  Inspirerat av Jupyter Notebooks
+\item
+  Skillnad mellan R-Markdown och Notebooks:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Samma kod
+  \item
+    i R-Markdown körs all kod när du genererar dokumentet
+  \item
+    i Notebook körs en rad i taget
+  \item
+    i Notebooks kan du köra kod direkt och se resultatet
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\hypertarget{externa-data-och-pxweb}{%
+\section{Externa data och pxweb}\label{externa-data-och-pxweb}}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Externa data}
+\protect\hypertarget{externa-data}{}
+\begin{itemize}
+\tightlist
+\item
+  Mer och mer data finns på webben
+\item
+  Vill kunna hantera data programtiskt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Vill kunna säga åt koden vilken data som ska användas
+  \item
+    Samma data varje gång även om källmaterialet uppdateras
+  \item
+    Inte vara beroende av en specifik nerladdad fil
+  \end{itemize}
+\item
+  Kan vara lite klurigt i början
+\item
+  Central del av reproducerbarheten i rapporter
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Ladda ner och läsa in från webben}
+\protect\hypertarget{ladda-ner-och-luxe4sa-in-fruxe5n-webben}{}
+\begin{itemize}
+\tightlist
+\item
+  Vill vi bara ladda ner: \texttt{downloader}
+\item
+  Vill vi ladda in direkt i R: \texttt{repmis}
+\end{itemize}
+
+\texttt{repmis} hanterar:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{.Rdata}
+\item
+  \texttt{.csv}
+\item
+  \texttt{.txt}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{Vanliga källor för data}
+\protect\hypertarget{vanliga-kuxe4llor-fuxf6r-data}{}
+\begin{itemize}
+\tightlist
+\item
+  Dropbox
+\item
+  Google Docs
+\item
+  Github
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}{pxweb api}
+\protect\hypertarget{pxweb-api}{}
+\begin{itemize}
+\tightlist
+\item
+  Ett api är en dörr till ett system
+\item
+  \texttt{pxweb} är ett paket för att gå in genom dörren
+\item
+  Många myndigheter använder \texttt{pxweb} api
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Till exempel SCB
+  \end{itemize}
+\item
+  Kan användas för:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Navigera i datalager
+  \item
+    Ladda ner förutbestämd data med kod
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%% slide %%%%%%%%%
+
+\begin{frame}[fragile]{pxweb}
+\protect\hypertarget{pxweb}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pxweb"}\NormalTok{)}
+\FunctionTok{library}\NormalTok{(pxweb)}
+
+\NormalTok{min\_data }\OtherTok{\textless{}{-}} \FunctionTok{pxweb\_interactive}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\end{document}
