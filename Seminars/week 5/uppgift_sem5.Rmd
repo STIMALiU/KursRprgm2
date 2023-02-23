@@ -1,0 +1,163 @@
+---
+title: "Spridningsmått"
+author: "Josef"
+date: "2023-02-23"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Intro
+
+Skapa en rapport som förklarar och visar olika mått för spridning för en numerisk variabel.
+Visa formler och kod för beräkningar. Skapa funktioner för måtten.
+
+Ha med måtten nedan:
+
+  - Varians
+  - Standardavvikelse 
+  - Mean absolute deviation
+  - Median absolute deviation
+
+## Måtten
+
+### Varians
+
+Formel för varians:
+
+Låt $x$ vara en numerisk vektor, låt $n$ vara antalet element i vektorn $x$. 
+Låt $\bar{x}$ vara medelvärdet för vektorn $x$.
+
+$$var(x)=\frac{1}{n-1} \cdot \sum_{i=1}^{n} (x_i-\bar{x})^2 $$
+
+
+Vi skapar en funktion som beräknar variansen enligt ovan.
+
+```{r,echo=TRUE}
+
+my_var<-function(x){
+  
+  n<-length(x)
+  
+  part1<-1/(n-1)
+  
+  m<-mean(x)
+  
+  sq_diff_m<-(x-m)^2
+  
+  part2<- sum(sq_diff_m)
+  
+  var_val<-part1*part2
+  return(var_val)
+}
+
+# exempel på användning:
+z<-1:10
+
+my_var(x = z)
+
+var(z)
+
+```
+
+
+### Standardavvikelse
+
+Formel för standardavvikelse:
+
+Låt $x$ vara en numerisk vektor, låt $n$ vara antalet element i vektorn $x$. 
+Låt $\bar{x}$ vara medelvärdet för vektorn $x$.
+
+
+$$sd(x)= \sqrt{ \frac{1}{n-1} \cdot \sum_{i=1}^{n} (x_i-\bar{x})^2 }$$
+
+Vi skapar en funktion som beräknar standardavvikelsen enligt ovan.
+
+
+```{r}
+
+my_sd<-function(x){
+  
+  var_x<-my_var(x = x)
+  
+  sd_val<-sqrt(var_x)
+  
+  return(sd_val)
+}
+
+z<-1:30
+my_sd(x = z)
+sd(z)
+
+```
+
+
+### Mean absolute deviation och Median absolute deviation
+
+Mean absolute deviation = MAD
+Median absolute deviation = MAD
+
+Det finns två typer av MAD.
+
+Formel för mean absolute deviation:
+
+Låt $x$ vara en numerisk vektor, låt $n$ vara antalet element i vektorn $x$. 
+Låt $\bar{x}$ vara medelvärdet för vektorn $x$.
+
+
+$$MAD(x)=\frac{1}{n} \cdot \sum_{i=1}^{n} |x_i-\bar{x}| $$
+
+Formel för median absolute deviation:
+
+$$MAD(x)=median( |x_i-median(x)|) $$
+
+Vi skapar en funktion som kan beräkna båda typerna av MAD. Argumentet type styr vilken typ av MAD som beräknas. 
+
+- type = "mean" betyder mean absolute deviation
+- type = "median" betyder median absolute deviation
+
+```{r}
+
+MAD<-function(x,type){
+  
+  if(type=="mean"){
+    n<-length(x)
+  
+    part1<-1/(n)
+  
+    m<-mean(x)
+  
+    abs_diff_m<- abs(x-m)
+  
+    part2<- sum(abs_diff_m)
+  
+    mad_val<-part1*part2
+    
+  }else if(type=="median"){
+    
+    m<-median(x)
+    abs_diff_m<- abs(x-m)
+  
+    mad_val<- median(abs_diff_m)
+    
+  }else{
+    stop("not right value for type!")
+  }
+  return(mad_val)
+}
+z<-c(2,24,34,32,43,23,25,39,45,20, 79)
+MAD(x = z,type = "mean")
+MAD(x = z,type = "median")
+# MAD(x = z,type = "abc")
+
+set.seed(343)
+z2<-rchisq(n = 1000,df = 4)
+MAD(x = z2,type = "mean")
+MAD(x = z2,type = "median")
+
+
+
+```
+
