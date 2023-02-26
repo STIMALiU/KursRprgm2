@@ -268,8 +268,8 @@ matrix
 \series bold
 generiska funktioner
 \series default
- där en och samma funktion gör olika beräkningar beroende på vad det är
- för klass objektet har.
+ där en och samma funktion gör olika beräkningar/saker beroende på vad det
+ är för klass objektet har.
  Dessa typer av funktioner specialiserade för enskilda klasser kallas för
  
 \series bold
@@ -730,7 +730,7 @@ Undersök för vilka klasser
 \family typewriter
 plot()
 \family default
- ohar metoder.
+ har metoder.
  Testa sen koden nedan.
 \begin_inset Newline newline
 \end_inset
@@ -1978,12 +1978,13 @@ där
 \begin_inset Formula $E$
 \end_inset
 
- är en enhets matris av lämplig storlek.
+ är en enhetsmatris av lämplig storlek.
  För att beräkna inversen av en matris används 
 \family typewriter
 solve()
 \family default
 .
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -2024,6 +2025,144 @@ print(E)
 \begin_layout Plain Layout
 
 round(E,8)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Notera
+\series default
+: När vi gör numeriska beräkningar i programmering (t.ex.
+ numerisk linjär algebra), så uppstår det ofta små numeriska fel.
+ Detta kan göra att värden som 
+\begin_inset Quotes sld
+\end_inset
+
+ska vara 0
+\begin_inset Quotes srd
+\end_inset
+
+ inte är det, utan är mycket små tal istället.
+ Oftast spelar det inte någon roll praktiskt, om vi avrundar vårt resultat
+ till t.ex.
+ åtta decimaler så blir det ofta 0, vilket är tillräckligt bra i flesta
+ situationer.
+ Dock så kan vi inte alltid testa om en variabel är noll med 
+\family typewriter
+x==0
+\family default
+, då 
+\family typewriter
+x
+\family default
+ kanske är 
+\begin_inset Formula $-3.342\cdot10^{-13}$
+\end_inset
+
+.
+ Då får vi göra test av typen: 
+\family typewriter
+abs(x)<=1e-8
+\family default
+.
+ Testa koden nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+?all.equal
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(35) 
+\end_layout
+
+\begin_layout Plain Layout
+
+G<-matrix(rnorm(n = 20),2,10) 
+\end_layout
+
+\begin_layout Plain Layout
+
+H<-A+1e-6 
+\end_layout
+
+\begin_layout Plain Layout
+
+all.equal(G,H)
+\end_layout
+
+\begin_layout Plain Layout
+
+all(abs(G-H)<=1e-5)
+\end_layout
+
+\begin_layout Plain Layout
+
+all(abs(G-H)<=1e-6)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+H<-A+1e-7 
+\end_layout
+
+\begin_layout Plain Layout
+
+all.equal(G,H)
+\end_layout
+
+\begin_layout Plain Layout
+
+all(abs(G-H)<=1e-7)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+H<-A+1e-8 
+\end_layout
+
+\begin_layout Plain Layout
+
+all.equal(G,H) 
+\end_layout
+
+\begin_layout Plain Layout
+
+all(abs(G-H)<=1e-8)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2244,15 +2383,46 @@ Beräkna följande blockmatris i R
 \begin_inset Formula $\mathbf{Y}$
 \end_inset
 
- är identiska med 
-\family typewriter
-all.equal()
-\family default
- eller 
-\family typewriter
-==
-\family default
-.
+ är identiska med koden nedan.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+tol_val<-1e-8
+\end_layout
+
+\begin_layout Plain Layout
+
+all(abs(X-Y)<=tol_val)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+all.equal(X,Y)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -3250,7 +3420,7 @@ ymd("2012-10-10")
 \end_layout
 
 \begin_layout Enumerate
-Konvertera ditt fördelsedatum som ett datum i R (kalla variabeln 
+Konvertera ditt födelsedatum som ett datum i R (kalla variabeln 
 \family typewriter
 birth
 \family default
@@ -3822,7 +3992,7 @@ plot()
 \family default
  kan anpassa sig automatiskt om x-variabeln är av datumklass.
  Testa koden nedan, och notera x-axeln i plottarna i båda fallen.
- Detta är användbart i samband med miniprojektet.
+ Detta är användbart i samband med projektet.
  
 \begin_inset Newline newline
 \end_inset
@@ -4135,7 +4305,7 @@ Inlämningsuppgifter
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "Inluppg.lyx"
+filename "Inluppg_del2.lyx"
 
 \end_inset
 
@@ -4158,21 +4328,25 @@ status open
 
 \begin_layout Plain Layout
 
-solution_path<-"/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeache
-r/Labs/exercise_solutions/"
-\end_layout
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
 
-\begin_layout Plain Layout
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
+\begin_inset Quotes srd
+\end_inset
 
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
 \begin_layout Plain Layout
 
 solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -4969,6 +5143,13 @@ give_blood(lasttime=day1,holiday=holiday2,sex="f",type_of_travel="other")
 @
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
 \end_inset
 
 

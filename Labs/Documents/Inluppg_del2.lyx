@@ -95,7 +95,7 @@ literal "false"
 \end_inset
 
 , när du gör inlämningsuppgifterna.
- Spara denna som l
+ Spara denna som 
 \family typewriter
 labb[no]_grupp[no].R
 \family default
@@ -130,11 +130,11 @@ Precis innan inlämning på Lisam, döp om er R-fil till en
 troll.
  Exempel: 
 \family typewriter
-labb1_josad732.R
+labb5_grupp01.R
 \family default
  blir då 
 \family typewriter
-labb1_josad732.txt 
+labb5_grupp01.txt 
 \family default
 Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
  deadline.
