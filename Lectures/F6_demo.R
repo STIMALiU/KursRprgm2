@@ -5,6 +5,23 @@
 #-------------------------------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------------------------------
 
+
+library(pryr)
+
+otype(x = iris)
+otype(x = "hej")
+library(Matrix)
+A<-Matrix(10,2,5)
+otype(A)
+
+
+ftype(mean)
+ftype(plot)
+ftype(sd)
+ftype("+")
+ftype(A)
+
+
 data("iris")
 
 class(iris)
@@ -34,6 +51,7 @@ print.employee<-function(x){
 methods(print)
 print(my_object1)
 print.employee(my_object1)
+print.default(my_object1)
 
 my_object2<-list(name="Elin",age=34,company="liu",data=iris,data_name="iris")
 class(my_object2)<-c("statistician","employee")
@@ -90,7 +108,7 @@ employee <- function(name, age,company){
   return(obj)
 }
 
-x<-employee(name = "Josef",age = 78,company = "abc")
+x<-employee(name = "Josef",age = 67,company = "abc")
 x
 class(x)
 
@@ -124,6 +142,7 @@ all.equal(a,b)
 
 print(a)
 str(a)
+otype(a)
 a@start
 
 class(a)
@@ -173,6 +192,8 @@ seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "weeks")
 seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "3 weeks")
 
 seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "days")
+
+# tidserieplottar
 
 
 #-------------------------------------------------------------------------------------------------------

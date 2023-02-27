@@ -1,0 +1,32 @@
+\frametitle{Att räknamed tid - Exempel}
+\protect\hypertarget{att-ruxe4knamed-tid---exempel}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}01{-}24"}\NormalTok{)}
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-28"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{months}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-24"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{course\_start }\SpecialCharTok{+} \FunctionTok{ddays}\NormalTok{(}\DecValTok{30}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "2022-02-23"
+\end{verbatim}

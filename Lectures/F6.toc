@@ -1,0 +1,6 @@
+\babel@toc {nil}{}\relax 
+\beamer@sectionintoc {1}{Föreläsning 6}{2}{0}{1}
+\beamer@sectionintoc {2}{Information}{4}{0}{2}
+\beamer@sectionintoc {3}{Programmeringsparadigm}{6}{0}{3}
+\beamer@sectionintoc {4}{Datum och tid}{13}{0}{4}
+\beamer@sectionintoc {5}{Linjär algebra}{29}{0}{5}
