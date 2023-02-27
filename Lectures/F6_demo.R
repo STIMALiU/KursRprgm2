@@ -174,7 +174,18 @@ x<-employee(name = "Josef",age = 67,company = "abc")
 x
 class(x)
 
+statistician<-function(name,age,company,data,data_name){
+  obj<-list(name=name,age=age,company=company,data=data,data_name=data_name)
+  class(obj)<-c("statistician","employee")
+  return(obj)
+}
 
+B<-statistician(name = "Erica",age = 45,company = "ABC",data = trees,data_name = "trees")
+
+class(B)
+print(B)
+summary(B)
+#
 
 
 
@@ -199,6 +210,7 @@ class(a)
 
 
 b<-ymd("2015-01-01")%--%ymd("2015-01-06")
+b
 a==b
 all.equal(a,b)
 
@@ -211,8 +223,13 @@ class(a)
 str(a)
 
 a/days(1)
+class(days(1))
+
 
 a/ddays(1)
+class(ddays(1))
+
+dseconds(32499)
 
 ymd("2016-01-01")+dweeks(20)
 ymd("2016-01-01")+weeks(20)
@@ -222,7 +239,7 @@ b<-dyears(120)
 b
 class(b)
 str(b)
-b@.Data
+b@.Data^-0.5
 
 b2<-years(120)
 class(b2)
@@ -257,6 +274,13 @@ seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "days")
 
 # tidserieplottar
 
+set.seed(422)
+y<-1:10+rnorm(10)
+x<-seq(from = as.Date("2010-1-1"), to = as.Date("2019-1-1"), by = "years")
+
+plot(x,y,t="o")
+
+
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
@@ -281,6 +305,7 @@ b%*%d
 
 e<-b%*%a
 e
+t(e)
 dim(a)
 dim(t(a))
 e<-t(a)%*%a
