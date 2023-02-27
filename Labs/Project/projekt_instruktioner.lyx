@@ -1516,6 +1516,10 @@ Totalt antal invånare
 
 .
  Skriv en kort kommentar till varje plot.
+ Gör inte en barplot där varje kommun har en egen stapel, alltså ingen barplot
+ med 290 staplar.
+ Har ni variabler som är kontinuerliga eller frekvenser, då passar histogram
+ eller boxplot bra.
 \end_layout
 
 \begin_layout Enumerate
