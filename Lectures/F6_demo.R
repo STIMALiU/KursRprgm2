@@ -233,3 +233,17 @@ diag(1:10)
 
 eigen(e)
 
+# ekvationssystem:
+
+A<-matrix(c(4,4,6,2,6,-4,2,8,4),3,3,byrow = TRUE)
+
+b<-matrix(c(24,0,18),3,1)
+
+x<-solve(A,b)
+
+A%*%x
+
+
+
+
+
