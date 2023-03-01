@@ -1032,7 +1032,7 @@ Medelålder
 \begin_layout Itemize
 Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
  gör denna beräkning för varje kommun.
- För många variabler med som har små andeler så passar det att skapa variabler
+ För många variabler som har små andeler så passar det att skapa variabler
  av typen 
 \begin_inset Quotes eld
 \end_inset
@@ -1042,7 +1042,7 @@ antal per 10 000/100 000 invånare
 \end_inset
 
 .
- Då räknar vi ut det som (antal/totalt antal invånare)*10 000.
+ Då räknar vi ut det som: (antal/totalt antal invånare)*10 000.
 \end_layout
 
 \end_deeper
