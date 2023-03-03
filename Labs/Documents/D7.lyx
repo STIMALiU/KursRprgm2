@@ -23,6 +23,13 @@
 \fancyhead[C]{Programming i R}
 \fancyhead[LO,RE]{}
 
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
  
 \end_preamble
 \use_default_options true
@@ -109,7 +116,7 @@ Datorlaboration 7
 \end_layout
 
 \begin_layout Author
-Johan Alenlöv, Josef Wilzén och Måns Magnusson
+Josef Wilzén, Johan Alenlöv och Måns Magnusson
 \end_layout
 
 \begin_layout Standard
@@ -267,7 +274,7 @@ ggplot
 \series bold
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
+name "Här"
 target "http://www.r-graph-gallery.com/portfolio/ggplot2-package/"
 literal "false"
 
@@ -905,12 +912,27 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_point()
+p <- ggplot(data=Nile, aes(x=years, y=level)) + geom_point()
 \end_layout
 
 \begin_layout Plain Layout
 
-p
+# går även att skriva: 
+\end_layout
+
+\begin_layout Plain Layout
+
+# ggplot(data=Nile) + aes(x=years, y=level) + geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+p 
+\end_layout
+
+\begin_layout Plain Layout
+
+# alt: print(p)
 \end_layout
 
 \begin_layout Plain Layout
@@ -940,7 +962,7 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line()
+p <- ggplot(data=Nile,aes(x=years, y=level))  + geom_line()
 \end_layout
 
 \begin_layout Plain Layout
@@ -1024,6 +1046,90 @@ p <- p + xlab("Years") + ylab("Water level") + ggtitle("Nile series")
 
 \end_layout
 
+\begin_layout Enumerate
+Eftersom vi kan spara ggplot-objekt i variabler så kan spara ett antal plottar
+ i t.ex.
+ en lista och sen plotta den senare med print().
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+p1 <- ggplot(data=Nile,aes(x=years, y=level)) + geom_line() + ggtitle("linje")
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+p2 <- ggplot(data=Nile,aes(x=years, y=level)) + geom_point() + ggtitle("punkter"
+) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+class(p1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+mina_plottar<-list(p1=p1,p2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# rensa alla plottar i plot-fönstret och kör sedan koden nedan: 
+\end_layout
+
+\begin_layout Plain Layout
+
+for(i in 1:2){   
+\end_layout
+
+\begin_layout Plain Layout
+
+  print(mina_plottar[[i]]) 
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Enklare modifikationer av ett 
 \family typewriter
@@ -1050,8 +1156,8 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line(color="red",
- size=3)+ 
+p <- ggplot(data=Nile,aes(x=years, y=level)) + geom_line(color="red", linewidth=
+3)+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1067,6 +1173,30 @@ geom_point(color="blue", size=4)
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Det finns många färger att välja på.
+ Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.datanovia.com/en/blog/awesome-list-of-657-r-color-names/"
+literal "false"
+
+\end_inset
+
+ och 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://sape.inf.usi.ch/quick-reference/ggplot2/colour"
+literal "false"
+
+\end_inset
+
+ för listor över tillgängliga färger.
+ Ändra plotten ovan med andra färger från dessa listor.
 \end_layout
 
 \begin_layout Enumerate
@@ -1170,7 +1300,7 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line(aes(color=period))
+p <- ggplot(data=Nile,aes(x=years, y=level)) + geom_line(aes(color=period))
  + geom_point()
 \end_layout
 
@@ -1204,8 +1334,8 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level) + geom_line() + geom_point(aes(co
-lor=period))
+p <- ggplot(data=Nile,aes(x=years, y=level))  + geom_line() + geom_point(aes(col
+or=period))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1235,7 +1365,7 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=Nile) + aes(x=years, y=level, color=period) + geom_line()
+p <- ggplot(data=Nile,aes(x=years, y=level, color=period)) + geom_line()
  + geom_point()
 \end_layout
 
@@ -1277,6 +1407,15 @@ Tips!
 \family typewriter
 linetype
 \family default
+, kolla 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.sthda.com/english/wiki/ggplot2-line-types-how-to-change-line-types-of-a-graph-in-r-software"
+literal "false"
+
+\end_inset
+
 ]
 \end_layout
 
@@ -1289,6 +1428,15 @@ Tips!
 \family typewriter
 shape
 \family default
+, kolla 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://www.sthda.com/english/wiki/ggplot2-point-shapes"
+literal "false"
+
+\end_inset
+
 ]
 \end_layout
 
@@ -1349,6 +1497,7 @@ Punkternas storlek
 Lägga till räta linjer: Ibland vill vi lägga till räta linjer till plottar,
  t.ex.
  som referenslinjer.
+ Kör koden nedan och se vad som händer.
 \begin_inset Newline newline
 \end_inset
 
@@ -1427,7 +1576,8 @@ blue
 
 \begin_layout Plain Layout
 
-p+geom_abline(slope = 4,intercept =2,linetype=1,size=1.5,col="red") 
+p+geom_abline(slope = 4,intercept =2,linetype=1,linewidth=1.5,col="red")
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1451,7 +1601,16 @@ p+geom_abline(slope = 4,intercept =2,linetype=1,size=1.5,col="red")
 \end_layout
 
 \begin_layout Enumerate
-Vi kan även lägga till regressionslinjer med hjälp av 
+Vi kan även lägga till 
+\begin_inset CommandInset href
+LatexCommand href
+name "regressionslinjer"
+target "https://sv.wikipedia.org/wiki/Regressionsanalys"
+literal "false"
+
+\end_inset
+
+ med hjälp av 
 \family typewriter
 geom_smooth()
 \family default
@@ -1536,7 +1695,7 @@ p+geom_smooth(method = lm, se = TRUE)
 \end_layout
 
 \begin_layout Enumerate
-Icke-linjär regression
+Icke-linjär regression:
 \begin_inset Newline newline
 \end_inset
 
@@ -1580,7 +1739,22 @@ ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(method = loess,se=TRUE)
 
 \begin_layout Plain Layout
 
-ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.2) 
+# span = styr hur linjen blir
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.20) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.35) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.8) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1598,13 +1772,219 @@ ggplot(mpg, aes(displ, hwy)) +geom_point() +geom_smooth(span=0.2)
 \end_layout
 
 \end_deeper
+\begin_layout Enumerate
+Ibland när vi arbeter med scatter plots så har vi så mycket observationer/data
+ att det är svårt att tolka grafen då en massa punkter ligger på varandra,
+ då har vi problemet som kallas 
+\emph on
+overplotting
+\emph default
+.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,fig.height=3,fig.width=3>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(MASS) 
+\end_layout
+
+\begin_layout Plain Layout
+
+no_obs<-5000 
+\end_layout
+
+\begin_layout Plain Layout
+
+# skapa lite data: 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(26) 
+\end_layout
+
+\begin_layout Plain Layout
+
+X<-mvrnorm(n = no_obs,mu = c(1,1),Sigma = matrix(c(1,0.8,0.8,1),2,2)/2.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df<-data.frame(x1=exp(X[,1]),x2=exp(X[,2])) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point()
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det finns olika sätt att hantera detta.
+ Ett sätt är att ändra punkternas transparens.
+ Gör vi det att 
+\begin_inset Quotes sld
+\end_inset
+
+mörkare regioner
+\begin_inset Quotes srd
+\end_inset
+
+ i plotten innebär att fler datapunkter ligger där.
+ Vi kan också testa att minska ner på punktstorleken.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,fig.height=3,fig.width=3>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point(alpha=0.5)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point(alpha=0.2)
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point(alpha=0.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point(size=0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df,mapping = aes(x = x1,y = x2))+geom_point(size=0.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Ett annat sätt att hantera overplotting är att minska ner på mängden observation
+er/data.
+ Detta kan t.ex.
+ göras genom att dra ett slumpmässigt urval av alla observationer och plotta
+ dessa istället för alla observationer.
+ Tanken är då att urvalet ska ge en representativ bild av hela datamängden.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,fig.height=3,fig.width=3>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(df)
+\end_layout
+
+\begin_layout Plain Layout
+
+# dra slumpmässigt urval med ett radindex: 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(964) 
+\end_layout
+
+\begin_layout Plain Layout
+
+rad_index<-sample(x = nrow(df),size = 250) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df_small<-df[rad_index,] 
+\end_layout
+
+\begin_layout Plain Layout
+
+dim(df_small) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = df_small,mapping = aes(x = x1,y = x2))+geom_point(size=0.3)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Barplot
 \end_layout
 
 \begin_layout Standard
-För att pröva dessa diagram använder vi oss av datamaterialet mtcars.
- Vi börjar med att läsa in datamaterialet mtcars.
+För att pröva dessa diagram använder vi oss av datamaterialet 
+\family typewriter
+mtcars
+\family default
+.
+ Vi börjar med att läsa in datamaterialet 
+\family typewriter
+mtcars
+\family default
+.
  För att få mer information om detta datamaterial, använd 
 \family typewriter
 ?mtcars
@@ -1676,7 +2056,7 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=mtcars) + aes(x=cyl) + geom_bar()
+p <- ggplot(data=mtcars,aes(x=cyl)) + geom_bar()
 \end_layout
 
 \begin_layout Plain Layout
@@ -1756,7 +2136,69 @@ status open
 
 \begin_layout Plain Layout
 
-p <- ggplot(data=mtcars) + aes(x=cyl) + geom_bar(fill="darkblue", colour="red")
+p <- ggplot(data=mtcars,aes(x=cyl)) + geom_bar(fill="pink", colour="darkorchid4"
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Det finns olika sätt att få en relativ skala på y-axeln, se nedan för exempel.
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data=mtcars, aes(x = cyl)) +     
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_bar(aes(y = after_stat(count)/sum(after_stat(count))))+ylab("Proportions")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(mtcars, aes(x = cyl)) +    
+\end_layout
+
+\begin_layout Plain Layout
+
+geom_bar(aes(y = after_stat(count)/sum(after_stat(count)))) +    
+\end_layout
+
+\begin_layout Plain Layout
+
+scale_y_continuous(labels=scales::percent) +   ylab("relative frequencies")
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -1836,6 +2278,19 @@ p2 + scale_fill_manual(values=c("black", "blue", "red"))
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+För fler detaljer kring grupperade barplots, se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://r-graph-gallery.com/48-grouped-barplot-with-ggplot2"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
@@ -1933,6 +2388,30 @@ p + geom_histogram(aes(y=..density..),fill="yellow", colour="red",binwidth=3)
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+set.seed(324) 
+\end_layout
+
+\begin_layout Plain Layout
+
+df<-data.frame(var=rnorm(5000)) 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data=df,aes(x=var))+geom_histogram(aes(y=..density..),fill="darkred",
+ colour="red",binwidth=0.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
 @
 \end_layout
 
@@ -1952,8 +2431,11 @@ Density plots: Vi kan representera fördelningen över olika värden med histogr
 density()
 \family default
 ).
- Ibland vill vi plotta dessa täthetsfunktioner,och då kan vi använda geom_densit
-y().
+ Ibland vill vi plotta dessa täthetsfunktioner,och då kan vi använda 
+\family typewriter
+geom_density()
+\family default
+.
 \begin_inset Newline newline
 \end_inset
 
@@ -2015,7 +2497,7 @@ Y<-data.frame(var1=y)
 
 \begin_layout Plain Layout
 
-ggplot(data = Y,aes(x=var1,y=..density..))+geom_histogram(,binwidth = 0.3) 
+ggplot(data = Y,aes(x=var1,y=..density..))+geom_histogram(binwidth = 0.3) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2079,8 +2561,20 @@ ggplot(data = Y,aes(x=var1))+geom_density(adjust=0.1,alpha=0.1,fill="blue")
 
 \begin_layout Plain Layout
 
-ggplot(data = Y,aes(x=var1,y=..density..))+geom_histogram(,binwidth = 0.3)+geom_densi
-ty(adjust=0.3)
+ggplot(data = Y,aes(x=var1,y=..density..))+
+\end_layout
+
+\begin_layout Plain Layout
+
+	geom_histogram(binwidth = 0.3)+geom_density(adjust=0.3,col=
+\begin_inset Quotes srd
+\end_inset
+
+blue
+\begin_inset Quotes srd
+\end_inset
+
+,linewidth=1.5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2094,7 +2588,7 @@ ty(adjust=0.3)
 \end_layout
 
 \begin_layout Enumerate
-Utgå från irisdata.
+Utgå från iris-data.
  Gör ett histogram för varje numerisk variabel.
  Ändra 
 \family typewriter
@@ -2480,7 +2974,7 @@ Kombinera plottar
 \end_layout
 
 \begin_layout Subsection
-facet_grid()
+facet_grid() och facet_wrap()
 \end_layout
 
 \begin_layout Standard
@@ -2892,6 +3386,92 @@ ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))
 \end_inset
 
 
+\end_layout
+
+\begin_layout Enumerate
+Ett alternativ är 
+\family typewriter
+facet_wrap()
+\family default
+, som liknar 
+\family typewriter
+facet_grid()
+\family default
+.
+ Skillnaden är att 
+\family typewriter
+facet_wrap()
+\family default
+ själv bestämmer hur rader och kolumner ska ordnas.
+ Testa koden nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<fig.height=2.5, fig.width=4, fig.align='center',eval=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(ggthemes)
+\end_layout
+
+\begin_layout Plain Layout
+
+# facet_wrap(): 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))+ geom_point(size=0.8)+ facet_wrap
+(vars(trans))  
+\end_layout
+
+\begin_layout Plain Layout
+
+# facet_grid(): 
+\end_layout
+
+\begin_layout Plain Layout
+
+ggplot(data = mpg,mapping = aes(x =cty ,y=hwy))+ geom_point(size=0.8)+ facet_grid
+(trans~.) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Se 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://ggplot2-book.org/facet.html"
+literal "false"
+
+\end_inset
+
+ för mer detaljer om 
+\family typewriter
+facet_grid()
+\family default
+och 
+\family typewriter
+facet_wrap()
+\family default
+.
 \end_layout
 
 \begin_layout Subsection
@@ -3671,7 +4251,16 @@ Vill vi jämföra två grupper avseende en kontinuerlig variabel använder vi
 t.test()
 \family default
 .
- Inledningvis kan vi testa om 
+ Läs i dokumentationen för 
+\family typewriter
+t.test()
+\family default
+ vilka argument som finns och hur de fungerar.
+ Undersök vad funktionen returnerar.
+\end_layout
+
+\begin_layout Enumerate
+Inledningvis kan vi testa om 
 \family typewriter
 Sepal.Length
 \family default
@@ -3700,7 +4289,22 @@ versLength <- iris$Sepal.Length[iris$Species=="versicolor"]
 
 \begin_layout Plain Layout
 
-t.test(x=versLength, alternative="greater", mu=6)
+test_obj<-t.test(x=versLength, alternative="greater", mu=6)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(test_obj)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(test_obj)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_obj$p.value
 \end_layout
 
 \begin_layout Plain Layout
@@ -3735,7 +4339,40 @@ virginLength <- iris$Sepal.Length[iris$Species=="virginica"]
 
 \begin_layout Plain Layout
 
-t.test(x=versLength, y=virginLength)
+test_obj2<-t.test(x=versLength, y=virginLength)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(test_obj)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+test_obj2$statistic
+\end_layout
+
+\begin_layout Plain Layout
+
+test_obj2$p.value	 
+\end_layout
+
+\begin_layout Plain Layout
+
+test_obj2$conf.int	 
+\end_layout
+
+\begin_layout Plain Layout
+
+test_obj2$estimate	 
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -5777,588 +6414,27 @@ Pröva nu att plotta datamaterialet och använd de diagnostiska verktygen
 Inlämningsuppgifter
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Inluppg.lyx"
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-# Set you (local) path
-\end_layout
-
-\begin_layout Plain Layout
-
-solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Florence
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgmTeacher
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-exercise_solutions
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"/Users/mansmagnusson/Dropbox (Personlig)/Doktorandstudier/Under
-visning/Statistisk programmering i #R/KursRprgmTeacher/Labs/exercise_solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-#solution_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgmTeacher/Labs
-/exercise_solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-solution_path <- 
-\begin_inset Quotes sld
-\end_inset
-
-/Users/johal95/Documents/Teaching/R-programering/KursRprgmTeacher/Labs/exercise_
-solutions/"
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-solution_files <- dir(solution_path)
-\end_layout
-
-\begin_layout Plain Layout
-
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
- echo = FALSE)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Chapter
 Inlämningsuppgifter
 \end_layout
 
-\begin_layout Standard
-För att använda 
-\family typewriter
-markmyassignment
-\family default
- i denna laboration ange:
-\begin_inset Newline newline
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-library(markmyassignment)
-\end_layout
-
-\begin_layout Plain Layout
-
-lab_path <-
-\end_layout
-
-\begin_layout Plain Layout
-
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d7.yml"
-\end_layout
-
-\begin_layout Plain Layout
-
-suppressWarnings(set_assignment(lab_path))
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset CommandInset include
-LatexCommand input
-filename "Inluppg_kodstil.lyx"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
-
-\family typewriter
-my_grouped_test()
+Projektet del 2
 \end_layout
 
 \begin_layout Standard
-Nu ska ni skapa en funktion som ska beräkna gruppvisa konfindesintervall
- (KI) för en variabel.
- Innan ni börjar se till att HUS-data är inläst och kör koden nedan för
- att ta bort de extremt stora värdena:
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-# Download
-\end_layout
-
-\begin_layout Plain Layout
-
-file_path <-
-\end_layout
-
-\begin_layout Plain Layout
-
-  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/HUS.
-csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-HUS <- repmis::source_data(file_path)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Small corrections (removing outliers)
-\end_layout
-
-\begin_layout Plain Layout
-
-index<-HUS[,1] < quantile(HUS[,1])[4] 
-\end_layout
-
-\begin_layout Plain Layout
-
-HUS<-HUS[index,]
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Funktion ska heta 
-\family typewriter
-my_grouped_test()
-\family default
- och ha argumenten:
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-data_vector
-\family default
- - är en numerisk vektor
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-my_groups
-\family default
- - är en factor/character-vektor som grupperar 
-\family typewriter
-data_vector
-\end_layout
-
-\begin_layout Itemize
-
-\family typewriter
-alpha
-\family default
- - är signifikansnivån för intervallet, 
-\family typewriter
-alpha=0.05
-\family default
- ska ge ett 95 % konfidensintervall.
-\end_layout
-
-\begin_layout Standard
-Funktionen ska returnera en matris 
-\family typewriter
-result
-\family default
- där raderna motsvarar grupperna i 
-\family typewriter
-my_groups
-\family default
- och har fyra kolumner: Undre gräns för KI, medelvärdet, övre gräns för
- KI och antal observationer i varje grupp.
- Se testfallen för namen på kolumnerna.
- Raderna ska ha samma namn som grupperna 
-\family typewriter
-my_groups
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Förslag till lösning:
-\end_layout
-
-\begin_layout Enumerate
-Se till att my_groups är en faktor.
- Räkna ut hur många grupper som finns i my_groups.
- 
-\series bold
-Tips!
-\series default
- 
-\family typewriter
-?levels() ?table()
-\end_layout
-
-\begin_layout Enumerate
-Skapa en tom matris av rätt storlek, kalla den 
-\family typewriter
-result
-\family default
-.
- Ge den lämpliga namn.
- 
-\series bold
-Tips!
-\series default
- 
-\family typewriter
-?colnames(), ?rownames()
-\end_layout
-
-\begin_layout Enumerate
-Spara antalet observationer för varje grupp i den fjärde variabeln i 
-\family typewriter
-result
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Använd 
-\family typewriter
-by()
-\family default
- kombinerat med 
-\family typewriter
-t.test()
-\family default
- för att beräkna gruppvisa KI, spara i 
-\family typewriter
-group_test
-\family default
-.
- Testa 
-\family typewriter
-?by()
-\family default
-, ni ser att det finns ett argument som heter 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-...
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
- för funktionen 
-\family typewriter
-by()
-\family default
-.
- Dessa tre punkter kan ersättas med argument som behövs till funtionen 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-FUN
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- Mer tips: 
-\family typewriter
-str(
-\begin_inset Quotes eld
-\end_inset
-
-objekt från t.test
-\begin_inset Quotes erd
-\end_inset
-
-)
-\family default
- och 
-\family typewriter
-?by
-\family default
- läs under rubriken 
-\begin_inset Quotes eld
-\end_inset
-
-value
-\begin_inset Quotes erd
-\end_inset
-
- för att kolla vad 
-\family typewriter
-by()
-\family default
- returnerar.
- Det går också att använda en for-loop och loopa över grupperna, plocka
- ut rätt observations och sen använda 
-\family typewriter
-t.test()
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Loopa över antalet grupper och välj ut KI och medelvärde för varje grupp
- som är sparat från steg 4.
- Spara på rätt ställen i 
-\family typewriter
-result
-\family default
-.
- 
-\end_layout
-
-\begin_layout Enumerate
-Returnera 
-\family typewriter
-result
-\family default
-.
-\end_layout
-
-\begin_layout Standard
-Notera att det inte är tillåtet att använda någon funktion som direkt beräknar
- grupperade t-test i denna uppgift.
- Testa om testfallen nedan fungerar:
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-df<-my_grouped_test(data_vector=HUS[,1],my_groups=HUS$Luftkonditionering,alpha=0.
-01)
-\end_layout
-
-\begin_layout Plain Layout
-
-print(df)
-\end_layout
-
-\begin_layout Plain Layout
-
-str(df)
-\end_layout
-
-\begin_layout Plain Layout
-
-class(df)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-my_grouped_test(HUS[,2],HUS$Pool,0.10)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Chickwts-data
-\end_layout
-
-\begin_layout Plain Layout
-
-data(chickwts)
-\end_layout
-
-\begin_layout Plain Layout
-
-my_grouped_test(chickwts[,1],chickwts[,2],0.05)
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Miniprojektet del 2
-\end_layout
-
-\begin_layout Standard
-En del av denna laboration är att genomföra miniprojektet del 2.
- Se 
+Gör projektet del 2, se 
 \begin_inset CommandInset href
 LatexCommand href
 name "denna"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Miniproject/miniprojekt_instruktioner.pdf"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/projekt_instruktioner.pdf"
 literal "false"
 
 \end_inset
 
  pdf för detaljer, finns även länk på kurshemsidan.
  Kommentera koden och ha en god kodstil.
- Notera att det är en separat inlämning för miniprojektet del 2 på Lisam.
+ Notera att det är en separat inlämning för projektet del 2 på Lisam.
  I miniprojekt ska ni använda 
 \family typewriter
 pxweb
@@ -6371,6 +6447,43 @@ samma
 \series default
  datamaterial som i del 1.
  OBS: inga varningar ska synas i er färdiga rapport!
+\end_layout
+
+\begin_layout Standard
+Notera: det är inga 
+\begin_inset Quotes sld
+\end_inset
+
+vanliga funktioner
+\begin_inset Quotes srd
+\end_inset
+
+ som rättas med 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
