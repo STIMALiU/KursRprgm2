@@ -200,7 +200,7 @@ Detta går att göra i de flesta webbläsare, välj skriv ut och sen skriv till
 \begin_inset Newline newline
 \end_inset
 
-[liu id 1]_[liu id 2]_part[del av projektet]_miniproject.pdf
+[liu id 1]_[liu id 2]_part[del av projektet]_project.pdf
 \family default
 .
  
@@ -218,7 +218,7 @@ två
 \begin_layout Itemize
 
 \family typewriter
-joswi71_manma97_part1_miniproject.Rmd
+joswi71_manma97_part1_project.Rmd
 \family default
  och
 \end_layout
@@ -226,7 +226,7 @@ joswi71_manma97_part1_miniproject.Rmd
 \begin_layout Itemize
 
 \family typewriter
-joswi71_manma97_part1_miniproject.pdf
+joswi71_manma97_part1_project.pdf
 \family default
 .
  
@@ -1623,11 +1623,11 @@ Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
 \end_layout
 
 \begin_layout Section
-Del II: Analys (ej uppdaterad)
+Del II: Vidare analys 
 \end_layout
 
 \begin_layout Standard
-I den första delen av minprojektet har ni valt ut och beskrivit olika variabler.
+I den första delen av projektet har ni valt ut och beskrivit olika variabler.
  Nu ska vi fortsätta detta arbete med analyser av materialen.
  Ni som grupp kommer att ha en del frihet i hur ni utför datanalysen som
  beskrivs nedan.
@@ -1726,18 +1726,53 @@ Ta med från del 1: Vissa upp data för 5 kommuner och alla era variabler
 Följande saker ska ni göra/ta med:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Itemize
 Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras
- med hjälp av totalt antal invånare i varje kommun/län.
+ med hjälp av totalt antal invånare i varje kommun.
  Detta eftersom det oftast är intressant att kolla på andelar istället för
  absoluta antal.
  T.ex.
  andelen arbetslösa i en kommun istället för antalet arbetslösa.
- Alla plottar ska använda de normaliserade variablerna.
- I uppgift 5 och 6 får ni välja om ni vill ha de normaliserade eller ej
- normaliserade variablerna.
+ I de fall då det är relevant att normalisera en variabel, då ska ni använda
+ den normaliserade variabeln i plottar mm.
+ Vissa variabler är inte relaterade till folkmängd, exempel 
+\begin_inset Quotes eld
+\end_inset
+
+Antal höns
+\begin_inset Quotes erd
+\end_inset
+
+ eller 
+\begin_inset Quotes eld
+\end_inset
+
+Medelålder
+\begin_inset Quotes erd
+\end_inset
+
+, sådana variabler behöver inte normaliseras.
+ 
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
+ gör denna beräkning för varje kommun.
+ För många variabler som har små andeler så passar det att skapa variabler
+ av typen 
+\begin_inset Quotes eld
+\end_inset
+
+antal per 10 000/100 000 invånare
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Då räknar vi ut det som: (antal/totalt antal invånare)*10 000.
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 Producera minst en barplot, om ni bara har kontinuerliga variabler kan ni
  använda 
@@ -1802,7 +1837,7 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-Beräkna korrelationer mellan de två variabler som ni använde i scatter plott
+Beräkna korrelationer mellan de två variabler som ni använde i scatter plot
  i steget ovan.
  Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler
  är noll (=de är linjärt oberoende).
@@ -1827,118 +1862,42 @@ cor.test()
  Ni ska alltså presentera både den skattade korrelationen och information
  från testet i rapporten.
  Ni får testa korrelationen mellan fler variabler om ni vill.
+ Presentera även ett konfidensintervall för den skattade korrelationen.
 \end_layout
 
 \begin_layout Enumerate
-Hypotestest: Gör minst ett hypotestest (ej korrelationstest här), där ni
- ställer upp en nollhypotes och sen testar om ni kan förkasta den.
- Ni väljer själva vilken nollhypotes ni vill anävnda.
- Beroende på hur er data ser ut så kan det vara ett t-test, ett 
-\begin_inset Formula $\chi^{2}$
-\end_inset
-
--test eller test av andelar
-\begin_inset Foot
-status collapsed
-
-\begin_layout Plain Layout
-Se kurshemsidan för referenser på hur olika test kan göras i R.
-\end_layout
-
-\end_inset
-
-.
- Har ni inte några kategoriska variabler kan ni använda funktionen 
-\family typewriter
-cut()
-\family default
-.
- Ni får själva välja vilken nollhypotes ni vill testa.
- Presentera relevant information från testet/testen i en eller flera tabeller.
- Beskriv kort hur ni tolkar resultatet.
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\shape italic
-Exempel:
-\shape default
- Ni har variabeln medelålder i kommunerna.
- Ni vill testa om medelvärdet för medelåldern är signifikant skilld från
- 40 år.
- Låt 
-\begin_inset Formula $\mu$
-\end_inset
-
- vara medelvärdet för medelåldern.
- Ni sätter då upp hypoteserna 
-\begin_inset Formula 
-\[
-\begin{array}{c}
-H_{0}:\mu-40=0\\
-H_{a}:\mu-40\ne0
-\end{array}
-\]
-
-\end_inset
-
-och testar sedan om ni kan förkasta 
-\begin_inset Formula $H_{0}$
-\end_inset
-
-(nollhypotesen).
- 
+Skapa två kategoriska variabler utifrån era ursprungliga variabler.
+ Om ni redan har kategoriska variabler för era kommuner så kan ni använda
+ dessa.
+ Dessa (nya) variabler ska användas i olika plottar.
+ Se till att beskriva era nya variabler.
 \end_layout
 
 \begin_layout Enumerate
-Skapa en kategorisk variabel baserat på totalt antal invånare: Utgå från
- medianen, och låt alla kommuner/län som är mindre än (eller lika med) medianen
- vara en grupp och låt låt alla kommuner/län som är större än medianen vara
- en grupp.
- Kalla denna kategoriska variabel för 
-\family typewriter
-pop_grupp
-\family default
-.
- Detta ger er två grupper av observationer.
- 
-\end_layout
-
-\begin_layout Enumerate
-Mer plottar.
- Ni ska nu följande plottar som beror på variabeln 
-\family typewriter
-pop_grupp
-\family default
-.
+Mer plottar:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Gör en scatterplot där färgen på observationerna ska bero på variabeln 
-\family typewriter
-pop_grupp
-\family default
-.
- T.ex.
- om ni gör en scatterplot så har alla punkterna olika färger beroende på
- vilken grupp de tillhör.
+Gör en scatterplot där färgen på observationerna ska bero på en av era kategoris
+ka variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
-Gör minst ett histogram/barplot/boxplot som är grupperat på 
-\family typewriter
-pop_grupp
-\family default
-, där grupperna har olika färger.
+Gör minst ett histogram/boxplot som är grupperat på en av era kategoriska
+ variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
-Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i två
- plottar med 
+Gör ett grupperad barplot där ni använder båda era kategoriska variabler.
+ Beskriv i text vad ni drar för slutsats.
+\end_layout
+
+\begin_layout Enumerate
+Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i minst
+ två plottar med 
 \family typewriter
 facet_grid()
 \family default
@@ -1946,24 +1905,33 @@ facet_grid()
 \family typewriter
 facet_wrap()
 \family default
-.
- Uppdelningen ska bero på variabeln 
-\family typewriter
-pop_grupp
-\family default
-.
+ baserat på era kategoriska variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \end_deeper
 \begin_layout Subsubsection
-Dataanalys av tidseriedata
+Dataanalys av tidseriedata 
 \end_layout
 
 \begin_layout Standard
 Låt 
 \family typewriter
 Y
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+
+\family typewriter
+Y
+\family default
+ är ett arbetsnamn, er variabel måst inte heta så i rapporten
+\end_layout
+
+\end_inset
+
+
 \family default
  vara er variabel i tidsseriematerialet.
  Utför nu följande:
@@ -1976,7 +1944,12 @@ Y
 \family default
  och er tidsvariabel.
  Skalan på x-axeln ska vara en lämplig tidsskala.
- 
+ Detta gäller alla tidseriegrafer som baseras på 
+\family typewriter
+Y
+\family default
+.
+ Skriv en kort kommentar.
 \end_layout
 
 \begin_layout Enumerate
@@ -1985,7 +1958,8 @@ Beräkna medelvärden per månad och spara dessa i
 month_means
 \family default
 .
- Presentera dessa i en tabell och skriv en kort kommentar.
+ Presentera dessa i en tabell och som en lämplig graf.
+ Skriv en kort kommentar.
  Ni ska alltså beräkna ett medelvärde för alla värden för januari och sen
  upprepa detta för alla månader.
  
@@ -1998,13 +1972,14 @@ aggregate()
 \end_layout
 
 \begin_layout Enumerate
-Använd funktionen 
+Gör grupperade boxplots för 
 \family typewriter
-summary()
+Y
 \family default
- för att fram beskrivande statistik för varje år (det ska vara minst tio
- år i data).
- Presentera statistiken i en tabell och skriv en kort kommentar.
+, där grupperingen baseras på år.
+ Ni ska alltså ha en boxplot för varje år, och de ska ligga sida vid sida
+ i samma plot.
+ Skriv en kort kommentar.
 \end_layout
 
 \begin_layout Enumerate
@@ -2017,9 +1992,9 @@ Y
  data, och likadant för de andra månaderna.
  Spara den nya tidserie som 
 \family typewriter
-new_
+Z
 \family default
-Y.
+.
  Addera medelvärdet för 
 \shape italic
 hela 
@@ -2030,13 +2005,13 @@ tidserien
 \family default
  till 
 \family typewriter
-new_
+Z
 \family default
-Y för att ge 
+ för att ge 
 \family typewriter
-new_
+Z
 \family default
-Y rätt skala.
+ rätt skala.
  Se nedan.
 \begin_inset Newline newline
 \end_inset
@@ -2052,7 +2027,7 @@ status open
 
 \begin_layout Plain Layout
 
-Y_new<-Y_new+mean(Y)
+Z<-Z+mean(Y)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2068,7 +2043,7 @@ Y_new<-Y_new+mean(Y)
 \begin_layout Enumerate
 Gör en linjeplot mellan 
 \family typewriter
-new_Y
+Z
 \family default
  och tid i 
 \family typewriter
@@ -2079,46 +2054,49 @@ ggplot2
 \family typewriter
 Y
 \family default
- i samma graf som jämförelse.
-\end_layout
-
-\begin_layout Enumerate
-Ni ska nu beräkna glindande medelvärde av den typ som ni gjorde i labb 3.
- Använd er funktion 
-\family typewriter
-my_moving_average()
-\family default
- från tidigare labb, eller annan likvärdig funktion i ett R-paket och beräkna
- 
-\family typewriter
-moving_average_Y
-\family default
-.
- Lägg till variabel i samma graf som ovan.
- Totalt ska grafen ha tre linjer i olika färger.
- Det ska framgå i en legend eller i texten vilken färg som är vilken linje.
- Det ska tydligt framgå i vilket värde på 
-\begin_inset Formula $n$
-\end_inset
-
- (längden på det glidande medelvärdet) som ni använder.
- Notera att 
-\family typewriter
-moving_average_Y
-\family default
- kommer att vara 
-\begin_inset Formula $n-1$
-\end_inset
-
- element kortare jämfört med 
+ i samma graf som jämförelse, men med annan färg.
+ Ange tydligt med en legend eller i text vilken linje som är 
 \family typewriter
 Y
 \family default
  och 
 \family typewriter
-new_Y
+Z
 \family default
-, och ska således börja lite längre fram på x-axeln.
+.
+\end_layout
+
+\begin_layout Enumerate
+Gör samma plot som i steg 1., men lägg till en regressionslinje med 
+\family typewriter
+geom_smooth(method=
+\begin_inset Quotes erd
+\end_inset
+
+lm
+\begin_inset Quotes erd
+\end_inset
+
+)
+\family default
+
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+En regressionslinje kan hjälpa oss att se om det finns någon tydlig minskande
+ eller ökande 
+\emph on
+linjär
+\emph default
+ trend.
+ Om linjen är nära att vara horisontell så tolkar vi det som att det inte
+ finns någon tydlig linjär trend.
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Enumerate
@@ -2126,7 +2104,7 @@ Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden, eller
  är data konstant över tid.
  Finns det någon säsongsvariation i data?
 \begin_inset Foot
-status open
+status collapsed
 
 \begin_layout Plain Layout
 Exempel på säsongsvariation: December har ofta ett mycket högre värde än
@@ -2139,6 +2117,9 @@ Exempel på säsongsvariation: December har ofta ett mycket högre värde än
 \end_layout
 
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
 Lämna in rapporten både som en fullt reproducerbar 
 \series bold
 Rmd
