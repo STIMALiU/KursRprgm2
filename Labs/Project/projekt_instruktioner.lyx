@@ -1629,6 +1629,7 @@ Del II: Vidare analys
 \begin_layout Standard
 I den första delen av projektet har ni valt ut och beskrivit olika variabler.
  Nu ska vi fortsätta detta arbete med analyser av materialen.
+ Ni ska alltså har samma dataset somi del I.
  Ni som grupp kommer att ha en del frihet i hur ni utför datanalysen som
  beskrivs nedan.
  Det ni ska göra är att bearbeta data, några enkla analyser och olika grafer
@@ -1638,6 +1639,10 @@ ggplot2.
  
 \family default
 \series bold
+
+\begin_inset Newline newline
+\end_inset
+
 Obs!!! alla plottar i del 2 ska vara med 
 \family typewriter
 ggplot2
@@ -1769,7 +1774,11 @@ antal per 10 000/100 000 invånare
 \end_inset
 
 .
- Då räknar vi ut det som: (antal/totalt antal invånare)*10 000.
+ Då räknar vi ut det som: 
+\begin_inset Newline newline
+\end_inset
+
+(antal/totalt antal invånare)*10 000.
 \end_layout
 
 \end_deeper
