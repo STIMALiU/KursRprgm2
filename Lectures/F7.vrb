@@ -1,0 +1,15 @@
+\frametitle{Linjär regression - Diagnostisera}
+\protect\hypertarget{linjuxe4r-regression---diagnostisera}{}
+\begin{itemize}
+\tightlist
+\item
+  Finns ett antal olika metoder, ex:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(mod1)}
+\FunctionTok{durbinWatsonTest}\NormalTok{(mod1)}
+\FunctionTok{qqplot}\NormalTok{(mod1)}
+\end{Highlighting}
+\end{Shaded}
