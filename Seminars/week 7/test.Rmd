@@ -1,0 +1,17 @@
+---
+title: "test"
+author: "Josef"
+date: "2023-03-09"
+output: pdf_document
+---
+
+## Test
+
+
+**hej**
+     dsfds           dsff
+     
+Mina formler: $y=f(x)$ osv
+
+$$x\,yz\quad t\qquad y$$
+
