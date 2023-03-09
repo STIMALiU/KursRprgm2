@@ -9,8 +9,145 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Uppgift
+# Uppgiften
+
+Vi utgår från den negativa exponentialfunktionen
+
+$$y = exp(-x)$$
+Som ser ut så här:
+
 ```{r}
+
+f<-function(x) exp(-x)
+
+curve(expr = f,from = 0,to = 10)
+
+```
+
+Vi utfår från en startpunkt på x-axlen, som vi kallar $x_0$. Sen går vi på x-axeln
+år höger med en steglängd $h$, och läser av värdet på kurvan för varje steg. 
+Vad är det minsta antalet sådana steg kan vi ta för att uppfylla kravet nedan?
+
+$$|y_{n}-y_{n-1}|<tol$$
+där $tol$ är vår toleransnivå. 
+
+Vi vill alltså veta hur många $h$-steg vi kan ta innan kurvan i princip slutar ändra värde i y-led.
+
+Om vi låter $x_0=2$ och $h=1$, då får vi 
+
+$$x_1=2+1=3 \qquad \qquad y_1= exp(-3)=0.04978707$$
+$$x_2=2+1+1=4 \qquad \qquad y_2=0.01831564$$
+$$x_1=3=2+1+1+1=5 \qquad \qquad y_3=0.006737947$$
+
+Skriv en funktion i R som räknar ut hur många steg som krävs givet värden på $x_0$, $h$ och $tol$, och som returnerar
+antal steg, det sista och näst sista värdet på $y$.
+
+Argumenten ska vara:
+
+- x0: vårt första x-värde (i iteration 0)
+- h: steglängden
+- tol: toleransnivån
+
+Läs denna uppgift med hjälp av en while-loop.
+
+
+# Lösning
+
+
+```{r}
+
+# skriv din lösning här
+# lösningsförslag finna längre ner, försök att lösa uppgiften själv först!!!
+
+step_func<-function(x0=1,h,tol){
+  
+  # Använd en while-loop
+  
+  return()
+}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\pagebreak
+
+# Lösningsförslag
+
+
+```{r}
+
+f<-function(x) exp(-x)
+
+f(3)
+exp(-3)
+
+step_func<-function(x0=1,h,tol){
+  y0<-f(x0)
+  cond<-TRUE
+  iter<-0
+  y_current<-y0
+  x<-x0
+  while(cond){
+    iter<-iter+1
+    x<-x+h
+    y_prev<-y_current
+    y_current<-f(x)
+    
+    check<-abs(y_current-y_prev)<tol
+    
+    if(check){
+      cond<-FALSE
+    }
+  }
+  return(list(iter=iter,y_current=y_current,y_prev=y_prev))
+}
+
+# testa så att funktionen fungerar som tänkt:
+step_func(x0 = 1,h = 1,tol = 0.1)
+step_func(x0 = 1,h = 2,tol = 0.1)
+step_func(x0 = 1,h = 1,tol = 0.01)
+step_func(x0 = 1,h = 2,tol = 0.01)
+
+step_func(x0 = 3,h = 1,tol = 0.1)
+step_func(x0 = 2,h = 0.1,tol = 0.001)
 
 ```
 

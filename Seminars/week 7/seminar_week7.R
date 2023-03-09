@@ -142,6 +142,7 @@ aggregate(x = df$val,by=list(df$month),FUN = median)
 f<-function(x) exp(-x)
 
 f(3)
+exp(-3)
 
 step_func<-function(x0=1,h,tol){
   y0<-f(x0)
