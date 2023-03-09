@@ -5,13 +5,31 @@ date: "2023-03-09"
 output: pdf_document
 ---
 
-## Test
+## Hur får vi saker i en LaTex-formel att vara separerade?
 
 
-**hej**
-     dsfds           dsff
      
 Mina formler: $y=f(x)$ osv
 
+Inget mellanrum
+
+$$ab$$
+
+Vi testar större och större mellanrum:
+
+$$a \,b$$
+
+$$a \quad b$$
+
+$$a \qquad b$$
+
+Kombinera:
+
 $$x\,yz\quad t\qquad y$$
+
+Testar att skriva hypoteser:
+
+$$H_{0}: \pi = 0.5 \qquad H_{a}: \pi \ne 0.5$$
+
+
 

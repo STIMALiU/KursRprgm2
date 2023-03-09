@@ -1,0 +1,16 @@
+---
+title: "Uppgift kursvecka 7"
+author: "Josef"
+date: "2023-03-09"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Uppgift
+```{r}
+
+```
+

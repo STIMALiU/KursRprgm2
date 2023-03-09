@@ -11,6 +11,12 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+
+
+#-------------------------------------------------------------------------------
+# frågor kring hur man använder argument och argumentnamn mm i funktioner
+#-------------------------------------------------------------------------------
+
 library(ggplot2)
 
 #
@@ -38,7 +44,10 @@ t.test(y=y,x=x,"less")
 
 
 
-#
+#-------------------------------------------------------------------------------
+# genomgång av for-loopar
+#-------------------------------------------------------------------------------
+
 for(i in 1:10){
   y<-i^2+10*i-5
   print(y)
@@ -69,70 +78,60 @@ x<-1:10
 y<-x^2+10*x-5
 y
 
-#--------------------------------------------
+
+
+#-------------------------------------------------------------------------------
+# indexering av data.frames (välja ut specifika rader)
+# beskrivande statistik grupperad på en annan variabel
+#-------------------------------------------------------------------------------
 
 
 
+
+# skapar lite tidserie data:
+# månadsdata över tio år
 m<-rep(month.name,10)
 y<-rep(2010:2019,each=12)
-
-
 set.seed(323)
-val<-as.vector(arima.sim(model = list(ar=0.9),n = 120)+10)
-plot(val)
+val<-as.vector(arima.sim(model = list(ar=0.99999),n = 120)+10)
+plot(val,t="o")
 df<-data.frame(year=y,month=m,val=val)
 head(df)
 
 df[1,]
+df[c(1,13,25),]  # <- att hårdkoda fram rader så här är inte så bra
+# vad händer om jag plötsligt får data som inte börjar med januari?
 
+# skapa en lämplig index-vektor istället!
 index_jan<-df$month=="January"
 temp<-df[index_jan,]
 
 mean(temp$val)
 
-
+# välja ut alla år: 2015 till 2019
 index_2015<-df$year>=2015
 df[index_2015,]
 
+# medelvärde för val grupperat på år
 agg_df<-aggregate(x = df$val,by=list(df$year),FUN = mean)
 
 
 str(agg_df)
-plot(agg_df$Group.1,agg_df$x,t="l")
+plot(agg_df$Group.1,agg_df$x,t="o")
+
+
+# mer beskrivande statistik grupperat på en annan variabel:
 aggregate(x = df$val,by=list(df$year),FUN = sd)
 
 aggregate(x = df$val,by=list(df$year),FUN = summary)
 
+aggregate(x = df$val,by=list(df$year),FUN = quantile,probs=c(0.2,0.5,0.8))  
+# testa att ändra argumentet probs!
+
 aggregate(x = df$val,by=list(df$month),FUN = median)
 
 
-#-------------------------------------------
-
-
-
-
-step_func<-function(x0=1,h,tol){
-  
-  
-  cond<-TRUE
-  
-  while(cond){
-    
-    
-    if(){
-      cond<-FALSE
-    }
-    
-  }
-  
-  
-  return()
-}
-
-
-#
-
-
+# vi löste en uppgift tillsammans se separat fil
 
 
 
