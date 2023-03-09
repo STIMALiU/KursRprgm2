@@ -57,7 +57,7 @@ Läs denna uppgift med hjälp av en while-loop.
 ```{r}
 
 # skriv din lösning här
-# lösningsförslag finna längre ner, försök att lösa uppgiften själv först!!!
+# lösningsförslag finns längre ner, försök att lösa uppgiften själv först!!!
 
 step_func<-function(x0=1,h,tol){
   
