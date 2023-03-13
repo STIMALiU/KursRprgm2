@@ -1,0 +1,5 @@
+Här testar jag svenska bokstäver:
+Å och å
+Ä och ä
+Ö och ö
+Nu har vi testat.

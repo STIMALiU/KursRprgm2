@@ -166,6 +166,7 @@ str_locate(string = my_letters, pattern = "hej")
 
 str_locate(string = my_letters, pattern = "   ")
 
+# förekommer många gånger:
 d<-str_c(my_letters,"hi,  sdf hi")
 d
 str_locate_all(string = d, pattern = "hi")
@@ -176,18 +177,30 @@ x <- "(^| )[a-z]{3} " # mellanslag på slutet
 x <- "(^| )[a-z]{3}"
 
 str_locate_all(string ="hud hej hejhej",pattern = x)
+pattern_index<-str_locate_all(string ="hud hej hejhej",pattern = x)
+pattern_index
+
+str_sub(string = "hud hej hejhej",start = pattern_index[[1]][,1],end = pattern_index[[1]][,2])
 
 str_extract_all(string ="hud hej hejhej",pattern = x)
 
-"ab[2-4]{3} ab"
+
 
 # str_replace
 x <- "(^| )[a-z]{3} "
-str_replace(string =" hej hejhej",pattern = x, replacement = "A")
+str_replace(string =" hej xyzhej",pattern = x, replacement = "A")
 
 
 ?str_extract
 ?str_extract_all
+
+
+?case # stringr
+?tolower() # base
+str_to_upper(string ="abc")
+str_to_lower(string ="XYZ")
+str_to_title(string =c("abc errsdf","xyc yrt, rewew"))
+
 
 
 #----------------------------------------------------------------------------
