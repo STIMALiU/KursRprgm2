@@ -945,7 +945,7 @@ download(url = transtrommer_remote, destfile = transtrommer_local)
 
 \begin_layout Plain Layout
 
-text<-readLines("transtrom.txt")
+text<-readLines("transtrom.txt",encoding = "UTF-8")
 \end_layout
 
 \begin_layout Plain Layout

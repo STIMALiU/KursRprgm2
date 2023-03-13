@@ -33,6 +33,8 @@ str_c("a","b",TRUE,3244,sep = "--")
 
 # vektorisering:
 str_c(c("a","b","c"),c("d","e","f"),sep = "--")
+b<-str_c(c("a","b","c"),c("d","e","f"),sep = "+")
+b
 
 
 a<-str_c("a","b","c",sep = "\n")
@@ -40,7 +42,8 @@ a
 cat(a)
 print(a)
 
-# str_length
+
+
 ?Constants
 LETTERS
 letters
@@ -52,7 +55,11 @@ my_letters <- str_c(letters, collapse = "")
 my_letters
 str_length(my_letters)
 str_length(letters)
+str_length(string = a)
+str_length(string = b)
 
+
+my_letters
 # str_sub
 str_sub(string = my_letters, start = 1, end = 3)
 str_sub(string = my_letters, start = 3, end = 6)
@@ -68,16 +75,18 @@ str_sub(string = my_letters, start = -3, end = -1)
 str_sub(string = my_letters, start = 5, end = -5)
 
 my_letters
-str_sub(string = my_letters, start = 3, end = 6) <- "   hej!   "
+str_sub(string = my_letters, start = 3, end = 6) <- "-   hej!   -"
 my_letters
 
 
 # str_trim
 
 # ta bort mellanslag
-str_trim(string = c("   hej!", "    abc  ","test   "),side = "left")
-str_trim(string = c("   hej!", "    abc  ","test   "),side = "right")
-str_trim(string = c("   hej!", "    abc  ","test   "),side = "both")
+x<-c("   hej!", "    abc  ","test   ")
+x
+str_trim(string = x,side = "left")
+str_trim(string = x,side = "right")
+str_trim(string = x,side = "both")
 
 
 
@@ -88,7 +97,25 @@ str_pad(string = "HEJ!",width = 10,side ="left")
 str_pad(string = "HEJ!",width = 10,side ="right")
 
 a<-str_pad(string = "HEJ!",width = 10,side ="both")
+a
+str_length("HEJ!")
 str_length(a)
+
+
+
+text1<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/wiki_R.txt",encoding = "UTF-8")
+text1
+
+text2<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/word_data.txt",encoding = "UTF-8")
+head(text2)
+length(text2)
+
+text3<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt",encoding = "UTF-8")
+text3
+
+readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt",encoding = "latin1")
+
+readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt")
 
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
