@@ -214,9 +214,12 @@ str_to_title(string =c("abc errsdf","xyc yrt, rewew"))
 
 # str_extract {stringr}
 shopping_list <- c("apples x4", "bag of flour", "bag of sugar", "milk x2")
+shopping_list
+# första träffen:
 str_extract(string = shopping_list, pattern = "\\d")
 str_extract(shopping_list, "\\D")
 
+# alla träffar:
 str_extract_all(shopping_list, "\\d")
 str_extract_all(shopping_list, "\\D")
 
@@ -231,14 +234,26 @@ str_extract(shopping_list, "[a-z]{1,4}")
 
 # https://www.regular-expressions.info/wordboundaries.html
 
+
+shopping_list
 str_extract(shopping_list, "\\b[a-z]{1,4}\\b")
 str_extract(shopping_list, "[a-z]{1,4}")
 
 # Extract all matches
+
+# alla tecken med minst 1 tecken av a till z
 g1<-str_extract_all(shopping_list, "[a-z]+")
+g1
+# alla tecken med minst 1 tecken av a till z, 
+# och som har en "ordkant" på varje sida:
 g2<-str_extract_all(shopping_list, "\\b[a-z]+\\b")
-str_extract_all(shopping_list, "\\d")
+# str_extract_all(shopping_list, "\\b[a-z0-9]+\\b")
+g2
+
+# alla tecken med minst 1 tecken av a till z eller 0 till 9:
 g3<-str_extract_all(shopping_list, "[a-z0-9]+")
+
+g3
 g1
 g2
 
@@ -259,16 +274,17 @@ g3[[4]]
 # Simplify results into character matrix
 str_extract_all(shopping_list, "\\b[a-z]+\\b", simplify = TRUE)
 str_extract_all(shopping_list, "[a-z]+", simplify = TRUE)
-str_extract_all(shopping_list, "\\d", simplify = TRUE)
 
 
 
-
+#-------------------------------------------------------------------------------
+# find phone numbers:
 # from article:
 
 strings <- c(" 219 733 8965", "329-293-8753 ", "banana", "595 794 7569",
-             "387 287 6718", "apple", "233.398.9187  ", "482 952 3315", "239 923 8115",
-             "842 566 4692", "Work: 579-499-7527", "$1000", "Home: 543.355.3679")
+             "387 287 6718", "apple", "233.398.9187  ", "482 952 3315", 
+             "239 923 8115","842 566 4692", "Work: 579-499-7527", "$1000", 
+             "Home: 543.355.3679")
 
 strings
 
@@ -279,7 +295,19 @@ strings
 # 3) fyra nummer av 0-9
 # de separeras med "-", " " eller "."
 
+# grupp 1:
+"[2-9][0-9]{2})"
 
+# grupp 2:
+"[0-9]{3}"
+
+# grupp 3:
+"[0-9]{4}"
+
+# separera:
+"[- .]"
+
+# allt tillsammans:
 phone <- "([2-9][0-9]{2})[- .]([0-9]{3})[- .]([0-9]{4})"
 phone
 # Which strings contain phone numbers?
