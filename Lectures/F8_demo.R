@@ -113,9 +113,7 @@ length(text2)
 text3<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt",encoding = "UTF-8")
 text3
 
-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt",encoding = "latin1")
 
-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt")
 
 #----------------------------------------------------------------------------
 #----------------------------------------------------------------------------
