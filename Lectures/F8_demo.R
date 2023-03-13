@@ -366,12 +366,14 @@ messy
 
 # old style:
 # gather(data = messy, key = drug, value = heartrate, a:b)
+
+# new style:
 tidy<-pivot_longer(data = messy,cols = c("a","b"),names_to="drug",values_to="heartrate")
 
 tidy
 class(tidy)
 
-#as.data.frame(tidy)
+as.data.frame(tidy)
 
 # Make multiple observations per row again
 
