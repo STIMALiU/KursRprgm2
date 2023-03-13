@@ -36,6 +36,9 @@ str_c(c("a","b","c"),c("d","e","f"),sep = "--")
 b<-str_c(c("a","b","c"),c("d","e","f"),sep = "+")
 b
 
+# kolumnnamn
+str_c("var",1:10,sep="_")
+
 
 a<-str_c("a","b","c",sep = "\n")
 a
@@ -92,6 +95,7 @@ str_trim(string = x,side = "both")
 
 # str_pad
 # lägg till mellanslag
+str_length("HEJ!")
 str_pad(string = "HEJ!",width = 10,side ="left")
 
 str_pad(string = "HEJ!",width = 10,side ="right")
@@ -102,9 +106,13 @@ str_length("HEJ!")
 str_length(a)
 
 
+# läsa in text-filer:
 
-text1<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/wiki_R.txt",encoding = "UTF-8")
+text1<-readLines(
+  con = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/wiki_R.txt",
+  encoding = "UTF-8")
 text1
+text1[1:2]
 
 text2<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/word_data.txt",encoding = "UTF-8")
 head(text2)
@@ -157,7 +165,7 @@ my_letters
 str_detect(string = my_letters, pattern = "ab")
 str_detect(string = my_letters, pattern = "ba")
 
-str_detect(string = my_letters, pattern = "cd")
+str_detect(string = my_letters, pattern = "9")
 
 a<-str_locate(string = my_letters, pattern = "hi")
 a
@@ -333,8 +341,8 @@ str_match(strings, phone)
 str_replace(strings, phone, replacement = "XXX-XXX-XXXX")
 
 
-
-
+na.omit()
+!is.na()
 
 
 
@@ -415,6 +423,8 @@ flights %>%
 # Filter: välj rader
 filter(flights, day == 1 & dep_delay > 60)
 
+filter(flights, !is.na(dep_delay))
+
 # Arrange: sortera/arrangera rader
 arrange(flights, desc(dep_delay))
 arrange(flights, dep_delay)
@@ -444,6 +454,11 @@ daily <- group_by(flights, year, month, day)
 per_day   <- summarise(daily, flights = n(), delay = mean(dep_delay, na.rm = TRUE))
 
 per_day
+
+flights%>%group_by(month)%>%
+  summarise(mean=mean(dep_delay, na.rm = TRUE),
+            median=median(dep_delay, na.rm = TRUE),
+            sd=sd(dep_delay, na.rm = TRUE))
 
 # Join
 # There are different joins for different purposes, see ?join
