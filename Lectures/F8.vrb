@@ -1,0 +1,24 @@
+\frametitle{dplyr joins}
+\protect\hypertarget{dplyr-joins}{}
+\begin{itemize}
+\tightlist
+\item
+  Slå ihop data är oftast centralt
+\item
+  Inom databser talar man om ``joins''
+\end{itemize}
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+funktion & beskrivning \\
+\midrule
+\endhead
+\texttt{left\_join()} & slå ihop efter variabel, behåll obs. i vänstra
+data.frame \\
+\texttt{right\_join()} & slå ihop efter variabel, behåll obs. i högra
+data.frame \\
+\texttt{full\_join()} & slå ihop efter variabel, behåll alla obs. \\
+\texttt{anti\_join()} & slå ihop efter variabel, behåll obs. som inte
+finns i båda \\
+\bottomrule
+\end{longtable}
