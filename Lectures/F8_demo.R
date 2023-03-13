@@ -379,6 +379,8 @@ as.data.frame(tidy)
 
 # old style:
 # spread(tidy, key = drug, value = heartrate)
+
+# new style:
 messy2<-pivot_wider(data = tidy,names_from="drug",values_from = "heartrate")
 messy2
 messy
@@ -389,7 +391,6 @@ all.equal(as.data.frame(messy2),messy)
 
 #----------------------------------------------------------------------------
 # dplyr
-# Taget från: https://blog.rstudio.org/2014/07/22/introducing-tidyr/
 #----------------------------------------------------------------------------
 
 
@@ -405,6 +406,9 @@ class(flights)
 # Select: välj kolumn
 select(.data = flights, day, year, dep_delay)
 
+flights%>%select(dep_delay)%>%ggplot(aes(x=dep_delay))+geom_histogram(binwidth = 2)
+
+# med piping:
 flights %>%
   select(day, year, dep_delay)
 
@@ -444,6 +448,5 @@ per_day
 # Join
 # There are different joins for different purposes, see ?join
 ?join
-flights2 <- left_join(flights, per_day)
-select(flights2, dep_delay, delay)
+
 
