@@ -90,13 +90,19 @@ y
 
 # skapar lite tidserie data:
 # månadsdata över tio år
-m<-rep(month.name,10)
+#m<-rep(month.name,10)
+m<-rep(1:12,10)
 y<-rep(2010:2019,each=12)
 set.seed(323)
 val<-as.vector(arima.sim(model = list(ar=0.99999),n = 120)+10)
 plot(val,t="o")
-df<-data.frame(year=y,month=m,val=val)
+df<-data.frame(year=y,month=as.factor(m),val=val)
 head(df)
+df$month
+
+reorder()
+relevel()
+
 
 df[1,]
 df[c(1,13,25),]  # <- att hårdkoda fram rader så här är inte så bra
@@ -129,7 +135,7 @@ aggregate(x = df$val,by=list(df$year),FUN = quantile,probs=c(0.2,0.5,0.8))
 # testa att ändra argumentet probs!
 
 aggregate(x = df$val,by=list(df$month),FUN = median)
-
+df$month
 
 # vi löste en uppgift tillsammans se separat fil
 
