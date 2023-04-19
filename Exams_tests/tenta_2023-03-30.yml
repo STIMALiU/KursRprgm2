@@ -1,0 +1,16 @@
+# Assignment Testtenta
+name  : Tenta1
+description : "Tenta1 i 732G33/732G83"
+tasks:
+  uppgift1:
+    url: 
+      Tasks/uppgift1.R
+  uppgift2:
+    url: 
+      Tasks/uppgift2.R
+  uppgift3:
+    url: 
+      Tasks/uppgift3.R
+mandatory:
+    url: 
+      Tasks/mandatory.R
