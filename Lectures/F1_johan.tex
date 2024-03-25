@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -285,11 +280,19 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={732G33/83 -- R-programmering},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{732G33/83 -- R-programmering}
 \subtitle{Föreläsning 1}
 \author{Johan Alenlöv}
-\date{2022-01-24}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
@@ -339,9 +342,13 @@
 \begin{itemize}
 \tightlist
 \item
-  Josef Wilzén
+  Max Björklund
 \item
-  Rasmus Säfvenberg
+  Edwin Johansson
+\item
+  Simon Jorstedt
+\item
+  Duc Tran
 \end{itemize}
 \end{frame}
 
@@ -381,17 +388,32 @@ Kollar man på tidigare kursutvärderingar har kursen fungerat bra.
 \tightlist
 \item
   Kursens ämnesinnehåll har gett mig möjlighet att uppnå kursens
-  lärandemål. 4.09
+  lärandemål. 4.08
 \item
   Kursens examinerande moment har varit relevanta i relation till
-  kursens lärandemål. 3.95
+  kursens lärandemål. 4.00
 \item
-  Vilket helhetsbetyg ger du kursen? 3.70
+  Vilket helhetsbetyg ger du kursen? 3.38
 \end{enumerate}
 
-Ny föreläsare och examinator i år. Mindre förändringar kommer att ske i
-föreläsningar/laborationer. Inga planerade ändringar i innehåll eller
-upplägget av kursen.
+\begin{block}{Förändringar till detta år:}
+\protect\hypertarget{fuxf6ruxe4ndringar-till-detta-uxe5r}{}
+\begin{itemize}
+\tightlist
+\item
+  Ändrad examination av inlämningar
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Muntlig redovisning
+  \item
+    Färre inlämningar (4 inlämningar istället för 8)
+  \end{itemize}
+\item
+  Mindre förändringar i föreläsningar, seminarier och datorlaborationer
+\end{itemize}
+\end{block}
 \end{frame}
 
 \begin{frame}{Kursupplägg}
@@ -415,18 +437,38 @@ upplägget av kursen.
 \begin{itemize}
 \tightlist
 \item
-  En föreläsning
-\item
-  En \textcolor{red}{obligatorisk} datorlaboration
-\item
-  4 timmar lärarledd laboration
-\item
-  Inlämning:
+  Föreläsning
 
   \begin{itemize}
   \tightlist
   \item
-    Labbar: varje \textcolor{red}{onsdag kl. 18:00} via LISAM
+    Nytt material och teorier
+  \end{itemize}
+\item
+  2 x laborationer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Jobba med uppgifter och inlämningar
+  \end{itemize}
+\item
+  Seminarie från vecka 2
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Koddemo, lösningar, svara på frågor
+  \end{itemize}
+\item
+  Inlämningar:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Dels via Lisam, varannan söndag från vecka 3
+  \item
+    Muntligt för lärare/assistent under laborationerna
   \end{itemize}
 \end{itemize}
 \end{block}
@@ -447,7 +489,7 @@ upplägget av kursen.
 \item
   Fyra föreläsningar
 \item
-  Fyra inlämningar (datorlaborationer)
+  2 inlämningar
 \item
   Labbarna görs \textbf{en och en}
 \end{itemize}
@@ -462,11 +504,11 @@ upplägget av kursen.
 \item
   Fyra föreläsningar
 \item
-  Fyra inlämningar
+  2 inlämningar
 \item
   Labbarna förs genom \textbf{parprogrammering} (grupper om två)
 \item
-  \textbf{miniprojekt} i två delar (del av labb 5 och labb 7)
+  \textbf{miniprojekt} som görs i grupp om två
 \end{itemize}
 
 \pause
@@ -542,7 +584,9 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 \begin{itemize}
 \tightlist
 \item
-  Datorlaborationer, 8st
+  Inlämningar, 4st
+\item
+  Miniprojekt
 \item
   Datortentamen i datorsal
 
@@ -573,6 +617,17 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 \item
   Autorättning används på en del av uppgifterna, se till att följa
   instruktionerna.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Den ska visa helt rätt innan ni presenterar muntligt och laddar upp
+    på Lisam.
+  \item
+    Ta hjälp av labassistenter för att se till att detta sker.
+  \end{itemize}
+\item
+  Muntlig redovisning där ni ska kunna förklara hur ni löst uppgiften
 \item
   100\% rätt för att bli godkänd
 \end{itemize}
@@ -593,9 +648,7 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
     Kursen går på halvfart \textasciitilde20h/vecka. Ungefär 15h/vecka
     till labbar.
   \item
-    Mjuk deadline: söndag kväll
-  \item
-    Hård deadline: onsdag kl 18:00 veckan efter
+    Mjuk deadline: söndag kväll varannan vecka från vecka 3
   \end{itemize}
 \item
   Kompletteringar:
@@ -603,28 +656,64 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
   \begin{itemize}
   \tightlist
   \item
-    Labb 1-4: komplettering strax efter halva kursen. Se kurshemsidan
-    för info.
-  \item
     Komplettering i samband med tentan och omtentor.
   \item
-    Hårda deadlines.
+    Möjligt att boka tid med mig för muntlig redovisning då.
   \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Programmering}
-\protect\hypertarget{programmering}{}
-\begin{itemize}[<+->]
+\begin{frame}{ChatGPT}
+\protect\hypertarget{chatgpt}{}
+\begin{itemize}
 \tightlist
 \item
-  Instruera en dator att utföra uppgifter
+  Kan vara ett väldigt bra verktyg
 \item
-  Mjukvaruutveckling - vetenskaplig programmering
+  \textcolor{red}{Förbjudet att använda ChatGPT för inlämningar!}
 \item
-  Maskinkod - Lågnivåspråk - Högnivåspråk
+  Använd det gärna för:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Felmeddelanden
+  \item
+    Förstå koncept
+  \item
+    Hitta buggar
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Studieteknik}
+\protect\hypertarget{studieteknik}{}
+\begin{itemize}
+\tightlist
 \item
-  Kompileranmde - Intepreterande språk
+  Ni har ansvar för er egen inlärning
+\item
+  Detta kräver eget arbete kontinuerligt under kursen
+\item
+  Programmering:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Teoretisk färdighet
+  \item
+    Praktisk färdighet
+  \end{itemize}
+\item
+  Skriv mycket kod!
+\item
+  Räcker inte att bara jobba under laborationerna!
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kolla och jobba med materialet innan ni kommer.
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -633,6 +722,8 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 \begin{itemize}[<+->]
 \tightlist
 \item
+  Lösa problem
+\item
   Hantera \textcolor{red}{stora} datormängder
 \item
   Replikerbarhet
@@ -640,6 +731,51 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
   Komplexa beräkningar
 \item
   Automatisera
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Programmering}
+\protect\hypertarget{programmering}{}
+\begin{itemize}
+\tightlist
+\item
+  Programmering handlar om att beskriva för en dator vad den ska göra
+\item
+  Kräver ett programmeringsspråk
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Finns många olika språk med svagheter och styrkor
+  \end{itemize}
+\item
+  Exempel:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Python
+  \item
+    Javascript
+  \item
+    C
+  \item
+    Java
+  \end{itemize}
+\item
+  För statistik/dataanalys
+
+  \begin{itemize}
+  \tightlist
+  \item
+    R
+  \item
+    Python
+  \item
+    Julia
+  \item
+    Matlab
+  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -654,7 +790,7 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 \item
   Många utvecklare
 \item
-  Högnivåspråk
+  Interpreterande högnivåspråk
 \end{itemize}
 \end{frame}
 
@@ -715,6 +851,71 @@ Kör vi koden i R får vi följande resultat
 \end{itemize}
 \end{frame}
 
+\begin{frame}{Demo}
+\protect\hypertarget{demo}{}
+\begin{block}{Demo: R-Studio}
+\protect\hypertarget{demo-r-studio}{}
+\end{block}
+\end{frame}
+
+\begin{frame}{Datorsalarna: SU}
+\protect\hypertarget{datorsalarna-su}{}
+\begin{itemize}
+\tightlist
+\item
+  Datorlaborationerna sker i SU-salarna i B-huset
+\item
+  Linuxdatorer
+\item
+  Om det är ledigt är det bara att använda datorerna för självstudier.
+\item
+  Går också bra att använda PC1-5 i E-huset
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Datorsalarna: SU}
+\protect\hypertarget{datorsalarna-su-1}{}
+Hur kommer man igång i datorsalarna
+
+\begin{enumerate}
+\tightlist
+\item
+  Logga in med Liu-ID och lösenord
+\item
+  Öppna en terminal
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Tryck \texttt{ctrl+alt+T}
+\item
+  Eller högerklicka på skrivbordet och välj
+  \texttt{open\ terminal\ here}
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  Skriv \texttt{module\ add\ courses/732G33} i terminalen och tryck
+  enter
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Gör så att ni får tillgång till all programvara som behövs i kursen
+\end{itemize}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  Skriv \texttt{rstudio} i terminalen och tryck enter
+\end{enumerate}
+\end{frame}
+
 \begin{frame}[fragile]{Att hitta hjälp}
 \protect\hypertarget{att-hitta-hjuxe4lp}{}
 \begin{itemize}
@@ -722,7 +923,7 @@ Kör vi koden i R får vi följande resultat
 \item
   Inbyggd hjälp i R
 \item
-  Sök i Google
+  Sök i Google / ChatGPT
 \item
   Sök på \textcolor{red}{ENGELSKA}
 \item
@@ -849,13 +1050,28 @@ Exempel:
 \begin{verbatim}
 ## [1] "4" "5" "6" "7" "8"
 \end{verbatim}
+\end{frame}
 
-\pause
-
-\begin{longtable}[]{@{}lllll@{}}
-\toprule
-Beskrivning & Synonymer & \texttt{typeof()} & Exempel i R & \\
-\midrule
+\begin{frame}[fragile]{Olika typer av värden}
+\protect\hypertarget{olika-typer-av-vuxe4rden-1}{}
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2273}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2273}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1818}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1818}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Beskrivning
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Synonymer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\texttt{typeof()}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exempel i R
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
 Heltal (\(\mathbb{Z}\)) & \texttt{int} & \texttt{integer} &
 \texttt{-1,\ 0,\ 1} & \\
@@ -867,8 +1083,15 @@ Logiska värden & \texttt{boolean}, \texttt{bool} & \texttt{logical} &
 \texttt{TRUE\ FALSE} & \\
 Textsträngar & \texttt{string}, \texttt{char} & \texttt{character} &
 \texttt{En\ textsträng} & \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
+\end{frame}
+
+\begin{frame}{Demo: Variabler}
+\protect\hypertarget{demo-variabler}{}
+\begin{block}{Demo: Variabler}
+\protect\hypertarget{demo-variabler-1}{}
+\end{block}
 \end{frame}
 
 \begin{frame}{Funktioner i R}
@@ -937,6 +1160,13 @@ En funktion i R är uppbyggd av
 \begin{verbatim}
 ## [1] 55
 \end{verbatim}
+\end{frame}
+
+\begin{frame}{Demo: Funktioner}
+\protect\hypertarget{demo-funktioner}{}
+\begin{block}{Demo: Funktioner}
+\protect\hypertarget{demo-funktioner-1}{}
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Lokal miljö}
@@ -1013,6 +1243,38 @@ funktionen.
     Pröva funktionen
   \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Demo: Funktioner II}
+\protect\hypertarget{demo-funktioner-ii}{}
+\begin{block}{Demo: Funktioner II}
+\protect\hypertarget{demo-funktioner-ii-1}{}
+\end{block}
+\end{frame}
+
+\begin{frame}{markmyassignment}
+\protect\hypertarget{markmyassignment}{}
+\begin{itemize}
+\tightlist
+\item
+  R-paket för att rätta uppgifter
+\item
+  Används i kursen för en första koll om ni har gjort rätt
+\item
+  Ska visa alla rätt innan ni reodivsar och lämnar in
+
+  \begin{itemize}
+  \tightlist
+  \item
+    En inlämning som inte ger alla rätt kommer inte godkännas!
+  \item
+    Följ instruktionerna noggrant så blir det mycket lättare.
+  \end{itemize}
+\end{itemize}
+
+\begin{block}{Demo: markmyassignment}
+\protect\hypertarget{demo-markmyassignment}{}
+\end{block}
 \end{frame}
 
 \begin{frame}{Logik}
@@ -1094,9 +1356,9 @@ Kan också skapa vektor genom en relation
 \end{itemize}
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 Beskrivning & Operatorer i R \\
-\midrule
+\midrule\noalign{}
 \endhead
 Lika med & \texttt{==} \\
 Inte lika med & \texttt{!=} \\
@@ -1105,7 +1367,7 @@ Mindre än & \texttt{<} \\
 Större än eller lika med & \texttt{>=} \\
 Mindre än eller lika med & \texttt{<=} \\
 Finns i & \texttt{\%in\%} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
@@ -1120,22 +1382,40 @@ Finns i & \texttt{\%in\%} \\
 \end{itemize}
 
 \begin{longtable}[]{@{}lll@{}}
-\toprule
+\toprule\noalign{}
 Operator & Symbol & Operator i R \\
-\midrule
+\midrule\noalign{}
 \endhead
 och & \(\wedge{}\) & \texttt{\&} \\
 eller & \(\vee{}\) & \texttt{|} \\
 inte & \(\neg{}\) & \texttt{!} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 \pause
 
-\begin{longtable}[]{@{}llllll@{}}
-\toprule
-Symbol & \(A\) & \(B\) & \(\neg A\) & \(A \wedge B\) & \(A \vee B\) \\
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Symbol
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(A\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(B\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(\neg A\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(A \wedge B\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\(A \vee B\)
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
 i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \texttt{A} \(|\) \texttt{B} \\
@@ -1147,8 +1427,15 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \texttt{TRUE} \\
 & \texttt{FALSE} & \texttt{FALSE} & \texttt{TRUE} & \texttt{FALSE} &
 \texttt{FALSE} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
+\end{frame}
+
+\begin{frame}{Demo: Logik}
+\protect\hypertarget{demo-logik}{}
+\begin{block}{Demo: Logik}
+\protect\hypertarget{demo-logik-1}{}
+\end{block}
 \end{frame}
 
 \begin{frame}[fragile]{Logik exempel}

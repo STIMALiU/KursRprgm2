@@ -1,9 +1,9 @@
 ---
-title: "R-programmering VT2022"
+title: "732G33/83 -- R-programmering"
 subtitle: "Föreläsning 1"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-01-24'
+date: ''
 fontsize: 10pt
 output:
   beamer_presentation:
@@ -39,8 +39,10 @@ knitr::opts_chunk$set(echo = FALSE)
 
 **Labbassistenter**:
 
-- Josef Wilzén
-- Rasmus Säfvenberg
+- Max Björklund
+- Edwin Johansson
+- Simon Jorstedt
+- Duc Tran
 
 ## Kursens mål
 
@@ -60,11 +62,15 @@ Information om kursen finns i kursplanen.
 
 Kollar man på tidigare kursutvärderingar har kursen fungerat bra.
 
-1. Kursens ämnesinnehåll har gett mig möjlighet att uppnå kursens lärandemål. 4.09
-3. Kursens examinerande moment har varit relevanta i relation till kursens lärandemål. 3.95
-9. Vilket helhetsbetyg ger du kursen? 3.70
+1. Kursens ämnesinnehåll har gett mig möjlighet att uppnå kursens lärandemål. 4.08
+3. Kursens examinerande moment har varit relevanta i relation till kursens lärandemål. 4.00
+9. Vilket helhetsbetyg ger du kursen? 3.38
 
-Ny föreläsare och examinator i år. Mindre förändringar kommer att ske i föreläsningar/laborationer. Inga planerade ändringar i innehåll eller upplägget av kursen.
+### Förändringar till detta år:
+- Ändrad examination av inlämningar
+  - Muntlig redovisning
+  - Färre inlämningar (4 inlämningar istället för 8)
+- Mindre förändringar i föreläsningar, seminarier och datorlaborationer
 
 
 ## Kursupplägg
@@ -78,27 +84,31 @@ Ny föreläsare och examinator i år. Mindre förändringar kommer att ske i fö
 
 ### Varje vecka
 
-- En föreläsning
-- En \textcolor{red}{obligatorisk} datorlaboration
-- 4 timmar lärarledd laboration
-- Inlämning:
-  - Labbar: varje \textcolor{red}{onsdag kl. 18:00} via LISAM
+- Föreläsning
+  - Nytt material och teorier
+- 2 x laborationer
+  - Jobba med uppgifter och inlämningar
+- Seminarie från vecka 2
+  - Koddemo, lösningar, svara på frågor
+- Inlämningar:
+  - Dels via Lisam, varannan söndag från vecka 3
+  - Muntligt för lärare/assistent under laborationerna
 
 ## Del 1: Grundläggande programering
 
 - Grunderna i R
   - Lära sig hantera R-studio
 - Fyra föreläsningar
-- Fyra inlämningar (datorlaborationer)
+- 2 inlämningar
 - Labbarna görs **en och en**
 
 ## Del 2: Tillämpningar
 
 - Statistisk analys med R
 - Fyra föreläsningar
-- Fyra inlämningar
+- 2 inlämningar
 - Labbarna förs genom **parprogrammering** (grupper om två)
-- **miniprojekt** i två delar (del av labb 5 och labb 7)
+- **miniprojekt** som görs i grupp om två
 
 \pause
 
@@ -149,7 +159,8 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 
 ## Examination
 
-- Datorlaborationer, 8st
+- Inlämningar, 4st
+- Miniprojekt
 - Datortentamen i datorsal
   - Hjälpmedel: R reference card (digitalt) + några fler. Information om vilka kommer komma på kurshemsidan. Dessa erhålls digitalt på tentamenstillfället, ni ska inte ta med er några papper.
   
@@ -161,6 +172,9 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 - Laborationsmall finns på hemsidan
 - Laborationer lämnas in via LISAM
 - Autorättning används på en del av uppgifterna, se till att följa instruktionerna.
+  - Den ska visa helt rätt innan ni presenterar muntligt och laddar upp på Lisam.
+  - Ta hjälp av labassistenter för att se till att detta sker.
+- Muntlig redovisning där ni ska kunna förklara hur ni löst uppgiften
 - 100% rätt för att bli godkänd
 
 ## Datorlaborationer
@@ -168,33 +182,62 @@ Olika referenskort med funktionsnamn och hjälp finns på kurshemsidan.
 - Arbetstakt:
   - Kursveckorna går måndag till måndag
   - Kursen går på halvfart ~20h/vecka. Ungefär 15h/vecka till labbar.
-  - Mjuk deadline: söndag kväll
-  - Hård deadline: onsdag kl 18:00 veckan efter
+  - Mjuk deadline: söndag kväll varannan vecka från vecka 3
 - Kompletteringar:
-  - Labb 1-4: komplettering strax efter halva kursen. Se kurshemsidan för info.
   - Komplettering i samband med tentan och omtentor.
-  - Hårda deadlines.
+  - Möjligt att boka tid med mig för muntlig redovisning då.
 
-## Programmering
+## ChatGPT
 
->- Instruera en dator att utföra uppgifter
->- Mjukvaruutveckling - vetenskaplig programmering
->- Maskinkod - Lågnivåspråk - Högnivåspråk
->- Kompileranmde - Intepreterande språk
+- Kan vara ett väldigt bra verktyg
+- \textcolor{red}{Förbjudet att använda ChatGPT för inlämningar!}
+- Använd det gärna för:
+  - Felmeddelanden
+  - Förstå koncept
+  - Hitta buggar
+
+## Studieteknik
+
+- Ni har ansvar för er egen inlärning
+- Detta kräver eget arbete kontinuerligt under kursen
+- Programmering:
+  - Teoretisk färdighet
+  - Praktisk färdighet
+- Skriv mycket kod!
+- Räcker inte att bara jobba under laborationerna!
+  - Kolla och jobba med materialet innan ni kommer.
+
 
 ## Varför lära sig programera?
 
+>- Lösa problem
 >- Hantera \textcolor{red}{stora} datormängder
 >- Replikerbarhet
 >- Komplexa beräkningar
 >- Automatisera
+
+## Programmering
+
+- Programmering handlar om att beskriva för en dator vad den ska göra
+- Kräver ett programmeringsspråk
+  - Finns många olika språk med svagheter och styrkor
+- Exempel:
+  - Python
+  - Javascript
+  - C
+  - Java
+- För statistik/dataanalys
+  - R
+  - Python
+  - Julia
+  - Matlab
 
 ## Vad är R?
 
 >- R är ett populärt programmeringsspråk för statistiker
 >- Öppen källkod
 >- Många utvecklare
->- Högnivåspråk
+>- Interpreterande högnivåspråk
 
 ## Ett exempel på ett program i R
 
@@ -232,10 +275,33 @@ print("Kör!")
 - R-Studio är en IDE för R
 - Båda är gratis och går att ladda ner och installera på er egna dator. Se kurshemsidan för information.
 
+## Demo
+
+### Demo: R-Studio
+
+## Datorsalarna: SU
+
+- Datorlaborationerna sker i SU-salarna i B-huset
+- Linuxdatorer
+- Om det är ledigt är det bara att använda datorerna för självstudier.
+- Går också bra att använda PC1-5 i E-huset
+
+## Datorsalarna: SU
+
+Hur kommer man igång i datorsalarna
+
+1. Logga in med Liu-ID och lösenord
+2. Öppna en terminal
+  + Tryck `ctrl+alt+T`
+  + Eller högerklicka på skrivbordet och välj `open terminal here`
+3. Skriv `module add courses/732G33` i terminalen och tryck enter
+  + Gör så att ni får tillgång till all programvara som behövs i kursen
+4. Skriv `rstudio` i terminalen och tryck enter
+
 ## Att hitta hjälp
 
 - Inbyggd hjälp i R
-- Sök i Google
+- Sök i Google / ChatGPT
 - Sök på \textcolor{red}{ENGELSKA}
 - Kolla på felmeddelandet
 ```{r,echo=FALSE,eval=TRUE}
@@ -287,7 +353,7 @@ testVektor+c(1,2)
 as.character(4:8)
 ```
 
-\pause
+## Olika typer av värden
 
 Beskrivning | Synonymer | ```typeof()``` | Exempel i R
 ----- | ---- | ----- | ---- | ----
@@ -297,6 +363,10 @@ Komplexa tal ($\mathbb{C}$) | ```cplx``` | ```complex``` | ```1 + 2i```
 Logiska värden | ```boolean```, ```bool``` | ```logical``` | ```TRUE FALSE``` 
 Textsträngar | ```string```, ```char``` | ```character``` |  ```En textsträng``` 
 
+
+## Demo: Variabler
+
+### Demo: Variabler
 
 ## Funktioner i R
 
@@ -330,6 +400,10 @@ area(hojd = 2, bredd = 3)
 area(hojd = 5, bredd = 11)
 ```
 
+## Demo: Funktioner
+
+### Demo: Funktioner
+
 ## Lokal miljö
 
 "Det som sker i en funktion stannar i funktionen"
@@ -361,6 +435,20 @@ ls()
   - Lyft in koden i funktionen
   - Pröva funktionen
   
+## Demo: Funktioner II
+
+### Demo: Funktioner II
+
+## markmyassignment
+
+- R-paket för att rätta uppgifter
+- Används i kursen för en första koll om ni har gjort rätt
+- Ska visa alla rätt innan ni reodivsar och lämnar in
+  - En inlämning som inte ger alla rätt kommer inte godkännas!
+  - Följ instruktionerna noggrant så blir det mycket lättare.
+
+### Demo: markmyassignment
+
 ## Logik
 
 - Logik är vanligt i programmering
@@ -426,6 +514,10 @@ testVektor > 5
 |  | ```TRUE``` | ```FALSE``` | ```FALSE``` | ```FALSE``` | ```TRUE``` |
 |  | ```FALSE``` | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` |
 |  | ```FALSE``` | ```FALSE``` | ```TRUE``` | ```FALSE``` | ```FALSE``` |
+
+## Demo: Logik
+
+### Demo: Logik
 
 ## Logik exempel
 

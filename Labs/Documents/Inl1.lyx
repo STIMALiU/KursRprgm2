@@ -1,0 +1,909 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass report
+\begin_preamble
+\usepackage{fancyhdr}%The first page setting
+\fancypagestyle{plain}
+{%
+  \fancyhf{} % clear all header and footer fields
+  \fancyhead[L]{
+    LINK\"OPING UNIVERSITY\\
+    Avdelningen för Statistik\\
+    Institutionen för datavetenskap
+  }
+  \fancyhead[R]{Programming i R}
+}
+%The remaining pages
+
+\fancyhead[RO,LE]{}
+\fancyhead[C]{Programming i R}
+\fancyhead[LO,RE]{}
+
+ 
+\end_preamble
+\use_default_options true
+\begin_modules
+knitr
+\end_modules
+\maintain_unincluded_children false
+\language swedish
+\language_package default
+\inputencoding auto
+\fontencoding default
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 2
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Inlämning 1
+\end_layout
+
+\begin_layout Author
+Johan Alenlöv
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Global options
+\end_layout
+
+\begin_layout Plain Layout
+
+opts_chunk$set(comment='') 
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 5)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path<-
+\begin_inset Quotes srd
+\end_inset
+
+/home/johal95/Documents/Teaching/R
+\backslash
+ programmering/KursRprgmTeacher/Labs/exercise_solutions/
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+Ladda nu ner laborationsmallen, som finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R"
+literal "false"
+
+\end_inset
+
+ 
+\series default
+\color inherit
+och spara namn och liuID i respektive variabel.
+ Spara filen som 
+\family typewriter
+labb1_[ditt liuID].R
+\family default
+ Här är ett exempel 
+\family typewriter
+labb1_joswi123.R
+\family default
+ .
+\end_layout
+
+\begin_layout Standard
+För att använda 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration ange:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+# eller 
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment,lib="en mapp i din hemkatalog")
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d1.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+set_assignment(lab_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Lösa inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+Här kommer lite tips till när ni ska lösa inlämningsuppgifter.
+\end_layout
+
+\begin_layout Itemize
+Inlämningsuppgifter utgår ifrån att ni har gjort 
+\series bold
+övningsuppgifterna
+\series default
+ ovan först.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
+ inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+Se först till att ni förstår 
+\begin_inset Quotes sld
+\end_inset
+
+problemet
+\begin_inset Quotes srd
+\end_inset
+
+ i uppgiften.
+ Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vissa problem är det bra att bryta ner i mindre delproblem.
+ 
+\end_layout
+
+\begin_layout Itemize
+Börja med att lösa problemet (eller det första delproblemet) med vanlig
+ kod (dvs inte i en funktion) i ett R-script.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lös ett delproblem i taget vid behov.
+ Sätt sedan samman lösningarna på delproblemen.
+ Under sök om koden fungerar som den ska.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sätt sedan in er kod i en funktion.
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
+ (testfallen).
+ Se till att funktionen har rätt namn och rätt namn på argumenten.
+\end_layout
+
+\begin_layout Itemize
+Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+ Skapa variablerna 
+\family typewriter
+Namn
+\family default
+ och 
+\family typewriter
+LiuId
+\family default
+ med rätt innehåll.
+ Spara filen med rätt namn.
+\end_layout
+
+\begin_layout Itemize
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
+ och ID-variabler och ev.
+ kommentarer.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta minskar risken för fel.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testa nu att använda markmyassignment för att rätta er funktion.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Använd markmyassignment bara när er funktionen är 
+\begin_inset Quotes sld
+\end_inset
+
+hyfsat klar
+\begin_inset Quotes srd
+\end_inset
+
+, annars kommer ni att få många fel i markmyassignment, och det är svårt
+ att veta var man ska börja kolla.
+\end_layout
+
+\begin_layout Itemize
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
+ kommer ni att få många fel i markmyassignment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
+ som ni får.
+ Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
+\end_layout
+
+\begin_layout Itemize
+Innan ni lämnar in:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
+ten.
+ Ibland måste en viss metod användas för att lösa uppgiften.
+ Ibland är vissa funktioner inte tillåtna i en viss uppgift.
+ Så läs noga i varje uppgift vad som gäller.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni klarar alla tester i markmyassignment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Innan inlämning på Lisam: döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil
+\end_layout
+
+\begin_layout Itemize
+Lämna sedan in er 
+\series bold
+.txt
+\series default
+ fil på Lisam.
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+orth_scalar_prod()
+\end_layout
+
+\begin_layout Standard
+Skapa en funktion som heter 
+\family typewriter
+\color black
+orth_scalar_prod()
+\family default
+\color inherit
+ som beräknar skalärprodukten mellan två vektorer, 
+\family typewriter
+\color black
+a
+\family default
+\color inherit
+ och 
+\family typewriter
+\color black
+b
+\family default
+\color inherit
+, i en ortonormerad bas.
+ Skalärprodukten beräknas då på följande sätt.
+ 
+\begin_inset Formula 
+\[
+\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}+\dots+a_{n}b_{n}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+där 
+\begin_inset Formula $n$
+\end_inset
+
+ är antalet element i vektorerna 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ och 
+\begin_inset Formula $\mathbf{b}$
+\end_inset
+
+.
+ Exempel, låt 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+a=\left(2,4,7\right)\qquad b=\left(3,9,2\right)
+\]
+
+\end_inset
+
+Då blir 
+\begin_inset Formula 
+\[
+\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=2\cdot3+4\cdot9+7\cdot2=56
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Mer information om skalärprodukten finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://sv.wikipedia.org/wiki/Skal%C3%A4rprodukt"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+orth_scalar_prod(a = c(3,1,12,2,4), b = c(1,2,3,4,5))
+\end_layout
+
+\begin_layout Plain Layout
+
+orth_scalar_prod(a = 1:4, b = 4:1)
+\end_layout
+
+\begin_layout Plain Layout
+
+orth_scalar_prod(a = c(-1,3), b = c(-3,-1))
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+hi_name()
+\end_layout
+
+\begin_layout Standard
+Skapa en funktion 
+\family typewriter
+\color black
+hi_name()
+\family default
+\color inherit
+ som tar argumentet namn.
+ Funktionen ska skriva ut 
+\family typewriter
+\color black
+
+\begin_inset Quotes sld
+\end_inset
+
+Hi [namn]! Keep coding!
+\begin_inset Quotes srd
+\end_inset
+
+
+\family default
+\color inherit
+ där [namn] ersätts med värdet på argumentet 
+\family typewriter
+namn
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ använd 
+\family typewriter
+\color black
+cat()
+\family default
+\color inherit
+, inte 
+\family typewriter
+\color black
+return()
+\family default
+\color inherit
+ och tänk på att resultatet ska bli exakt detsamma som nedan för full poäng.
+ [
+\series bold
+Tips! 
+\series default
+argumentet 
+\family typewriter
+\color black
+sep
+\family default
+\color inherit
+ i 
+\family typewriter
+cat()
+\family default
+] 
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+hi_name(namn = "Johan")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+hi_name(namn = "Florence")
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+approx_e()
+\end_layout
+
+\begin_layout Standard
+Talet 
+\begin_inset CommandInset href
+LatexCommand href
+name "e "
+target "https://sv.wikipedia.org/wiki/E_(tal)"
+literal "false"
+
+\end_inset
+
+ kan beskrivas som följande oändliga serie:
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{\infty}\frac{1}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Där 
+\begin_inset Formula $!$
+\end_inset
+
+ är 
+\begin_inset CommandInset href
+LatexCommand href
+name "fakultet"
+target "https://sv.wikipedia.org/wiki/Fakultet_(matematik)"
+literal "false"
+
+\end_inset
+
+.
+ Denna serie gör att talet 
+\begin_inset Formula $e$
+\end_inset
+
+ kan approximeras godtyckligt bra på följande sätt, genom att välja ett
+ värde på 
+\begin_inset Formula $N$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{N}\frac{1}{n!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Exempel, låt 
+\begin_inset Formula $N=3$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+e=\sum_{n=0}^{3}\frac{1}{n!}=\frac{1}{0!}+\frac{1}{1!}+\frac{1}{2!}+\frac{1}{3!}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Skapa en funktion i R som du kallar 
+\family typewriter
+approx_e()
+\family default
+ med argumentet 
+\family typewriter
+\color black
+N
+\family default
+\color inherit
+ för att skapa en godtyckligt nogrann approximation av 
+\begin_inset Formula $e$
+\end_inset
+
+.
+ Pröva hur stort n behöver vara för att funktionen ska approximera 
+\begin_inset Formula $e$
+\end_inset
+
+ till och med fjärde decimalen
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+Detta ska inte redovisas i inlämningen.
+ Det viktiga är att ni klarar testerna i markmyassignment.
+\end_layout
+
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+[
+\series bold
+Tips!
+\series default
+ för att få ut 
+\begin_inset Formula $e$
+\end_inset
+
+ med ett antal decimaler i R, använd 
+\family typewriter
+\color black
+exp(1)
+\family default
+\color inherit
+]
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 2)
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+# jämför med exp(1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
+ och funktionerna i inlämningsuppgifterna och 
+\series bold
+inget
+\series default
+ annat.
+ Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb1_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb1_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
+\end_layout
+
+\begin_layout Standard
+
+\shape italic
+Grattis! Nu är du klar!
+\end_layout
+
+\end_body
+\end_document
