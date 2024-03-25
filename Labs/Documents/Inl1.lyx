@@ -184,9 +184,8 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/home/johal95/Documents/Teaching/R
-\backslash
- programmering/KursRprgmTeacher/Labs/exercise_solutions/
+/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise
+_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -437,150 +436,6 @@ Se till att ni klarar alla tester i markmyassignment
 \end_layout
 
 \end_deeper
-\begin_layout Itemize
-Innan inlämning på Lisam: döp om er R-fil till en 
-\series bold
-.txt
-\series default
- fil
-\end_layout
-
-\begin_layout Itemize
-Lämna sedan in er 
-\series bold
-.txt
-\series default
- fil på Lisam.
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-orth_scalar_prod()
-\end_layout
-
-\begin_layout Standard
-Skapa en funktion som heter 
-\family typewriter
-\color black
-orth_scalar_prod()
-\family default
-\color inherit
- som beräknar skalärprodukten mellan två vektorer, 
-\family typewriter
-\color black
-a
-\family default
-\color inherit
- och 
-\family typewriter
-\color black
-b
-\family default
-\color inherit
-, i en ortonormerad bas.
- Skalärprodukten beräknas då på följande sätt.
- 
-\begin_inset Formula 
-\[
-\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=a_{1}b_{1}+a_{2}b_{2}+a_{3}b_{3}+\dots+a_{n}b_{n}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-där 
-\begin_inset Formula $n$
-\end_inset
-
- är antalet element i vektorerna 
-\begin_inset Formula $\mathbf{a}$
-\end_inset
-
- och 
-\begin_inset Formula $\mathbf{b}$
-\end_inset
-
-.
- Exempel, låt 
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-a=\left(2,4,7\right)\qquad b=\left(3,9,2\right)
-\]
-
-\end_inset
-
-Då blir 
-\begin_inset Formula 
-\[
-\mathbf{a}\cdot\mathbf{b}=\sum_{i=1}^{n}a_{i}b_{i}=2\cdot3+4\cdot9+7\cdot2=56
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Mer information om skalärprodukten finns 
-\series bold
-\color blue
-
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "http://sv.wikipedia.org/wiki/Skal%C3%A4rprodukt"
-literal "false"
-
-\end_inset
-
-
-\series default
-\color inherit
-.
- 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-orth_scalar_prod(a = c(3,1,12,2,4), b = c(1,2,3,4,5))
-\end_layout
-
-\begin_layout Plain Layout
-
-orth_scalar_prod(a = 1:4, b = 4:1)
-\end_layout
-
-\begin_layout Plain Layout
-
-orth_scalar_prod(a = c(-1,3), b = c(-3,-1))
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Section
 
 \family typewriter
@@ -873,6 +728,630 @@ approx_e(N = 4)
 
 \end_layout
 
+\begin_layout Section
+
+\family typewriter
+fast_stock_analysis()
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skapa en funktion för att göra en snabb analys av ett dataset
+ som finns sparat som 
+\family typewriter
+.csv
+\family default
+.
+ Detta är ett exempel på användningsområde för funktioner i R.
+ Mycket data kommer in löpande och då kan det vara så att vissa standardanalyser
+ vill vi göra snabbt med en förprogrammerad funktion.
+ Vi ska skapa en funktion 
+\family typewriter
+fast_stock_analysis()
+\family default
+ med argumentet 
+\family typewriter
+file_path
+\family default
+ och 
+\family typewriter
+period_length
+\family default
+.
+ Syftet är att snabbt analysera de senaste dagarnas aktiekurs.
+ Vi utgår att data har följande struktur: 
+\end_layout
+
+\begin_layout Itemize
+Variabler (i given ordning): 
+\family typewriter
+Date
+\family default
+, 
+\family typewriter
+Open
+\family default
+, 
+\family typewriter
+High
+\family default
+, 
+\family typewriter
+Low
+\family default
+, 
+\family typewriter
+Close
+\family default
+, 
+\family typewriter
+Volume
+\family default
+, 
+\family typewriter
+Adj.Close
+\end_layout
+
+\begin_layout Itemize
+Rader är dagar med observerade data.
+ Raderna är sorterade så att de nyligaste dagarna är högst upp i filen.
+\end_layout
+
+\begin_layout Standard
+Funktionen ska läsa in en 
+\family typewriter
+.csv
+\family default
+ - fil som anges av argumentet 
+\family typewriter
+file_path
+\family default
+ och returnera en lista med de namngivna listelementen 
+\family typewriter
+total_spridning
+\family default
+, 
+\family typewriter
+medel_slutpris
+\family default
+, 
+\family typewriter
+slutpris_upp
+\family default
+ och 
+\family typewriter
+datum
+\family default
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Så här ska funktionen implementeras:
+\end_layout
+
+\begin_layout Enumerate
+Skriv först en funktion som ska läsa in data
+\end_layout
+
+\begin_layout Enumerate
+Läs in data (csv) med argumentet 
+\family typewriter
+file_path
+\family default
+ (innehåller både filnamn och sökväg).
+ Använd funktionen 
+\family typewriter
+read.csv()
+\family default
+.
+ [
+\series bold
+Tips!
+\series default
+ tänk på att 
+\family typewriter
+stringsAsFactors
+\family default
+ kontrollerar om datumvariablerna blir en faktorvariabel eller ej.].
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Obs!
+\series default
+ 
+\family typewriter
+file_path
+\family default
+ ska bara innehålla sökvägen till filen, filen ska läsas in inne i funktionen.
+\end_layout
+
+\begin_layout Enumerate
+Plocka ut de senaste 
+\family typewriter
+period_length
+\family default
+ antal dagar från datasetet (anta att de senaste aktiekurserna är högst
+ upp).
+\end_layout
+
+\begin_layout Enumerate
+Räkna ut de värden som ska returneras av funktionen:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\family typewriter
+total_spridning
+\family default
+ (ett numeriskt element) är skillnaden mellan det högsta värdet på 
+\family typewriter
+High
+\family default
+ och det lägsta värdet på 
+\family typewriter
+Low
+\family default
+ under perioden.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+medel_slutpris
+\family default
+ (ett numeriskt element) är det genomsnittliga slutpriset under perioden.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+slutpris_upp
+\family default
+ (ett logiskt element) är ett logiskt värde som anger 
+\family typewriter
+TRUE
+\family default
+ om slutpriset första dagen under perioden är lägre än slutpriset den sista
+ dagen under perioden.
+\end_layout
+
+\begin_layout Enumerate
+
+\family typewriter
+datum
+\family default
+ (vektor med två textelement) ska innehålla det första och det sista datumet
+ för perioden.
+ 
+\series bold
+
+\begin_inset Newline newline
+\end_inset
+
+OBS!
+\series default
+ Detta ska vara en textvektor, inte en faktor.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Sätt ihop dessa värden till en namngiven lista med namnen ovan.
+\end_layout
+
+\begin_layout Standard
+Ladda ner testdata 
+\family typewriter
+AppleTest.csv
+\family default
+ och 
+\family typewriter
+google2.csv
+\family default
+: 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://github.com/STIMALiU/KursRprgm2/tree/main/Labs/DataFiles"
+literal "false"
+
+\end_inset
+
+.
+ Klicka på filnamnet och sen på knappen 
+\begin_inset Quotes sld
+\end_inset
+
+Raw
+\begin_inset Quotes srd
+\end_inset
+
+ och spara ned filen.
+ Notera vi testar funktionen på dessa filer, men funktionen ska fungera
+ på godtyckliga dataset som har samma struktur som dessa två filer.
+ Här är testexempel på hur funktionen ska fungera (
+\series bold
+Obs!
+\series default
+ Detta är var mina filer ligger, du behöver ange dina egen sökvägar):
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=FALSE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+apple_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
+t.csv
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+google_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
+sv
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+#old solution:
+\end_layout
+
+\begin_layout Plain Layout
+
+#appleFilePath <- "C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+joswi05
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2016
+\backslash
+
+\backslash
+KursRprgm2
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+DataFiles
+\backslash
+
+\backslash
+"
+\end_layout
+
+\begin_layout Plain Layout
+
+#appleFilePath <- tempfile(pattern="AppleCSV",fileext=".csv")
+\end_layout
+
+\begin_layout Plain Layout
+
+#download.file("https://raw.githubusercontent.com/MansMeg/KursRprgm2/master/Labs/Da
+taFiles/AppleTest.csv", destfile = appleFilePath, method = "curl") 
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#library(repmis) data_url <- "https://raw.githubusercontent.com/STIMALiU/KursRprgm
+2/master/Labs/DataFiles/Apple.txt" 
+\end_layout
+
+\begin_layout Plain Layout
+
+#apple <- repmis::source_data(data_url, sep = ";", dec = ".", header = TRUE)
+\end_layout
+
+\begin_layout Plain Layout
+
+#apple_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+joswi05
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2016
+\backslash
+
+\backslash
+KursRprgm2
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+DataFiles
+\backslash
+
+\backslash
+AppleTest.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+#apple_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+Wollstonecraft
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2018
+\backslash
+
+\backslash
+KursRprgm2
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+DataFiles
+\backslash
+
+\backslash
+AppleTest.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+#google_path<-"C:
+\backslash
+
+\backslash
+Users
+\backslash
+
+\backslash
+Wollstonecraft
+\backslash
+
+\backslash
+Dropbox
+\backslash
+
+\backslash
+Josef
+\backslash
+
+\backslash
+732G33_VT2018
+\backslash
+
+\backslash
+KursRprgm2
+\backslash
+
+\backslash
+Labs
+\backslash
+
+\backslash
+DataFiles
+\backslash
+
+\backslash
+google2.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+#apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
+s/AppleTest.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+#google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFil
+es/google2.csv"
+\end_layout
+
+\begin_layout Plain Layout
+
+apple_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
+t.csv
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+google_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
+sv
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+myList1 <- fast_stock_analysis(file_path = apple_path, period_length=5)
+  
+\end_layout
+
+\begin_layout Plain Layout
+
+str(myList1)
+\end_layout
+
+\begin_layout Plain Layout
+
+myList2 <- fast_stock_analysis(file_path = apple_path, period_length=10)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(myList2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+myList3 <- fast_stock_analysis(file_path = apple_path, period_length=3)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(myList3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+myList4 <- fast_stock_analysis(file_path = google_path, period_length=20)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(myList4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\end_layout
+
 \begin_layout Standard
 Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
  och funktionerna i inlämningsuppgifterna och 
@@ -881,22 +1360,6 @@ inget
 \series default
  annat.
  Var noga med att ge filen korrekt namn innan du lämnar in den.
- Precis innan inlämning på Lisam, döp om er R-fil till en 
-\series bold
-.txt
-\series default
- fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
-troll.
- Exempel: 
-\family typewriter
-labb1_josad732.R
-\family default
- blir då 
-\family typewriter
-labb1_josad732.txt 
-\family default
-Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
- deadline.
 \end_layout
 
 \begin_layout Standard
