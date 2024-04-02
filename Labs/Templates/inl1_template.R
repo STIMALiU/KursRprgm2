@@ -23,7 +23,7 @@ approx_e <- function(mitt_argument){
   # Skriv din funktion här
 }
 
-# Uppgift 1 ----
+# Uppgift 3 ----
 fast_stock_analysis <- function(mitt_argument){
   # Skriv din funktion här
 }
