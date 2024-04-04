@@ -44,17 +44,20 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{lmodern}
-\usepackage{amssymb,amsmath}
-\usepackage{ifxetex,ifluatex}
-\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,18 +111,12 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\usepackage{longtable,booktabs}
-\usepackage{caption}
-% Make caption package work with longtable
-\makeatletter
-\def\fnum@table{\tablename~\thetable}
-\makeatother
 \usepackage{graphicx}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -294,23 +283,29 @@
 \newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
 \newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
 
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT2024},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT2024}
 \subtitle{Föreläsning 2}
 \author{Johan Alenlöv}
-\date{2022-01-31}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
 \begin{frame}{Föreläsning 2:}
-\protect\hypertarget{fuxf6reluxe4sning-2}{}
-\textbf{Vi kör på distans en vecka till.} Föreläsning 7/2 och labbar
-9/2, 11/2 på distans.
-
-\textbf{Schemaflytt} på fredag är labben 8:15-10:00
-
+\phantomsection\label{fuxf6reluxe4sning-2}
 \begin{itemize}
 \tightlist
 \item
@@ -334,12 +329,11 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{sammanfattning-fuxf6reluxe4sning-1}{%
 \section{Sammanfattning Föreläsning
-1}\label{sammanfattning-fuxf6reluxe4sning-1}}
+1}\label{sammanfattning-fuxf6reluxe4sning-1}
 
 \begin{frame}{Variabler, vektorer och typer}
-\protect\hypertarget{variabler-vektorer-och-typer}{}
+\phantomsection\label{variabler-vektorer-och-typer}
 \begin{itemize}
 \tightlist
 \item
@@ -378,7 +372,7 @@
 \end{frame}
 
 \begin{frame}{Funktioner}
-\protect\hypertarget{funktioner}{}
+\phantomsection\label{funktioner}
 \begin{itemize}
 \tightlist
 \item
@@ -405,7 +399,7 @@
 \end{frame}
 
 \begin{frame}{Logik}
-\protect\hypertarget{logik}{}
+\phantomsection\label{logik}
 \begin{itemize}
 \tightlist
 \item
@@ -434,118 +428,10 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Logik i R}
-\protect\hypertarget{logik-i-r}{}
-Kan skapa en vektor med värdena \texttt{TRUE} och \texttt{FALSE}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{testVektor \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{13}\NormalTok{)}
-\NormalTok{boolVektor \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{, }\OtherTok{FALSE}\NormalTok{, }\OtherTok{TRUE}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{testVektor[boolVektor]}
-\end{Highlighting}
-\end{Shaded}
-
-\pause
-
-\begin{verbatim}
-## [1]  2  7 13
-\end{verbatim}
-
-\pause
-
-Kan också skapa vektor genom en relation
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{testVektor }\OperatorTok{\textgreater{}}\StringTok{ }\DecValTok{5}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] FALSE FALSE FALSE  TRUE  TRUE  TRUE
-\end{verbatim}
-\end{frame}
-
-\begin{frame}{Relationsoperatorer}
-\protect\hypertarget{relationsoperatorer}{}
-\begin{itemize}
-\tightlist
-\item
-  Relationer används för att jämförelser
-\item
-  Skapar logiska vektorer
-\end{itemize}
-
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-Beskrivning & Operatorer i R\tabularnewline
-\midrule
-\endhead
-Lika med & \texttt{==}\tabularnewline
-Inte lika med & \texttt{!=}\tabularnewline
-Större än & \texttt{>}\tabularnewline
-Mindre än & \texttt{<}\tabularnewline
-Större än eller lika med & \texttt{>=}\tabularnewline
-Mindre än eller lika med & \texttt{<=}\tabularnewline
-Finns i & \texttt{\%in\%}\tabularnewline
-\bottomrule
-\end{longtable}
-\end{frame}
-
-\begin{frame}[fragile]{Logiska operatorer}
-\protect\hypertarget{logiska-operatorer}{}
-\begin{itemize}
-\tightlist
-\item
-  Boolsk algebra
-\item
-  Operatorer:
-\end{itemize}
-
-\begin{longtable}[]{@{}lll@{}}
-\toprule
-Operator & Symbol & Operator i R\tabularnewline
-\midrule
-\endhead
-och & \(\wedge{}\) & \texttt{\&}\tabularnewline
-eller & \(\vee{}\) & \texttt{|}\tabularnewline
-inte & \(\neg{}\) & \texttt{!}\tabularnewline
-\bottomrule
-\end{longtable}
-
-\pause
-
-\begin{longtable}[]{@{}llllll@{}}
-\toprule
-Symbol & \(A\) & \(B\) & \(\neg A\) & \(A \wedge B\) &
-\(A \vee B\)\tabularnewline
-\midrule
-\endhead
-i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
-\texttt{A} \(|\) \texttt{B}\tabularnewline
-& \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} & \texttt{TRUE} &
-\texttt{TRUE}\tabularnewline
-& \texttt{TRUE} & \texttt{FALSE} & \texttt{FALSE} & \texttt{FALSE} &
-\texttt{TRUE}\tabularnewline
-& \texttt{FALSE} & \texttt{TRUE} & \texttt{TRUE} & \texttt{FALSE} &
-\texttt{TRUE}\tabularnewline
-& \texttt{FALSE} & \texttt{FALSE} & \texttt{TRUE} & \texttt{FALSE} &
-\texttt{FALSE}\tabularnewline
-\bottomrule
-\end{longtable}
-\end{frame}
-
-\hypertarget{datastrukturer}{%
-\section{Datastrukturer}\label{datastrukturer}}
+\section{Datastrukturer}\label{datastrukturer}
 
 \begin{frame}{Datastrukturer}
-\protect\hypertarget{datastrukturer-1}{}
+\phantomsection\label{datastrukturer-1}
 \begin{itemize}
 \tightlist
 \item
@@ -567,11 +453,10 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \end{itemize}
 \end{frame}
 
-\hypertarget{matriser}{%
-\section{Matriser}\label{matriser}}
+\section{Matriser}\label{matriser}
 
 \begin{frame}{Matriser}
-\protect\hypertarget{matriser-1}{}
+\phantomsection\label{matriser-1}
 \begin{itemize}
 \tightlist
 \item
@@ -597,10 +482,10 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \end{frame}
 
 \begin{frame}[fragile]{Matriser, exempel}
-\protect\hypertarget{matriser-exempel}{}
+\phantomsection\label{matriser-exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{en\_matris \textless{}{-}}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DataTypeTok{data =} \DecValTok{5}\OperatorTok{:}\DecValTok{8}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{2}\NormalTok{)}
+\NormalTok{en\_matris }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\AttributeTok{data =} \DecValTok{5}\SpecialCharTok{:}\DecValTok{8}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{2}\NormalTok{)}
 \NormalTok{en\_matris}
 \end{Highlighting}
 \end{Shaded}
@@ -615,7 +500,7 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{en\_matris[}\DecValTok{1}\NormalTok{, ] \textless{}{-}}\StringTok{ }\NormalTok{en\_matris[}\DecValTok{2}\NormalTok{, ]}
+\NormalTok{en\_matris[}\DecValTok{1}\NormalTok{, ] }\OtherTok{\textless{}{-}}\NormalTok{ en\_matris[}\DecValTok{2}\NormalTok{, ]}
 \NormalTok{en\_matris}
 \end{Highlighting}
 \end{Shaded}
@@ -627,11 +512,17 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \end{verbatim}
 \end{frame}
 
-\hypertarget{data.frame}{%
-\section{data.frame}\label{data.frame}}
+\begin{frame}{Demo}
+\phantomsection\label{demo}
+\begin{block}{Demo: Matriser}
+\phantomsection\label{demo-matriser}
+\end{block}
+\end{frame}
+
+\section{data.frame}\label{data.frame}
 
 \begin{frame}{data.frame}
-\protect\hypertarget{data.frame-1}{}
+\phantomsection\label{data.frame-1}
 \begin{itemize}
 \tightlist
 \item
@@ -661,7 +552,7 @@ i R & \texttt{A} & \texttt{B} & \texttt{!A} & \texttt{A\ \&\ B} &
 \end{frame}
 
 \begin{frame}[fragile]{Exempel på inbyggt dataset}
-\protect\hypertarget{exempel-puxe5-inbyggt-dataset}{}
+\phantomsection\label{exempel-puxe5-inbyggt-dataset}
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth,height=\textheight]{images/ny.jpeg}
@@ -672,23 +563,23 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{data}\NormalTok{(}\StringTok{"airquality"}\NormalTok{)}
-\KeywordTok{head}\NormalTok{(airquality)}
-\KeywordTok{tail}\NormalTok{(airquality)}
-\KeywordTok{summary}\NormalTok{(airquality)}
-\KeywordTok{dim}\NormalTok{(airquality)}
+\FunctionTok{data}\NormalTok{(}\StringTok{"airquality"}\NormalTok{)}
+\FunctionTok{head}\NormalTok{(airquality)}
+\FunctionTok{tail}\NormalTok{(airquality)}
+\FunctionTok{summary}\NormalTok{(airquality)}
+\FunctionTok{dim}\NormalTok{(airquality)}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
 
 \begin{frame}[fragile]{Skapa en data.frame}
-\protect\hypertarget{skapa-en-data.frame}{}
+\phantomsection\label{skapa-en-data.frame}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{minData \textless{}{-}}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}
-  \DataTypeTok{namn =} \KeywordTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Johan\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Therese\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Hugo\textquotesingle{}}\NormalTok{), }
-  \DataTypeTok{vuxen =} \KeywordTok{c}\NormalTok{(}\OtherTok{TRUE}\NormalTok{,}\OtherTok{TRUE}\NormalTok{,}\OtherTok{FALSE}\NormalTok{), }
-  \DataTypeTok{langd =} \KeywordTok{c}\NormalTok{(}\DecValTok{180}\NormalTok{,}\DecValTok{172}\NormalTok{,}\DecValTok{110}\NormalTok{))}
+\NormalTok{minData }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{namn =} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}Johan\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Therese\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}Hugo\textquotesingle{}}\NormalTok{), }
+  \AttributeTok{vuxen =} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{TRUE}\NormalTok{,}\ConstantTok{FALSE}\NormalTok{), }
+  \AttributeTok{langd =} \FunctionTok{c}\NormalTok{(}\DecValTok{180}\NormalTok{,}\DecValTok{172}\NormalTok{,}\DecValTok{110}\NormalTok{))}
 \NormalTok{minData}
 \end{Highlighting}
 \end{Shaded}
@@ -702,7 +593,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}[fragile]{Variabler}
-\protect\hypertarget{variabler}{}
+\phantomsection\label{variabler}
 \begin{itemize}
 \tightlist
 \item
@@ -713,17 +604,17 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{minData}\OperatorTok{$}\NormalTok{langd}
+\NormalTok{minData}\SpecialCharTok{$}\NormalTok{langd}
 \NormalTok{minData[, }\StringTok{"langd"}\NormalTok{]}
 \NormalTok{minData[[}\StringTok{"langd"}\NormalTok{]]}
 \NormalTok{minData[, }\DecValTok{3}\NormalTok{]}
-\NormalTok{minData[, }\KeywordTok{colnames}\NormalTok{(minData) }\OperatorTok{==}\StringTok{ "langd"}\NormalTok{]}
+\NormalTok{minData[, }\FunctionTok{colnames}\NormalTok{(minData) }\SpecialCharTok{==} \StringTok{"langd"}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 \end{frame}
 
 \begin{frame}[fragile]{Nya variabler}
-\protect\hypertarget{nya-variabler}{}
+\phantomsection\label{nya-variabler}
 \begin{itemize}
 \tightlist
 \item
@@ -734,8 +625,8 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{minData}\OperatorTok{$}\NormalTok{langdMeter \textless{}{-}}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{1.8}\NormalTok{, }\FloatTok{1.7}\NormalTok{, }\FloatTok{1.1}\NormalTok{)}
-\NormalTok{minData}\OperatorTok{$}\NormalTok{rolig \textless{}{-}}\StringTok{ "Ja"}
+\NormalTok{minData}\SpecialCharTok{$}\NormalTok{langdMeter }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FloatTok{1.8}\NormalTok{, }\FloatTok{1.7}\NormalTok{, }\FloatTok{1.1}\NormalTok{)}
+\NormalTok{minData}\SpecialCharTok{$}\NormalTok{rolig }\OtherTok{\textless{}{-}} \StringTok{"Ja"}
 \NormalTok{minData}
 \end{Highlighting}
 \end{Shaded}
@@ -749,7 +640,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}[fragile]{Ta bort variabler}
-\protect\hypertarget{ta-bort-variabler}{}
+\phantomsection\label{ta-bort-variabler}
 \begin{itemize}
 \tightlist
 \item
@@ -760,8 +651,8 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{minData \textless{}{-}}\StringTok{ }\NormalTok{minData[, }\DecValTok{{-}4}\NormalTok{] }
-\NormalTok{minData}\OperatorTok{$}\NormalTok{rolig \textless{}{-}}\StringTok{ }\OtherTok{NULL}
+\NormalTok{minData }\OtherTok{\textless{}{-}}\NormalTok{ minData[, }\SpecialCharTok{{-}}\DecValTok{4}\NormalTok{] }
+\NormalTok{minData}\SpecialCharTok{$}\NormalTok{rolig }\OtherTok{\textless{}{-}} \ConstantTok{NULL}
 \NormalTok{minData}
 \end{Highlighting}
 \end{Shaded}
@@ -775,7 +666,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}[fragile]{Variabelnamn}
-\protect\hypertarget{variabelnamn}{}
+\phantomsection\label{variabelnamn}
 \begin{itemize}
 \tightlist
 \item
@@ -784,7 +675,7 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{colnames}\NormalTok{(minData)}
+\FunctionTok{colnames}\NormalTok{(minData)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -802,7 +693,7 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{colnames}\NormalTok{(minData)[}\DecValTok{2}\NormalTok{] \textless{}{-}}\StringTok{ "Inte Barn"}
+\FunctionTok{colnames}\NormalTok{(minData)[}\DecValTok{2}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Inte Barn"}
 \NormalTok{minData}
 \end{Highlighting}
 \end{Shaded}
@@ -816,7 +707,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}[fragile]{Rader}
-\protect\hypertarget{rader}{}
+\phantomsection\label{rader}
 \begin{itemize}
 \tightlist
 \item
@@ -827,7 +718,7 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{rownames}\NormalTok{(minData)}
+\FunctionTok{rownames}\NormalTok{(minData)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -845,7 +736,7 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{rownames}\NormalTok{(minData)[}\DecValTok{1}\NormalTok{] \textless{}{-}}\StringTok{ "Person 1"}
+\FunctionTok{rownames}\NormalTok{(minData)[}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Person 1"}
 \NormalTok{minData}
 \end{Highlighting}
 \end{Shaded}
@@ -858,11 +749,17 @@ Ladda in och undersök data
 \end{verbatim}
 \end{frame}
 
-\hypertarget{listor}{%
-\section{Listor}\label{listor}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-1}
+\begin{block}{Demo: data.frame}
+\phantomsection\label{demo-data.frame}
+\end{block}
+\end{frame}
+
+\section{Listor}\label{listor}
 
 \begin{frame}[fragile]{Listor}
-\protect\hypertarget{listor-1}{}
+\phantomsection\label{listor-1}
 \begin{itemize}
 \tightlist
 \item
@@ -879,8 +776,8 @@ Ladda in och undersök data
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{minLista \textless{}{-}}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{namn =} \StringTok{"Ash Ketchum"}\NormalTok{,}
-             \KeywordTok{c}\NormalTok{(}\StringTok{"Pikachu"}\NormalTok{, }\StringTok{"Caterpie"}\NormalTok{, }\StringTok{"Charmander"}\NormalTok{))}
+\NormalTok{minLista }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{namn =} \StringTok{"Ash Ketchum"}\NormalTok{,}
+             \FunctionTok{c}\NormalTok{(}\StringTok{"Pikachu"}\NormalTok{, }\StringTok{"Caterpie"}\NormalTok{, }\StringTok{"Charmander"}\NormalTok{))}
 \NormalTok{minLista}
 \end{Highlighting}
 \end{Shaded}
@@ -895,7 +792,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}[fragile]{Indexering i listor}
-\protect\hypertarget{indexering-i-listor}{}
+\phantomsection\label{indexering-i-listor}
 \begin{itemize}
 \tightlist
 \item
@@ -914,9 +811,9 @@ Ladda in och undersök data
   \begin{itemize}
   \tightlist
   \item
-    \textbackslash texttt\{minLista\$namn\}
+    Med \$ tecken: \texttt{minLista\$namn}
   \item
-    \texttt{minList[["namn"]]}
+    Med namnet: \texttt{minList[["namn"]]}
   \end{itemize}
 \end{itemize}
 
@@ -942,11 +839,17 @@ Ladda in och undersök data
 \end{verbatim}
 \end{frame}
 
-\hypertarget{databearbetning}{%
-\section{Databearbetning}\label{databearbetning}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-2}
+\begin{block}{Demo: Listor}
+\phantomsection\label{demo-listor}
+\end{block}
+\end{frame}
+
+\section{Databearbetning}\label{databearbetning}
 
 \begin{frame}{Sammanfoga data}
-\protect\hypertarget{sammanfoga-data}{}
+\phantomsection\label{sammanfoga-data}
 \begin{itemize}
 \tightlist
 \item
@@ -968,11 +871,17 @@ Ladda in och undersök data
 \end{itemize}
 \end{frame}
 
-\hypertarget{input-och-output}{%
-\section{Input och Output}\label{input-och-output}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-3}
+\begin{block}{Demo: Databearbetning}
+\phantomsection\label{demo-databearbetning}
+\end{block}
+\end{frame}
+
+\section{Input och Output}\label{input-och-output}
 
 \begin{frame}{Input}
-\protect\hypertarget{input}{}
+\phantomsection\label{input}
 \begin{itemize}
 \tightlist
 \item
@@ -1031,7 +940,7 @@ Ladda in och undersök data
 \end{frame}
 
 \begin{frame}{Output}
-\protect\hypertarget{output}{}
+\phantomsection\label{output}
 \begin{itemize}
 \tightlist
 \item
@@ -1092,6 +1001,13 @@ Ladda in och undersök data
     \end{itemize}
   \end{itemize}
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Demo}
+\phantomsection\label{demo-4}
+\begin{block}{Demo: Input och Output}
+\phantomsection\label{demo-input-och-output}
+\end{block}
 \end{frame}
 
 \end{document}

@@ -1,9 +1,8 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT2024"
 subtitle: "Föreläsning 2"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-01-31'
 fontsize: 11pt
 output:
   beamer_presentation:
@@ -20,11 +19,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Föreläsning 2:
-
-**Vi kör på distans en vecka till.**
-Föreläsning 7/2 och labbar 9/2, 11/2 på distans.
-
-**Schemaflytt** på fredag är labben 8:15-10:00
 
 - Sammanfattning Föreläsning 1
 - Datastrukturer:
@@ -70,62 +64,6 @@ Föreläsning 7/2 och labbar 9/2, 11/2 på distans.
   - Genom relationsoperatorer
 - Kan användas för att välja element i vektorer
 
-## Logik i R
-Kan skapa en vektor med värdena \texttt{TRUE} och \texttt{FALSE}
-```{r,echo=TRUE,eval=TRUE}
-testVektor <- c(2,3,5,7,11,13)
-boolVektor <- c(TRUE, FALSE, FALSE, TRUE, FALSE, TRUE)
-```
-```{r,echo=TRUE,eval=FALSE}
-testVektor[boolVektor]
-```
-\pause
-```{r,echo=FALSE,eval=TRUE}
-testVektor[boolVektor]
-```
-\pause
-Kan också skapa vektor genom en relation
-```{r,echo=TRUE,eval=TRUE}
-testVektor > 5
-```
-
-## Relationsoperatorer
-
-- Relationer används för att jämförelser
-- Skapar logiska vektorer
-
-| Beskrivning | Operatorer i R |
-| ----- | ---- |
-| Lika med | \texttt{==} |
-| Inte lika med | \texttt{!=} |
-| Större än | \texttt{>} |
-| Mindre än | \texttt{<} |
-| Större än eller lika med | \texttt{>=} |
-| Mindre än eller lika med | \texttt{<=} |
-| Finns i | \texttt{\%in\%} |
-
-## Logiska operatorer
-
-- Boolsk algebra
-- Operatorer:
-
-| Operator | Symbol | Operator i R |
-| ----- | ---- | ----- |
-| och | $\wedge{}$ | \texttt{\&} |
-| eller | $\vee{}$ | \texttt{|} |
-| inte | $\neg{}$ | \texttt{!} |
-
-\pause
-
-
-| Symbol | $A$ | $B$ | $\neg A$ | $A \wedge B$ | $A \vee B$ |
-| --- | --- | --- | --- | --- | --- |
-| i R | ```A``` | ```B``` | ```!A``` | ```A & B``` | ```A``` $|$ ```B``` |
-|  | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` | ```TRUE``` |
-|  | ```TRUE``` | ```FALSE``` | ```FALSE``` | ```FALSE``` | ```TRUE``` |
-|  | ```FALSE``` | ```TRUE``` | ```TRUE``` | ```FALSE``` | ```TRUE``` |
-|  | ```FALSE``` | ```FALSE``` | ```TRUE``` | ```FALSE``` | ```FALSE``` |
-
 # Datastrukturer
 
 ## Datastrukturer
@@ -162,6 +100,10 @@ en_matris
 en_matris[1, ] <- en_matris[2, ]
 en_matris
 ```
+
+## Demo
+
+### Demo: Matriser
 
 # data.frame
 
@@ -260,6 +202,10 @@ rownames(minData)[1] <- "Person 1"
 minData
 ```
 
+## Demo
+
+### Demo: data.frame
+
 # Listor
 
 ## Listor
@@ -279,12 +225,16 @@ minLista
   - För att komma åt ett eller flera objekt: \texttt{[ ]}
   - För att komma åt innehållet i ett objekt: \texttt{[[ ]]}
 - Om namngivna objekt:
-  - \texttt{minLista$namn}
-  - \texttt{minList[["namn"]]}
+  - Med \$ tecken: \texttt{minLista\$namn}
+  - Med namnet: \texttt{minList[["namn"]]}
 ```{r,echo=TRUE,eval=TRUE}
 minLista[1]
 minLista[[1]]
 ```
+
+## Demo
+
+### Demo: Listor
 
 # Databearbetning
 
@@ -296,6 +246,10 @@ minLista[[1]]
   - Kombinera kolumner \texttt{cbind( )}
   - Kombinera datasets \texttt{merge( )}
 - Om man vill aggregera data används \texttt{aggregate( )}
+
+## Demo
+
+### Demo: Databearbetning
 
 # Input och Output
 
@@ -335,3 +289,7 @@ minLista[[1]]
     - \texttt{save( )}
   - \texttt{.RDS}
     - \texttt{saveRDS( )}
+    
+## Demo
+
+### Demo: Input och Output

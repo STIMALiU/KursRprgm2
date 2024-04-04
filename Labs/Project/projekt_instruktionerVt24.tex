@@ -1,0 +1,360 @@
+\batchmode
+\makeatletter
+\def\input@path{{"/Users/johal95/Documents/Teaching/R programmering/KursRprgm2/Labs/Project/"}}
+\makeatother
+\documentclass[swedish,english]{article}\usepackage[]{graphicx}\usepackage[]{xcolor}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{fontspec}
+\usepackage{color}
+\usepackage[unicode=true]
+ {hyperref}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+\providecommand\textquotedblplain{%
+  \bgroup\addfontfeatures{Mapping=}\char34\egroup}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+\makeatother
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=american]{english}
+\setotherlanguage{swedish}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\title{Projekt: Programmering i R}
+
+\maketitle
+Som en del av kursen i R-programmering ska ni göra en rapport i Rmarkdown.
+Det handlar om att läsa in, presentera och bearbeta data.
+\begin{itemize}
+\item R-markdown ska användas. En mall kan ni hitta \textcolor{blue}{\href{https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/TemplateProjekt.Rmd}{här}}.
+\item Undvik att använda \textbf{å},\textbf{ä} eller \textbf{ö} i variabelnamn
+i er R-kod.
+\item Spara er fil i UTF-8 kodning. I Rstudio gör ni: “File” $\rightarrow$
+“Save with Encoding” välj UTF-8 och klicka OK.
+\item Ha en god kodstil och kommentera er kod. Se datorlaboration 4 för
+detaljer. 
+\item Rapporterna ska lämnas in som både \textbf{PDF} och \textbf{.Rmd}-fil.
+Om ni har problem att skapa PDF så går det bra att lämna in som \textbf{HTML}-fil.
+Notera att PDF är att föredra. Det är ok att skapa en HTML som ni
+sedan sparar/skriver ut som PDF\footnote{Detta går att göra i de flesta webbläsare, välj skriv ut och sen skriv
+till pdf.}. Filerna ska kallas: \texttt{}~\\
+\texttt{{[}liu id 1{]}\_{[}liu id 2{]}\_project.pdf}. \\
+Exempel på inlämning av projekt del 1 är följande \textbf{två} filer: 
+\begin{itemize}
+\item \texttt{joswi71\_manma97\_project.Rmd} och
+\item \texttt{joswi71\_manma97\_project.pdf}. 
+\end{itemize}
+\item Samtliga material ska laddas in i R från webben som \textbf{externa
+datakällor}. Vill ni använda ett eget material får ni lägga upp det
+öppet på github, dropbox, google docs eller dylikt och läsa in det
+därifrån i R. Syftet är att rapporten ska vara helt reproducerbar
+och kunna återskapas på godtycklig dator.
+\item \textbf{Inga output från R console/varningar/meddelanden/felmeddelanden
+ska visas i dokumentet.} Antingen skapar ni tabeller (med \texttt{kable()})
+eller grafer. T.ex. kan ni ange message=FALSE, warning=FALSE i chunk
+options när ni skapar chunks med R-kod.
+\item Ni ska använda ggplot2 för alla plottar.
+\item \textbf{Rmd}-filen ska kunna köras och reproducera era resultat på
+godtycklig dator. D.v.s. den ska innehålla all er kod som behövs för
+att ladda ner data, era beräkningar och er rapporttext. 
+\item \textbf{Namn}, \textbf{liu-id} och \textbf{gruppnummer} ska framgå
+i början av rapporten.
+\item \textbf{Tänk på att kommentera er kod och ha god kodstil!}
+\end{itemize}
+
+\section{Projektinstruktioner}
+
+Till projektet behöver två olika typer av datamaterial, ett material
+med kommunala data och ett material som innehåller en tidsserie. Det
+är okej att välja data på lännivå eller regionnivå istället för kommunnivå
+om ni vill. Beskrivningen nedan utgår från kommunala data. I projekt
+ska ni använda pxweb\footnote{Se \href{https://cran.r-project.org/web/packages/pxweb/vignettes/pxweb.html}{här}
+för mer info.}, i filen ska ni ha kod som fungerar och ger reproducerbara rapporter.
+Om ni vill dölja varningar kan ni använda
+
+\begin{swedish}%
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlkwd{suppressWarnings}\hlstd{(\{}
+        \hlcom{# min kod h<U+00E4>r  }
+\hlstd{\})}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+
+\end{swedish}%
+Tänk på att välja material ni själva tycker är intressant!
+
+\paragraph{Kommunala data}
+
+Ni ska ladda ner kommunala data, där ni i slutändan har minst 4 variabler
+på kommunnivå (d.s.v. för alla 290 kommuner) Ett exempel skulle kunna
+vara antal arbetslösa i varje kommun. Spara er data i en eller flera
+data.frames. Totalt ska dataseten ska ha \textbf{minst} \textbf{4
+variabler} utöver kommunnamn. Ni väljer själv vilka variabler som
+ska ingå och vilka områden data ska komma ifrån. Tanken är att i ska
+göra enklare analyser och grafer som baseras på dessa variabler. Utöver
+dessa 4 variabler så ska ni också ladda ner totalt antal invånare
+i kommun som en variabel. 
+
+När ni har valt ut era variabler ska ni ha en data.frame där \textbf{varje
+rad motsvarar en kommun} och där det finns minst 5 kolumner med variabler.
+Kommuner är alltså \textbf{observationer} i era analyser. Kolumnerna
+motsvarar era variabler. Notera att många av de variabler som finns
+på SCB:s databas är frekvenser, exempel: antal arbetslösa i varje
+kommun. Tabell \ref{tab:stuktur data} visar ett exempel med hur data
+ska vara strukturerat.
+
+\begin{table}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+{\scriptsize{}Radnamn} &
+{\scriptsize{}Variabel 1} &
+{\scriptsize{}Variabel 2} &
+{\scriptsize{}Variabel 3} &
+{\scriptsize{}Variabel 4} &
+{\scriptsize{}Totalt antal invånare}\tabularnewline
+\hline 
+\hline 
+{\scriptsize{}Linköping} &
+ &
+ &
+ &
+ &
+\tabularnewline
+\hline 
+{\scriptsize{}Norrköping} &
+ &
+ &
+ &
+ &
+\tabularnewline
+\hline 
+{\scriptsize{}Mjölby} &
+ &
+ &
+ &
+ &
+\tabularnewline
+\hline 
+{\scriptsize{}Motala} &
+ &
+ &
+ &
+ &
+\tabularnewline
+\hline 
+{\scriptsize{}$\vdots$} &
+ &
+ &
+ &
+ &
+\tabularnewline
+\hline 
+\end{tabular}\caption{\label{tab:stuktur data}}
+
+\end{table}
+
+
+\paragraph{Tidsseriedata}
+
+Hitta ett dataset som innehåller en \textbf{tidserie}, det innebär
+att det finns en variabel som har observerats över tiden. Kravet är
+att data ska innehålla data på \textbf{månadsnivå} och innehålla data
+från \textbf{minst 10 år} (120 månder). Här ska ni alltså hitta en
+variabel som observerats under minst 120 tidpunkter, men fler går
+bra. Data ska alltså innehålla två kolumner, en med variabeln som
+vi är intresserade av och en med tidpunkterna. \href{https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Project/F\%C3\%B6rslag\%20p\%C3\%A5\%20tidseriedata\%20som\%20\%C3\%A4r\%20p\%C3\%A5\%20m\%C3\%A5nadsniv\%C3\%A5.pdf}{Här}
+finns en lista över några olika tidserier som används tidigare år.
+
+\textbf{Obs!} Tidsperioden ska vara fix, d.v.s ex. jan 2005 - jan
+2015. Detta innebär att ni måste ange ett fixt tidsintervall när ni
+laddar ner data med \texttt{pxweb}. Om ni laddar ner data en månad
+senare ska ni erhålla samma data med samma kod. Om ni laddar ner data
+från SCB/pxweb så ska ni \textbf{inte} ange “\texttt{{*}}” på
+tiden.
+
+\subsection{Beskrivning av data}
+
+\subsubsection{Dataanalys av kommundata}
+\begin{itemize}
+\item Skriv en kort inledning där ni beskriver era variabler. Om ni gör
+nya transformationer av variablerna i del 2 måste de beskrivas också.
+\item Vissa upp data för 5 kommuner och alla era variabler i en tabell.
+Ta inte med fler kommuner. Ni väljer själv vilka kommuner ni visar
+i tabellen.
+\end{itemize}
+Följande saker ska ni göra/ta med:
+\begin{itemize}
+\item Alla variabler som är relaterade till folkmängd på något sätt ska
+normaliseras med hjälp av totalt antal invånare i varje kommun. Detta
+eftersom det oftast är intressant att kolla på andelar istället för
+absoluta antal. T.ex. andelen arbetslösa i en kommun istället för
+antalet arbetslösa. I de fall då det är relevant att normalisera en
+variabel, då ska ni använda den normaliserade variabeln i plottar
+mm. Vissa variabler är inte relaterade till folkmängd, exempel “Antal
+höns” eller “Medelålder”, sådana variabler behöver inte normaliseras. 
+\begin{itemize}
+\item Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
+gör denna beräkning för varje kommun. För många variabler som har
+små andeler så passar det att skapa variabler av typen “antal per
+10 000/100 000 invånare”. Då räknar vi ut det som: \\
+(antal/totalt antal invånare){*}10 000.
+\end{itemize}
+\end{itemize}
+\begin{enumerate}
+\item Producera minst en barplot, om ni bara har kontinuerliga variabler
+kan ni använda \texttt{cut()}. Beskriv i text vad ni drar för slutsats.
+Notera! Gör inte en plot där varje kommun har en egen stapel, alltså
+ingen barplot med 290 staplar.
+\item Producera minst ett histogram. Lägg till vertikala linjer för följande
+punkter på x-axeln: medianen, första kvartilen och tredje kvartilen.
+Beskriv i text vad ni drar för slutsats. Tips: \texttt{geom\_vline()}
+och \href{http://www.sthda.com/english/wiki/ggplot2-add-straight-lines-to-a-plot-horizontal-vertical-and-regression-lines}{här}.
+\item Producera minst en scatterplot mellan två variabler. Lägg till en
+regressionslinje med \texttt{stat\_smooth(method=\textquotedbl lm\textquotedbl ,
+se=FALSE)}. Beskriv i text vad ni drar för slutsats\footnote{För tips på tolkning: Se kap 13.2.5 i kursboken, speciellt figur 13-5.
+Se även \href{https://chartio.com/learn/charts/what-is-a-scatter-plot/\#when-you-should-use-a-scatter-plot}{här}
+för tips på hur scatter plots kan tolkas.}.
+\item Beräkna korrelationer mellan de två variabler som ni använde i scatter
+plot i steget ovan. Gör ett hypotestest där ni testar om korrelationen
+mellan dessa två variabler är noll (=de är linjärt oberoende). Ni
+ska alltså använda hypoteserna:
+\[
+\begin{array}{c}
+H_{0}:cor\left(x_{1},x_{2}\right)=0\\
+H_{a}:cor\left(x_{1},x_{2}\right)\ne0
+\end{array}
+\]
+Tips: \texttt{cor.test()}. Presentera relevant information i en eller
+flera tabeller. Beskriv kort hur ni tolkar resultatet. Ni ska alltså
+presentera både den skattade korrelationen och information från testet
+i rapporten. Ni får testa korrelationen mellan fler variabler om ni
+vill. Presentera även ett konfidensintervall för den skattade korrelationen.
+\item Skapa två kategoriska variabler utifrån era ursprungliga variabler.
+Om ni redan har kategoriska variabler för era kommuner så kan ni använda
+dessa. Dessa (nya) variabler ska användas i olika plottar. Se till
+att beskriva era nya variabler.
+\item Mer plottar:
+\begin{enumerate}
+\item Gör en scatterplot där färgen på observationerna ska bero på en av
+era kategoriska variabler. Beskriv i text vad ni drar för slutsats.
+\item Gör minst ett histogram/boxplot som är grupperat på en av era kategoriska
+variabler. Beskriv i text vad ni drar för slutsats.
+\item Gör ett grupperad barplot där ni använder båda era kategoriska variabler.
+Beskriv i text vad ni drar för slutsats.
+\item Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad
+i minst två plottar med \texttt{facet\_grid()} eller \texttt{facet\_wrap()}
+baserat på era kategoriska variabler. Beskriv i text vad ni drar för
+slutsats.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Dataanalys av tidseriedata }
+
+Låt \texttt{Y}\footnote{\texttt{Y} är ett arbetsnamn, er variabel måst inte heta så i rapporten}
+vara er variabel i tidsseriematerialet. Utför nu följande:
+\begin{enumerate}
+\item Gör en linjeplot mellan \texttt{Y} och er tidsvariabel. Skalan på
+x-axeln ska vara en lämplig tidsskala. Detta gäller alla tidseriegrafer
+som baseras på \texttt{Y}. Skriv en kort kommentar.
+\item Beräkna medelvärden per månad och spara dessa i \texttt{month\_means}.
+Presentera dessa i en tabell och som en lämplig graf. Skriv en kort
+kommentar. Ni ska alltså beräkna ett medelvärde för alla värden för
+januari och sen upprepa detta för alla månader. \textbf{Tips!} \texttt{aggregate()}
+\item Gör grupperade boxplots för \texttt{Y}, där grupperingen baseras på
+år. Ni ska alltså ha en boxplot för varje år, och de ska ligga sida
+vid sida i samma plot. Skriv en kort kommentar.
+\item Subtrahera månadsmedelvärden från \texttt{Y}, så ni tar bort säsongsvariationen
+i data. Månadsmedelvärdet för januari ska subtraheras från alla januarivärden
+i data, och likadant för de andra månaderna. Spara den nya tidserie
+som \texttt{Z}. Addera medelvärdet för \textit{hela }tidserien\texttt{
+Y} till \texttt{Z} för att ge \texttt{Z} rätt skala. Se nedan.\\
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlstd{Z}\hlkwb{<-}\hlstd{Z}\hlopt{+}\hlkwd{mean}\hlstd{(Y)}
+\end{alltt}
+\end{kframe}
+\end{knitrout}
+\item Gör en linjeplot mellan \texttt{Z} och tid i \texttt{ggplot2}. Lägg
+också till \texttt{Y} i samma graf som jämförelse, men med annan färg.
+Ange tydligt med en legend eller i text vilken linje som är \texttt{Y}
+och \texttt{Z}.
+\item Gör samma plot som i steg 1., men lägg till en regressionslinje med
+\texttt{geom\_smooth(method=”lm”)}\footnote{En regressionslinje kan hjälpa oss att se om det finns någon tydlig
+minskande eller ökande \emph{linjär} trend. Om linjen är nära att
+vara horisontell så tolkar vi det som att det inte finns någon tydlig
+linjär trend.}.
+\item Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden,
+eller är data konstant över tid. Finns det någon säsongsvariation
+i data?\footnote{Exempel på säsongsvariation: December har ofta ett mycket högre värde
+än öviga månader, sommarhalvåret har alltid lägre värden.} Dra er slutsats och skriv ned den i dokumentet.
+\end{enumerate}
+\pagebreak Lämna in rapporten både som en fullt reproducerbar \textbf{Rmd}-fil
+och som \textbf{PDF/HTML} i LISAM. Tänk på följande:
+\begin{itemize}
+\item I denna del ska samtliga grafer vara skapade med \texttt{ggplot2}.
+\item Tabeller ska vara “riktiga” tabeller (med ex. \texttt{kable()}),
+inte utskrifter i R-kod. All statistik, information från statistiska
+test, korrelationer etc ska presenteras i markdowntabeller eller med
+inline-kod. Avrunda till ett lämpligt antal decimaler i tabellerna.
+\item \textbf{Inga output från R console/varningar/meddelanden/felmeddelanden
+ska visas i dokumentet.}
+\end{itemize}
+
+\end{document}
