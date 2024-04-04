@@ -14,11 +14,39 @@ LiuId  <- ""
 
 
 # Uppgift 1 ----
+#' @title blood_match (funktionens namn)
+#'
+#' @description 
+#' Beskrivning av funktionen: vad gör den?
+#'
+#' @param arg1 Beskrivning av första argumentet
+#' 
+#' @param arg2 Beskrivning av andra argumente
+#' 
+#'
+#' @return
+#' Vad returnerar funktionen?
+#' 
+#'
 blood_match <- function(mitt_argument){
   # Skriv din funktion här
 }
 
 # Uppgift 2 ----
+#' @title hilbert_matrix (funktionens namn)
+#'
+#' @description 
+#' Beskrivning av funktionen: vad gör den?
+#'
+#' @param arg1 Beskrivning av första argumentet
+#' 
+#' @param arg2 Beskrivning av andra argumente
+#' 
+#'
+#' @return
+#' Vad returnerar funktionen?
+#' 
+#'
 hilbert_matrix <- function(mitt_argument){
   # Skriv din funktion här
 }
