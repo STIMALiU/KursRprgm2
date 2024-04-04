@@ -1,8 +1,8 @@
 #### Programmering i R ####
-#### Inlämning 1 ####
+#### Inlämning 2 ####
 
 # spara denna fil enligt:
-# del 1: inl1_josad732.R om ditt liu-ID är josad732 och det är inlämning 1 .
+# del 1: inl2_josad732.R om ditt liu-ID är josad732 och det är inlämning 2 .
 
 
 # Skiv ditt namn här, ex Namn <- "Alice Walker"
@@ -14,21 +14,14 @@ LiuId  <- ""
 
 
 # Uppgift 1 ----
-hi_name <- function(mitt_argument){
+blood_match <- function(mitt_argument){
   # Skriv din funktion här
 }
 
 # Uppgift 2 ----
-approx_e <- function(mitt_argument){
+hilbert_matrix <- function(mitt_argument){
   # Skriv din funktion här
 }
-
-# Uppgift 3 ----
-fast_stock_analysis <- function(mitt_argument){
-  # Skriv din funktion här
-}
-
-
 
 # OBS: kommentera bort all kod som inte är de obligatoriska variablerna ovan 
 # eller funktionerna som defineras i inlämningsuppgifterna!
@@ -36,6 +29,6 @@ fast_stock_analysis <- function(mitt_argument){
 
 # Använda markmyassignment
 library(markmyassignment)
-set_assignment("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/inl1.yml")
+set_assignment("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/inl2.yml")
 show_tasks()
 mark_my_assignment()

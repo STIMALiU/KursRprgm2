@@ -240,11 +240,11 @@ literal "false"
 och spara namn och liuID i respektive variabel.
  Spara filen som 
 \family typewriter
-labb1_[ditt liuID].R
+inl2_[ditt liuID].R
 \family default
  Här är ett exempel 
 \family typewriter
-labb1_joswi123.R
+inl2_joswi123.R
 \family default
  .
 \end_layout
