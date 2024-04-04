@@ -1,0 +1,10 @@
+# Assignment 2
+name  : Inl2
+description : "Statistisk programmering med R: Inlämning 2"
+tasks:
+  blood_match :
+    url: Tasks/blood_match_tests.R
+  hilbert_matrix:
+    url: Tasks/hilbert_matrix_tests.R
+mandatory:
+  url: mandatory.R

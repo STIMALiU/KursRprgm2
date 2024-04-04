@@ -3613,6 +3613,1207 @@ Genom att använda en nästlad while-loop, testa att funktionen fungerar genom
 
 \end_deeper
 \begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset include
+LatexCommand input
+filename "Inluppg.lyx"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=FALSE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# Set you (local) path
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_path <- 
+\begin_inset Quotes srd
+\end_inset
+
+/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgmTeacher/Labs/exercise_solutio
+ns/
+\begin_inset Quotes srd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+solution_files <- dir(solution_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+#print(solution_files)
+\end_layout
+
+\begin_layout Plain Layout
+
+for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+ echo = FALSE)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+För att använda 
+\family typewriter
+markmyassignment
+\family default
+ i denna laboration ange:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE,echo=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+library(markmyassignment)
+\end_layout
+
+\begin_layout Plain Layout
+
+lab_path <-
+\end_layout
+
+\begin_layout Plain Layout
+
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d3.yml"
+\end_layout
+
+\begin_layout Plain Layout
+
+set_assignment(lab_path)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kom ihåg:
+\series default
+ Om era funktioner inte fungerar som de ska testa debuggging! Använd 
+\family typewriter
+print
+\family default
+, 
+\family typewriter
+cat
+\family default
+ eller 
+\family typewriter
+message
+\family default
+ för att skriva ut relevanta värden.
+ Använd 
+\family typewriter
+browser
+\family default
+/
+\family typewriter
+debug
+\family default
+ för att stega igenom funktionerna.
+ Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\begin_layout Section
+Att lösa inlämningsuppgifter
+\end_layout
+
+\begin_layout Standard
+Här kommer lite tips till när ni ska lösa inlämningsuppgifter.
+\end_layout
+
+\begin_layout Itemize
+Inlämningsuppgifter utgår ifrån att ni har gjort 
+\series bold
+övningsuppgifterna
+\series default
+ ovan först.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
+ inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+Se först till att ni förstår 
+\begin_inset Quotes sld
+\end_inset
+
+problemet
+\begin_inset Quotes srd
+\end_inset
+
+ i uppgiften.
+ Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vissa problem är det bra att bryta ner i mindre delproblem.
+ 
+\end_layout
+
+\begin_layout Itemize
+Börja med att lösa problemet (eller det första delproblemet) med vanlig
+ kod (dvs inte i en funktion) i ett R-script.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lös ett delproblem i taget vid behov.
+ Sätt sedan samman lösningarna på delproblemen.
+ Undersök om koden fungerar som den ska.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Sätt sedan in er kod i en funktion.
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
+ (testfallen).
+ Se till att funktionen har rätt namn och rätt namn på argumenten.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Om era funktioner inte fungerar som de ska testa debuggging! Använd 
+\family typewriter
+print
+\family default
+, 
+\family typewriter
+cat
+\family default
+ eller 
+\family typewriter
+message
+\family default
+ för att skriva ut relevanta värden.
+ Använd 
+\family typewriter
+browser
+\family default
+/
+\family typewriter
+debug
+\family default
+ för att stega igenom funktionerna.
+ Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+ Skapa variablerna 
+\family typewriter
+Namn
+\family default
+ och 
+\family typewriter
+LiuId
+\family default
+ med rätt innehåll.
+ Spara filen med rätt namn.
+\end_layout
+
+\begin_layout Itemize
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
+ och ID-variabler och ev.
+ kommentarer.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Detta minskar risken för fel.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Testa nu att använda markmyassignment för att rätta er funktion.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Använd markmyassignment bara när er funktionen är 
+\begin_inset Quotes sld
+\end_inset
+
+hyfsat klar
+\begin_inset Quotes srd
+\end_inset
+
+, annars kommer ni att få många fel i markmyassignment, och det är svårt
+ att veta var man ska börja kolla.
+\end_layout
+
+\begin_layout Itemize
+Det är viktigt att funktionen har rätt namn och har rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
+ som ni får.
+ Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
+\end_layout
+
+\begin_layout Itemize
+Innan ni lämnar in:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
+ten.
+ Ibland måste en viss metod användas för att lösa uppgiften.
+ Ibland är vissa funktioner inte tillåtna i en viss uppgift.
+ Så läs noga i varje uppgift vad som gäller.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni klarar alla tester i markmyassignment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Innan inlämning på Lisam: döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil
+\end_layout
+
+\begin_layout Itemize
+Lämna sedan in er 
+\series bold
+.txt
+\series default
+ fil på Lisam.
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+blood_match()
+\end_layout
+
+\begin_layout Standard
+Vid en 
+\begin_inset CommandInset href
+LatexCommand href
+name "blodtransfusion"
+target "https://www.1177.se/Ostergotland/behandling--hjalpmedel/fler-behandlingar/blodtransfusion/"
+literal "false"
+
+\end_inset
+
+ är det viktigt att hålla koll på givarens och mottagarens 
+\begin_inset CommandInset href
+LatexCommand href
+name "blodgrupp"
+target "https://www.1177.se/Ostergotland/liv--halsa/sa-fungerar-kroppen/blodgrupper/"
+literal "false"
+
+\end_inset
+
+.
+ Blodgrupperna delas in i AB0 och Rh systemet.
+\end_layout
+
+\begin_layout Standard
+För AB0 systemet gäller att en person kan antingen vara typ A, B, AB eller
+ 0.
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person med typ AB kan ta emot blod från alla typer
+\end_layout
+
+\begin_layout Itemize
+En person med typ A kan bara ta emot från någon med typ A eller 0
+\end_layout
+
+\begin_layout Itemize
+En person med typ B kan bara ta emot från någon med typ B eller 0 
+\end_layout
+
+\begin_layout Itemize
+En person med typ 0 kan bara ta emot från en person med typ 0.
+\end_layout
+
+\begin_layout Standard
+För Rh systemet gäller att en person kan antingen vara positiv (+) eller
+ negativ (-).
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person som är positiv kan ta emot blod från båda typerna.
+\end_layout
+
+\begin_layout Itemize
+En person som är negativ kan bara ta emot blod från någon som är negativ.
+\end_layout
+
+\begin_layout Standard
+Er uppgift är att skapa en funktion 
+\family typewriter
+blood_match()
+\family default
+ med argumentet 
+\family typewriter
+patients
+\family default
+ som talar om ifall en person kan ta emot en annan persons blod baserat
+ på deras blodgrupp.
+ Ni får givet en lista 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{patients}
+\end_layout
+
+\end_inset
+
+ som ska innehålla två listor som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{giver}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{reciever}
+\end_layout
+
+\end_inset
+
+, en för varje person.
+ Varje person har två variabler, som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+ som båda innehåller en textsträng, där textsträngarna ska vara A,B,AB eller
+ 0 för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och + eller - för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+.
+ Ett exempel på en sådan lista visas nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# exempel på lista som ges som input till funktionen:
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+str(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionen ska skriva ut textraden 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are a match}
+\end_layout
+
+\end_inset
+
+ om transfusionen är möjlig.
+ Om det inte är möjligt ska texten 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are not a match}
+\end_layout
+
+\end_inset
+
+ skrivas ut tillsammans med 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible rh}
+\end_layout
+
+\end_inset
+
+ eller 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0 and rh}
+\end_layout
+
+\end_inset
+
+ beroende på vad som inte matchade.
+ Funktionen ska alltså använda 
+\family typewriter
+print()
+\family default
+ för att ge denna output, ni ska inte använda
+\family typewriter
+ return()
+\family default
+ i denna funktion.
+\end_layout
+
+\begin_layout Standard
+Om det är så att patients 
+\series bold
+inte
+\series default
+ är en lista ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Not a list
+\end_layout
+
+\begin_layout Standard
+Om det är så att någon av värdena i AB0 och rh 
+\series bold
+inte
+\series default
+ är korrekta (t.ex.
+ AB0 skulle vara C) ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Wrong bloodtype
+\end_layout
+
+\begin_layout Standard
+Exempel på hur man kan implementera är:
+\end_layout
+
+\begin_layout Enumerate
+Testa så att argumentet patients är en lista.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Kolla så att AB0 och rh-värdena är tillåtna.
+ 
+\emph on
+tips: skapa en vektor med tillåtna värden och använda %in% för att se om
+ det givna värdet finns i denna vektor
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if - else del för att testa om AB0 värdena stämmer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if -else del för att testa om rh värdena stämmer.
+\end_layout
+
+\begin_layout Enumerate
+Kombinera resultaten från punkt 3 och 4 för att få rätt utskrift.
+\end_layout
+
+\begin_layout Standard
+Här kommer ett exempel på hur funktionen ska fungera:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "0", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsB)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsC = list(giver = list(AB0 = "0", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "B", rh = "-"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsC)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsD = list(giver = list(AB0 = "A", rh = "H" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsD)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Om ingen lista
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(
+\begin_inset Quotes sld
+\end_inset
+
+hej!
+\begin_inset Quotes srd
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+babylon()
+\end_layout
+
+\begin_layout Standard
+En algoritm för att approximera kvadratroten ur ett tal är den så kallade
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "babyloniska metoden"
+target "https://sv.wikipedia.org/wiki/Kvadratrot#Ber.C3.A4kningsmetoder"
+literal "false"
+
+\end_inset
+
+, en metod som flera säkert känner igen från gymnasiet.
+ Det är ett sätt att räkna ut kvadratroten för ett godtyckligt tal 
+\begin_inset Formula $x$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Standard
+Metoden, som är ett specialfall av Newton-Raphsons metod, kan beskrivas
+ på följande sätt:
+\end_layout
+
+\begin_layout Enumerate
+Starta med ett godtyckligt förslag på kvadratroten till 
+\begin_inset Formula $x$
+\end_inset
+
+, kallat 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+.
+ Vi behöver starta vår algoritm i någon punkt.
+ Ju närmare den sanna kvadratroten vi startar desto färre iterationer kommer
+ behövas.
+\end_layout
+
+\begin_layout Enumerate
+Beräkna ett nytt förslag på roten på följande sätt:
+\begin_inset Formula 
+\[
+r_{n+1}=\frac{r_{n}+\frac{x}{r_{n}}}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Om 
+\begin_inset Formula $\left|r_{n+1}-r_{n}\right|$
+\end_inset
+
+ inte har uppnått godtycklig nogrannhet: gå till steg 2 igen.
+ 
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Obs!
+\series default
+ 
+\begin_inset Formula $|\quad|$
+\end_inset
+
+ indikerar absolutbeloppet av skillnaden mellan iterationerna.
+ Mer information om absolutbeloppet finns 
+\series bold
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "[här]"
+target "http://sv.wikipedia.org/wiki/Absolutbelopp"
+literal "false"
+
+\end_inset
+
+
+\series default
+\color inherit
+.
+\end_layout
+
+\begin_layout Standard
+Implementera denna algoritm som en funktion i R.
+ Funktionen ska heta 
+\family typewriter
+babylon()
+\family default
+ och argumenten 
+\family typewriter
+x
+\family default
+, 
+\family typewriter
+init
+\family default
+ och 
+\family typewriter
+tol
+\family default
+.
+ 
+\family typewriter
+x
+\family default
+ är talet för vilket kvadratroten ska approximeras, 
+\family typewriter
+init
+\family default
+ är det första förslaget på kvadratroten och 
+\family typewriter
+tol
+\family default
+ är hur stor noggrannhet som ska krävas för att avsluta algoritmen.
+ 
+\family typewriter
+tol=0.01
+\family default
+ innebär att algoritmen ska sluta om 
+\begin_inset Formula $\left|r_{n+1}-r_{n}\right|\le0.01$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Funktionen kan implementeras antingen som en 
+\family typewriter
+for
+\family default
+ - loop med 
+\family typewriter
+break
+\family default
+ eller en 
+\family typewriter
+while
+\family default
+ loop.
+ Funktionen ska returnera en lista med två element, 
+\family typewriter
+rot
+\family default
+ och 
+\family typewriter
+iter
+\family default
+ (båda numeriska värden).
+ I elementet 
+\family typewriter
+rot
+\family default
+ ska approximationen av kvadratroten returneras och i elementet 
+\family typewriter
+iter
+\family default
+ ska antalet iterationer returneras.
+\end_layout
+
+\begin_layout Standard
+Här följer ett exempel på hur algoritmen ska fungera: Vi vill beräkna 
+\begin_inset Formula $\sqrt{10}$
+\end_inset
+
+, vår första gissning är 
+\begin_inset Formula $3$
+\end_inset
+
+, så vi sätter 
+\begin_inset Formula $r_{0}=3$
+\end_inset
+
+, vi väljer toleransnivån till 
+\begin_inset Formula $0.1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Vi börjar med att beräkna 
+\begin_inset Formula $r_{1}=\frac{r_{0}+\frac{x}{r_{0}}}{2}=\frac{r_{0}+10/r_{0}}{2}=\frac{3+10/3}{2}=3.166667$
+\end_inset
+
+.
+ Sen beräknar vi den absoluta skillnaden mellan 
+\begin_inset Formula $r_{0}$
+\end_inset
+
+ och 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+: 
+\begin_inset Formula $|r_{1}-r_{0}|=|3.166667-3|=0.166667$
+\end_inset
+
+ eftersom 
+\begin_inset Formula $0.166667>0.1$
+\end_inset
+
+ så forstätter vi.
+ Detta är första interationen.
+\end_layout
+
+\begin_layout Enumerate
+Vi beräknar 
+\begin_inset Formula $r_{2}=\frac{r_{1}+\frac{x}{r_{1}}}{2}=\frac{3.166667+10/3.166667}{2}=3.162281$
+\end_inset
+
+.
+ Sen beräknar vi den absoluta skillnaden mellan 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ och 
+\begin_inset Formula $r_{2}$
+\end_inset
+
+: 
+\begin_inset Formula $|r_{1}-r_{2}|=|3.166667-3.162281|=0.004386$
+\end_inset
+
+ eftersom 
+\begin_inset Formula $0.004386\le0.1$
+\end_inset
+
+ så avbryter vi algoritmen.
+ Detta är andra interationen.
+\end_layout
+
+\begin_layout Standard
+I detta fall blev det slutgiltiga resultatet 
+\begin_inset Formula $\sqrt{10}\approx3.162281$
+\end_inset
+
+ efter två iterationer.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Obs!
+\series default
+ Det är inte tillåtet att använda funktionen 
+\family typewriter
+sqrt()
+\family default
+ i denna uppgift.
+\end_layout
+
+\begin_layout Standard
+Här är textexempel på hur funktionen ska fungera:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+options(digits = 10)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_list<-babylon(x = 40, init = 20, tol = 0.1) 
+\end_layout
+
+\begin_layout Plain Layout
+
+test_list
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(40)
+\end_layout
+
+\begin_layout Plain Layout
+
+babylon(x = 2, init = 1.5, tol = 0.01) 
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(2) 
+\end_layout
+
+\begin_layout Plain Layout
+
+babylon(x = 3, init = 2, tol = 0.001) 
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+babylon(x = 15, init = 1.5, tol = 0.5) 
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(15)
+\end_layout
+
+\begin_layout Plain Layout
+
+babylon(x = 51, init = 25, tol = 1e-4) 
+\end_layout
+
+\begin_layout Plain Layout
+
+sqrt(51)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Kom ihåg:
+\series default
+ Om era funktioner inte fungerar som de ska testa debuggging! Använd 
+\family typewriter
+print
+\family default
+, 
+\family typewriter
+cat
+\family default
+ eller 
+\family typewriter
+message
+\family default
+ för att skriva ut relevanta värden.
+ Använd 
+\family typewriter
+browser
+\family default
+/
+\family typewriter
+debug
+\family default
+ för att stega igenom funktionerna.
+ Glöm inte att ta bort debuggingkoden innan du lämnar in labben.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
+ och funktionerna i inlämningsuppgifterna och 
+\series bold
+inget
+\series default
+ annat.
+ Var noga med att ge filen korrekt namn innan du lämnar in den.
+ Precis innan inlämning på Lisam, döp om er R-fil till en 
+\series bold
+.txt
+\series default
+ fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
+troll.
+ Exempel: 
+\family typewriter
+labb3_josad732.R
+\family default
+ blir då 
+\family typewriter
+labb3_josad732.txt 
+\family default
+Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
+ deadline.
+\begin_inset VSpace bigskip
+\end_inset
+
 
 \end_layout
 

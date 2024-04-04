@@ -105,7 +105,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-Inlämning 1
+Inlämning 2
 \end_layout
 
 \begin_layout Author
@@ -229,7 +229,7 @@ Ladda nu ner laborationsmallen, som finns
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/inl1_template.R"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/inl2_template.R"
 literal "false"
 
 \end_inset
@@ -289,7 +289,7 @@ lab_path <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/d1.yml"
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/inl2.yml"
 \end_layout
 
 \begin_layout Plain Layout
@@ -436,856 +436,735 @@ Se till att ni klarar alla tester i markmyassignment
 \end_layout
 
 \end_deeper
-\begin_layout Section
-
-\family typewriter
-hi_name()
+\begin_layout Section*
+Dokumentation och kodstil
 \end_layout
 
 \begin_layout Standard
-Skapa en funktion 
-\family typewriter
-\color black
-hi_name()
-\family default
-\color inherit
- som tar argumentet namn.
- Funktionen ska skriva ut 
-\family typewriter
-\color black
-
-\begin_inset Quotes sld
-\end_inset
-
-Hi [namn]! Keep coding!
-\begin_inset Quotes srd
-\end_inset
-
-
-\family default
-\color inherit
- där [namn] ersätts med värdet på argumentet 
-\family typewriter
-namn
-\family default
-.
+Från och med denna laboration och de resterade laborationerna i kursen så
+ ska ni förutom att lösa angivna uppgifter också 
+\series bold
+kommentera
+\series default
+ era funktioner och ha en 
+\series bold
+god kodstil
+\series default
+ för att bli godkända.
  
-\end_layout
-
-\begin_layout Standard
-
-\series bold
-Obs!
-\series default
- använd 
-\family typewriter
-\color black
-cat()
-\family default
-\color inherit
-, inte 
-\family typewriter
-\color black
-return()
-\family default
-\color inherit
- och tänk på att resultatet ska bli exakt detsamma som nedan för full poäng.
- [
-\series bold
-Tips! 
-\series default
-argumentet 
-\family typewriter
-\color black
-sep
-\family default
-\color inherit
- i 
-\family typewriter
-cat()
-\family default
-] 
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-hi_name(namn = "Johan")
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-hi_name(namn = "Florence")
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-approx_e()
-\end_layout
-
-\begin_layout Standard
-Talet 
-\begin_inset CommandInset href
-LatexCommand href
-name "e "
-target "https://sv.wikipedia.org/wiki/E_(tal)"
-literal "false"
-
-\end_inset
-
- kan beskrivas som följande oändliga serie:
-\begin_inset Formula 
-\[
-e=\sum_{n=0}^{\infty}\frac{1}{n!}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Där 
-\begin_inset Formula $!$
-\end_inset
-
- är 
-\begin_inset CommandInset href
-LatexCommand href
-name "fakultet"
-target "https://sv.wikipedia.org/wiki/Fakultet_(matematik)"
-literal "false"
-
-\end_inset
-
-.
- Denna serie gör att talet 
-\begin_inset Formula $e$
-\end_inset
-
- kan approximeras godtyckligt bra på följande sätt, genom att välja ett
- värde på 
-\begin_inset Formula $N$
-\end_inset
-
-:
-\begin_inset Formula 
-\[
-e=\sum_{n=0}^{N}\frac{1}{n!}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Exempel, låt 
-\begin_inset Formula $N=3$
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-e=\sum_{n=0}^{3}\frac{1}{n!}=\frac{1}{0!}+\frac{1}{1!}+\frac{1}{2!}+\frac{1}{3!}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Skapa en funktion i R som du kallar 
-\family typewriter
-approx_e()
-\family default
- med argumentet 
-\family typewriter
-\color black
-N
-\family default
-\color inherit
- för att skapa en godtyckligt nogrann approximation av 
-\begin_inset Formula $e$
-\end_inset
-
-.
- Pröva hur stort n behöver vara för att funktionen ska approximera 
-\begin_inset Formula $e$
-\end_inset
-
- till och med fjärde decimalen
-\begin_inset Foot
-status open
-
-\begin_layout Plain Layout
-Detta ska inte redovisas i inlämningen.
- Det viktiga är att ni klarar testerna i markmyassignment.
-\end_layout
-
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Standard
-[
-\series bold
-Tips!
-\series default
- för att få ut 
-\begin_inset Formula $e$
-\end_inset
-
- med ett antal decimaler i R, använd 
-\family typewriter
-\color black
-exp(1)
-\family default
-\color inherit
-]
-\end_layout
-
-\begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<prompt=TRUE,eval=TRUE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-approx_e(N = 2)
-\end_layout
-
-\begin_layout Plain Layout
-
-approx_e(N = 3)
-\end_layout
-
-\begin_layout Plain Layout
-
-approx_e(N = 4)
-\end_layout
-
-\begin_layout Plain Layout
-
-# jämför med exp(1)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset VSpace bigskip
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-
-\family typewriter
-fast_stock_analysis()
-\end_layout
-
-\begin_layout Standard
-Vi ska nu skapa en funktion för att göra en snabb analys av ett dataset
- som finns sparat som 
-\family typewriter
-.csv
-\family default
-.
- Detta är ett exempel på användningsområde för funktioner i R.
- Mycket data kommer in löpande och då kan det vara så att vissa standardanalyser
- vill vi göra snabbt med en förprogrammerad funktion.
- Vi ska skapa en funktion 
-\family typewriter
-fast_stock_analysis()
-\family default
- med argumentet 
-\family typewriter
-file_path
-\family default
- och 
-\family typewriter
-period_length
-\family default
-.
- Syftet är att snabbt analysera de senaste dagarnas aktiekurs.
- Vi utgår att data har följande struktur: 
 \end_layout
 
 \begin_layout Itemize
-Variabler (i given ordning): 
-\family typewriter
-Date
-\family default
-, 
-\family typewriter
-Open
-\family default
-, 
-\family typewriter
-High
-\family default
-, 
-\family typewriter
-Low
-\family default
-, 
-\family typewriter
-Close
-\family default
-, 
-\family typewriter
-Volume
-\family default
-, 
-\family typewriter
-Adj.Close
-\end_layout
-
-\begin_layout Itemize
-Rader är dagar med observerade data.
- Raderna är sorterade så att de nyligaste dagarna är högst upp i filen.
-\end_layout
-
-\begin_layout Standard
-Funktionen ska läsa in en 
-\family typewriter
-.csv
-\family default
- - fil som anges av argumentet 
-\family typewriter
-file_path
-\family default
- och returnera en lista med de namngivna listelementen 
-\family typewriter
-total_spridning
-\family default
-, 
-\family typewriter
-medel_slutpris
-\family default
-, 
-\family typewriter
-slutpris_upp
-\family default
- och 
-\family typewriter
-datum
-\family default
-.
- 
-\end_layout
-
-\begin_layout Standard
-Så här ska funktionen implementeras:
-\end_layout
-
-\begin_layout Enumerate
-Skriv först en funktion som ska läsa in data
-\end_layout
-
-\begin_layout Enumerate
-Läs in data (csv) med argumentet 
-\family typewriter
-file_path
-\family default
- (innehåller både filnamn och sökväg).
- Använd funktionen 
-\family typewriter
-read.csv()
-\family default
-.
- [
-\series bold
-Tips!
-\series default
- tänk på att 
-\family typewriter
-stringsAsFactors
-\family default
- kontrollerar om datumvariablerna blir en faktorvariabel eller ej.].
- 
-\begin_inset Newline newline
-\end_inset
-
-
-\series bold
-Obs!
-\series default
- 
-\family typewriter
-file_path
-\family default
- ska bara innehålla sökvägen till filen, filen ska läsas in inne i funktionen.
-\end_layout
-
-\begin_layout Enumerate
-Plocka ut de senaste 
-\family typewriter
-period_length
-\family default
- antal dagar från datasetet (anta att de senaste aktiekurserna är högst
- upp).
-\end_layout
-
-\begin_layout Enumerate
-Räkna ut de värden som ska returneras av funktionen:
-\begin_inset Separator latexpar
-\end_inset
-
-
+Kodstil:
 \end_layout
 
 \begin_deeper
-\begin_layout Enumerate
-
-\family typewriter
-total_spridning
-\family default
- (ett numeriskt element) är skillnaden mellan det högsta värdet på 
-\family typewriter
-High
-\family default
- och det lägsta värdet på 
-\family typewriter
-Low
-\family default
- under perioden.
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-medel_slutpris
-\family default
- (ett numeriskt element) är det genomsnittliga slutpriset under perioden.
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-slutpris_upp
-\family default
- (ett logiskt element) är ett logiskt värde som anger 
-\family typewriter
-TRUE
-\family default
- om slutpriset första dagen under perioden är lägre än slutpriset den sista
- dagen under perioden.
-\end_layout
-
-\begin_layout Enumerate
-
-\family typewriter
-datum
-\family default
- (vektor med två textelement) ska innehålla det första och det sista datumet
- för perioden.
- 
+\begin_layout Itemize
+Det viktiga är att koden ska vara 
 \series bold
-
-\begin_inset Newline newline
-\end_inset
-
-OBS!
+tydlig
 \series default
- Detta ska vara en textvektor, inte en faktor.
+ och 
+\series bold
+läsbar
+\series default
+.
+\end_layout
+
+\begin_layout Itemize
+Följ någon av kodstilarna i Datorlaboration 4.
+ Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
+ i den stil som ni väljer att använda.
+\end_layout
+
+\begin_layout Itemize
+Tänk särskilt på:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Enhetlighet och struktur
+\end_layout
+
+\begin_layout Itemize
+Ha lämplig indentering och avstånd
+\end_layout
+
+\begin_layout Itemize
+Ha bra variabelnamn
 \end_layout
 
 \end_deeper
-\begin_layout Enumerate
-Sätt ihop dessa värden till en namngiven lista med namnen ovan.
+\end_deeper
+\begin_layout Itemize
+Kommentarer:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Funktionshuvud: Använd mallen för 
+\family typewriter
+roxygen2
+\family default
+ som ges i Datorlaboration 4.
+ Ni ska ha med:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+@title 
+\family default
+Här skriver ni funktionens namn
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@description 
+\family default
+Förklara kort vad funktionen gör
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@param 
+\family default
+Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+ Upprepa detta för alla argument i funktionen.
+ Ex: 
+\family typewriter
+x Numerisk vektor, används vid beräkning av medelvärde.
+\end_layout
+
+\begin_layout Itemize
+
+\family typewriter
+@return 
+\family default
+Förklara vad funktionen returnerar
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+ där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
+ Ni behöver inte föklara alla detaljer.
+ Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
+ Använd luft och kommentarer för att gruppera och strukturera er kod.
+\end_layout
+
+\begin_layout Itemize
+Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
+ om ett år.
+ Vilka kommentarer behövs då?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
+ instruktioner för kommentarer och kodstil.
+ 
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+blood_match()
 \end_layout
 
 \begin_layout Standard
-Ladda ner testdata 
-\family typewriter
-AppleTest.csv
-\family default
- och 
-\family typewriter
-google2.csv
-\family default
-: 
+Vid en 
 \begin_inset CommandInset href
 LatexCommand href
-name "här"
-target "https://github.com/STIMALiU/KursRprgm2/tree/main/Labs/DataFiles"
+name "blodtransfusion"
+target "https://www.1177.se/Ostergotland/behandling--hjalpmedel/fler-behandlingar/blodtransfusion/"
+literal "false"
+
+\end_inset
+
+ är det viktigt att hålla koll på givarens och mottagarens 
+\begin_inset CommandInset href
+LatexCommand href
+name "blodgrupp"
+target "https://www.1177.se/Ostergotland/liv--halsa/sa-fungerar-kroppen/blodgrupper/"
 literal "false"
 
 \end_inset
 
 .
- Klicka på filnamnet och sen på knappen 
+ Blodgrupperna delas in i AB0 och Rh systemet.
+\end_layout
+
+\begin_layout Standard
+För AB0 systemet gäller att en person kan antingen vara typ A, B, AB eller
+ 0.
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person med typ AB kan ta emot blod från alla typer
+\end_layout
+
+\begin_layout Itemize
+En person med typ A kan bara ta emot från någon med typ A eller 0
+\end_layout
+
+\begin_layout Itemize
+En person med typ B kan bara ta emot från någon med typ B eller 0 
+\end_layout
+
+\begin_layout Itemize
+En person med typ 0 kan bara ta emot från en person med typ 0.
+\end_layout
+
+\begin_layout Standard
+För Rh systemet gäller att en person kan antingen vara positiv (+) eller
+ negativ (-).
+ Följande gäller:
+\end_layout
+
+\begin_layout Itemize
+En person som är positiv kan ta emot blod från båda typerna.
+\end_layout
+
+\begin_layout Itemize
+En person som är negativ kan bara ta emot blod från någon som är negativ.
+\end_layout
+
+\begin_layout Standard
+Er uppgift är att skapa en funktion 
+\family typewriter
+blood_match()
+\family default
+ med argumentet 
+\family typewriter
+patients
+\family default
+ som talar om ifall en person kan ta emot en annan persons blod baserat
+ på deras blodgrupp.
+ Ni får givet en lista 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{patients}
+\end_layout
+
+\end_inset
+
+ som ska innehålla två listor som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{giver}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{reciever}
+\end_layout
+
+\end_inset
+
+, en för varje person.
+ Varje person har två variabler, som heter 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+ som båda innehåller en textsträng, där textsträngarna ska vara A,B,AB eller
+ 0 för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{AB0}
+\end_layout
+
+\end_inset
+
+ och + eller - för 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{rh}
+\end_layout
+
+\end_inset
+
+.
+ Ett exempel på en sådan lista visas nedan:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+# exempel på lista som ges som input till funktionen:
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+str(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Funktionen ska skriva ut textraden 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are a match}
+\end_layout
+
+\end_inset
+
+ om transfusionen är möjlig.
+ Om det inte är möjligt ska texten 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{They are not a match}
+\end_layout
+
+\end_inset
+
+ skrivas ut tillsammans med 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0}
+\end_layout
+
+\end_inset
+
+, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible rh}
+\end_layout
+
+\end_inset
+
+ eller 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{Incompatible AB0 and rh}
+\end_layout
+
+\end_inset
+
+ beroende på vad som inte matchade.
+ Funktionen ska alltså använda 
+\family typewriter
+print()
+\family default
+ för att ge denna output, ni ska inte använda
+\family typewriter
+ return()
+\family default
+ i denna funktion.
+\end_layout
+
+\begin_layout Standard
+Om det är så att patients 
+\series bold
+inte
+\series default
+ är en lista ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Not a list
+\end_layout
+
+\begin_layout Standard
+Om det är så att någon av värdena i AB0 och rh 
+\series bold
+inte
+\series default
+ är korrekta (t.ex.
+ AB0 skulle vara C) ska funktionen 
+\series bold
+stoppas
+\series default
+ och returnera felmeddelandet 
+\series bold
+Wrong bloodtype
+\end_layout
+
+\begin_layout Standard
+Exempel på hur man kan implementera är:
+\end_layout
+
+\begin_layout Enumerate
+Testa så att argumentet patients är en lista.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Kolla så att AB0 och rh-värdena är tillåtna.
+ 
+\emph on
+tips: skapa en vektor med tillåtna värden och använda %in% för att se om
+ det givna värdet finns i denna vektor
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if - else del för att testa om AB0 värdena stämmer.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Skriv en if - else if -else del för att testa om rh värdena stämmer.
+\end_layout
+
+\begin_layout Enumerate
+Kombinera resultaten från punkt 3 och 4 för att få rätt utskrift.
+\end_layout
+
+\begin_layout Standard
+Här kommer ett exempel på hur funktionen ska fungera:
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+<<eval=TRUE>>=
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsA)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "0", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsB)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsC = list(giver = list(AB0 = "0", rh = "+" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "B", rh = "-"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsC)
+\end_layout
+
+\begin_layout Plain Layout
+
+test_patientsD = list(giver = list(AB0 = "A", rh = "H" ), 
+\end_layout
+
+\begin_layout Plain Layout
+
+	reciever = list(AB0 = "AB", rh = "+"))
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(test_patientsD)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+# Om ingen lista
+\end_layout
+
+\begin_layout Plain Layout
+
+blood_match(
 \begin_inset Quotes sld
 \end_inset
 
-Raw
+hej!
 \begin_inset Quotes srd
 \end_inset
 
- och spara ned filen.
- Notera vi testar funktionen på dessa filer, men funktionen ska fungera
- på godtyckliga dataset som har samma struktur som dessa två filer.
- Här är testexempel på hur funktionen ska fungera (
+)
+\end_layout
+
+\begin_layout Plain Layout
+
+@
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+
+\family typewriter
+hilbert_matrix()
+\end_layout
+
+\begin_layout Standard
+Vi ska nu skapa en funktion för att skapa godtyckligt stora Hilbertmatriser.
+ Varje element i en Hilbertmatris är definierat som
+\begin_inset Formula 
+\begin{equation}
+H_{ij}=\frac{1}{i+j-1}\label{eq:hilbert}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+där 
+\begin_inset Formula $i$
+\end_inset
+
+ är radindex och 
+\begin_inset Formula $j$
+\end_inset
+
+ är kolumnindex.
+ För mer information om Hilbertmatriser finns 
 \series bold
-Obs!
+\color blue
+
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "http://en.wikipedia.org/wiki/Hilbert_matrix"
+literal "false"
+
+\end_inset
+
+
 \series default
- Detta är var mina filer ligger, du behöver ange dina egen sökvägar):
+\color inherit
+.
+ Skapa en funktion 
+\family typewriter
+hilbert_matrix()
+\family default
+ med argumenten 
+\family typewriter
+nrow
+\family default
+ och 
+\family typewriter
+ncol
+\family default
+.
+ Funktionen ska returnera en Hilbertmatris enligt ovan.
+ I denna uppgift är det praktiskt att använda en nästlad for-loop.
+ Exempel på implementering:
+\end_layout
+
+\begin_layout Enumerate
+Skapa en matris 
+\begin_inset Formula $H$
+\end_inset
+
+ av rätt storlek
+\end_layout
+
+\begin_layout Enumerate
+Skapa en nästlad for-loop, där en loop går över rader och en över kolumner
+ i 
+\begin_inset Formula $H$
+\end_inset
+
+.
+ Se till att ha olika namn på de två loopvariablerna.
+\end_layout
+
+\begin_layout Enumerate
+Använd formel 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:hilbert"
+
+\end_inset
+
+ för att beräkna varje element i matrisen 
+\begin_inset Formula $H$
+\end_inset
+
+ med hjälp av loop-index för de två looparna.
+\end_layout
+
+\begin_layout Enumerate
+Returnera 
+\begin_inset Formula $H$
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=FALSE,echo=TRUE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-apple_path <- 
-\begin_inset Quotes srd
-\end_inset
-
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
-t.csv
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-google_path <- 
-\begin_inset Quotes srd
-\end_inset
-
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
-sv
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
+I denna uppgift är det inte tillåtet att använda sig av inbyggda funktioner
+ eller R-paket som direkt beräknar Hilbertmatriser, utan ni måste skapa
+ funktionen själva enligt instruktionerna ovan.
+ Exempel på otillåtna funktioner är: 
+\family typewriter
+Hilbert()
+\family default
+ i 
+\family typewriter
+Matrix
+\family default
+ och 
+\family typewriter
+pbdDMAT
+\family default
+, 
+\family typewriter
+hilbert.matrix()
+\family default
+ i 
+\family typewriter
+matrixcalc
+\family default
+, 
+\family typewriter
+hilb()
+\family default
+ i 
+\family typewriter
+pracma.
 \end_layout
 
 \begin_layout Standard
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-<<eval=TRUE,echo=FALSE>>=
-\end_layout
-
-\begin_layout Plain Layout
-
-#old solution:
-\end_layout
-
-\begin_layout Plain Layout
-
-#appleFilePath <- "C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgm2
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-DataFiles
-\backslash
-
-\backslash
-"
-\end_layout
-
-\begin_layout Plain Layout
-
-#appleFilePath <- tempfile(pattern="AppleCSV",fileext=".csv")
-\end_layout
-
-\begin_layout Plain Layout
-
-#download.file("https://raw.githubusercontent.com/MansMeg/KursRprgm2/master/Labs/Da
-taFiles/AppleTest.csv", destfile = appleFilePath, method = "curl") 
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-#library(repmis) data_url <- "https://raw.githubusercontent.com/STIMALiU/KursRprgm
-2/master/Labs/DataFiles/Apple.txt" 
-\end_layout
-
-\begin_layout Plain Layout
-
-#apple <- repmis::source_data(data_url, sep = ";", dec = ".", header = TRUE)
-\end_layout
-
-\begin_layout Plain Layout
-
-#apple_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-joswi05
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2016
-\backslash
-
-\backslash
-KursRprgm2
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-DataFiles
-\backslash
-
-\backslash
-AppleTest.csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-#apple_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Wollstonecraft
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2018
-\backslash
-
-\backslash
-KursRprgm2
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-DataFiles
-\backslash
-
-\backslash
-AppleTest.csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-#google_path<-"C:
-\backslash
-
-\backslash
-Users
-\backslash
-
-\backslash
-Wollstonecraft
-\backslash
-
-\backslash
-Dropbox
-\backslash
-
-\backslash
-Josef
-\backslash
-
-\backslash
-732G33_VT2018
-\backslash
-
-\backslash
-KursRprgm2
-\backslash
-
-\backslash
-Labs
-\backslash
-
-\backslash
-DataFiles
-\backslash
-
-\backslash
-google2.csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-#apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
-s/AppleTest.csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-#google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFil
-es/google2.csv"
-\end_layout
-
-\begin_layout Plain Layout
-
-apple_path <- 
-\begin_inset Quotes srd
-\end_inset
-
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
-t.csv
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-google_path <- 
-\begin_inset Quotes srd
-\end_inset
-
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
-sv
-\begin_inset Quotes srd
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-
-@
-\end_layout
-
-\end_inset
-
-
+Nedan finns exempel på hur funktionen ska fungera.
 \end_layout
 
 \begin_layout Standard
@@ -1299,43 +1178,64 @@ status open
 
 \begin_layout Plain Layout
 
-myList1 <- fast_stock_analysis(file_path = apple_path, period_length=5)
-  
+hilbert_matrix(nrow = 1, ncol = 4)
 \end_layout
 
 \begin_layout Plain Layout
 
-str(myList1)
 \end_layout
 
 \begin_layout Plain Layout
 
-myList2 <- fast_stock_analysis(file_path = apple_path, period_length=10)
+hilbert_matrix(nrow = 3, ncol = 1)
 \end_layout
 
 \begin_layout Plain Layout
 
-str(myList2) 
 \end_layout
 
 \begin_layout Plain Layout
 
-myList3 <- fast_stock_analysis(file_path = apple_path, period_length=3)
+hilbert_matrix(nrow = 5, ncol = 2)
 \end_layout
 
 \begin_layout Plain Layout
 
-str(myList3) 
+A<-hilbert_matrix(nrow = 4, ncol = 4)
 \end_layout
 
 \begin_layout Plain Layout
 
-myList4 <- fast_stock_analysis(file_path = google_path, period_length=20)
+A
 \end_layout
 
 \begin_layout Plain Layout
 
-str(myList4) 
+hilbert_matrix(3, 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+hilbert_matrix(2, 3)
+\end_layout
+
+\begin_layout Plain Layout
+
+B<-hilbert_matrix(nrow = 4, ncol = 6)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(B)
+\end_layout
+
+\begin_layout Plain Layout
+
+print(B)
+\end_layout
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \begin_layout Plain Layout

@@ -1,0 +1,16 @@
+# Assignment 1
+name  : Inl1
+description : "Statistisk programmering med R: Inlämning 1"
+tasks:
+  hi_name:
+    url: 
+      - Tasks/hi_name_tests.R
+  approx_e:
+    url: 
+      - Tasks/approx_e_tests.R
+  fast_stock_analysis:
+    url: 
+      - Tasks/fast_stock_analysis_tests.R
+mandatory:
+  url:
+    - mandatory.R
