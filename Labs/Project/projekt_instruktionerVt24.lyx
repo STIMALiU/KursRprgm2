@@ -10,7 +10,7 @@
 knitr
 \end_modules
 \maintain_unincluded_children false
-\language swedish
+\language english
 \language_package default
 \inputencoding auto
 \fontencoding global
@@ -27,7 +27,7 @@ knitr
 \use_microtype false
 \use_dash_ligatures true
 \graphics default
-\default_output_format pdf5
+\default_output_format default
 \output_sync 0
 \bibtex_command default
 \index_command default
@@ -38,14 +38,14 @@ knitr
 \use_geometry false
 \use_package amsmath 1
 \use_package amssymb 1
-\use_package cancel 0
+\use_package cancel 1
 \use_package esint 1
 \use_package mathdots 1
-\use_package mathtools 0
+\use_package mathtools 1
 \use_package mhchem 1
-\use_package stackrel 0
-\use_package stmaryrd 0
-\use_package undertilde 0
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
 \biblio_style plain
@@ -66,7 +66,7 @@ knitr
 \paragraph_indentation default
 \is_math_indent 0
 \math_numbering_side default
-\quotes_style swedish
+\quotes_style english
 \dynamic_quotes 0
 \papercolumns 1
 \papersides 1
@@ -81,15 +81,21 @@ knitr
 \begin_body
 
 \begin_layout Title
+
+\lang swedish
 Projekt: Programmering i R
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Som en del av kursen i R-programmering ska ni göra en rapport i Rmarkdown.
  Det handlar om att läsa in, presentera och bearbeta data.
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 R-markdown ska användas.
  En mall kan ni hitta 
 \color blue
@@ -108,6 +114,8 @@ literal "false"
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Undvik att använda 
 \series bold
 å
@@ -124,6 +132,8 @@ Undvik att använda
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Spara er fil i UTF-8 kodning.
  I Rstudio gör ni: 
 \begin_inset Quotes eld
@@ -149,12 +159,16 @@ Save with Encoding
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Ha en god kodstil och kommentera er kod.
  Se datorlaboration 4 för detaljer.
  
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Rapporterna ska lämnas in som både 
 \series bold
 PDF
@@ -175,6 +189,8 @@ HTML
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang swedish
 Detta går att göra i de flesta webbläsare, välj skriv ut och sen skriv till
  pdf.
 \end_layout
@@ -206,6 +222,7 @@ två
 \begin_layout Itemize
 
 \family typewriter
+\lang swedish
 joswi71_manma97_project.Rmd
 \family default
  och
@@ -214,6 +231,7 @@ joswi71_manma97_project.Rmd
 \begin_layout Itemize
 
 \family typewriter
+\lang swedish
 joswi71_manma97_project.pdf
 \family default
 .
@@ -222,6 +240,8 @@ joswi71_manma97_project.pdf
 
 \end_deeper
 \begin_layout Itemize
+
+\lang swedish
 Samtliga material ska laddas in i R från webben som 
 \series bold
 externa datakällor
@@ -236,6 +256,7 @@ externa datakällor
 \begin_layout Itemize
 
 \series bold
+\lang swedish
 Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
  i dokumentet.
 
@@ -261,12 +282,15 @@ message=FALSE, warning=FALSE
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Ni ska använda ggplot2 för alla plottar.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
+\lang swedish
 Rmd
 \series default
 -filen ska kunna köras och reproducera era resultat på godtycklig dator.
@@ -279,6 +303,7 @@ Rmd
 \begin_layout Itemize
 
 \series bold
+\lang swedish
 Namn
 \series default
 , 
@@ -295,14 +320,19 @@ gruppnummer
 \begin_layout Itemize
 
 \series bold
+\lang swedish
 Tänk på att kommentera er kod och ha god kodstil!
 \end_layout
 
 \begin_layout Section
+
+\lang swedish
 Projektinstruktioner
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Till projektet behöver två olika typer av datamaterial, ett material med
  kommunala data och ett material som innehåller en tidsserie.
  Det är okej att välja data på lännivå eller regionnivå istället för kommunnivå
@@ -313,6 +343,8 @@ Till projektet behöver två olika typer av datamaterial, ett material med
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang swedish
 Se 
 \begin_inset CommandInset href
 LatexCommand href
@@ -332,6 +364,8 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 \begin_inset ERT
 status open
 
@@ -366,14 +400,20 @@ suppressWarnings({
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Tänk på att välja material ni själva tycker är intressant!
 \end_layout
 
 \begin_layout Paragraph
+
+\lang swedish
 Kommunala data
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Ni ska ladda ner kommunala data, där ni i slutändan har minst 4 variabler
  på kommunnivå (d.s.v.
  för alla 290 kommuner) Ett exempel skulle kunna vara antal arbetslösa i
@@ -398,6 +438,8 @@ minst
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 När ni har valt ut era variabler ska ni ha en data.frame där 
 \series bold
 varje rad motsvarar en kommun
@@ -425,12 +467,16 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 \begin_inset Float table
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+
+\lang swedish
 \begin_inset Tabular
 <lyxtabular version="3" rows="6" columns="6">
 <features tabularvalignment="middle">
@@ -447,6 +493,7 @@ status open
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Radnamn
 \end_layout
 
@@ -458,6 +505,7 @@ Radnamn
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Variabel 1
 \end_layout
 
@@ -469,6 +517,7 @@ Variabel 1
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Variabel 2
 \end_layout
 
@@ -480,6 +529,7 @@ Variabel 2
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Variabel 3
 \end_layout
 
@@ -491,6 +541,7 @@ Variabel 3
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Variabel 4
 \end_layout
 
@@ -502,6 +553,7 @@ Variabel 4
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Totalt antal invånare
 \end_layout
 
@@ -515,6 +567,7 @@ Totalt antal invånare
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Linköping
 \end_layout
 
@@ -573,6 +626,7 @@ Linköping
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Norrköping
 \end_layout
 
@@ -631,6 +685,7 @@ Norrköping
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Mjölby
 \end_layout
 
@@ -689,6 +744,7 @@ Mjölby
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 Motala
 \end_layout
 
@@ -747,6 +803,7 @@ Motala
 \begin_layout Plain Layout
 
 \size scriptsize
+\lang swedish
 \begin_inset Formula $\vdots$
 \end_inset
 
@@ -809,6 +866,8 @@ Motala
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+
+\lang swedish
 \begin_inset CommandInset label
 LatexCommand label
 name "tab:stuktur data"
@@ -833,10 +892,14 @@ name "tab:stuktur data"
 \end_layout
 
 \begin_layout Paragraph
+
+\lang swedish
 Tidsseriedata
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Hitta ett dataset som innehåller en 
 \series bold
 tidserie
@@ -870,6 +933,7 @@ literal "false"
 \begin_layout Standard
 
 \series bold
+\lang swedish
 Obs!
 \series default
  Tidsperioden ska vara fix, d.v.s ex.
@@ -902,30 +966,42 @@ inte
 \end_layout
 
 \begin_layout Subsection
+
+\lang swedish
 Beskrivning av data
 \end_layout
 
 \begin_layout Subsubsection
+
+\lang swedish
 Dataanalys av kommundata
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Skriv en kort inledning där ni beskriver era variabler.
  Om ni gör nya transformationer av variablerna i del 2 måste de beskrivas
  också.
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Vissa upp data för 5 kommuner och alla era variabler i en tabell.
  Ta inte med fler kommuner.
  Ni väljer själv vilka kommuner ni visar i tabellen.
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Följande saker ska ni göra/ta med:
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras
  med hjälp av totalt antal invånare i varje kommun.
  Detta eftersom det oftast är intressant att kolla på andelar istället för
@@ -956,6 +1032,8 @@ Medelålder
 
 \begin_deeper
 \begin_layout Itemize
+
+\lang swedish
 Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
  gör denna beräkning för varje kommun.
  För många variabler som har små andeler så passar det att skapa variabler
@@ -977,6 +1055,8 @@ antal per 10 000/100 000 invånare
 
 \end_deeper
 \begin_layout Enumerate
+
+\lang swedish
 Producera minst en barplot, om ni bara har kontinuerliga variabler kan ni
  använda 
 \family typewriter
@@ -989,6 +1069,8 @@ cut()
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Producera minst ett histogram.
  Lägg till vertikala linjer för följande punkter på x-axeln: medianen, första
  kvartilen och tredje kvartilen.
@@ -1010,6 +1092,8 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Producera minst en scatterplot mellan två variabler.
  Lägg till en regressionslinje med 
 \family typewriter
@@ -1021,6 +1105,8 @@ stat_smooth(method="lm", se=FALSE)
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang swedish
 För tips på tolkning: Se kap 13.2.5 i kursboken, speciellt figur 13-5.
  Se även 
 \begin_inset CommandInset href
@@ -1040,6 +1126,8 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Beräkna korrelationer mellan de två variabler som ni använde i scatter plot
  i steget ovan.
  Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler
@@ -1069,6 +1157,8 @@ cor.test()
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Skapa två kategoriska variabler utifrån era ursprungliga variabler.
  Om ni redan har kategoriska variabler för era kommuner så kan ni använda
  dessa.
@@ -1077,28 +1167,38 @@ Skapa två kategoriska variabler utifrån era ursprungliga variabler.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Mer plottar:
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
+
+\lang swedish
 Gör en scatterplot där färgen på observationerna ska bero på en av era kategoris
 ka variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör minst ett histogram/boxplot som är grupperat på en av era kategoriska
  variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör ett grupperad barplot där ni använder båda era kategoriska variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i minst
  två plottar med 
 \family typewriter
@@ -1114,10 +1214,14 @@ facet_wrap()
 
 \end_deeper
 \begin_layout Subsubsection
+
+\lang swedish
 Dataanalys av tidseriedata 
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 Låt 
 \family typewriter
 Y
@@ -1127,6 +1231,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \family typewriter
+\lang swedish
 Y
 \family default
  är ett arbetsnamn, er variabel måst inte heta så i rapporten
@@ -1141,6 +1246,8 @@ Y
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör en linjeplot mellan 
 \family typewriter
 Y
@@ -1156,6 +1263,8 @@ Y
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Beräkna medelvärden per månad och spara dessa i 
 \family typewriter
 month_means
@@ -1175,6 +1284,8 @@ aggregate()
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör grupperade boxplots för 
 \family typewriter
 Y
@@ -1186,6 +1297,8 @@ Y
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Subtrahera månadsmedelvärden från 
 \family typewriter
 Y
@@ -1244,6 +1357,8 @@ Z<-Z+mean(Y)
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör en linjeplot mellan 
 \family typewriter
 Z
@@ -1270,6 +1385,8 @@ Z
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Gör samma plot som i steg 1., men lägg till en regressionslinje med 
 \family typewriter
 geom_smooth(method=
@@ -1287,6 +1404,8 @@ lm
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang swedish
 En regressionslinje kan hjälpa oss att se om det finns någon tydlig minskande
  eller ökande 
 \emph on
@@ -1303,6 +1422,8 @@ linjär
 \end_layout
 
 \begin_layout Enumerate
+
+\lang swedish
 Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden, eller
  är data konstant över tid.
  Finns det någon säsongsvariation i data?
@@ -1310,6 +1431,8 @@ Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden, eller
 status collapsed
 
 \begin_layout Plain Layout
+
+\lang swedish
 Exempel på säsongsvariation: December har ofta ett mycket högre värde än
  öviga månader, sommarhalvåret har alltid lägre värden.
 \end_layout
@@ -1320,6 +1443,8 @@ Exempel på säsongsvariation: December har ofta ett mycket högre värde än
 \end_layout
 
 \begin_layout Standard
+
+\lang swedish
 \begin_inset Newpage pagebreak
 \end_inset
 
@@ -1336,6 +1461,8 @@ PDF/HTML
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 I denna del ska samtliga grafer vara skapade med 
 \family typewriter
 ggplot2
@@ -1344,6 +1471,8 @@ ggplot2
 \end_layout
 
 \begin_layout Itemize
+
+\lang swedish
 Tabeller ska vara 
 \begin_inset Quotes eld
 \end_inset
@@ -1366,6 +1495,7 @@ kable()
 \begin_layout Itemize
 
 \series bold
+\lang swedish
 Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
  i dokumentet.
 \end_layout

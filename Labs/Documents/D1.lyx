@@ -7201,7 +7201,7 @@ meanValue <- mean(x)
 
 \begin_layout Plain Layout
 
-medianValues <- median(x)
+medianValue <- median(x)
 \end_layout
 
 \begin_layout Plain Layout
