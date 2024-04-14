@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -285,21 +280,26 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT2024},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT2024}
 \subtitle{Föreläsning 3}
 \author{Johan Alenlöv}
-\date{2022-02-07}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
 \begin{frame}{Föreläsning 3:}
-\protect\hypertarget{fuxf6reluxe4sning-3}{}
-\textbf{Nästa vecka är vi tillbaka på campus} Föreläsningen kommer att
-parallellt ges på Zoom.
-
+\phantomsection\label{fuxf6reluxe4sning-3}
 \begin{itemize}
 \tightlist
 \item
@@ -315,12 +315,11 @@ parallellt ges på Zoom.
 \end{itemize}
 \end{frame}
 
-\hypertarget{sammanfattning-fuxf6reluxe4sning-2}{%
 \section{Sammanfattning föreläsning
-2}\label{sammanfattning-fuxf6reluxe4sning-2}}
+2}\label{sammanfattning-fuxf6reluxe4sning-2}
 
 \begin{frame}{Matriser}
-\protect\hypertarget{matriser}{}
+\phantomsection\label{matriser}
 \begin{itemize}
 \tightlist
 \item
@@ -350,7 +349,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}{data.frame}
-\protect\hypertarget{data.frame}{}
+\phantomsection\label{data.frame}
 \begin{itemize}
 \tightlist
 \item
@@ -371,7 +370,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}{Listor}
-\protect\hypertarget{listor}{}
+\phantomsection\label{listor}
 \begin{itemize}
 \tightlist
 \item
@@ -385,11 +384,10 @@ parallellt ges på Zoom.
 \end{itemize}
 \end{frame}
 
-\hypertarget{programkontroll}{%
-\section{Programkontroll}\label{programkontroll}}
+\section{Programkontroll}\label{programkontroll}
 
 \begin{frame}{Programkontroll}
-\protect\hypertarget{programkontroll-1}{}
+\phantomsection\label{programkontroll-1}
 \begin{itemize}
 \tightlist
 \item
@@ -413,11 +411,10 @@ parallellt ges på Zoom.
 \end{itemize}
 \end{frame}
 
-\hypertarget{villkorssatser}{%
-\section{Villkorssatser}\label{villkorssatser}}
+\section{Villkorssatser}\label{villkorssatser}
 
 \begin{frame}[fragile]{Vilkorssatser (if-else)}
-\protect\hypertarget{vilkorssatser-if-else}{}
+\phantomsection\label{vilkorssatser-if-else}
 \begin{itemize}
 \tightlist
 \item
@@ -451,7 +448,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{If - else if - else}
-\protect\hypertarget{if---else-if---else}{}
+\phantomsection\label{if---else-if---else}
 \begin{itemize}
 \tightlist
 \item
@@ -480,7 +477,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{Villkorssatser - Exempel}
-\protect\hypertarget{villkorssatser---exempel}{}
+\phantomsection\label{villkorssatser---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{prgm }\OtherTok{\textless{}{-}} \StringTok{"R"}
@@ -505,7 +502,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{Villkorssatser - Exempel II}
-\protect\hypertarget{villkorssatser---exempel-ii}{}
+\phantomsection\label{villkorssatser---exempel-ii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{prgm }\OtherTok{\textless{}{-}} \StringTok{"Excel"}
@@ -526,11 +523,17 @@ parallellt ges på Zoom.
 \end{verbatim}
 \end{frame}
 
-\hypertarget{loopar-for-loop}{%
-\section{Loopar (for-loop)}\label{loopar-for-loop}}
+\begin{frame}{Demo}
+\phantomsection\label{demo}
+\begin{block}{Demo: If-satser}
+\phantomsection\label{demo-if-satser}
+\end{block}
+\end{frame}
+
+\section{Loopar (for-loop)}\label{loopar-for-loop}
 
 \begin{frame}[fragile]{For-loop}
-\protect\hypertarget{for-loop}{}
+\phantomsection\label{for-loop}
 \begin{itemize}
 \tightlist
 \item
@@ -559,7 +562,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{For-loop - Exempel}
-\protect\hypertarget{for-loop---exempel}{}
+\phantomsection\label{for-loop---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{vektor }\OtherTok{\textless{}{-}} \DecValTok{3}\SpecialCharTok{:}\DecValTok{5}
@@ -579,7 +582,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{For-loop - Exempel II}
-\protect\hypertarget{for-loop---exempel-ii}{}
+\phantomsection\label{for-loop---exempel-ii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{vektor }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{,}\StringTok{"d"}\NormalTok{)}
@@ -600,7 +603,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{For-loop - Exempel III}
-\protect\hypertarget{for-loop---exempel-iii}{}
+\phantomsection\label{for-loop---exempel-iii}
 \begin{itemize}
 \tightlist
 \item
@@ -632,11 +635,17 @@ parallellt ges på Zoom.
 \end{Shaded}
 \end{frame}
 
-\hypertarget{nuxe4stlade-loopar}{%
-\section{Nästlade loopar}\label{nuxe4stlade-loopar}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-1}
+\begin{block}{Demo: for-loopar}
+\phantomsection\label{demo-for-loopar}
+\end{block}
+\end{frame}
+
+\section{Nästlade loopar}\label{nuxe4stlade-loopar}
 
 \begin{frame}{Nästlade loopar}
-\protect\hypertarget{nuxe4stlade-loopar-1}{}
+\phantomsection\label{nuxe4stlade-loopar-1}
 \begin{itemize}
 \tightlist
 \item
@@ -659,7 +668,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{Nästlade loopar - Exmepel}
-\protect\hypertarget{nuxe4stlade-loopar---exmepel}{}
+\phantomsection\label{nuxe4stlade-loopar---exmepel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{A }\OtherTok{\textless{}{-}} \FunctionTok{matrix}\NormalTok{(}\DecValTok{1}\SpecialCharTok{:}\DecValTok{6}\NormalTok{, }\AttributeTok{nrow =} \DecValTok{2}\NormalTok{)}
@@ -685,11 +694,17 @@ parallellt ges på Zoom.
 \end{verbatim}
 \end{frame}
 
-\hypertarget{while-loop}{%
-\section{while-loop}\label{while-loop}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-2}
+\begin{block}{Demo: nästlade loopar}
+\phantomsection\label{demo-nuxe4stlade-loopar}
+\end{block}
+\end{frame}
+
+\section{while-loop}\label{while-loop}
 
 \begin{frame}[fragile]{while-loop}
-\protect\hypertarget{while-loop-1}{}
+\phantomsection\label{while-loop-1}
 \begin{itemize}
 \tightlist
 \item
@@ -716,7 +731,7 @@ parallellt ges på Zoom.
 \end{frame}
 
 \begin{frame}[fragile]{while-loop - Exempel}
-\protect\hypertarget{while-loop---exempel}{}
+\phantomsection\label{while-loop---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{1} \CommentTok{\# Obs!}
@@ -737,12 +752,18 @@ parallellt ges på Zoom.
 \end{verbatim}
 \end{frame}
 
-\hypertarget{kontrollstrukturer-fuxf6r-loopar}{%
+\begin{frame}{Demo}
+\phantomsection\label{demo-3}
+\begin{block}{Demo: while-loopar}
+\phantomsection\label{demo-while-loopar}
+\end{block}
+\end{frame}
+
 \section{Kontrollstrukturer för
-loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
+loopar}\label{kontrollstrukturer-fuxf6r-loopar}
 
 \begin{frame}{Kontrollstrukturer för loopar}
-\protect\hypertarget{kontrollstrukturer-fuxf6r-loopar-1}{}
+\phantomsection\label{kontrollstrukturer-fuxf6r-loopar-1}
 \begin{itemize}
 \tightlist
 \item
@@ -752,19 +773,19 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
 \end{itemize}
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 \textbf{Kontrollstruktur} & \textbf{Effet} \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{next()} & Börja med nästa iteration direkt \\
 \texttt{break()} & Avbryt den aktuella / innersta loopen \\
 \texttt{stop()} & Avbryter allt och genererar ett felmeddelande \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
 \begin{frame}[fragile]{next() - Exempel}
-\protect\hypertarget{next---exempel}{}
+\phantomsection\label{next---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{0}
@@ -789,7 +810,7 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
 \end{frame}
 
 \begin{frame}[fragile]{break() - exempel}
-\protect\hypertarget{break---exempel}{}
+\phantomsection\label{break---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
@@ -811,7 +832,7 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
 \end{frame}
 
 \begin{frame}[fragile]{stop() - Exempel}
-\protect\hypertarget{stop---exempel}{}
+\phantomsection\label{stop---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
@@ -834,12 +855,18 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}}
 \end{verbatim}
 \end{frame}
 
-\hypertarget{varningsmeddelanden-och-debugg}{%
+\begin{frame}{Demo}
+\phantomsection\label{demo-4}
+\begin{block}{Demo: Kontrollstrukturer}
+\phantomsection\label{demo-kontrollstrukturer}
+\end{block}
+\end{frame}
+
 \section{Varningsmeddelanden och
-debugg}\label{varningsmeddelanden-och-debugg}}
+debugg}\label{varningsmeddelanden-och-debugg}
 
 \begin{frame}{Varningsmeddelanden}
-\protect\hypertarget{varningsmeddelanden}{}
+\phantomsection\label{varningsmeddelanden}
 \begin{itemize}
 \tightlist
 \item
@@ -854,7 +881,7 @@ debugg}\label{varningsmeddelanden-och-debugg}}
 \end{frame}
 
 \begin{frame}[fragile]{Varningsmeddelanden - Exempel}
-\protect\hypertarget{varningsmeddelanden---exempel}{}
+\phantomsection\label{varningsmeddelanden---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{for}\NormalTok{ ( chr }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{) ) \{}
@@ -878,7 +905,7 @@ debugg}\label{varningsmeddelanden-och-debugg}}
 \end{frame}
 
 \begin{frame}{Debugging}
-\protect\hypertarget{debugging}{}
+\phantomsection\label{debugging}
 \begin{itemize}
 \tightlist
 \item
@@ -901,7 +928,7 @@ debugg}\label{varningsmeddelanden-och-debugg}}
 \end{frame}
 
 \begin{frame}{Debugging II}
-\protect\hypertarget{debugging-ii}{}
+\phantomsection\label{debugging-ii}
 \begin{itemize}
 \tightlist
 \item
@@ -929,6 +956,13 @@ debugg}\label{varningsmeddelanden-och-debugg}}
 \item
   \texttt{debugg()} Hoppa in i funktionen från början
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Demo}
+\phantomsection\label{demo-5}
+\begin{block}{Demo: browser och debug}
+\phantomsection\label{demo-browser-och-debug}
+\end{block}
 \end{frame}
 
 \end{document}

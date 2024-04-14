@@ -1,9 +1,8 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT2024"
 subtitle: "Föreläsning 3"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-02-07'
 fontsize: 11pt
 output:
   beamer_presentation:
@@ -20,8 +19,6 @@ knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## Föreläsning 3:
-
-**Nästa vecka är vi tillbaka på campus** Föreläsningen kommer att parallellt ges på Zoom.
 
 - Sammanfattning Föreläsning 2
 - Villkorssatser
@@ -142,6 +139,10 @@ if ( prgm == "R") {
 }
 ```
 
+## Demo
+
+### Demo: If-satser
+
 # Loopar (for-loop)
 
 ## For-loop
@@ -207,6 +208,10 @@ for ( index in 1:length(vektor) ) {
 }
 ```
 
+## Demo
+
+### Demo: for-loopar
+
 # Nästlade loopar
 
 ## Nästlade loopar
@@ -241,6 +246,10 @@ for ( i in 1:2 ) {
 }
 ```
 
+## Demo
+
+### Demo: nästlade loopar
+
 # while-loop
 
 ## while-loop
@@ -272,6 +281,10 @@ while ( i < 5 ) {
   i <- i + 1
 }
 ```
+
+## Demo
+
+### Demo: while-loopar
 
 # Kontrollstrukturer för loopar
 
@@ -342,6 +355,10 @@ for ( i in 1:3 ) {
 cat("Error: Det blev fel!")
 ```
 
+## Demo
+
+### Demo: Kontrollstrukturer
+
 # Varningsmeddelanden och debugg
 
 ## Varningsmeddelanden
@@ -386,3 +403,8 @@ Warning messages:
   - \texttt{c}: kör allt i funktion / loop
   - \texttt{Q}: avsluta
 - \texttt{debugg()} Hoppa in i funktionen från början
+
+
+## Demo
+
+### Demo: browser och debug

@@ -14,15 +14,15 @@ test_that("Assignment: blood_match()", {
                             info = "Fel: Argumentet i funktionen har felaktiga namn.")
   
   test_patientsA = list(giver = list(AB0 = "0", rh = "-" ),
-                        reciever = list(AB0 = "AB", rh = "+"))
+                        receiver = list(AB0 = "AB", rh = "+"))
   test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ),
-                        reciever = list(AB0 = "0", rh = "+"))
+                        receiver = list(AB0 = "0", rh = "+"))
   test_patientsC = list(giver = list(AB0 = "0", rh = "+" ),
-                        reciever = list(AB0 = "B", rh = "-"))
+                        receiver = list(AB0 = "B", rh = "-"))
   test_patientsD = list(giver = list(AB0 = "A", rh = "H" ),
-                        reciever = list(AB0 = "AB", rh = "+"))
+                        receiver = list(AB0 = "AB", rh = "+"))
   test_patientsE = list(giver = list(AB0 = "F", rh = "+" ),
-                        reciever = list(AB0 = "AB", rh = "+"))
+                        receiver = list(AB0 = "AB", rh = "+"))
   expect_output(blood_match(test_patientsA), "They are a match",
                 info = "Fel: Funktionen ger fel output för 0- till AB+")
   expect_output(blood_match(test_patientsB), "They are not a match",
