@@ -679,7 +679,7 @@ status open
 
 
 \backslash
-texttt{reciever}
+texttt{receiver}
 \end_layout
 
 \end_inset
@@ -764,7 +764,7 @@ test_patientsA = list(giver = list(AB0 = "0", rh = "-" ),
 
 \begin_layout Plain Layout
 
-	reciever = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB", rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -941,7 +941,7 @@ test_patientsA = list(giver = list(AB0 = "0", rh = "-" ),
 
 \begin_layout Plain Layout
 
-	reciever = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB", rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -956,7 +956,7 @@ test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ),
 
 \begin_layout Plain Layout
 
-	reciever = list(AB0 = "0", rh = "+"))
+	receiver = list(AB0 = "0", rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -971,7 +971,7 @@ test_patientsC = list(giver = list(AB0 = "0", rh = "+" ),
 
 \begin_layout Plain Layout
 
-	reciever = list(AB0 = "B", rh = "-"))
+	receiver = list(AB0 = "B", rh = "-"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -986,7 +986,7 @@ test_patientsD = list(giver = list(AB0 = "A", rh = "H" ),
 
 \begin_layout Plain Layout
 
-	reciever = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB", rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
