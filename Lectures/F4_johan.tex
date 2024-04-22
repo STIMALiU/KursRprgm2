@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -285,18 +280,26 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT2024},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT2024}
 \subtitle{Föreläsning 4}
 \author{Johan Alenlöv}
-\date{2022-02-15}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
 \begin{frame}{Föreläsning 4:}
-\protect\hypertarget{fuxf6reluxe4sning-4}{}
+\phantomsection\label{fuxf6reluxe4sning-4}
 \begin{itemize}
 \tightlist
 \item
@@ -318,12 +321,11 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{sammanfattning-fuxf6reluxe4sning-3}{%
 \section{Sammanfattning föreläsning
-3}\label{sammanfattning-fuxf6reluxe4sning-3}}
+3}\label{sammanfattning-fuxf6reluxe4sning-3}
 
 \begin{frame}{If - else if - else}
-\protect\hypertarget{if---else-if---else}{}
+\phantomsection\label{if---else-if---else}
 \begin{itemize}
 \tightlist
 \item
@@ -344,7 +346,7 @@
 \end{frame}
 
 \begin{frame}{For loopar}
-\protect\hypertarget{for-loopar}{}
+\phantomsection\label{for-loopar}
 \begin{itemize}
 \tightlist
 \item
@@ -358,7 +360,7 @@
 \end{frame}
 
 \begin{frame}{While loopar}
-\protect\hypertarget{while-loopar}{}
+\phantomsection\label{while-loopar}
 \begin{itemize}
 \tightlist
 \item
@@ -380,7 +382,7 @@
 \end{frame}
 
 \begin{frame}{Loopkontroll}
-\protect\hypertarget{loopkontroll}{}
+\phantomsection\label{loopkontroll}
 \begin{itemize}
 \tightlist
 \item
@@ -397,7 +399,7 @@
 \end{frame}
 
 \begin{frame}{Debugging}
-\protect\hypertarget{debugging}{}
+\phantomsection\label{debugging}
 \begin{itemize}
 \tightlist
 \item
@@ -426,11 +428,10 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{infuxf6r-del-2-av-kursen}{%
-\section{Inför del 2 av kursen}\label{infuxf6r-del-2-av-kursen}}
+\section{Inför del 2 av kursen}\label{infuxf6r-del-2-av-kursen}
 
 \begin{frame}{Inför del 2 ava kursen}
-\protect\hypertarget{infuxf6r-del-2-ava-kursen}{}
+\phantomsection\label{infuxf6r-del-2-ava-kursen}
 \begin{itemize}
 \tightlist
 \item
@@ -448,20 +449,18 @@
   \begin{itemize}
   \tightlist
   \item
-    Finns ett dokument på Teams för att fylla i er grupp.
+    Anmäl er till grupper via Lisam
   \item
-    Finns en kanal i Teams om man vill hitta en gruppkamrat.
-  \item
-    Deadline för grupper är söndag kväll.
+    Finns ett dokument på Lisam under Samarbetsytan om man vill hitta en
+    gruppkamrat.
   \end{itemize}
 \end{itemize}
 \end{frame}
 
-\hypertarget{mer-om-funktioner}{%
-\section{Mer om funktioner}\label{mer-om-funktioner}}
+\section{Mer om funktioner}\label{mer-om-funktioner}
 
 \begin{frame}{Funktioner - repetition}
-\protect\hypertarget{funktioner---repetition}{}
+\phantomsection\label{funktioner---repetition}
 Vi påminner oss om att en funktion i R består av
 
 \begin{itemize}
@@ -482,7 +481,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Allmänt I}
-\protect\hypertarget{funktioner---allmuxe4nt-i}{}
+\phantomsection\label{funktioner---allmuxe4nt-i}
 \begin{itemize}
 \tightlist
 \item
@@ -520,7 +519,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}{Funktioner - Allmänt II}
-\protect\hypertarget{funktioner---allmuxe4nt-ii}{}
+\phantomsection\label{funktioner---allmuxe4nt-ii}
 \begin{itemize}
 \tightlist
 \item
@@ -539,7 +538,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Argument}
-\protect\hypertarget{funktioner---argument}{}
+\phantomsection\label{funktioner---argument}
 \begin{itemize}
 \tightlist
 \item
@@ -561,7 +560,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Funktionskropp}
-\protect\hypertarget{funktioner---funktionskropp}{}
+\phantomsection\label{funktioner---funktionskropp}
 \begin{itemize}
 \tightlist
 \item
@@ -583,7 +582,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Miljö}
-\protect\hypertarget{funktioner---miljuxf6}{}
+\phantomsection\label{funktioner---miljuxf6}
 \begin{itemize}
 \tightlist
 \item
@@ -602,7 +601,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Allmänt III}
-\protect\hypertarget{funktioner---allmuxe4nt-iii}{}
+\phantomsection\label{funktioner---allmuxe4nt-iii}
 \begin{itemize}
 \tightlist
 \item
@@ -630,7 +629,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Allmänt IV}
-\protect\hypertarget{funktioner---allmuxe4nt-iv}{}
+\phantomsection\label{funktioner---allmuxe4nt-iv}
 \begin{itemize}
 \tightlist
 \item
@@ -675,7 +674,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Allmänt V}
-\protect\hypertarget{funktioner---allmuxe4nt-v}{}
+\phantomsection\label{funktioner---allmuxe4nt-v}
 \begin{itemize}
 \tightlist
 \item
@@ -695,7 +694,7 @@ Vi påminner oss om att en funktion i R består av
 \end{frame}
 
 \begin{frame}[fragile]{Funktioner - Allmänt VI}
-\protect\hypertarget{funktioner---allmuxe4nt-vi}{}
+\phantomsection\label{funktioner---allmuxe4nt-vi}
 \begin{itemize}
 \tightlist
 \item
@@ -724,12 +723,11 @@ Vi påminner oss om att en funktion i R består av
 \end{verbatim}
 \end{frame}
 
-\hypertarget{globala-och-lokala-miljuxf6er-i-r}{%
 \section{Globala och lokala miljöer i
-R}\label{globala-och-lokala-miljuxf6er-i-r}}
+R}\label{globala-och-lokala-miljuxf6er-i-r}
 
 \begin{frame}{Miljöer i R}
-\protect\hypertarget{miljuxf6er-i-r}{}
+\phantomsection\label{miljuxf6er-i-r}
 \begin{itemize}
 \tightlist
 \item
@@ -748,7 +746,7 @@ R}\label{globala-och-lokala-miljuxf6er-i-r}}
 \end{frame}
 
 \begin{frame}{Hur vet R vad vi menar}
-\protect\hypertarget{hur-vet-r-vad-vi-menar}{}
+\phantomsection\label{hur-vet-r-vad-vi-menar}
 \begin{itemize}
 \tightlist
 \item
@@ -767,7 +765,7 @@ R}\label{globala-och-lokala-miljuxf6er-i-r}}
 \end{frame}
 
 \begin{frame}[fragile]{Fria vaariabler}
-\protect\hypertarget{fria-vaariabler}{}
+\phantomsection\label{fria-vaariabler}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+}\NormalTok{ y}
@@ -781,7 +779,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}[fragile]{Fria variabler - Exempel}
-\protect\hypertarget{fria-variabler---exempel}{}
+\phantomsection\label{fria-variabler---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{f }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) x }\SpecialCharTok{+}\NormalTok{ y}
@@ -805,11 +803,10 @@ Efter det söker R i samma ordning som förra sliden.
 \end{verbatim}
 \end{frame}
 
-\hypertarget{bra-och-effektiv-kod}{%
-\section{Bra och effektiv kod}\label{bra-och-effektiv-kod}}
+\section{Bra och effektiv kod}\label{bra-och-effektiv-kod}
 
 \begin{frame}{God (vetenskaplig) programmering}
-\protect\hypertarget{god-vetenskaplig-programmering}{}
+\phantomsection\label{god-vetenskaplig-programmering}
 \begin{itemize}
 \tightlist
 \item
@@ -821,7 +818,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{8 steg för god programmering}
-\protect\hypertarget{steg-fuxf6r-god-programmering}{}
+\phantomsection\label{steg-fuxf6r-god-programmering}
 \begin{enumerate}
 \tightlist
 \item
@@ -844,7 +841,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{1. Skriv kod för människor, inte datorer}
-\protect\hypertarget{skriv-kod-fuxf6r-muxe4nniskor-inte-datorer}{}
+\phantomsection\label{skriv-kod-fuxf6r-muxe4nniskor-inte-datorer}
 \begin{itemize}
 \tightlist
 \item
@@ -857,7 +854,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{2. Låt datorn gör arbetet}
-\protect\hypertarget{luxe5t-datorn-guxf6r-arbetet}{}
+\phantomsection\label{luxe5t-datorn-guxf6r-arbetet}
 \begin{itemize}
 \tightlist
 \item
@@ -870,7 +867,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{3. Ta små steg}
-\protect\hypertarget{ta-smuxe5-steg}{}
+\phantomsection\label{ta-smuxe5-steg}
 \begin{itemize}
 \tightlist
 \item
@@ -895,7 +892,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{4. Upprepa aldrig dig själv (eller andra)}
-\protect\hypertarget{upprepa-aldrig-dig-sjuxe4lv-eller-andra}{}
+\phantomsection\label{upprepa-aldrig-dig-sjuxe4lv-eller-andra}
 \begin{itemize}
 \tightlist
 \item
@@ -908,7 +905,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{5. Planera för misstag}
-\protect\hypertarget{planera-fuxf6r-misstag}{}
+\phantomsection\label{planera-fuxf6r-misstag}
 \begin{itemize}
 \tightlist
 \item
@@ -943,7 +940,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{6. Optimera kod först när den fungerar}
-\protect\hypertarget{optimera-kod-fuxf6rst-nuxe4r-den-fungerar}{}
+\phantomsection\label{optimera-kod-fuxf6rst-nuxe4r-den-fungerar}
 \begin{itemize}
 \tightlist
 \item
@@ -976,7 +973,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{7. Dokumentera}
-\protect\hypertarget{dokumentera}{}
+\phantomsection\label{dokumentera}
 \begin{itemize}
 \tightlist
 \item
@@ -999,7 +996,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{8. Samarbeta}
-\protect\hypertarget{samarbeta}{}
+\phantomsection\label{samarbeta}
 \begin{itemize}
 \tightlist
 \item
@@ -1017,11 +1014,10 @@ Efter det söker R i samma ordning som förra sliden.
 \end{itemize}
 \end{frame}
 
-\hypertarget{r-paket}{%
-\section{R-paket}\label{r-paket}}
+\section{R-paket}\label{r-paket}
 
 \begin{frame}{Vad är R-paket?}
-\protect\hypertarget{vad-uxe4r-r-paket}{}
+\phantomsection\label{vad-uxe4r-r-paket}
 \begin{itemize}
 \tightlist
 \item
@@ -1052,7 +1048,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{R-paket - I}
-\protect\hypertarget{r-paket---i}{}
+\phantomsection\label{r-paket---i}
 \begin{itemize}
 \tightlist
 \item
@@ -1079,7 +1075,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{R-paket - II}
-\protect\hypertarget{r-paket---ii}{}
+\phantomsection\label{r-paket---ii}
 \begin{itemize}
 \tightlist
 \item
@@ -1095,7 +1091,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}{Att hitta rätt paket}
-\protect\hypertarget{att-hitta-ruxe4tt-paket}{}
+\phantomsection\label{att-hitta-ruxe4tt-paket}
 \begin{itemize}
 \tightlist
 \item
@@ -1126,7 +1122,7 @@ Efter det söker R i samma ordning som förra sliden.
 \end{frame}
 
 \begin{frame}[fragile]{Installera paket}
-\protect\hypertarget{installera-paket}{}
+\phantomsection\label{installera-paket}
 CRAN:
 
 \begin{Shaded}
@@ -1149,7 +1145,7 @@ GitHub:
 \end{frame}
 
 \begin{frame}[fragile]{Läsa in paket}
-\protect\hypertarget{luxe4sa-in-paket}{}
+\phantomsection\label{luxe4sa-in-paket}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# läsa in}
@@ -1161,7 +1157,7 @@ GitHub:
 \end{frame}
 
 \begin{frame}{Läsa in paket}
-\protect\hypertarget{luxe4sa-in-paket-1}{}
+\phantomsection\label{luxe4sa-in-paket-1}
 \begin{itemize}
 \tightlist
 \item
@@ -1179,11 +1175,10 @@ GitHub:
 \end{itemize}
 \end{frame}
 
-\hypertarget{dokumentation-med-roxygen}{%
-\section{Dokumentation med ROxygen}\label{dokumentation-med-roxygen}}
+\section{Dokumentation med ROxygen}\label{dokumentation-med-roxygen}
 
 \begin{frame}{Dokumentation med ROxygen}
-\protect\hypertarget{dokumentation-med-roxygen-1}{}
+\phantomsection\label{dokumentation-med-roxygen-1}
 \begin{itemize}
 \tightlist
 \item
@@ -1198,11 +1193,11 @@ GitHub:
 \end{frame}
 
 \begin{frame}[fragile]{Dokumentation med ROxygen}
-\protect\hypertarget{dokumentation-med-roxygen-2}{}
+\phantomsection\label{dokumentation-med-roxygen-2}
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 ROxygendel & Innehåll \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{@title} & Anger titel för dokumentet \\
 \texttt{@description} & En beskrivning vad funktionen gör \\
@@ -1212,12 +1207,12 @@ ROxygendel & Innehåll \\
 \texttt{@references} & Eventuella referenser av intresse \\
 \texttt{@seealso} & Andra funktioner som kan vara aktuella \\
 \texttt{@examples} & Exempel på hur funktionen kan användas \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
 \begin{frame}[fragile]{Dokumentation med ROxygen - Exempel}
-\protect\hypertarget{dokumentation-med-roxygen---exempel}{}
+\phantomsection\label{dokumentation-med-roxygen---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#\textquotesingle{} @title f}
@@ -1238,7 +1233,7 @@ ROxygendel & Innehåll \\
 \end{frame}
 
 \begin{frame}{*apply-funktioner}
-\protect\hypertarget{apply-funktioner}{}
+\phantomsection\label{apply-funktioner}
 \begin{itemize}
 \tightlist
 \item
@@ -1265,7 +1260,7 @@ ROxygendel & Innehåll \\
 \end{frame}
 
 \begin{frame}[fragile]{Exempel på lapply()}
-\protect\hypertarget{exempel-puxe5-lapply}{}
+\phantomsection\label{exempel-puxe5-lapply}
 \begin{itemize}
 \tightlist
 \item

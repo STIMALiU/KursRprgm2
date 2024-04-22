@@ -1,9 +1,8 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT2024"
 subtitle: "Föreläsning 4"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-02-15'
 fontsize: 11pt
 output:
   beamer_presentation:
@@ -80,9 +79,8 @@ knitr::opts_chunk$set(echo = FALSE)
 - Under del 2 av kursen görs labbarna i **par**
   - De som läser om kursen gör labbarna med andra som läser om kursen eller ensamma.
 - Ni bildar grupper själva.
-  - Finns ett dokument på Teams för att fylla i er grupp.
-  - Finns en kanal i Teams om man vill hitta en gruppkamrat.
-  - Deadline för grupper är söndag kväll.
+  - Anmäl er till grupper via Lisam
+  - Finns ett dokument på Lisam under Samarbetsytan om man vill hitta en gruppkamrat.
   
 # Mer om funktioner
 
@@ -381,7 +379,7 @@ detach("package:lubridate", unload = TRUE)
 
 - I SU-salarna finns många paket redan installerade.
 - Kör följande i en terminal:
-  - \texttt{module add prog/r-mega-edition/21.10}
+  - \texttt{module add courses/732G33}
 - Då får ni tillgång till R, R-Studio samt många paket.
 
 # Dokumentation med ROxygen

@@ -1,0 +1,10 @@
+# Assignment 4
+name  : Inl4
+description : "Statistisk programmering med R: Inlämning 4"
+tasks:
+  my_grouped_test:
+    url: Tasks/my_grouped_test_tests.R
+  wordcount:
+    url: Tasks/wordcount_tests.R
+mandatory:
+  url: mandatory_part2.R

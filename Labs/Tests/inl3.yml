@@ -1,0 +1,10 @@
+# Assignment 2
+name  : Inl3
+description : "Statistisk programmering med R: Inlämning 2"
+tasks:
+  classroom:
+    url: Tasks/classroom_tests.R
+  give_blood:
+    url: Tasks/give_blood_tests.R
+mandatory:
+  url: mandatory_part2.R
