@@ -1,9 +1,8 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT2024"
 subtitle: "Föreläsning 5"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-02-15'
 fontsize: 11pt
 output:
   beamer_presentation:
@@ -61,24 +60,21 @@ knitr::opts_chunk$set(echo = FALSE)
 - Parprogrammering:
   - \imp{Turas om att skriva koden}
   - Den som inte kodar är engagerad i koden och problemet
-  - Byt vem som kodar var 20:e minut
+  - Byt vem som kodar var 10:e minut
   - Viktigt att kommentra koden: ROxygen och inline
   - \imp{Båda} är delaktiga i programmeringen
 
-## Miniprojekt - del 1
+## Miniprojektet
 
 Info finns på kurshemsidan.
 
 - Hitta data på webben (eller lägg upp eget)
   - Kommunala (tvärsnitt) data
   - Tidsseriedata
-- Presentera med basgrafik, knitr och markdown
+- Presentera med grafik, knitr och markdown
 - Rapporten ska vara reproducerbar
 - Lämna in som \imp{PDF} och \imp{Rmd}
 - Miniprojektet har egen inlämning
-- Två veckor per del
-  - Del 1 börjar denna vecka
-  - Del 2 börjar vecka 7
 
 # Basgrafik
 
@@ -163,6 +159,10 @@ pie(tab)
 - Går att bygga upp många olika sorters plottar och grafik
 - Mycket smidigare att använda \texttt{ggplot2}
 
+## Demo
+
+### Demo: Grafik
+
 # Slumptal och simulering
 
 ## Slumptal och simulering - I
@@ -239,6 +239,10 @@ sample(x = text, size = 5, replace = TRUE)
 sample(x = text, size = 5, replace = TRUE)
 ```
 
+## Demo
+
+### Demo: Slumptal
+
 # R-Markdown, knitr och Notebooks
 
 ## R-Markdown, knitr och Notebooks
@@ -283,6 +287,10 @@ sample(x = text, size = 5, replace = TRUE)
   - i R-Markdown körs all kod när du genererar dokumentet
   - i Notebook körs en rad i taget
   - i Notebooks kan du köra kod direkt och se resultatet
+
+## Demo
+
+### Demo: Markdown
 
 # Externa data och pxweb
 
@@ -331,3 +339,7 @@ library(pxweb)
 
 min_data <- pxweb_interactive()
 ```
+
+## Demo
+
+### Demo: PXWEB

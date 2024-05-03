@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -298,21 +293,28 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT2024},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT2024}
 \subtitle{Föreläsning 5}
 \author{Johan Alenlöv}
-\date{2022-02-15}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{fuxf6reluxe4sning-5}{%
-\section{Föreläsning 5}\label{fuxf6reluxe4sning-5}}
+\section{Föreläsning 5}\label{fuxf6reluxe4sning-5}
 
 \begin{frame}{Innehåll föreläsning 5}
-\protect\hypertarget{innehuxe5ll-fuxf6reluxe4sning-5}{}
+\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-5}
 \begin{itemize}
 \tightlist
 \item
@@ -328,11 +330,10 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{information-del-2}{%
-\section{Information del 2}\label{information-del-2}}
+\section{Information del 2}\label{information-del-2}
 
 \begin{frame}{R-programmering - del 2}
-\protect\hypertarget{r-programmering---del-2}{}
+\phantomsection\label{r-programmering---del-2}
 \begin{itemize}
 \tightlist
 \item
@@ -359,7 +360,7 @@
 \end{frame}
 
 \begin{frame}{R-programmering - del 2}
-\protect\hypertarget{r-programmering---del-2-1}{}
+\phantomsection\label{r-programmering---del-2-1}
 \begin{itemize}
 \tightlist
 \item
@@ -390,7 +391,7 @@
 \end{frame}
 
 \begin{frame}{R-programmering - del 2}
-\protect\hypertarget{r-programmering---del-2-2}{}
+\phantomsection\label{r-programmering---del-2-2}
 \begin{itemize}
 \tightlist
 \item
@@ -404,7 +405,7 @@
   \item
     Den som inte kodar är engagerad i koden och problemet
   \item
-    Byt vem som kodar var 20:e minut
+    Byt vem som kodar var 10:e minut
   \item
     Viktigt att kommentra koden: ROxygen och inline
   \item
@@ -413,8 +414,8 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Miniprojekt - del 1}
-\protect\hypertarget{miniprojekt---del-1}{}
+\begin{frame}{Miniprojektet}
+\phantomsection\label{miniprojektet}
 Info finns på kurshemsidan.
 
 \begin{itemize}
@@ -430,31 +431,20 @@ Info finns på kurshemsidan.
     Tidsseriedata
   \end{itemize}
 \item
-  Presentera med basgrafik, knitr och markdown
+  Presentera med grafik, knitr och markdown
 \item
   Rapporten ska vara reproducerbar
 \item
   Lämna in som \imp{PDF} och \imp{Rmd}
 \item
   Miniprojektet har egen inlämning
-\item
-  Två veckor per del
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Del 1 börjar denna vecka
-  \item
-    Del 2 börjar vecka 7
-  \end{itemize}
 \end{itemize}
 \end{frame}
 
-\hypertarget{basgrafik}{%
-\section{Basgrafik}\label{basgrafik}}
+\section{Basgrafik}\label{basgrafik}
 
 \begin{frame}{Grafik i R}
-\protect\hypertarget{grafik-i-r}{}
+\phantomsection\label{grafik-i-r}
 \begin{itemize}
 \tightlist
 \item
@@ -481,7 +471,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Enkel grafik: plot()}
-\protect\hypertarget{enkel-grafik-plot}{}
+\phantomsection\label{enkel-grafik-plot}
 \begin{itemize}
 \tightlist
 \item
@@ -519,7 +509,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{plot() - exempel}
-\protect\hypertarget{plot---exempel}{}
+\phantomsection\label{plot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(iris)}
@@ -532,7 +522,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Diagramtyper}
-\protect\hypertarget{diagramtyper}{}
+\phantomsection\label{diagramtyper}
 \begin{itemize}
 \tightlist
 \item
@@ -557,7 +547,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{hist() - exempel}
-\protect\hypertarget{hist---exempel}{}
+\phantomsection\label{hist---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{hist}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
@@ -568,7 +558,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{bokxplot() - exempel}
-\protect\hypertarget{bokxplot---exempel}{}
+\phantomsection\label{bokxplot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{boxplot}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
@@ -579,7 +569,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{barplot() - exempel}
-\protect\hypertarget{barplot---exempel}{}
+\phantomsection\label{barplot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
@@ -591,7 +581,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{pie() - exempel}
-\protect\hypertarget{pie---exempel}{}
+\phantomsection\label{pie---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
@@ -603,7 +593,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Lågnivågrafik}
-\protect\hypertarget{luxe5gnivuxe5grafik}{}
+\phantomsection\label{luxe5gnivuxe5grafik}
 \begin{itemize}
 \tightlist
 \item
@@ -631,11 +621,17 @@ Info finns på kurshemsidan.
 \end{itemize}
 \end{frame}
 
-\hypertarget{slumptal-och-simulering}{%
-\section{Slumptal och simulering}\label{slumptal-och-simulering}}
+\begin{frame}{Demo}
+\phantomsection\label{demo}
+\begin{block}{Demo: Grafik}
+\phantomsection\label{demo-grafik}
+\end{block}
+\end{frame}
+
+\section{Slumptal och simulering}\label{slumptal-och-simulering}
 
 \begin{frame}[fragile]{Slumptal och simulering - I}
-\protect\hypertarget{slumptal-och-simulering---i}{}
+\phantomsection\label{slumptal-och-simulering---i}
 \begin{itemize}
 \tightlist
 \item
@@ -643,16 +639,16 @@ Info finns på kurshemsidan.
 \end{itemize}
 
 \begin{longtable}[]{@{}lll@{}}
-\toprule
+\toprule\noalign{}
 prefix & Beskrivning & Exempel \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{r} & simulera från fördelningen & \texttt{runif()} \\
 \texttt{d} & täthetsfunktionen (pdf) & \texttt{dunif()} \\
 \texttt{p} & kulmulativ fördelninsgfunktion (cdf) & \texttt{punif()} \\
 \texttt{q} & inversa kulmulativa fördelningsfunktionen &
 \texttt{qunif()} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{itemize}
@@ -663,7 +659,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}{Slumptal och simulering - II}
-\protect\hypertarget{slumptal-och-simulering---ii}{}
+\phantomsection\label{slumptal-och-simulering---ii}
 \begin{itemize}
 \tightlist
 \item
@@ -690,7 +686,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}[fragile]{Slumptal och simulering - Exempel}
-\protect\hypertarget{slumptal-och-simulering---exempel}{}
+\phantomsection\label{slumptal-och-simulering---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{runif}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{min =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{1}\NormalTok{)}
@@ -700,7 +696,7 @@ prefix & Beskrivning & Exempel \\
 \pause
 
 \begin{verbatim}
-## [1] -0.8404220 -0.4314460 -0.2533269
+## [1]  0.1166546 -0.1855843  0.7623537
 \end{verbatim}
 
 \pause
@@ -735,7 +731,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}[fragile]{Slumptal och simulering - Exempel}
-\protect\hypertarget{slumptal-och-simulering---exempel-1}{}
+\phantomsection\label{slumptal-och-simulering---exempel-1}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{text }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Johan"}\NormalTok{, }\StringTok{"Josef"}\NormalTok{, }\StringTok{"Rasmus"}\NormalTok{)}
@@ -765,12 +761,18 @@ prefix & Beskrivning & Exempel \\
 \end{verbatim}
 \end{frame}
 
-\hypertarget{r-markdown-knitr-och-notebooks}{%
+\begin{frame}{Demo}
+\phantomsection\label{demo-1}
+\begin{block}{Demo: Slumptal}
+\phantomsection\label{demo-slumptal}
+\end{block}
+\end{frame}
+
 \section{R-Markdown, knitr och
-Notebooks}\label{r-markdown-knitr-och-notebooks}}
+Notebooks}\label{r-markdown-knitr-och-notebooks}
 
 \begin{frame}{R-Markdown, knitr och Notebooks}
-\protect\hypertarget{r-markdown-knitr-och-notebooks-1}{}
+\phantomsection\label{r-markdown-knitr-och-notebooks-1}
 \begin{itemize}
 \tightlist
 \item
@@ -803,7 +805,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{R-Markdown}
-\protect\hypertarget{r-markdown}{}
+\phantomsection\label{r-markdown}
 \begin{itemize}
 \tightlist
 \item
@@ -840,7 +842,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{knitr}
-\protect\hypertarget{knitr}{}
+\phantomsection\label{knitr}
 \begin{itemize}
 \tightlist
 \item
@@ -857,7 +859,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{R-Studio Notebooks}
-\protect\hypertarget{r-studio-notebooks}{}
+\phantomsection\label{r-studio-notebooks}
 \begin{itemize}
 \tightlist
 \item
@@ -883,11 +885,17 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{itemize}
 \end{frame}
 
-\hypertarget{externa-data-och-pxweb}{%
-\section{Externa data och pxweb}\label{externa-data-och-pxweb}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-2}
+\begin{block}{Demo: Markdown}
+\phantomsection\label{demo-markdown}
+\end{block}
+\end{frame}
+
+\section{Externa data och pxweb}\label{externa-data-och-pxweb}
 
 \begin{frame}{Externa data}
-\protect\hypertarget{externa-data}{}
+\phantomsection\label{externa-data}
 \begin{itemize}
 \tightlist
 \item
@@ -912,7 +920,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{Ladda ner och läsa in från webben}
-\protect\hypertarget{ladda-ner-och-luxe4sa-in-fruxe5n-webben}{}
+\phantomsection\label{ladda-ner-och-luxe4sa-in-fruxe5n-webben}
 \begin{itemize}
 \tightlist
 \item
@@ -935,7 +943,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{Vanliga källor för data}
-\protect\hypertarget{vanliga-kuxe4llor-fuxf6r-data}{}
+\phantomsection\label{vanliga-kuxe4llor-fuxf6r-data}
 \begin{itemize}
 \tightlist
 \item
@@ -948,7 +956,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}{pxweb api}
-\protect\hypertarget{pxweb-api}{}
+\phantomsection\label{pxweb-api}
 \begin{itemize}
 \tightlist
 \item
@@ -977,7 +985,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \end{frame}
 
 \begin{frame}[fragile]{pxweb}
-\protect\hypertarget{pxweb}{}
+\phantomsection\label{pxweb}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"pxweb"}\NormalTok{)}
@@ -986,6 +994,13 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}}
 \NormalTok{min\_data }\OtherTok{\textless{}{-}} \FunctionTok{pxweb\_interactive}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
+
+\begin{frame}{Demo}
+\phantomsection\label{demo-3}
+\begin{block}{Demo: PXWEB}
+\phantomsection\label{demo-pxweb}
+\end{block}
 \end{frame}
 
 \end{document}

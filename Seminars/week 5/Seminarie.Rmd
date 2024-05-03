@@ -1,0 +1,42 @@
+---
+title: "Projekt"
+author: "Johan"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, echo=FALSE, message=FALSE}
+library(pxweb)
+source(file = "pxweb_data.R")
+```
+
+# Rubrik
+
+*Kursiv stil* **Fet stil**
+
+-   Lista 1
+-   Lista 2
+    -   Lista 2.1
+    -   Lista 2.2
+
+$x + y = 2$
+
+$$
+\frac{1}{n} \sum_{i=1}^{n}x_i
+$$
+
+
+
+## Mindre rubrik
+
+```{r}
+knitr::kable(head(tot_df, 10))
+```
+
+
+### Ännu mindre rubrik
