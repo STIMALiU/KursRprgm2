@@ -1,9 +1,8 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT2024"
 subtitle: "Föreläsning 6"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-02-28'
 fontsize: 11pt
 output:
   beamer_presentation:
@@ -18,8 +17,6 @@ classoption: "handout"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
-# Föreläsning 6
 
 ## Innehåll föreläsning 6
 
@@ -38,9 +35,6 @@ knitr::opts_chunk$set(echo = FALSE)
   - Endast anmälda får skriva tentan
 - Datortentan kommer att vara på plats
   - Tenta i SU-sal
-  - Testsession, 22/3 10:15-12:00 i SU-17/18
-- Komplettering labb 1-4: första tillfället samtidigt som inlämning för labb 6.
-  - Se kurshemsidan för information
 
 # Programmeringsparadigm
 
@@ -92,7 +86,7 @@ knitr::opts_chunk$set(echo = FALSE)
   - Basklasser
   - S3 (informellt): "lista med klassattribut"
   - S4 (formellt): element väljs ut med @
-  - Regerence classes
+  - Reference classes
 
 ## Generiska funktioner (S3)
 
@@ -128,7 +122,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## Datum och tid - Exempel
 
 ```{r,echo=TRUE,eval=TRUE}
-my_date <- "2022-02-28"
+my_date <- "2024-05-06"
 class(my_date)
 ```
 
@@ -154,7 +148,7 @@ Tre huvudsakliga delar:
 
 ```{r,echo=TRUE,eval=TRUE,message=FALSE}
 library(lubridate)
-idag <- ymd("2022-02-28")
+idag <- ymd("2024-05-06")
 print(idag)
 week(idag)
 idag + weeks(2)
@@ -191,7 +185,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 ## lubridate - Exempel
 
 ```{r,echo=TRUE,eval=TRUE}
-idag <- ymd("2022-02-28")
+idag <- ymd("2024-05-06")
 week(idag)
 wday(idag, label = TRUE)
 year(idag) <- 2019

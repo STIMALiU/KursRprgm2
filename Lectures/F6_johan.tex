@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -285,21 +280,26 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT2024},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT2024}
 \subtitle{Föreläsning 6}
 \author{Johan Alenlöv}
-\date{2022-02-28}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{fuxf6reluxe4sning-6}{%
-\section{Föreläsning 6}\label{fuxf6reluxe4sning-6}}
-
 \begin{frame}{Innehåll föreläsning 6}
-\protect\hypertarget{innehuxe5ll-fuxf6reluxe4sning-6}{}
+\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-6}
 \begin{itemize}
 \tightlist
 \item
@@ -321,11 +321,10 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{information}{%
-\section{Information}\label{information}}
+\section{Information}\label{information}
 
 \begin{frame}{Information}
-\protect\hypertarget{information-1}{}
+\phantomsection\label{information-1}
 \begin{itemize}
 \tightlist
 \item
@@ -343,26 +342,14 @@
   \tightlist
   \item
     Tenta i SU-sal
-  \item
-    Testsession, 22/3 10:15-12:00 i SU-17/18
-  \end{itemize}
-\item
-  Komplettering labb 1-4: första tillfället samtidigt som inlämning för
-  labb 6.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Se kurshemsidan för information
   \end{itemize}
 \end{itemize}
 \end{frame}
 
-\hypertarget{programmeringsparadigm}{%
-\section{Programmeringsparadigm}\label{programmeringsparadigm}}
+\section{Programmeringsparadigm}\label{programmeringsparadigm}
 
 \begin{frame}{Programmeringsparadigm}
-\protect\hypertarget{programmeringsparadigm-1}{}
+\phantomsection\label{programmeringsparadigm-1}
 \begin{itemize}
 \item
   Finns många olika sätt att se på \imp{hur} program ska skrivas.
@@ -382,7 +369,7 @@
 \end{frame}
 
 \begin{frame}{Funktionell programmering}
-\protect\hypertarget{funktionell-programmering}{}
+\phantomsection\label{funktionell-programmering}
 \begin{itemize}
 \tightlist
 \item
@@ -423,7 +410,7 @@
 \end{frame}
 
 \begin{frame}{Objektorientering}
-\protect\hypertarget{objektorientering}{}
+\phantomsection\label{objektorientering}
 \begin{itemize}
 \tightlist
 \item
@@ -458,7 +445,7 @@
 \end{frame}
 
 \begin{frame}{Objektorientering}
-\protect\hypertarget{objektorientering-1}{}
+\phantomsection\label{objektorientering-1}
 \begin{itemize}
 \tightlist
 \item
@@ -487,13 +474,13 @@
   \item
     S4 (formellt): element väljs ut med @
   \item
-    Regerence classes
+    Reference classes
   \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Generiska funktioner (S3)}
-\protect\hypertarget{generiska-funktioner-s3}{}
+\phantomsection\label{generiska-funktioner-s3}
 \begin{itemize}
 \tightlist
 \item
@@ -520,7 +507,7 @@
 \end{frame}
 
 \begin{frame}{Metoder}
-\protect\hypertarget{metoder}{}
+\phantomsection\label{metoder}
 \begin{itemize}
 \tightlist
 \item
@@ -544,11 +531,10 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{datum-och-tid}{%
-\section{Datum och tid}\label{datum-och-tid}}
+\section{Datum och tid}\label{datum-och-tid}
 
 \begin{frame}{Datum och tid}
-\protect\hypertarget{datum-och-tid-1}{}
+\phantomsection\label{datum-och-tid-1}
 \begin{itemize}
 \tightlist
 \item
@@ -569,10 +555,10 @@
 \end{frame}
 
 \begin{frame}[fragile]{Datum och tid - Exempel}
-\protect\hypertarget{datum-och-tid---exempel}{}
+\phantomsection\label{datum-och-tid---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{my\_date }\OtherTok{\textless{}{-}} \StringTok{"2022{-}02{-}28"}
+\NormalTok{my\_date }\OtherTok{\textless{}{-}} \StringTok{"2024{-}05{-}06"}
 \FunctionTok{class}\NormalTok{(my\_date)}
 \end{Highlighting}
 \end{Shaded}
@@ -589,7 +575,7 @@
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2022-02-28"
+## [1] "2024-05-06"
 \end{verbatim}
 
 \begin{Shaded}
@@ -604,7 +590,7 @@
 \end{frame}
 
 \begin{frame}{lubridate}
-\protect\hypertarget{lubridate}{}
+\phantomsection\label{lubridate}
 \begin{itemize}
 \tightlist
 \item
@@ -627,17 +613,17 @@ Tre huvudsakliga delar:
 \end{frame}
 
 \begin{frame}[fragile]{lubridate - Exempel}
-\protect\hypertarget{lubridate---exempel}{}
+\phantomsection\label{lubridate---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(lubridate)}
-\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}02{-}28"}\NormalTok{)}
+\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2024{-}05{-}06"}\NormalTok{)}
 \FunctionTok{print}\NormalTok{(idag)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2022-02-28"
+## [1] "2024-05-06"
 \end{verbatim}
 
 \begin{Shaded}
@@ -647,7 +633,7 @@ Tre huvudsakliga delar:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 19
 \end{verbatim}
 
 \begin{Shaded}
@@ -657,16 +643,16 @@ Tre huvudsakliga delar:
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2022-03-14"
+## [1] "2024-05-20"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{lubridate}
-\protect\hypertarget{lubridate-1}{}
+\phantomsection\label{lubridate-1}
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 Elementordning & Funktion \\
-\midrule
+\midrule\noalign{}
 \endhead
 år, månad, dag & \texttt{ymd()} \\
 år, dag, månad & \texttt{ydm()} \\
@@ -674,21 +660,21 @@ månad, dag, år & \texttt{mdy()} \\
 timme, minut & \texttt{hm()} \\
 timme, minut, sekund & \texttt{hms()} \\
 år, mån, dag, timme, min, sek & \texttt{ymd\_hms()} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 Källa: Grolemund and Wickham (2011, Table 4)
 \end{frame}
 
 \begin{frame}[fragile]{lubridate}
-\protect\hypertarget{lubridate-2}{}
+\phantomsection\label{lubridate-2}
 För att ``plocka ut'' eller ändra delar av ett datum används följande
 funktioner
 
 \begin{longtable}[]{@{}llll@{}}
-\toprule
+\toprule\noalign{}
 Datum & Funktion & Tidsdel & Funktion \\
-\midrule
+\midrule\noalign{}
 \endhead
 år & \texttt{year()} & timme & \texttt{hour()} \\
 månad & \texttt{month()} & minut & \texttt{minute()} \\
@@ -696,23 +682,23 @@ vecka & \texttt{week()} & sekund & \texttt{second()} \\
 årsdag & \texttt{yday()} & tidszon & \texttt{tz()} \\
 månadsdag & \texttt{mday()} & & \\
 veckodag & \texttt{wday()} & & \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{lubridate - Exempel}
-\protect\hypertarget{lubridate---exempel-1}{}
+\phantomsection\label{lubridate---exempel-1}
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}02{-}28"}\NormalTok{)}
+\NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2024{-}05{-}06"}\NormalTok{)}
 \FunctionTok{week}\NormalTok{(idag)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 9
+## [1] 19
 \end{verbatim}
 
 \begin{Shaded}
@@ -722,8 +708,8 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] Mån
-## Levels: Sön < Mån < Tis < Ons < Tor < Fre < Lör
+## [1] Mon
+## Levels: Sun < Mon < Tue < Wed < Thu < Fri < Sat
 \end{verbatim}
 
 \begin{Shaded}
@@ -734,12 +720,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2019-02-28"
+## [1] "2019-05-06"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{lubridate}
-\protect\hypertarget{lubridate-3}{}
+\phantomsection\label{lubridate-3}
 \begin{itemize}
 \tightlist
 \item
@@ -761,7 +747,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{instant och interval}
-\protect\hypertarget{instant-och-interval}{}
+\phantomsection\label{instant-och-interval}
 \textbf{Instant}
 
 \begin{itemize}
@@ -792,7 +778,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{instant och interval - Exempel}
-\protect\hypertarget{instant-och-interval---exempel}{}
+\phantomsection\label{instant-och-interval---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{inst\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2020{-}02{-}29"}\NormalTok{)}
@@ -803,12 +789,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2020-02-29 UTC--2022-02-28 UTC
+## [1] 2020-02-29 UTC--2024-05-03 UTC
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{duration}
-\protect\hypertarget{duration}{}
+\phantomsection\label{duration}
 \begin{itemize}
 \tightlist
 \item
@@ -837,7 +823,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{duration - Exempel}
-\protect\hypertarget{duration---exempel}{}
+\phantomsection\label{duration---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{my\_interval }\SpecialCharTok{/} \FunctionTok{ddays}\NormalTok{(}\DecValTok{30}\NormalTok{)}
@@ -845,7 +831,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 24.33333
+## [1] 50.83333
 \end{verbatim}
 
 \begin{Shaded}
@@ -855,12 +841,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "63072000s (~2 years)"
+## [1] "131760000s (~4.18 years)"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{Period}
-\protect\hypertarget{period}{}
+\phantomsection\label{period}
 \begin{itemize}
 \tightlist
 \item
@@ -889,7 +875,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{Period - Exempel}
-\protect\hypertarget{period---exempel}{}
+\phantomsection\label{period---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{months}\NormalTok{(}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{days}\NormalTok{(}\DecValTok{1}\NormalTok{)}
@@ -907,7 +893,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 6
+## [1] 12
 \end{verbatim}
 
 \begin{Shaded}
@@ -917,12 +903,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "1y 11m 30d 0H 0M 0S"
+## [1] "4y 2m 4d 0H 0M 0S"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{Att räknamed tid - Exempel}
-\protect\hypertarget{att-ruxe4knamed-tid---exempel}{}
+\phantomsection\label{att-ruxe4knamed-tid---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{course\_start }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}01{-}24"}\NormalTok{)}
@@ -955,11 +941,10 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{verbatim}
 \end{frame}
 
-\hypertarget{linjuxe4r-algebra}{%
-\section{Linjär algebra}\label{linjuxe4r-algebra}}
+\section{Linjär algebra}\label{linjuxe4r-algebra}
 
 \begin{frame}{Matriser}
-\protect\hypertarget{matriser}{}
+\phantomsection\label{matriser}
 \begin{itemize}
 \tightlist
 \item
@@ -988,7 +973,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Linjär algebra}
-\protect\hypertarget{linjuxe4r-algebra-1}{}
+\phantomsection\label{linjuxe4r-algebra-1}
 \begin{itemize}
 \tightlist
 \item
@@ -1026,7 +1011,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Linjär algebra - paketet Matrix}
-\protect\hypertarget{linjuxe4r-algebra---paketet-matrix}{}
+\phantomsection\label{linjuxe4r-algebra---paketet-matrix}
 \begin{itemize}
 \tightlist
 \item
