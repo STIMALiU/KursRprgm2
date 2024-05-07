@@ -35,6 +35,9 @@ knitr::opts_chunk$set(echo = FALSE)
   - Endast anmälda får skriva tentan
 - Datortentan kommer att vara på plats
   - Tenta i SU-sal
+  - Skriva R-kod (funktioner likt inlämningar)
+    - Lämnas in som .R fil
+  - Hjälpmedel finns på Lisam
 
 # Programmeringsparadigm
 
@@ -108,6 +111,10 @@ knitr::opts_chunk$set(echo = FALSE)
   - Defaultmetoden finns med \texttt{mean.default( )}
   - Specifik med \texttt{mean.difftime( )}
 - Metoder kan också anropas direkt som vanliga funktioner.
+
+## Demo
+
+### Demo: Objektorientering
 
 # Datum och tid
 
@@ -271,6 +278,10 @@ course_start + months(1)
 course_start + ddays(30)
 ```
 
+## Demo
+
+### Demo: Datum och Tid
+
 # Linjär algebra
 
 ## Matriser
@@ -305,3 +316,7 @@ course_start + ddays(30)
 - I **Matrix** är det skillnad på glesa och täta matriser.
 - Kolla dokumentation för mer information.
 - Rekomenderas för avancerade tillämpningar.
+
+## Demo
+
+### Demo: Linjär Algebra
