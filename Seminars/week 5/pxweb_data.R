@@ -1,3 +1,4 @@
+require(pxweb)
 # PXWEB query 
 pxweb_query_list <- 
   list("Alder"=c("tot"),
@@ -69,3 +70,8 @@ bostäder$hustyp <- NULL
 bostäder$år <- NULL
 
 tot_df <- merge(befolkning_komun, bostäder)
+
+
+tot_df$Lägenhet_per_1000 <- tot_df$`Antal lägenheter`/tot_df$Folkmängd * 1000
+
+

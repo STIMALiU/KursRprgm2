@@ -106,8 +106,8 @@ p + geom_boxplot(aes(x = feed, y = weight)) +
 ?geom_histogram
 
 ggplot(data = chickwts) +
-  aes(x = weight) +
-  geom_histogram(aes(y = ..density..)) +
+  aes(x = weight, after_stat(density)) +
+  geom_histogram() +
   geom_density()
 
 data("longley")
@@ -125,3 +125,57 @@ ggplot(data = longley, aes(Year, GNP.deflator)) +
 
 ?geom_smooth
 
+ggplot(data = Nile2, mapping = aes(x = years, y = level, colour = period)) +
+  geom_line() +
+  scale_color_manual(values = c(4,5,6,1))
+  
+ggplot(data = Nile2, mapping = aes(x = years, y = level, colour = period)) +
+  geom_line() +
+  scale_color_manual(values = c("black", "grey", "lightblue", "cyan"))
+
+ggplot(data = Nile2, mapping = aes(x = years, y = level, colour = period)) +
+  geom_line(aes(linetype = period)) +
+  scale_color_manual(values = c("black", "grey", "lightblue", "cyan"))
+
+ggplot(data = Nile2, mapping = aes(x = years, y = level, colour = period)) +
+  geom_line(aes(linetype = period)) +
+  scale_color_manual(values = c("black", "grey", "lightblue", "cyan")) +
+  scale_linetype_manual(values = c(2,2,1,2,2))
+
+ggplot(data = Nile2) +
+  aes(x = years, y = level, color = period) +
+  geom_line() +
+  scale_color_excel_new()
+
+?scale_color_manual
+
+## tot_df från pxweb_data.R
+
+ggplot(data = tot_df) +
+  aes(x = Lägenhet_per_1000, after_stat(density)) +
+  geom_histogram()
+
+mu <- mean(tot_df$Lägenhet_per_1000)
+se <- sd(tot_df$Lägenhet_per_1000)
+
+x <- seq(min(tot_df$Lägenhet_per_1000), max(tot_df$Lägenhet_per_1000), by = 1)
+y <- dnorm(x, mean = mu, sd = se)
+
+ggplot(data = tot_df) +
+  aes(x = Lägenhet_per_1000, after_stat(density)) +
+  geom_histogram() +
+  geom_line(mapping = aes(x = x, y = y, color = "red"), data = data.frame(x = x, y = y))
+
+?geom_density
+
+?lm
+
+data("trees")
+
+x <- lm(formula = Volume ~ Girth, data = trees)
+str(x)
+plot(x)
+
+qplot(x)
+
+plot(tot_df)
