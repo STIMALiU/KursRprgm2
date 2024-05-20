@@ -1,10 +1,9 @@
 ---
-title: "R-programmering VT2022"
+title: "R-programmering VT24"
 subtitle: "Föreläsning 8"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
-date: '2022-03-14'
-fontsize: 11pt
+fontsize: 10pt
 output:
   beamer_presentation:
     slide_level: 2
@@ -32,13 +31,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Tentainfo
 
-- Tentamen är **31/3 kl 8:00 -- 12:00**.
+- Tentamen är **4/6 kl 8:00 -- 12:00**.
 - Skrivplats är en SU-sal.
 - Endast anmälda studenter får skriva tentan!
 - Tentan kommer att likna de gamla tentorna som finns på kurshemsidan.
 - Hjälpmedel kommer vara ett antal "cheatsheets", de kommer finnas som pdf, ni ska **INTE** ta med några papper.
 - Inlämning är en R-fil per uppgift.
-- **testsession** 22/3 8-10 i SU-17/18.
 
 # Texthantering i R
 
@@ -73,27 +71,18 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Grundläggande strängfunktioner
 
-+---------------+---------------+------------------------+
-| `stringr`     | `base`        | Användning             |
-+===============+===============+========================+
-| `str_sub()`   | `substr`      | substring, välj ut en av |
-|               |               | en sträng (regex)      |
-+---------------+---------------+--------------------+
-| `str_c()`     | `paste()`     | Slår ihop strängar   |
-|               | `paste0()`    |                    |
-+---------------+---------------+--------------------+
-| `str_split()` | `strsplit()`  | Dela upp en sträng i flera element (regex)   |
-|               |               |                    |
-+---------------+---------------+--------------------+
-| `str_length()`| `nchar()`     | Antal tecken       |
-|               |               |                    |
-+---------------+---------------+--------------------+
-| `str_trim()`  |               | Tar bort mellanslag   |
-|               |               |                    |
-+---------------+---------------+--------------------+
-| `str_pad()`   |               | Lägger till mellanslag   |
-|               |               |                    |
-+---------------+---------------+--------------------+
+stringr | base | Användning
+--- | ----- | ---- | 
+`str_sub()` | `substr()` | substring,  välja ut en del av en sträng (regex)
+`str_c()` | `paste()`, `paste0()` | slår ihop strängelement
+`str_split()` |`strsplit()` | dela upp en sträng i flera element (regex)
+`str_length()` | `nchar()` | beräknar antalet tecken
+`str_trim()` | - | tar bort mellanslag (före/efter textelement)
+`str_pad()` | - | lägger till mellanslag (före/efter textelement)
+
+## Demo
+
+### Demo: stringr
 
 # Mönstermatchning
 
@@ -165,17 +154,18 @@ Vanliga fördefinerade klasser, (se `?regexp`)
 
 - `pattern` är ett regular expression i R
 
-+---------------------+---------------+------------------------+
-| `stringr`           | `base`        | Användning             |
-+=====================+===============+========================+
-| `str_detect()`      | `grepl()`     | Identifiera `pattern`, returnera logisk vektor |
-+---------------------+---------------+--------------------+
-| `str_locate()`      | `gregexpr()`  | Identifiera `pattern`, returnera position i texten |
-+---------------------+---------------+--------------------+
-| `str_replace()`     | `gsub()`      | Identifiera `pattern`, ersätter med ny text |
-+---------------------+---------------+--------------------+
-| `str_extract_all()` |               | Plocka ut alla strängar som uppfyller `pattern` |
-+---------------------+---------------+--------------------+
+stringr | base | Användning
+--- | ----- | ---- | 
+`str_detect()` | `grepl()` | identifierar pattern, returnerar en logisk vektor
+`str_locate()` | `gregexpr()` | identifierar pattern, returnerar positionen i texten
+`str_replace()` | `gsub()` | identifierar pattern, och ersätter detta med ny text
+`str_extract_all` | - | Plocka ut alla strängar som uppfyller `pattern`
+
+- För exempel på några av dessa funktioner från base, kolla på Roger Pengs [video](http://www.youtube.com/watch?v=q8SzNKib5-4)
+
+## Demo
+
+### Demo: Mönstermatchning
 
 # Modern databearbetning
 
@@ -248,3 +238,7 @@ funktion | beskrivning
 `right_join()` | slå ihop efter variabel, behåll obs. i högra data.frame
 `full_join()` | slå ihop efter variabel, behåll alla obs.
 `anti_join()` | slå ihop efter variabel, behåll obs. som inte finns i båda
+
+## Demo
+
+### Demo: Databehandling

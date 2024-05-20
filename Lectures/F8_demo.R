@@ -36,6 +36,7 @@ str_c(c("a","b","c"),c("d","e","f"),sep = "--")
 b<-str_c(c("a","b","c"),c("d","e","f"),sep = "+")
 b
 
+
 # kolumnnamn
 str_c("var",1:10,sep="_")
 
@@ -54,7 +55,7 @@ letters
 
 
 my_letters <- str_c(letters, collapse = "")
-#str_c(letters,"12", sep = "")
+str_c(letters,"12", sep = "")
 my_letters
 str_length(my_letters)
 str_length(letters)
@@ -114,11 +115,17 @@ text1<-readLines(
 text1
 text1[1:2]
 
-text2<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/word_data.txt",encoding = "UTF-8")
+text2<-readLines(
+  con = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/word_data.txt",
+  encoding = "UTF-8"
+)
 head(text2)
 length(text2)
 
-text3<-readLines(con = "/home/joswi05/Dropbox/Josef/732G33_VT2023/KursRprgm2/Labs/DataFiles/my_text.txt",encoding = "UTF-8")
+text3<-readLines(
+  con = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/my_text.txt",
+  encoding = "UTF-8"
+)
 text3
 
 
@@ -142,6 +149,7 @@ print(a)
 a[[1]][1]
 
 b<-str_split(string = c("hej,1hur2är3det?"), pattern = "[:digit:]")
+b
 b[[1]]
 
 # vektor av längd >1
@@ -376,6 +384,7 @@ messy
 # gather(data = messy, key = drug, value = heartrate, a:b)
 
 # new style:
+?pivot_longer
 tidy<-pivot_longer(data = messy,cols = c("a","b"),names_to="drug",values_to="heartrate")
 
 tidy
@@ -405,16 +414,16 @@ all.equal(as.data.frame(messy2),messy)
 #install.packages("nycflights13")
 library(dplyr)
 library(nycflights13)
+library(tidyverse)
 
 data(flights)
 ?flights
 flights
 class(flights)
+?select
 
 # Select: välj kolumn
 select(.data = flights, day, year, dep_delay)
-
-flights%>%select(dep_delay)%>%ggplot(aes(x=dep_delay))+geom_histogram(binwidth = 2)
 
 # med piping:
 flights %>%
@@ -430,11 +439,11 @@ arrange(flights, desc(dep_delay))
 arrange(flights, dep_delay)
 
 system.time(
-arrange(flights, dep_delay)
+  arrange(flights, dep_delay)
 )
 
 system.time(
-flights[order(flights$dep_delay, decreasing = TRUE),]
+  flights[order(flights$dep_delay, decreasing = TRUE),]
 )
 
 # Mutate: skapa nya kolumner
@@ -459,6 +468,14 @@ flights%>%group_by(month)%>%
   summarise(mean=mean(dep_delay, na.rm = TRUE),
             median=median(dep_delay, na.rm = TRUE),
             sd=sd(dep_delay, na.rm = TRUE))
+
+
+
+flights %>%
+  select(dep_delay) %>%
+  ggplot(aes(x=dep_delay)) +
+  geom_histogram(binwidth = 2)
+
 
 # Join
 # There are different joins for different purposes, see ?join

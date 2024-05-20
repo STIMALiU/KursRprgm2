@@ -3,7 +3,7 @@
 \PassOptionsToPackage{hyphens}{url}
 %
 \documentclass[
-  11pt,
+  10pt,
   ignorenonframetext,
   handout]{beamer}
 \usepackage{pgfpages}
@@ -45,16 +45,19 @@
   \frame{\subsectionpage}
 }
 \usepackage{amsmath,amssymb}
-\usepackage{lmodern}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
   \usepackage{textcomp} % provide euro and other symbols
 \else % if luatex or xetex
-  \usepackage{unicode-math}
+  \usepackage{unicode-math} % this also loads fontspec
   \defaultfontfeatures{Scale=MatchLowercase}
   \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -73,14 +76,6 @@
   \KOMAoptions{parskip=half}}
 \makeatother
 \usepackage{xcolor}
-\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
-\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
-\hypersetup{
-  pdftitle={R-programmering VT2022},
-  pdfauthor={Johan Alenlöv},
-  hidelinks,
-  pdfcreator={LaTeX via pandoc}}
-\urlstyle{same} % disable monospaced font for URLs
 \newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -93,13 +88,13 @@
 \newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
 \newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
 \newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
 \newcommand{\BuiltInTok}[1]{#1}
 \newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
 \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
@@ -107,7 +102,7 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
 \newcommand{\ExtensionTok}[1]{#1}
 \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
 \newcommand{\ImportTok}[1]{#1}
 \newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
@@ -116,7 +111,7 @@
 \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
 \newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
 \newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
 \newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
@@ -285,21 +280,28 @@
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={R-programmering VT24},
+  pdfauthor={Johan Alenlöv},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2022}
+\title{R-programmering VT24}
 \subtitle{Föreläsning 8}
 \author{Johan Alenlöv}
-\date{2022-03-14}
+\date{}
 \institute{Linköpings Universitet}
 
 \begin{document}
 \frame{\titlepage}
 
-\hypertarget{fuxf6reluxe4sning-8}{%
-\section{Föreläsning 8}\label{fuxf6reluxe4sning-8}}
+\section{Föreläsning 8}\label{fuxf6reluxe4sning-8}
 
 \begin{frame}{Innehåll föreläsning 8}
-\protect\hypertarget{innehuxe5ll-fuxf6reluxe4sning-8}{}
+\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-8}
 \begin{itemize}
 \tightlist
 \item
@@ -328,11 +330,11 @@
 \end{frame}
 
 \begin{frame}{Tentainfo}
-\protect\hypertarget{tentainfo}{}
+\phantomsection\label{tentainfo}
 \begin{itemize}
 \tightlist
 \item
-  Tentamen är \textbf{31/3 kl 8:00 -- 12:00}.
+  Tentamen är \textbf{4/6 kl 8:00 -- 12:00}.
 \item
   Skrivplats är en SU-sal.
 \item
@@ -344,16 +346,13 @@
   pdf, ni ska \textbf{INTE} ta med några papper.
 \item
   Inlämning är en R-fil per uppgift.
-\item
-  \textbf{testsession} 22/3 8-10 i SU-17/18.
 \end{itemize}
 \end{frame}
 
-\hypertarget{texthantering-i-r}{%
-\section{Texthantering i R}\label{texthantering-i-r}}
+\section{Texthantering i R}\label{texthantering-i-r}
 
 \begin{frame}{Arbeta med strängar}
-\protect\hypertarget{arbeta-med-struxe4ngar}{}
+\phantomsection\label{arbeta-med-struxe4ngar}
 \begin{itemize}
 \tightlist
 \item
@@ -384,7 +383,7 @@
 \end{frame}
 
 \begin{frame}{Arbeta med strängar - II}
-\protect\hypertarget{arbeta-med-struxe4ngar---ii}{}
+\phantomsection\label{arbeta-med-struxe4ngar---ii}
 \begin{itemize}
 \tightlist
 \item
@@ -407,11 +406,10 @@
 \end{itemize}
 \end{frame}
 
-\hypertarget{paketet-stringr}{%
-\section{Paketet stringr}\label{paketet-stringr}}
+\section{Paketet stringr}\label{paketet-stringr}
 
 \begin{frame}{Paketet stringr}
-\protect\hypertarget{paketet-stringr-1}{}
+\phantomsection\label{paketet-stringr-1}
 \begin{itemize}
 \tightlist
 \item
@@ -438,39 +436,47 @@
 \end{frame}
 
 \begin{frame}[fragile]{Grundläggande strängfunktioner}
-\protect\hypertarget{grundluxe4ggande-struxe4ngfunktioner}{}
+\phantomsection\label{grundluxe4ggande-struxe4ngfunktioner}
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3472}}@{}}
-\toprule
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4167}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-\texttt{stringr}
+stringr
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\texttt{base}
+base
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Användning
 \end{minipage} \\
-\midrule
+\midrule\noalign{}
 \endhead
-\texttt{str\_sub()} & \texttt{substr} & substring, välj ut en av en
-sträng (regex) \\
-\texttt{str\_c()} & \texttt{paste()} \texttt{paste0()} & Slår ihop
-strängar \\
-\texttt{str\_split()} & \texttt{strsplit()} & Dela upp en sträng i flera
+\texttt{str\_sub()} & \texttt{substr()} & substring, välja ut en del av
+en sträng (regex) \\
+\texttt{str\_c()} & \texttt{paste()}, \texttt{paste0()} & slår ihop
+strängelement \\
+\texttt{str\_split()} & \texttt{strsplit()} & dela upp en sträng i flera
 element (regex) \\
-\texttt{str\_length()} & \texttt{nchar()} & Antal tecken \\
-\texttt{str\_trim()} & & Tar bort mellanslag \\
-\texttt{str\_pad()} & & Lägger till mellanslag \\
-\bottomrule
+\texttt{str\_length()} & \texttt{nchar()} & beräknar antalet tecken \\
+\texttt{str\_trim()} & - & tar bort mellanslag (före/efter
+textelement) \\
+\texttt{str\_pad()} & - & lägger till mellanslag (före/efter
+textelement) \\
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
-\hypertarget{muxf6nstermatchning}{%
-\section{Mönstermatchning}\label{muxf6nstermatchning}}
+\begin{frame}{Demo}
+\phantomsection\label{demo}
+\begin{block}{Demo: stringr}
+\phantomsection\label{demo-stringr}
+\end{block}
+\end{frame}
+
+\section{Mönstermatchning}\label{muxf6nstermatchning}
 
 \begin{frame}{Regular expression (regex)}
-\protect\hypertarget{regular-expression-regex}{}
+\phantomsection\label{regular-expression-regex}
 Från Wikipedia:
 
 \begin{quote}
@@ -507,11 +513,11 @@ developed in theoretical computer science and formal language theory.
 \end{frame}
 
 \begin{frame}[fragile]{Regular expression: Metacharachters}
-\protect\hypertarget{regular-expression-metacharachters}{}
+\phantomsection\label{regular-expression-metacharachters}
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 Tecken & Betydelse \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{.} & samtliga tecken (exkl. det ``tomma'' tecknet ``\,'') \\
 \texttt{\^{}} & det ``tomma'' tecknet i början av en text \\
@@ -526,14 +532,14 @@ gånger \\
 \texttt{(...)} & Gruppering \\
 \texttt{\textbackslash{}} & Används för att ``undvika''
 metatecken/specialtecken. \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 \textbf{Obs!} I R krävs: \texttt{\textbackslash{}\textbackslash{}}
 \end{frame}
 
 \begin{frame}[fragile]{Regular expression: teckenklass}
-\protect\hypertarget{regular-expression-teckenklass}{}
+\phantomsection\label{regular-expression-teckenklass}
 \begin{itemize}
 \tightlist
 \item
@@ -546,22 +552,22 @@ metatecken/specialtecken. \\
 \end{itemize}
 
 \begin{longtable}[]{@{}lll@{}}
-\toprule
+\toprule\noalign{}
 Tecken & Betydelse & Exempel \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{-} & tecken & A-Z a-z 0-9 \\
 \texttt{\^{}} & ICKE & \texttt{\textbackslash{}\^{}0-9} \\
 \texttt{\textbackslash{}} & specialtecken &
 \texttt{\textbackslash{}t\textbackslash{}n} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 
 \textbf{Obs!} I R krävs: \texttt{\textbackslash{}\textbackslash{}}
 \end{frame}
 
 \begin{frame}[fragile]{Regular expression: teckenklass - II}
-\protect\hypertarget{regular-expression-teckenklass---ii}{}
+\phantomsection\label{regular-expression-teckenklass---ii}
 Vanliga fördefinerade klasser, (se \texttt{?regexp})
 
 \begin{itemize}
@@ -583,7 +589,7 @@ Vanliga fördefinerade klasser, (se \texttt{?regexp})
 \end{frame}
 
 \begin{frame}{Lära sig regular expression}
-\protect\hypertarget{luxe4ra-sig-regular-expression}{}
+\phantomsection\label{luxe4ra-sig-regular-expression}
 \begin{itemize}
 \tightlist
 \item
@@ -610,7 +616,7 @@ Vanliga fördefinerade klasser, (se \texttt{?regexp})
 \end{frame}
 
 \begin{frame}[fragile]{Mönstermatchning i R}
-\protect\hypertarget{muxf6nstermatchning-i-r}{}
+\phantomsection\label{muxf6nstermatchning-i-r}
 \begin{itemize}
 \tightlist
 \item
@@ -618,36 +624,49 @@ Vanliga fördefinerade klasser, (se \texttt{?regexp})
 \end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3056}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3472}}@{}}
-\toprule
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4167}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
-\texttt{stringr}
+stringr
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\texttt{base}
+base
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Användning
 \end{minipage} \\
-\midrule
+\midrule\noalign{}
 \endhead
-\texttt{str\_detect()} & \texttt{grepl()} & Identifiera
-\texttt{pattern}, returnera logisk vektor \\
-\texttt{str\_locate()} & \texttt{gregexpr()} & Identifiera
-\texttt{pattern}, returnera position i texten \\
-\texttt{str\_replace()} & \texttt{gsub()} & Identifiera
-\texttt{pattern}, ersätter med ny text \\
-\texttt{str\_extract\_all()} & & Plocka ut alla strängar som uppfyller
+\texttt{str\_detect()} & \texttt{grepl()} & identifierar pattern,
+returnerar en logisk vektor \\
+\texttt{str\_locate()} & \texttt{gregexpr()} & identifierar pattern,
+returnerar positionen i texten \\
+\texttt{str\_replace()} & \texttt{gsub()} & identifierar pattern, och
+ersätter detta med ny text \\
+\texttt{str\_extract\_all} & - & Plocka ut alla strängar som uppfyller
 \texttt{pattern} \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
+
+\begin{itemize}
+\tightlist
+\item
+  För exempel på några av dessa funktioner från base, kolla på Roger
+  Pengs \href{http://www.youtube.com/watch?v=q8SzNKib5-4}{video}
+\end{itemize}
 \end{frame}
 
-\hypertarget{modern-databearbetning}{%
-\section{Modern databearbetning}\label{modern-databearbetning}}
+\begin{frame}{Demo}
+\phantomsection\label{demo-1}
+\begin{block}{Demo: Mönstermatchning}
+\phantomsection\label{demo-muxf6nstermatchning}
+\end{block}
+\end{frame}
+
+\section{Modern databearbetning}\label{modern-databearbetning}
 
 \begin{frame}{Varför databeartbetning}
-\protect\hypertarget{varfuxf6r-databeartbetning}{}
+\phantomsection\label{varfuxf6r-databeartbetning}
 \begin{itemize}
 \tightlist
 \item
@@ -664,7 +683,7 @@ Användning
 \end{frame}
 
 \begin{frame}[fragile]{piping}
-\protect\hypertarget{piping}{}
+\phantomsection\label{piping}
 Piping görs med \texttt{\%\textgreater{}\%}
 
 \begin{Shaded}
@@ -686,7 +705,7 @@ Piping görs med \texttt{\%\textgreater{}\%}
 \end{frame}
 
 \begin{frame}[fragile]{tidyr: Tidy data}
-\protect\hypertarget{tidyr-tidy-data}{}
+\phantomsection\label{tidyr-tidy-data}
 \begin{itemize}
 \tightlist
 \item
@@ -711,7 +730,7 @@ Piping görs med \texttt{\%\textgreater{}\%}
 \end{frame}
 
 \begin{frame}[fragile]{dplyr}
-\protect\hypertarget{dplyr}{}
+\phantomsection\label{dplyr}
 \begin{itemize}
 \tightlist
 \item
@@ -728,11 +747,11 @@ Piping görs med \texttt{\%\textgreater{}\%}
 \end{frame}
 
 \begin{frame}[fragile]{dplyr verb}
-\protect\hypertarget{dplyr-verb}{}
+\phantomsection\label{dplyr-verb}
 \begin{longtable}[]{@{}ll@{}}
-\toprule
+\toprule\noalign{}
 verb & beskrivning \\
-\midrule
+\midrule\noalign{}
 \endhead
 \texttt{select()} & välj kolumn \\
 \texttt{filter()} & filtrera rader \\
@@ -743,12 +762,12 @@ verb & beskrivning \\
 \texttt{join} & kombindera olika dataset \\
 \texttt{bind\_rows} & kombindera dataset ``på höjden'' \\
 \texttt{bind\_cols} & kombindera dataset ``på bredden'' \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
 \begin{frame}[fragile]{dplyr joins}
-\protect\hypertarget{dplyr-joins}{}
+\phantomsection\label{dplyr-joins}
 \begin{itemize}
 \tightlist
 \item
@@ -757,10 +776,16 @@ verb & beskrivning \\
   Inom databser talar man om ``joins''
 \end{itemize}
 
-\begin{longtable}[]{@{}ll@{}}
-\toprule
-funktion & beskrivning \\
-\midrule
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6250}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+funktion
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+beskrivning
+\end{minipage} \\
+\midrule\noalign{}
 \endhead
 \texttt{left\_join()} & slå ihop efter variabel, behåll obs. i vänstra
 data.frame \\
@@ -769,8 +794,15 @@ data.frame \\
 \texttt{full\_join()} & slå ihop efter variabel, behåll alla obs. \\
 \texttt{anti\_join()} & slå ihop efter variabel, behåll obs. som inte
 finns i båda \\
-\bottomrule
+\bottomrule\noalign{}
 \end{longtable}
+\end{frame}
+
+\begin{frame}{Demo}
+\phantomsection\label{demo-2}
+\begin{block}{Demo: Databehandling}
+\phantomsection\label{demo-databehandling}
+\end{block}
 \end{frame}
 
 \end{document}
