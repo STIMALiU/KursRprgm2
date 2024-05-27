@@ -18,44 +18,15 @@ Grupp<-""
 
 
 
-# Uppgift 1
+# Uppgift 1 ----
 #' Title
 #'
 #' @description
 #'
-#' @param seats 
-#' @param whiteboards 
+#' @param text 
 #'
 #' @return
-classroom <- function(seats, whiteboards){
-  # Skriv din funktion här
-}
-
-
-#' Title
-#'
-#' @description
-#'
-#' @param x 
-#'
-#' @return
-print.classroom <- function(x) {
-  # Skriv din funktion här
-}
-
-# Uppgift 2 ----
-
-#' Title
-#' 
-#' @description
-#'
-#' @param lasttime 
-#' @param holiday 
-#' @param sex 
-#' @param type_of_travel 
-#'
-#' @return
-give_blood <- function(lasttime, holiday, sex, type_of_travel){
+wordcount <- function(text){
   # Skriv din funktion här
 }
 

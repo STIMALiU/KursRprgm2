@@ -2109,7 +2109,7 @@ G<-matrix(rnorm(n = 20),2,10)
 
 \begin_layout Plain Layout
 
-H<-A+1e-6 
+H<-G+1e-6 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2133,7 +2133,7 @@ all(abs(G-H)<=1e-6)
 
 \begin_layout Plain Layout
 
-H<-A+1e-7 
+H<-G+1e-7 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2152,7 +2152,7 @@ all(abs(G-H)<=1e-7)
 
 \begin_layout Plain Layout
 
-H<-A+1e-8 
+H<-G+1e-8 
 \end_layout
 
 \begin_layout Plain Layout
