@@ -127,6 +127,12 @@ m
 z
 res
 
+f <- function(z){
+  
+  return(z_squared)
+}
+
+
 #-----------------------------------------------------------------------------------------------------------------------
 # markmyassignment 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -146,7 +152,7 @@ set_assignment(assignment_path)
 show_assignment()
 ## Uppgift:
 # Mandatory: Assign you name to my_name 
-my_name <- "Johan Alenlöv"
+my_name <- "Josef Wilzén"
 
 ## task1: Create a vector with the values pi and e
 pi
