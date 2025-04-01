@@ -15,7 +15,7 @@
 
 # Koden skrivs i console eller i ett script (här tex)
 
-# hitta flikarna Enviroment, History, Files och Help
+# hitta flikarna Environment, History, Files och Help
 
 
 #-----------------------------------------------------------------------------------------------------------------------
