@@ -157,7 +157,7 @@ options(digits = 5)
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "IntroDel1Vt24.lyx"
+filename "IntroDel1Vt25.lyx"
 
 \end_inset
 
@@ -708,7 +708,7 @@ sign(0)
 
 \begin_layout Plain Layout
 
-# 1! = 1, 2! = 1*2, 3! = 1*2*3, 4! = 1*2*3*4, osv
+# 1! = 1, 2! = 1*2, 3! = 1*2*3, 4! = 1*2*3*4, 5! =1*2*3*4*5 osv
 \end_layout
 
 \begin_layout Plain Layout
@@ -748,6 +748,16 @@ cos(pi)
 \begin_layout Plain Layout
 
 tan(pi)
+\end_layout
+
+\begin_layout Plain Layout
+
+cos(pi/4)
+\end_layout
+
+\begin_layout Plain Layout
+
+# Notera dessa funktioner använder radianer: https://sv.wikipedia.org/wiki/Radian
 \end_layout
 
 \begin_layout Plain Layout
