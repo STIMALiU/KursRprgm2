@@ -983,7 +983,7 @@ Lägg till beräkningen av
 \begin_layout Enumerate
 Pröva att spara ned din fil som 
 \family typewriter
-myFirstRScript.R
+my_first_R_script.R
 \family default
  [
 \series bold
@@ -1096,12 +1096,12 @@ status open
 
 \begin_layout Plain Layout
 
-minNum <- 2022
+min_num <- 2022
 \end_layout
 
 \begin_layout Plain Layout
 
-minText <- "Mer R till alla"
+min_text <- "Mer R till alla"
 \end_layout
 
 \begin_layout Plain Layout
@@ -1144,12 +1144,12 @@ status open
 
 \begin_layout Plain Layout
 
-2022 -> minNum
+2022 -> min_num
 \end_layout
 
 \begin_layout Plain Layout
 
-"Mer R till alla" -> minText
+"Mer R till alla" -> min_text
 \end_layout
 
 \begin_layout Plain Layout
@@ -1209,12 +1209,12 @@ status open
 
 \begin_layout Plain Layout
 
-minNum
+min_num
 \end_layout
 
 \begin_layout Plain Layout
 
-minText
+min_text
 \end_layout
 
 \begin_layout Plain Layout
@@ -3290,7 +3290,7 @@ Skapa en sekvens av värden
 \family default
 , 
 \family typewriter
-seq(from=1,to=10,by=0.5)
+seq(from=-2,to=10,by=0.5)
 \end_layout
 
 \end_inset
@@ -3327,17 +3327,17 @@ status open
 
 \begin_layout Plain Layout
 
-aVec <- c(-3, 4, 1, 1, 2)
+a_vec <- c(-3, 4, 1, 1, 2)
 \end_layout
 
 \begin_layout Plain Layout
 
-aVec
+a_vec
 \end_layout
 
 \begin_layout Plain Layout
 
-bVec <- c(2, 4, 4, 1)
+b_vec <- c(2, 4, 4, 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3370,7 +3370,7 @@ status open
 
 \begin_layout Plain Layout
 
-ny <- c(aVec, NA, bVec, c(1, 2, 3))
+ny <- c(a_vec, NA, b_vec, c(1, 2, 3))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3432,7 +3432,7 @@ d <- 10:1
 
 \begin_layout Plain Layout
 
-e<-rep(2:3,each=3)
+e <-rep(2:3,each=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3604,32 +3604,32 @@ status open
 
 \begin_layout Plain Layout
 
-myVec1 <- 1:5
+my_vec1 <- 1:5
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec2 <- rep(x=10, times=9)
+my_vec2 <- rep(x=10, times=9)
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec3 <- seq(from=0, to=1, by=1/8)
+my_vec3 <- seq(from=0, to=1, by=1/8)
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec4 <- c(-2, 1, 22, 0, 1)
+my_vec4 <- c(-2, 1, 22, 0, 1)
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec5 <- 10:1
+my_vec5 <- 10:1
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec6 <- rep(10,5)
+my_vec6 <- rep(10,5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3660,37 +3660,37 @@ status open
 
 \begin_layout Plain Layout
 
-myVec2 + myVec3 
+my_vec2 + my_vec3 
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec1 - myVec4 
+my_vec1 - my_vec4 
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec2 * myVec3
+my_vec2 * my_vec3
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec1 / myVec4 
+my_vec1 / my_vec4 
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec2 ^ myVec3
+my_vec2 ^ my_vec3
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec6%/%myVec1
+my_vec6%/%my_vec1
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec6%%myVec1
+my_vec6%%my_vec1
 \end_layout
 
 \begin_layout Plain Layout
@@ -3720,17 +3720,17 @@ status open
 
 \begin_layout Plain Layout
 
-abs(myVec1)
+abs(my_vec1)
 \end_layout
 
 \begin_layout Plain Layout
 
-log(myVec2, base=10)
+log(my_vec2, base=10)
 \end_layout
 
 \begin_layout Plain Layout
 
-sin(myVec3)
+sin(my_vec3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3764,17 +3764,17 @@ status open
 
 \begin_layout Plain Layout
 
-myVec1 * myVec5
+my_vec1 * my_vec5
 \end_layout
 
 \begin_layout Plain Layout
 
-myVec2 + myVec1
+my_vec2 + my_vec1
 \end_layout
 
 \begin_layout Plain Layout
 
-3 * myVec3
+3 * my_vec3
 \end_layout
 
 \begin_layout Plain Layout
@@ -3862,27 +3862,27 @@ status open
 
 \begin_layout Plain Layout
 
-myText1 <- c("foo", "bar")
+my_text1 <- c("foo", "bar")
 \end_layout
 
 \begin_layout Plain Layout
 
-myText2 <- c("use", "R", "FTW")
+my_text2 <- c("use", "R", "FTW")
 \end_layout
 
 \begin_layout Plain Layout
 
-myText3 <- "Hello World!"
+my_text3 <- "Hello World!"
 \end_layout
 
 \begin_layout Plain Layout
 
-paste(myText1, myText2)
+paste(my_text1, my_text2)
 \end_layout
 
 \begin_layout Plain Layout
 
-paste(myText1, myText2, sep=" - ")
+paste(my_text1, my_text2, sep=" - ")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3916,7 +3916,7 @@ status open
 
 \begin_layout Plain Layout
 
-paste(myText2, collapse=".")
+paste(my_text2, collapse=".")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3950,7 +3950,7 @@ status open
 
 \begin_layout Plain Layout
 
-substr(x=myText3, start=1, stop=5)
+substr(x=my_text3, start=1, stop=5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4443,12 +4443,12 @@ status open
 
 \begin_layout Plain Layout
 
-myText <- c(rep("Gris", times=10) ,rep("Lamm", times=3))
+my_text <- c(rep("Gris", times=10) ,rep("Lamm", times=3))
 \end_layout
 
 \begin_layout Plain Layout
 
-table(myText)
+table(my_text)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4458,7 +4458,7 @@ table(myText)
 
 \begin_layout Plain Layout
 
-table(myText)/sum(table(myText))
+table(my_text)/sum(table(my_text))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4575,7 +4575,7 @@ print(my_mean2)
 \begin_layout Enumerate
 Skapa vektorn 
 \family typewriter
-newVec
+new_vec
 \family default
  på följande sätt:
 \begin_inset Newline newline
@@ -4592,7 +4592,7 @@ status open
 
 \begin_layout Plain Layout
 
-newVec <-c(myx + myw, myz, myy)
+new_vec <-c(myx + myw, myz, myy)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4617,7 +4617,7 @@ Använd R för att ta reda på följande.
 \begin_layout Enumerate
 Hur många element har vektorn 
 \family typewriter
-newVec
+new_vec
 \family default
 .
  
@@ -4626,7 +4626,7 @@ newVec
 \begin_layout Enumerate
 Vad är medelvärdet för vektorn 
 \family typewriter
-newVec
+new_vec
 \family default
 .
  
@@ -4635,7 +4635,7 @@ newVec
 \begin_layout Enumerate
 Vad är maximum och minimum för 
 \family typewriter
-newVec
+new_vec
 \family default
 ?
 \end_layout
@@ -4643,7 +4643,7 @@ newVec
 \begin_layout Enumerate
 Vilket är det näst största värdet för 
 \family typewriter
-newVec
+new_vec
 \family default
 ?
 \end_layout
@@ -4651,7 +4651,7 @@ newVec
 \begin_layout Enumerate
 Hur många unika värden har 
 \family typewriter
-newVec
+new_vec
 \family default
 ? 
 \family typewriter
@@ -4683,7 +4683,7 @@ slicing
 \begin_inset Quotes eld
 \end_inset
 
-hakparanteser
+hakparenteser
 \begin_inset Quotes erd
 \end_inset
 
@@ -4699,7 +4699,7 @@ I R är index heltal som går fr.o.m 1 t.o.m vektorns längd.
 \begin_layout Enumerate
 Skapa 
 \family typewriter
-minVec
+min_vec
 \family default
  enligt nedan::
 \begin_inset Newline newline
@@ -4716,7 +4716,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec <- c(0.5,3,6,12,21,45,10)
+min_vec <- c(0.5,3,6,12,21,45,10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4732,7 +4732,7 @@ minVec <- c(0.5,3,6,12,21,45,10)
 \begin_layout Enumerate
 Plocka ut följande värden från 
 \family typewriter
-minVec
+min_vec
 \family default
  med 
 \family typewriter
@@ -4762,7 +4762,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[1]
+min_vec[1]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4791,12 +4791,12 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[1:2]
+min_vec[1:2]
 \end_layout
 
 \begin_layout Plain Layout
 
-minVec[c(1,2)]
+min_vec[c(1,2)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4830,12 +4830,12 @@ status open
 
 \begin_layout Plain Layout
 
-print(length(minVec))
+print(length(min_vec))
 \end_layout
 
 \begin_layout Plain Layout
 
-minVec[length(minVec)]
+min_vec[length(min_vec)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4865,12 +4865,12 @@ status open
 
 \begin_layout Plain Layout
 
-len <- length(minVec)
+len <- length(min_vec)
 \end_layout
 
 \begin_layout Plain Layout
 
-minVec[(len-2):len]
+min_vec[(len-2):len]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4899,7 +4899,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[-1]
+min_vec[-1]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4928,7 +4928,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[-c(1,3)]
+min_vec[-c(1,3)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4958,7 +4958,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[rep(3, times=3)]
+min_vec[rep(3, times=3)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4996,7 +4996,7 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[order(minVec, decreasing=TRUE)]
+min_vec[order(min_vec, decreasing=TRUE)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -5027,12 +5027,12 @@ status open
 
 \begin_layout Plain Layout
 
-minVec[2] <- 200
+min_vec[2] <- 200
 \end_layout
 
 \begin_layout Plain Layout
 
-minVec[4:5] <- c(0, -4)
+min_vec[4:5] <- c(0, -4)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5166,7 +5166,7 @@ Logiska vektorer och indexering
 Logiska vektorer påminner mycket om övriga vektorer.
  Dock finns en skillnad och det är att logiska vektorer kan användas för
  att indexera andra vektorer (och dataset).
- Precis som tidigare använder vi hakparanteser för indexering.
+ Precis som tidigare använder vi hakparenteser för indexering.
  
 \end_layout
 
@@ -5463,7 +5463,7 @@ räkna
 \end_inset
 
  med logiska värden.
- Precis som i vanlig matematik kan vi också använda paranteser och som för
+ Precis som i vanlig matematik kan vi också använda parenteser och som för
  andra vektorer sker operatorerna elementvis.
  De viktigaste operatorerna är:
 \begin_inset Separator latexpar
@@ -6039,15 +6039,15 @@ num %in% c(1,2,9,10)
 \begin_layout Enumerate
 Skapa vektorerna 
 \family typewriter
-minText
+min_text
 \family default
 , 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  och 
 \family typewriter
-minBoolean
+min_boolean
 \family default
 .
  
@@ -6083,17 +6083,17 @@ b <- c(TRUE, FALSE, TRUE, FALSE)
 
 \begin_layout Plain Layout
 
-minText <- c(rep("John",5),rep("Frida",5),rep("Lo",5))
+min_text <- c(rep("John",5),rep("Frida",5),rep("Lo",5))
 \end_layout
 
 \begin_layout Plain Layout
 
-minaNummer <- seq(from=1, to=11, length=15)
+mina_nummer <- seq(from=1, to=11, length=15)
 \end_layout
 
 \begin_layout Plain Layout
 
-minBoolean <- c(a,b,a,b)[-1]
+min_boolean <- c(a,b,a,b)[-1]
 \end_layout
 
 \begin_layout Plain Layout
@@ -6118,7 +6118,7 @@ Skapa logiska vektorer som indikerar när:
 \begin_layout Enumerate
 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är större än 3.
  
@@ -6127,7 +6127,7 @@ minaNummer
 
 Indexera 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  med denna logiska vektor.
 \end_layout
@@ -6135,7 +6135,7 @@ minaNummer
 \begin_layout Enumerate
 
 \family typewriter
-minText
+min_text
 \family default
  är inte John.
  
@@ -6144,7 +6144,7 @@ minText
 
 Indexera 
 \family typewriter
-minText
+min_text
 \family default
  med denna logiska vektor.
 \end_layout
@@ -6152,7 +6152,7 @@ minText
 \begin_layout Enumerate
 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är inte 6.
  
@@ -6161,7 +6161,7 @@ minaNummer
 
 Indexera 
 \family typewriter
-minText
+min_text
 \family default
  med denna logiska vektor.
 \end_layout
@@ -6180,7 +6180,7 @@ Relationsoperatorerna kan kombineras med logiska operatorer.
 \begin_layout Enumerate
 
 \family typewriter
-minText
+min_text
 \family default
  är inte John 
 \series bold
@@ -6188,7 +6188,7 @@ och
 \series default
  
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  har inte värdet 8.
  
@@ -6201,7 +6201,7 @@ minaText
 \family default
  och 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  med denna logiska vektor.
  
@@ -6210,7 +6210,7 @@ minaNummer
 \begin_layout Enumerate
 
 \family typewriter
-minText
+min_text
 \family default
  är Lo 
 \series bold
@@ -6218,7 +6218,7 @@ eller
 \series default
  
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är större än 5.
  
@@ -6227,7 +6227,7 @@ minaNummer
 
 Indexera 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  med denna logiska vektor.
 \end_layout
@@ -6235,7 +6235,7 @@ minaNummer
 \begin_layout Enumerate
 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är mindre än 3 
 \series bold
@@ -6243,7 +6243,7 @@ eller
 \series default
  
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är större än 8.
  
@@ -6496,7 +6496,7 @@ TRUE
 \family default
  när 
 \family typewriter
-minText
+min_text
 \family default
  
 \series bold
@@ -6512,7 +6512,7 @@ och
 \series default
  
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  är 
 \series bold
@@ -6520,7 +6520,7 @@ större
 \series default
  än medianen av 
 \family typewriter
-minaNummer
+mina_nummer
 \family default
  
 \series bold
@@ -6528,7 +6528,7 @@ och
 \series default
  
 \family typewriter
-minBoolean
+min_boolean
 \family default
  är sann.
  
@@ -6550,7 +6550,7 @@ status open
 
 \begin_layout Plain Layout
 
-minText != "Frida" & minaNummer > median(minaNummer) & minBoolean
+min_text != "Frida" & mina_nummer > median(mina_nummer) & min_boolean
 \end_layout
 
 \begin_layout Plain Layout
@@ -6631,7 +6631,7 @@ En funktion består av:
 Ett funktionsnamn (ex.
  
 \family typewriter
-minFunktion
+min_funktion
 \family default
 ) som 
 \begin_inset Quotes eld
@@ -6717,7 +6717,7 @@ status open
 
 \begin_layout Plain Layout
 
-minFunktion <- function(x,y){
+min_funktion <- function(x,y){
 \end_layout
 
 \begin_layout Plain Layout
@@ -6836,7 +6836,7 @@ y <- 5
 
 \begin_layout Plain Layout
 
-minFunktion <- function(x,y){
+min_funktion <- function(x,y){
 \end_layout
 
 \begin_layout Plain Layout
@@ -6920,7 +6920,7 @@ status open
 
 \begin_layout Plain Layout
 
-minFunktion(x = 3, y = 5)
+min_funktion(x = 3, y = 5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -6946,7 +6946,7 @@ Nu har vi en bra grund för att själva implementera funktioner i R.
 Skapa en ny R-fil med namnet 
 \family typewriter
 \color black
-minaFunktioner.R
+mina_funktioner.R
 \family default
 \color inherit
 .
@@ -6958,7 +6958,7 @@ Skriv in funktionen ovan i R.
  Denna kan beskrivas matematiskt som:
 \begin_inset Formula 
 \[
-\mbox{minFunktion}(x,y)=x+y
+\mbox{min\_funktion}(x,y)=x+y
 \]
 
 \end_inset
@@ -6999,7 +6999,7 @@ status open
 
 \begin_layout Plain Layout
 
-minFunktion(3,5)
+min_funktion(3,5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -7029,7 +7029,7 @@ status open
 
 \begin_layout Plain Layout
 
-nyFun <- function(){
+ny_fun <- function(){
 \end_layout
 
 \begin_layout Plain Layout
@@ -7058,8 +7058,8 @@ nyFun <- function(){
 \end_layout
 
 \begin_layout Enumerate
-För att anropa en funktion måste vi använda paranteser.
- Använder vi inte paranteser så studerar vi hur funktionen ser ut.
+För att anropa en funktion måste vi använda parenteser.
+ Använder vi inte parenteser så studerar vi hur funktionen ser ut.
 \begin_inset Newline newline
 \end_inset
 
@@ -7074,7 +7074,7 @@ status open
 
 \begin_layout Plain Layout
 
-nyFun
+ny_fun
 \end_layout
 
 \begin_layout Plain Layout
@@ -7206,17 +7206,17 @@ g <- function(x){
 
 \begin_layout Plain Layout
 
-meanValue <- mean(x)
+mean_value <- mean(x)
 \end_layout
 
 \begin_layout Plain Layout
 
-medianValue <- median(x)
+median_value <- median(x)
 \end_layout
 
 \begin_layout Plain Layout
 
-res <- list(medel = meanValue, median = medianValue)
+res <- list(medel = mean_value, median = median_value)
 \end_layout
 
 \begin_layout Plain Layout
@@ -7247,7 +7247,7 @@ return(res)
 Spara ned dina funktioner i filen 
 \family typewriter
 \color black
-minaFunktioner.R
+mina_funktioner.R
 \family default
 \color inherit
 .
@@ -7341,12 +7341,12 @@ status open
 
 \begin_layout Plain Layout
 
-source(file="minRfil.R")
+source(file="min_R_fil.R")
 \end_layout
 
 \begin_layout Plain Layout
 
-source(file="minRfil.R",echo=TRUE)
+source(file="min_R_fil.R",echo=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
