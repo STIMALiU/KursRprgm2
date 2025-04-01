@@ -96,9 +96,12 @@ my_val
 my_val/2
 
 my_val <- f(z = 40)
+my_val
 my_val/2
 
 f(z = my_val)
+
+f(z = my_val/5)
 
 # kolla vad som finns inuti:
 f
@@ -136,7 +139,7 @@ f <- function(z){
 #-----------------------------------------------------------------------------------------------------------------------
 # markmyassignment 
 #-----------------------------------------------------------------------------------------------------------------------
-
+install.packages("devtools")
 ## Installation
 install.packages("markmyassignment")
 
@@ -162,7 +165,7 @@ task1 <- c(pi, exp(1)) # Correct
 
 mark_my_assignment("task1")
 
-task1 <- c(3.1, exp(1)) # Wrong
+task1 <- c(3.1415, exp(1)) # Wrong
 
 mark_my_assignment("task1")
 
@@ -197,9 +200,9 @@ mark_my_file(mark_file = "/home/joswi05/Desktop/test.R")
 # Logik 
 #-----------------------------------------------------------------------------------------------------------------------
 
-minVektor <- c(12, 1, 2, 7)
-minBool <- c(TRUE, FALSE, FALSE, TRUE)
-minVektor[minBool]
+min_vektor <- c(12, 1, 2, 7)
+min_bool <- c(TRUE, FALSE, FALSE, TRUE)
+min_vektor[min_bool]
 
 
 3>4
@@ -218,50 +221,18 @@ x|y
 x <- 1:10
 y <- x != 5
 z <- x > 2
-x[y & !z]
+
+y
+z
+
+y & z
+y & !z
+
+
 x[y & z]
+x[y & !z]
+
 
 index<-y & z
 x[index]
 
-
-#-----------------------------------------------------------------------------------------------------------------------
-# markmyassignment: lab 1 ex
-#-----------------------------------------------------------------------------------------------------------------------
-
-
-#-----------------------------------------------------------------------------------------------------------------------
-# Datorlabb 1 
-
-# Uppgift 1: orth_scalar_prod
-
-# mall: https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R
-
-rm(list=ls()) # rensar den globala miljön
-
-library(markmyassignment)
-
-# ställer in vilken labb jag ska rätta:
-lab_path <-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Tests/d1.yml"
-
-set_assignment(lab_path)
-
-# namn och liu-ID
-Namn <- "Josef Wilzén"
-LiuId <- "joswi123"
-
-# min funktion (ej korrekt):
-orth_scalar_prod <- function(a,b){
-  
-  y<-a[1]^2 + b[2]^2
-  
-  return(y)
-}
-
-
-# rättar en uppgift
-mark_my_assignment(tasks = "orth_scalar_prod")
-
-
-# rättar alla uppgifter
-mark_my_assignment()
