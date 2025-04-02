@@ -36,12 +36,20 @@ my_vector[1]
 num_vec <- c(1, 1, 2, 2)
 my_vector[num_vec]
 
+my_vector[c(1,2,1)]
+
 length(my_variable)
 length(num_vec)
 
 
 my_vector[length(my_vector)] # sista elementet
 my_vector[2]
+
+my_vector<-c(2,4,3,25,7,65,3,323,23,21,21,2)
+my_vector[length(my_vector)] # sista elementet
+
+-3:4
+10:-2
 
 my_num <- 1:10
 my_num
@@ -60,11 +68,33 @@ y<-5
 typeof(x)
 typeof(y)
 
+x<-"abc"
+x
 print("hej!")
+
+
+is.character(x)
+is.integer(x)
+
+x<-20
+y<-4
+x^y
+
+x<-1:3
+y<-c(2,3,6)
+
+x^y
 
 #-----------------------------------------------------------------------------------------------------------------------
 # functions 
 #-----------------------------------------------------------------------------------------------------------------------
+
+area<-function(x){
+  area<-x^2
+  return(area)
+}
+
+area(x = 5)
 
 # Funktionens innehåll: 
 # Skriv en funktion, f, som tar ett värde med argumentet z, och kvadrerar det:
@@ -77,6 +107,7 @@ f <- function(z){
 # - Börja med kod som fungerar (men med funktionens argument)
 z <- 3
 z_squared <- z^2
+z_squared <- z*z
 
 # - Lyft in koden i funktionen
 f <- function(z){
@@ -87,6 +118,8 @@ f <- function(z){
 
 # - Pröva att funktionen fungerar som den ska
 f(3)
+f(z = 3)
+
 f(12)
 f(z = 5)
 
@@ -130,10 +163,6 @@ m
 z
 res
 
-f <- function(z){
-  
-  return(z_squared)
-}
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -170,7 +199,8 @@ task1 <- c(3, exp(1)) # Wrong
 mark_my_assignment("task1")
 
 
-## task2: Create a function that returns the sum of the first and last element
+## task2: Create a function that returns the sum of the first and 
+# last element
 x<-c(2,4,1)
 length(x)
 x<-1:10
@@ -226,6 +256,7 @@ y
 z
 
 y & z
+
 y & !z
 
 
@@ -235,4 +266,10 @@ x[y & !z]
 
 index<-y & z
 x[index]
+
+
+
+1:5 %in% 1
+
+1:5 %in% c(2,1,5)
 
