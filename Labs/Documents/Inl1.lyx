@@ -435,6 +435,10 @@ ten.
 Se till att ni klarar alla tester i markmyassignment
 \end_layout
 
+\begin_layout Itemize
+Redovisa era lösningar (se ovan).
+\end_layout
+
 \end_deeper
 \begin_layout Section
 
@@ -980,7 +984,9 @@ Raw
 \series bold
 Obs!
 \series default
- Detta är var mina filer ligger, du behöver ange dina egen sökvägar):
+ Nedan visas sökvägar till filer som ligger öppet tillgängliga på github.
+ Funktionen ska fungera även för lokalt nedladdade filer om rätt sökväg
+ är angiven.):
 \end_layout
 
 \begin_layout Standard
@@ -995,6 +1001,10 @@ status open
 \begin_layout Plain Layout
 
 apple_path <- 
+\end_layout
+
+\begin_layout Plain Layout
+
 \begin_inset Quotes srd
 \end_inset
 
@@ -1009,6 +1019,10 @@ t.csv
 \begin_layout Plain Layout
 
 google_path <- 
+\end_layout
+
+\begin_layout Plain Layout
+
 \begin_inset Quotes srd
 \end_inset
 

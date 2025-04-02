@@ -85,48 +85,86 @@ Inlämning
 \end_layout
 
 \begin_layout Standard
-Utgå från laborationsmallen, som går att ladda ned 
-\begin_inset CommandInset href
-LatexCommand href
-name "här"
-target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/Templates/lab_template.R"
-literal "false"
-
-\end_inset
-
-, när du gör inlämningsuppgifterna.
- Spara denna som labb[no]_[liuID].R , t.ex.
- labb1_josad732.R om det är laboration 1.
- Ta inte med hakparenteser i filnamnet.
- Denna fil ska 
+Utgå från laborationsmallen när du gör inlämningsuppgifterna.
+ Det finns en mall för varje inlämningsuppgift, se nedan under Inlämningsuppgift
+er.
+ Filen ni lämnar in ska 
 \series bold
 inte
 \series default
  innehålla något annat än de aktuella funktionerna, namn- och ID-variabler
  och ev.
  kommentarer.
- Alltså 
-\series bold
-inga
-\series default
- andra variabler, funktionsanrop för att testa inlämningsuppgifterna eller
- anrop till markmyassignment-funktioner.
- Precis innan inlämning på Lisam, döp om er R-fil till en 
-\series bold
-.txt
-\series default
- fil, detta görs för att kunna skicka in filen till Ouriginal för plagieringskon
-troll.
- Exempel: 
+\end_layout
+
+\begin_layout Standard
+För att lämna in ska ni gör följande:
+\end_layout
+
+\begin_layout Itemize
+Lös uppgifterna enligt beskrivningarna i instruktionen.
+\end_layout
+
+\begin_layout Itemize
+Se till att ni kan återskapa de testfall som visas i uppgiften.
+\end_layout
+
+\begin_layout Itemize
+Se till att era funktioner klara alla tester i 
 \family typewriter
-labb1_josad732.R
+markmyassignment
 \family default
- blir då 
+.
+ Det rekommenderas att använda 
 \family typewriter
-labb1_josad732.txt 
+markmyassignment
 \family default
-Ladda upp den filen (som slutar på .txt) på Lisam under rätt inlämning innan
- deadline.
+ först när er funktion är hyfsat klar.
+\end_layout
+
+\begin_layout Itemize
+På en av de schemalagda datorlaborationerna: kontakta en lärare/assistent
+ och be om att få redovisa er inlämning.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Redovisning:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Rensa den globala miljön (Environment i Rstudio) så att bara de variabler
+ och funktioner som krävs för uppgiften finns kvar.
+ Tips: Funktionen 
+\family typewriter
+rm()
+\family default
+ tar bort objekt/variabler
+\end_layout
+
+\begin_layout Itemize
+Kör markmyassignment och visa att testerna går igenom.
+\end_layout
+
+\begin_layout Itemize
+Förklara kort hur ni har löst uppgifterna och svara på eventuella frågor
+ från assistenten.
+\end_layout
+
+\begin_layout Itemize
+Om assistenten säger att ni är godkända, lämna då in er lösning på Inlämningar
+ i kursrummet på Lisam.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\series bold
+Deadline
+\series default
+ finns under Inlämningar i kursrummet på Lisam.
 \end_layout
 
 \begin_layout Subsection*
