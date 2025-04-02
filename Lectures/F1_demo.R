@@ -139,7 +139,7 @@ f <- function(z){
 #-----------------------------------------------------------------------------------------------------------------------
 # markmyassignment 
 #-----------------------------------------------------------------------------------------------------------------------
-install.packages("devtools")
+
 ## Installation
 install.packages("markmyassignment")
 
@@ -165,7 +165,7 @@ task1 <- c(pi, exp(1)) # Correct
 
 mark_my_assignment("task1")
 
-task1 <- c(3.1415, exp(1)) # Wrong
+task1 <- c(3, exp(1)) # Wrong
 
 mark_my_assignment("task1")
 
