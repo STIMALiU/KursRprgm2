@@ -21,6 +21,7 @@ is.vector(A1)
 is.matrix(FALSE)
 is.vector(FALSE)
 
+A1
 # ändra namn:
 colnames(A1)
 colnames(A1)<-c("x","y","z")
@@ -31,17 +32,20 @@ rownames(A1)<-c("rad1","rad2","rad3")
 A1
 
 # indexering:
-A1[1,]
+A1[1,] # första raden
 
-test1<-A1[1,]
+test1<-A1[1,] # spara första raden i en variabel
 test1
 is.vector(test1)
+
 A1[1,,drop=FALSE]
 test2<-A1[,1,drop=FALSE]
 test1
 is.matrix(test2)
+is.vector(test2)
 is.matrix(test1)
 
+# välja ut olika delar av matrisen:
 A1
 A1[1,3]
 A1[1:2,2:3]
@@ -97,9 +101,13 @@ dim(A1)[1]
 
 dim_val[1]
 dim_val[2]
+A1
+
+
+c(dim_val[1],dim_val[2])
 A1[dim_val[1],dim_val[2]]
 
-
+c(dim(A1)[1],dim(A1)[2])
 A1[dim(A1)[1],dim(A1)[2]]
 
 
@@ -124,11 +132,16 @@ is.list(A1)
 
 A3<-matrix(1:8,2,4)
 A4<-matrix(10,2,4) 
+A3
+A4
 
 A3+A4
 A3/A4
 
 log(A3)
+
+
+
 
 # -------------------------------------------------------------------------------------------
 # Data.frame
