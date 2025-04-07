@@ -17,7 +17,7 @@ A1<-matrix(data = c(1,42,323,11,434,54,34,23,2),nrow = 3,ncol = 3)
 A1
 
 is.matrix(A1)
-
+is.vector(A1)
 is.matrix(FALSE)
 is.vector(FALSE)
 

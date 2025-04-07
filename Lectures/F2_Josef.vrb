@@ -1,0 +1,46 @@
+\frametitle{Indexering i listor}
+\phantomsection\label{indexering-i-listor}
+\begin{itemize}
+\tightlist
+\item
+  Indexering görs med hakparanteser
+
+  \begin{itemize}
+  \tightlist
+  \item
+    För att komma åt ett eller flera objekt: \texttt{[ ]}
+  \item
+    För att komma åt innehållet i ett objekt: \texttt{[[ ]]}
+  \end{itemize}
+\item
+  Om namngivna objekt:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Med \$ tecken: \texttt{minLista\$namn}
+  \item
+    Med namnet: \texttt{minList[["namn"]]}
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{minLista[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $namn
+## [1] "Ash Ketchum"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{minLista[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Ash Ketchum"
+\end{verbatim}
