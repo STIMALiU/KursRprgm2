@@ -39,8 +39,9 @@ test1
 is.vector(test1)
 
 A1[1,,drop=FALSE]
-test2<-A1[,1,drop=FALSE]
+test2<-A1[1,,drop=FALSE]
 test1
+test2
 is.matrix(test2)
 is.vector(test2)
 is.matrix(test1)
@@ -51,11 +52,12 @@ A1[1,3]
 A1[1:2,2:3]
 A1[c(3,1),c(1,3)]
 
+A1[c(3,3),c(2,1)]
 
 
 A<-matrix(data = c(1,9,6,2),2,2)
 A
-B<-matrix(data = c(TRUE,FALSE,TRUE,FALSE),2,2)
+B<-matrix(data = c(TRUE,TRUE,TRUE,FALSE),2,2)
 B
 A[B]
 
@@ -72,6 +74,7 @@ nrow(A1)
 
 dim(a2)
 dim(a1)
+length(a1)
 is.vector(a1)
 is.matrix(a2)
 
@@ -126,6 +129,7 @@ A2[4,2]
 
 str(A1)
 str(A2)
+str(a1)
 is.matrix(A1)
 is.list(A1)
 
@@ -343,7 +347,7 @@ aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 ?getwd
 getwd()
 dir()
-# /home/joswi05/Dropbox/Josef/732G33_VT2020/KursRprgm/Labs/DataFiles
+# /home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2025/KursRprgm2/Labs/DataFiles
 setwd(dir = "/home/joswi05/Desktop/temp/")
 
 # github: 
@@ -360,7 +364,8 @@ x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",")
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
 
-read.table("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt",header = TRUE,sep = ";",dec = ",")
+read.table("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt",
+           header = TRUE,sep = ";",dec = ",")
 
 str(x1)
 typeof(x1[,1])
