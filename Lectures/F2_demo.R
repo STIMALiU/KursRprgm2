@@ -156,7 +156,7 @@ data()
 
 data("airquality")
 ?airquality
-head(airquality,3)
+head(airquality,n = 3)
 tail(airquality)
 dim(airquality)
 
@@ -176,6 +176,8 @@ colnames(iris)
 
 iris$Sepal.Length
 
+mean(iris$Sepal.Length)
+
 iris$Sepal.Length[1:5]
 iris$Species
 
@@ -186,8 +188,9 @@ iris$Species
 text_vect<-rep(c("a","a","b","c"),each=2)
 is.character(text_vect)
 factor_vect<-factor(x = text_vect)
+factor_vect
 levels(factor_vect)
-
+is.factor(factor_vect)
 
 
 
@@ -265,6 +268,7 @@ typeof(x[1])
 
 x[[1]]
 typeof(x[[1]])
+
 x[1:2]
 typeof(x[1:2])
 x2<-x[1:2]
@@ -329,6 +333,8 @@ data(iris)
 ?iris
 iris[1:10,]
 aggregate(x = iris$Sepal.Length,by=list(iris$Species),FUN = mean)
+
+
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = mean)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = min)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
@@ -357,10 +363,15 @@ setwd(dir = "/home/joswi05/Desktop/temp/")
 # input:
 # -------------------------------------------------------------------------------------------
 
+# exempelfilen ligger här:
+# "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt"
+
 path<-file.choose()
 print(path)
 
 x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",")
+
+# lägg filen data1.txt i ditt working directory:
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
 
