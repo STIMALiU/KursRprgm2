@@ -350,10 +350,13 @@ aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 # -------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------
 
+# /home/joswi05/Desktop/temp
+
 ?getwd
 getwd()
 dir()
 # /home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2025/KursRprgm2/Labs/DataFiles
+
 setwd(dir = "/home/joswi05/Desktop/temp/")
 
 # github: 
@@ -369,14 +372,33 @@ setwd(dir = "/home/joswi05/Desktop/temp/")
 path<-file.choose()
 print(path)
 
-x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",")
+
+path<-"/home/joswi05/Desktop/temp/data1.txt"
+x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",",)
+
+x1<-read.table(file = "/home/joswi05/Desktop/temp/data1.txt",header = TRUE,sep = ";",dec = ",",)
+
+x1
+
+mean(x1$a3)
+sd(x1$a3)
 
 # lägg filen data1.txt i ditt working directory:
+
+setwd("/home/joswi05/Desktop/temp/")
+dir()
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
 
-read.table("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt",
+x2<-read.table(file = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt",
            header = TRUE,sep = ";",dec = ",")
+
+
+x3<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ".")
+x3<-read.table(file = "data1.txt",header = TRUE,sep = "-",dec = ".")
+x3$a3
+
+str(x3)
 
 str(x1)
 typeof(x1[,1])
@@ -400,11 +422,16 @@ new_data<-readRDS(file = "testdata.rds")
 # output:
 # -------------------------------------------------------------------------------------------
 data(iris)
-write.table(x = iris[1:20,],file = "myIris1.txt")
-write.table(x = iris[1:20,],file = "myIris2.txt",sep = "\t",dec = ",",row.names = FALSE)
-write.csv(x = iris[1:20,],file = "myIris3.csv",row.names=FALSE)
+head(iris)
 
 myIris<-iris[15:30,2:3]
+
+write.table(x = myIris,file = "myIris1.txt")
+
+write.table(x = myIris,file = "myIris2.txt",sep = "\t",dec = ",",row.names = FALSE)
+write.csv(x = myIris,file = "myIris3.csv",row.names=FALSE)
+
+
 
 save(myIris,file = "myIris.RData")
 saveRDS(object = myIris,file = "myIris.rds")
