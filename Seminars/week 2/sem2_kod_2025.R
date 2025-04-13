@@ -1,31 +1,43 @@
 
-
+# ------------------------------------------------------------------------------
 # Data.frame
 
 # dataset -> ofta bra med data.frame -> skapad för att hantera tabelldata
 # variabler (=kolumnerna) - kan vara av olika typ
 
+# ------------------------------------------------------------------------------
 # Lista
 
 # samla ihop data/datastrukturer som hör ihop
 # ofta användbart i funktioner
 
+# ------------------------------------------------------------------------------
 # Matris
 
 # bra vid linjär algebra!
 
 
-
+# ------------------------------------------------------------------------------
 # Trigonometric Functions
 # använder radianer
 sin(pi)
 cos(pi/2)
+# varför blir det inte exakt noll? (när det borde bli det)
+# -> det blir små avrundningsfel när datorn räknar
 
 
+# Vill vi testa om resultat (tex från en beräkning) är noll, så är det oftast
+# en dålig idé att göra:
 sin(pi)==0
+
+# Det är bättre att jämföra med ett litet tal, om värdet är närmare noll än 
+# än det "lilla talet", då anser vi att det är noll
+# hur litet tal "som räknas som noll" beror på problemet som man jobbar med 
 sin(pi)<0.00000001
 
+# tol = toleransen: tal mindre än tol anser vi vara noll
 tol<-0.0001
+# vi använder abs() -> vi behöver inte ta hänsyn till små negativa tal separat
 abs(sin(pi))<tol
 
 
