@@ -10,10 +10,11 @@
 
 # använda if-sats
 
-if(TRUE) print("Ja!")
+
+if(TRUE) print("Ja!")  # en rad kod
 if(FALSE) print("Ja!")
 
-if(TRUE){
+if(TRUE){      # flera rader kod: {}
   print("Ja!")
   print("nej")
 }
@@ -76,6 +77,8 @@ b<-FALSE
 c<-TRUE
 d<-FALSE
 
+# vad betyder?
+(a&!b)&c 
 
 if( (a&!b)&c ){
   print("test")
