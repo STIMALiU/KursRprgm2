@@ -132,6 +132,9 @@ a
 vector <- -2:2
 vector
 
+
+# i är vårt loop-index/loop-variabel här
+
 for(i in vector){
   print(i)
 }
@@ -145,12 +148,23 @@ for(i in vector){
 for(i in vector){
   print(my_sign( x = -10 ))
 }
+# fallet ovan kan vi använda om vi vill göra exakt samma sak många gånger
+
 
 # beror inte av loop-index "i"
 for(i in 1:10){
-  print("hello")
+  print("hello world!")
 }
+# fallet ovan kan vi använda om vi vill göra exakt samma sak många gånger
 
+
+
+
+
+
+# vi kan ange loop-vektorn på olika sätt
+
+# som en redan sparad vektor:
 vector
 for(i in vector){
   print(my_sign( x = i ))
@@ -158,30 +172,37 @@ for(i in vector){
 
 
 loop_vekt<-1:10
-
 for(i in loop_vekt){
   print(i)
 }
 
+# skapa den direkt i loopen
 for(i in 1:10){
   print(i)
 }
 
 
+# Uppgift skriv en loop som kan summera tal i vektor
+# vi vill spara resultatet av våra beräkningar
+loop_vekt<-1:10
+# res är vår resultatvektor -> här sparar vi resultat från beräkningar
+res<-rep(0,length(loop_vekt))  # vi skapar den som en "tom" vektor (bara nollor)
+res
 
-res<-rep(0,length(loop_vekt))
-x <- 0
-for(i in loop_vekt){
-  x <- x + i
-  res[i] <- x
-  print(x)
+x <- 0 # räknevariabel, börjar på 0
+for(i in loop_vekt){  # loopar över loop_vekt
+  x <- x + i   # lägg till i till nuvarande värde på x och spara över gamla x
+  res[i] <- x  # spara nya värdet på x i res på index-plats i
+  print(x)     # skriver ut nuvarande värde på x
 }
 
 res
 sum(loop_vekt)
+?cumsum # kumulativa summan 
 cumsum(loop_vekt)
 
 
+# fler sätt att skapa loop-vektor:
 vec <- c("I", "love", "R", "and", "Python")
 seq_along(vec)
 
@@ -195,6 +216,8 @@ for(i in seq_along(vec)){
 sum_0
 
 
+# kombinera villkorsats med for-loop
+# Vad gör j %% 2 == 0 nedan?
 
 for(j in 1:5){
   print(j)
@@ -242,18 +265,73 @@ print(paste("rad:", j, "kolumn:", i, "värde=",A[j,i]))
 # multiplicera heltal = multiplikationstabellen
 
 mult_mat <- matrix(0, nrow = 10, ncol = 10)
-mult_mat
+mult_mat # mult_mat är en "tom" matris som vi ska fylla med värden
 for ( i in 1:10 ) {
   for ( j in 1:10 ) {
     mult_mat[i,j] <- i*j
   }
 }
 mult_mat
+colnames(mult_mat)<- paste0("*",1:10)
+rownames(mult_mat)<- paste0("*",1:10)
+mult_mat
+
 # Sätt alla under diagonalen till 0:
 index<-lower.tri(mult_mat,diag = FALSE)
 mult_mat[index]<-0
 mult_mat
 
+
+
+
+
+
+
+
+# ------------------------------------------------------------------------------
+# while-loopar
+# ------------------------------------------------------------------------------
+
+
+# vi måste ha ett logiskt utryck i början av en while-loop
+# -> detta utryck måste gå att utvärdera innan loopen startar!
+
+y <- 10
+x <- 5
+while(x > 0){
+  print(y/x)
+  x <- x-1
+}
+x
+
+# Varning för eviga loopar!
+x <- 1
+while(x <= 5){
+  print(y/x)
+  x<-x-1
+}
+# för att avbryta 
+# i console-fönster -> tryck på röda stopknappen i kanten 
+
+
+
+# iris data:
+dim(iris)
+head(iris,n = 3)
+
+cond <- TRUE
+index <- 1
+while(cond){
+  temp<-iris[,index]
+  if(is.numeric(temp)){
+    print(paste("median =",median(temp)))
+    
+  } else{
+    print("not numeric!")
+    cond <- FALSE
+  }
+  index <- index+1
+}
 
 
 # ------------------------------------------------------------------------------
@@ -265,6 +343,7 @@ mult_mat
 
 
 for(i in 1:12){
+  # vad gör if här?
   if(i %% 3 != 0){
     next
   }
@@ -290,51 +369,15 @@ for(i in 1:12){
 }
 
 
-
-
-# ------------------------------------------------------------------------------
-# while-loopar
-# ------------------------------------------------------------------------------
-
-y <- 10
-x <- 5
-while(x > 0){
-  print(y/x)
-  x <- x-1
-}
-x
-
-# Varning för eviga loopar!
-x <- 1
-while(x <= 5){
-  print(y/x)
-  x<-x-1
-}
-
-
-# iris data:
-dim(iris)
-head(iris,n = 3)
-
-cond <- TRUE
-index <- 1
-while(cond){
-  temp<-iris[,index]
-  if(is.numeric(temp)){
-    print(median(temp))
-    
-  } else{
-    print("not numeric!")
-    cond <- FALSE
-  }
-  index <- index+1
-}
-
-
-
 # ------------------------------------------------------------------------------
 # Demo debugging
 # ------------------------------------------------------------------------------
+
+
+# Öppna (   {   "
+# -> blir problem -> tryck Esc för att avbryta
+# (
+# {
 
 
 my_mean<-function(x){
