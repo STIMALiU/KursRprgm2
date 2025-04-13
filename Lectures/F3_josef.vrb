@@ -1,0 +1,22 @@
+\frametitle{Varningsmeddelanden - Exempel}
+\phantomsection\label{varningsmeddelanden---exempel}
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ ( chr }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{) ) \{}
+  \FunctionTok{print}\NormalTok{(chr)}
+  \FunctionTok{warning}\NormalTok{( }\FunctionTok{paste}\NormalTok{(}\StringTok{"Farligt värde"}\NormalTok{,chr) )}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\pause
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"a"}
+\StringTok{"b"}
+\NormalTok{Warning messages}\SpecialCharTok{:}
+\DecValTok{1}\SpecialCharTok{:}\NormalTok{ Farligt värde a }
+\DecValTok{2}\SpecialCharTok{:}\NormalTok{ Farligt värde b }
+\end{Highlighting}
+\end{Shaded}
