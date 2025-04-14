@@ -135,7 +135,6 @@ vector
 
 
 # i är vårt loop-index/loop-variabel här
-
 for(i in vector){
   print(i)
 }
@@ -252,6 +251,7 @@ for ( i in 1:2 ) {
   }
 }
 
+dim(A)
 # över kolumner först och rader sen
 for ( i in 1:2 ) {
   for ( j in 1:2 ) {
@@ -263,8 +263,8 @@ j<-2
 i<-1
 print(paste("rad:", j, "kolumn:", i, "värde=",A[j,i]))
 
-# multiplicera heltal = multiplikationstabellen
 
+# multiplicera heltal = multiplikationstabellen
 mult_mat <- matrix(0, nrow = 10, ncol = 10)
 mult_mat # mult_mat är en "tom" matris som vi ska fylla med värden
 for ( i in 1:10 ) {
@@ -333,6 +333,8 @@ while(cond){
   }
   index <- index+1
 }
+
+
 
 
 # ------------------------------------------------------------------------------
@@ -444,6 +446,7 @@ my_mean(x = 1:8)
 # https://sv.wikipedia.org/wiki/Standardavvikelse#Diskret_slumpvariabel
 #-------------------------------------------------------------------------------
 
+x<-1:12
 n <-length(x)
 
 my_sd<-function(x){
@@ -461,7 +464,7 @@ my_sd<-function(x){
 }
 
 
-
+my_sd(my_sd)
 
 
 #-------------------------------------------------------------------------------

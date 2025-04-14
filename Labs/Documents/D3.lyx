@@ -236,7 +236,11 @@ TRUE
 \family typewriter
 else
 \family default
- för de fall då uttrycket i if är falskt (
+ för de fall då uttrycket i 
+\family typewriter
+if
+\family default
+ är falskt (
 \family typewriter
 FALSE
 \family default
@@ -1108,12 +1112,12 @@ status open
 
 \begin_layout Plain Layout
 
-myList <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
+my_list <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
 \end_layout
 
 \begin_layout Plain Layout
 
-for (element in myList){
+for (element in my_list){
 \end_layout
 
 \begin_layout Plain Layout
@@ -1861,7 +1865,7 @@ status open
 
 \begin_layout Plain Layout
 
-myList <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
+my_list <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1870,7 +1874,7 @@ myList <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
 
 \begin_layout Plain Layout
 
-for (element in myList){
+for (element in my_list){
 \end_layout
 
 \begin_layout Plain Layout
