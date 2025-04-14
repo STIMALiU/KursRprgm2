@@ -364,11 +364,11 @@ for(i in 1:12){
 
 # vi testar att avbryta loopen och generera ett fel när ett visst villkor är uppfyllt
 for(i in 1:12){
-  cat("Deta händer före if-sats:", i, "\n")
+  cat("Deta händer före if-sats, i =", i, "\n")
   if(i%%3 == 0){
     stop("avbryt!")
   }
-  cat("Deta händer efter if-sats:", i, "\n")
+  cat("Deta händer efter if-sats, i =", i, "\n")
 }
 
 
@@ -410,6 +410,7 @@ my_mean<-function(x){
   return(y)
 }
 my_mean(x = 1:8)
+my_mean(x = c(2.1,5.56,7.9,0.32))
 my_mean(x=c(TRUE,FALSE,FALSE))
 my_mean(x=c("a","j"))
 
