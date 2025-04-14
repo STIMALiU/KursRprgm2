@@ -78,7 +78,8 @@ c<-TRUE
 d<-FALSE
 
 # vad betyder?
-(a&!b)&c 
+(a&!b)&c
+
 
 if( (a&!b)&c ){
   print("test")
@@ -90,7 +91,7 @@ if( (a&!b)&c ){
 ?sign
 sign(x = 0)
 sign(x = -399800)
-sign(x = 32)
+sign(x = 3276)
 
 sign(20)
 sign(-32)
