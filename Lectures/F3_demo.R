@@ -435,6 +435,41 @@ my_mean<-function(x){
 }
 my_mean(x = 1:8)
 
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+# Beräkna standardavvikelse för ett stickprov
+# funktionen mean() är inte tillåten
+# kontrollera att x är numerisk innan beräkningar
+# https://sv.wikipedia.org/wiki/Standardavvikelse#Diskret_slumpvariabel
+#-------------------------------------------------------------------------------
+
+n <-length(x)
+
+my_sd<-function(x){
+  
+  
+  x_sum < - sum(x)
+  
+  x_diff_sq<-(x-x_sum)^2
+  
+  var<-sum(x_diff_sq)/(n-1)
+  
+  sd_val<-sqrt(var)
+  
+  list(mean=x_sum,sd=var,n=n)
+}
+
+
+
+
+
+#-------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------
+
+
+
+
+
 
 h<-function(x){
   x_mean<-mean(x)
