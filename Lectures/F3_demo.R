@@ -312,7 +312,7 @@ while(x <= 5){
 }
 # för att avbryta 
 # i console-fönster -> tryck på röda stopknappen i kanten 
-
+# alt: i menyerna -> tryck Session -> Interrupt R
 
 
 # iris data:
@@ -342,6 +342,8 @@ while(cond){
 ?break # out of inner loop
 
 
+# vi testar att hoppa över alla iterationer i loopen där loop-index (i)
+# inte är jämt delbart med 3
 for(i in 1:12){
   # vad gör if här?
   if(i %% 3 != 0){
@@ -351,6 +353,7 @@ for(i in 1:12){
 }
 
 
+# vi testar att avbryta loopen när ett visst villkor är uppfyllt
 for(i in 1:12){
   cat("Detta händer före if-sats:", i, "\n")
   if(i %% 3 == 0){
@@ -359,7 +362,7 @@ for(i in 1:12){
   cat("Detta händer efter if-sats:", i, "\n")
 }
 
-
+# vi testar att avbryta loopen och generera ett fel när ett visst villkor är uppfyllt
 for(i in 1:12){
   cat("Deta händer före if-sats:", i, "\n")
   if(i%%3 == 0){
