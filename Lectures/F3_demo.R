@@ -431,24 +431,36 @@ my_mean(x = 1:8)
 my_mean<-function(x){
   print(typeof(x))
   val1<-mean(x)
-  browser()
+  #browser()
   val2<-var(x)
   y<-list(mean=val1,var=val2)
   return(y)
 }
 my_mean(x = 1:8)
 
+
+
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 # Beräkna standardavvikelse för ett stickprov
 # funktionen mean() är inte tillåten
 # kontrollera att x är numerisk innan beräkningar
+# formel finns här:
 # https://sv.wikipedia.org/wiki/Standardavvikelse#Diskret_slumpvariabel
+# 
+# funktionen ska skapa en lista med beräknat medelvärde, standardavvikelse och
+# antal element i x och sen returnera den listan.
+#-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+
+
+#-------------------------------------------------------------------------------
+# funktionen nedan innehåller buggar -> försök att rätta funktionen så att
+# den fungerar korrekt! (längre ner finns en funktion som är delvis rättad)
+#-------------------------------------------------------------------------------
 x<-1:12
 n <-length(x)
-
 my_sd<-function(x){
   
   x_sum < - sum(x)
@@ -461,11 +473,38 @@ my_sd<-function(x){
   
   list(mean=x_sum,sd=var,n=n)
 }
+#-------------------------------------------------------------------------------
+
+my_sd(x = 1:5)
+debug(my_sd)
+my_sd(x = 1:5)
+undebug(my_sd)
+
+
+#-------------------------------------------------------------------------------
+# rättad funktion (nästan)
+#-------------------------------------------------------------------------------
+my_sd<-function(x){
+  
+  n<-length(x)
+  x_sum <- sum(x)
+  x_mean<-sum(x)/n
+  x_diff_sq<-(x-x_mean)^2
+  
+  var<-sum(x_diff_sq)/n
+  
+  sd_val<-sqrt(var)
+  
+  list(mean=x_sum,sd=var,n=n)
+}
+
 debug(my_sd)
 
 my_sd(x = 1:5)
 
+
 undebug(my_sd)
+
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
