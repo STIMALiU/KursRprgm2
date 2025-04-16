@@ -451,72 +451,22 @@ n <-length(x)
 
 my_sd<-function(x){
   
-  
   x_sum < - sum(x)
   
   x_diff_sq<-(x-x_sum)^2
   
-  var<-sum(x_diff_sq)/(n-1)
+  var<-sum(x_diff_sq)/n
   
-  sd_val<-sqrt(var)
+  sd_val<-sqrt(-var)
   
   list(mean=x_sum,sd=var,n=n)
 }
+debug(my_sd)
 
+my_sd(x = 1:5)
 
-my_sd(my_sd)
-
+undebug(my_sd)
 
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
-
-
-
-
-
-
-h<-function(x){
-  x_mean<-mean(x)
-  x_sum<-sum(x)
-  print(x_mean)
-  print(x_sum)
-  x2<-x_mean^2
-  z<-5
-  x3<-log(x2+10)
-  y<-x3<-z
-  return(y)
-}
-
-h(1:4)
-
-my_val<-h(2:5)
-my_val
-my_val<-h(1:340)
-my_val
-
-h<-function(x){
-  x_mean<-mean(x)
-  x_sum<-sum(x)
-  print(x_mean)
-  print(x_sum)
-  browser()
-  x2<-x^2
-  z<-5
-  x3<-exp(x2)
-  y<-x3<-z
-  return(y)
-}
-
-
-my_val<-h(1:4)
-my_val<-h(2:5)
-my_val
-
-
-
-
-
-
-
-
 
