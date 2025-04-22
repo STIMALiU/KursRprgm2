@@ -1,5 +1,5 @@
 ---
-title: "R-programmering VT2024"
+title: "R-programmering VT2025"
 subtitle: "Föreläsning 4"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
@@ -20,68 +20,13 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Föreläsning 4:
 
-
-- Sammanfattning Föreläsning 3
-- Inför del 2 av kursen
 - Mer om funktioner
 - Globala och lokala miljöer i R
 - Bra och effektiv kod
 - R-paket
 - Dokumentation av kod
 - *apply-funktioner
-
-
-# Sammanfattning föreläsning 3
-
-## If - else if - else
-
-- Används för att testa påstående och köra kod beroende på svaret.
-- Flera if-satser mot if - else och if - else if - else satser:
-  - Använd flera if-satser vid oberoende frågor
-  - Använd if - else och nästla om frågorna beror på svaret av förra
-  - Använd if - else if - else om det finns mer än 2 möjliga utfall
-
-## For loopar
-
-- Används för att loopa (köra samma kod flera gånger) när vi vet hur många iterationer som behövs.
-- Loopar över vektorer / listor
-- Kan nästla loopar, innersta loopen kommer jobba "snabbast"
-
-## While loopar
-
-- Används för att loopa när vi inte vet hur många iterationer som behövs.
-- Ett villkor behövs som testas vid början av varje iteration
-  - Om sant så kör vi en iteration till.
-  - Om falskt så avbryts loopen.
-- Finns risk för oändliga loopar.
-
-## Loopkontroll
-
-- Händer ofta att vi vill avbryta loopar i förtid eller hoppa över iterationer.
-- break() avbryter den innersta loopen.
-- next() hoppar direkt till nästa iteration.
-- stop() avbryter alla loopar (och funktioner) och genererar ett felmeddelande.
-
-## Debugging
-
-- Använd print() och cat() för att skriva ut variabler när funktionen kör.
-  - Skriv ut vad en variabel är.
-  - Skriv ett meddelande om man kommer in i en if-sats.
-- Använd debug() eller browser() för att komma in i debugg-läge.
-  - Stega igenom funktionen rad för rad.
-  - Kolla värden på variabler.
-  - Testa uttryck.
-
-# Inför del 2 av kursen
-
-## Inför del 2 ava kursen
-
-- Under del 2 av kursen görs labbarna i **par**
-  - De som läser om kursen gör labbarna med andra som läser om kursen eller ensamma.
-- Ni bildar grupper själva.
-  - Anmäl er till grupper via Lisam
-  - Finns ett dokument på Lisam under Samarbetsytan om man vill hitta en gruppkamrat.
-  
+ 
 # Mer om funktioner
 
 ## Funktioner - repetition

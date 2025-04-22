@@ -50,3 +50,10 @@ F*-figure
 *figure*
 *.Rapp.*
 *.log
+*.aux
+*.fdb_latexmk
+*.fls
+*.nav
+*.snm
+*.toc
+*.vrb

@@ -1,19 +1,17 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   11pt,
   ignorenonframetext,
 ]{beamer}
+\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
+% remove section numbering
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -22,16 +20,19 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,7 +45,6 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -75,8 +75,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -127,7 +125,6 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
 
 %%% USEFUL PACKAGES
@@ -277,19 +274,16 @@
 \newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
 \newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT2024},
+  pdftitle={R-programmering VT2025},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2024}
+\title{R-programmering VT2025}
 \subtitle{Föreläsning 4}
 \author{Johan Alenlöv}
 \date{}
@@ -303,10 +297,6 @@
 \begin{itemize}
 \tightlist
 \item
-  Sammanfattning Föreläsning 3
-\item
-  Inför del 2 av kursen
-\item
   Mer om funktioner
 \item
   Globala och lokala miljöer i R
@@ -318,142 +308,6 @@
   Dokumentation av kod
 \item
   *apply-funktioner
-\end{itemize}
-\end{frame}
-
-\section{Sammanfattning föreläsning
-3}\label{sammanfattning-fuxf6reluxe4sning-3}
-
-\begin{frame}{If - else if - else}
-\phantomsection\label{if---else-if---else}
-\begin{itemize}
-\tightlist
-\item
-  Används för att testa påstående och köra kod beroende på svaret.
-\item
-  Flera if-satser mot if - else och if - else if - else satser:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Använd flera if-satser vid oberoende frågor
-  \item
-    Använd if - else och nästla om frågorna beror på svaret av förra
-  \item
-    Använd if - else if - else om det finns mer än 2 möjliga utfall
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{For loopar}
-\phantomsection\label{for-loopar}
-\begin{itemize}
-\tightlist
-\item
-  Används för att loopa (köra samma kod flera gånger) när vi vet hur
-  många iterationer som behövs.
-\item
-  Loopar över vektorer / listor
-\item
-  Kan nästla loopar, innersta loopen kommer jobba ``snabbast''
-\end{itemize}
-\end{frame}
-
-\begin{frame}{While loopar}
-\phantomsection\label{while-loopar}
-\begin{itemize}
-\tightlist
-\item
-  Används för att loopa när vi inte vet hur många iterationer som
-  behövs.
-\item
-  Ett villkor behövs som testas vid början av varje iteration
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Om sant så kör vi en iteration till.
-  \item
-    Om falskt så avbryts loopen.
-  \end{itemize}
-\item
-  Finns risk för oändliga loopar.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Loopkontroll}
-\phantomsection\label{loopkontroll}
-\begin{itemize}
-\tightlist
-\item
-  Händer ofta att vi vill avbryta loopar i förtid eller hoppa över
-  iterationer.
-\item
-  break() avbryter den innersta loopen.
-\item
-  next() hoppar direkt till nästa iteration.
-\item
-  stop() avbryter alla loopar (och funktioner) och genererar ett
-  felmeddelande.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Debugging}
-\phantomsection\label{debugging}
-\begin{itemize}
-\tightlist
-\item
-  Använd print() och cat() för att skriva ut variabler när funktionen
-  kör.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Skriv ut vad en variabel är.
-  \item
-    Skriv ett meddelande om man kommer in i en if-sats.
-  \end{itemize}
-\item
-  Använd debug() eller browser() för att komma in i debugg-läge.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Stega igenom funktionen rad för rad.
-  \item
-    Kolla värden på variabler.
-  \item
-    Testa uttryck.
-  \end{itemize}
-\end{itemize}
-\end{frame}
-
-\section{Inför del 2 av kursen}\label{infuxf6r-del-2-av-kursen}
-
-\begin{frame}{Inför del 2 ava kursen}
-\phantomsection\label{infuxf6r-del-2-ava-kursen}
-\begin{itemize}
-\tightlist
-\item
-  Under del 2 av kursen görs labbarna i \textbf{par}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    De som läser om kursen gör labbarna med andra som läser om kursen
-    eller ensamma.
-  \end{itemize}
-\item
-  Ni bildar grupper själva.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Anmäl er till grupper via Lisam
-  \item
-    Finns ett dokument på Lisam under Samarbetsytan om man vill hitta en
-    gruppkamrat.
-  \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -1168,7 +1022,7 @@ GitHub:
   \begin{itemize}
   \tightlist
   \item
-    \texttt{module add prog/r-mega-edition/21.10}
+    \texttt{module add courses/732G33}
   \end{itemize}
 \item
   Då får ni tillgång till R, R-Studio samt många paket.
