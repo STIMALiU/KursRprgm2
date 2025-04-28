@@ -1,19 +1,17 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   11pt,
   ignorenonframetext,
   handout]{beamer}
+\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
+% remove section numbering
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -22,16 +20,19 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,7 +45,6 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -75,8 +75,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -126,21 +124,22 @@
 \makeatother
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
 
 %%% USEFUL PACKAGES
@@ -290,19 +289,16 @@
 \newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
 \newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT2024},
+  pdftitle={R-programmering VT2025},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2024}
+\title{R-programmering VT2025}
 \subtitle{Föreläsning 5}
 \author{Johan Alenlöv}
 \date{}
@@ -518,7 +514,7 @@ Info finns på kurshemsidan.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-1-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{F5_johan_files/figure-beamer/unnamed-chunk-1-1.pdf}}
 \end{frame}
 
 \begin{frame}{Diagramtyper}
@@ -554,7 +550,7 @@ Info finns på kurshemsidan.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-2-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{F5_johan_files/figure-beamer/unnamed-chunk-2-1.pdf}}
 \end{frame}
 
 \begin{frame}[fragile]{bokxplot() - exempel}
@@ -565,7 +561,7 @@ Info finns på kurshemsidan.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-3-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{F5_johan_files/figure-beamer/unnamed-chunk-3-1.pdf}}
 \end{frame}
 
 \begin{frame}[fragile]{barplot() - exempel}
@@ -577,7 +573,7 @@ Info finns på kurshemsidan.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-4-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{F5_johan_files/figure-beamer/unnamed-chunk-4-1.pdf}}
 \end{frame}
 
 \begin{frame}[fragile]{pie() - exempel}
@@ -589,7 +585,7 @@ Info finns på kurshemsidan.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{F5_johan_files/figure-beamer/unnamed-chunk-5-1.pdf}
+\pandocbounded{\includegraphics[keepaspectratio]{F5_johan_files/figure-beamer/unnamed-chunk-5-1.pdf}}
 \end{frame}
 
 \begin{frame}{Lågnivågrafik}
@@ -696,7 +692,7 @@ prefix & Beskrivning & Exempel \\
 \pause
 
 \begin{verbatim}
-## [1]  0.1166546 -0.1855843  0.7623537
+## [1] -0.7349207  0.8869257 -0.5186759
 \end{verbatim}
 
 \pause

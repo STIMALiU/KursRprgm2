@@ -1,5 +1,5 @@
 ---
-title: "R-programmering VT2024"
+title: "R-programmering VT2025"
 subtitle: "Föreläsning 5"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
@@ -57,6 +57,7 @@ knitr::opts_chunk$set(echo = FALSE)
 ## R-programmering - del 2
 
 - Labbarna görs nu i par
+  - Anmäl er till grupper på Lisam!
 - Parprogrammering:
   - \imp{Turas om att skriva koden}
   - Den som inte kodar är engagerad i koden och problemet
