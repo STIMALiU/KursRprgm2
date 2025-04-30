@@ -1,0 +1,33 @@
+---
+title: "Miniprojekt"
+author: "Johan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r}
+library(pxweb)
+source("data.R")
+```
+
+# Rubrik
+
+## Rubrik2
+
+Hej här kommer lite text som jag vill skriva *kursiv stil* **fet stil**
+
+1.  Punkt 1
+
+2.  Punkt 2
+
+$$
+s = \sqrt{ \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \mu)^2 }
+$$
+
+```{r}
+knitr::kable(head(data_tot, n = 5))
+```
+
+```{r}
+boxplot(data_tot$Huvudbibliotek)
+```
