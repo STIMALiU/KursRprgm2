@@ -245,6 +245,7 @@ a@start
 class(a)
 str(a)
 
+a
 a/days(1)
 class(days(1))
 
@@ -284,6 +285,8 @@ b2
 class(a)
 str(a)
 
+#-------------------------------------------------------------------------------
+# sekvenser med datum:
 # vad är by= i de olika fallen?
 seq(from = as.Date("2010-1-1"), to = as.Date("2015-1-1"), by = "years")
 
