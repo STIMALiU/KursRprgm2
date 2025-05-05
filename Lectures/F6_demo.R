@@ -219,8 +219,10 @@ library(lubridate)
 # många tips finns här:
 # https://rstudio.github.io/cheatsheets/lubridate.pdf
 
+x0<-"2015-01-01"
+class(x0)
 ?ymd
-x<-ymd("2015-01-01")
+x<-ymd(x0)
 x
 class(x)
 
