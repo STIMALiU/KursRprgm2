@@ -300,11 +300,10 @@ seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "days")
 
 # tidserieplottar
 
-set.seed(422)
-y<-1:10+rnorm(10)
-x<-seq(from = as.Date("2010-1-1"), to = as.Date("2019-1-1"), by = "years")
-
-plot(x,y,t="o")
+set.seed(421)
+y<-1:15+rnorm(10)
+time<-seq(from = as.Date("2010-1-1"), to = as.Date("2024-1-1"), by = "years")
+plot(time,y,t="o")
 
 
 
@@ -349,11 +348,11 @@ eigen(e)
 # ekvationssystem:
 
 A<-matrix(c(4,4,6,2,6,-4,2,8,4),3,3,byrow = TRUE)
-
+A
 b<-matrix(c(24,0,18),3,1)
-
+b
 x<-solve(A,b)
-
+x
 A%*%x
 
 
