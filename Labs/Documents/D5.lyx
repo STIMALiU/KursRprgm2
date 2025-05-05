@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "IntroDel2.lyx"
+literal "true"
 
 \end_inset
 
@@ -197,8 +207,7 @@ Introduktion till grafik
 
 \begin_layout Standard
 I R finns en hel del funktionalitet för att arbeta med grafik.
- I det grundläggande R finns det som brukar kallas base graphs som är den
- grundläggande grafikfunktionaliteten.
+ I det grundläggande R finns det som brukar kallas base graphs som är den grundläggande grafikfunktionaliteten.
  Utöver detta är paketet 
 \family typewriter
 ggplot2
@@ -216,21 +225,21 @@ literal "true"
 \end_layout
 
 \begin_layout Standard
-I base-paketet fungerar grafiken på så sätt att vi lägger till lager för
- lager i en visualisering av data.
+I base-paketet fungerar grafiken på så sätt att vi lägger till lager för lager i en visualisering av data.
  Tänk dig att ni ritar med en penna.
- Vi kommer i denna del använda oss av en del av de dataset som installeras
- tillsammans med R.
+ Vi kommer i denna del använda oss av en del av de dataset som installeras tillsammans med R.
  Läs in dessa dataset på följande sätt.
  Undrar ni vad materialen innehåller kan ni använda 
 \family typewriter
 ?iris
 \family default
-, 
+,
+ 
 \family typewriter
 ?mtcars
 \family default
-, 
+,
+ 
 \family typewriter
 ?Nile
 \family default
@@ -308,7 +317,8 @@ Cirkeldiagram
 \end_layout
 
 \begin_layout Standard
-Cirkeldiagram är ofta populärt, men bör generellt sett undvikas (se ex.
+Cirkeldiagram är ofta populärt,
+ men bör generellt sett undvikas (se ex.
  
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -318,8 +328,8 @@ literal "true"
 \end_inset
 
 ).
- Det är en typ av diagram som inte lämpas sig bra för människors tänkande
- och många har svårt att jämföra tårtbitar visuellt, 
+ Det är en typ av diagram som inte lämpas sig bra för människors tänkande och många har svårt att jämföra tårtbitar visuellt,
+ 
 \series bold
 \color blue
 
@@ -344,8 +354,7 @@ pie()
 \end_layout
 
 \begin_layout Enumerate
-Som ett första steg måste vi beräkna frekvenser för den kategoriska variabel
- vi vill visualisera med 
+Som ett första steg måste vi beräkna frekvenser för den kategoriska variabel vi vill visualisera med 
 \family typewriter
 table()
 \family default
@@ -354,11 +363,13 @@ table()
 \family typewriter
 ?table()
 \family default
-, 
+,
+ 
 \family typewriter
 class(freqs)
 \family default
-, 
+,
+ 
 \family typewriter
 str(freqs)
 \family default
@@ -396,8 +407,7 @@ freqs
 \end_layout
 
 \begin_layout Enumerate
-Baserat på denna frekvensfördelning är det därefter möjligt att skapa ett
- cirkeldiagram med 
+Baserat på denna frekvensfördelning är det därefter möjligt att skapa ett cirkeldiagram med 
 \family typewriter
 pie()
 \family default
@@ -411,7 +421,10 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=4,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -450,13 +463,19 @@ status open
 
 \begin_layout Plain Layout
 
-pie(freqs, labels=c("Del 1", "Del 2", "Del 3")) 
+pie(freqs,
+ labels=c("Del 1",
+ "Del 2",
+ "Del 3")) 
 \end_layout
 
 \begin_layout Plain Layout
 
-pie(freqs, labels=c("Hej", "Hejsan", "Hej hej"),     main="Cirkeldiagram")
- 
+pie(freqs,
+ labels=c("Hej",
+ "Hejsan",
+ "Hej hej"),
+     main="Cirkeldiagram") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -470,8 +489,7 @@ pie(freqs, labels=c("Hej", "Hejsan", "Hej hej"),     main="Cirkeldiagram")
 \end_layout
 
 \begin_layout Enumerate
-På ett liknande sätt kan vi sedan ange vilka färger vi vill ange med argumentet
- 
+På ett liknande sätt kan vi sedan ange vilka färger vi vill ange med argumentet 
 \family typewriter
 col
 \family default
@@ -504,7 +522,9 @@ status open
 
 \begin_layout Plain Layout
 
-pie(freqs, col=c("rosybrown1","yellowgreen", "khaki2"))
+pie(freqs,
+ col=c("rosybrown1","yellowgreen",
+ "khaki2"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -534,13 +554,11 @@ Barcharts
 \end_layout
 
 \begin_layout Standard
-Barcharts är enklare att tolka på ett korrekt sätt och är en av de mest
- grundläggande graftyperna.
+Barcharts är enklare att tolka på ett korrekt sätt och är en av de mest grundläggande graftyperna.
 \end_layout
 
 \begin_layout Enumerate
-För att skapa en barchart behöver vi (på samma sätt som för cirkeldiagrammen)
- utgå från frekvenser när vi skapar vårt diagram.
+För att skapa en barchart behöver vi (på samma sätt som för cirkeldiagrammen) utgå från frekvenser när vi skapar vårt diagram.
  Vi börjar med det allra enklaste diagrammet:
 \begin_inset Newline newline
 \end_inset
@@ -551,7 +569,10 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=4,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -593,12 +614,13 @@ freqCars
 \end_layout
 
 \begin_layout Enumerate
-Att lägga till rubriker och titel gör vi på samma sätt som för cirkeldiagramen
- ovan, med argumenten 
+Att lägga till rubriker och titel gör vi på samma sätt som för cirkeldiagramen ovan,
+ med argumenten 
 \family typewriter
 main
 \family default
-, 
+,
+ 
 \family typewriter
 xlab
 \family default
@@ -621,7 +643,10 @@ status open
 
 \begin_layout Plain Layout
 
-barplot(freqCars, main="Cars", xlab="Gears", ylab="Counts")
+barplot(freqCars,
+ main="Cars",
+ xlab="Gears",
+ ylab="Counts")
 \end_layout
 
 \begin_layout Plain Layout
@@ -654,7 +679,9 @@ status open
 
 \begin_layout Plain Layout
 
-barplot(freqCars, main="Cars", horiz=TRUE) 
+barplot(freqCars,
+ main="Cars",
+ horiz=TRUE) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -687,7 +714,9 @@ status open
 
 \begin_layout Plain Layout
 
-barplot(freqCars, main="Cars", col="red") 
+barplot(freqCars,
+ main="Cars",
+ col="red") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -701,8 +730,8 @@ barplot(freqCars, main="Cars", col="red")
 \end_layout
 
 \begin_layout Enumerate
-Vi kan också ha flera variabler i samma stapeldiagram, så kallade grupperade
- eller 
+Vi kan också ha flera variabler i samma stapeldiagram,
+ så kallade grupperade eller 
 \begin_inset Quotes eld
 \end_inset
 
@@ -727,12 +756,15 @@ status open
 
 \begin_layout Plain Layout
 
-carTable <- table(mtcars$vs, mtcars$gear) 
+carTable <- table(mtcars$vs,
+ mtcars$gear) 
 \end_layout
 
 \begin_layout Plain Layout
 
-barplot(carTable, main="Car Distribution by Gears and VS",         
+barplot(carTable,
+ main="Car Distribution by Gears and VS",
+         
 \end_layout
 
 \begin_layout Plain Layout
@@ -779,12 +811,15 @@ status open
 
 \begin_layout Plain Layout
 
-barplot(carTable, main="Car Distribution by Gears and VS",
+barplot(carTable,
+ main="Car Distribution by Gears and VS",
 \end_layout
 
 \begin_layout Plain Layout
 
-xlab="Number of Gears", col=c("darkblue","red"), beside=TRUE)
+xlab="Number of Gears",
+ col=c("darkblue","red"),
+ beside=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -821,7 +856,10 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=4,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -855,8 +893,11 @@ status open
 
 \begin_layout Plain Layout
 
-hist(iris$Sepal.Length, col="blue", main="Min titel", xlab="X-titel", ylab="Y-tit
-el") 
+hist(iris$Sepal.Length,
+ col="blue",
+ main="Min titel",
+ xlab="X-titel",
+ ylab="Y-titel") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -870,18 +911,20 @@ el")
 \end_layout
 
 \begin_layout Enumerate
-När det gäller histogram kan det vara så att i vissa fall vill vi ha fler
- eller färre staplar.
+När det gäller histogram kan det vara så att i vissa fall vill vi ha fler eller färre staplar.
  Detta styrs med 
 \family typewriter
 breaks
 \family default
 .
- Pröva koden nedan, testa att ändra värde på 
+ Pröva koden nedan,
+ testa att ändra värde på 
 \family typewriter
 breaks
 \family default
- till 10, 20, 40 och 70.
+ till 10,
+ 20,
+ 40 och 70.
  
 \begin_inset Newline newline
 \end_inset
@@ -897,7 +940,9 @@ status open
 
 \begin_layout Plain Layout
 
-hist(iris$Sepal.Length, breaks=40, col="red")
+hist(iris$Sepal.Length,
+ breaks=40,
+ col="red")
 \end_layout
 
 \begin_layout Plain Layout
@@ -911,8 +956,8 @@ hist(iris$Sepal.Length, breaks=40, col="red")
 \end_layout
 
 \begin_layout Enumerate
-Histogram är diskreta, men vi kan enkelt i R skapa en uppskattning av den
- underliggande fördelningen visuellt.
+Histogram är diskreta,
+ men vi kan enkelt i R skapa en uppskattning av den underliggande fördelningen visuellt.
 \begin_inset Newline newline
 \end_inset
 
@@ -948,12 +993,14 @@ plot(dens)
 \begin_layout Enumerate
 Vi kan styra om vi vill ha en absolut eller en relativ skala på histogrammet.
  Testa koden nedan.
- Hur skiljer sig y-axeln i de båda graferna? Vilket är defaultvärde för
- argumentet 
+ Hur skiljer sig y-axeln i de båda graferna?
+ Vilket är defaultvärde för argumentet 
 \family typewriter
 freq
 \family default
-? (tips: kolla i dokumentationen)
+?
+ (tips:
+ kolla i dokumentationen)
 \begin_inset Newline newline
 \end_inset
 
@@ -968,12 +1015,16 @@ status open
 
 \begin_layout Plain Layout
 
-hist(iris$Sepal.Length, breaks=40, col="red",freq = TRUE)
+hist(iris$Sepal.Length,
+ breaks=40,
+ col="red",freq = TRUE)
 \end_layout
 
 \begin_layout Plain Layout
 
-hist(iris$Sepal.Length, breaks=40, col="red",freq = FALSE)
+hist(iris$Sepal.Length,
+ breaks=40,
+ col="red",freq = FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -988,7 +1039,8 @@ hist(iris$Sepal.Length, breaks=40, col="red",freq = FALSE)
 
 \begin_layout Enumerate
 Det går att kombinera ett histogram med en täthetskurva.
- Testa koden nedan, vad händer?
+ Testa koden nedan,
+ vad händer?
 \begin_inset Newline newline
 \end_inset
 
@@ -1003,7 +1055,9 @@ status open
 
 \begin_layout Plain Layout
 
-hist(iris$Sepal.Length, breaks=15, col="red",freq = FALSE) 
+hist(iris$Sepal.Length,
+ breaks=15,
+ col="red",freq = FALSE) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1030,10 +1084,8 @@ Sambandsdiagram
 \end_layout
 
 \begin_layout Standard
-En av de vanligaste sätten att visualisera tvådimensionella data är med
- scatter plots (punktdiagram).
- Vi ska nu pröva att visualiser den historiska utvecklingen av Nilens vattennivå
-er.
+En av de vanligaste sätten att visualisera tvådimensionella data är med scatter plots (punktdiagram).
+ Vi ska nu pröva att visualiser den historiska utvecklingen av Nilens vattennivåer.
 \end_layout
 
 \begin_layout Enumerate
@@ -1081,12 +1133,16 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=3, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=3,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-plot(x = Nile$years, y = Nile$x) 
+plot(x = Nile$years,
+ y = Nile$x) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1115,7 +1171,11 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, main="Water in the Nile", xlab="Years", ylab="Level")
+plot(Nile$years,
+ Nile$x,
+ main="Water in the Nile",
+ xlab="Years",
+ ylab="Level")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1129,8 +1189,7 @@ plot(Nile$years, Nile$x, main="Water in the Nile", xlab="Years", ylab="Level")
 \end_layout
 
 \begin_layout Enumerate
-Vill vi ändra färgen på våra punkter använder vi som vanligt parametern
- 
+Vill vi ändra färgen på våra punkter använder vi som vanligt parametern 
 \family typewriter
 col
 \family default
@@ -1149,7 +1208,9 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, col="blue") 
+plot(Nile$years,
+ Nile$x,
+ col="blue") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1163,8 +1224,7 @@ plot(Nile$years, Nile$x, col="blue")
 \end_layout
 
 \begin_layout Enumerate
-Vill vi att olika punkter ska ha olika färger anger vi bara en vektor med
- färgnamn.
+Vill vi att olika punkter ska ha olika färger anger vi bara en vektor med färgnamn.
 \begin_inset Newline newline
 \end_inset
 
@@ -1189,7 +1249,9 @@ colVector[Nile$years>1900] <- "red"
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, col=colVector)
+plot(Nile$years,
+ Nile$x,
+ col=colVector)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1215,8 +1277,7 @@ colVector
 Vi kan också ändra hur punkterna ser ut och använda andra symboler.
  Det finns totalt 25 olika symboler i baspaketet.
  För att använda en punkttyp används argumentet pch.
- Med koden nedan kan vi snabbt se alla olika typer av punkter som finns
- i baspaketet.
+ Med koden nedan kan vi snabbt se alla olika typer av punkter som finns i baspaketet.
  Se även dokumentation för funktionen 
 \family typewriter
 points()
@@ -1236,7 +1297,9 @@ status open
 
 \begin_layout Plain Layout
 
-plot(1:25,rep(1,25), type="p", pch = 1:25,cex = 2.5)
+plot(1:25,rep(1,25),
+ type="p",
+ pch = 1:25,cex = 2.5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1288,12 +1351,17 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=3, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=3,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="l") 
+plot(Nile$years,
+ Nile$x,
+ type="l") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1307,15 +1375,15 @@ plot(Nile$years, Nile$x, type="l")
 \end_layout
 
 \begin_layout Enumerate
-Precis som när det gäller punkter kan vi använda olika linjetyper med argumentet
- 
+Precis som när det gäller punkter kan vi använda olika linjetyper med argumentet 
 \family typewriter
 lty
 \family default
 .
  Prova linjetyp 2 t.o.m.
  10.
- Tips: använd en for-loop!
+ Tips:
+ använd en for-loop!
 \begin_inset Newline newline
 \end_inset
 
@@ -1330,7 +1398,10 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="o", lty=2) 
+plot(Nile$years,
+ Nile$x,
+ type="o",
+ lty=2) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1380,7 +1451,11 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="o", lty=2, pch=3) 
+plot(Nile$years,
+ Nile$x,
+ type="o",
+ lty=2,
+ pch=3) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1394,7 +1469,8 @@ plot(Nile$years, Nile$x, type="o", lty=2, pch=3)
 \end_layout
 
 \begin_layout Enumerate
-En sista typ av linjegraf är en trappstegsgraf: 
+En sista typ av linjegraf är en trappstegsgraf:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1409,7 +1485,9 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="s") 
+plot(Nile$years,
+ Nile$x,
+ type="s") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1428,7 +1506,8 @@ Pröva att lägg till argumentet
 lwd=3
 \family default
  i plotten ovan.
- Vad innebär detta? Testa att köra 
+ Vad innebär detta?
+ Testa att köra 
 \family typewriter
 ?par
 \family default
@@ -1444,8 +1523,7 @@ lty
 \end_layout
 
 \begin_layout Enumerate
-När vi ska göra grafter över tidserier så är det ofta smidigt att låta värdena
- på x-axeln vara ett datumobjekt (mer om det kursvecka 6).
+När vi ska göra grafter över tidserier så är det ofta smidigt att låta värdena på x-axeln vara ett datumobjekt (mer om det kursvecka 6).
  Då kan vi automatiskt få en bra tidsskala på x-axeln när vi använder 
 \family typewriter
 plot()
@@ -1505,7 +1583,8 @@ plot(x = date_var,y = Nile$x,t="l",xlab="date")
 
 \begin_layout Plain Layout
 
-# plotta två månder med data: 
+# plotta två månder med data:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1628,8 +1707,7 @@ Boxplot
 \end_layout
 
 \begin_layout Standard
-Vill vi jämföra olika fördelningar efter en kategorisk variabel gör vi det
- med fördel med en boxplot
+Vill vi jämföra olika fördelningar efter en kategorisk variabel gör vi det med fördel med en boxplot
 \end_layout
 
 \begin_layout Enumerate
@@ -1643,7 +1721,10 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, fig.height=4, fig.width=4, fig.align='center'>>=
+<<eval=TRUE,
+ fig.height=4,
+ fig.width=4,
+ fig.align='center'>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -1653,7 +1734,8 @@ boxplot(iris$Sepal.Length)
 
 \begin_layout Plain Layout
 
-boxplot(Sepal.Length~Species, data=iris)
+boxplot(Sepal.Length~Species,
+ data=iris)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1672,8 +1754,8 @@ boxplot(Sepal.Length~Species, data=iris)
 Sepal.Length~Species
 \family default
  är ett exempel på formel-objekt.
- Formel-objekt används i olika sammanhang i R, men ett vanligt exempel är
- när 
+ Formel-objekt används i olika sammanhang i R,
+ men ett vanligt exempel är när 
 \begin_inset CommandInset href
 LatexCommand href
 name "linjär regerssion"
@@ -1692,7 +1774,8 @@ lm()
 ?formula
 \family default
 .
- Kör sedan koden nedan: 
+ Kör sedan koden nedan:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1759,7 +1842,11 @@ status open
 
 \begin_layout Plain Layout
 
-boxplot(Sepal.Length~Species, data=iris, col=c("blue", "green", "red"))
+boxplot(Sepal.Length~Species,
+ data=iris,
+ col=c("blue",
+ "green",
+ "red"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1788,7 +1875,9 @@ status open
 
 \begin_layout Plain Layout
 
-boxplot(Sepal.Length~Species, data=iris, main="Blommor!")
+boxplot(Sepal.Length~Species,
+ data=iris,
+ main="Blommor!")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1807,13 +1896,11 @@ Grafiska inställningar och tillägg
 
 \begin_layout Standard
 Ovan har vi sett en hel del av de figurer som går att producera.
- Nedan kommer lite mer inställningar och tillägg vi kan göra när vi arbetar
- med grafik i R.
+ Nedan kommer lite mer inställningar och tillägg vi kan göra när vi arbetar med grafik i R.
 \end_layout
 
 \begin_layout Enumerate
-För att kontrollera vilka värden som ska vara med på x- och y-axeln i en
- plot används argumenten 
+För att kontrollera vilka värden som ska vara med på x- och y-axeln i en plot används argumenten 
 \family typewriter
 xlim=
 \family default
@@ -1847,13 +1934,19 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="s") 
+plot(Nile$years,
+ Nile$x,
+ type="s") 
 \end_layout
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="s", xlim=c(1900,1945), ylim=c(600, 1200))
- 
+plot(Nile$years,
+ Nile$x,
+ type="s",
+ xlim=c(1900,1945),
+ ylim=c(600,
+ 1200)) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1887,7 +1980,9 @@ status open
 
 \begin_layout Plain Layout
 
-points(Nile$years, Nile$x, pch=20)
+points(Nile$years,
+ Nile$x,
+ pch=20)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1922,12 +2017,14 @@ status open
 
 \begin_layout Plain Layout
 
-abline(v=1920, lty=4)
+abline(v=1920,
+ lty=4)
 \end_layout
 
 \begin_layout Plain Layout
 
-abline(h=900, lty=10)
+abline(h=900,
+ lty=10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1973,8 +2070,7 @@ h=
 \family typewriter
 abline()
 \family default
- kan också användas för att rita ut räta linjer med räta linjens ekvation
- (om vi ex.
+ kan också användas för att rita ut räta linjer med räta linjens ekvation (om vi ex.
  anpassat en regressionsmodell):
 \begin_inset Formula 
 \[
@@ -2013,8 +2109,7 @@ Vill vi ha flera grafer i en använder vi
 par(mfrow=c(3,2))
 \family default
 .
- Men det vi säger till R med detta kommando är att vi vill ha tre rader
- och två kolumner med figurer.
+ Men det vi säger till R med detta kommando är att vi vill ha tre rader och två kolumner med figurer.
  Dessa struktur kommer att fyllas radvis.
  Pröva att köra denna kod och skapa därefter 6 figurer (vilka som hellst).
  Ändra till en 2
@@ -2041,12 +2136,16 @@ Spara figurer
 \begin_layout Standard
 I många fall vill spara specifika grafer i olika format.
  I R finns ett antal olika format som kan användas.
- De vanligaste är TIFF, BNP, JPEG, PNG och PDF.
+ De vanligaste är TIFF,
+ BNP,
+ JPEG,
+ PNG och PDF.
  I alla fall används den aktuella funktionen för formatet 
 \family typewriter
 tiff()
 \family default
- för TIFF, 
+ för TIFF,
+ 
 \family typewriter
 pdf()
 \family default
@@ -2054,9 +2153,9 @@ pdf()
 \end_layout
 
 \begin_layout Enumerate
-De olika grafikfunktionerna använder olika argument, men gemensamt är att
- vi först anger vilket format vi vill använda, sedan skapar vi vår figur
- och därefter stänger vi av 
+De olika grafikfunktionerna använder olika argument,
+ men gemensamt är att vi först anger vilket format vi vill använda,
+ sedan skapar vi vår figur och därefter stänger vi av 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2080,12 +2179,16 @@ status open
 
 \begin_layout Plain Layout
 
-jpeg(filename = "minJPEG.jpeg", width = 480, height = 480)
+jpeg(filename = "minJPEG.jpeg",
+ width = 480,
+ height = 480)
 \end_layout
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="l") 
+plot(Nile$years,
+ Nile$x,
+ type="l") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2113,19 +2216,17 @@ working directory
 \end_inset
 
 .
- Leta reda på mappen som är ditt working directory och öppna jpeg-filen
- i ett bildvisningsprogram.
+ Leta reda på mappen som är ditt working directory och öppna jpeg-filen i ett bildvisningsprogram.
 \end_layout
 
 \begin_layout Enumerate
-Upprepa nu uppgift 1, men spara filen i en annan mapp än i ditt working
- directory.
+Upprepa nu uppgift 1,
+ men spara filen i en annan mapp än i ditt working directory.
  Detta görs genom att ändra argumentet 
 \family typewriter
 filename
 \family default
- till en sökväg (path) som slutar på det faktiska filnamnet (i det här fallet
- 
+ till en sökväg (path) som slutar på det faktiska filnamnet (i det här fallet 
 \begin_inset Quotes sld
 \end_inset
 
@@ -2134,13 +2235,11 @@ minJPEG.jpeg
 \end_inset
 
 ).
- Sökvägen anges på samma sätt som när filer ska läsas från eller sparas
- på hårddisken.
+ Sökvägen anges på samma sätt som när filer ska läsas från eller sparas på hårddisken.
 \end_layout
 
 \begin_layout Enumerate
-För pdf:er finns det ett snabbare sätt att snabbt skriva ut en figur som
- pdf:
+För pdf:er finns det ett snabbare sätt att snabbt skriva ut en figur som pdf:
 \begin_inset Newline newline
 \end_inset
 
@@ -2155,7 +2254,9 @@ status open
 
 \begin_layout Plain Layout
 
-plot(Nile$years, Nile$x, type="l") 
+plot(Nile$years,
+ Nile$x,
+ type="l") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2187,7 +2288,8 @@ Plots
 \begin_inset Quotes srd
 \end_inset
 
-, och sen klicka på 
+,
+ och sen klicka på 
 \begin_inset Quotes sld
 \end_inset
 
@@ -2213,7 +2315,8 @@ Save as image
 \end_layout
 
 \begin_layout Section
-* Extraproblem: Skapa en egen graf
+* Extraproblem:
+ Skapa en egen graf
 \end_layout
 
 \begin_layout Enumerate
@@ -2225,7 +2328,8 @@ data(faithful)
 \end_layout
 
 \begin_layout Enumerate
-Testa att göra två histogram, dels över 
+Testa att göra två histogram,
+ dels över 
 \family typewriter
 waiting
 \family default
@@ -2284,8 +2388,7 @@ ylab=
 \end_layout
 
 \begin_layout Enumerate
-Spara ned de två histogrammen i en figur (förslagsvis över och under varandra)
- som en pdf.
+Spara ned de två histogrammen i en figur (förslagsvis över och under varandra) som en pdf.
 \end_layout
 
 \end_deeper
@@ -2329,7 +2432,8 @@ Ge de olika klustren olika punktsymboler.
 
 \end_deeper
 \begin_layout Enumerate
-Lägg till en bildtext (eng: legend) till figuren (kolla på 
+Lägg till en bildtext (eng:
+ legend) till figuren (kolla på 
 \family typewriter
 ?legend
 \family default
@@ -2357,7 +2461,12 @@ status open
 
 \begin_layout Plain Layout
 
-legend("topleft", pch = c(1, 2), col = c("red", "blue"), legend = c("clu1",
+legend("topleft",
+ pch = c(1,
+ 2),
+ col = c("red",
+ "blue"),
+ legend = c("clu1",
  "clu2"))
 \end_layout
 
@@ -2384,8 +2493,7 @@ Täthetsfunktioner mm
 \end_layout
 
 \begin_layout Standard
-En central del inom statistik och analys handlar om simulering och att hantera
- olika 
+En central del inom statistik och analys handlar om simulering och att hantera olika 
 \begin_inset CommandInset href
 LatexCommand href
 name "sannolikhetsfördelningar"
@@ -2423,8 +2531,7 @@ literal "false"
 \end_inset
 
 .
- Det finns ett stort antal sannolikhetsfördelningar vi kan simulera ifrån/beräkn
-a.
+ Det finns ett stort antal sannolikhetsfördelningar vi kan simulera ifrån/beräkna.
  Dessa har en 
 \begin_inset CommandInset href
 LatexCommand href
@@ -2434,7 +2541,8 @@ literal "false"
 
 \end_inset
 
- (pdf), en 
+ (pdf),
+ en 
 \begin_inset CommandInset href
 LatexCommand href
 name "kulmulativ fördelningsfunktion"
@@ -2678,7 +2786,9 @@ status open
 
 \begin_layout Plain Layout
 
-minNormal <- rnorm(n=100, mean=10, sd=1)
+minNormal <- rnorm(n=100,
+ mean=10,
+ sd=1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2700,6 +2810,7 @@ Skapa en vektor med 30 slumptal från den uniforma fördelningen
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2709,8 +2820,8 @@ runif()
 \end_layout
 
 \begin_layout Enumerate
-Skapa en vektor med 200 slumptal från normalfördelningen med medelvärde
- 1 och varians 2, döp den till 
+Skapa en vektor med 200 slumptal från normalfördelningen med medelvärde 1 och varians 2,
+ döp den till 
 \family typewriter
 minNorm
 \family default
@@ -2725,6 +2836,7 @@ minNorm
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2734,8 +2846,8 @@ hist()
 \end_layout
 
 \begin_layout Enumerate
-Skapa en vektor med slumptal av längd 50 från Poissonfördelningen med medelvärde
- 8, döp den till 
+Skapa en vektor med slumptal av längd 50 från Poissonfördelningen med medelvärde 8,
+ döp den till 
 \family typewriter
 minPoission
 \end_layout
@@ -2745,8 +2857,7 @@ minPoission
 \end_inset
 
  är poissonfördelad med medelvärde 3.
- Uppgiften är nu att skapa ett stapeldiagram (se koden nedan) över sannolikheter
-na att 
+ Uppgiften är nu att skapa ett stapeldiagram (se koden nedan) över sannolikheterna att 
 \begin_inset Formula $X$
 \end_inset
 
@@ -2765,7 +2876,9 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=TRUE, fig.height = 3>>=
+<<echo=TRUE,
+ eval=TRUE,
+ fig.height = 3>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -2775,7 +2888,9 @@ x <- dpois(x=0:12,lambda=3)
 
 \begin_layout Plain Layout
 
-barplot(x, names.arg=0:12, main="Poisson(lambda=3)")
+barplot(x,
+ names.arg=0:12,
+ main="Poisson(lambda=3)")
 \end_layout
 
 \begin_layout Plain Layout
@@ -2801,6 +2916,7 @@ Låt
  antar följande värden [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2815,7 +2931,8 @@ ppois
 
 \begin_deeper
 \begin_layout Enumerate
-Sitt medelvärde? 
+Sitt medelvärde?
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -2827,7 +2944,8 @@ Större än sitt medelvärde?
 \end_layout
 
 \begin_layout Enumerate
-Ett udda tal? Ni behöver inte ta hänsyn till tal som är större än 12.
+Ett udda tal?
+ Ni behöver inte ta hänsyn till tal som är större än 12.
 \end_layout
 
 \begin_layout Enumerate
@@ -2836,8 +2954,9 @@ Talen 4 till 6?
 
 \end_deeper
 \begin_layout Enumerate
-Skapa en vektor med 50 slumptal från t-fördelningen, med medelvärde 1 och
- 5 frihetsgrader (degrees of freedom), döp den till 
+Skapa en vektor med 50 slumptal från t-fördelningen,
+ med medelvärde 1 och 5 frihetsgrader (degrees of freedom),
+ döp den till 
 \family typewriter
 minT
 \family default
@@ -2845,9 +2964,9 @@ minT
  
 \series bold
 Tips:
+
 \series default
- För att ändra medelvärdet på en slumpvariabel kan en konstant adderas/subtraher
-as till variabeln.
+ För att ändra medelvärdet på en slumpvariabel kan en konstant adderas/subtraheras till variabeln.
 \end_layout
 
 \begin_layout Enumerate
@@ -2889,7 +3008,9 @@ Beräkna sannolikheten att variablen antar värdet
 \begin_inset Formula $x\le25$
 \end_inset
 
-, Tips: 
+,
+ Tips:
+ 
 \family typewriter
 pnorm()
 \end_layout
@@ -2899,7 +3020,9 @@ Beräkna sannolikheten att variablen antar värdet
 \begin_inset Formula $x\ge25$
 \end_inset
 
-, Tips: argumentet 
+,
+ Tips:
+ argumentet 
 \family typewriter
 lower.tail
 \family default
@@ -3015,8 +3138,7 @@ Vill vi dra slumptal från ett antal element använder vi funktionen
 sample()
 \family default
 .
- Med denna funktion kan vi dra ett stickprov (med eller utan återläggning)
- från en given vektor.
+ Med denna funktion kan vi dra ett stickprov (med eller utan återläggning) från en given vektor.
  Om vi exempelvis vill dra 5 slumpmässiga värden mellan 1 och 10 
 \series bold
 med
@@ -3035,7 +3157,9 @@ status open
 
 \begin_layout Plain Layout
 
-sample(x=1:10, size=5, replace=TRUE)
+sample(x=1:10,
+ size=5,
+ replace=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3073,8 +3197,7 @@ med
 \end_layout
 
 \begin_layout Enumerate
-Ett vanligt scenario är att vi vill dra ett slumpmässigt urval av rader
- från en data.frame (eller matris).
+Ett vanligt scenario är att vi vill dra ett slumpmässigt urval av rader från en data.frame (eller matris).
  Detta kan göras med hjälp av en indexvektor.
  
 \begin_inset Newline newline
@@ -3091,7 +3214,8 @@ status open
 
 \begin_layout Plain Layout
 
-# slumpmässigt index: 
+# slumpmässigt index:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3101,7 +3225,8 @@ rand_index<-sample(x = 1:nrow(mtcars),size = 5,replace = FALSE)
 
 \begin_layout Plain Layout
 
-# dra ett slumpmässigt urval från data.frame: 
+# dra ett slumpmässigt urval från data.frame:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3115,7 +3240,8 @@ mtcars[rand_index,]
 
 \begin_layout Plain Layout
 
-# replace = TRUE, då kan size vara större än x
+# replace = TRUE,
+ då kan size vara större än x
 \end_layout
 
 \begin_layout Plain Layout
@@ -3164,14 +3290,14 @@ dim(mtcars)
 \end_layout
 
 \begin_layout Enumerate
-Vi kan på samma sätt dra slumpmässiga element från andra vektorer (exempelvis
- textvektorer).
+Vi kan på samma sätt dra slumpmässiga element från andra vektorer (exempelvis textvektorer).
  Tänk dig att ni och några vänner ska organisera en fest.
  Skapa vektorn 
 \family typewriter
 namn
 \family default
-, som ska innehålla namnen för minst tre personer som textsträngar.
+,
+ som ska innehålla namnen för minst tre personer som textsträngar.
  Två personer behövs för att laga mat och två för att diska.
  Välj slumpmässigt vilka som ska göra de olika uppgifterna.
  Samma person ska kunna bli vald för båda uppgifterna.
@@ -3186,14 +3312,14 @@ Inte sällan vill vi att våra simuleringar och analyser ska vara reproducerbara
 \family typewriter
 set.seed()
 \family default
- och funktionen tar ett godtyckligt heltal för att initiera slumptalsgeneratorn
- i R.
+ och funktionen tar ett godtyckligt heltal för att initiera slumptalsgeneratorn i R.
  
 \begin_inset Newline newline
 \end_inset
 
-Upprepa uppgiften ovan två gånger, blir resultatet det samma? Upprepa två
- gånger till men kör först 
+Upprepa uppgiften ovan två gånger,
+ blir resultatet det samma?
+ Upprepa två gånger till men kör först 
 \family typewriter
 set.seed(1234)
 \family default
@@ -3202,12 +3328,12 @@ set.seed(1234)
 \end_layout
 
 \begin_layout Enumerate
-Upprepa nu uppgiften ovan igen, men ändra argumentet 
+Upprepa nu uppgiften ovan igen,
+ men ändra argumentet 
 \family typewriter
 prob
 \family default
- så att de olika personer har olika sannolikhet att bli vald samt att ni
- har sannolikheten 0 att bli vald.
+ så att de olika personer har olika sannolikhet att bli vald samt att ni har sannolikheten 0 att bli vald.
  ;)
 \end_layout
 
@@ -3227,12 +3353,15 @@ status open
 
 \begin_layout Plain Layout
 
-# kör flera gånger, vilka värden kommer med i urvalet?
+# kör flera gånger,
+ vilka värden kommer med i urvalet?
 \end_layout
 
 \begin_layout Plain Layout
 
-sample(x=1:4, size=2, replace=FALSE,prob=c(0.8,0.1,0.05,0.05))
+sample(x=1:4,
+ size=2,
+ replace=FALSE,prob=c(0.8,0.1,0.05,0.05))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3246,7 +3375,9 @@ sample(x=1:4, size=2, replace=FALSE,prob=c(0.8,0.1,0.05,0.05))
 
 \begin_layout Plain Layout
 
-y<-sample(x=1:4, size=2000, replace=TRUE,prob=c(0.8,0.1,0.05,0.05))
+y<-sample(x=1:4,
+ size=2000,
+ replace=TRUE,prob=c(0.8,0.1,0.05,0.05))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3265,15 +3396,15 @@ table(y)
 \end_layout
 
 \begin_layout Section
-Exempel: 
+Exempel:
+ 
 \family typewriter
 sum_of_dice()
 \end_layout
 
 \begin_layout Enumerate
 Nu ska ni testa att simulera olika tärningskast.
- I uppgiften betyder D6 en vanlig 6-sidig tärning (med sidorna 1,2,3,4,5,6)
- där alla utfall har samma sannolikhet (1/6).
+ I uppgiften betyder D6 en vanlig 6-sidig tärning (med sidorna 1,2,3,4,5,6) där alla utfall har samma sannolikhet (1/6).
 \begin_inset Separator latexpar
 \end_inset
 
@@ -3285,6 +3416,7 @@ Nu ska ni testa att simulera olika tärningskast.
 Skriv en funktion 
 \family typewriter
 my_dice(),
+
 \family default
  som generar 
 \begin_inset Formula $n$
@@ -3294,6 +3426,7 @@ my_dice(),
  [
 \series bold
 Tips!
+
 \series default
  sample()]
 \end_layout
@@ -3303,11 +3436,13 @@ Skriv en funktion
 \family typewriter
 sum_of_dice()
 \family default
- som generar följande slumptal: 
+ som generar följande slumptal:
+ 
 \begin_inset Formula $Y_{k}=\sum_{n=1}^{N}X_{n}$
 \end_inset
 
-, där 
+,
+ där 
 \begin_inset Formula $X$
 \end_inset
 
@@ -3315,11 +3450,13 @@ sum_of_dice()
 \family typewriter
 my_dice()
 \family default
-, 
+,
+ 
 \begin_inset Formula $N$
 \end_inset
 
- är ett heltal, 
+ är ett heltal,
+ 
 \begin_inset Formula $k$
 \end_inset
 
@@ -3328,16 +3465,20 @@ my_dice()
 \end_inset
 
 .
- Funktionen ska ha N och K som argument, 
+ Funktionen ska ha N och K som argument,
+ 
 \family typewriter
-sum_of_dice(N, K)
+sum_of_dice(N,
+ K)
 \family default
 .
  Funktionen ska alltså kasta 
 \begin_inset Formula $N$
 \end_inset
 
- stycken D6, summera dessa, sen upprepa det 
+ stycken D6,
+ summera dessa,
+ sen upprepa det 
 \begin_inset Formula $K$
 \end_inset
 
@@ -3372,7 +3513,8 @@ for (k in 1:K){
 
 \begin_layout Plain Layout
 
-res[k] <- sum(sample(1:6,size=N, replace=TRUE))
+res[k] <- sum(sample(1:6,size=N,
+ replace=TRUE))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3398,7 +3540,8 @@ return(res)}
 \begin_layout Enumerate
 Testa nu 
 \family typewriter
-sum_of_dice(N, K)
+sum_of_dice(N,
+ K)
 \family default
  med 
 \begin_inset Formula $N=3,5$
@@ -3409,7 +3552,8 @@ sum_of_dice(N, K)
 \end_inset
 
 .
- Plotta resultaten i histogram och beräkna också medelvärde, standardavvikelse,
+ Plotta resultaten i histogram och beräkna också medelvärde,
+ standardavvikelse,
  min och max.
  Nedan ser ni några exempel på tester.
 \begin_inset Newline newline
@@ -3460,12 +3604,11 @@ Stora talens lag och Monte Carlo
 
 \begin_layout Standard
 En annan användning av slumptal är den så kallade Monte Carlo metoden.
- I denna metod så använder vi slumptal för att uppskatta väntevärden eller
- sannolikheter.
- Dessa väntevärden/sannolikheter skattas genom att vi gör en massa simuleringar
- och tar medelvärdet av dessa.
+ I denna metod så använder vi slumptal för att uppskatta väntevärden eller sannolikheter.
+ Dessa väntevärden/sannolikheter skattas genom att vi gör en massa simuleringar och tar medelvärdet av dessa.
  En simulering kan t.ex.
- vara att dra ett slumptal, det kan också vara lite mer komplicerat.
+ vara att dra ett slumptal,
+ det kan också vara lite mer komplicerat.
 \end_layout
 
 \begin_layout Enumerate
@@ -3498,8 +3641,7 @@ set.seed(1234)
 
 \begin_layout Plain Layout
 
-# Vi simulerar 10 slumptal från fördelningen och räknar ut medelvärdet med
- mean()
+# Vi simulerar 10 slumptal från fördelningen och räknar ut medelvärdet med mean()
 \end_layout
 
 \begin_layout Plain Layout
@@ -3514,8 +3656,7 @@ print(mean(u))
 
 \begin_layout Plain Layout
 
-# Nu simulerar vi istället 10 000 slumptal från fördelningen och räknar
- ut medelvärdet med mean()
+# Nu simulerar vi istället 10 000 slumptal från fördelningen och räknar ut medelvärdet med mean()
 \end_layout
 
 \begin_layout Plain Layout
@@ -3582,8 +3723,7 @@ u <- runif(10,min=0,max=1)
 
 \begin_layout Plain Layout
 
-# Vi skapar en logisk vektor med TRUE / FALSE om värdet är större eller
- mindre än 3/4
+# Vi skapar en logisk vektor med TRUE / FALSE om värdet är större eller mindre än 3/4
 \end_layout
 
 \begin_layout Plain Layout
@@ -3593,8 +3733,7 @@ probs <- u > 3/4
 
 \begin_layout Plain Layout
 
-# Vi uppskattar sannolikheten genom att räkna medelvärdet på denna logiska
- vektor.
+# Vi uppskattar sannolikheten genom att räkna medelvärdet på denna logiska vektor.
 \end_layout
 
 \begin_layout Plain Layout
@@ -3637,10 +3776,10 @@ print(mean(probs))
 \end_layout
 
 \begin_layout Enumerate
-Upprepa exemplena ovan och räkna ut medelvärdet för en normalfördelad med
- parametrarna 
+Upprepa exemplena ovan och räkna ut medelvärdet för en normalfördelad med parametrarna 
 \family typewriter
 mean=4,
+
 \family default
  
 \family typewriter
@@ -3654,9 +3793,10 @@ Introduktion till R markdown och knitr
 \end_layout
 
 \begin_layout Standard
-R markdown och knitr är ett system för att skapa dynamiska rapporter med
- R, vilket innebär att vi väver ihop R-kod, data och text i ett och samma
- dokument., detta kallas 
+R markdown och knitr är ett system för att skapa dynamiska rapporter med R,
+ vilket innebär att vi väver ihop R-kod,
+ data och text i ett och samma dokument.,
+ detta kallas 
 \begin_inset Quotes sld
 \end_inset
 
@@ -3665,9 +3805,10 @@ Literate programming
 \end_inset
 
 .
- Med knitr och markdown kan vi skapa reproducerbara analyser med full spårbarhet
- hur beräkning, databearbetningar och grafik skapats.
- Vår slutprodukt kan bli rapporter i Word, PDF eller HTML.
+ Med knitr och markdown kan vi skapa reproducerbara analyser med full spårbarhet hur beräkning,
+ databearbetningar och grafik skapats.
+ Vår slutprodukt kan bli rapporter i Word,
+ PDF eller HTML.
 \end_layout
 
 \begin_layout Standard
@@ -3685,10 +3826,13 @@ literal "false"
 
 
 \color inherit
- markdown som används för att skapa text, ekvationer, bilder m.m.
+ markdown som används för att skapa text,
+ ekvationer,
+ bilder m.m.
  och dels knitr för att integrera dokumentet med R-kod.
- knitr kommer från ordet knit (sticka) och är en ordlek med innebörden att
- vi stickar ihop R med, i detta fall, markdown.
+ knitr kommer från ordet knit (sticka) och är en ordlek med innebörden att vi stickar ihop R med,
+ i detta fall,
+ markdown.
  knitr kan dock användas med andra ordbehandlare som \SpecialChar LaTeX
  och \SpecialChar LyX
 
@@ -3696,8 +3840,7 @@ literal "false"
 status collapsed
 
 \begin_layout Plain Layout
-Alla dokumment med laborationsinstruktioner i kursen har skapats med en
- kombination av \SpecialChar LyX
+Alla dokumment med laborationsinstruktioner i kursen har skapats med en kombination av \SpecialChar LyX
  och knitr
 \end_layout
 
@@ -3719,20 +3862,20 @@ kör
 \begin_inset Quotes srd
 \end_inset
 
-) en Rmd fil är att knitr går igenom dokumentet, kör all R-kod och stoppar
- tillbaka svaret från R i markdownformat.
- När detta är gjort skapas ett word-, HTML- eller pdf-dokument från markdownfile
-n.
+) en Rmd fil är att knitr går igenom dokumentet,
+ kör all R-kod och stoppar tillbaka svaret från R i markdownformat.
+ När detta är gjort skapas ett word-,
+ HTML- eller pdf-dokument från markdownfilen.
 \end_layout
 
 \begin_layout Standard
-Det finns ett bra referensdokument 
+Det finns en bra introduktion 
 \color blue
 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf"
+target "https://rmarkdown.rstudio.com/lesson-1.html"
 literal "false"
 
 \end_inset
@@ -3753,7 +3896,7 @@ fusklapp
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
-target "https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf"
+target "https://github.com/rstudio/cheatsheets/raw/main/rmarkdown-2.0.pdf"
 literal "false"
 
 \end_inset
@@ -3764,12 +3907,11 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Under senare tid har reproducerbarhet när det gäller statistiska analyser
- kommit att bli allt mer centralt.
- Reproducerbarhet innebär att ett experiment eller forskningsresultat ska
- kunna återupprepas - reproduceras - av andra forskare eller analytiker.
+Under senare tid har reproducerbarhet när det gäller statistiska analyser kommit att bli allt mer centralt.
+ Reproducerbarhet innebär att ett experiment eller forskningsresultat ska kunna återupprepas - reproduceras - av andra forskare eller analytiker.
  Idag innebär ofta reproducerbarheten att det finns krav på att hela analyser,
- med både text, data och kod ska kunna reproduceras av andra forskare.
+ med både text,
+ data och kod ska kunna reproduceras av andra forskare.
  Mer information om reproducerbar forskning finns 
 \color blue
 
@@ -3801,8 +3943,7 @@ För att skapa ett Rmd-dokument i R-Studio väljer vi New file
 \end_layout
 
 \begin_layout Enumerate
-Vi borde fått upp ett dokument som borde se ut på följande sätt (första
- delen).
+Vi borde fått upp ett dokument som borde se ut på följande sätt (första delen).
 \begin_inset Newline newline
 \end_inset
 
@@ -3822,22 +3963,26 @@ status open
 
 \begin_layout Plain Layout
 
-title: "My document" 
+title:
+ "My document" 
 \end_layout
 
 \begin_layout Plain Layout
 
-author: "My name" 
+author:
+ "My name" 
 \end_layout
 
 \begin_layout Plain Layout
 
-date: "1 januari 2021" 
+date:
+ "1 januari 2021" 
 \end_layout
 
 \begin_layout Plain Layout
 
-output: html_document 
+output:
+ html_document 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3857,7 +4002,9 @@ This is an R Markdown document.
 
 \begin_layout Plain Layout
 
-syntax for authoring HTML, PDF, and MS Word documents.
+syntax for authoring HTML,
+ PDF,
+ and MS Word documents.
  
 \end_layout
 
@@ -3897,8 +4044,8 @@ knit HTML
 \begin_inset Quotes erd
 \end_inset
 
- i R-Studio, då skapas en HTML-fil baserat på R markdown-filen i samma mapp
- som .Rmd-filen.
+ i R-Studio,
+ då skapas en HTML-fil baserat på R markdown-filen i samma mapp som .Rmd-filen.
 \end_layout
 
 \begin_layout Enumerate
@@ -3917,8 +4064,9 @@ knitta
 
 \begin_deeper
 \begin_layout Enumerate
-TinyTeX (rekomenderas), kan installeras med ett R-paketet tinytex, för mer
- info se 
+TinyTeX (rekomenderas),
+ kan installeras med ett R-paketet tinytex,
+ för mer info se 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -3976,7 +4124,8 @@ Andra alternativ är:
 
 \begin_deeper
 \begin_layout Enumerate
-Windows: 
+Windows:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "MiKTeX"
@@ -3989,7 +4138,8 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-Mac OS: 
+Mac OS:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "MacTeX"
@@ -4002,7 +4152,8 @@ literal "false"
 \end_layout
 
 \begin_layout Enumerate
-Linux: 
+Linux:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "texlive"
@@ -4126,8 +4277,7 @@ I like both **bold** text and *italic* text.
 \end_layout
 
 \begin_layout Enumerate
-Vill vi lägga till en länk använder vi hakparantes som anger länkens namn
- och därefter vanliga paranteser .
+Vill vi lägga till en länk använder vi hakparantes som anger länkens namn och därefter vanliga paranteser .
 \begin_inset Newline newline
 \end_inset
 
@@ -4156,9 +4306,11 @@ status open
 \end_layout
 
 \begin_layout Enumerate
-Att lägga till en bild görs på ett liknande sätt som en länk, dock med 
+Att lägga till en bild görs på ett liknande sätt som en länk,
+ dock med 
 \family typewriter
 !
+
 \family default
  innan hakparantesen.
 \begin_inset Newline newline
@@ -4333,7 +4485,8 @@ Ofta vill vi beskriva våra beräkningar med matematiska ekvationer.
  I markdown finns det möjlighet att skriva ekvationer med \SpecialChar LaTeX
  ekvationsystem.
  För exempel på hur det går att skriva \SpecialChar LaTeX
--ekvationer, se följande länkar:
+-ekvationer,
+ se följande länkar:
  
 \color blue
 
@@ -4422,11 +4575,13 @@ inline
 $
 \family default
 .
- Denna ekvation: 
+ Denna ekvation:
+ 
 \begin_inset Formula $E=mc^{2}$
 \end_inset
 
-, skrivs i markdown som:
+,
+ skrivs i markdown som:
 \begin_inset Newline newline
 \end_inset
 
@@ -4441,7 +4596,8 @@ status open
 
 \begin_layout Plain Layout
 
-Denna ekvation: $E=mc^2$
+Denna ekvation:
+ $E=mc^2$
 \end_layout
 
 \begin_layout Plain Layout
@@ -4501,8 +4657,8 @@ infty}_{0}x^{2}_{a}dx}{10}$$
 \end_layout
 
 \begin_layout Enumerate
-Skapa nu följande ekvationer i R markdown, ta hjälp av länkarna ovan vid
- behov.
+Skapa nu följande ekvationer i R markdown,
+ ta hjälp av länkarna ovan vid behov.
 \end_layout
 
 \begin_deeper
@@ -4538,8 +4694,8 @@ Integrera R-kod med knitr
 
 \begin_layout Standard
 Vi har nu gått igenom grunderna för att skapa ett markdowndokument.
- Den stora fördelen med markdown framgår dock först när vi kan integrera
- våra dokument med R-kod, grafik och tabeller.
+ Den stora fördelen med markdown framgår dock först när vi kan integrera våra dokument med R-kod,
+ grafik och tabeller.
 \end_layout
 
 \begin_layout Standard
@@ -4560,7 +4716,9 @@ Inline-kod
 \end_layout
 
 \begin_layout Enumerate
-Ibland kan vi vilja göra mindre, enklare beräkningar, direkt i ett dokument.
+Ibland kan vi vilja göra mindre,
+ enklare beräkningar,
+ direkt i ett dokument.
  För detta använder vi inlinekod.
  För att lägga till en enkel beräkning direkt i dokumentet används 
 \family typewriter
@@ -4608,8 +4766,9 @@ chunks
 
 \begin_layout Standard
 Med inline-kod kommer vi en liten bit mot ett dynamiskt dokument.
- Men vill vi ha mer komplicerade beräkningar, grafik eller tabeller måste
- vi skapa dessa i R-block, eller 
+ Men vill vi ha mer komplicerade beräkningar,
+ grafik eller tabeller måste vi skapa dessa i R-block,
+ eller 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4681,8 +4840,7 @@ a
 \end_layout
 
 \begin_layout Enumerate
-Om koden ovan körs kommer både R-koden att synas och resultatet som koden
- generar.
+Om koden ovan körs kommer både R-koden att synas och resultatet som koden generar.
  Vill vi inte visa R-koden anger vi bara 
 \family typewriter
 echo=FALSE
@@ -4702,7 +4860,8 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, echo=FALSE} 
+```{r,
+ echo=FALSE} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4750,7 +4909,8 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, results='hide'} 
+```{r,
+ results='hide'} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4798,7 +4958,8 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, eval=FALSE} 
+```{r,
+ eval=FALSE} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4842,7 +5003,9 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, eval=FALSE, echo=FALSE} 
+```{r,
+ eval=FALSE,
+ echo=FALSE} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4875,8 +5038,7 @@ Grafik
 \end_layout
 
 \begin_layout Standard
-En av de stora fördelarna med knitr och Rmd är att vi i R kan skapa grafik
- som direkt skapas och sätts in i dokumentet.
+En av de stora fördelarna med knitr och Rmd är att vi i R kan skapa grafik som direkt skapas och sätts in i dokumentet.
 \end_layout
 
 \begin_layout Enumerate
@@ -4896,7 +5058,8 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, echo=FALSE} 
+```{r,
+ echo=FALSE} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4925,8 +5088,7 @@ hist(faithful$waiting)
 \end_layout
 
 \begin_layout Enumerate
-Även här finns flera knitralternativt för att styra hur grafiken ska placeras
- i dokumentet.
+Även här finns flera knitralternativt för att styra hur grafiken ska placeras i dokumentet.
  
 \family typewriter
 fig.height
@@ -4939,7 +5101,8 @@ fig.width
 \family typewriter
 fig.align
 \family default
- styr om diagrammet ska vara höger-, vänster- eller centrerat till mitten.
+ styr om diagrammet ska vara höger-,
+ vänster- eller centrerat till mitten.
 \begin_inset Newline newline
 \end_inset
 
@@ -4954,7 +5117,10 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, echo=FALSE,fig.width=3, fig.height=3, fig.align='center'} 
+```{r,
+ echo=FALSE,fig.width=3,
+ fig.height=3,
+ fig.align='center'} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5001,8 +5167,8 @@ För att skapa tabeller direkt behöver vi dels använda funktionen
 \family typewriter
 kable()
 \family default
-, men vi behöver också ange att funktionen direkt skapar en markdowntabell
- som ska ses som markdownkod.
+,
+ men vi behöver också ange att funktionen direkt skapar en markdowntabell som ska ses som markdownkod.
  Därför behöver vi ange att resultatet ska vara 
 \family typewriter
 'asis'
@@ -5022,7 +5188,9 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, echo=FALSE, results='asis'} 
+```{r,
+ echo=FALSE,
+ results='asis'} 
 \end_layout
 
 \begin_layout Plain Layout
@@ -5046,7 +5214,9 @@ knitr::kable(head(faithful))
 \end_layout
 
 \begin_layout Enumerate
-Vi kan, precis som med grafiken, styra tabellernas grundutseende en del.
+Vi kan,
+ precis som med grafiken,
+ styra tabellernas grundutseende en del.
 \begin_inset Newline newline
 \end_inset
 
@@ -5061,12 +5231,17 @@ status open
 
 \begin_layout Plain Layout
 
-```{r, echo=FALSE, results='asis'} 
+```{r,
+ echo=FALSE,
+ results='asis'} 
 \end_layout
 
 \begin_layout Plain Layout
 
-knitr::kable(head(faithful), digits = 2, align = c("l", "c"))
+knitr::kable(head(faithful),
+ digits = 2,
+ align = c("l",
+ "c"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -5085,8 +5260,7 @@ knitr::kable(head(faithful), digits = 2, align = c("l", "c"))
 \end_layout
 
 \begin_layout Enumerate
-Det finns mer avancerade funktioner för att skapa tabeller automatiskt från
- ex.
+Det finns mer avancerade funktioner för att skapa tabeller automatiskt från ex.
  linjära regressionsmodeller med paketen 
 \family typewriter
 xtable
@@ -5099,7 +5273,8 @@ tables
 \end_layout
 
 \begin_layout Chapter
-Input och output (I/O): Data på webben
+Input och output (I/O):
+ Data på webben
 \end_layout
 
 \begin_layout Standard
@@ -5124,19 +5299,21 @@ Versionshantera förändringar i data
 \end_layout
 
 \begin_layout Standard
-Nedan finns exempel från vanliga molntjänster och hur man kan ladda ned
- data från dessa direkt till R.
+Nedan finns exempel från vanliga molntjänster och hur man kan ladda ned data från dessa direkt till R.
  Ett av paketen för att hantera denna typ av datainläsning är 
 \family typewriter
 repmis
 \family default
-, som kan läsa in de flesta csv, xlsx och Rdata-filer.
+,
+ som kan läsa in de flesta csv,
+ xlsx och Rdata-filer.
  För att ladde ner filer från Dropbox till R kan paketet 
 \family typewriter
 rdrop2
 \family default
- användas, men det kommer inte vara en del av denna kurs, den intresserade
- kan läsa 
+ användas,
+ men det kommer inte vara en del av denna kurs,
+ den intresserade kan läsa 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -5155,28 +5332,25 @@ downloader
 \end_layout
 
 \begin_layout Standard
-Ibland kan det vara så att vi vill ladda ned filer från R, men inte läsa
- in dem.
+Ibland kan det vara så att vi vill ladda ned filer från R,
+ men inte läsa in dem.
  Vi kanske vill ladda ned ett antal filer och sedan läsa in dem en och en.
  För att ladda ned filer i R finns funktionen 
 \family typewriter
 download.file()
 \family default
 .
- Dock kan det ibland vara lite klurigt att få den att fungera för så kallade
- secure http (https) adresser.
+ Dock kan det ibland vara lite klurigt att få den att fungera för så kallade secure http (https) adresser.
  Av bekvämlighet har därför paketet 
 \family typewriter
 downloader
 \family default
- skapats som gör nedladdning av filer mycket enkelt och bekvämt oberoende
- av operativsystem.
+ skapats som gör nedladdning av filer mycket enkelt och bekvämt oberoende av operativsystem.
  
 \end_layout
 
 \begin_layout Enumerate
-För att ladda ned data anger vi dels sökvägen till den aktuella filen och
- sedan sökvägen dit filen ska laddas ned.
+För att ladda ned data anger vi dels sökvägen till den aktuella filen och sedan sökvägen dit filen ska laddas ned.
  I detta fallet laddas filen ned till min working directory.
 \begin_inset Newline newline
 \end_inset
@@ -5202,18 +5376,19 @@ apple_remote <-
 
 \begin_layout Plain Layout
 
-"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/Apple.tx
-t" 
+"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/Apple.txt" 
 \end_layout
 
 \begin_layout Plain Layout
 
-apple_local <- paste0(getwd(), "/Apple.txt") 
+apple_local <- paste0(getwd(),
+ "/Apple.txt") 
 \end_layout
 
 \begin_layout Plain Layout
 
-download(url = apple_remote, destfile = apple_local)
+download(url = apple_remote,
+ destfile = apple_local)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5223,7 +5398,8 @@ download(url = apple_remote, destfile = apple_local)
 
 \begin_layout Plain Layout
 
-apple_test <- read.table(file="Apple.txt",sep=";", header=TRUE)
+apple_test <- read.table(file="Apple.txt",sep=";",
+ header=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5256,8 +5432,7 @@ literal "false"
 
  är framförallt en tjänst för att versionshantera programkod i molnet.
  Dock används det också mycket för att lagra enklare datamaterial.
- Särskilt material som förändras mycket där vi behöver kunna följa vilka
- förändringar som gjorts.
+ Särskilt material som förändras mycket där vi behöver kunna följa vilka förändringar som gjorts.
 \end_layout
 
 \begin_layout Standard
@@ -5295,13 +5470,15 @@ library(repmis)
 
 \begin_layout Plain Layout
 
-data_url <- "https://github.com/MansMeg/SwedishPolls/raw/master/Data/Polls.csv"
- 
+data_url <- "https://github.com/MansMeg/SwedishPolls/raw/master/Data/Polls.csv" 
 \end_layout
 
 \begin_layout Plain Layout
 
-polls <- repmis::source_data(data_url, sep = ",", dec = ".", header = TRUE)
+polls <- repmis::source_data(data_url,
+ sep = ",",
+ dec = ".",
+ header = TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5339,15 +5516,14 @@ literal "false"
 
 
 \color inherit
- finns dokumentet vi ska läsa in (det är samma data som faithful-datasetet
- i R).
+ finns dokumentet vi ska läsa in (det är samma data som faithful-datasetet i R).
  I sökvägen kan vi se textsträngen 1ZDJQXUiYg_QPNY38SNyTHyOtco6kbwePmTHWkqxnXxA.
  Detta är det unika id:t för detta google-kalkylblad.
 \end_layout
 
 \begin_layout Standard
-Vi kommer använda paketet googlesheets4 som klarar att göra mycket med google
- docs (som att spara dataset, läsa textfiler m.m.).
+Vi kommer använda paketet googlesheets4 som klarar att göra mycket med google docs (som att spara dataset,
+ läsa textfiler m.m.).
  Vi kommer dock endast använda det för att läsa in data i R.
 \end_layout
 
@@ -5385,11 +5561,9 @@ library(googlesheets4)
 \end_layout
 
 \begin_layout Enumerate
-I nästa steg laddar vi ned information om det aktuella kalkylbladet (hur
- många blad m.m.).
- I detta fall är det ett publikt datablad och vi behöver inte ange några
- användarnamn, därför kör vi gs4_deauth() först för att paketet inte ska
- fråga efter inloggning.
+I nästa steg laddar vi ned information om det aktuella kalkylbladet (hur många blad m.m.).
+ I detta fall är det ett publikt datablad och vi behöver inte ange några användarnamn,
+ därför kör vi gs4_deauth() först för att paketet inte ska fråga efter inloggning.
  För egna blad behöver vi logga in och skapa en koppling till vårt konto.
  
 \begin_inset Newline newline
@@ -5468,8 +5642,7 @@ pxweb
 \end_layout
 
 \begin_layout Standard
-Statistiska centralbyrån har utvecklat ett API för att ladda ned data direkt
- utan att först gå via deras webbplats.
+Statistiska centralbyrån har utvecklat ett API för att ladda ned data direkt utan att först gå via deras webbplats.
  En koppling till deras API finns installerat som paketet 
 \family typewriter
 pxweb
@@ -5480,7 +5653,8 @@ pxweb
 \end_layout
 
 \begin_layout Enumerate
-Om ni arbetar vid egen dator: Börja med att installera paketet 
+Om ni arbetar vid egen dator:
+ Börja med att installera paketet 
 \family typewriter
 pxweb
 \family default
@@ -5555,15 +5729,13 @@ Navigera i SCB:s API
 \end_layout
 
 \begin_layout Standard
-Ofta vet vi inte exakt vad för data vi vill ha utan vill navigera igenom
- SCB:s databaser på ett effektivt sätt.
+Ofta vet vi inte exakt vad för data vi vill ha utan vill navigera igenom SCB:s databaser på ett effektivt sätt.
  Detta gör vi med funktionen 
 \family typewriter
 pxweb_interactive()
 \family default
 .
- Vill vi leta upp ett givet datamaterial som vi vill spara måste vi tillskriva
- datamaterialet till ett objekt.
+ Vill vi leta upp ett givet datamaterial som vi vill spara måste vi tillskriva datamaterialet till ett objekt.
 \end_layout
 
 \begin_layout Standard
@@ -5583,8 +5755,7 @@ För att navigera i Statistiska centralbyråns API kan vi använda funktionen
 \family typewriter
  pxweb_interactive()
 \family default
- som listar förinstallerade api:er och ger möjlighet att välja vilket api
- vi vill hämta data från.
+ som listar förinstallerade api:er och ger möjlighet att välja vilket api vi vill hämta data från.
 \begin_inset Newline newline
 \end_inset
 
@@ -5613,19 +5784,22 @@ mitt_data <- pxweb_interactive()
 \end_layout
 
 \begin_layout Enumerate
-För att navigera skrivs kommandon, siffror anger vilket menyval vi vill
- göra, bokstäver och tecken används för att backa/lista alla osv.
- Exempel: När konsolen är markerad, tryck 1 och tryck sen enter.
+För att navigera skrivs kommandon,
+ siffror anger vilket menyval vi vill göra,
+ bokstäver och tecken används för att backa/lista alla osv.
+ Exempel:
+ När konsolen är markerad,
+ tryck 1 och tryck sen enter.
 \end_layout
 
 \begin_layout Enumerate
-För att komma åt SCB välj först 1, sen 1 igen för att välja version 1, sen
- välj 2 för att ha på svenska och slutligen 1 för att komma åt databsen.
+För att komma åt SCB välj först 1,
+ sen 1 igen för att välja version 1,
+ sen välj 2 för att ha på svenska och slutligen 1 för att komma åt databsen.
 \end_layout
 
 \begin_layout Enumerate
-Vi ska nu leta upp andelen arbetslösa från den senaste arbetskraftsundersökninge
-n och spara ned detta som ett datamaterial i R.
+Vi ska nu leta upp andelen arbetslösa från den senaste arbetskraftsundersökningen och spara ned detta som ett datamaterial i R.
  Vi befinner oss nu i den översta menyn.
  Ange 
 \family typewriter
@@ -5654,7 +5828,8 @@ b
 \family typewriter
 Arbetsmarknad
 \family default
-, använd 
+,
+ använd 
 \family typewriter
 a
 \family default
@@ -5674,31 +5849,33 @@ Arbetslösa samt därav heltidsstuderande 15-74 år (AKU) efter kön och ålder.
 
 \begin_deeper
 \begin_layout Itemize
-Tips: 
+Tips:
+ 
 \family typewriter
 Arbetskraftsundersökningarna (AKU)
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-Nu är vi inne i den del av API:et som anger vilka delar av materialet ni
- vill ladda ned.
+Nu är vi inne i den del av API:et som anger vilka delar av materialet ni vill ladda ned.
  Varje variabel kommer nu dyka upp och vi får ange vilka data vi vill ha.
 \begin_inset Newline newline
 \end_inset
 
-Vill vi bara ha en kategori anger vi den siffran, vill vi ha allt material
- anger vi 
+Vill vi bara ha en kategori anger vi den siffran,
+ vill vi ha allt material anger vi 
 \family typewriter
 *
 \family default
  och vill vi ha delar anger vi det antingen som en sekvens med 
 \family typewriter
 :
+
 \family default
  eller avgränsat med 
 \family typewriter
 ,
+
 \family default
  .
 \begin_inset Separator latexpar
@@ -5762,7 +5939,8 @@ Variabeln
 TID
 \family default
  innehåller många kategorier.
- För att se alla kategorierer, ange 
+ För att se alla kategorierer,
+ ange 
 \family typewriter
 a
 \family default
@@ -5789,8 +5967,8 @@ Nu kommer det komma en massa frågor om hur ni vill ladda ner datamaterialet.
 
 \begin_deeper
 \begin_layout Enumerate
-Först frågar den om ni vill få koden för att ladda ner data direkt, välj
- y.
+Först frågar den om ni vill få koden för att ladda ner data direkt,
+ välj y.
 \end_layout
 
 \begin_layout Enumerate
@@ -5799,7 +5977,8 @@ Sen frågar den om ni vill ha resultatet som en JSON format eller R list,
 \end_layout
 
 \begin_layout Enumerate
-R frågar nu om ni vill ladda ned datamaterialet, ange 
+R frågar nu om ni vill ladda ned datamaterialet,
+ ange 
 \family typewriter
 y
 \family default
@@ -5807,8 +5986,8 @@ y
 \end_layout
 
 \begin_layout Enumerate
-Nästa steg efterfrågas om ni vill ha materialet i orginalformat eller som
- en färdigformaterad data.frame i R., välj 
+Nästa steg efterfrågas om ni vill ha materialet i orginalformat eller som en färdigformaterad data.frame i R.,
+ välj 
 \family typewriter
 y
 \family default
@@ -5837,7 +6016,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=FALSE, echo=TRUE>>=
+<<eval=FALSE,
+ echo=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -5895,8 +6075,7 @@ pxweb_get(
 
 \begin_layout Plain Layout
 
-url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAKUArblheltids
-tudAr",
+url = "https://api.scb.se/OV0104/v1/doris/sv/ssd/AM/AM0401/AM0401L/NAKUArblheltidstudAr",
 \end_layout
 
 \begin_layout Plain Layout
@@ -5924,7 +6103,9 @@ px_data_frame <-
 
 \begin_layout Plain Layout
 
-as.data.frame(px_data, column.name.type = "text", variable.value.type = "text")
+as.data.frame(px_data,
+ column.name.type = "text",
+ variable.value.type = "text")
 \end_layout
 
 \begin_layout Plain Layout
@@ -5961,15 +6142,15 @@ Ladda ned data från SCB direkt med kod
 \end_layout
 
 \begin_layout Standard
-Ofta vill vi ladda ned/komma åt data från SCB som en löpande del i en analysproc
-ess där vi använder de senaste data från SCB.
- Då vill vi använda pxweb, inte interaktivt, utan som R-kod.
+Ofta vill vi ladda ned/komma åt data från SCB som en löpande del i en analysprocess där vi använder de senaste data från SCB.
+ Då vill vi använda pxweb,
+ inte interaktivt,
+ utan som R-kod.
  
 \end_layout
 
 \begin_layout Enumerate
-Spara ned koden ni fick ovan och kör den för att ladda ned datamaterialet
- direkt.
+Spara ned koden ni fick ovan och kör den för att ladda ned datamaterialet direkt.
  (Nu sparas den som 
 \family typewriter
 px_data_frame
@@ -5995,10 +6176,8 @@ Namnstatistik 2022
 \end_layout
 
 \begin_layout Standard
-Använd pxweb för att ta reda på vilka namn som var vanliga att ge till nyfödda
- barn 2021.
- Målet är att hitta de 5 vanligaste flicknamnen och de 5 vanligste pojknamnen
- som gavs till nyfödda barn 2022.
+Använd pxweb för att ta reda på vilka namn som var vanliga att ge till nyfödda barn 2021.
+ Målet är att hitta de 5 vanligaste flicknamnen och de 5 vanligste pojknamnen som gavs till nyfödda barn 2022.
  Detta datamaterial finns under 
 \begin_inset Quotes sld
 \end_inset
@@ -6019,8 +6198,7 @@ Partistorlek i valet till kommunfullmäktige 2022
 \end_layout
 
 \begin_layout Standard
-Målet är nu att undersöka hur stora olika partier blev i kommunfullmäktige
- i valet 2022.
+Målet är nu att undersöka hur stora olika partier blev i kommunfullmäktige i valet 2022.
  Ni ska använda datamaterialet 
 \begin_inset Newline newline
 \end_inset
@@ -6056,13 +6234,12 @@ Detta datamaterial finns under
 \end_inset
 
 .
- Målet är att hitta vilken kommun där varje parti blev som störst i kommunfullmä
-ktige jämfört med alla kommuner i Sverige.
- Om ni tittar på ett parti, tex Socialdemokraterna, då vill ni ta reda på
- vilken kommun där de fick högst andel röster (jämfört med alla kommuner)
- i valet till kommunfullmäktige 2022.
- Sen ska ni upprepa detta för Moderaterna, Sverigedemokraterna och alla
- andra partier som sitter i riksdagen
+ Målet är att hitta vilken kommun där varje parti blev som störst i kommunfullmäktige jämfört med alla kommuner i Sverige.
+ Om ni tittar på ett parti,
+ tex Socialdemokraterna,
+ då vill ni ta reda på vilken kommun där de fick högst andel röster (jämfört med alla kommuner) i valet till kommunfullmäktige 2022.
+ Sen ska ni upprepa detta för Moderaterna,
+ Sverigedemokraterna och alla andra partier som sitter i riksdagen
 \begin_inset Foot
 status collapsed
 
@@ -6073,8 +6250,10 @@ Vi struntar i alla lokala partier som finns i kommunerna här.
 \end_inset
 
 .
- I slutändan så ska ni få fram 8 kommuner, en för varje parti.
- Ni vill alltså svara på frågorna: 
+ I slutändan så ska ni få fram 8 kommuner,
+ en för varje parti.
+ Ni vill alltså svara på frågorna:
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -6082,7 +6261,8 @@ Vilken var Socialdemokraternas starkaste kommun i valet till kommunfullmäktige?
 \begin_inset Quotes srd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes sld
 \end_inset
 
@@ -6090,7 +6270,8 @@ Vilken var Moderateras starkaste kommun i valet till kommunfullmäktige?
 \begin_inset Quotes srd
 \end_inset
 
-, osv.
+,
+ osv.
 \end_layout
 
 \begin_layout Standard
@@ -6117,9 +6298,9 @@ Riket
 \end_layout
 
 \begin_layout Itemize
-Sortera med avseende på andelar och spara namnet på den kommun som hade
- högst andel.
- Tips: 
+Sortera med avseende på andelar och spara namnet på den kommun som hade högst andel.
+ Tips:
+ 
 \family typewriter
 order()
 \end_layout
@@ -6129,26 +6310,30 @@ Upprepa sedan för alla de 8 riksdagspartierna.
 \end_layout
 
 \begin_layout Itemize
-Spara sedan ert resultat i en data.frame med tre kolumner: en med parti,
+Spara sedan ert resultat i en data.frame med tre kolumner:
+ en med parti,
  en med kommun och en med andel röster.
 \end_layout
 
 \begin_layout Section
-* Extraproblem: Partistorlek i valet till kommunfullmäktige 2018
+* Extraproblem:
+ Partistorlek i valet till kommunfullmäktige 2018
 \end_layout
 
 \begin_layout Standard
-Upprepa uppgiften ovan, men för valet 2018.
+Upprepa uppgiften ovan,
+ men för valet 2018.
  Jämför sedan resultatet mellan 2018 och 2022.
 \end_layout
 
 \begin_layout Section
-* Extraproblem: Andra api:er
+* Extraproblem:
+ Andra api:er
 \end_layout
 
 \begin_layout Standard
-Vi har nu prövat Statistiska centralbyråns API, men allt fler offentliga
- myndigheter (och företag) lägger ut sina resultat i form av ett pxweb-api.
+Vi har nu prövat Statistiska centralbyråns API,
+ men allt fler offentliga myndigheter (och företag) lägger ut sina resultat i form av ett pxweb-api.
  Med 
 \family typewriter
 api_catalogue()
@@ -6157,8 +6342,7 @@ api_catalogue()
 \end_layout
 
 \begin_layout Enumerate
-Pröva att navigera i något annat API än Statistiska centralbyråns och ladda
- ned data därifrån.
+Pröva att navigera i något annat API än Statistiska centralbyråns och ladda ned data därifrån.
 \end_layout
 
 \begin_layout Standard
