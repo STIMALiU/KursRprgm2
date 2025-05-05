@@ -4,19 +4,27 @@
 #-------------------------------------------------------------------------------
 #-------------------------------------------------------------------------------
 
+# vi kan använda funktioner som andra objekt
 
 # spara funktioner
 # skapar en lista med funktioner
+
+
 
 my_list<-c(mean,median)  
 my_list
 my_list[[1]](c(2,4,3,10,2))
 my_list[[2]](c(2,4,3,10,2))
+# jämför med 
+mean(c(2,4,3,10,2))
+median(c(2,4,3,10,2))
+
+
 
 my_list2<-list(mean=mean,median=median,sd=sd)
 
 my_list2$mean(iris$Sepal.Length)
-
+my_list2$sd(iris$Sepal.Length)
 
 
 # funktioner som input till andra funktioner
@@ -38,9 +46,10 @@ f<-function(x){
 
 
 a<-f(x = 1)
+a(1:10)
 a<-f(x=4)
 a(1:10)
-#
+# vad händer i de olika fallen ovan?
 
 
 
@@ -67,6 +76,11 @@ a(1:10)
 
 library(pryr)
 
+
+?class # Object Classes
+?otype # Determine object type
+
+
 class(iris)
 otype(x = iris)
 otype(x = "hej")
@@ -74,12 +88,12 @@ library(Matrix)
 A<-Matrix(10,2,5)
 otype(A)
 
-
+?ftype # Determine function type
 ftype(mean)
 ftype(plot)
 ftype(sd)
 ftype("+")
-ftype(A)
+
 
 
 data("iris")
@@ -95,6 +109,7 @@ class(matrix(10,2,5))
 
 my_object1<-list(name="Ali",age=42,company="liu")
 my_object1
+class(my_object1)
 class(my_object1) <- "employee"
 class(my_object1)
 
@@ -126,6 +141,7 @@ print.statistician<-function(x){
 print(my_object1)
 print(my_object2)
 print.employee(my_object2)
+
 
 summary.statistician<-function(x){
   print(paste("Favorited data:",x$data_name))
@@ -164,6 +180,7 @@ my_object1$age
 
 # Skapa konstruktorfunktion
 
+# funktionen skapar specifika instanser (objekt) av klassen "employee"
 employee <- function(name, age,company){
   obj<-list(name=name,age=age,company=company)
   class(obj) <- "employee"
@@ -199,7 +216,13 @@ summary(B)
 
 library(lubridate)
 
-x<-ymd("2015-01-01")
+# många tips finns här:
+# https://rstudio.github.io/cheatsheets/lubridate.pdf
+
+x0<-"2015-01-01"
+class(x0)
+?ymd
+x<-ymd(x0)
 x
 class(x)
 
