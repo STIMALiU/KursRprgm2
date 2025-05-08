@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "Inluppg.lyx"
+literal "true"
 
 \end_inset
 
@@ -184,8 +194,7 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise
-_solutions/
+/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -199,7 +208,8 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+for(sol_file in solution_files) source(file = paste0(solution_path,
+ sol_file),
  echo = FALSE)
 \end_layout
 
@@ -222,7 +232,8 @@ Inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Ladda nu ner laborationsmallen, som finns 
+Ladda nu ner laborationsmallen,
+ som finns 
 \series bold
 \color blue
 
@@ -321,8 +332,7 @@ Inlämningsuppgifter utgår ifrån att ni har gjort
 övningsuppgifterna
 \series default
  ovan först.
- Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
- inlämningsuppgifterna.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med inlämningsuppgifterna.
 \end_layout
 
 \begin_layout Itemize
@@ -335,14 +345,14 @@ problemet
 \end_inset
 
  i uppgiften.
- Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vad ska funktionen göra?
+ Beskriv problemet för er själva.
  Vissa problem är det bra att bryta ner i mindre delproblem.
  
 \end_layout
 
 \begin_layout Itemize
-Börja med att lösa problemet (eller det första delproblemet) med vanlig
- kod (dvs inte i en funktion) i ett R-script.
+Börja med att lösa problemet (eller det första delproblemet) med vanlig kod (dvs inte i en funktion) i ett R-script.
 \end_layout
 
 \begin_deeper
@@ -355,13 +365,13 @@ Lös ett delproblem i taget vid behov.
 \end_deeper
 \begin_layout Itemize
 Sätt sedan in er kod i en funktion.
- Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
- (testfallen).
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna (testfallen).
  Se till att funktionen har rätt namn och rätt namn på argumenten.
 \end_layout
 
 \begin_layout Itemize
-Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+Ta er funktion och lägg in den i kodmallen,
+ dvs i ett nytt R-script.
  Skapa variablerna 
 \family typewriter
 Namn
@@ -375,8 +385,8 @@ LiuId
 \end_layout
 
 \begin_layout Itemize
-Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
- och ID-variabler och ev.
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna,
+ namn- och ID-variabler och ev.
  kommentarer.
  
 \end_layout
@@ -402,19 +412,20 @@ hyfsat klar
 \begin_inset Quotes srd
 \end_inset
 
-, annars kommer ni att få många fel i markmyassignment, och det är svårt
- att veta var man ska börja kolla.
+,
+ annars kommer ni att få många fel i markmyassignment,
+ och det är svårt att veta var man ska börja kolla.
 \end_layout
 
 \begin_layout Itemize
-Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
- kommer ni att få många fel i markmyassignment.
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
- som ni får.
+Om ni inte klarar alla tester i markmyassignment:
+ undersök vilka felmeddelanden som ni får.
  Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
 \end_layout
 
@@ -424,8 +435,7 @@ Innan ni lämnar in:
 
 \begin_deeper
 \begin_layout Itemize
-Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
-ten.
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstexten.
  Ibland måste en viss metod användas för att lösa uppgiften.
  Ibland är vissa funktioner inte tillåtna i en viss uppgift.
  Så läs noga i varje uppgift vad som gäller.
@@ -441,8 +451,7 @@ Dokumentation och kodstil
 \end_layout
 
 \begin_layout Standard
-Från och med denna laboration och de resterade laborationerna i kursen så
- ska ni förutom att lösa angivna uppgifter också 
+Från och med denna laboration och de resterade laborationerna i kursen så ska ni förutom att lösa angivna uppgifter också 
 \series bold
 kommentera
 \series default
@@ -473,8 +482,8 @@ läsbar
 
 \begin_layout Itemize
 Följ någon av kodstilarna i Datorlaboration 4.
- Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
- i den stil som ni väljer att använda.
+ Ni måste inte följa dessa exakt,
+ men koden ska se bra ut och var konsekventa i den stil som ni väljer att använda.
 \end_layout
 
 \begin_layout Itemize
@@ -502,7 +511,8 @@ Kommentarer:
 
 \begin_deeper
 \begin_layout Itemize
-Funktionshuvud: Använd mallen för 
+Funktionshuvud:
+ Använd mallen för 
 \family typewriter
 roxygen2
 \family default
@@ -532,11 +542,14 @@ Förklara kort vad funktionen gör
 \family typewriter
 @param 
 \family default
-Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+Skriv först arguments namn,
+ sen mellanslag och sen förklara kort argumentet.
  Upprepa detta för alla argument i funktionen.
- Ex: 
+ Ex:
+ 
 \family typewriter
-x Numerisk vektor, används vid beräkning av medelvärde.
+x Numerisk vektor,
+ används vid beräkning av medelvärde.
 \end_layout
 
 \begin_layout Itemize
@@ -549,7 +562,8 @@ Förklara vad funktionen returnerar
 
 \end_deeper
 \begin_layout Itemize
-Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+Kommenter i funktionen:
+ Era lösningar ska innehålla lämpliga kommenater,
  där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
  Ni behöver inte föklara alla detaljer.
  Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
@@ -557,15 +571,15 @@ Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
 \end_layout
 
 \begin_layout Itemize
-Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
- om ett år.
+Tips:
+ Tänk att det ska vara lätt att förstå er funktion långt senare,
+ tex om ett år.
  Vilka kommentarer behövs då?
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
- instruktioner för kommentarer och kodstil.
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående instruktioner för kommentarer och kodstil.
  
 \end_layout
 
@@ -575,39 +589,39 @@ classroom()
 
 \begin_layout Standard
 Skapa en konstruktor som skapar ett klassrumsobjekt med funktionen classroom().
- Funktionen ska ha två argument, seats and whiteboards, som anger hur många
- platser och hur många tavlor som finns i rummet.
+ Funktionen ska ha två argument,
+ seats and whiteboards,
+ som anger hur många platser och hur många tavlor som finns i rummet.
  Denna information ska sparas i en lista.
  Objektet som returneras ska vara av klassen classroom.
- Funktionen ska också kontrollera att seats är strikt större än 0 och att
- whiteboard är större eller lika med 0.
+ Funktionen ska också kontrollera att seats är strikt större än 0 och att whiteboard är större eller lika med 0.
  Ni kan välja felmeddelande själva.
 \end_layout
 
 \begin_layout Standard
-Implementera sedan en specifik metod för klassen classroom till generiska
- funktionen print().
+Implementera sedan en specifik metod för klassen classroom till generiska funktionen print().
  Ni ska alltså skapa funktionen print.classroom().
  Beroende på antalet sittplatser ska följande skrivas ut:
 \end_layout
 
 \begin_layout Itemize
-10 eller färre sittplatser: A group room for [seats] students with [whiteboard]
- whiteboards.
+10 eller färre sittplatser:
+ A group room for [seats] students with [whiteboard] whiteboards.
 \end_layout
 
 \begin_layout Itemize
-11 till 50 sittplatser: A classroom for [seats] students with [whiteboard]
- whiteboards.
+11 till 50 sittplatser:
+ A classroom for [seats] students with [whiteboard] whiteboards.
 \end_layout
 
 \begin_layout Itemize
-fler än 50 sittplatser: A lecture hall for [seats] students with [whiteboard]
- whiteboards.
+fler än 50 sittplatser:
+ A lecture hall for [seats] students with [whiteboard] whiteboards.
 \end_layout
 
 \begin_layout Itemize
-Om antalet whiteboards är noll ska istället för siffran 0, ordet no användas.
+Om antalet whiteboards är noll ska istället för siffran 0,
+ ordet no användas.
 \begin_inset Newline newline
 \end_inset
 
@@ -617,7 +631,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, echo=TRUE>>=
+<<eval=TRUE,
+ echo=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -724,8 +739,8 @@ literal "false"
 \end_inset
 
  står det vilka regler som gäller.
- Ni ska skriva en funktion som ska hjälpa en blodgivare att veta när hen
- får ge blod, utifrån några av reglerna.
+ Ni ska skriva en funktion som ska hjälpa en blodgivare att veta när hen får ge blod,
+ utifrån några av reglerna.
  Funktionen ska heta 
 \family typewriter
 give_blood()
@@ -738,9 +753,11 @@ give_blood()
 \family typewriter
 lasttime
 \family default
-: ett datum som anger senaste gången blodgivaren gav blod, default ska vara
- idag.
- tips: today()
+:
+ ett datum som anger senaste gången blodgivaren gav blod,
+ default ska vara idag.
+ tips:
+ today()
 \end_layout
 
 \begin_layout Itemize
@@ -748,10 +765,10 @@ lasttime
 \family typewriter
 holiday
 \family default
-: ska vara antingen: 1) ett interval-objekt som anger start- och slutdatum
- för en utlandsresa.
- Startdatum är det datum som personen lämnar Sverige och slutdatum är det
- datum som personen kommer hem till Sverige.
+:
+ ska vara antingen:
+ 1) ett interval-objekt som anger start- och slutdatum för en utlandsresa.
+ Startdatum är det datum som personen lämnar Sverige och slutdatum är det datum som personen kommer hem till Sverige.
  2) Defaultvärde ska vara 
 \begin_inset Quotes eld
 \end_inset
@@ -764,7 +781,8 @@ hemma
 \begin_inset Quotes erd
 \end_inset
 
-, vilket indikerar att det inte blir någon resa.
+,
+ vilket indikerar att det inte blir någon resa.
 \end_layout
 
 \begin_layout Itemize
@@ -772,7 +790,8 @@ hemma
 \family typewriter
 sex
 \family default
-: antar värdet 
+:
+ antar värdet 
 \begin_inset Quotes eld
 \end_inset
 
@@ -796,7 +815,8 @@ m
 \family typewriter
 type_of_travel
 \family default
-: 
+:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -850,8 +870,7 @@ year-month-day
 
 \series default
 .
- Funktionen ska givet argumenten räkna ut ett datum när blodgivaren får
- ge blod igen och returnera datumet.
+ Funktionen ska givet argumenten räkna ut ett datum när blodgivaren får ge blod igen och returnera datumet.
  Vi utgår ifrån att blodgivaren vill ge blod så 
 \series bold
 ofta
@@ -861,14 +880,15 @@ ofta
 \end_layout
 
 \begin_layout Itemize
-Minsta tid mellan blodgivningstillfällen: kvinnor 4 månader, män 3 månader,
+Minsta tid mellan blodgivningstillfällen:
+ kvinnor 4 månader,
+ män 3 månader,
  båda anger relativ tid.
  Efter exakt denna tid kan personen ge blod.
 \end_layout
 
 \begin_layout Itemize
-Om personen varit i ett land där det inte finns malaria ska hen vänta (vara
- i karantän) 4 veckor (relativ tid) efter slutdatum i argumentet 
+Om personen varit i ett land där det inte finns malaria ska hen vänta (vara i karantän) 4 veckor (relativ tid) efter slutdatum i argumentet 
 \family typewriter
 holiday
 \family default
@@ -876,8 +896,7 @@ holiday
 \end_layout
 
 \begin_layout Itemize
-Om personen varit i ett land där det finns malaria ska hen vänta (vara i
- karantän) 6 månader (relativ tid) efter slutdatum i argumentet 
+Om personen varit i ett land där det finns malaria ska hen vänta (vara i karantän) 6 månader (relativ tid) efter slutdatum i argumentet 
 \family typewriter
 holiday
 \family default
@@ -885,14 +904,12 @@ holiday
 \end_layout
 
 \begin_layout Itemize
-När det gäller karantänen får personen inte ge blod under karantänen utan
- det är första dagen efter karantänen personen får ge blod.
+När det gäller karantänen får personen inte ge blod under karantänen utan det är första dagen efter karantänen personen får ge blod.
 \end_layout
 
 \begin_layout Itemize
-Vi utgår ifrån att blodgivningscentralen bara är öppen på vardagar (måndag
- till fredag), så givet de tidigare reglerna så ska den första möjliga vardagen
- väljas.
+Vi utgår ifrån att blodgivningscentralen bara är öppen på vardagar (måndag till fredag),
+ så givet de tidigare reglerna så ska den första möjliga vardagen väljas.
 \end_layout
 
 \begin_layout Standard
@@ -900,15 +917,15 @@ Nedan följer ett förslag på lösningsordning:
 \end_layout
 
 \begin_layout Enumerate
-Undersök om personen varit hemma, på resa i land med malaria eller i land
- utan malaria.
+Undersök om personen varit hemma,
+ på resa i land med malaria eller i land utan malaria.
  Addera eventuell tilläggstid till slutdatum och spara som 
 \family typewriter
 extraTime
 \family default
 .
- Tänk på att ta hänsym till fallet då personen inte reser, tex genom att
- sätta 
+ Tänk på att ta hänsym till fallet då personen inte reser,
+ tex genom att sätta 
 \family typewriter
 extraTime
 \family default
@@ -924,14 +941,17 @@ lasttime
 \series bold
 Tips
 \series default
-: 
+:
+ 
 \family typewriter
-int_end(), months(), weeks()
+int_end(),
+ months(),
+ weeks()
 \end_layout
 
 \begin_layout Enumerate
-Givet om den är en man eller kvinna räkna ut när personen tidigast får ge
- blod, spara det datumet i variablen 
+Givet om den är en man eller kvinna räkna ut när personen tidigast får ge blod,
+ spara det datumet i variablen 
 \family typewriter
 suggestion
 \family default
@@ -939,6 +959,7 @@ suggestion
  
 \series bold
 Tips:
+
 \series default
  
 \family typewriter
@@ -954,12 +975,14 @@ suggestion
 \family typewriter
 extraTime
 \family default
-, om så är fallet ange 
+,
+ om så är fallet ange 
 \family typewriter
 suggestion
 \family default
  som förslag för blodgivnig.
- Om så inte är fallet, ange dagen efter 
+ Om så inte är fallet,
+ ange dagen efter 
 \family typewriter
 extraTime
 \family default
@@ -968,8 +991,8 @@ extraTime
 \end_layout
 
 \begin_layout Enumerate
-Kontrollera att den angivna dagen är en vardag, om inte ange nästa vardag
- som förslag.
+Kontrollera att den angivna dagen är en vardag,
+ om inte ange nästa vardag som förslag.
  
 \series bold
 
@@ -977,10 +1000,12 @@ Kontrollera att den angivna dagen är en vardag, om inte ange nästa vardag
 \end_inset
 
 Tips!
+
 \series default
  
 \family typewriter
-?wday(), ?days()
+?wday(),
+ ?days()
 \end_layout
 
 \begin_layout Enumerate
@@ -994,7 +1019,7 @@ Returnera förslaget som en text-sträng på formen:
 \begin_inset Quotes eld
 \end_inset
 
-year=[året], month=[månaden], day=[dagen], weekday=[veckodagen]
+year=[året] month=[månaden] day=[dagen] weekday=[veckodagen]
 \begin_inset Quotes erd
 \end_inset
 
@@ -1027,14 +1052,19 @@ year=2014 month=Feb day=19 weekday=Friday
  
 \series bold
 Tips:
+
 \series default
  
 \family typewriter
-year(), month(), day(), paste()
+year(),
+ month(),
+ day(),
+ paste()
 \end_layout
 
 \begin_layout Standard
-Tips! Det kan vara så att weekday() returnerar veckodagarna på svenska.
+Tips!
+ Det kan vara så att weekday() returnerar veckodagarna på svenska.
  För att returnera veckodagar på engelska finns följande tips:
 \end_layout
 
@@ -1049,7 +1079,8 @@ status open
 
 \begin_layout Plain Layout
 
-Sys.setlocale("LC_TIME", "English")
+Sys.setlocale("LC_TIME",
+ "English")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1059,7 +1090,8 @@ Sys.setlocale("LC_TIME", "English")
 
 \begin_layout Plain Layout
 
-Sys.setlocale("LC_TIME", "C")
+Sys.setlocale("LC_TIME",
+ "C")
 \end_layout
 
 \begin_layout Plain Layout
@@ -1087,7 +1119,8 @@ status open
 
 \begin_layout Plain Layout
 
-# månad: 
+# månad:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1140,8 +1173,7 @@ print(month.name)
 
 \begin_layout Plain Layout
 
-month_name_eng<-substr(x = wrap_month(month(x,label = FALSE)),start = 1,stop
- = 3)  
+month_name_eng<-substr(x = wrap_month(month(x,label = FALSE)),start = 1,stop = 3)  
 \end_layout
 
 \begin_layout Plain Layout
@@ -1150,12 +1182,18 @@ month_name_eng<-substr(x = wrap_month(month(x,label = FALSE)),start = 1,stop
 
 \begin_layout Plain Layout
 
-# veckodag: 
+# veckodag:
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-week_name <- c("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+week_name <- c("Sunday",
+ "Monday",
+ "Tuesday",
+ "Wednesday",
+ "Thursday",
+ "Friday",
  "Saturday")
 \end_layout
 
@@ -1199,12 +1237,14 @@ library(lubridate)
 
 \begin_layout Plain Layout
 
-Sys.setlocale("LC_TIME", "C")
+Sys.setlocale("LC_TIME",
+ "C")
 \end_layout
 
 \begin_layout Plain Layout
 
-# Test 1: 
+# Test 1:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1277,7 +1317,8 @@ day5<-ymd("2014-05-23")
 
 \begin_layout Plain Layout
 
-holiday2<-interval(day4, day5)
+holiday2<-interval(day4,
+ day5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1310,7 +1351,8 @@ give_blood(lasttime=day1,holiday=holiday2,sex="f",type_of_travel="other")
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body
