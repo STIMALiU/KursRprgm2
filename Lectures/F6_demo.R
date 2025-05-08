@@ -13,7 +13,7 @@
 
 my_list<-c(mean,median)  
 my_list
-my_list[[1]](c(2,4,3,10,2))
+my_list[[1]](x=c(2,4,3,10,2))
 my_list[[2]](c(2,4,3,10,2))
 # jämför med 
 mean(c(2,4,3,10,2))
@@ -83,6 +83,7 @@ library(pryr)
 
 class(iris)
 otype(x = iris)
+class("hej")
 otype(x = "hej")
 library(Matrix)
 A<-Matrix(10,2,5)
@@ -104,9 +105,12 @@ class(1:10)
 
 class(matrix(10,2,5))
 
+# matrix() - är en kontruktor för att skapa objekt av klassen matrix
+B<-matrix(10,2,5)
+B # specifik instans av klassen matrix
 
-# Skapa en klass i R
 
+# Skapa en klass i R: employee (i S3)
 my_object1<-list(name="Ali",age=42,company="liu")
 my_object1
 class(my_object1)
@@ -138,6 +142,7 @@ print.statistician<-function(x){
   cat(paste(x$name,"is a statistician!"))
 }
 
+class(my_object1)
 print(my_object1)
 print(my_object2)
 print.employee(my_object2)
@@ -178,6 +183,7 @@ age(my_object2)
 str(my_object1)
 my_object1$age
 
+
 # Skapa konstruktorfunktion
 
 # funktionen skapar specifika instanser (objekt) av klassen "employee"
@@ -189,6 +195,7 @@ employee <- function(name, age,company){
 
 x<-employee(name = "Josef",age = 67,company = "abc")
 x
+print(x)
 class(x)
 
 statistician<-function(name,age,company,data,data_name){
