@@ -1,171 +1,182 @@
 # Klass: Rektangel
 # Höjd och bredd
 
-my_object <- list(hojd = 3, bredd = 2)
-class(my_object) <- "rektangel"
+my_obj <- list(hojd = 3, bredd = 2)
+class(my_obj) <- "rektangel"
 
-class(my_object)
-my_object$hojd
-my_object$bredd
+class(my_obj)
+my_obj$hojd
+my_obj$bredd
 
 # Konstruktor
 rektangel <- function(hojd, bredd) {
-  obj <- list(hojd = hojd, bredd = bredd)
-  class(obj) <- "rektangel"
-  return(obj)
+  my_obj <- list(hojd = hojd, bredd = bredd)
+  class(my_obj) <- "rektangel"
+  return(my_obj)
 }
 
-rektangel(4,3)
+rektangel_1 <- rektangel(4,3)
+rektangel_1
 
-# Utöka print funktion
-print(rektangel(4,3))
-
-print.rektangel <- function(x) {
-  cat("Rektangel med Höjd", x$hojd, "Bredd", x$bredd)
+# Konstruktor för cirkel
+# Cirkel behöver bara radie
+cirkel <- function(radie) {
+  my_obj <- list(radie = radie)
+  class(my_obj) <- "cirkel"
+  return(my_obj)
 }
 
-print(rektangel(4,3))
+cirkel_1 <- cirkel(1)
 
-methods(data)
+print(rektangel_1)
+
+# Utöka print funktionen
 methods(print)
 
-# Skriv en egen generisk funktion för area
+print.rektangel <- function(x) {
+  cat("Rektangel med höjd ", x$hojd, " och bredd ", x$bredd)
+}
+
+print(rektangel_1)
+print.default(rektangel_1)
+
+?omkrets
+
+# Skapa en generisk funktion
+omkrets <- function(x) {
+  UseMethod("omkrets")
+}
+
+# Skapa vår specifika funktion
+omkrets.rektangel <- function(x) {
+  svar <- 2*(x$hojd + x$bredd)
+  return(svar)
+}
+
+methods(omkrets)
+
+omkrets(rektangel_1)
+omkrets(cirkel_1)
+
+# Skapa default funktion
+omkrets.default <- function(x) {
+  cat("Omkrets not yet implemented for your object!")
+}
+
+omkrets(cirkel_1)
+
+omkrets("Hej")
+
+omkrets.cirkel <- function(x) {
+  svar <- 2*pi*x$radie
+  return(svar)
+}
+
+omkrets(cirkel_1)
+
+# Area
 area <- function(x) {
   UseMethod("area")
 }
 
-methods(area)
-
-# Börja med att skapa default
 area.default <- function(x) {
-  cat("No method available")
+  cat("Area ännu inte implementerad")
 }
 
-methods(area)
-
-area(rektangel(4,3))
-
-# Metod för rektangel
 area.rektangel <- function(x) {
-  arean <- x$hojd * x$bredd
-  return(arean)
+  area <- x$bredd * x$hojd
+  return(area)
 }
 
-area(rektangel(4,3))
+area.cirkel <- function(x) {
+  area <- x$radie^2 * pi
+  return(area)
+}
+
+area(rektangel_1)
+area(cirkel_1)
 
 # Skapa en kvadrat
-my_object <- rektangel(4,4)
-my_object$langd <- 4
-class(my_object) <- c("kvadrat", "rektangel")
-
-kvadrat <- function(langd) {
-  obj <- rektangel(langd, langd)
-  obj$langd <- langd
-  class(obj) <- c("kvadrat", class(obj))
-  return(obj)
+# En rektangel med höjd=bredd
+kvadrat <- function(bredd) {
+  my_obj <- rektangel(hojd = bredd, bredd = bredd)
+  class(my_obj) <- c("kvadrat", class(my_obj))
+  return(my_obj)
 }
+k <- kvadrat(2)
+k
+omkrets(k)
+area(k)
+class(k)
 
-min_kvadrat <- kvadrat(4)
-
-print(min_kvadrat)
-area(min_kvadrat)
-
+# Skapa print för kvadrat
 print.kvadrat <- function(x) {
-  cat("Kvadrat med Längd",x$langd)
+  cat("Kvadrat med sidan ", x$bredd)
 }
 
-print(min_kvadrat)
-area(min_kvadrat)
+print(k)
+omkrets(k)
 
 
-my_object <- list(sida = 2, bredd = 4, vinkel = 80)
-class(my_object) <- "parallellogram"
-
-# Konstruktor för parallellogram
-parallellogram <- function(sida, bredd, vinkel) {
-  if (sida <= 0 | bredd <= 0) stop("Negativa längder")
-  if (vinkel <= 0 | vinkel > 90) stop("Vinkel ska vara mellan 0 och 90")
-  obj <- list(sida = sida, bredd = bredd, vinkel = vinkel)
-  class(obj) <- "parallellogram"
-  return(obj)
-}
-
-parallellogram_1 <- parallellogram(2, 4, 80)
-parallellogram(1,4,160)
-
-area.parallellogram <- function(x) {
-  # Konvertera grader till radianer
-  radianer <- x$vinkel*pi/180
-  hojd <- sin(radianer) * x$sida
-  arean <- hojd * x$bredd
-  return(arean)
-}
-
-area(parallellogram_1)
-
-area(parallellogram(2,4,90))
-
-# Datum och tid
+# Datum of tid
+# Lekte runt lite
 
 library(lubridate)
 nu <- now()
 nu
+
+?now
+
 now(tzone = "UTC")
 now(tzone = "EST")
-now(tzone = "America/New_York")
-now(tzone = "America/Los_Angeles")
 
-en_tid <- ymd_hms("2024-03-30 22:22:22", tz = "Europe/Stockholm")
+now(tzone = "America/New_York")
+now(tzone = "Europe/Stockholm")
+now(tzone = "Europe/Copenhagen")
+now(tzone = "Asia/Shanghai")
+
+en_tid <- ymd_hms("2025-05-08 11:35:00", tz = "Europe/Stockholm")
 en_tid
-with_tz(en_tid, tzone = "Asia/Shanghai")
+
+as.numeric(now())
+
+en_tid
+with_tz(en_tid, tzone = "Asia/Tokyo")
 
 en_tid + days(1)
-en_tid + ddays(1)
-
-?with_tz
 
 wday(en_tid, label = TRUE, week_start = 1)
-
 wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1)
 
 wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "sv_SE")
-
-wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "en_GB")
-
+?wday
 wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "fi_FI")
-
+wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "en_GB")
+wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "en_US")
 wday(en_tid, label = TRUE, abbr = FALSE, week_start = 1, locale = "ru_RU")
 
-month(en_tid, label = TRUE, abbr = TRUE, locale = "sv_SE")
+month(en_tid, label = TRUE, abbr = FALSE, locale = "sv_SE")
 
-en_tid
 
-en_ny_tid <- today()
-en_tid
-en_ny_tid
-en_tid < en_ny_tid
+ymd_h("2025//05//05 4 PM")
+
+
+ymd_hms("2009 några tecken 1 mer tecken 2 ännu mer saker 2 ./.. 2 .. 2")
 
 today() < now()
 
-?ymd_hms
-tid_am <- ymd_h("2024-02-28 4 AM")
-tid_am
-tid_pm <- ymd_h("2024-02-28 4 PM")
-tid_pm
-ymd_hms("2009 arbitrary 1 non-decimal 6 chars 12 in between 1 !!! 6")
+
+intervall <- ymd("2025-01-01") %--% ymd("2025-06-30")
+intervall
+
+int_start(intervall)
+int_end(intervall)
+
+today() > int_start(intervall) && today() < int_end(intervall)
+intervall@start
+int_start(intervall)
+
+innan_st <- ymd_h("2025-03-27 1", tz = "Europe/Stockholm")
+innan_st + days(4)
 
 
-intervall_1 <- ymd("2024-02-28") %--% ymd("2024-06-04")
-intervall_1
-today() %in% intervall_1
-intervall_1@start
-int_end(intervall_1)
-
-int_start(intervall_1)
-(today() >= int_start(intervall_1) & today() <= int_end(intervall_1))
-
-nu1 <- now()
-nu1
-nu2 <- now(tzone = "America/New_York")
-nu2
-nu1 < nu2
