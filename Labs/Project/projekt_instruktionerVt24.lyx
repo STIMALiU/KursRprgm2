@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,11 +9,11 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language english
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -21,7 +21,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -55,7 +57,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -71,11 +75,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -83,14 +92,16 @@ knitr
 \begin_layout Title
 
 \lang swedish
-Projekt: Programmering i R
+Projekt:
+ Programmering i R
 \end_layout
 
 \begin_layout Standard
 
 \lang swedish
 Som en del av kursen i R-programmering ska ni göra en rapport i Rmarkdown.
- Det handlar om att läsa in, presentera och bearbeta data.
+ Det handlar om att läsa in,
+ presentera och bearbeta data.
 \end_layout
 
 \begin_layout Itemize
@@ -135,7 +146,8 @@ Undvik att använda
 
 \lang swedish
 Spara er fil i UTF-8 kodning.
- I Rstudio gör ni: 
+ I Rstudio gör ni:
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -191,14 +203,15 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang swedish
-Detta går att göra i de flesta webbläsare, välj skriv ut och sen skriv till
- pdf.
+Detta går att göra i de flesta webbläsare,
+ välj skriv ut och sen skriv till pdf.
 \end_layout
 
 \end_inset
 
 .
- Filerna ska kallas: 
+ Filerna ska kallas:
+ 
 \family typewriter
 
 \begin_inset Newline newline
@@ -215,7 +228,8 @@ Exempel på inlämning av projekt är följande
 \series bold
 två
 \series default
- filer: 
+ filer:
+ 
 \end_layout
 
 \begin_deeper
@@ -248,17 +262,16 @@ externa datakällor
 \series default
 .
  Vill ni använda ett eget material får ni lägga upp det öppet på github,
- dropbox, google docs eller dylikt och läsa in det därifrån i R.
- Syftet är att rapporten ska vara helt reproducerbar och kunna återskapas
- på godtycklig dator.
+ dropbox,
+ google docs eller dylikt och läsa in det därifrån i R.
+ Syftet är att rapporten ska vara helt reproducerbar och kunna återskapas på godtycklig dator.
 \end_layout
 
 \begin_layout Itemize
 
 \series bold
 \lang swedish
-Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
- i dokumentet.
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas i dokumentet.
 
 \series default
  Antingen skapar ni tabeller (med 
@@ -273,7 +286,8 @@ status open
 
 \begin_layout Plain Layout
 
-message=FALSE, warning=FALSE
+message=FALSE,
+ warning=FALSE
 \end_layout
 
 \end_inset
@@ -295,8 +309,8 @@ Rmd
 \series default
 -filen ska kunna köras och reproducera era resultat på godtycklig dator.
  D.v.s.
- den ska innehålla all er kod som behövs för att ladda ner data, era beräkningar
- och er rapporttext.
+ den ska innehålla all er kod som behövs för att ladda ner data,
+ era beräkningar och er rapporttext.
  
 \end_layout
 
@@ -306,7 +320,8 @@ Rmd
 \lang swedish
 Namn
 \series default
-, 
+,
+ 
 \series bold
 liu-id
 \series default
@@ -333,10 +348,9 @@ Projektinstruktioner
 \begin_layout Standard
 
 \lang swedish
-Till projektet behöver två olika typer av datamaterial, ett material med
- kommunala data och ett material som innehåller en tidsserie.
- Det är okej att välja data på lännivå eller regionnivå istället för kommunnivå
- om ni vill.
+Till projektet behöver två olika typer av datamaterial,
+ ett material med kommunala data och ett material som innehåller en tidsserie.
+ Det är okej att välja data på lännivå eller regionnivå istället för kommunnivå om ni vill.
  Beskrivningen nedan utgår från kommunala data.
  I projekt ska ni använda pxweb
 \begin_inset Foot
@@ -359,7 +373,8 @@ literal "false"
 
 \end_inset
 
-, i filen ska ni ha kod som fungerar och ger reproducerbara rapporter.
+,
+ i filen ska ni ha kod som fungerar och ger reproducerbara rapporter.
  Om ni vill dölja varningar kan ni använda
 \end_layout
 
@@ -414,10 +429,9 @@ Kommunala data
 \begin_layout Standard
 
 \lang swedish
-Ni ska ladda ner kommunala data, där ni i slutändan har minst 4 variabler
- på kommunnivå (d.s.v.
- för alla 290 kommuner) Ett exempel skulle kunna vara antal arbetslösa i
- varje kommun.
+Ni ska ladda ner kommunala data,
+ där ni i slutändan har minst 4 variabler på kommunnivå (d.s.v.
+ för alla 290 kommuner) Ett exempel skulle kunna vara antal arbetslösa i varje kommun.
  Spara er data i en eller flera data.frames.
  Totalt ska dataseten ska ha 
 \series bold
@@ -428,12 +442,9 @@ minst
 4 variabler
 \series default
  utöver kommunnamn.
- Ni väljer själv vilka variabler som ska ingå och vilka områden data ska
- komma ifrån.
- Tanken är att i ska göra enklare analyser och grafer som baseras på dessa
- variabler.
- Utöver dessa 4 variabler så ska ni också ladda ner totalt antal invånare
- i kommun som en variabel.
+ Ni väljer själv vilka variabler som ska ingå och vilka områden data ska komma ifrån.
+ Tanken är att i ska göra enklare analyser och grafer som baseras på dessa variabler.
+ Utöver dessa 4 variabler så ska ni också ladda ner totalt antal invånare i kommun som en variabel.
  
 \end_layout
 
@@ -452,7 +463,8 @@ observationer
  i era analyser.
  Kolumnerna motsvarar era variabler.
  Notera att många av de variabler som finns på SCB:s databas är frekvenser,
- exempel: antal arbetslösa i varje kommun.
+ exempel:
+ antal arbetslösa i varje kommun.
  Tabell 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -460,6 +472,7 @@ reference "tab:stuktur data"
 plural "false"
 caps "false"
 noprefix "false"
+nolink "false"
 
 \end_inset
 
@@ -470,6 +483,8 @@ noprefix "false"
 
 \lang swedish
 \begin_inset Float table
+placement document
+alignment document
 wide false
 sideways false
 status open
@@ -904,7 +919,8 @@ Hitta ett dataset som innehåller en
 \series bold
 tidserie
 \series default
-, det innebär att det finns en variabel som har observerats över tiden.
+,
+ det innebär att det finns en variabel som har observerats över tiden.
  Kravet är att data ska innehålla data på 
 \series bold
 månadsnivå
@@ -916,8 +932,8 @@ minst 10 år
  (120 månder).
  Här ska ni alltså hitta en variabel som observerats under minst 120 tidpunkter,
  men fler går bra.
- Data ska alltså innehålla två kolumner, en med variabeln som vi är intresserade
- av och en med tidpunkterna.
+ Data ska alltså innehålla två kolumner,
+ en med variabeln som vi är intresserade av och en med tidpunkterna.
  
 \begin_inset CommandInset href
 LatexCommand href
@@ -935,17 +951,17 @@ literal "false"
 \series bold
 \lang swedish
 Obs!
+
 \series default
- Tidsperioden ska vara fix, d.v.s ex.
+ Tidsperioden ska vara fix,
+ d.v.s ex.
  jan 2005 - jan 2015.
- Detta innebär att ni måste ange ett fixt tidsintervall när ni laddar ner
- data med 
+ Detta innebär att ni måste ange ett fixt tidsintervall när ni laddar ner data med 
 \family typewriter
 pxweb
 \family default
 .
- Om ni laddar ner data en månad senare ska ni erhålla samma data med samma
- kod.
+ Om ni laddar ner data en månad senare ska ni erhålla samma data med samma kod.
  Om ni laddar ner data från SCB/pxweb så ska ni 
 \series bold
 inte
@@ -981,8 +997,7 @@ Dataanalys av kommundata
 
 \lang swedish
 Skriv en kort inledning där ni beskriver era variabler.
- Om ni gör nya transformationer av variablerna i del 2 måste de beskrivas
- också.
+ Om ni gör nya transformationer av variablerna i del 2 måste de beskrivas också.
 \end_layout
 
 \begin_layout Itemize
@@ -1002,15 +1017,14 @@ Följande saker ska ni göra/ta med:
 \begin_layout Itemize
 
 \lang swedish
-Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras
- med hjälp av totalt antal invånare i varje kommun.
- Detta eftersom det oftast är intressant att kolla på andelar istället för
- absoluta antal.
+Alla variabler som är relaterade till folkmängd på något sätt ska normaliseras med hjälp av totalt antal invånare i varje kommun.
+ Detta eftersom det oftast är intressant att kolla på andelar istället för absoluta antal.
  T.ex.
  andelen arbetslösa i en kommun istället för antalet arbetslösa.
- I de fall då det är relevant att normalisera en variabel, då ska ni använda
- den normaliserade variabeln i plottar mm.
- Vissa variabler är inte relaterade till folkmängd, exempel 
+ I de fall då det är relevant att normalisera en variabel,
+ då ska ni använda den normaliserade variabeln i plottar mm.
+ Vissa variabler är inte relaterade till folkmängd,
+ exempel 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1026,7 +1040,8 @@ Medelålder
 \begin_inset Quotes erd
 \end_inset
 
-, sådana variabler behöver inte normaliseras.
+,
+ sådana variabler behöver inte normaliseras.
  
 \end_layout
 
@@ -1034,10 +1049,10 @@ Medelålder
 \begin_layout Itemize
 
 \lang swedish
-Exempel: antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
+Exempel:
+ antalet arbetslösa/totalt antal invånare = andelen arbetslösa,
  gör denna beräkning för varje kommun.
- För många variabler som har små andeler så passar det att skapa variabler
- av typen 
+ För många variabler som har små andeler så passar det att skapa variabler av typen 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1046,7 +1061,8 @@ antal per 10 000/100 000 invånare
 \end_inset
 
 .
- Då räknar vi ut det som: 
+ Då räknar vi ut det som:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1057,25 +1073,28 @@ antal per 10 000/100 000 invånare
 \begin_layout Enumerate
 
 \lang swedish
-Producera minst en barplot, om ni bara har kontinuerliga variabler kan ni
- använda 
+Producera minst en barplot,
+ om ni bara har kontinuerliga variabler kan ni använda 
 \family typewriter
 cut()
 \family default
 .
  Beskriv i text vad ni drar för slutsats.
- Notera! Gör inte en plot där varje kommun har en egen stapel, alltså ingen
- barplot med 290 staplar.
+ Notera!
+ Gör inte en plot där varje kommun har en egen stapel,
+ alltså ingen barplot med 290 staplar.
 \end_layout
 
 \begin_layout Enumerate
 
 \lang swedish
 Producera minst ett histogram.
- Lägg till vertikala linjer för följande punkter på x-axeln: medianen, första
- kvartilen och tredje kvartilen.
+ Lägg till vertikala linjer för följande punkter på x-axeln:
+ medianen,
+ första kvartilen och tredje kvartilen.
  Beskriv i text vad ni drar för slutsats.
- Tips: 
+ Tips:
+ 
 \family typewriter
 geom_vline()
 \family default
@@ -1097,7 +1116,8 @@ literal "false"
 Producera minst en scatterplot mellan två variabler.
  Lägg till en regressionslinje med 
 \family typewriter
-stat_smooth(method="lm", se=FALSE)
+stat_smooth(method="lm",
+ se=FALSE)
 \family default
 .
  Beskriv i text vad ni drar för slutsats
@@ -1107,7 +1127,9 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang swedish
-För tips på tolkning: Se kap 13.2.5 i kursboken, speciellt figur 13-5.
+För tips på tolkning:
+ Se kap 13.2.5 i kursboken,
+ speciellt figur 13-5.
  Se även 
 \begin_inset CommandInset href
 LatexCommand href
@@ -1128,10 +1150,8 @@ literal "false"
 \begin_layout Enumerate
 
 \lang swedish
-Beräkna korrelationer mellan de två variabler som ni använde i scatter plot
- i steget ovan.
- Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler
- är noll (=de är linjärt oberoende).
+Beräkna korrelationer mellan de två variabler som ni använde i scatter plot i steget ovan.
+ Gör ett hypotestest där ni testar om korrelationen mellan dessa två variabler är noll (=de är linjärt oberoende).
  Ni ska alltså använda hypoteserna:
 \begin_inset Formula 
 \[
@@ -1143,15 +1163,15 @@ H_{a}:cor\left(x_{1},x_{2}\right)\ne0
 
 \end_inset
 
-Tips: 
+Tips:
+ 
 \family typewriter
 cor.test()
 \family default
 .
  Presentera relevant information i en eller flera tabeller.
  Beskriv kort hur ni tolkar resultatet.
- Ni ska alltså presentera både den skattade korrelationen och information
- från testet i rapporten.
+ Ni ska alltså presentera både den skattade korrelationen och information från testet i rapporten.
  Ni får testa korrelationen mellan fler variabler om ni vill.
  Presentera även ett konfidensintervall för den skattade korrelationen.
 \end_layout
@@ -1160,8 +1180,7 @@ cor.test()
 
 \lang swedish
 Skapa två kategoriska variabler utifrån era ursprungliga variabler.
- Om ni redan har kategoriska variabler för era kommuner så kan ni använda
- dessa.
+ Om ni redan har kategoriska variabler för era kommuner så kan ni använda dessa.
  Dessa (nya) variabler ska användas i olika plottar.
  Se till att beskriva era nya variabler.
 \end_layout
@@ -1176,16 +1195,14 @@ Mer plottar:
 \begin_layout Enumerate
 
 \lang swedish
-Gör en scatterplot där färgen på observationerna ska bero på en av era kategoris
-ka variabler.
+Gör en scatterplot där färgen på observationerna ska bero på en av era kategoriska variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
 \begin_layout Enumerate
 
 \lang swedish
-Gör minst ett histogram/boxplot som är grupperat på en av era kategoriska
- variabler.
+Gör minst ett histogram/boxplot som är grupperat på en av era kategoriska variabler.
  Beskriv i text vad ni drar för slutsats.
 \end_layout
 
@@ -1199,8 +1216,7 @@ Gör ett grupperad barplot där ni använder båda era kategoriska variabler.
 \begin_layout Enumerate
 
 \lang swedish
-Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i minst
- två plottar med 
+Gör minst en scatterplot/histogram/barplot/boxplot som är uppdelad i minst två plottar med 
 \family typewriter
 facet_grid()
 \family default
@@ -1234,7 +1250,8 @@ status collapsed
 \lang swedish
 Y
 \family default
- är ett arbetsnamn, er variabel måst inte heta så i rapporten
+ är ett arbetsnamn,
+ er variabel måst inte heta så i rapporten
 \end_layout
 
 \end_inset
@@ -1272,11 +1289,11 @@ month_means
 .
  Presentera dessa i en tabell och som en lämplig graf.
  Skriv en kort kommentar.
- Ni ska alltså beräkna ett medelvärde för alla värden för januari och sen
- upprepa detta för alla månader.
+ Ni ska alltså beräkna ett medelvärde för alla värden för januari och sen upprepa detta för alla månader.
  
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1290,9 +1307,10 @@ Gör grupperade boxplots för
 \family typewriter
 Y
 \family default
-, där grupperingen baseras på år.
- Ni ska alltså ha en boxplot för varje år, och de ska ligga sida vid sida
- i samma plot.
+,
+ där grupperingen baseras på år.
+ Ni ska alltså ha en boxplot för varje år,
+ och de ska ligga sida vid sida i samma plot.
  Skriv en kort kommentar.
 \end_layout
 
@@ -1303,9 +1321,10 @@ Subtrahera månadsmedelvärden från
 \family typewriter
 Y
 \family default
-, så ni tar bort säsongsvariationen i data.
- Månadsmedelvärdet för januari ska subtraheras från alla januarivärden i
- data, och likadant för de andra månaderna.
+,
+ så ni tar bort säsongsvariationen i data.
+ Månadsmedelvärdet för januari ska subtraheras från alla januarivärden i data,
+ och likadant för de andra månaderna.
  Spara den nya tidserie som 
 \family typewriter
 Z
@@ -1372,7 +1391,8 @@ ggplot2
 \family typewriter
 Y
 \family default
- i samma graf som jämförelse, men med annan färg.
+ i samma graf som jämförelse,
+ men med annan färg.
  Ange tydligt med en legend eller i text vilken linje som är 
 \family typewriter
 Y
@@ -1387,7 +1407,8 @@ Z
 \begin_layout Enumerate
 
 \lang swedish
-Gör samma plot som i steg 1., men lägg till en regressionslinje med 
+Gör samma plot som i steg 1.,
+ men lägg till en regressionslinje med 
 \family typewriter
 geom_smooth(method=
 \begin_inset Quotes erd
@@ -1406,14 +1427,12 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang swedish
-En regressionslinje kan hjälpa oss att se om det finns någon tydlig minskande
- eller ökande 
+En regressionslinje kan hjälpa oss att se om det finns någon tydlig minskande eller ökande 
 \emph on
 linjär
 \emph default
  trend.
- Om linjen är nära att vara horisontell så tolkar vi det som att det inte
- finns någon tydlig linjär trend.
+ Om linjen är nära att vara horisontell så tolkar vi det som att det inte finns någon tydlig linjär trend.
 \end_layout
 
 \end_inset
@@ -1424,8 +1443,9 @@ linjär
 \begin_layout Enumerate
 
 \lang swedish
-Verkar det finnas någon trend i data? Dvs ökar/minskar data med tiden, eller
- är data konstant över tid.
+Verkar det finnas någon trend i data?
+ Dvs ökar/minskar data med tiden,
+ eller är data konstant över tid.
  Finns det någon säsongsvariation i data?
 \begin_inset Foot
 status collapsed
@@ -1433,8 +1453,9 @@ status collapsed
 \begin_layout Plain Layout
 
 \lang swedish
-Exempel på säsongsvariation: December har ofta ett mycket högre värde än
- öviga månader, sommarhalvåret har alltid lägre värden.
+Exempel på säsongsvariation:
+ December har ofta ett mycket högre värde än öviga månader,
+ sommarhalvåret har alltid lägre värden.
 \end_layout
 
 \end_inset
@@ -1463,7 +1484,7 @@ PDF/HTML
 \begin_layout Itemize
 
 \lang swedish
-I denna del ska samtliga grafer vara skapade med 
+I denna rapport ska samtliga grafer vara skapade med 
 \family typewriter
 ggplot2
 \family default
@@ -1486,9 +1507,11 @@ riktiga
 \family typewriter
 kable()
 \family default
-), inte utskrifter i R-kod.
- All statistik, information från statistiska test, korrelationer etc ska
- presenteras i markdowntabeller eller med inline-kod.
+),
+ inte utskrifter i R-kod.
+ All statistik,
+ information från statistiska test,
+ korrelationer etc ska presenteras i markdowntabeller eller med inline-kod.
  Avrunda till ett lämpligt antal decimaler i tabellerna.
 \end_layout
 
@@ -1496,8 +1519,7 @@ kable()
 
 \series bold
 \lang swedish
-Inga output från R console/varningar/meddelanden/felmeddelanden ska visas
- i dokumentet.
+Inga output från R console/varningar/meddelanden/felmeddelanden ska visas i dokumentet.
 \end_layout
 
 \end_body

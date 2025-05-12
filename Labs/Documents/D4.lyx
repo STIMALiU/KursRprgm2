@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package none
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "IntroDel1Vt24.lyx"
+literal "true"
 
 \end_inset
 
@@ -196,18 +206,15 @@ R-paket
 \end_layout
 
 \begin_layout Standard
-R-paket är extra moduler/bibliotek som läses in i R för att skapa extra
- funktionalitet i form av nya funktioner eller nya data.
+R-paket är extra moduler/bibliotek som läses in i R för att skapa extra funktionalitet i form av nya funktioner eller nya data.
  De flesta funktioner som används i R finns i olika paket.
- Några få paket läses automatiskt in i R när vi startar R, medan andra paket
- måste vi läsa in aktivt för att få tillgång till funktionaliteten.
- Den stora mängd personer som bidrar till R gör det genom att utveckla nya
- funktioner som de sedan släpper som paket.
+ Några få paket läses automatiskt in i R när vi startar R,
+ medan andra paket måste vi läsa in aktivt för att få tillgång till funktionaliteten.
+ Den stora mängd personer som bidrar till R gör det genom att utveckla nya funktioner som de sedan släpper som paket.
 \end_layout
 
 \begin_layout Standard
-Paket är något som skiljer R från andra statistikprogram är att den mesta
- funktionaliteten inte kommer med från början.
+Paket är något som skiljer R från andra statistikprogram är att den mesta funktionaliteten inte kommer med från början.
  I andra programmeringsspråk är denna form av 
 \series bold
 
@@ -222,12 +229,12 @@ literal "false"
 
 \series default
  betydligt vanligare.
- Den stora fördelen med detta är att vi bara behöver läsa in de paket vi
- verkligen har behov av just nu.
+ Den stora fördelen med detta är att vi bara behöver läsa in de paket vi verkligen har behov av just nu.
 \end_layout
 
 \begin_layout Standard
-För att kunna använda ett paket behöver vi gå igenom två steg: 
+För att kunna använda ett paket behöver vi gå igenom två steg:
+ 
 \end_layout
 
 \begin_layout Itemize
@@ -235,8 +242,7 @@ Paketet måste först installeras på den aktuella datorn.
 \end_layout
 
 \begin_layout Itemize
-Paketet måste sedan läsas in i den aktuella sessionen för att användas -
- eller anropas explicit.
+Paketet måste sedan läsas in i den aktuella sessionen för att användas - eller anropas explicit.
 \end_layout
 
 \begin_layout Standard
@@ -269,8 +275,7 @@ literal "false"
 
 \end_inset
 
- (Comprehensive R Archive Network) på internet där de flesta paket ligger
- uppe.
+ (Comprehensive R Archive Network) på internet där de flesta paket ligger uppe.
  Detta görs med funktionen 
 \family typewriter
 install.packages()
@@ -309,7 +314,8 @@ install.packages("lubridate")
 
 \begin_layout Plain Layout
 
-# eller om du ska installera något paket i SU-salarna: 
+# eller om du ska installera något paket i SU-salarna:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -419,9 +425,7 @@ literal "false"
 \end_inset
 
 .
- Det är vanligt att paket som fortfarande utvecklas aktivt finns på både
- CRAN och github.com då github underlättar enormt för så kallad kollaborativ
- utveckling där flera personer hjälps åt med utvecklingen.
+ Det är vanligt att paket som fortfarande utvecklas aktivt finns på både CRAN och github.com då github underlättar enormt för så kallad kollaborativ utveckling där flera personer hjälps åt med utvecklingen.
  För att installera från github direkt behöver först paketet 
 \family typewriter
 devtools
@@ -514,15 +518,13 @@ library(markmyassignment,lib="sökväg till en mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Enumerate
-Om flera paket har samma funktionsnamn kan vi bestämma exakt från vilket
- paket vi ska använda en given funktion med 
+Om flera paket har samma funktionsnamn kan vi bestämma exakt från vilket paket vi ska använda en given funktion med 
 \family typewriter
 ::
 \family default
 .
  Då behöver vi inte först läsa in paketet.
- Detta är särskilt bra om vi bara vill använda en enskild funktion från
- ett paket.
+ Detta är särskilt bra om vi bara vill använda en enskild funktion från ett paket.
  Vi kan då snabbt se i vår kod var paketet används.
 \begin_inset Newline newline
 \end_inset
@@ -571,7 +573,8 @@ status open
 
 \begin_layout Plain Layout
 
-detach("package:pxweb", character.only = TRUE)
+detach("package:pxweb",
+ character.only = TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -585,8 +588,7 @@ detach("package:pxweb", character.only = TRUE)
 \end_layout
 
 \begin_layout Enumerate
-I R-Studio kan vi studera vilka paket som finns installerade och vilka som
- är inlästa i R under 
+I R-Studio kan vi studera vilka paket som finns installerade och vilka som är inlästa i R under 
 \begin_inset Quotes eld
 \end_inset
 
@@ -613,8 +615,7 @@ ggplot2
 \end_layout
 
 \begin_layout Enumerate
-Ta reda på hur paket kan avinstalleras i R genom att söka på webben eller
- i R:s dokumentation.
+Ta reda på hur paket kan avinstalleras i R genom att söka på webben eller i R:s dokumentation.
 \end_layout
 
 \begin_layout Enumerate
@@ -715,7 +716,8 @@ För att tilldela i den närmste lokala miljön ska
 \begin_inset Quotes srd
 \end_inset
 
- användas, men det finns varianter.
+ användas,
+ men det finns varianter.
  Testa koden nedan.
  
 \begin_inset Quotes sld
@@ -742,8 +744,7 @@ För att tilldela i den närmste lokala miljön ska
 \begin_inset Quotes srd
 \end_inset
 
- används för att definiera defaultargument i funktionsdefinitioner och när
- funktioner anropas.
+ används för att definiera defaultargument i funktionsdefinitioner och när funktioner anropas.
  
 \begin_inset Newline newline
 \end_inset
@@ -834,8 +835,8 @@ För att tilldela i den globala miljön används
 
  (rekommenderas ej!).
  Testa koden nedan.
- Ofta vill vi undvika att tilldela variabler i den globala miljön inifrån
- funktioner, och därför är det bäst att använda den vanliga 
+ Ofta vill vi undvika att tilldela variabler i den globala miljön inifrån funktioner,
+ och därför är det bäst att använda den vanliga 
 \begin_inset Quotes sld
 \end_inset
 
@@ -878,7 +879,7 @@ y
 
 \begin_layout Plain Layout
 
-h<-funciton(x,y){
+h<-function(x,y){
 \end_layout
 
 \begin_layout Plain Layout
@@ -931,7 +932,8 @@ En annan tilldelningsoperator är
 \family typewriter
 assign()
 \family default
-, testa att köra 
+,
+ testa att köra 
 \family typewriter
 ?assign()
 \family default
@@ -1057,8 +1059,8 @@ Delar i en R-funktion
 
 \begin_layout Standard
 Varje funktion består av tre huvudsakliga delar.
- Funktionens argument (eller formals), kropp (body) och lokala miljö (environmen
-t).
+ Funktionens argument (eller formals),
+ kropp (body) och lokala miljö (environment).
  Det är dessa tre som tillsammans utgör en funktion.
  
 \end_layout
@@ -1180,8 +1182,8 @@ body(f)
 
 \begin_layout Enumerate
 Till sist kan vi också undersöka funktionens miljö.
- Detta säger ingenting just nu, men vi kommer strax återkomma till funktioners
- lokala miljöer.
+ Detta säger ingenting just nu,
+ men vi kommer strax återkomma till funktioners lokala miljöer.
 \begin_inset Newline newline
 \end_inset
 
@@ -1229,7 +1231,8 @@ literal "false"
 \family typewriter
 environment()
 \family default
-, 
+,
+ 
 \family typewriter
 body()
 \family default
@@ -1474,8 +1477,7 @@ Defaultvärden och argumentordning
 \end_layout
 
 \begin_layout Standard
-I vissa fall kan det vara så att vi vill att ett givet värde ska vara det
- värde som används som standardvärde för en särskild funktion.
+I vissa fall kan det vara så att vi vill att ett givet värde ska vara det värde som används som standardvärde för en särskild funktion.
  Exempelvis funktionen 
 \family typewriter
 mean()
@@ -1492,10 +1494,10 @@ FALSE
 \end_layout
 
 \begin_layout Standard
-För att skapa ett standardvärde använder ställer vi in detta i funktionsdefiniti
-onen på följande sätt 
+För att skapa ett standardvärde använder ställer vi in detta i funktionsdefinitionen på följande sätt 
 \family typewriter
-function(a, b=10)
+function(a,
+ b=10)
 \family default
 .
  Vi kan i princip ha vad vi vill som standardvärden.
@@ -1517,7 +1519,8 @@ status open
 
 \begin_layout Plain Layout
 
-g <- function(a, b = 10){
+g <- function(a,
+ b = 10){
 \end_layout
 
 \begin_layout Plain Layout
@@ -1594,11 +1597,9 @@ där
 \end_layout
 
 \begin_layout Enumerate
-När vi anropar en funktion kan vi välja att ange namnet på argumentet eller
- inte.
+När vi anropar en funktion kan vi välja att ange namnet på argumentet eller inte.
  Anger vi namnet på argumenten så spelar ordningen ingen roll.
- Anger vi däremot inte argumentens namn utgår R från att argumenten följer
- samma ordning som vi skapade argumenten i (och som vi ser med 
+ Anger vi däremot inte argumentens namn utgår R från att argumenten följer samma ordning som vi skapade argumenten i (och som vi ser med 
 \family typewriter
 formals()
 \family default
@@ -1625,7 +1626,8 @@ y
 \family default
  i funktionsanropet (d.v.s 
 \family typewriter
-h(y=10, x=100)
+h(y=10,
+ x=100)
 \family default
  ).
  
@@ -1648,7 +1650,8 @@ status open
 
 \begin_layout Plain Layout
 
-k <- function(a, a = 10){
+k <- function(a,
+ a = 10){
 \end_layout
 
 \begin_layout Plain Layout
@@ -1681,8 +1684,7 @@ Funktioner i funktioner
 \end_layout
 
 \begin_layout Standard
-Ibland kan det vara så att vi vill ge en hel funktion som ett argument till
- en annan funktion.
+Ibland kan det vara så att vi vill ge en hel funktion som ett argument till en annan funktion.
  Ett exempel på detta är om vi vill integrera
 \begin_inset Foot
 status collapsed
@@ -1749,14 +1751,14 @@ För att integrera numeriskt i R använder vi funktionen
 integrate()
 \family default
 .
- Vi behöver då ange funktionen vi vill integrera genom att ange denna funktion
- som ett argument till 
+ Vi behöver då ange funktionen vi vill integrera genom att ange denna funktion som ett argument till 
 \family typewriter
 integrate()
 \family default
 .
  Vi behöver också ange från vilka värden vi vill utföra integralen.
- Exempelvis följande integral: 
+ Exempelvis följande integral:
+ 
 \begin_inset Formula 
 \[
 \int_{0}^{3}f(x)dx=\int_{0}^{3}\frac{1}{3}x^{2}dx
@@ -1798,7 +1800,9 @@ f <- function(x) (1/3)*x^2
 
 \begin_layout Plain Layout
 
-integrate(f=f, lower=0, upper=3)
+integrate(f=f,
+ lower=0,
+ upper=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1851,7 +1855,8 @@ lambda
 exp_pdf(x,lambda)
 \family default
  i R.
- Täthetsfunktionen ges nedan: 
+ Täthetsfunktionen ges nedan:
+ 
 \begin_inset Formula 
 \[
 f_{X}(x,\lambda)=\lambda e^{-\lambda x}
@@ -1863,8 +1868,7 @@ f_{X}(x,\lambda)=\lambda e^{-\lambda x}
 \end_layout
 
 \begin_layout Enumerate
-För att skicka med både en funktion och argument som ska skickas vidare
- används 
+För att skicka med både en funktion och argument som ska skickas vidare används 
 \family typewriter
 ...
 
@@ -1901,7 +1905,8 @@ status open
 
 \begin_layout Plain Layout
 
-exp_pdf <- function(x, lambda) lambda * exp(-lambda * x)
+exp_pdf <- function(x,
+ lambda) lambda * exp(-lambda * x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1920,7 +1925,10 @@ exp_pdf <- function(x, lambda) lambda * exp(-lambda * x)
 
 \begin_layout Plain Layout
 
-integrate(f=exp_pdf, lower=0, upper=1, lambda = 1)
+integrate(f=exp_pdf,
+ lower=0,
+ upper=1,
+ lambda = 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1976,11 +1984,8 @@ Ovan var ett exempel på
 
 \family default
  som kallas ellipsis.
- Ellipsis är ett sätt att kunna skicka ett godtyckligt antal argument (och
- godtyckligt namngivna) till en funktion och sedan skicka vidare dessa till
- en ny funktion.
- På detta sätt behöver inte varje funktion vi konstruerar ta hänsyn till
- alla möjliga funktioner.
+ Ellipsis är ett sätt att kunna skicka ett godtyckligt antal argument (och godtyckligt namngivna) till en funktion och sedan skicka vidare dessa till en ny funktion.
+ På detta sätt behöver inte varje funktion vi konstruerar ta hänsyn till alla möjliga funktioner.
 \end_layout
 
 \begin_layout Enumerate
@@ -1998,8 +2003,7 @@ apply()
 FUN
 \family default
  där vi anger en funktion vi använder och ...
- för att kunna skicka godtyckliga argument till den funktion vi angett under
- 
+ för att kunna skicka godtyckliga argument till den funktion vi angett under 
 \family typewriter
 FUN
 \family default
@@ -2028,7 +2032,8 @@ status open
 
 \begin_layout Plain Layout
 
-apply_my_function_on_x <- function(x, FUN) FUN(x)
+apply_my_function_on_x <- function(x,
+ FUN) FUN(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2056,7 +2061,8 @@ FUN
 \family typewriter
 mean()
 \family default
-, 
+,
+ 
 \family typewriter
 median() 
 \family default
@@ -2109,8 +2115,7 @@ Skapa nu följande funktion där vi använder
 
 \family default
  .
- Observera att vi behöver ange det både som argument i vår funktion och
- som argument i den funktion vi vill kunna skicka vidare argument till.
+ Observera att vi behöver ange det både som argument i vår funktion och som argument i den funktion vi vill kunna skicka vidare argument till.
 \begin_inset Newline newline
 \end_inset
 
@@ -2125,7 +2130,10 @@ status open
 
 \begin_layout Plain Layout
 
-apply_my_function_on_x <- function(x, FUN, ...) FUN(x, ...)
+apply_my_function_on_x <- function(x,
+ FUN,
+ ...) FUN(x,
+ ...)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2164,8 +2172,7 @@ do.call()
 \family typewriter
 do.call()
 \family default
- är en mycket kraftfull funktion när det gäller hantering av funktioner
- i funktioner.
+ är en mycket kraftfull funktion när det gäller hantering av funktioner i funktioner.
  
 \family typewriter
 do.call()
@@ -2178,7 +2185,8 @@ do.call()
 \family typewriter
 what
 \family default
-: En funktion
+:
+ En funktion
 \end_layout
 
 \begin_layout Itemize
@@ -2186,7 +2194,9 @@ what
 \family typewriter
 args
 \family default
-: En lista, elementen i listan är argument till funktionen 
+:
+ En lista,
+ elementen i listan är argument till funktionen 
 \family typewriter
 what
 \family default
@@ -2215,7 +2225,8 @@ Kör
 \family typewriter
 ?do.call
 \family default
-, testa sen koden nedan:
+,
+ testa sen koden nedan:
 \begin_inset Newline newline
 \end_inset
 
@@ -2273,7 +2284,8 @@ do.call(what = median,args = arg_list)
 
 \begin_layout Plain Layout
 
-# kolla upp vad argumentet heter i summary: 
+# kolla upp vad argumentet heter i summary:
+ 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2351,8 +2363,7 @@ do.call(g,mylist)
 \end_layout
 
 \begin_layout Enumerate
-Skriv en egen funktion med minst 2 argument som du testar att anropa med
- 
+Skriv en egen funktion med minst 2 argument som du testar att anropa med 
 \family typewriter
 do.call()
 \family default
@@ -2410,13 +2421,13 @@ apply_my_function_on_args <- function(FUN,args) do.call(FUN,args)
 \end_layout
 
 \begin_layout Enumerate
-Det blir lätt problem om vi har flera funktioner i huvudfunktionen som använder
- 
+Det blir lätt problem om vi har flera funktioner i huvudfunktionen som använder 
 \family typewriter
 ...
 
 \family default
- , se exemplet nedan:
+ ,
+ se exemplet nedan:
 \begin_inset Newline newline
 \end_inset
 
@@ -2431,7 +2442,9 @@ status open
 
 \begin_layout Plain Layout
 
-apply_my_function_on_xy <- function(x,y, FUN1,FUN2, ...){
+apply_my_function_on_xy <- function(x,y,
+ FUN1,FUN2,
+ ...){
 \end_layout
 
 \begin_layout Plain Layout
@@ -2456,14 +2469,12 @@ apply_my_function_on_xy <- function(x,y, FUN1,FUN2, ...){
 
 \begin_layout Plain Layout
 
-apply_my_function_on_xy(x = c(NA,12,64,NA,2),y=letters,FUN1 = mean,FUN2
- = length) 
+apply_my_function_on_xy(x = c(NA,12,64,NA,2),y=letters,FUN1 = mean,FUN2 = length) 
 \end_layout
 
 \begin_layout Plain Layout
 
-apply_my_function_on_xy(x = c(NA,12,64,NA,2),y=letters,FUN1 = mean,FUN2
- = length,na.rm=TRUE)
+apply_my_function_on_xy(x = c(NA,12,64,NA,2),y=letters,FUN1 = mean,FUN2 = length,na.rm=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2481,7 +2492,8 @@ I fallet ovan är det bra att använda
 \family typewriter
 do.call()
 \family default
-, testa den modifierade funktionen nedan:
+,
+ testa den modifierade funktionen nedan:
 \begin_inset Newline newline
 \end_inset
 
@@ -2549,15 +2561,10 @@ Globala och lokala miljöer i R
 \end_layout
 
 \begin_layout Standard
-Alla funktioner i R skapar egna lokala miljöer när funktionerna anropas
- där initialt bara argumenten finns.
- Fördelen med detta är att det inte finns några risker att olika objekt
- skulle krocka om de skulle ha samma namn.
- Ett bra sätt att tänka är att R startar en helt ny R-session varje gång
- en funktion anropas och att koden i funktionen körs i denna miljö.
- Det gör att våra variabler som vi har i den globala miljön inte påverkas
- och att vi behöver inte oroa oss för vad vi använder oss av för variabler
- inuti funktioner.
+Alla funktioner i R skapar egna lokala miljöer när funktionerna anropas där initialt bara argumenten finns.
+ Fördelen med detta är att det inte finns några risker att olika objekt skulle krocka om de skulle ha samma namn.
+ Ett bra sätt att tänka är att R startar en helt ny R-session varje gång en funktion anropas och att koden i funktionen körs i denna miljö.
+ Det gör att våra variabler som vi har i den globala miljön inte påverkas och att vi behöver inte oroa oss för vad vi använder oss av för variabler inuti funktioner.
  
 \end_layout
 
@@ -2627,10 +2634,8 @@ x
 \end_layout
 
 \begin_layout Standard
-En central del när det gäller funktioner (och objekt) i R är den så kallade
- sökvägen till objekt.
- Det handlar om hur R väljer vilken funktion eller objekt den ska returnera
- om vi anger ett objektsnamn.
+En central del när det gäller funktioner (och objekt) i R är den så kallade sökvägen till objekt.
+ Det handlar om hur R väljer vilken funktion eller objekt den ska returnera om vi anger ett objektsnamn.
 \end_layout
 
 \begin_layout Standard
@@ -2671,8 +2676,7 @@ search()
 \end_layout
 
 \begin_layout Standard
-Det är i denna ordning som R kommer söka om vi exempelvis anropar funktionen
- 
+Det är i denna ordning som R kommer söka om vi exempelvis anropar funktionen 
 \family typewriter
 mean()
 \family default
@@ -2682,8 +2686,7 @@ mean()
 mean()
 \family default
  i den globala miljön.
- Hittar den inte denna funktion där kommer den gå vidare och leta efter
- 
+ Hittar den inte denna funktion där kommer den gå vidare och leta efter 
 \family typewriter
 mean()
 \family default
@@ -2757,7 +2760,8 @@ environment(mean)
 \end_layout
 
 \begin_layout Enumerate
-Skapa följande funktion och pröva denna kod: 
+Skapa följande funktion och pröva denna kod:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -2800,8 +2804,7 @@ mean <- function(x){
 \end_layout
 
 \begin_layout Enumerate
-Den funktion vi brukar använda för att räkna ut medelvärden heter också
- 
+Den funktion vi brukar använda för att räkna ut medelvärden heter också 
 \family typewriter
 mean()
 \family default
@@ -2829,6 +2832,7 @@ mean()
 -funktionen med hjälp av 
 \family typewriter
 ::
+
 \family default
  direkt från den namespace den gamla funktionen 
 \family typewriter
@@ -2963,8 +2967,7 @@ Fria variabler och dynamic lookup
 \end_layout
 
 \begin_layout Standard
-Är det så att en variabel används i en funktion men inte skapas i funktionen
- är det en så kallad fri variabel.
+Är det så att en variabel används i en funktion men inte skapas i funktionen är det en så kallad fri variabel.
  I dessa fall kommer R söka efter denna variabel 
 \series bold
 i den miljö där funktionen skapades.
@@ -2972,13 +2975,14 @@ i den miljö där funktionen skapades.
 
 \begin_layout Standard
 R använder också så kallad dynamic lookup.
- Det innebär att R anropar fria variabler när funktionen körs, inte när
- funktionen skapas.
+ Det innebär att R anropar fria variabler när funktionen körs,
+ inte när funktionen skapas.
  
 \end_layout
 
 \begin_layout Enumerate
-Kör denna kod i R: Pröva lite olika värden på 
+Kör denna kod i R:
+ Pröva lite olika värden på 
 \family typewriter
 fri_variabel
 \family default
@@ -3007,7 +3011,9 @@ ny_fun <- function(){
 
 \begin_layout Plain Layout
 
-  a <- c(1, 3, 5)
+  a <- c(1,
+ 3,
+ 5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3071,26 +3077,24 @@ Först försöker R hitta variabeln i den lokala miljön för funktionen.
 \end_layout
 
 \begin_layout Itemize
-Hittar R inte funktionen där letar den vidare i den miljö där funktionen
- skapades.
+Hittar R inte funktionen där letar den vidare i den miljö där funktionen skapades.
  
 \end_layout
 
 \begin_layout Itemize
-Hittar den inte variabeln där fortsätter den upp till dess att den kommer
- till den globala miljön.
+Hittar den inte variabeln där fortsätter den upp till dess att den kommer till den globala miljön.
 \end_layout
 
 \begin_layout Itemize
-Finns variabeln inte i den globala miljön söker den vidare i de inlästa
- paketen.
- Finns funktionen inte där så returnerar R ett felmeddelande om att den
- fria variabeln saknas.
+Finns variabeln inte i den globala miljön söker den vidare i de inlästa paketen.
+ Finns funktionen inte där så returnerar R ett felmeddelande om att den fria variabeln saknas.
  
 \end_layout
 
 \begin_layout Enumerate
-Skapa koden nedan, vad gör funktionen? Använder den 
+Skapa koden nedan,
+ vad gör funktionen?
+ Använder den 
 \family typewriter
 y <- 5
 \family default
@@ -3183,8 +3187,7 @@ Vi ska nu använda så kallade de så kallade
 *apply
 \family default
 -funktionerna i R.
- Dessa funktioner är så kallade högnivåfunktioner som vi använder om vi
- vill applicera en funktion mer generellt.
+ Dessa funktioner är så kallade högnivåfunktioner som vi använder om vi vill applicera en funktion mer generellt.
 \end_layout
 
 \begin_layout Standard
@@ -3354,8 +3357,7 @@ vapply()
 \family typewriter
 lapply()
 \family default
- blir på detta sätt ett alternativ till att använda loopar som ibland kan
- vara snabbare.
+ blir på detta sätt ett alternativ till att använda loopar som ibland kan vara snabbare.
 \end_layout
 
 \begin_layout Enumerate
@@ -3419,11 +3421,13 @@ tapply()
 \family typewriter
 X
 \family default
-, 
+,
+ 
 \family typewriter
 INDEX
 \family default
-, 
+,
+ 
 \family typewriter
 FUN
 \family default
@@ -3436,7 +3440,8 @@ simplify
 \family typewriter
 X
 \family default
- anger variabeln (eller datasetet) vi vill använda funktionen på, 
+ anger variabeln (eller datasetet) vi vill använda funktionen på,
+ 
 \family typewriter
 INDEX
 \family default
@@ -3445,8 +3450,7 @@ INDEX
 FUN
 \family default
  anger vilken funktion som ska användas per grupp.
- Ett exempel på hur vi kan beräkna den genomsnittliga vikten per kyckling
- ser ut på följande sätt:
+ Ett exempel på hur vi kan beräkna den genomsnittliga vikten per kyckling ser ut på följande sätt:
 \begin_inset Newline newline
 \end_inset
 
@@ -3461,7 +3465,9 @@ status open
 
 \begin_layout Plain Layout
 
-tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=mean)
+tapply(X=ChickWeight$weight,
+ INDEX=ChickWeight$Chick,
+ FUN=mean)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3475,8 +3481,7 @@ tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=mean)
 \end_layout
 
 \begin_layout Enumerate
-Pröva att på ett liknande sätt beräkna standardavvikelsen för varje kyckling
- samt antalet observationer (längden av vektorn) och kvantilerna med 
+Pröva att på ett liknande sätt beräkna standardavvikelsen för varje kyckling samt antalet observationer (längden av vektorn) och kvantilerna med 
 \family typewriter
 quantile()
 \family default
@@ -3495,12 +3500,16 @@ status open
 
 \begin_layout Plain Layout
 
-tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=sd) 
+tapply(X=ChickWeight$weight,
+ INDEX=ChickWeight$Chick,
+ FUN=sd) 
 \end_layout
 
 \begin_layout Plain Layout
 
-tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=length)
+tapply(X=ChickWeight$weight,
+ INDEX=ChickWeight$Chick,
+ FUN=length)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3522,7 +3531,8 @@ quantile()
 \family typewriter
 ...
 \family default
-) för att räkna ut några andra kvantiler för varje kyckling, tex 
+) för att räkna ut några andra kvantiler för varje kyckling,
+ tex 
 \family typewriter
 probs=c(0.1,0.9)
 \family default
@@ -3535,8 +3545,7 @@ probs=c(0.1,0.9)
 \family typewriter
 *apply
 \family default
--funktioner är särskilt smidiga att använda tillsammans med så kallade anonyma
- funktioner (d.v.s.
+-funktioner är särskilt smidiga att använda tillsammans med så kallade anonyma funktioner (d.v.s.
  funktioner som skapas 
 \begin_inset Quotes eld
 \end_inset
@@ -3562,7 +3571,9 @@ status open
 
 \begin_layout Plain Layout
 
-tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=function(x){sum(x)^2})
+tapply(X=ChickWeight$weight,
+ INDEX=ChickWeight$Chick,
+ FUN=function(x){sum(x)^2})
 \end_layout
 
 \begin_layout Plain Layout
@@ -3576,13 +3587,12 @@ tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=function(x){sum(x)^2})
 \end_layout
 
 \begin_layout Enumerate
-Pröva att på liknande sätt skapa en funktion som räknar ut skillnaden mellan
- det första värdet och det sista värdet för varje kyckling med en anonym
- funktion.
+Pröva att på liknande sätt skapa en funktion som räknar ut skillnaden mellan det första värdet och det sista värdet för varje kyckling med en anonym funktion.
 \end_layout
 
 \begin_layout Enumerate
-Pröva nu att göra om uppgiften ovan, men i 
+Pröva nu att göra om uppgiften ovan,
+ men i 
 \family typewriter
 tapply()
 \family default
@@ -3613,7 +3623,8 @@ FUN
 X
 \family default
 .
- Kör koden nedan: Vad har du skapat för lista?
+ Kör koden nedan:
+ Vad har du skapat för lista?
 \begin_inset Newline newline
 \end_inset
 
@@ -3628,7 +3639,8 @@ status open
 
 \begin_layout Plain Layout
 
-myListWeight <- split(x = ChickWeight$weight, f = ChickWeight$Diet)
+myListWeight <- split(x = ChickWeight$weight,
+ f = ChickWeight$Diet)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3642,8 +3654,8 @@ myListWeight <- split(x = ChickWeight$weight, f = ChickWeight$Diet)
 \end_layout
 
 \begin_layout Enumerate
-Räkna ut medelvärde, varians och percentiler för weight i varje element
- i 
+Räkna ut medelvärde,
+ varians och percentiler för weight i varje element i 
 \family typewriter
 myListWeight
 \family default
@@ -3660,8 +3672,8 @@ Skapa
 myList
 \family default
  enligt nedan.
- Vad innehåller varje element i listan? Skapa en anonym funktion som beräknar
- medelvärdet för variabeln 
+ Vad innehåller varje element i listan?
+ Skapa en anonym funktion som beräknar medelvärdet för variabeln 
 \family typewriter
 weight
 \family default
@@ -3680,7 +3692,8 @@ myList
 \family default
 .
  Om du gjort rätt ska du erhålla samma resultat som i uppgift 9.
- Upprepa samma sak, fast beräkna variansen istället.
+ Upprepa samma sak,
+ fast beräkna variansen istället.
 \begin_inset Newline newline
 \end_inset
 
@@ -3695,12 +3708,14 @@ status open
 
 \begin_layout Plain Layout
 
-myList <- split(x = ChickWeight, f = ChickWeight$Diet)
+myList <- split(x = ChickWeight,
+ f = ChickWeight$Diet)
 \end_layout
 
 \begin_layout Plain Layout
 
-lapply(X = myList, FUN = function(x){...min kod...})
+lapply(X = myList,
+ FUN = function(x){...min kod...})
 \end_layout
 
 \begin_layout Plain Layout
@@ -3714,8 +3729,8 @@ lapply(X = myList, FUN = function(x){...min kod...})
 \end_layout
 
 \begin_layout Enumerate
-Räkna ut medelvärde, varians och percentiler för weight i varje element
- i 
+Räkna ut medelvärde,
+ varians och percentiler för weight i varje element i 
 \family typewriter
 myList
 \family default
@@ -3727,9 +3742,8 @@ lapply()
 \end_layout
 
 \begin_layout Enumerate
-Skapa nu en funktion som kan ta ett dataset för en kyckling och räknar ut
- skillnaden i vikt mellan tidpunkt 0 och tidpunkt 10, om värden saknas för
- tidpunkt 0 eller 10 ska 
+Skapa nu en funktion som kan ta ett dataset för en kyckling och räknar ut skillnaden i vikt mellan tidpunkt 0 och tidpunkt 10,
+ om värden saknas för tidpunkt 0 eller 10 ska 
 \family typewriter
 NA
 \family default
@@ -3755,7 +3769,8 @@ MARGIN = 2
 \family typewriter
 MARGIN = 1
 \family default
-? Kolla i hjälpen!
+?
+ Kolla i hjälpen!
 \begin_inset Newline newline
 \end_inset
 
@@ -3848,7 +3863,9 @@ literal "false"
 
 \end_inset
 
-: Äldre, men bra sammanfattning
+:
+ Äldre,
+ men bra sammanfattning
 \end_layout
 
 \begin_layout Itemize
@@ -3872,7 +3889,9 @@ literal "false"
 
 \end_inset
 
-: Mer utförlig, läs kap.
+:
+ Mer utförlig,
+ läs kap.
  1-3
 \end_layout
 
@@ -3885,7 +3904,8 @@ literal "false"
 
 \end_inset
 
-: Deras variant av 
+:
+ Deras variant av 
 \begin_inset Quotes sld
 \end_inset
 
@@ -3939,8 +3959,8 @@ Jag anser att ni ska använda
 \family typewriter
 return()
 \family default
- för att avsluta era funktioner, så det förväntas att ni gör det i era inlämning
-suppgifter och på tentan.
+ för att avsluta era funktioner,
+ så det förväntas att ni gör det i era inlämningsuppgifter och på tentan.
 \end_layout
 
 \begin_layout Standard
@@ -4098,7 +4118,8 @@ Hur bör jag kommentera min kod?
 \end_layout
 
 \begin_layout Enumerate
-Vilken operator ska jag använda vid vanlig tilldelning? (Dvs.
+Vilken operator ska jag använda vid vanlig tilldelning?
+ (Dvs.
  jag vill att variabeln 
 \family typewriter
 x
@@ -4111,12 +4132,14 @@ Hur ser ett bra filnamn ut?
 \end_layout
 
 \begin_layout Enumerate
-Att diskutera: Varför är det viktigt att ha en bra kodstil? 
+Att diskutera:
+ Varför är det viktigt att ha en bra kodstil?
+ 
 \end_layout
 
 \begin_layout Enumerate
-Att diskutera: Vissa din kod från några övningsuppgifter för någon annan
- och diskutera hur kodstilen kan förbättras.
+Att diskutera:
+ Vissa din kod från några övningsuppgifter för någon annan och diskutera hur kodstilen kan förbättras.
 \end_layout
 
 \begin_layout Chapter
@@ -4133,30 +4156,26 @@ name "chap:Dokumentation-av-funktioner"
 \end_layout
 
 \begin_layout Standard
-När vi arbetar med att utveckla funktioner finns det ofta ett behov av att
- dokumentera de funktioner vi skapar.
- Vi dokumenterar inte bara funktioner för andras skull utan också för vår
- egen skull.
- Det kan många gånger vara nog så svårt att komma ihåg hur vi tänkte för
- fyra månader sen om vi tittar tillbaka på en funktion vi skrev då.
+När vi arbetar med att utveckla funktioner finns det ofta ett behov av att dokumentera de funktioner vi skapar.
+ Vi dokumenterar inte bara funktioner för andras skull utan också för vår egen skull.
+ Det kan många gånger vara nog så svårt att komma ihåg hur vi tänkte för fyra månader sen om vi tittar tillbaka på en funktion vi skrev då.
  
 \end_layout
 
 \begin_layout Standard
 Det är viktigt att vi dokumenterar en funktion tillsammans med funktionen.
- Annars är risken stor att vi kanske ändrar en funktion och glömmer sedan
- bort att ändra i dokumentationen när vi ändrar i vår funktion.
+ Annars är risken stor att vi kanske ändrar en funktion och glömmer sedan bort att ändra i dokumentationen när vi ändrar i vår funktion.
 \end_layout
 
 \begin_layout Standard
-Det standardsätt att dokumentera funktioner i R kallas R-documentation och
- utgör den dokumentation som vi får upp med 
+Det standardsätt att dokumentera funktioner i R kallas R-documentation och utgör den dokumentation som vi får upp med 
 \family typewriter
 help()
 \family default
  eller 
 \family typewriter
 ?
+
 \family default
  för enskilda funktioner.
  Dessa dokument är skrivna i \SpecialChar LaTeX
@@ -4174,8 +4193,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Vill vi dokumentera våra funktioner utan att skapa egna paket använder vi
- 
+Vill vi dokumentera våra funktioner utan att skapa egna paket använder vi 
 \begin_inset CommandInset href
 LatexCommand href
 name "roxygen2"
@@ -4186,9 +4204,7 @@ literal "false"
 
 .
  Det är ett format för att dokumentera funktioner direkt i R.
- Har vi väl dokumenterat våra funktioner med roxygen2 kan vi generera R
- documentation-filer automatiskt om vi väljer att lägga in funktionen i
- ett paket.
+ Har vi väl dokumenterat våra funktioner med roxygen2 kan vi generera R documentation-filer automatiskt om vi väljer att lägga in funktionen i ett paket.
  Installera roxygen2 på din dator:
 \end_layout
 
@@ -4301,7 +4317,8 @@ status open
 
 \begin_layout Plain Layout
 
-f <- function(x, y) {
+f <- function(x,
+ y) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -4360,8 +4377,8 @@ Observera att roxygen-dokumentation inleds med
 \end_layout
 
 \begin_layout Standard
-I dokumentationen ovan dokumenteras funktionens argument, vad funktionen
- gör och vad funktionen returnerar för värde.
+I dokumentationen ovan dokumenteras funktionens argument,
+ vad funktionen gör och vad funktionen returnerar för värde.
  
 \end_layout
 
@@ -4460,7 +4477,8 @@ En beskrivning vad funktionen gör
 \begin_inset Text
 
 \begin_layout Plain Layout
-Detaljer om funktionen, ex.
+Detaljer om funktionen,
+ ex.
  speciella argument
 \end_layout
 
@@ -4594,7 +4612,8 @@ literal "false"
 
 \end_inset
 
- för mer info om roxygen, se även 
+ för mer info om roxygen,
+ se även 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -4609,7 +4628,8 @@ literal "false"
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body
