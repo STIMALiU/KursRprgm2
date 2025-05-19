@@ -1,5 +1,5 @@
 ---
-title: "R-programmering VT24"
+title: "R-programmering VT25"
 subtitle: "Föreläsning 8"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
@@ -21,22 +21,12 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Innehåll föreläsning 8
 
-- Tentainfo
 - Texthantering
   - \texttt{stringr}
   - regex
 - Modern databearbetning
   - \texttt{tidyr}
   - \texttt{dplyr}
-
-## Tentainfo
-
-- Tentamen är **4/6 kl 8:00 -- 12:00**.
-- Skrivplats är en SU-sal.
-- Endast anmälda studenter får skriva tentan!
-- Tentan kommer att likna de gamla tentorna som finns på kurshemsidan.
-- Hjälpmedel kommer vara ett antal "cheatsheets", de kommer finnas som pdf, ni ska **INTE** ta med några papper.
-- Inlämning är en R-fil per uppgift.
 
 # Texthantering i R
 
@@ -161,7 +151,6 @@ stringr | base | Användning
 `str_replace()` | `gsub()` | identifierar pattern, och ersätter detta med ny text
 `str_extract_all` | - | Plocka ut alla strängar som uppfyller `pattern`
 
-- För exempel på några av dessa funktioner från base, kolla på Roger Pengs [video](http://www.youtube.com/watch?v=q8SzNKib5-4)
 
 ## Demo
 

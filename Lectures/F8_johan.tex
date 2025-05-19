@@ -1,19 +1,17 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   10pt,
   ignorenonframetext,
   handout]{beamer}
+\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
+% remove section numbering
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -22,16 +20,19 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,7 +45,6 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -75,8 +75,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -127,7 +125,6 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
 
 %%% USEFUL PACKAGES
@@ -277,19 +274,16 @@
 \newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
 \newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT24},
+  pdftitle={R-programmering VT25},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT24}
+\title{R-programmering VT25}
 \subtitle{Föreläsning 8}
 \author{Johan Alenlöv}
 \date{}
@@ -304,8 +298,6 @@
 \phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-8}
 \begin{itemize}
 \tightlist
-\item
-  Tentainfo
 \item
   Texthantering
 
@@ -326,26 +318,6 @@
   \item
     \texttt{dplyr}
   \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Tentainfo}
-\phantomsection\label{tentainfo}
-\begin{itemize}
-\tightlist
-\item
-  Tentamen är \textbf{4/6 kl 8:00 -- 12:00}.
-\item
-  Skrivplats är en SU-sal.
-\item
-  Endast anmälda studenter får skriva tentan!
-\item
-  Tentan kommer att likna de gamla tentorna som finns på kurshemsidan.
-\item
-  Hjälpmedel kommer vara ett antal ``cheatsheets'', de kommer finnas som
-  pdf, ni ska \textbf{INTE} ta med några papper.
-\item
-  Inlämning är en R-fil per uppgift.
 \end{itemize}
 \end{frame}
 
@@ -438,9 +410,9 @@
 \begin{frame}[fragile]{Grundläggande strängfunktioner}
 \phantomsection\label{grundluxe4ggande-struxe4ngfunktioner}
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4167}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4167}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 stringr
@@ -624,9 +596,9 @@ Vanliga fördefinerade klasser, (se \texttt{?regexp})
 \end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4167}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4167}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3333}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 stringr
@@ -647,13 +619,6 @@ ersätter detta med ny text \\
 \texttt{pattern} \\
 \bottomrule\noalign{}
 \end{longtable}
-
-\begin{itemize}
-\tightlist
-\item
-  För exempel på några av dessa funktioner från base, kolla på Roger
-  Pengs \href{http://www.youtube.com/watch?v=q8SzNKib5-4}{video}
-\end{itemize}
 \end{frame}
 
 \begin{frame}{Demo}
@@ -777,8 +742,8 @@ verb & beskrivning \\
 \end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.3750}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.6250}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.6250}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 funktion
