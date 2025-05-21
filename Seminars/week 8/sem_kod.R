@@ -4,9 +4,9 @@ df
 ?arrange
 df <- df %>%
   arrange(desc(antal))
-
+df
 df <- df %>%
-  arrange(ord)
+  arrange(desc(antal), desc(ord))
 df
 ?message
 message("The word '", df$ord[1],"' is present ", df$antal[1], " times.")

@@ -1,3 +1,36 @@
+library(tidyverse)
+
+text <- c("Personnummer: 123456-1234",
+          "Inte personnummer: 12345-123",
+          "Personnummer igen fler på rad 123456-1234  123456-1234",
+          "Lite blandat 123456-1234 lite text 123-1234 mer text 123456-1234",
+          "Två exempel till 1234567-1234 123456-12345",
+          "123456-1234")
+pattern <- "(\\s|^)(\\d{6}-)\\d{4}(\\s|$)"
+pattern_fel <- "\\d{6}-\\d{4}"
+
+matches <- str_match_all(text, pattern = pattern)
+#str_match_all(text, pattern = pattern_fel)
+
+locations <- str_locate_all(text, pattern = pattern)
+for(row in 1:length(locations)) {
+  print("Ny rad:")
+  print(text[row])
+  if(nrow(matches[[row]]) == 0) next
+  for(m in 1:nrow(matches[[row]])) {
+    remove_space <- str_length(matches[[row]][m,4])
+    str_sub(text[row], 
+            start = locations[[row]][m,2]-3-remove_space, 
+            end = locations[[row]][m,2]-remove_space) <- "XXXX"
+    
+  }
+}
+text
+
+str_replace_all(string = text, pattern = pattern, replacement = "\\1\\2XXXX\\3")
+ymd("år 2025 månad 5 dag 21")
+
+
 library(pxweb)
 # PXWEB query 
 pxweb_query_list <- 
@@ -15,7 +48,21 @@ px_data <-
 # Convert to data.frame 
 px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.value.type = "text")
 
-data_folkmangd <- aggregate( Antal ~ region , data = px_data_frame, FUN = sum)
+?summarise
+
+befolkning <- px_data_frame %>%
+  group_by(region) %>%
+  summarise(befolkning = sum(Antal))
+
+befolkning
+
+befolkning2 <- px_data_frame %>%
+  group_by(region) %>%
+  mutate(
+    tot_befolkning = sum(Antal)
+  )
+
+befolkning2
 
 # PXWEB query 
 pxweb_query_list <- 
@@ -35,8 +82,33 @@ px_data_frame <- as.data.frame(px_data, column.name.type = "text", variable.valu
 px_data_frame$Huvudbibliotek[is.na(px_data_frame$Huvudbibliotek)] <- 0
 
 data_bibliotek <- px_data_frame
+data_bibliotek
 
-data_tot <- merge(data_bibliotek, data_folkmangd)
+data_bibliotek %>%
+  group_by(region) %>%
+  summarise(
+    Antal_datorer = Huvudbibliotek
+  )
 
-data_tot$`typ av IT-tjänst` <- NULL
-data_tot$år <- NULL
+data_bibliotek$`typ av IT-tjänst` <- NULL
+data_bibliotek$år <- NULL
+
+tot_df <- full_join(
+  data_bibliotek,
+  befolkning
+)
+
+?left_join
+
+x <- tibble(
+  obs = c(1,3,4,5),
+  var1 = c(1, 3, 4, 5),
+)
+y <- tibble(
+  obs = c(2,3,4,5),
+  var2 = c(2,3,4,5)
+)
+left_join(x,y)
+right_join(x,y)
+inner_join(x,y)
+full_join(x,y)
