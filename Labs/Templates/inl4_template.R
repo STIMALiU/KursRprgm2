@@ -40,6 +40,6 @@ wordcount <- function(text){
 
 # Använda markmyassignment
 library(markmyassignment)
-set_assignment("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/inl3.yml")
+set_assignment("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/Tests/inl4.yml")
 show_tasks()
 mark_my_assignment()
