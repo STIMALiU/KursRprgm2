@@ -7,5 +7,5 @@ tasks:
   uppgift3:
     url: Tasks/uppgift3.R
 mandatory:
-  url: mandatory.R
+  url: Tasks/mandatory.R
 
