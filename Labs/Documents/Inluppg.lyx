@@ -90,6 +90,36 @@ knitr
 \begin_body
 
 \begin_layout Subsection*
+Generativ AI
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notera:
+
+\series default
+ Det är 
+\series bold
+inte
+\series default
+ tillåtet att låta en generaitv AI lösa inlämningsuppgifterna eller projektet åt er.
+ Det är inte tillåtet att ta kod som löser uppgifterna direkt från en generativ AI.
+\end_layout
+
+\begin_layout Standard
+På inlämningsuppgifterna är det tillåtet att använda generativ AI till:
+\end_layout
+
+\begin_layout Itemize
+Förstå koncept och teori
+\end_layout
+
+\begin_layout Itemize
+Tolka felmedelanden och hitta buggar
+\end_layout
+
+\begin_layout Subsection*
 Inlämning
 \end_layout
 
