@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -9,11 +9,11 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
-\fontencoding global
+\inputencoding auto-legacy
+\fontencoding auto
 \font_roman "default" "default"
 \font_sans "default" "default"
 \font_typewriter "default" "default"
@@ -21,7 +21,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -55,7 +57,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 1
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -71,11 +75,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -86,14 +95,14 @@ Inlämning
 
 \begin_layout Standard
 Utgå från laborationsmallen när du gör inlämningsuppgifterna.
- Det finns en mall för varje inlämningsuppgift, se nedan under Inlämningsuppgift
-er.
+ Det finns en mall för varje inlämningsuppgift,
+ se nedan under Inlämningsuppgifter.
  Filen ni lämnar in ska 
 \series bold
 inte
 \series default
- innehålla något annat än de aktuella funktionerna, namn- och ID-variabler
- och ev.
+ innehålla något annat än de aktuella funktionerna,
+ namn- och ID-variabler och ev.
  kommentarer.
 \end_layout
 
@@ -123,8 +132,8 @@ markmyassignment
 \end_layout
 
 \begin_layout Itemize
-På en av de schemalagda datorlaborationerna: kontakta en lärare/assistent
- och be om att få redovisa er inlämning.
+På en av de schemalagda datorlaborationerna:
+ kontakta en lärare/assistent och be om att få redovisa er inlämning.
 \end_layout
 
 \begin_layout Itemize
@@ -135,9 +144,9 @@ Redovisning:
 
 \begin_deeper
 \begin_layout Itemize
-Rensa den globala miljön (Environment i Rstudio) så att bara de variabler
- och funktioner som krävs för uppgiften finns kvar.
- Tips: Funktionen 
+Rensa den globala miljön (Environment i Rstudio) så att bara de variabler och funktioner som krävs för uppgiften finns kvar.
+ Tips:
+ Funktionen 
 \family typewriter
 rm()
 \family default
@@ -149,13 +158,12 @@ Kör markmyassignment och visa att testerna går igenom.
 \end_layout
 
 \begin_layout Itemize
-Förklara kort hur ni har löst uppgifterna och svara på eventuella frågor
- från assistenten.
+Förklara kort hur ni har löst uppgifterna och svara på eventuella frågor från assistenten.
 \end_layout
 
 \begin_layout Itemize
-Om assistenten säger att ni är godkända, lämna då in er lösning på Inlämningar
- i kursrummet på Lisam.
+Om assistenten säger att ni är godkända,
+ lämna då in er lösning på Inlämningar i kursrummet på Lisam.
 \end_layout
 
 \end_deeper
@@ -173,13 +181,11 @@ Tips!
 
 \begin_layout Standard
 Inlämningsuppgifterna innebär att konstruera funktioner.
- Ofta är det bra att bryta ned programmeringsuppgifter i färre små steg
- och testa att det fungerar i varje steg.
+ Ofta är det bra att bryta ned programmeringsuppgifter i färre små steg och testa att det fungerar i varje steg.
 \end_layout
 
 \begin_layout Enumerate
-Lös uppgiften med vanlig kod direkt i RStudio (precis som i datorlaborationen
- ovan) utan att skapa en funktion.
+Lös uppgiften med vanlig kod direkt i RStudio (som i övningsuppgifterna) utan att skapa en funktion.
 \end_layout
 
 \begin_layout Enumerate
@@ -192,7 +198,8 @@ Implementera koden du skrivit i 1.
 \end_layout
 
 \begin_layout Enumerate
-Testa att du får samma resultat som i testexemplen, nu med funktionen.
+Testa att du får samma resultat som i testexemplen,
+ nu med funktionen.
 \end_layout
 
 \begin_layout Subsection*
@@ -202,14 +209,13 @@ markmyassignment
 \end_layout
 
 \begin_layout Standard
-Som ett komplement för att snabbt kunna få återkoppling på de olika arbetsuppgif
-terna finns paketet 
+Som ett komplement för att snabbt kunna få återkoppling på de olika arbetsuppgifterna finns paketet 
 \family typewriter
 markmyassignment
 \family default
 .
- Med detta är det möjligt att direkt få återkoppling på uppgifterna i laboration
-en, oavsett dator.
+ Med detta är det möjligt att direkt få återkoppling på uppgifterna i laborationen,
+ oavsett dator.
  Dock krävs internetanslutning.
 \end_layout
 
@@ -235,8 +241,7 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-Samma information finns också i R och går att läsa genom att först installera
- 
+Samma information finns också i R och går att läsa genom att först installera 
 \family typewriter
 markmyassignment
 \family default
@@ -296,8 +301,7 @@ install.packages("markmyassignment",lib="mapp i din hemkatalog")
 \end_layout
 
 \begin_layout Standard
-Tänk på att i sökvägar till mappar/filer i R i Windowssystem så används
- 
+Tänk på att i sökvägar till mappar/filer i R i Windowssystem så används 
 \family typewriter
 
 \begin_inset Quotes eld
@@ -313,7 +317,8 @@ Tänk på att i sökvägar till mappar/filer i R i Windowssystem så används
 
 
 \family default
-, tex 
+,
+ tex 
 \family typewriter
 
 \begin_inset Quotes eld
