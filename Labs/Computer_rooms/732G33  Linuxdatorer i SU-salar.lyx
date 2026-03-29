@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package auto
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -157,92 +166,48 @@ options(digits = 5)
 \end_layout
 
 \begin_layout Section*
-
-\lang english
-SU-salarna online
-\end_layout
-
-\begin_layout Standard
-På schemat i timedit så finns det datorsalar bokade (SU-salar).
- Ni ska 
-\series bold
-inte
-\series default
- gå dit under de bokade passen.
-
-\lang english
- 
-\series bold
-Det går att komma åt SU-salarnas datorer online (remote) på egen dator
-\series default
-.
- Det gör att ni kan använda de programvaror som finns installerade på dessa
- datorer.
- Om ni har problem med kursens programvaror på er egen dator så är det här
- en möjlighet som ni kan använda.
-\end_layout
-
-\begin_layout Standard
-
-\lang english
-Gå in på denna sida: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://insidan.liu.se/it/it-i-undervisning/linuxresurser-for-distansundervisning/?l=sv"
-literal "false"
-
-\end_inset
-
-, info finns även här: 
-\begin_inset CommandInset href
-LatexCommand href
-name "länk"
-target "https://www.student.liu.se/studentstod/itsupport/linuxdatorsalar/fjarrinloggning?l=sv"
-literal "false"
-
-\end_inset
-
-.
- Ni kan använda er av RDP eller ThinLinc, men ThinLinc rekommenderas.
- Följ instruktionerna i länkarna för att ansluta online.
- 
-\end_layout
-
-\begin_layout Section*
 SU-salarna och Ubuntu
 \end_layout
 
 \begin_layout Standard
-De schemalagda datorlaborationerna har SU-salarna bokade, som har Linux
- (Ubuntu) som operativsystem.
- För att få tillgång till R, Rstudio och de R-paket som kursen använder
- gör du följande när ni har anslutit till en SU-dator:
+De schemalagda datorlaborationerna har SU-salarna bokade,
+ som har Linux (Ubuntu) som operativsystem.
+ Kursen har en kursmodul med R,
+ Rstudio och de R-paket som kursen använder.
+ 
+\end_layout
+
+\begin_layout Standard
+För att få tillgång till kursmodulen:
 \end_layout
 
 \begin_layout Itemize
-Tryck: 
+Tryck:
+ 
 \family typewriter
 Ctrl+Alt+T
 \family default
  för att öppna en terminal.
- Här kan du skriva olika kommandon, dessa aktiveras när du trycker enter.
+ Här kan ni skriva olika kommandon,
+ dessa aktiveras när ni trycker enter.
 \end_layout
 
 \begin_layout Itemize
-Skriv: 
-\family typewriter
-\lang english
-module add courses/732G33
-\family default
-\lang swedish
- och tryck enter
+Skriv:
 \end_layout
 
 \begin_deeper
 \begin_layout Itemize
-Detta läser in kursmodulen, som innehåller de programvaror som behövs i
- kursen.
+
+\family typewriter
+module add courses/732G33
+\family default
+ och tryck enter
+\end_layout
+
+\begin_layout Itemize
+Detta läser in kursmodulen,
+ som innehåller de programvaror som behövs i kursen.
 \end_layout
 
 \end_deeper
@@ -254,20 +219,90 @@ rstudio
  i terminalen och tryck enter
 \end_layout
 
+\begin_layout Itemize
+Många R-paket är installerade i modulen,
+ om de inte är det så går de att installera med 
+\family typewriter
+install.packages()
+\end_layout
+
 \begin_layout Standard
 Andra program som är bra att känna till
 \end_layout
 
 \begin_layout Itemize
-caja: filhanterare
+
+\family typewriter
+caja
+\family default
+:
+ filhanterare
 \end_layout
 
 \begin_layout Itemize
-pluma: enkel textredigerare, bra att använda för att titta på datafiler
+
+\family typewriter
+pluma
+\family default
+:
+ enkel textredigerare,
+ bra att använda för att titta på datafiler
 \end_layout
 
 \begin_layout Itemize
-LibreOffice: kontorsprogram
+
+\family typewriter
+LibreOffice
+\family default
+:
+ kontorsprogram
+\end_layout
+
+\begin_layout Standard
+Se mer allmän information om dator-salar 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://liuonline.sharepoint.com/sites/student-campus-och-lokaler/SitePages/Datorsalar.aspx"
+literal "false"
+
+\end_inset
+
+ (läs under Linux).
+\end_layout
+
+\begin_layout Section*
+SU-salarna online
+\end_layout
+
+\begin_layout Standard
+Det går att komma åt SU-salarnas datorer online (remote) på egen dator.
+ Det gör att ni kan använda de programvaror som finns installerade på dessa datorer.
+\end_layout
+
+\begin_layout Standard
+Gå in på denna sida:
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "länk"
+target "https://liuonline.sharepoint.com/sites/student-under-studietiden/SitePages/Fjarrinloggning.aspx"
+literal "false"
+
+\end_inset
+
+.
+ Följ instruktionerna i länken för att ansluta online.
+ Finns även info 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://rdpklienter.edu.liu.se/"
+literal "false"
+
+\end_inset
+
+.
 \end_layout
 
 \end_body
