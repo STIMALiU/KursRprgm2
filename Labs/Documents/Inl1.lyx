@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -137,7 +146,7 @@ opts_chunk$set(comment='')
 
 \begin_layout Plain Layout
 
-options(digits = 5)
+options(digits = 8)
 \end_layout
 
 \begin_layout Plain Layout
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "Inluppg.lyx"
+literal "true"
 
 \end_inset
 
@@ -184,8 +194,7 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2025/KursRprgmTeacher/Labs/ex
-ercise_solutions/
+/home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2026/KursRprgmTeacher/Labs/exercise_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -199,7 +208,8 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+for(sol_file in solution_files) source(file = paste0(solution_path,
+ sol_file),
  echo = FALSE)
 \end_layout
 
@@ -222,7 +232,8 @@ Inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Ladda nu ner laborationsmallen, som finns 
+Ladda nu ner laborationsmallen,
+ som finns 
 \series bold
 \color blue
 
@@ -321,8 +332,16 @@ Inlämningsuppgifter utgår ifrån att ni har gjort
 övningsuppgifterna
 \series default
  ovan först.
- Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
- inlämningsuppgifterna.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med inlämningsuppgifterna.
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+Se till att regelbundet komma på de schemalagda datorlaborationern.
+
+\series default
+ Utnyttja den hjälp som ni kan få från lärare på kursen.
 \end_layout
 
 \begin_layout Itemize
@@ -335,14 +354,14 @@ problemet
 \end_inset
 
  i uppgiften.
- Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vad ska funktionen göra?
+ Beskriv problemet för er själva.
  Vissa problem är det bra att bryta ner i mindre delproblem.
  
 \end_layout
 
 \begin_layout Itemize
-Börja med att lösa problemet (eller det första delproblemet) med vanlig
- kod (dvs inte i en funktion) i ett R-script.
+Börja med att lösa problemet (eller det första delproblemet) med vanlig kod (dvs inte i en funktion) i ett R-script.
 \end_layout
 
 \begin_deeper
@@ -355,13 +374,13 @@ Lös ett delproblem i taget vid behov.
 \end_deeper
 \begin_layout Itemize
 Sätt sedan in er kod i en funktion.
- Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
- (testfallen).
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna (testfallen).
  Se till att funktionen har rätt namn och rätt namn på argumenten.
 \end_layout
 
 \begin_layout Itemize
-Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+Ta er funktion och lägg in den i kodmallen,
+ dvs i ett nytt R-script.
  Skapa variablerna 
 \family typewriter
 Namn
@@ -375,8 +394,8 @@ LiuId
 \end_layout
 
 \begin_layout Itemize
-Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
- och ID-variabler och ev.
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna,
+ namn- och ID-variabler och ev.
  kommentarer.
  
 \end_layout
@@ -402,19 +421,20 @@ hyfsat klar
 \begin_inset Quotes srd
 \end_inset
 
-, annars kommer ni att få många fel i markmyassignment, och det är svårt
- att veta var man ska börja kolla.
+,
+ annars kommer ni att få många fel i markmyassignment,
+ och det är svårt att veta var man ska börja kolla.
 \end_layout
 
 \begin_layout Itemize
-Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
- kommer ni att få många fel i markmyassignment.
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
- som ni får.
+Om ni inte klarar alla tester i markmyassignment:
+ undersök vilka felmeddelanden som ni får.
  Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
 \end_layout
 
@@ -424,8 +444,7 @@ Innan ni lämnar in:
 
 \begin_deeper
 \begin_layout Itemize
-Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
-ten.
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstexten.
  Ibland måste en viss metod användas för att lösa uppgiften.
  Ibland är vissa funktioner inte tillåtna i en viss uppgift.
  Så läs noga i varje uppgift vad som gäller.
@@ -461,7 +480,8 @@ hi_name()
 \begin_inset Quotes sld
 \end_inset
 
-Hi [namn]! Keep coding!
+Hi [namn]!
+ Keep coding!
 \begin_inset Quotes srd
 \end_inset
 
@@ -480,6 +500,7 @@ namn
 
 \series bold
 Obs!
+
 \series default
  använd 
 \family typewriter
@@ -487,7 +508,8 @@ Obs!
 cat()
 \family default
 \color inherit
-, inte 
+,
+ inte 
 \family typewriter
 \color black
 return()
@@ -496,7 +518,8 @@ return()
  och tänk på att resultatet ska bli exakt detsamma som nedan för full poäng.
  [
 \series bold
-Tips! 
+Tips!
+ 
 \series default
 argumentet 
 \family typewriter
@@ -594,8 +617,8 @@ literal "false"
 \begin_inset Formula $e$
 \end_inset
 
- kan approximeras godtyckligt bra på följande sätt, genom att välja ett
- värde på 
+ kan approximeras godtyckligt bra på följande sätt,
+ genom att välja ett värde på 
 \begin_inset Formula $N$
 \end_inset
 
@@ -611,7 +634,8 @@ e=\sum_{n=0}^{N}\frac{1}{n!}
 \end_layout
 
 \begin_layout Standard
-Exempel, låt 
+Exempel,
+ låt 
 \begin_inset Formula $N=3$
 \end_inset
 
@@ -668,12 +692,14 @@ Detta ska inte redovisas i inlämningen.
 [
 \series bold
 Tips!
+
 \series default
  för att få ut 
 \begin_inset Formula $e$
 \end_inset
 
- med ett antal decimaler i R, använd 
+ med ett antal decimaler i R,
+ använd 
 \family typewriter
 \color black
 exp(1)
@@ -704,6 +730,11 @@ approx_e(N = 3)
 \begin_layout Plain Layout
 
 approx_e(N = 4)
+\end_layout
+
+\begin_layout Plain Layout
+
+approx_e(N = 7)
 \end_layout
 
 \begin_layout Plain Layout
@@ -739,15 +770,13 @@ fast_stock_analysis()
 \end_layout
 
 \begin_layout Standard
-Vi ska nu skapa en funktion för att göra en snabb analys av ett dataset
- som finns sparat som 
+Vi ska nu skapa en funktion för att göra en snabb analys av ett dataset som finns sparat som 
 \family typewriter
 .csv
 \family default
 .
  Detta är ett exempel på användningsområde för funktioner i R.
- Mycket data kommer in löpande och då kan det vara så att vissa standardanalyser
- vill vi göra snabbt med en förprogrammerad funktion.
+ Mycket data kommer in löpande och då kan det vara så att vissa standardanalyser vill vi göra snabbt med en förprogrammerad funktion.
  Vi ska skapa en funktion 
 \family typewriter
 fast_stock_analysis()
@@ -762,35 +791,43 @@ period_length
 \family default
 .
  Syftet är att snabbt analysera de senaste dagarnas aktiekurs.
- Vi utgår att data har följande struktur: 
+ Vi utgår att data har följande struktur:
+ 
 \end_layout
 
 \begin_layout Itemize
-Variabler (i given ordning): 
+Variabler (i given ordning):
+ 
 \family typewriter
 Date
 \family default
-, 
+,
+ 
 \family typewriter
 Open
 \family default
-, 
+,
+ 
 \family typewriter
 High
 \family default
-, 
+,
+ 
 \family typewriter
 Low
 \family default
-, 
+,
+ 
 \family typewriter
 Close
 \family default
-, 
+,
+ 
 \family typewriter
 Volume
 \family default
-, 
+,
+ 
 \family typewriter
 Adj.Close
 \end_layout
@@ -813,11 +850,13 @@ file_path
 \family typewriter
 total_spridning
 \family default
-, 
+,
+ 
 \family typewriter
 medel_slutpris
 \family default
-, 
+,
+ 
 \family typewriter
 slutpris_upp
 \family default
@@ -851,6 +890,7 @@ read.csv()
  [
 \series bold
 Tips!
+
 \series default
  tänk på att 
 \family typewriter
@@ -864,12 +904,14 @@ stringsAsFactors
 
 \series bold
 Obs!
+
 \series default
  
 \family typewriter
 file_path
 \family default
- ska bara innehålla sökvägen till filen, filen ska läsas in inne i funktionen.
+ ska bara innehålla sökvägen till filen,
+ filen ska läsas in inne i funktionen.
 \end_layout
 
 \begin_layout Enumerate
@@ -877,8 +919,7 @@ Plocka ut de senaste
 \family typewriter
 period_length
 \family default
- antal dagar från datasetet (anta att de senaste aktiekurserna är högst
- upp).
+ antal dagar från datasetet (anta att de senaste aktiekurserna är högst upp).
 \end_layout
 
 \begin_layout Enumerate
@@ -923,8 +964,7 @@ slutpris_upp
 \family typewriter
 TRUE
 \family default
- om slutpriset första dagen under perioden är lägre än slutpriset den sista
- dagen under perioden.
+ om slutpriset första dagen under perioden är lägre än slutpriset den sista dagen under perioden.
 \end_layout
 
 \begin_layout Enumerate
@@ -932,8 +972,7 @@ TRUE
 \family typewriter
 datum
 \family default
- (vektor med två textelement) ska innehålla det första och det sista datumet
- för perioden.
+ (vektor med två textelement) ska innehålla det första och det sista datumet för perioden.
  
 \series bold
 
@@ -941,8 +980,10 @@ datum
 \end_inset
 
 OBS!
+
 \series default
- Detta ska vara en textvektor, inte en faktor.
+ Detta ska vara en textvektor,
+ inte en faktor.
 \end_layout
 
 \end_deeper
@@ -959,7 +1000,8 @@ AppleTest.csv
 \family typewriter
 google2.csv
 \family default
-: 
+:
+ 
 \begin_inset CommandInset href
 LatexCommand href
 name "här"
@@ -978,15 +1020,15 @@ Raw
 \end_inset
 
  och spara ned filen.
- Notera vi testar funktionen på dessa filer, men funktionen ska fungera
- på godtyckliga dataset som har samma struktur som dessa två filer.
+ Notera vi testar funktionen på dessa filer,
+ men funktionen ska fungera på godtyckliga dataset som har samma struktur som dessa två filer.
  Här är testexempel på hur funktionen ska fungera (
 \series bold
 Obs!
+
 \series default
  Nedan visas sökvägar till filer som ligger öppet tillgängliga på github.
- Funktionen ska fungera även för lokalt nedladdade filer om rätt sökväg
- är angiven.):
+ Funktionen ska fungera även för lokalt nedladdade filer om rätt sökväg är angiven.):
 \end_layout
 
 \begin_layout Standard
@@ -1008,8 +1050,7 @@ apple_path <-
 \begin_inset Quotes srd
 \end_inset
 
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
-t.csv
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTest.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -1026,8 +1067,7 @@ google_path <-
 \begin_inset Quotes srd
 \end_inset
 
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
-sv
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -1106,8 +1146,9 @@ DataFiles
 
 \begin_layout Plain Layout
 
-#download.file("https://raw.githubusercontent.com/MansMeg/KursRprgm2/master/Labs/Da
-taFiles/AppleTest.csv", destfile = appleFilePath, method = "curl") 
+#download.file("https://raw.githubusercontent.com/MansMeg/KursRprgm2/master/Labs/DataFiles/AppleTest.csv",
+ destfile = appleFilePath,
+ method = "curl") 
 \end_layout
 
 \begin_layout Plain Layout
@@ -1116,13 +1157,15 @@ taFiles/AppleTest.csv", destfile = appleFilePath, method = "curl")
 
 \begin_layout Plain Layout
 
-#library(repmis) data_url <- "https://raw.githubusercontent.com/STIMALiU/KursRprgm
-2/master/Labs/DataFiles/Apple.txt" 
+#library(repmis) data_url <- "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/Apple.txt" 
 \end_layout
 
 \begin_layout Plain Layout
 
-#apple <- repmis::source_data(data_url, sep = ";", dec = ".", header = TRUE)
+#apple <- repmis::source_data(data_url,
+ sep = ";",
+ dec = ".",
+ header = TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1254,14 +1297,12 @@ google2.csv"
 
 \begin_layout Plain Layout
 
-#apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFile
-s/AppleTest.csv"
+#apple_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFiles/AppleTest.csv"
 \end_layout
 
 \begin_layout Plain Layout
 
-#google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFil
-es/google2.csv"
+#google_path<-"/home/joswi05/Dropbox/Josef/732G33_VT2021/KursRprgm2/Labs/DataFiles/google2.csv"
 \end_layout
 
 \begin_layout Plain Layout
@@ -1270,8 +1311,7 @@ apple_path <-
 \begin_inset Quotes srd
 \end_inset
 
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTes
-t.csv
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/AppleTest.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -1284,8 +1324,7 @@ google_path <-
 \begin_inset Quotes srd
 \end_inset
 
-https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.c
-sv
+https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/google2.csv
 \begin_inset Quotes srd
 \end_inset
 
@@ -1313,8 +1352,8 @@ status open
 
 \begin_layout Plain Layout
 
-myList1 <- fast_stock_analysis(file_path = apple_path, period_length=5)
-  
+myList1 <- fast_stock_analysis(file_path = apple_path,
+ period_length=5)  
 \end_layout
 
 \begin_layout Plain Layout
@@ -1324,7 +1363,8 @@ str(myList1)
 
 \begin_layout Plain Layout
 
-myList2 <- fast_stock_analysis(file_path = apple_path, period_length=10)
+myList2 <- fast_stock_analysis(file_path = apple_path,
+ period_length=10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1334,7 +1374,8 @@ str(myList2)
 
 \begin_layout Plain Layout
 
-myList3 <- fast_stock_analysis(file_path = apple_path, period_length=3)
+myList3 <- fast_stock_analysis(file_path = apple_path,
+ period_length=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1344,7 +1385,8 @@ str(myList3)
 
 \begin_layout Plain Layout
 
-myList4 <- fast_stock_analysis(file_path = google_path, period_length=20)
+myList4 <- fast_stock_analysis(file_path = google_path,
+ period_length=20)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1363,8 +1405,7 @@ str(myList4)
 \end_layout
 
 \begin_layout Standard
-Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
- och funktionerna i inlämningsuppgifterna och 
+Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna och funktionerna i inlämningsuppgifterna och 
 \series bold
 inget
 \series default
@@ -1375,7 +1416,8 @@ inget
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body
