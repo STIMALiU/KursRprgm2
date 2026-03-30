@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,17 +99,22 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Datorlaboration 1
+Övningsuppgifter 1
 \end_layout
 
 \begin_layout Author
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "IntroDel1Vt25.lyx"
+literal "true"
 
 \end_inset
 
@@ -185,10 +195,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part
-Datorlaboration
 \end_layout
 
 \begin_layout Chapter
@@ -220,8 +226,8 @@ literal "false"
 \color inherit
  (Integrated development enviroment).
  En kan se det lite som en verktygslåda för att enkelt arbeta med R.
- Detta innebär att RStudio kräver R för att fungera, men det går att använda
- R utan RStudio.
+ Detta innebär att RStudio kräver R för att fungera,
+ men det går att använda R utan RStudio.
 \end_layout
 
 \begin_layout Standard
@@ -234,7 +240,8 @@ Global enviroment
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -242,7 +249,8 @@ Console
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -250,7 +258,8 @@ File
 \begin_inset Quotes erd
 \end_inset
 
-, 
+,
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -262,7 +271,9 @@ History
 \end_layout
 
 \begin_layout Section
-R som miniräknare, matematiska funktioner, konstanter och 
+R som miniräknare,
+ matematiska funktioner,
+ konstanter och 
 \begin_inset Quotes eld
 \end_inset
 
@@ -274,8 +285,7 @@ missing values
 \end_layout
 
 \begin_layout Standard
-Till skillnad från de flesta andra statistikprogram fungerar R utan att
- ha ett dataset vi arbetar med.
+Till skillnad från de flesta andra statistikprogram fungerar R utan att ha ett dataset vi arbetar med.
  Vi kan således använda R som en miniräknare och beräkna enskilda värden.
  För att göra beräkningar skriver vi våra beräkningar direkt i 
 \begin_inset Quotes eld
@@ -365,14 +375,13 @@ status open
 \end_layout
 
 \begin_layout Enumerate
-Två matematiska funktioner som är användbara i programmering är heltalsdivision
- och modulos.
+Två matematiska funktioner som är användbara i programmering är heltalsdivision och modulos.
 \end_layout
 
 \begin_deeper
 \begin_layout Enumerate
-Heltalsdivision: Ger oss det tal som är det största heltal som kan dela
- täljaren med nämnaren utan att det blir ett decimaltal.
+Heltalsdivision:
+ Ger oss det tal som är det största heltal som kan dela täljaren med nämnaren utan att det blir ett decimaltal.
  Testa koden nedan.
 \begin_inset Newline newline
 \end_inset
@@ -453,9 +462,9 @@ literal "false"
 
 \series default
 \color inherit
-: Ger oss resten vid heltalsdivision.
- Om det inte blir någon rest vid heltalsdivisionen så blir modulos lika
- med noll.
+:
+ Ger oss resten vid heltalsdivision.
+ Om det inte blir någon rest vid heltalsdivisionen så blir modulos lika med noll.
  Testa koden nedan.
 \begin_inset Newline newline
 \end_inset
@@ -564,7 +573,8 @@ exp(x)
 \begin_inset Formula $e^{x}$
 \end_inset
 
-, därav kan vi få 
+,
+ därav kan vi få 
 \begin_inset Formula $e$
 \end_inset
 
@@ -573,7 +583,8 @@ exp(x)
 exp(1)
 \family default
 .
- Pröva följande: 
+ Pröva följande:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -628,8 +639,10 @@ Inf
 
 \begin_layout Enumerate
 Självklart finns alla tänkbara matematiska funktioner som kvadratroten,
- absolutbelopp, logaritmer (i olika baser), heltalsdivision, och trigonometriska
- funktioner.
+ absolutbelopp,
+ logaritmer (i olika baser),
+ heltalsdivision,
+ och trigonometriska funktioner.
  
 \series bold
 Det som definierar funktioner i R är att de följs direkt av en parentes.
@@ -645,7 +658,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<prompt=TRUE, eval=FALSE>>=
+<<prompt=TRUE,
+ eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -670,12 +684,14 @@ log(exp(1))
 
 \begin_layout Plain Layout
 
-log(4, base = 2)
+log(4,
+ base = 2)
 \end_layout
 
 \begin_layout Plain Layout
 
-log(3, base = 10)
+log(3,
+ base = 10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -703,12 +719,23 @@ sign(0)
 
 \begin_layout Plain Layout
 
-# fakultet: skrivs med ! i matematiken
+# fakultet:
+ skrivs med !
+ i matematiken
 \end_layout
 
 \begin_layout Plain Layout
 
-# 1! = 1, 2! = 1*2, 3! = 1*2*3, 4! = 1*2*3*4, 5! =1*2*3*4*5 osv
+# 1!
+ = 1,
+ 2!
+ = 1*2,
+ 3!
+ = 1*2*3,
+ 4!
+ = 1*2*3*4,
+ 5!
+ =1*2*3*4*5 osv
 \end_layout
 
 \begin_layout Plain Layout
@@ -757,7 +784,8 @@ cos(pi/4)
 
 \begin_layout Plain Layout
 
-# Notera dessa funktioner använder radianer: https://sv.wikipedia.org/wiki/Radian
+# Notera dessa funktioner använder radianer:
+ https://sv.wikipedia.org/wiki/Radian
 \end_layout
 
 \begin_layout Plain Layout
@@ -771,8 +799,7 @@ cos(pi/4)
 \end_layout
 
 \begin_layout Enumerate
-I R finns två ytterligare värden för att definiera olika typer av saknade
- värden.
+I R finns två ytterligare värden för att definiera olika typer av saknade värden.
  
 \family typewriter
 NA
@@ -838,8 +865,7 @@ sqrt(-4)
 \end_layout
 
 \begin_layout Enumerate
-Vi kan självklart kombinera våra beräkningar för att göra mer komplicerade
- beräkningar.
+Vi kan självklart kombinera våra beräkningar för att göra mer komplicerade beräkningar.
  Med hjälp av parenteser så kan vi sätta samman olika steg i våra beräkningar.
  Gör följande beräkning i R (se kod nedan):
 \begin_inset Formula 
@@ -907,8 +933,7 @@ R-filer och kodkommentarer
 \end_layout
 
 \begin_layout Standard
-Även om R är en utmärkt miniräknare är vi ofta intresserade av att skriva
- program för att genomföra mer komplicerade beräkningar.
+Även om R är en utmärkt miniräknare är vi ofta intresserade av att skriva program för att genomföra mer komplicerade beräkningar.
  För detta använder vi skriptfiler.
  Detta är filer med filändelsen 
 \family typewriter
@@ -922,6 +947,7 @@ Skapa en ny R-fil.
  
 \series bold
 Tips:
+
 \series default
  File 
 \begin_inset Formula $\rightarrow$
@@ -932,7 +958,8 @@ Tips:
 \begin_inset Formula $\rightarrow$
 \end_inset
 
- R Script, går även att trycka 
+ R Script,
+ går även att trycka 
 \family typewriter
 Ctrl+Shift+N
 \end_layout
@@ -954,7 +981,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<prompt=TRUE, eval=FALSE>>=
+<<prompt=TRUE,
+ eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -988,6 +1016,7 @@ my_first_R_script.R
  [
 \series bold
 Tips:
+
 \series default
  File 
 \begin_inset Formula $\rightarrow$
@@ -1001,7 +1030,8 @@ Lägg sedan till beräkningen
 \begin_inset Formula $sin\left(log\text{\left(4^{3}\right)}\right)$
 \end_inset
 
- på raden under, spara.
+ på raden under,
+ spara.
 \end_layout
 
 \begin_layout Enumerate
@@ -1020,14 +1050,15 @@ Ctrl+Enter
 \end_layout
 
 \begin_layout Enumerate
-Markera alla rader med kod i skriptet (så att de blir blå), tryck sedan
- 
+Markera alla rader med kod i skriptet (så att de blir blå),
+ tryck sedan 
 \family typewriter
 Ctrl+Enter
 \end_layout
 
 \begin_layout Enumerate
-Markera någonstans i skriptet och tryck: 
+Markera någonstans i skriptet och tryck:
+ 
 \family typewriter
 Ctrl+Shift+Enter
 \family default
@@ -1043,8 +1074,7 @@ Objekt och variabler
 Nästa steg är att spara ned våra beräkningar som objekt.
  
 \series bold
-Kortfattat kan en säga att allt som sparas i minnet i R är objekt och allt
- som görs/beräknas i R är funktioner.
+Kortfattat kan en säga att allt som sparas i minnet i R är objekt och allt som görs/beräknas i R är funktioner.
 
 \series default
  Objekt som innehåller enstaka värden brukar kallas för 
@@ -1052,8 +1082,7 @@ Kortfattat kan en säga att allt som sparas i minnet i R är objekt och allt
 variabler
 \series default
 .
- Olika variabler kan innehålla olika typer av värden som textsträngar och
- numeriska värden.
+ Olika variabler kan innehålla olika typer av värden som textsträngar och numeriska värden.
 \end_layout
 
 \begin_layout Standard
@@ -1079,7 +1108,8 @@ För att tillskriva ett värde till en variabel används
 \family typewriter
 =
 \family default
- fungerar, men avråds generellt ifrån.
+ fungerar,
+ men avråds generellt ifrån.
  Pröva att skapa följande variabler.
  
 \begin_inset Newline newline
@@ -1232,8 +1262,10 @@ Operatorn
 \family typewriter
 <-
 \family default
- kan inte skrivas isär, inte heller variabelnamnen.
- Pröva följande kod, vad innebär det att särskriva 
+ kan inte skrivas isär,
+ inte heller variabelnamnen.
+ Pröva följande kod,
+ vad innebär det att särskriva 
 \family typewriter
 <-
 \family default
@@ -1331,7 +1363,8 @@ Logiska värden är element som kan anta värdena
 \family typewriter
 TRUE
 \family default
-, 
+,
+ 
 \family typewriter
 FALSE
 \family default
@@ -1468,8 +1501,7 @@ literal "false"
 \end_inset
 
 .
- För att skapa ett komplext tal måste både den reella delen och den imaginära
- delen anges.
+ För att skapa ett komplext tal måste både den reella delen och den imaginära delen anges.
  Den imaginära delen anges som ett vanligt tal som avslutas med 
 \family typewriter
 i
@@ -1553,8 +1585,7 @@ sqrt(-1 + 0i)
 \end_layout
 
 \begin_layout Enumerate
-Det går (nästan) alltid att spara ned resultatet från en funktion som ett
- nytt objekt som vi kan återanvända senare.
+Det går (nästan) alltid att spara ned resultatet från en funktion som ett nytt objekt som vi kan återanvända senare.
  Vi kan också räkna med objekt rakt upp och ned.
  
 \begin_inset Newline newline
@@ -1685,7 +1716,8 @@ Heltal (
 \family typewriter
 int
 \family default
-, 
+,
+ 
 \family typewriter
 numeric
 \end_layout
@@ -1709,7 +1741,9 @@ integer
 \begin_layout Plain Layout
 
 \family typewriter
--2, 0, 1
+-2,
+ 0,
+ 1
 \end_layout
 
 \end_inset
@@ -1737,15 +1771,18 @@ Reella tal (
 \family typewriter
 real
 \family default
-, 
+,
+ 
 \family typewriter
 double
 \family default
-, 
+,
+ 
 \family typewriter
 float
 \family default
-, 
+,
+ 
 \family typewriter
 numeric
 \end_layout
@@ -1769,7 +1806,8 @@ double
 \begin_layout Plain Layout
 
 \family typewriter
-1.03, -0.22
+1.03,
+ -0.22
 \end_layout
 
 \end_inset
@@ -1841,11 +1879,13 @@ Logiska värden
 \family typewriter
 boolean
 \family default
-, 
+,
+ 
 \family typewriter
 bool
 \family default
-, 
+,
+ 
 \family typewriter
 logi
 \end_layout
@@ -1869,7 +1909,8 @@ logical
 \begin_layout Plain Layout
 
 \family typewriter
-TRUE, FALSE
+TRUE,
+ FALSE
 \end_layout
 
 \end_inset
@@ -1893,7 +1934,8 @@ Text
 \family typewriter
 string
 \family default
-, 
+,
+ 
 \family typewriter
 char
 \end_layout
@@ -1942,8 +1984,7 @@ Go R!
 \end_layout
 
 \begin_layout Enumerate
-För att undersöka vilken variabeltyp en given variabel har används funktionen
- 
+För att undersöka vilken variabeltyp en given variabel har används funktionen 
 \family typewriter
 typeof()
 \family default
@@ -2042,15 +2083,18 @@ Nedan används
 \family typewriter
 as.integer()
 \family default
-, 
+,
+ 
 \family typewriter
 as.numeric()
 \family default
-, 
+,
+ 
 \family typewriter
 as.character()
 \family default
-, 
+,
+ 
 \family typewriter
 as.logical()
 \family default
@@ -2252,25 +2296,24 @@ literal "false"
 
 \series default
 \color inherit
-) vilket innebär att om vi stänger av R/RStudio försvinner allt arbete vi
- gjort om vi inte sparat det.
+) vilket innebär att om vi stänger av R/RStudio försvinner allt arbete vi gjort om vi inte sparat det.
 \end_layout
 
 \begin_layout Standard
 Att R arbetar helt i arbetsminne innebär att beräkningar sker snabbare,
- men det innebär också att den data vi kan arbeta med i R inte kan vara
- större än arbetsminnet.
+ men det innebär också att den data vi kan arbeta med i R inte kan vara större än arbetsminnet.
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Detta var tidigare ett problem, men idag finns lösningar för stora data
- i R.
+Detta var tidigare ett problem,
+ men idag finns lösningar för stora data i R.
  Exempel på paket för att hantera stora data är 
 \family typewriter
 ff
 \family default
-, 
+,
+ 
 \family typewriter
 ffbase
 \family default
@@ -2312,8 +2355,7 @@ Pröva att klicka på dessa variabler.
 \end_layout
 
 \begin_layout Enumerate
-För att undersöka vilka variabler du har i Global enviroment går det också
- att använda funktionen 
+För att undersöka vilka variabler du har i Global enviroment går det också att använda funktionen 
 \family typewriter
 ls()
 \family default
@@ -2342,7 +2384,9 @@ status open
 
 \begin_layout Plain Layout
 
-a <- c(1, 5, 2)
+a <- c(1,
+ 5,
+ 2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2445,6 +2489,7 @@ a
 [
 \series bold
 Obs!
+
 \series default
  RStudio kan fråga om du vill spara variablerna i ditt workspace.
  Svara 
@@ -2463,8 +2508,7 @@ Hjälp och dokumentation
 \end_layout
 
 \begin_layout Standard
-Precis som R:s enviroment kan hjälpen både användas från RStudio eller genom
- att köra kod i 
+Precis som R:s enviroment kan hjälpen både användas från RStudio eller genom att köra kod i 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2473,8 +2517,7 @@ Console
 \end_inset
 
 .
- R:s hjälp handlar framförallt om att komma åt den dokumentation som finns
- för (nästan alla) funktioner.
+ R:s hjälp handlar framförallt om att komma åt den dokumentation som finns för (nästan alla) funktioner.
 \end_layout
 
 \begin_layout Standard
@@ -2487,7 +2530,8 @@ Description
 \begin_inset Quotes erd
 \end_inset
 
- (kort beskrivning av funktionen), 
+ (kort beskrivning av funktionen),
+ 
 \begin_inset Quotes eld
 \end_inset
 
@@ -2507,8 +2551,7 @@ Examples
 \end_layout
 
 \begin_layout Enumerate
-För att genom programkod komma åt hjälpen för en viss funktion använder
- vi 
+För att genom programkod komma åt hjälpen för en viss funktion använder vi 
 \family typewriter
 ?
 \family default
@@ -2520,8 +2563,8 @@ För att genom programkod komma åt hjälpen för en viss funktion använder
 
 \begin_deeper
 \begin_layout Itemize
-För att få fram hjälp på vissa specialla funktioner (operatorer) så krävs
- det att ni skriver på formen: 
+För att få fram hjälp på vissa specialla funktioner (operatorer) så krävs det att ni skriver på formen:
+ 
 \family typewriter
 ?
 \begin_inset Quotes sld
@@ -2533,7 +2576,8 @@ För att få fram hjälp på vissa specialla funktioner (operatorer) så krävs
 
 
 \family default
-, 
+,
+ 
 \family typewriter
 ?
 \begin_inset Quotes sld
@@ -2560,13 +2604,13 @@ Help
 \end_layout
 
 \begin_layout Enumerate
-Är vi osäkra på vad vi letar efter kan vi söka mer generellt efter hjälp
- med 
+Är vi osäkra på vad vi letar efter kan vi söka mer generellt efter hjälp med 
 \family typewriter
 ??
 \family default
 .
- Pröva: 
+ Pröva:
+ 
 \family typewriter
 ??logarithm
 \family default
@@ -2577,6 +2621,7 @@ Help
 [
 \series bold
 Obs:
+
 \series default
  Arbetsspråket i R är alltid engelska.]
 \end_layout
@@ -2599,6 +2644,7 @@ Ofta är det bra att söka efter hjälp via Google och Stack overflow.
  
 \series bold
 Obs!
+
 \series default
  Sök alltid på engelska.
  
@@ -2607,7 +2653,8 @@ Obs!
 \begin_layout Section
 
 \color black
-Textvariabler, 
+Textvariabler,
+ 
 \family typewriter
 print()
 \family default
@@ -2620,9 +2667,9 @@ cat()
 
 \begin_layout Standard
 Utöver numeriska variabler är textvariabler ofta av intresse.
- Särskilt vid mer komplicerade program eller för att identifiera felaktigheter
- i kod.
- Det finns framförallt två sätt att skriva ut textvärden, 
+ Särskilt vid mer komplicerade program eller för att identifiera felaktigheter i kod.
+ Det finns framförallt två sätt att skriva ut textvärden,
+ 
 \family typewriter
 print()
 \family default
@@ -2640,8 +2687,7 @@ cat()
 print()
 \family default
  används framförallt för att visa enskilda variabler.
- Det är den funktionen som används (internt) av R när vi bara skriver ett
- variabelnamn direkt i konsolen.
+ Det är den funktionen som används (internt) av R när vi bara skriver ett variabelnamn direkt i konsolen.
 \end_layout
 
 \begin_layout Standard
@@ -2706,7 +2752,8 @@ pi
 \end_layout
 
 \begin_layout Enumerate
-Upprepa koden ovan, men byt ut 
+Upprepa koden ovan,
+ men byt ut 
 \family typewriter
 print()
 \family default
@@ -2723,7 +2770,8 @@ Med hjälp av
 \family typewriter
 cat()
 \family default
-, skriv ut följande text på skärmen:
+,
+ skriv ut följande text på skärmen:
 \begin_inset Newline newline
 \end_inset
 
@@ -2743,7 +2791,8 @@ x <- "The value of pi is:"
 
 \begin_layout Plain Layout
 
-cat(x, pi) 
+cat(x,
+ pi) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2826,8 +2875,7 @@ slår ihop
 \end_inset
 
  värden och lägger då till ett mellanslag.
- För att bestämma vilket/vilka tecken som ska användas finns argumentet
- 
+ För att bestämma vilket/vilka tecken som ska användas finns argumentet 
 \family typewriter
 sep
 \family default
@@ -2867,12 +2915,14 @@ cat(x,y,z)
 
 \begin_layout Plain Layout
 
-cat(x,y,z, sep="")
+cat(x,y,z,
+ sep="")
 \end_layout
 
 \begin_layout Plain Layout
 
-cat(x,y,z, sep=" - ")
+cat(x,y,z,
+ sep=" - ")
 \end_layout
 
 \begin_layout Plain Layout
@@ -2946,14 +2996,14 @@ Gör följande beräkningar
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $5^{3}\mod5$
+\begin_inset Formula $5^{3}\mod 5$
 \end_inset
 
 
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $5^{\pi}\mod5$
+\begin_inset Formula $5^{\pi}\mod 5$
 \end_inset
 
  
@@ -2969,6 +3019,7 @@ cat()
  
 \series bold
 Obs!
+
 \series default
  ange siffror som numeriska variabler.
 \begin_inset Newline newline
@@ -2990,9 +3041,13 @@ cat("sin(0) is",sin(0))
 
 \begin_layout Plain Layout
 
-cat("The difference between pi(",pi,") and e (", exp(1), ") is:
+cat("The difference between pi(",pi,") and e (",
+ exp(1),
+ ") is:
 \backslash
-n", pi - exp(1), sep="")
+n",
+ pi - exp(1),
+ sep="")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3006,8 +3061,7 @@ n", pi - exp(1), sep="")
 \end_layout
 
 \begin_layout Enumerate
-Skriv ut följande texter till konsolen som skriver ut olika saker beroende
- på vilken variabeltyp 
+Skriv ut följande texter till konsolen som skriver ut olika saker beroende på vilken variabeltyp 
 \family typewriter
 x
 \family default
@@ -3032,7 +3086,9 @@ x <- 5
 
 \begin_layout Plain Layout
 
-cat("x is an element of type", typeof(x),"with value", x)
+cat("x is an element of type",
+ typeof(x),"with value",
+ x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3063,10 +3119,8 @@ Vektorer
 
 \begin_layout Standard
 Vektorer är grunden för analyser i R.
- Vektorer påminner om vektorer inom matematiken (linjär algebra) men med
- vissa mindre skillnader.
- Kortfattat kan en vektor beskrivas som en lista med ett antal element med
- olika värden.
+ Vektorer påminner om vektorer inom matematiken (linjär algebra) men med vissa mindre skillnader.
+ Kortfattat kan en vektor beskrivas som en lista med ett antal element med olika värden.
  Ett exempel på vektor är 
 \begin_inset Formula $v=(1,4,2,1)$
 \end_inset
@@ -3085,7 +3139,10 @@ status open
 
 \begin_layout Plain Layout
 
-v <- c(1, 4, 2, 1)
+v <- c(1,
+ 4,
+ 2,
+ 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3104,10 +3161,8 @@ v
 \end_layout
 
 \begin_layout Standard
-Anledningen till att vektorer är så viktigt i R beror på att dataset i R
- består av en samling (ordnade) vektorer.
- Således är hur vi arbetar med vektorer centralt för hur vi sedan arbetar
- med de flesta andra datastrukturer.
+Anledningen till att vektorer är så viktigt i R beror på att dataset i R består av en samling (ordnade) vektorer.
+ Således är hur vi arbetar med vektorer centralt för hur vi sedan arbetar med de flesta andra datastrukturer.
 \end_layout
 
 \begin_layout Subsection
@@ -3120,17 +3175,19 @@ Det finns flera sätt att skapa nya vektorer.
 \family typewriter
 c()
 \family default
-, 
+,
+ 
 \family typewriter
 rep()
 \family default
-, 
+,
+ 
 \family typewriter
 seq()
 \family default
  eller en kombination av dessa tre funktioner.
- Samtliga dessa funktioner fungerar för de vanligaste variabeltyperna som
- textvektorer, logiska vektorer och numeriska vektorer.
+ Samtliga dessa funktioner fungerar för de vanligaste variabeltyperna som textvektorer,
+ logiska vektorer och numeriska vektorer.
  I tabellen nedan framgår deras funktion.
 \begin_inset Separator latexpar
 \end_inset
@@ -3208,7 +3265,9 @@ Kombinera värden/vektorer till en ny vektor
 \begin_layout Plain Layout
 
 \family typewriter
-c(1, 3, 4)
+c(1,
+ 3,
+ 4)
 \end_layout
 
 \end_inset
@@ -3264,7 +3323,8 @@ R
 \family typewriter
 seq()
 \family default
-, 
+,
+ 
 \family typewriter
 :
 \end_layout
@@ -3288,7 +3348,8 @@ Skapa en sekvens av värden
 \family typewriter
 1:10
 \family default
-, 
+,
+ 
 \family typewriter
 seq(from=-2,to=10,by=0.5)
 \end_layout
@@ -3327,7 +3388,11 @@ status open
 
 \begin_layout Plain Layout
 
-a_vec <- c(-3, 4, 1, 1, 2)
+a_vec <- c(-3,
+ 4,
+ 1,
+ 1,
+ 2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3337,7 +3402,10 @@ a_vec
 
 \begin_layout Plain Layout
 
-b_vec <- c(2, 4, 4, 1)
+b_vec <- c(2,
+ 4,
+ 4,
+ 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3370,7 +3438,12 @@ status open
 
 \begin_layout Plain Layout
 
-ny <- c(a_vec, NA, b_vec, c(1, 2, 3))
+ny <- c(a_vec,
+ NA,
+ b_vec,
+ c(1,
+ 2,
+ 3))
 \end_layout
 
 \begin_layout Plain Layout
@@ -3388,7 +3461,8 @@ Andra vanliga sätt att skapa vektorer är
 \family typewriter
 seq()
 \family default
-, 
+,
+ 
 \family typewriter
 rep()
 \family default
@@ -3412,12 +3486,15 @@ status open
 
 \begin_layout Plain Layout
 
-a <- seq(from=1, to=7, by=2)
+a <- seq(from=1,
+ to=7,
+ by=2)
 \end_layout
 
 \begin_layout Plain Layout
 
-b <- rep(x="foo bar", times=5)
+b <- rep(x="foo bar",
+ times=5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3450,9 +3527,13 @@ Funktionen
 \family typewriter
 seq()
 \family default
- har fyra argument, där vi bestämmer tre av dem: 
+ har fyra argument,
+ där vi bestämmer tre av dem:
+ 
 \family typewriter
-seq(from=, to=, by= length=)
+seq(from=,
+ to=,
+ by= length=)
 \family default
 
 \begin_inset Newline newline
@@ -3479,12 +3560,14 @@ seq(from=1,to=10,length=4)
 
 \begin_layout Plain Layout
 
-seq(to=10,by=2, length=5) 
+seq(to=10,by=2,
+ length=5) 
 \end_layout
 
 \begin_layout Plain Layout
 
-seq(from=100,by=50, length=5) 
+seq(from=100,by=50,
+ length=5) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3523,12 +3606,18 @@ a <- 3:1
 
 \begin_layout Plain Layout
 
-b <- c(5, rep(x=a, times=5), 12)
+b <- c(5,
+ rep(x=a,
+ times=5),
+ 12)
 \end_layout
 
 \begin_layout Plain Layout
 
-c <- rep(c(TRUE, TRUE, FALSE), times = 10)
+c <- rep(c(TRUE,
+ TRUE,
+ FALSE),
+ times = 10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3574,8 +3663,7 @@ räkna
 
 \begin_layout Standard
 Vektorberäkningar sker elementvis.
- Är det så att vektorerna är olika långa så kopieras den kortare vektorn
- för att 
+ Är det så att vektorerna är olika långa så kopieras den kortare vektorn för att 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3583,9 +3671,9 @@ täcka
 \begin_inset Quotes erd
 \end_inset
 
- den längre vektorn, detta kallas i R för recycling.
- Är den långa vektorn inte en jämn multipel av den kortare vektorn får vi
- en varning.
+ den längre vektorn,
+ detta kallas i R för recycling.
+ Är den långa vektorn inte en jämn multipel av den kortare vektorn får vi en varning.
 \end_layout
 
 \begin_layout Enumerate
@@ -3609,17 +3697,24 @@ my_vec1 <- 1:5
 
 \begin_layout Plain Layout
 
-my_vec2 <- rep(x=10, times=9)
+my_vec2 <- rep(x=10,
+ times=9)
 \end_layout
 
 \begin_layout Plain Layout
 
-my_vec3 <- seq(from=0, to=1, by=1/8)
+my_vec3 <- seq(from=0,
+ to=1,
+ by=1/8)
 \end_layout
 
 \begin_layout Plain Layout
 
-my_vec4 <- c(-2, 1, 22, 0, 1)
+my_vec4 <- c(-2,
+ 1,
+ 22,
+ 0,
+ 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3644,8 +3739,7 @@ my_vec6 <- rep(10,5)
 
 \begin_layout Enumerate
 Gör följande beräkningar där vektorerna är lika långa.
- Titta på vektorerna och fundera på vad resultatet borde bli innan du gör
- beräkningarna.
+ Titta på vektorerna och fundera på vad resultatet borde bli innan du gör beräkningarna.
 \begin_inset Newline newline
 \end_inset
 
@@ -3725,7 +3819,8 @@ abs(my_vec1)
 
 \begin_layout Plain Layout
 
-log(my_vec2, base=10)
+log(my_vec2,
+ base=10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3744,12 +3839,10 @@ sin(my_vec3)
 \end_layout
 
 \begin_layout Enumerate
-För situationen då vi har olika vektorer upprepas den kortare vektorn för
- att täcka den längre vektorn.
+För situationen då vi har olika vektorer upprepas den kortare vektorn för att täcka den längre vektorn.
  Detta kallas recycling i R.
- i Många situationer vill vi inte använda recycling, så då är det viktigt
- att ha koll så att alla vektorer som är med i beräkningen har en lämpligt
- antal element.
+ i Många situationer vill vi inte använda recycling,
+ så då är det viktigt att ha koll så att alla vektorer som är med i beräkningen har en lämpligt antal element.
 \begin_inset Newline newline
 \end_inset
 
@@ -3814,8 +3907,7 @@ Enkla operatorer för textvektorer
 
 \begin_layout Standard
 Textvektorer har också en del enklare funktioner.
- För mer avancerad hantering av textvektorer (och bättre namngivna funktioner)
- använder vi dock paketet 
+ För mer avancerad hantering av textvektorer (och bättre namngivna funktioner) använder vi dock paketet 
 \family typewriter
 stringr
 \family default
@@ -3842,8 +3934,7 @@ paste()
 \family typewriter
 cat()
 \family default
- kan vi bestämma hur vi ska slå ihop textvektorernas element med argumentet
- 
+ kan vi bestämma hur vi ska slå ihop textvektorernas element med argumentet 
 \family typewriter
 sep
 \family default
@@ -3862,12 +3953,15 @@ status open
 
 \begin_layout Plain Layout
 
-my_text1 <- c("foo", "bar")
+my_text1 <- c("foo",
+ "bar")
 \end_layout
 
 \begin_layout Plain Layout
 
-my_text2 <- c("use", "R", "FTW")
+my_text2 <- c("use",
+ "R",
+ "FTW")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3877,12 +3971,15 @@ my_text3 <- "Hello World!"
 
 \begin_layout Plain Layout
 
-paste(my_text1, my_text2)
+paste(my_text1,
+ my_text2)
 \end_layout
 
 \begin_layout Plain Layout
 
-paste(my_text1, my_text2, sep=" - ")
+paste(my_text1,
+ my_text2,
+ sep=" - ")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3896,8 +3993,7 @@ paste(my_text1, my_text2, sep=" - ")
 \end_layout
 
 \begin_layout Enumerate
-Vi kan också slå ihop flera textelement till ett enda värde med argumentet
- 
+Vi kan också slå ihop flera textelement till ett enda värde med argumentet 
 \family typewriter
 collapse
 \family default
@@ -3916,7 +4012,8 @@ status open
 
 \begin_layout Plain Layout
 
-paste(my_text2, collapse=".")
+paste(my_text2,
+ collapse=".")
 \end_layout
 
 \begin_layout Plain Layout
@@ -3930,8 +4027,7 @@ paste(my_text2, collapse=".")
 \end_layout
 
 \begin_layout Enumerate
-Vill vi plocka ut ett antal tecken (från tecken till tecken) använder vi
- funktionen 
+Vill vi plocka ut ett antal tecken (från tecken till tecken) använder vi funktionen 
 \family typewriter
 substr()
 \family default
@@ -3950,7 +4046,9 @@ status open
 
 \begin_layout Plain Layout
 
-substr(x=my_text3, start=1, stop=5)
+substr(x=my_text3,
+ start=1,
+ stop=5)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3969,9 +4067,9 @@ Olika variabeltyper i vektorer
 
 \begin_layout Standard
 En vektor kan bara ha en variabeltyp.
- Om vi skapar en vektor genom att kombinera flera olika variabeltyper så
- konverteras variabeltypen till den mest komplicerade variabeltypen.
- Variabeltypernas komplexitetsnivå är: 
+ Om vi skapar en vektor genom att kombinera flera olika variabeltyper så konverteras variabeltypen till den mest komplicerade variabeltypen.
+ Variabeltypernas komplexitetsnivå är:
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3986,8 +4084,7 @@ En vektor kan bara ha en variabeltyp.
 \end_layout
 
 \begin_layout Standard
-Så om vi skapar en vektor med både heltal och logiska element blir vektorn
- en heltalsvektor och de logiska värdena konverteras till heltal.
+Så om vi skapar en vektor med både heltal och logiska element blir vektorn en heltalsvektor och de logiska värdena konverteras till heltal.
 \end_layout
 
 \begin_layout Enumerate
@@ -4007,12 +4104,15 @@ status open
 
 \begin_layout Plain Layout
 
-c(TRUE, 12)
+c(TRUE,
+ 12)
 \end_layout
 
 \begin_layout Plain Layout
 
-c(TRUE, 12, "Hello World!")
+c(TRUE,
+ 12,
+ "Hello World!")
 \end_layout
 
 \begin_layout Plain Layout
@@ -4029,6 +4129,7 @@ c(TRUE, 12, "Hello World!")
 Undersök variabeltypen för de två vektorerna ovan [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -4042,8 +4143,7 @@ Statistiska funktioner och funktioner för vektorer
 \end_layout
 
 \begin_layout Standard
-Vi har tidigare arbetat med matematiska funktioner för enstaka värden (eller
- element för element).
+Vi har tidigare arbetat med matematiska funktioner för enstaka värden (eller element för element).
  Nu ska vi arbeta med statistiska funktioner eller funktioner för vektorer.
 \end_layout
 
@@ -4064,22 +4164,29 @@ status open
 
 \begin_layout Plain Layout
 
-myx <- rep(x = 7:12, times = 10)
+myx <- rep(x = 7:12,
+ times = 10)
 \end_layout
 
 \begin_layout Plain Layout
 
-myy <- c(rep(x=2,times=3), rep(x=5,times=3))
+myy <- c(rep(x=2,times=3),
+ rep(x=5,times=3))
 \end_layout
 
 \begin_layout Plain Layout
 
-myz <- c(5, -1, 2, 10, 0)
+myz <- c(5,
+ -1,
+ 2,
+ 10,
+ 0)
 \end_layout
 
 \begin_layout Plain Layout
 
-myw <- rep(x=1/6, times=6)
+myw <- rep(x=1/6,
+ times=6)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4121,8 +4228,7 @@ sort()
 \family typewriter
 order()
 \family default
- däremot returnerar en vektor med den ordning som elementen kommer i - om
- de skulle sorteras.
+ däremot returnerar en vektor med den ordning som elementen kommer i - om de skulle sorteras.
  Detta är exempel på en indexvektor.
  Funktionen 
 \family typewriter
@@ -4137,8 +4243,9 @@ order()
 \family typewriter
 sort()
 \family default
-: sorterar värdena i vektor, vi kan välja om vi vill ha stora eller små
- värden först.
+:
+ sorterar värdena i vektor,
+ vi kan välja om vi vill ha stora eller små värden först.
 \end_layout
 
 \begin_layout Itemize
@@ -4146,7 +4253,8 @@ sort()
 \family typewriter
 order()
 \family default
-: generar 
+:
+ generar 
 \shape italic
 indexvektorn
 \shape default
@@ -4175,17 +4283,20 @@ order(myz)
 
 \begin_layout Plain Layout
 
-sort(myz, decreasing=TRUE)
+sort(myz,
+ decreasing=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
 
-sort(myz, decreasing=FALSE)
+sort(myz,
+ decreasing=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-order(myz, decreasing=TRUE)
+order(myz,
+ decreasing=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4201,8 +4312,8 @@ order(myz, decreasing=TRUE)
 \end_deeper
 \begin_layout Enumerate
 Det finns finns ett stort antal statistiska funktioner för vektorer.
- Tips: kolla i dokumentationen om ni är osäkra på vad funktionerna nedan
- gör!
+ Tips:
+ kolla i dokumentationen om ni är osäkra på vad funktionerna nedan gör!
 \begin_inset Newline newline
 \end_inset
 
@@ -4286,8 +4397,7 @@ summary(myx)
 \end_layout
 
 \begin_layout Enumerate
-Dessa funktioner tillsammans kan användas för att beräkna mer komplicerade
- summor.
+Dessa funktioner tillsammans kan användas för att beräkna mer komplicerade summor.
  Exempelvis kan 
 \begin_inset Formula 
 \[
@@ -4403,12 +4513,14 @@ quantile(myz)
 
 \begin_layout Plain Layout
 
-quantile(myz, probs=c(0.5)) # samma som median(myz)
+quantile(myz,
+ probs=c(0.5)) # samma som median(myz)
 \end_layout
 
 \begin_layout Plain Layout
 
-quantile(myz, probs=c(0.25,0.5,0.75)) # kvartiler
+quantile(myz,
+ probs=c(0.25,0.5,0.75)) # kvartiler
 \end_layout
 
 \begin_layout Plain Layout
@@ -4423,8 +4535,7 @@ quantile(myz, probs=c(0.25,0.5,0.75)) # kvartiler
 
 \begin_layout Enumerate
 För textvektorer kan många funktionerna ovan inte användas.
- Vill vi då ha frekvenser för de olika värden som finns i textvektorn använder
- vi funktionen 
+ Vill vi då ha frekvenser för de olika värden som finns i textvektorn använder vi funktionen 
 \family typewriter
 table()
 \family default
@@ -4443,7 +4554,9 @@ status open
 
 \begin_layout Plain Layout
 
-my_text <- c(rep("Gris", times=10) ,rep("Lamm", times=3))
+my_text <- c(rep("Gris",
+ times=10) ,rep("Lamm",
+ times=3))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4497,7 +4610,8 @@ status open
 
 \begin_layout Plain Layout
 
-myx <- c(NA, myx)
+myx <- c(NA,
+ myx)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4507,7 +4621,8 @@ mean(myx)
 
 \begin_layout Plain Layout
 
-mean(myx, na.rm=TRUE)
+mean(myx,
+ na.rm=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4522,8 +4637,7 @@ mean(myx, na.rm=TRUE)
 
 \begin_layout Enumerate
 Självklart går det också att kombinera resultaten från en statistisk funktion.
- Det som returneras är numeriska värden så dessa kan användas som ett numeriskt
- värde i senare beräkningar.
+ Det som returneras är numeriska värden så dessa kan användas som ett numeriskt värde i senare beräkningar.
  Pröva koden nedan.
 \begin_inset Newline newline
 \end_inset
@@ -4539,7 +4653,9 @@ status open
 
 \begin_layout Plain Layout
 
-max(c(mean(myx), median(myx), range(myz)))
+max(c(mean(myx),
+ median(myx),
+ range(myz)))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4592,7 +4708,9 @@ status open
 
 \begin_layout Plain Layout
 
-new_vec <-c(myx + myw, myz, myy)
+new_vec <-c(myx + myw,
+ myz,
+ myy)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4653,11 +4771,13 @@ Hur många unika värden har
 \family typewriter
 new_vec
 \family default
-? 
+?
+ 
 \family typewriter
 unique()
 \family default
-, 
+,
+ 
 \family typewriter
 length()
 \end_layout
@@ -4668,8 +4788,7 @@ Indexering och ändring av enskilda element i en vektor
 \end_layout
 
 \begin_layout Standard
-Den sista centrala delen för att arbeta med vektorer är indexering eller
- 
+Den sista centrala delen för att arbeta med vektorer är indexering eller 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4747,7 +4866,8 @@ min_vec
 
 \begin_deeper
 \begin_layout Enumerate
-Det första elementet: 
+Det första elementet:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -4958,7 +5078,8 @@ status open
 
 \begin_layout Plain Layout
 
-min_vec[rep(3, times=3)]
+min_vec[rep(3,
+ times=3)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -4972,16 +5093,13 @@ min_vec[rep(3, times=3)]
 \end_layout
 
 \begin_layout Enumerate
-När vi förstått grunderna i indexering är det lätt att förstå fördelarna
- med funktionen 
+När vi förstått grunderna i indexering är det lätt att förstå fördelarna med funktionen 
 \family typewriter
 order()
 \family default
 .
- Funktionen returnerar en vektor med index i ordningen från det lägsta talet
- till det högsta talet.
- På detta sätt kan vi således också sortera en vektor (och framöver framförallt
- dataset).
+ Funktionen returnerar en vektor med index i ordningen från det lägsta talet till det högsta talet.
+ På detta sätt kan vi således också sortera en vektor (och framöver framförallt dataset).
 \begin_inset Newline newline
 \end_inset
 
@@ -4996,7 +5114,8 @@ status open
 
 \begin_layout Plain Layout
 
-min_vec[order(min_vec, decreasing=TRUE)]
+min_vec[order(min_vec,
+ decreasing=TRUE)]
 \end_layout
 
 \begin_layout Plain Layout
@@ -5010,9 +5129,7 @@ min_vec[order(min_vec, decreasing=TRUE)]
 \end_layout
 
 \begin_layout Enumerate
-Om vi vill ändra ett enskilt element i en vektor använder vi också indexering
- och tillskriver den aktuella positionen (eller positionerna) ett nytt värde
- på följande sätt:
+Om vi vill ändra ett enskilt element i en vektor använder vi också indexering och tillskriver den aktuella positionen (eller positionerna) ett nytt värde på följande sätt:
 \begin_inset Newline newline
 \end_inset
 
@@ -5032,7 +5149,8 @@ min_vec[2] <- 200
 
 \begin_layout Plain Layout
 
-min_vec[4:5] <- c(0, -4)
+min_vec[4:5] <- c(0,
+ -4)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5130,7 +5248,8 @@ Beräkna den euklidiska längden för vektorn
 \begin_inset Formula $q$
 \end_inset
 
-, d.v.s.
+,
+ d.v.s.
 \begin_inset Formula 
 \[
 \sqrt{\sum_{i=1}^{n}q_{i}^{2}}
@@ -5164,16 +5283,14 @@ Logiska vektorer och indexering
 
 \begin_layout Standard
 Logiska vektorer påminner mycket om övriga vektorer.
- Dock finns en skillnad och det är att logiska vektorer kan användas för
- att indexera andra vektorer (och dataset).
+ Dock finns en skillnad och det är att logiska vektorer kan användas för att indexera andra vektorer (och dataset).
  Precis som tidigare använder vi hakparenteser för indexering.
  
 \end_layout
 
 \begin_layout Standard
-Genom att i hakparanterna stoppa in en logisk vektor av samma längd som
- vektorn vi vill indexera, väljer vi ut de värden där den logiska vektorn
- är 
+Genom att i hakparanterna stoppa in en logisk vektor av samma längd som vektorn vi vill indexera,
+ väljer vi ut de värden där den logiska vektorn är 
 \family typewriter
 TRUE
 \family default
@@ -5193,7 +5310,11 @@ status open
 
 \begin_layout Plain Layout
 
-logi <- c(TRUE, FALSE, TRUE, FALSE, FALSE)
+logi <- c(TRUE,
+ FALSE,
+ TRUE,
+ FALSE,
+ FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5221,7 +5342,8 @@ Använd funktionen
 \family typewriter
 seq()
 \family default
- för att skapa följande sekvenser: 
+ för att skapa följande sekvenser:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -5247,7 +5369,8 @@ c()
 \family typewriter
 rep()
 \family default
- för att skapa följande logiska vektorer: 
+ för att skapa följande logiska vektorer:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -5271,8 +5394,7 @@ TRUE FALSE TRUE FALSE TRUE FALSE TRUE FALSE
 
 \end_deeper
 \begin_layout Enumerate
-Använd nu de logiska vektorerna du skapade i 2(a) och 2(b) för att indexera
- vektorerna i 1(a) och 1(b).
+Använd nu de logiska vektorerna du skapade i 2(a) och 2(b) för att indexera vektorerna i 1(a) och 1(b).
 \end_layout
 
 \begin_layout Enumerate
@@ -5297,7 +5419,9 @@ status open
 
 \begin_layout Plain Layout
 
-uppg2a <- c(rep(TRUE,4), rep(FALSE, 4))
+uppg2a <- c(rep(TRUE,4),
+ rep(FALSE,
+ 4))
 \end_layout
 
 \begin_layout Plain Layout
@@ -5334,13 +5458,13 @@ Konvertera till och från logiska vektorer
 \end_layout
 
 \begin_layout Enumerate
-När det gäller att konvertera till och från logiska variabler finns särskilda
- regler i R.
+När det gäller att konvertera till och från logiska variabler finns särskilda regler i R.
  Numeriska värden konverteras till 
 \family typewriter
 TRUE
 \family default
- för alla tal utom 0, som konverteras till 
+ för alla tal utom 0,
+ som konverteras till 
 \family typewriter
 FALSE
 \family default
@@ -5372,12 +5496,16 @@ status open
 
 \begin_layout Plain Layout
 
-a <- -2 : 2
+a <- -2 :
+ 2
 \end_layout
 
 \begin_layout Plain Layout
 
-b <- c("Text1", "Text2", "TRUE", "FALSE")
+b <- c("Text1",
+ "Text2",
+ "TRUE",
+ "FALSE")
 \end_layout
 
 \begin_layout Plain Layout
@@ -5401,8 +5529,7 @@ as.logical(b)
 \end_layout
 
 \begin_layout Enumerate
-Att konvertera från logiska vektorer till text- och numeriska vektorer följer
- också tydliga regler där 
+Att konvertera från logiska vektorer till text- och numeriska vektorer följer också tydliga regler där 
 \family typewriter
 TRUE
 \family default
@@ -5425,7 +5552,9 @@ status open
 
 \begin_layout Plain Layout
 
-d <- c(TRUE, FALSE, NA)
+d <- c(TRUE,
+ FALSE,
+ NA)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5463,8 +5592,7 @@ räkna
 \end_inset
 
  med logiska värden.
- Precis som i vanlig matematik kan vi också använda parenteser och som för
- andra vektorer sker operatorerna elementvis.
+ Precis som i vanlig matematik kan vi också använda parenteser och som för andra vektorer sker operatorerna elementvis.
  De viktigaste operatorerna är:
 \begin_inset Separator latexpar
 \end_inset
@@ -5691,12 +5819,18 @@ status open
 
 \begin_layout Plain Layout
 
-a <- c(TRUE, TRUE, FALSE, FALSE)
+a <- c(TRUE,
+ TRUE,
+ FALSE,
+ FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-b <- c(TRUE, FALSE, TRUE, FALSE)
+b <- c(TRUE,
+ FALSE,
+ TRUE,
+ FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5710,8 +5844,7 @@ b <- c(TRUE, FALSE, TRUE, FALSE)
 \end_layout
 
 \begin_layout Enumerate
-Utryck följande satser med logiska operatorer och undersök om de är sanna
- eller falska:
+Utryck följande satser med logiska operatorer och undersök om de är sanna eller falska:
 \begin_inset Separator latexpar
 \end_inset
 
@@ -5761,10 +5894,8 @@ Relationsoperatorer
 \end_layout
 
 \begin_layout Standard
-Relationsoperatorer är det sätt vi kan jämföra olika numeriska vektorer
- (och i vissa fall även textvektorer).
- Relationsoperatorerna returnerar alltid en logisk vektor vilket gör dem
- mycket lämpliga för att plocka ut delar ur vektorer och dataset.
+Relationsoperatorer är det sätt vi kan jämföra olika numeriska vektorer (och i vissa fall även textvektorer).
+ Relationsoperatorerna returnerar alltid en logisk vektor vilket gör dem mycket lämpliga för att plocka ut delar ur vektorer och dataset.
  
 \end_layout
 
@@ -5774,8 +5905,7 @@ Ofta vill vi jämföra olika vektorer och baserat på detta indexera ett dataset
 \end_layout
 
 \begin_layout Enumerate
-Använd relationsoperatorer för att göra en jämförelse (exempelvis variabeln
- ålder är större än 18)
+Använd relationsoperatorer för att göra en jämförelse (exempelvis variabeln ålder är större än 18)
 \end_layout
 
 \begin_layout Enumerate
@@ -5998,7 +6128,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<prompt=TRUE, eval=TRUE>>=
+<<prompt=TRUE,
+ eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -6041,7 +6172,8 @@ Skapa vektorerna
 \family typewriter
 min_text
 \family default
-, 
+,
+ 
 \family typewriter
 mina_nummer
 \family default
@@ -6060,7 +6192,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<prompt=TRUE, eval=TRUE>>=
+<<prompt=TRUE,
+ eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -6069,12 +6202,18 @@ status open
 
 \begin_layout Plain Layout
 
-a <- c(TRUE, TRUE, FALSE, FALSE)
+a <- c(TRUE,
+ TRUE,
+ FALSE,
+ FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-b <- c(TRUE, FALSE, TRUE, FALSE)
+b <- c(TRUE,
+ FALSE,
+ TRUE,
+ FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -6088,7 +6227,9 @@ min_text <- c(rep("John",5),rep("Frida",5),rep("Lo",5))
 
 \begin_layout Plain Layout
 
-mina_nummer <- seq(from=1, to=11, length=15)
+mina_nummer <- seq(from=1,
+ to=11,
+ length=15)
 \end_layout
 
 \begin_layout Plain Layout
@@ -6259,8 +6400,7 @@ minaText
 
 \end_deeper
 \begin_layout Enumerate
-Är det så att vi ska göra mer komplicerade logiska vektorer kan det vara
- bra att dela upp dem i flera mindre logiska vektorer som vi sedan jämför:
+Är det så att vi ska göra mer komplicerade logiska vektorer kan det vara bra att dela upp dem i flera mindre logiska vektorer som vi sedan jämför:
 \begin_inset Newline newline
 \end_inset
 
@@ -6270,7 +6410,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<prompt=TRUE, eval=TRUE>>=
+<<prompt=TRUE,
+ eval=TRUE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -6310,8 +6451,7 @@ num[logi]
 
 \begin_layout Enumerate
 Pröva att skapa en vektor med heltal mellan 10 och 20.
- Välj ut de heltal som är mindre än 12 eller större än 18 i flera steg som
- i uppgiften ovan.
+ Välj ut de heltal som är mindre än 12 eller större än 18 i flera steg som i uppgiften ovan.
 \end_layout
 
 \begin_layout Section
@@ -6319,8 +6459,7 @@ Logiska funktioner
 \end_layout
 
 \begin_layout Standard
-Sist men inte minst finns det två funktioner i R som är av intresse när
- vi arbetar med logiska vektorer.
+Sist men inte minst finns det två funktioner i R som är av intresse när vi arbetar med logiska vektorer.
  Funktionen 
 \family typewriter
 any()
@@ -6374,7 +6513,10 @@ status open
 
 \begin_layout Plain Layout
 
-x <- c(TRUE, FALSE, TRUE, TRUE)
+x <- c(TRUE,
+ FALSE,
+ TRUE,
+ TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -6490,7 +6632,8 @@ Uppgifterna nedan löses enklast genom att dela upp problemen i mindre delar.
 \end_layout
 
 \begin_layout Enumerate
-Skapa nu en logisk vektor på följande vis: Vektorn ska vara 
+Skapa nu en logisk vektor på följande vis:
+ Vektorn ska vara 
 \family typewriter
 TRUE
 \family default
@@ -6545,7 +6688,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval = TRUE, echo = FALSE>>=
+<<eval = TRUE,
+ echo = FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -6569,6 +6713,7 @@ Skapa en vektor som går mellan 300 och 600.
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -6578,11 +6723,11 @@ Tips!
 \end_layout
 
 \begin_layout Enumerate
-Räkna hur många element som är delbara med 7 mellan talen 1 och 10000 med
- hjälp av logiska vektorer.
+Räkna hur många element som är delbara med 7 mellan talen 1 och 10000 med hjälp av logiska vektorer.
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -6618,8 +6763,7 @@ Introduktion till funktioner
 
 \begin_layout Standard
 Funktioner är centralt i R.
- I princip all kod vi vill använda upprepade gånger bör implementeras som
- funktioner.
+ I princip all kod vi vill använda upprepade gånger bör implementeras som funktioner.
  Paket i R är i princip bara en samling funktioner.
 \end_layout
 
@@ -6658,7 +6802,8 @@ Noll eller flera argument (ex.
 \family typewriter
 x
 \family default
-, 
+,
+ 
 \family typewriter
 y)
 \end_layout
@@ -6865,7 +7010,9 @@ return(z)
 \end_layout
 
 \begin_layout Itemize
-Ta bort argumenten från den globala miljön (i detta fall x, y, z).
+Ta bort argumenten från den globala miljön (i detta fall x,
+ y,
+ z).
  Anledningen till detta är att annars kan R 
 \begin_inset Quotes eld
 \end_inset
@@ -6874,8 +7021,9 @@ titta ut
 \begin_inset Quotes erd
 \end_inset
 
- i den globala miljön och leta efter x, y, z där när funktionen anropas
- (mer om detta senare).
+ i den globala miljön och leta efter x,
+ y,
+ z där när funktionen anropas (mer om detta senare).
  
 \begin_inset Newline newline
 \end_inset
@@ -6920,12 +7068,14 @@ status open
 
 \begin_layout Plain Layout
 
-min_funktion(x = 3, y = 5)
+min_funktion(x = 3,
+ y = 5)
 \end_layout
 
 \begin_layout Plain Layout
 
-# Yay! Det funkar!
+# Yay!
+ Det funkar!
 \end_layout
 
 \begin_layout Plain Layout
@@ -6984,7 +7134,8 @@ Global enviroment
 \begin_inset Quotes erd
 \end_inset
 
- när du kör funktionen? Varför inte?
+ när du kör funktionen?
+ Varför inte?
 \begin_inset Newline newline
 \end_inset
 
@@ -7034,7 +7185,9 @@ ny_fun <- function(){
 
 \begin_layout Plain Layout
 
-  vec <- c(1, pi, pi^2)
+  vec <- c(1,
+ pi,
+ pi^2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -7169,7 +7322,10 @@ f(0)
 
 \begin_layout Plain Layout
 
-f(c(0.5, 1, 1.5, 2))
+f(c(0.5,
+ 1,
+ 1.5,
+ 2))
 \end_layout
 
 \begin_layout Plain Layout
@@ -7183,8 +7339,7 @@ f(c(0.5, 1, 1.5, 2))
 \end_layout
 
 \begin_layout Enumerate
-Vill vi returnera flera resultat sparar vi resultaten först i en lista och
- returnerar sedan listan (mer om listor kursvecka 2).
+Vill vi returnera flera resultat sparar vi resultaten först i en lista och returnerar sedan listan (mer om listor kursvecka 2).
  Implementera funktionen nedan och pröva med några olika numeriska vektorer.
  Vad gör funktionen?
 \begin_inset Newline newline
@@ -7216,7 +7371,8 @@ median_value <- median(x)
 
 \begin_layout Plain Layout
 
-res <- list(medel = mean_value, median = median_value)
+res <- list(medel = mean_value,
+ median = median_value)
 \end_layout
 
 \begin_layout Plain Layout
@@ -7287,8 +7443,7 @@ source()
 \end_layout
 
 \begin_layout Standard
-När vi har skapat ett antal funktioner vill vi ofta läsa in alla dessa funktione
-r på en gång.
+När vi har skapat ett antal funktioner vill vi ofta läsa in alla dessa funktioner på en gång.
  Om vi vill köra en R-fil använder vi funktionen 
 \family typewriter
 source(
@@ -7317,12 +7472,14 @@ source()
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
 rm(list=ls())
 \family default
-, för att se var R vill läsa filen från använd 
+,
+ för att se var R vill läsa filen från använd 
 \family typewriter
 getwd()
 \family default
@@ -7360,8 +7517,7 @@ source(file="min_R_fil.R",echo=TRUE)
 \end_layout
 
 \begin_layout Enumerate
-Uppe till höger i source-fönstret i RStudio finns finns en knapp där det
- står 
+Uppe till höger i source-fönstret i RStudio finns finns en knapp där det står 
 \begin_inset Quotes eld
 \end_inset
 
@@ -7413,7 +7569,8 @@ Hello World!
  till skärmen.
  [
 \series bold
-Tips! 
+Tips!
+ 
 \series default
 pröva både 
 \family typewriter
