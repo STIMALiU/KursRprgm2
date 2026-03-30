@@ -18,7 +18,8 @@
 # hitta flikarna Environment, History, Files och Help
 
 
-
+x<-1
+?c
 
 
 #-----------------------------------------------------------------------------------------------------------------------
@@ -38,6 +39,7 @@ my_vector
 my_vector[1]
 num_vec <- c(1, 1, 2, 2)
 my_vector[num_vec]
+my_vector[3]
 
 my_vector[c(1,2,1)]
 
@@ -51,20 +53,27 @@ my_vector[2]
 my_vector<-c(2,4,3,25,7,65,3,323,23,21,21,2)
 my_vector[length(my_vector)] # sista elementet
 
+1:5
 -3:4
 10:-2
+
+1:100
+
 
 my_num <- 1:10
 my_num
 print(my_num)
 length(my_num)
 
+no_elem<-length(my_num)
+
+
 ## Variabeltyper
 typeof(my_vector)
 typeof(my_num)
 
 # heltal skapar med ett "L" på slutet
-
+3
 3L
 x<-5L
 y<-5
@@ -95,15 +104,18 @@ x^y
 # Funktioner 
 #-----------------------------------------------------------------------------------------------------------------------
 
+
 area<-function(x){
-  area<-x^2
+  area<- x^2
   return(area)
 }
 
 area(x = 5)
+area(x = 8)
 
 # Funktionens innehåll: 
 # Skriv en funktion, f, som tar ett värde med argumentet z, och kvadrerar det:
+
 
 f <- function(z){
 
@@ -147,7 +159,9 @@ f
 
 
 # rensa
+ls()
 rm(list=ls())
+rm("area")
 
 ls()
 a<-10
@@ -163,13 +177,13 @@ f <- function(x, y){
 
 x <- 5
 y <- 5
-
+ls()
 m<-f(x = 2, y = 2)
 m
 z
 res
 
-
+ls()
 
 #-----------------------------------------------------------------------------------------------------------------------
 # markmyassignment 
@@ -208,14 +222,19 @@ mark_my_assignment("task1")
 ## task2: Create a function that returns the sum of the first and 
 # last element
 x<-c(2,4,1)
+x[1]
+
 length(x)
 x<-1:10
 length(x)
+x[length(x)]
+
 
 task2 <- function(vector){
   z<-vector[2] + vector[length(vector)] # Wrong
   return(z)
 }
+task2(vector = 5:10)
 
 mark_my_assignment("task2")
 
@@ -229,6 +248,8 @@ mark_my_assignment("task2")
 # rätta alla uppgifter samtidigt:
 
 mark_my_assignment()
+
+
 mark_my_file(mark_file = "/home/joswi05/Desktop/test_mark_my_assignment.R")
 
 
@@ -242,23 +263,30 @@ mark_my_file(mark_file = "/home/joswi05/Desktop/test_mark_my_assignment.R")
 
 min_vektor <- c(12, 1, 2, 7)
 min_bool <- c(TRUE, FALSE, FALSE, TRUE)
+
 min_vektor[min_bool]
 
+is.logical(min_bool)
+is.character(min_vektor)
 
 3>4
 4>3
 
 x<-TRUE
 y<-FALSE
+
 !x
+
 !!x
 
 x&y
+
 x|y
 
 
 
 x <- 1:10
+
 y <- x != 5
 z <- x > 2
 
@@ -271,6 +299,7 @@ y & !z
 
 
 x[y & z]
+
 x[y & !z]
 
 
