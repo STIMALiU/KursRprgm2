@@ -31,7 +31,7 @@ knitr
 \end_modules
 \maintain_unincluded_children no
 \language swedish
-\language_package none
+\language_package default
 \inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
@@ -53,6 +53,8 @@ knitr
 \output_sync 0
 \bibtex_command default
 \index_command default
+\float_placement class
+\float_alignment class
 \paperfontsize default
 \spacing single
 \use_hyperref false
@@ -114,7 +116,7 @@ knitr
 \begin_body
 
 \begin_layout Title
-Datorlaboration 4
+Övningsuppgifter 4
 \end_layout
 
 \begin_layout Author
@@ -166,7 +168,7 @@ options(digits = 5)
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "IntroDel1Vt24.lyx"
+filename "IntroDel1Vt25.lyx"
 literal "true"
 
 \end_inset
@@ -195,10 +197,6 @@ LatexCommand tableofcontents
 \end_inset
 
 
-\end_layout
-
-\begin_layout Part
-Övningsuppgifter
 \end_layout
 
 \begin_layout Chapter
@@ -619,7 +617,7 @@ Ta reda på hur paket kan avinstalleras i R genom att söka på webben eller i R
 \end_layout
 
 \begin_layout Enumerate
-Kolla på denna sida 
+Kolla på denna 
 \begin_inset CommandInset href
 LatexCommand href
 name "sida"

@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package auto
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,11 +77,13 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \branch my_moving_average
 \selected 1
 \filename_suffix 0
-\color #faf0e6
+\color background background
 \end_branch
 \index Index
 \shortcut idx
@@ -100,17 +104,22 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Datorlaboration 3
+Övningsuppgifter 3
 \end_layout
 
 \begin_layout Author
@@ -162,7 +171,8 @@ options(digits = 5)
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "IntroDel1Vt24.lyx"
+filename "IntroDel1Vt25.lyx"
+literal "true"
 
 \end_inset
 
@@ -192,20 +202,15 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Part
-Övningsuppgifter
-\end_layout
-
 \begin_layout Chapter
 Programkontroll
 \end_layout
 
 \begin_layout Standard
-En av de centrala delarna för att skriva effektiva och väl fungerande funktioner
- och kod i R är att kunna styra programmen på ett bra sätt.
+En av de centrala delarna för att skriva effektiva och väl fungerande funktioner och kod i R är att kunna styra programmen på ett bra sätt.
  För detta används så kallad programkontroll.
- Generellt sett kan man säga att programkontrollen består av två huvudsakliga
- delar, villkorssatser och loopar.
+ Generellt sett kan man säga att programkontrollen består av två huvudsakliga delar,
+ villkorssatser och loopar.
 \end_layout
 
 \begin_layout Section
@@ -213,16 +218,13 @@ Villkorssatser
 \end_layout
 
 \begin_layout Standard
-Villkorssatser används för att kontrollera flödet i programmeringen på ett
- smidigt sätt och beroende på huruvida ett villkor är uppfyllt eller inte
- ska programmet göra olika saker.
+Villkorssatser används för att kontrollera flödet i programmeringen på ett smidigt sätt och beroende på huruvida ett villkor är uppfyllt eller inte ska programmet göra olika saker.
  Grunden för villkorststyrning är 
 \family typewriter
 if
 \family default
 .
- Vill vi styra ett program behöver vi med logiska värdet ange vilka delar
- som ska utföras.
+ Vill vi styra ett program behöver vi med logiska värdet ange vilka delar som ska utföras.
  Med if utförs dessa OM 
 \family typewriter
 if
@@ -231,7 +233,8 @@ if
 \family typewriter
 TRUE
 \family default
-), annars utförs den inte.
+),
+ annars utförs den inte.
  Vi kan sedan använda 
 \family typewriter
 else
@@ -248,8 +251,8 @@ FALSE
 \end_layout
 
 \begin_layout Standard
-Villkorssatser bygger helt på logiska värden i R, som har behandlats tidigare
- i kursen.
+Villkorssatser bygger helt på logiska värden i R,
+ som har behandlats tidigare i kursen.
 \end_layout
 
 \begin_layout Enumerate
@@ -746,8 +749,9 @@ Vigdis Finnbogadottir (1930)
 \end_layout
 
 \begin_layout Enumerate
-Skapa ett program, som med en villkorssats, skriver ut namnet på en av kvinnorna
- ovan om rätt födelseår har angetts.
+Skapa ett program,
+ som med en villkorssats,
+ skriver ut namnet på en av kvinnorna ovan om rätt födelseår har angetts.
  Om inget korrekt födelseår har angett ska programmet skriva ut 
 \family typewriter
 
@@ -768,10 +772,8 @@ Loopar
 \end_layout
 
 \begin_layout Standard
-En av de mest centrala verktygen för all programmering är användandet av
- loopar.
- Dessa används för att utföra upprepande uppgifter och är en central del
- i att skriva välfungerande program.
+En av de mest centrala verktygen för all programmering är användandet av loopar.
+ Dessa används för att utföra upprepande uppgifter och är en central del i att skriva välfungerande program.
 \end_layout
 
 \begin_layout Subsection
@@ -897,9 +899,12 @@ Testa att ändra
 5:1
 \family default
 .
- Vad händer nu? Testa att använda loop-vektorn 
+ Vad händer nu?
+ Testa att använda loop-vektorn 
 \family typewriter
-seq(1, 6, by=2)
+seq(1,
+ 6,
+ by=2)
 \end_layout
 
 \begin_layout Enumerate
@@ -921,7 +926,8 @@ print()
 
 \begin_layout Enumerate
 Testa nu att köra koden nedan.
- Vad händer? Testa att ändra på vektorn 
+ Vad händer?
+ Testa att ändra på vektorn 
 \family typewriter
 minVektor
 \family default
@@ -930,7 +936,8 @@ minVektor
 \family typewriter
 minVektor
 \family default
- ha om du vill bara skriva ut de tre sista orden? 
+ ha om du vill bara skriva ut de tre sista orden?
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1112,7 +1119,9 @@ status open
 
 \begin_layout Plain Layout
 
-my_list <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
+my_list <- list("Hej",3:8,c("Lite mer text",
+ "och lite nuffror"),
+ 4:12)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1178,6 +1187,7 @@ Skriver ut alla jäma tal mellan 21 och 40.
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1192,11 +1202,11 @@ Skriv en
 \family typewriter
 for
 \family default
--loop som skriver ut alla heltal som är jämt delbara med 13 som finns mellan
- 1 och 200 med hjälp av en loop och villkorssats.
+-loop som skriver ut alla heltal som är jämt delbara med 13 som finns mellan 1 och 200 med hjälp av en loop och villkorssats.
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1210,8 +1220,7 @@ Skriv en
 \family typewriter
 for
 \family default
--loop som skriver ut alla heltal som är jämt delbara med 3 som finns mellan
- 1 och 200.
+-loop som skriver ut alla heltal som är jämt delbara med 3 som finns mellan 1 och 200.
  Förutom att skriva ut dessa tal ska de även sparas i en vektorn 
 \family typewriter
 delatMedTre
@@ -1223,7 +1232,8 @@ udda
 \series default
  ska vara med.
  Använd en villkorssats för att göra den förändingen.
- Om ett av talen är jämt, så skriv ut texten 
+ Om ett av talen är jämt,
+ så skriv ut texten 
 \family typewriter
 
 \begin_inset Quotes eld
@@ -1239,6 +1249,7 @@ Intresserar mig inte
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1254,12 +1265,11 @@ for
 \end_layout
 
 \begin_layout Enumerate
-Följande kod är ett exempel på en nästlad loop för att loopa över flera
- index (exempelvis rader och kolumner).
+Följande kod är ett exempel på en nästlad loop för att loopa över flera index (exempelvis rader och kolumner).
  Denna loop är nästlad i två nivåer.
  I teorin kan vi nästla en loop i hur många nivåer vi vill.
- Men ju fler nivåer, desto svårare är det att kunna läsa koden och följa
- vad som sker i programmet.
+ Men ju fler nivåer,
+ desto svårare är det att kunna läsa koden och följa vad som sker i programmet.
 \begin_inset Newline newline
 \end_inset
 
@@ -1314,11 +1324,13 @@ for (i in 1:2){
 
 \begin_deeper
 \begin_layout Enumerate
-Pröva att ändra loppvektorerna ovan till c(1) och 1:2, vad händer?
+Pröva att ändra loppvektorerna ovan till c(1) och 1:2,
+ vad händer?
 \end_layout
 
 \begin_layout Enumerate
-Pröva att ändra loppvektorerna ovan till 1:3 och 1:2, vad händer?
+Pröva att ändra loppvektorerna ovan till 1:3 och 1:2,
+ vad händer?
 \end_layout
 
 \end_deeper
@@ -1361,7 +1373,9 @@ B <- matrix(7:12,ncol=3)
 
 \begin_layout Plain Layout
 
-C <- matrix(0, ncol=3, nrow=2)  # i denna matris sparar vi resultatet
+C <- matrix(0,
+ ncol=3,
+ nrow=2)  # i denna matris sparar vi resultatet
 \end_layout
 
 \begin_layout Plain Layout
@@ -1495,8 +1509,7 @@ En
 \family typewriter
 while
 \family default
--loop loopar så länge villkoret är sant och inte ett bestämt antal gånger
- som 
+-loop loopar så länge villkoret är sant och inte ett bestämt antal gånger som 
 \family typewriter
 for
 \family default
@@ -1587,14 +1600,15 @@ oändlighet
 
 \series bold
 Obs!
+
 \series default
  Om du testar koden nedan vill du nog avbryta.
  
 \begin_inset Newline newline
 \end_inset
 
-I R-studio: trycka på stop-knappen i kanten på console - fönstret eller
- med menyn 
+I R-studio:
+ trycka på stop-knappen i kanten på console - fönstret eller med menyn 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1619,7 +1633,8 @@ Interrupt R
 \begin_inset Newline newline
 \end_inset
 
-Om du kör vanliga R: tryck 
+Om du kör vanliga R:
+ tryck 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1722,6 +1737,7 @@ Skriver ut alla udda tal mellan 1 och 20.
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1822,8 +1838,7 @@ Avbryt den aktuella loopen
 \end_layout
 
 \begin_layout Standard
-Dessa två sätt att kontrollera en loop är mycket värdefulla och gör det
- möjligt att avsluta en hel loop i förtid (
+Dessa två sätt att kontrollera en loop är mycket värdefulla och gör det möjligt att avsluta en hel loop i förtid (
 \family typewriter
 break
 \family default
@@ -1840,8 +1855,7 @@ Nedan är ett exempel på kod som använder kontrollstrukturen
 next
 \family default
 .
- Innan beräkningar i loopen görs prövar vi med en villkorssats om beräkningen
- är möjlig.
+ Innan beräkningar i loopen görs prövar vi med en villkorssats om beräkningen är möjlig.
  
 \begin_inset Newline newline
 \end_inset
@@ -1865,7 +1879,9 @@ status open
 
 \begin_layout Plain Layout
 
-my_list <- list("Hej",3:8,c("Lite mer text", "och lite nuffror"), 4:12)
+my_list <- list("Hej",3:8,c("Lite mer text",
+ "och lite nuffror"),
+ 4:12)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1911,6 +1927,7 @@ next()
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -1946,6 +1963,7 @@ while
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "enu:En-while-loop-loopar"
+nolink "false"
 
 \end_inset
 
@@ -1953,6 +1971,7 @@ reference "enu:En-while-loop-loopar"
 \begin_inset CommandInset ref
 LatexCommand pageref
 reference "enu:En-while-loop-loopar"
+nolink "false"
 
 \end_inset
 
@@ -2070,7 +2089,8 @@ Skriver ut summan av talen
 \begin_inset Formula $N$
 \end_inset
 
- är loop-index, men ska avbryta om summan överstiger 
+ är loop-index,
+ men ska avbryta om summan överstiger 
 \begin_inset Formula $3080$
 \end_inset
 
@@ -2084,8 +2104,7 @@ En sista typ av loop som kan användas är
 repeat{}
 \family default
 .
- Till skillnad från for och while-loopar kommer denna struktur fortsätta
- iterera till dess att den stöter på ett 
+ Till skillnad från for och while-loopar kommer denna struktur fortsätta iterera till dess att den stöter på ett 
 \family typewriter
 break
 \family default
@@ -2197,7 +2216,8 @@ Skriver ut summan av talen
 \begin_inset Formula $N$
 \end_inset
 
- är loop-index, men ska avbryta om summan överstiger 
+ är loop-index,
+ men ska avbryta om summan överstiger 
 \begin_inset Formula $3080$
 \end_inset
 
@@ -2214,7 +2234,8 @@ Skapa med
 \family typewriter
 repeat
 \family default
-, 
+,
+ 
 \family typewriter
 next
 \family default
@@ -2235,8 +2256,7 @@ Skriver ut alla jämna tal mellan 3 och 17.
 \end_layout
 
 \begin_layout Enumerate
-Beräknar och skriver ut resultat i varje steg av den kumulativa summan från
- 10 till 20.
+Beräknar och skriver ut resultat i varje steg av den kumulativa summan från 10 till 20.
 \end_layout
 
 \end_deeper
@@ -2262,8 +2282,7 @@ Avbryta funktioner och generera varningar
 
 \begin_layout Standard
 Ibland vill vi att ett program ska avbrytas om vissa villkor inte är uppfyllda.
- Det kan vara att argument till en funktion inte är korrekt eller att resultat
- som beräknats är felaktiga.
+ Det kan vara att argument till en funktion inte är korrekt eller att resultat som beräknats är felaktiga.
  För att avbryta ett R-program använder vi 
 \family typewriter
 stop()
@@ -2333,8 +2352,7 @@ felmeddelanden
 stop()
 \family default
 .
- Detta kan vara bra för att kunna identifiera var programmet var tvungen
- att avbrytas.
+ Detta kan vara bra för att kunna identifiera var programmet var tvungen att avbrytas.
  Pröva att lägga till felmeddelandet nedan.
  
 \begin_inset Newline newline
@@ -2380,8 +2398,7 @@ test_funktion <- function(x){
 \end_layout
 
 \begin_layout Standard
-Ibland kan det vara så att vi inte vill avbryta ett pågående program utan
- att vi istället bara skulle vilja varna för att det kan vara något fel.
+Ibland kan det vara så att vi inte vill avbryta ett pågående program utan att vi istället bara skulle vilja varna för att det kan vara något fel.
  Det görs med funktionen 
 \family typewriter
 warning()
@@ -2491,8 +2508,7 @@ test_funktion <- function(x){
 \end_layout
 
 \begin_layout Enumerate
-Om ett program genererar flera varningar sparas dessa och det går att gå
- igenom samtliga varningar efter att programmet kört klart.
+Om ett program genererar flera varningar sparas dessa och det går att gå igenom samtliga varningar efter att programmet kört klart.
  För att komma åt dessa varningar använder vi funktionen 
 \family typewriter
 warnings()
@@ -2608,8 +2624,10 @@ Debugging handlar om att hitta och rätta fel i ens programmeringskod.
 \end_layout
 
 \begin_layout Enumerate
-Syntaktiska fel: Testa att kör koden nedan.
- Vad händer? försök tolka felmeddelandet och rätta sedan koden.
+Syntaktiska fel:
+ Testa att kör koden nedan.
+ Vad händer?
+ försök tolka felmeddelandet och rätta sedan koden.
 \begin_inset Newline newline
 \end_inset
 
@@ -2667,7 +2685,8 @@ return(z)
 \end_layout
 
 \begin_layout Enumerate
-Semantiska fel: 
+Semantiska fel:
+ 
 \begin_inset Separator latexpar
 \end_inset
 
@@ -2677,7 +2696,8 @@ Semantiska fel:
 \begin_deeper
 \begin_layout Enumerate
 Testa att kör koden nedan.
- Vad händer? Ger funktionen rätt respons?
+ Vad händer?
+ Ger funktionen rätt respons?
 \begin_inset Newline newline
 \end_inset
 
@@ -2790,8 +2810,11 @@ not numeric
 
 \end_deeper
 \begin_layout Enumerate
-Logiska fel: Testa att kör koden nedan.
- Vad händer? Ger funktionen rätt respons? Försök att rätta funktionen.
+Logiska fel:
+ Testa att kör koden nedan.
+ Vad händer?
+ Ger funktionen rätt respons?
+ Försök att rätta funktionen.
 \begin_inset Newline newline
 \end_inset
 
@@ -2806,8 +2829,8 @@ status open
 
 \begin_layout Plain Layout
 
-# my_col_stats: a function for calculating stats for a specified column
- in a dataset 
+# my_col_stats:
+ a function for calculating stats for a specified column in a dataset 
 \end_layout
 
 \begin_layout Plain Layout
@@ -2896,7 +2919,8 @@ browser()
 \family typewriter
 debug()
 \family default
-: Kör koden nedan.
+:
+ Kör koden nedan.
 \begin_inset Newline newline
 \end_inset
 
@@ -2990,7 +3014,8 @@ Använd
 debug
 \family default
  för att stega igenom funktionen.
- Använd följande komandon för att navigera i debugg-mode: 
+ Använd följande komandon för att navigera i debugg-mode:
+ 
 \family typewriter
 n
 \family default
@@ -3003,14 +3028,14 @@ c
 Q
 \family default
 .
- Kolla kontinuerligt i enviroment-filken i RStudio och se hur de lokala
- variablerna ändras.
+ Kolla kontinuerligt i enviroment-filken i RStudio och se hur de lokala variablerna ändras.
  I debugg-mode kan vanliga R-funktioner anropas.
  Testa att köra 
 \family typewriter
 print(x)
 \family default
-, 
+,
+ 
 \family typewriter
 sin(x) 
 \family default
@@ -3030,7 +3055,8 @@ innan raden med
 \family typewriter
 x2<-x^2
 \family default
- , läs den uppdaterade funktionen och anropa 
+ ,
+ läs den uppdaterade funktionen och anropa 
 \family typewriter
 h(a)
 \family default
@@ -3039,7 +3065,8 @@ h(a)
 \family typewriter
 debug()
 \family default
-? 
+?
+ 
 \end_layout
 
 \begin_layout Enumerate
@@ -3081,7 +3108,8 @@ browser()
 \family typewriter
 debug()
 \family default
-? Diskutera med någon!
+?
+ Diskutera med någon!
 \end_layout
 
 \end_deeper
@@ -3095,7 +3123,8 @@ a
 b
 \family default
 .
- Exempel: om 
+ Exempel:
+ om 
 \family typewriter
 a=1
 \family default
@@ -3137,7 +3166,8 @@ status open
 
 \begin_layout Plain Layout
 
-isIn <- function(a, b) {
+isIn <- function(a,
+ b) {
 \end_layout
 
 \begin_layout Plain Layout
@@ -3267,7 +3297,8 @@ Stina vill nu utöka sin funktion så att
 \family typewriter
 a
 \family default
- kan vara en vektor, för att kunna kolla vilka element i 
+ kan vara en vektor,
+ för att kunna kolla vilka element i 
 \family typewriter
 a
 \family default
@@ -3295,12 +3326,14 @@ status open
 
 \begin_layout Plain Layout
 
-isIn <- function(a, b) {
+isIn <- function(a,
+ b) {
 \end_layout
 
 \begin_layout Plain Layout
 
-	out <- rep(FALSE, length(a)) 
+	out <- rep(FALSE,
+ length(a)) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -3517,7 +3550,8 @@ Testa att lägga in följande kod under tilldelningen av
 out[i]
 \family default
 .
- När du kör funktionen, vad är det som händer i looparna?
+ När du kör funktionen,
+ vad är det som händer i looparna?
 \begin_inset Newline newline
 \end_inset
 
@@ -3589,7 +3623,8 @@ isIn
 \series bold
 * Extraproblem
 \series default
-: Gör om funktionen 
+:
+ Gör om funktionen 
 \family typewriter
 isIn()
 \family default
@@ -3598,8 +3633,8 @@ isIn()
 
 \begin_deeper
 \begin_layout Enumerate
-Genom att använda en nästlad for-loop, testa att funktionen fungerar genom
- att jämföra med 
+Genom att använda en nästlad for-loop,
+ testa att funktionen fungerar genom att jämföra med 
 \family typewriter
 %in%
 \family default
@@ -3607,8 +3642,8 @@ Genom att använda en nästlad for-loop, testa att funktionen fungerar genom
 \end_layout
 
 \begin_layout Enumerate
-Genom att använda en nästlad while-loop, testa att funktionen fungerar genom
- att jämföra med 
+Genom att använda en nästlad while-loop,
+ testa att funktionen fungerar genom att jämföra med 
 \family typewriter
 %in%
 \family default
@@ -3619,7 +3654,8 @@ Genom att använda en nästlad while-loop, testa att funktionen fungerar genom
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body

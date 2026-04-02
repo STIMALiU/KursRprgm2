@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package auto
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,17 +99,22 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
 
 \begin_layout Title
-Datorlaboration 2
+Övningsuppgifter 2
 \end_layout
 
 \begin_layout Author
@@ -157,7 +166,8 @@ options(digits = 5)
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand input
-filename "IntroDel1Vt24.lyx"
+filename "IntroDel1Vt25.lyx"
+literal "true"
 
 \end_inset
 
@@ -187,27 +197,25 @@ LatexCommand tableofcontents
 
 \end_layout
 
-\begin_layout Part
-Övningsuppgifter
-\end_layout
-
 \begin_layout Chapter
-Datastruktur: Matriser 
+Datastruktur:
+ Matriser 
 \end_layout
 
 \begin_layout Standard
-Förutom vektorer (Datorlaboration 1) är matriser ytterligare en datastruktur
- som används flitigt i R.
- Den stora skillnaden mot vektorer är att vi har två dimensioner; rader
- och kolumner.
+Förutom vektorer (Övningsuppgifter 1) är matriser ytterligare en datastruktur som används flitigt i R.
+ Den stora skillnaden mot vektorer är att vi har två dimensioner;
+ rader och kolumner.
  Precis som vektorer kan vi bara ha en typ av värden i en matris.
- Det betyder att vi kan ha textmatriser, logiska matriser, numeriska matriser
- osv.
+ Det betyder att vi kan ha textmatriser,
+ logiska matriser,
+ numeriska matriser osv.
 \end_layout
 
 \begin_layout Enumerate
 Skapa en matris enligt koden nedan.
- Studera matrisen, hur ser den ut?
+ Studera matrisen,
+ hur ser den ut?
 \begin_inset Newline newline
 \end_inset
 
@@ -277,7 +285,8 @@ min_matris2<-matrix(x ,ncol=2)
 
 \begin_layout Enumerate
 Testa koden nedan.
- Vad är skillanden i de båda fallen? Läs i dokumentation för 
+ Vad är skillanden i de båda fallen?
+ Läs i dokumentation för 
 \family typewriter
 matrix()
 \family default
@@ -316,8 +325,7 @@ b<-matrix(1:6 ,ncol=2,byrow = TRUE)
 \end_layout
 
 \begin_layout Enumerate
-Till skillnad mot andra matrisprogram som matlab (och i linjära algebra)
- så utförs alla operationer på matriser 
+Till skillnad mot andra matrisprogram som matlab (och i linjära algebra) så utförs alla operationer på matriser 
 \series bold
 elementvis
 \series default
@@ -348,18 +356,16 @@ Dividera elementen med 4
 \end_layout
 
 \begin_layout Enumerate
-Beräkna resten (modulo) för elementen i matrisen om matrisen divideras med
- 2.
+Beräkna resten (modulo) för elementen i matrisen om matrisen divideras med 2.
  
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
 Vill man istället ha matrismultiplikation används %*%.
- R har stöd för matrisalgebra och alla typer av matrisberäkningar som behövs
- inom t.ex.
+ R har stöd för matrisalgebra och alla typer av matrisberäkningar som behövs inom t.ex.
  linjär algebra.
- Mer om detta kommer att komma i Datorlaboration 6.
+ Mer om detta kommer att komma i Övningsuppgifter 6.
 \begin_inset Newline newline
 \end_inset
 
@@ -374,7 +380,8 @@ status open
 
 \begin_layout Plain Layout
 
-a <- matrix(c(1,0,0,1), ncol =2)
+a <- matrix(c(1,0,0,1),
+ ncol =2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -425,11 +432,13 @@ större
 \family typewriter
 a
 \family default
-, 
+,
+ 
 \family typewriter
 b
 \family default
-, 
+,
+ 
 \family typewriter
 c
 \family default
@@ -491,8 +500,7 @@ stor_matris <- cbind(a,b,c,d)
 \end_layout
 
 \begin_layout Enumerate
-Om vi vill skapa en textmatris gör vi på ett liknande sätt som med numeriska
- matriser.
+Om vi vill skapa en textmatris gör vi på ett liknande sätt som med numeriska matriser.
  Pröva att skapa följande numeriska matris.
 \begin_inset Newline newline
 \end_inset
@@ -508,12 +516,17 @@ status open
 
 \begin_layout Plain Layout
 
-text <- c("Kalle", "Lisa", "Jonah", "Ghada")
+text <- c("Kalle",
+ "Lisa",
+ "Jonah",
+ "Ghada")
 \end_layout
 
 \begin_layout Plain Layout
 
-mina_namn <- matrix(text, nrow=2, ncol=2)
+mina_namn <- matrix(text,
+ nrow=2,
+ ncol=2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -528,8 +541,7 @@ mina_namn <- matrix(text, nrow=2, ncol=2)
 
 \begin_layout Enumerate
 Statistiska funktioner fungerar på matriser precis som på vektorer.
- Det R gör är att R först konverterar matrisen till en vektor och sedan
- utför beräkningen.
+ Det R gör är att R först konverterar matrisen till en vektor och sedan utför beräkningen.
  
 \begin_inset Newline newline
 \end_inset
@@ -604,8 +616,7 @@ range(min_matris1)
 \end_layout
 
 \begin_layout Enumerate
-Utöver dessa funktioner finns det dessutom en del funktioner som är specifika
- för just matriser (och 
+Utöver dessa funktioner finns det dessutom en del funktioner som är specifika för just matriser (och 
 \family typewriter
 data.frames
 \family default
@@ -654,10 +665,8 @@ Logiska matriser
 
 \begin_layout Standard
 Logiska matriser kan skapas på två sätt.
- Ett sätt är att skapa dem som vanliga numeriska matriser och textmatriser
- skapas.
- Det går också att använda relationsoperatorer på andra matriser (numeriska
- eller text) och då returneras en logisk matris.
+ Ett sätt är att skapa dem som vanliga numeriska matriser och textmatriser skapas.
+ Det går också att använda relationsoperatorer på andra matriser (numeriska eller text) och då returneras en logisk matris.
 \end_layout
 
 \begin_layout Enumerate
@@ -677,12 +686,18 @@ status open
 
 \begin_layout Plain Layout
 
-x<-c(TRUE, TRUE, FALSE, TRUE, FALSE, TRUE)
+x<-c(TRUE,
+ TRUE,
+ FALSE,
+ TRUE,
+ FALSE,
+ TRUE)
 \end_layout
 
 \begin_layout Plain Layout
 
-A<-matrix(x, nrow=3)
+A<-matrix(x,
+ nrow=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -696,7 +711,8 @@ A<-matrix(x, nrow=3)
 \end_layout
 
 \begin_layout Enumerate
-Precis som som vi kan använda plus, minus m.m.
+Precis som som vi kan använda plus,
+ minus m.m.
  för logiska matriser kan vi använda logiska operatorer på logiska matriser.
  Precis som för logiska matriser sker då operationerna 
 \series bold
@@ -718,12 +734,18 @@ status open
 
 \begin_layout Plain Layout
 
-y<-c(FALSE, TRUE, TRUE, TRUE, FALSE, TRUE)
+y<-c(FALSE,
+ TRUE,
+ TRUE,
+ TRUE,
+ FALSE,
+ TRUE)
 \end_layout
 
 \begin_layout Plain Layout
 
-B<-matrix(y, nrow=3)
+B<-matrix(y,
+ nrow=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -770,12 +792,14 @@ status open
 
 \begin_layout Plain Layout
 
-X <- matrix(1:6, nrow=3)
+X <- matrix(1:6,
+ nrow=3)
 \end_layout
 
 \begin_layout Plain Layout
 
-Y <- matrix(6:1, nrow=3)
+Y <- matrix(6:1,
+ nrow=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -804,9 +828,7 @@ X == Y
 \end_layout
 
 \begin_layout Enumerate
-Att kombinera statistiska funktioner och logiska matriser är ett snabbt
- och enkelt sätt att pröva om exempelvis samtliga värden i en stor matris
- är korrekta.
+Att kombinera statistiska funktioner och logiska matriser är ett snabbt och enkelt sätt att pröva om exempelvis samtliga värden i en stor matris är korrekta.
  Vill vi pröva om alla element i 
 \family typewriter
 X
@@ -835,7 +857,8 @@ all(X > 0)
 
 \begin_layout Plain Layout
 
-# vad gör all()? testa ?all
+# vad gör all()?
+ testa ?all
 \end_layout
 
 \begin_layout Plain Layout
@@ -864,8 +887,7 @@ any(X > 0)
 \end_layout
 
 \begin_layout Enumerate
-Använd relationsoperatorer för att skapa en logisk matris som indikerar
- vilka element som är större än 20 i 
+Använd relationsoperatorer för att skapa en logisk matris som indikerar vilka element som är större än 20 i 
 \family typewriter
 stor_matris
 \family default
@@ -909,7 +931,8 @@ x <-c(1,2,3,4,5,6)
 
 \begin_layout Plain Layout
 
-min_matris <- matrix(x, nrow=3,ncol=2)
+min_matris <- matrix(x,
+ nrow=3,ncol=2)
 \end_layout
 
 \begin_layout Plain Layout
@@ -953,11 +976,8 @@ min_matris[c(2,1),1]
 \end_layout
 
 \begin_layout Standard
-En av de mindre bra egenskaperna i R är att väljs en rad eller en kolumn
- ut reduceras detta automatiskt till en vektor.
- Vill vi inte att detta ska ske (om vi exempelvis vill räkna med en rad
- eller kolumnmatris) måste vi ange att matrisformatet ska behållas med argumente
-t 
+En av de mindre bra egenskaperna i R är att väljs en rad eller en kolumn ut reduceras detta automatiskt till en vektor.
+ Vill vi inte att detta ska ske (om vi exempelvis vill räkna med en rad eller kolumnmatris) måste vi ange att matrisformatet ska behållas med argumentet 
 \family typewriter
 drop=FALSE
 \family default
@@ -976,7 +996,8 @@ status open
 
 \begin_layout Plain Layout
 
-min_matris[3, ,drop=FALSE]
+min_matris[3,
+ ,drop=FALSE]
 \end_layout
 
 \begin_layout Plain Layout
@@ -991,7 +1012,8 @@ min_matris[,1 ,drop=TRUE]
 
 \begin_layout Plain Layout
 
-#Testa: ?"["
+#Testa:
+ ?"["
 \end_layout
 
 \begin_layout Plain Layout
@@ -1005,8 +1027,7 @@ min_matris[,1 ,drop=TRUE]
 \end_layout
 
 \begin_layout Standard
-Precis som när det gäller vektorer kan vi använda index för att ändra enskilda
- element i en matris.
+Precis som när det gäller vektorer kan vi använda index för att ändra enskilda element i en matris.
 \end_layout
 
 \begin_layout Standard
@@ -1040,7 +1061,8 @@ stor_matris
 \family default
  ovan med 
 \family typewriter
-[ , ]
+[ ,
+ ]
 \family default
 :
 \begin_inset Separator latexpar
@@ -1051,11 +1073,13 @@ stor_matris
 
 \begin_deeper
 \begin_layout Enumerate
-Elementet (1, 4) 
+Elementet (1,
+ 4) 
 \end_layout
 
 \begin_layout Enumerate
-Elementet (2, 1) 
+Elementet (2,
+ 1) 
 \end_layout
 
 \begin_layout Enumerate
@@ -1077,11 +1101,9 @@ Kolumn 1 till 3
 \end_deeper
 \begin_layout Enumerate
 Indexering kan även ske med numeriska matriser.
- För att det ska gå behöver vi skapa en matris med två kolumner och godtyckligt
- antal rader.
+ För att det ska gå behöver vi skapa en matris med två kolumner och godtyckligt antal rader.
  Låt oss kalla denna matris för indexmatris.
- Första kolumnen i indexmatrisen motsvarar rader och andra kolumnen i indexmatri
-sen motsvarar kolumner i den ursprungliga matrisen.
+ Första kolumnen i indexmatrisen motsvarar rader och andra kolumnen i indexmatrisen motsvarar kolumner i den ursprungliga matrisen.
  Varje rad i indexmatrisen motsvarar ett element i den ursprungliga matrisen.
  Se koden nedan för ett exempel.
  
@@ -1124,15 +1146,23 @@ stor_matris[index_mat]
 
 \begin_deeper
 \begin_layout Enumerate
-Välj med metoden ovan ut elementen (4, 4), (5,3) och (2, 1)
+Välj med metoden ovan ut elementen (4,
+ 4),
+ (5,3) och (2,
+ 1)
 \end_layout
 
 \begin_layout Enumerate
-Välj med metoden ovan ut elementet (42, 2)
+Välj med metoden ovan ut elementet (42,
+ 2)
 \end_layout
 
 \begin_layout Enumerate
-Välj med metoden ovan ut elementen (10, 1), (20,2), (30, 3) och (40,4)
+Välj med metoden ovan ut elementen (10,
+ 1),
+ (20,2),
+ (30,
+ 3) och (40,4)
 \end_layout
 
 \begin_layout Enumerate
@@ -1177,8 +1207,8 @@ min_matris[min_matris <= 4]
 
 \begin_layout Enumerate
 Notera att om ni bara kör koden i 3.
- så returneras en vektor, som innehåller alla element som uppfyller kravet
- för det logiska testet 
+ så returneras en vektor,
+ som innehåller alla element som uppfyller kravet för det logiska testet 
 \family typewriter
 min_matris < 2
 \family default
@@ -1232,12 +1262,12 @@ min_matris
 \end_layout
 
 \begin_layout Enumerate
-Pröva på detta sätt att välja ut elementen i matrisen som är större än 5
- eller mindre än 4.
+Pröva på detta sätt att välja ut elementen i matrisen som är större än 5 eller mindre än 4.
 \end_layout
 
 \begin_layout Enumerate
-Ändra nu följande enskilda värden, rader och kolumner i 
+Ändra nu följande enskilda värden,
+ rader och kolumner i 
 \family typewriter
 stor_matris
 \family default
@@ -1251,7 +1281,9 @@ stor_matris
 
 \begin_deeper
 \begin_layout Enumerate
-Elementen (4, 4) och (2, 1)
+Elementen (4,
+ 4) och (2,
+ 1)
 \end_layout
 
 \begin_layout Enumerate
@@ -1286,6 +1318,7 @@ NA
 [
 \series bold
 Tips!
+
 \series default
  Gör detta i flera steg.]
 \begin_inset Newline newline
@@ -1352,7 +1385,8 @@ rad_mat
 \family typewriter
 kol_mat
 \family default
- på följande sätt: 
+ på följande sätt:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -1462,8 +1496,7 @@ kol_mat[-5,]
 \end_layout
 
 \begin_layout Enumerate
-Om vi tar bort allt så bara en rad- eller kolumnmatris kvarstår reduceras
- detta till en vektor.
+Om vi tar bort allt så bara en rad- eller kolumnmatris kvarstår reduceras detta till en vektor.
  Detta kan undvikas med argumentet 
 \family typewriter
 drop = FALSE
@@ -1488,7 +1521,8 @@ kol_mat[,-1]
 
 \begin_layout Plain Layout
 
-kol_mat[,-1 , drop = FALSE]
+kol_mat[,-1 ,
+ drop = FALSE]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1502,12 +1536,12 @@ kol_mat[,-1 , drop = FALSE]
 \end_layout
 
 \begin_layout Enumerate
-Sammantaget kan en konstatera att det är samma principer för att indexera
- matriser som att indexera vektorer.
+Sammantaget kan en konstatera att det är samma principer för att indexera matriser som att indexera vektorer.
 \end_layout
 
 \begin_layout Chapter
-Datastruktur: 
+Datastruktur:
+ 
 \family typewriter
 data.frame
 \family default
@@ -1525,14 +1559,15 @@ data.frame
 \family typewriter
 data.frame
 \family default
- bara en samling av lika långa vektorer (variabler) som är sammansatta som
- en lista (mer om detta senare).
+ bara en samling av lika långa vektorer (variabler) som är sammansatta som en lista (mer om detta senare).
  Det gör att en 
 \family typewriter
 data.frame
 \family default
  kan ha variabler (kolumner) av olika typ (ex.
- text, numeriska, logiska m.m.).
+ text,
+ numeriska,
+ logiska m.m.).
  
 \end_layout
 
@@ -1549,8 +1584,7 @@ data.frame
 \family typewriter
 data.frame()
 \family default
- och i denna funktion lägger en till de variabler vi vill ha i vårt datset
- som vektorer.
+ och i denna funktion lägger en till de variabler vi vill ha i vårt datset som vektorer.
  Som vanligt måste en tillskriva datasetet till ett objektnamn med 
 \family typewriter
 <-
@@ -1570,12 +1604,17 @@ status open
 
 \begin_layout Plain Layout
 
-<<echo=TRUE, eval=FALSE>>=
+<<echo=TRUE,
+ eval=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-minDF <- data.frame(num = 1:3, text = rep("Text", 3), logi=c(TRUE, TRUE,
+minDF <- data.frame(num = 1:3,
+ text = rep("Text",
+ 3),
+ logi=c(TRUE,
+ TRUE,
  FALSE))  
 \end_layout
 
@@ -1607,7 +1646,8 @@ minVecka
 \family typewriter
 myWeekdays
 \family default
-, 
+,
+ 
 \family typewriter
 hours
 \family default
@@ -1635,17 +1675,27 @@ days<-c("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
 
 \begin_layout Plain Layout
 
-hour <- c(rep(8, 4), 6, 0, 0)
+hour <- c(rep(8,
+ 4),
+ 6,
+ 0,
+ 0)
 \end_layout
 
 \begin_layout Plain Layout
 
-task <- c(rep("job", 4), "study", rep("fun", 2))
+task <- c(rep("job",
+ 4),
+ "study",
+ rep("fun",
+ 2))
 \end_layout
 
 \begin_layout Plain Layout
 
-minVecka <- data.frame(myWeekdays = days, hours = hour, tasks = task)  
+minVecka <- data.frame(myWeekdays = days,
+ hours = hour,
+ tasks = task)  
 \end_layout
 
 \begin_layout Plain Layout
@@ -1725,8 +1775,7 @@ iris
 \end_layout
 
 \begin_layout Enumerate
-För att se vilka olika datamaterial som är förinstallerade med R kan vi
- andvända koden nedan.
+För att se vilka olika datamaterial som är förinstallerade med R kan vi andvända koden nedan.
  Notera att visa datameterial är 
 \family typewriter
 data.frame
@@ -1857,6 +1906,7 @@ Funktionerna
 dim()
 \family default
 ,
+
 \family typewriter
  ncol()
 \family default
@@ -1873,6 +1923,7 @@ Funktionerna
 names()
 \family default
 ,
+
 \family typewriter
  colnames()
 \family default
@@ -1905,7 +1956,8 @@ nrow()
 
 \end_deeper
 \begin_layout Enumerate
-Upprepa uppgift 8, men för ett annat dataset som finns i R.
+Upprepa uppgift 8,
+ men för ett annat dataset som finns i R.
 \end_layout
 
 \begin_layout Section
@@ -1920,12 +1972,9 @@ Det är sällan så att vi är intresserade av en hel
 data.frame
 \family default
 .
- Istället är det enskilda variabler vi är intresserade av att analysera
- och använda i olika analyssammanhang.
- I R görs detta genom att vi väljer ut en enskild variabel (som då blir
- en vektor).
- Sedan kan vi använda vilka statistiska funktioner vi vill för deskriptiv
- statistik.
+ Istället är det enskilda variabler vi är intresserade av att analysera och använda i olika analyssammanhang.
+ I R görs detta genom att vi väljer ut en enskild variabel (som då blir en vektor).
+ Sedan kan vi använda vilka statistiska funktioner vi vill för deskriptiv statistik.
 \end_layout
 
 \begin_layout Standard
@@ -1965,12 +2014,14 @@ iris[["Sepal.Width"]]
 
 \begin_layout Plain Layout
 
-iris[, "Sepal.Width"]
+iris[,
+ "Sepal.Width"]
 \end_layout
 
 \begin_layout Plain Layout
 
-iris[, 2]
+iris[,
+ 2]
 \end_layout
 
 \begin_layout Plain Layout
@@ -1994,8 +2045,7 @@ s samtidigt.
 data.frame
 \family default
  vi arbetar med.
- I de första tre fallen använder vi variabelnamnet och den sista metoden
- använder vi vilken kolumn som är variabeln av intresse.
+ I de första tre fallen använder vi variabelnamnet och den sista metoden använder vi vilken kolumn som är variabeln av intresse.
  Hakparenteser används här för att 
 \begin_inset Quotes eld
 \end_inset
@@ -2004,13 +2054,13 @@ indexera
 \begin_inset Quotes erd
 \end_inset
 
- variabler, mer om detta senare.
+ variabler,
+ mer om detta senare.
  
 \end_layout
 
 \begin_layout Standard
-Det går självklart också att spara en enskild variabel och då sparas den
- som en vektor.
+Det går självklart också att spara en enskild variabel och då sparas den som en vektor.
 \end_layout
 
 \begin_layout Standard
@@ -2050,8 +2100,7 @@ iris
 \end_layout
 
 \begin_layout Enumerate
-Pröva att göra följande analyser med hjälp av de statistiska funktionerna
- för vektorer.
+Pröva att göra följande analyser med hjälp av de statistiska funktionerna för vektorer.
 \begin_inset Separator latexpar
 \end_inset
 
@@ -2064,9 +2113,11 @@ Vad är medianen för
 \family typewriter
 Petal.Length
 \family default
-? [
+?
+ [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2080,9 +2131,11 @@ Vad är variansen för
 \family typewriter
 Sepal.Length
 \family default
-? [
+?
+ [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2100,6 +2153,7 @@ Species
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2129,12 +2183,14 @@ setosa
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
 mean()
 \family default
-, Börja med att skapa en logisk vektor med hjälp av relationsoperatorer,
+,
+ Börja med att skapa en logisk vektor med hjälp av relationsoperatorer,
  du kan också börja med att spara ned vektorn innan.].
 \end_layout
 
@@ -2152,15 +2208,18 @@ literal "false"
 \family typewriter
 Petal.Width
 \family default
-? [
+?
+ [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
 quantiles()
 \family default
-, glöm inte att justera argumentet 
+,
+ glöm inte att justera argumentet 
 \family typewriter
 probs=
 \family default
@@ -2179,6 +2238,7 @@ Sepal.Width
 Räknad ut variansen för 
 \family typewriter
 Sepal.Length,
+
 \family default
  men bara för de observationer där värdena på 
 \family typewriter
@@ -2198,8 +2258,7 @@ Skapa och ta bort variabler
 
 \begin_layout Standard
 För att skapa en ny variabel tillskriver vi den nya variabeln (d.v.s.
- variabelnamnet) en vektor av samma längd som antalet rader i den aktuella
- data.frame.
+ variabelnamnet) en vektor av samma längd som antalet rader i den aktuella data.frame.
  Om vi vill skapa en ny variabel som är kvoten mellan 
 \family typewriter
 Petal.Width
@@ -2279,11 +2338,14 @@ iris
 \family typewriter
 iris
 \family default
- igen? Vilka variabler finns då? [
+ igen?
+ Vilka variabler finns då?
+ [
 \series bold
 Tips
 \series default
-! 
+!
+ 
 \family typewriter
 rm()
 \family default
@@ -2299,7 +2361,8 @@ I vissa fall vill vi skapa nya kategoriska variabler.
 Petal.Width
 \family default
  i tre delar.
- Mindre än 1, mellan 1 och 2 och mer än 2.
+ Mindre än 1,
+ mellan 1 och 2 och mer än 2.
  Antingen kan vi göra det 
 \begin_inset Quotes eld
 \end_inset
@@ -2308,8 +2371,8 @@ manuellt
 \begin_inset Quotes erd
 \end_inset
 
- på följande sätt (nu skapar vi en textvariabel, men det går lika gärna
- att skapa en numerisk variabel):
+ på följande sätt (nu skapar vi en textvariabel,
+ men det går lika gärna att skapa en numerisk variabel):
 \begin_inset Newline newline
 \end_inset
 
@@ -2349,10 +2412,9 @@ iris$newCat[iris$Petal.Width > 2] <- "2 +"
 
 \begin_layout Enumerate
 Gå igenom koden ovan och se vad som händer i varje steg.
- Rent faktiskt indexerar vi en del av variabeln med hakparentesen och relationso
-peratorn och tillskriver denna del av vektorn ett visst värde.
- Att göra det manuellt kan tyckas onödigt, men i många fall kanske vi vill
- göra mindre korrigeringar av variabler och då är detta sätt ofta enkelt.
+ Rent faktiskt indexerar vi en del av variabeln med hakparentesen och relationsoperatorn och tillskriver denna del av vektorn ett visst värde.
+ Att göra det manuellt kan tyckas onödigt,
+ men i många fall kanske vi vill göra mindre korrigeringar av variabler och då är detta sätt ofta enkelt.
 \end_layout
 
 \begin_layout Enumerate
@@ -2381,12 +2443,16 @@ status open
 
 \begin_layout Plain Layout
 
-iris$newCat2 <- cut(iris$Petal.Width, breaks=2)
+iris$newCat2 <- cut(iris$Petal.Width,
+ breaks=2)
 \end_layout
 
 \begin_layout Plain Layout
 
-iris$newCat3 <- cut(iris$Petal.Width, breaks=c(1, 2, Inf))
+iris$newCat3 <- cut(iris$Petal.Width,
+ breaks=c(1,
+ 2,
+ Inf))
 \end_layout
 
 \begin_layout Plain Layout
@@ -2473,9 +2539,9 @@ Ibland vill vi ändra ett variabelnamn vi skapat.
 \family typewriter
 data.frame
 \family default
-s kan i princip se ut hur som helst, dock får de inte börja med en siffra.
- För att det ska vara enkelt att arbeta med dem är det bra om de följer
- samma regler som variabelnamn för objekt (d.v.s.
+s kan i princip se ut hur som helst,
+ dock får de inte börja med en siffra.
+ För att det ska vara enkelt att arbeta med dem är det bra om de följer samma regler som variabelnamn för objekt (d.v.s.
  inte innehålla mellanslag).
 \end_layout
 
@@ -2531,7 +2597,11 @@ status open
 
 \begin_layout Plain Layout
 
-names(iris) <- c("var1", "var2", "var3", "var4", "var5")
+names(iris) <- c("var1",
+ "var2",
+ "var3",
+ "var4",
+ "var5")
 \end_layout
 
 \begin_layout Plain Layout
@@ -2554,8 +2624,7 @@ Använd vektorn
 \family typewriter
 namn
 \family default
- som du sparade ovan för att återställa variabelnamnen till de namn de hade
- innan.
+ som du sparade ovan för att återställa variabelnamnen till de namn de hade innan.
  Kontrollera att namnen är 
 \begin_inset Quotes eld
 \end_inset
@@ -2572,10 +2641,8 @@ names()
 \end_layout
 
 \begin_layout Enumerate
-Vi vet nu hur vi kan ändra samtliga variabler och att variabelnamn fungerar
- som vanliga textvektorer.
- Det gör att vi använder samma princip för att ändra enskilda element i
- en vektor för att ändra ett enskilt variabelnamn.
+Vi vet nu hur vi kan ändra samtliga variabler och att variabelnamn fungerar som vanliga textvektorer.
+ Det gör att vi använder samma princip för att ändra enskilda element i en vektor för att ändra ett enskilt variabelnamn.
 \begin_inset Newline newline
 \end_inset
 
@@ -2595,7 +2662,8 @@ names(iris)[2] <- "variabel2"
 
 \begin_layout Plain Layout
 
-names(iris)[c(1,5)] <- c("var1", "var5")
+names(iris)[c(1,5)] <- c("var1",
+ "var5")
 \end_layout
 
 \begin_layout Plain Layout
@@ -2609,8 +2677,7 @@ names(iris)[c(1,5)] <- c("var1", "var5")
 \end_layout
 
 \begin_layout Enumerate
-Pröva att byta ut variabelnamnet på de variabelnamn vars variabelnamn inte
- har bytts ut ovan.
+Pröva att byta ut variabelnamnet på de variabelnamn vars variabelnamn inte har bytts ut ovan.
  Döp dem till godtyckliga variabelnamn.
 \end_layout
 
@@ -2631,7 +2698,8 @@ Faktorvariabler
 \end_layout
 
 \begin_layout Standard
-En speciell typ av variabler är så kallade faktorvariabler, 
+En speciell typ av variabler är så kallade faktorvariabler,
+ 
 \family typewriter
 factor
 \family default
@@ -2646,7 +2714,8 @@ typeof()
 \family typewriter
 integer
 \family default
-, inte 
+,
+ inte 
 \family typewriter
 character
 \family default
@@ -2654,16 +2723,14 @@ character
 \end_layout
 
 \begin_layout Standard
-Faktorvariabler har två syften, dels att spara minne (heltal tar betydligt
- mycket mindre utrymme i minnet än textvektorer) och dels kan dessa variabler
- användas direkt i analysfunktioner som ex.
+Faktorvariabler har två syften,
+ dels att spara minne (heltal tar betydligt mycket mindre utrymme i minnet än textvektorer) och dels kan dessa variabler användas direkt i analysfunktioner som ex.
  linjär regression och då hanteras de korrekt (med dummyvariabler)
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Linjär regression är vanlig statistisk modell för att anlysera data med
- flera variabler.
+Linjär regression är vanlig statistisk modell för att anlysera data med flera variabler.
  Dummyvariabler är ett sätt att hantera kategoriska variabler
 \end_layout
 
@@ -2671,8 +2738,7 @@ Linjär regression är vanlig statistisk modell för att anlysera data med
 
 .
  Ett annat exempel är olika typer av grupperade analyser.
- Det gör att det ibland kan vara värdefullt att konvertera textvariabler
- till faktorvariabler.
+ Det gör att det ibland kan vara värdefullt att konvertera textvariabler till faktorvariabler.
 \end_layout
 
 \begin_layout Enumerate
@@ -2725,6 +2791,7 @@ minFaktor
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -2740,12 +2807,18 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, echo=FALSE>>=
+<<eval=TRUE,
+ echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
 
-minFactor <- factor(c(rep("a", 7), rep("b", 3), rep("c", 4)))
+minFactor <- factor(c(rep("a",
+ 7),
+ rep("b",
+ 3),
+ rep("c",
+ 4)))
 \end_layout
 
 \begin_layout Plain Layout
@@ -2764,8 +2837,7 @@ minFactor
 \end_layout
 
 \begin_layout Enumerate
-I de fall vi vill använda faktorvariabler i exempelvis en linjär regression
- blir den första klassen referensklassen.
+I de fall vi vill använda faktorvariabler i exempelvis en linjär regression blir den första klassen referensklassen.
  Vill vi ändra referensklass gör vi på följande sätt:
 \begin_inset Newline newline
 \end_inset
@@ -2781,7 +2853,8 @@ status open
 
 \begin_layout Plain Layout
 
-myFactor <- relevel(myFactor, ref=3)
+myFactor <- relevel(myFactor,
+ ref=3)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2819,8 +2892,7 @@ Skapar vi en ny
 \family typewriter
 data.frame
 \family default
- som innehåller en textvektor kommer textvektorn översättas till en faktorvariab
-el om argumentet 
+ som innehåller en textvektor kommer textvektorn översättas till en faktorvariabel om argumentet 
 \family typewriter
 stringsAsFactors=
 \family default
@@ -2850,12 +2922,14 @@ myDataFrame1 <- data.frame(text=myText)
 
 \begin_layout Plain Layout
 
-myDataFrame2 <- data.frame(text=myText, stringsAsFactors=FALSE)
+myDataFrame2 <- data.frame(text=myText,
+ stringsAsFactors=FALSE)
 \end_layout
 
 \begin_layout Plain Layout
 
-myDataFrame3 <- data.frame(text=myText, stringsAsFactors=TRUE)
+myDataFrame3 <- data.frame(text=myText,
+ stringsAsFactors=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -2895,7 +2969,8 @@ minDF
 \family typewriter
 minFaktor
 \family default
-, både som textvektor och som faktorvariabel.
+,
+ både som textvektor och som faktorvariabel.
  För att se om ni gjort rätt kan ni köra 
 \family typewriter
 str(minDF)
@@ -3017,10 +3092,8 @@ under the hood
 \end_inset
 
  är en heltalsvektor kan konverteringar ibland bli förvirrande.
- Konverterar vi en faktorvariabel till numerisk variabel erhåller vi den
- underliggande heltalsvektorn.
- Vill vi få tillgång till klassetiketterna måste vi konvertertera faktorvariabel
-n till en textvektor.
+ Konverterar vi en faktorvariabel till numerisk variabel erhåller vi den underliggande heltalsvektorn.
+ Vill vi få tillgång till klassetiketterna måste vi konvertertera faktorvariabeln till en textvektor.
  Pröva 
 \family typewriter
 as.numeric()
@@ -3056,8 +3129,7 @@ factor()
 ordered=TRUE
 \family default
 .
- Automatisk kommer ordningen vara sorterat efter de olika klasserna sett
- som text.
+ Automatisk kommer ordningen vara sorterat efter de olika klasserna sett som text.
  Se exempel nedan (och notera klass 
 \begin_inset Quotes eld
 \end_inset
@@ -3081,7 +3153,8 @@ status open
 
 \begin_layout Plain Layout
 
-myFactor <- factor(as.character(1:10), ordered=TRUE)
+myFactor <- factor(as.character(1:10),
+ ordered=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3104,7 +3177,8 @@ Skapa en ny version av
 \family typewriter
 minFaktor
 \family default
-, men gör den till en 
+,
+ men gör den till en 
 \begin_inset Quotes eld
 \end_inset
 
@@ -3123,8 +3197,7 @@ data.frame
 \end_layout
 
 \begin_layout Standard
-För att indexera en data.frame (eller välja ut subset) behöver både radindex
- 
+För att indexera en data.frame (eller välja ut subset) behöver både radindex 
 \series bold
 OCH
 \series default
@@ -3204,10 +3277,8 @@ iris[c(2,1),1]
 \end_layout
 
 \begin_layout Enumerate
-En av de mindre bra egenskaperna i R är att väljs en rad eller kolumn ut
- reduceras detta automatiskt till en vektor.
- Vill vi inte att detta ska ske (om vi exempelvis fortfarande vill ha en
- 
+En av de mindre bra egenskaperna i R är att väljs en rad eller kolumn ut reduceras detta automatiskt till en vektor.
+ Vill vi inte att detta ska ske (om vi exempelvis fortfarande vill ha en 
 \family typewriter
 data.frame
 \family default
@@ -3231,12 +3302,16 @@ status open
 
 \begin_layout Plain Layout
 
-iris[, 2, drop=FALSE]
+iris[,
+ 2,
+ drop=FALSE]
 \end_layout
 
 \begin_layout Plain Layout
 
-iris[1:2, 2, drop=FALSE]
+iris[1:2,
+ 2,
+ drop=FALSE]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3268,7 +3343,8 @@ data(faithful)
 \family typewriter
 data.frame
 \family default
-, välj ut följande element:
+,
+ välj ut följande element:
 \begin_inset Separator latexpar
 \end_inset
 
@@ -3325,7 +3401,8 @@ logi <- iris$Petal.Width > 1
 
 \begin_layout Plain Layout
 
-newiris <- iris[logi, ]
+newiris <- iris[logi,
+ ]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3352,8 +3429,7 @@ newGeyser
 \end_layout
 
 \begin_layout Enumerate
-Precis som för vektorer i almännhet kan vi ändra värden i enskilda vektorer
- i en 
+Precis som för vektorer i almännhet kan vi ändra värden i enskilda vektorer i en 
 \family typewriter
 data.fram
 \family default
@@ -3377,7 +3453,8 @@ status open
 
 \begin_layout Plain Layout
 
-iris[iris$Petal.Width < 1, "Petal.Width"] <- 0
+iris[iris$Petal.Width < 1,
+ "Petal.Width"] <- 0
 \end_layout
 
 \begin_layout Plain Layout
@@ -3391,8 +3468,8 @@ iris[iris$Petal.Width < 1, "Petal.Width"] <- 0
 \end_layout
 
 \begin_layout Enumerate
-Så vad gjordes ovan? Först valde vi ut de observationer som är mindre än
- 1.
+Så vad gjordes ovan?
+ Först valde vi ut de observationer som är mindre än 1.
  Därefter valde vi ut variabeln 
 \family typewriter
 Petal.Width
@@ -3426,12 +3503,14 @@ eruptions
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
 length()
 \family default
 ,
+
 \family typewriter
  dim()
 \family default
@@ -3447,14 +3526,15 @@ waiting
  [
 \series bold
 Tips!
+
 \series default
  relationsoperatorer]
 \end_layout
 
 \end_deeper
 \begin_layout Enumerate
-För att ta bort rader eller variabler kan vi använda minustecknet, precis
- som för vektorer.
+För att ta bort rader eller variabler kan vi använda minustecknet,
+ precis som för vektorer.
  Vill vi ta bort första och sista raden i 
 \family typewriter
 iris
@@ -3474,7 +3554,9 @@ status open
 
 \begin_layout Plain Layout
 
-iris <- iris[- c(1, nrow(iris)), ]
+iris <- iris[- c(1,
+ nrow(iris)),
+ ]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3501,8 +3583,7 @@ Nu kommer också funktionen
 order()
 \family default
  till rätta.
- Med order får vi ut en vektor med index sorterade i storleksordning efter
- en vektor/variabel.
+ Med order får vi ut en vektor med index sorterade i storleksordning efter en vektor/variabel.
  Vill vi exempelvis sortera 
 \family typewriter
 iris
@@ -3531,7 +3612,8 @@ index_vect1<-order(iris$Petal.Length)
 
 \begin_layout Plain Layout
 
-iris <- iris[index_vect1, ]
+iris <- iris[index_vect1,
+ ]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3541,7 +3623,8 @@ index_vect2<-order(iris$Petal.Length,decreasing = TRUE)
 
 \begin_layout Plain Layout
 
-iris2 <- iris[index_vect2, ]
+iris2 <- iris[index_vect2,
+ ]
 \end_layout
 
 \begin_layout Plain Layout
@@ -3671,9 +3754,10 @@ Inte sällan behöver vi kombinera data från flera olika
 \family typewriter
 data.frame
 \family default
-s, matriser, vektorer på olika sätt.
- Många gånger är själva databearbetningarna som tar tid att göra innan vi
- kan påbörja de analyser vi är intresserade av.
+s,
+ matriser,
+ vektorer på olika sätt.
+ Många gånger är själva databearbetningarna som tar tid att göra innan vi kan påbörja de analyser vi är intresserade av.
  Följande manipulationer vanliga.
 \begin_inset Separator latexpar
 \end_inset
@@ -3901,17 +3985,20 @@ status open
 
 \begin_layout Plain Layout
 
-upper10 <- iris[1:10, ]
+upper10 <- iris[1:10,
+ ]
 \end_layout
 
 \begin_layout Plain Layout
 
-lower10 <- iris[141:150, ]
+lower10 <- iris[141:150,
+ ]
 \end_layout
 
 \begin_layout Plain Layout
 
-newIris <- rbind(upper10 , lower10)
+newIris <- rbind(upper10 ,
+ lower10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -3925,8 +4012,7 @@ newIris <- rbind(upper10 , lower10)
 \end_layout
 
 \begin_layout Enumerate
-Pröva att på ett liknande sätt kombinera de första 5 raderna och de sista
- 5 raderna i 
+Pröva att på ett liknande sätt kombinera de första 5 raderna och de sista 5 raderna i 
 \family typewriter
 faithful
 \family default
@@ -3952,7 +4038,8 @@ cbind()
 \family typewriter
 data.frame
 \family default
-s ihop kolumnvis, ingen hänsyn tas till ordningen.
+s ihop kolumnvis,
+ ingen hänsyn tas till ordningen.
  Nedan är ett exempel:
 \begin_inset Newline newline
 \end_inset
@@ -3968,7 +4055,8 @@ status open
 
 \begin_layout Plain Layout
 
-newIris <- cbind(upper10 , lower10)
+newIris <- cbind(upper10 ,
+ lower10)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4020,8 +4108,7 @@ Vi börjar med att skapa två
 data.frame
 \family default
 s som exempel.
- Skapa dessa med följande kod (det vi gör är att vi kör exemplen till funktionen
- 
+ Skapa dessa med följande kod (det vi gör är att vi kör exemplen till funktionen 
 \family typewriter
 merge()
 \family default
@@ -4040,7 +4127,8 @@ status open
 
 \begin_layout Plain Layout
 
-example("merge", echo = FALSE)
+example("merge",
+ echo = FALSE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4077,7 +4165,8 @@ Vi har nu två
 \family typewriter
 data.frame
 \family default
-s att arbeta med, en med böcker och en med författare.
+s att arbeta med,
+ en med böcker och en med författare.
  Vill vi nu kombinera dessa använder vi oss av 
 \family typewriter
 merge()
@@ -4092,8 +4181,7 @@ x
 y
 \family default
  som är de två dataset vi vill kombinera.
- Vi behöver också ange vilka variabler vi ska använda som ID-variabler argumente
-t.
+ Vi behöver också ange vilka variabler vi ska använda som ID-variabler argumentet.
  Vill vi slå ihop 
 \family typewriter
 authors
@@ -4117,7 +4205,10 @@ status open
 
 \begin_layout Plain Layout
 
-res1 <- merge(x=authors, y=books, by.x = "surname", by.y = "name")
+res1 <- merge(x=authors,
+ y=books,
+ by.x = "surname",
+ by.y = "name")
 \end_layout
 
 \begin_layout Plain Layout
@@ -4201,7 +4292,11 @@ status open
 
 \begin_layout Plain Layout
 
-res1 <- merge(x=authors, y=books, by.x = "surname", by.y = "name", all=TRUE)
+res1 <- merge(x=authors,
+ y=books,
+ by.x = "surname",
+ by.y = "name",
+ all=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4215,8 +4310,7 @@ res1 <- merge(x=authors, y=books, by.x = "surname", by.y = "name", all=TRUE)
 \end_layout
 
 \begin_layout Enumerate
-Ibland kanske vi inte vill få med alla ID från båda materialen utan bara
- från ett.
+Ibland kanske vi inte vill få med alla ID från båda materialen utan bara från ett.
  För detta använder vi 
 \family typewriter
 all.x=TRUE
@@ -4244,7 +4338,8 @@ R Core
 
 
 \family default
- i det kombinerade materialet? 
+ i det kombinerade materialet?
+ 
 \end_layout
 
 \begin_layout Section
@@ -4259,9 +4354,8 @@ Vill vi aggregera delar av ett material använder vi funktionen
 aggregate()
 \family default
 .
- Vi behöver ange vilket material vi vill aggregera, efter vilken eller vilka
- ID-variabler (inlagda som en lista) samt vilken funktion vi vill använda
- för att aggregera.
+ Vi behöver ange vilket material vi vill aggregera,
+ efter vilken eller vilka ID-variabler (inlagda som en lista) samt vilken funktion vi vill använda för att aggregera.
  Vill vi 
 \begin_inset Quotes eld
 \end_inset
@@ -4270,8 +4364,7 @@ skicka med
 \begin_inset Quotes erd
 \end_inset
 
- ytterligare argument till aggregeringsfunktionen lägger vi bara till dessa
- efter de övriga argumenten.
+ ytterligare argument till aggregeringsfunktionen lägger vi bara till dessa efter de övriga argumenten.
 \begin_inset Newline newline
 \end_inset
 
@@ -4291,19 +4384,23 @@ data(iris)
 
 \begin_layout Plain Layout
 
-myAggr1 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=median)
- 
+myAggr1 <- aggregate(x=iris$Sepal.Length,
+ by=list(iris$Species),
+ FUN=median) 
 \end_layout
 
 \begin_layout Plain Layout
 
-myAggr2 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=length)
- 
+myAggr2 <- aggregate(x=iris$Sepal.Length,
+ by=list(iris$Species),
+ FUN=length) 
 \end_layout
 
 \begin_layout Plain Layout
 
-myAggr3 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=mean,
+myAggr3 <- aggregate(x=iris$Sepal.Length,
+ by=list(iris$Species),
+ FUN=mean,
  rm.na=TRUE)
 \end_layout
 
@@ -4318,8 +4415,7 @@ myAggr3 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=mean,
 \end_layout
 
 \begin_layout Enumerate
-* Tänk på att det som händer inuti R är att varje variabel (sett som en
- vektor) delas upp efter 
+* Tänk på att det som händer inuti R är att varje variabel (sett som en vektor) delas upp efter 
 \family typewriter
 by
 \family default
@@ -4358,8 +4454,9 @@ mean_median <- function(x) (mean(x) + median(x)) / 2
 
 \begin_layout Plain Layout
 
-myAggr4 <- aggregate(x=iris$Sepal.Length, by=list(iris$Species), FUN=mean_median)
- 
+myAggr4 <- aggregate(x=iris$Sepal.Length,
+ by=list(iris$Species),
+ FUN=mean_median) 
 \end_layout
 
 \begin_layout Plain Layout
@@ -4387,8 +4484,7 @@ str()
 \end_layout
 
 \begin_layout Standard
-För att undersöka objekt (vilket som helst) i R finns funktionen str (från
- internal 
+För att undersöka objekt (vilket som helst) i R finns funktionen str (från internal 
 \series bold
 str
 \series default
@@ -4477,13 +4573,11 @@ Börja med att skapa en ny variabel du kallar
 carName
 \family default
 .
- Den ska innehålla namnen på bilarna och ska vara en textvektor (inte en
- faktorvariabel).
+ Den ska innehålla namnen på bilarna och ska vara en textvektor (inte en faktorvariabel).
 \end_layout
 
 \begin_layout Enumerate
-Gör om variabeln som beskriver huruvida bilen har automatisk eller manuell
- växellåda till en faktorvariabel med etiketterna 
+Gör om variabeln som beskriver huruvida bilen har automatisk eller manuell växellåda till en faktorvariabel med etiketterna 
 \begin_inset Quotes eld
 \end_inset
 
@@ -4504,8 +4598,7 @@ Manuell
 \end_layout
 
 \begin_layout Enumerate
-Skapa en ny kategorisk variabel som delar in bilar efter om de har fler
- eller färre än 130 (brutto) hästkrafter.
+Skapa en ny kategorisk variabel som delar in bilar efter om de har fler eller färre än 130 (brutto) hästkrafter.
  Kalla variabeln 
 \family typewriter
 hpCategory
@@ -4534,7 +4627,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, echo=FALSE>>=
+<<eval=TRUE,
+ echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -4544,22 +4638,27 @@ data(mtcars)
 
 \begin_layout Plain Layout
 
-am <- factor(mtcars$am, labels=c("Automatic", "Manual"))
+am <- factor(mtcars$am,
+ labels=c("Automatic",
+ "Manual"))
 \end_layout
 
 \begin_layout Plain Layout
 
-hpCategory <- cut(mtcars$hp,breaks=c(0,130, Inf)) 
+hpCategory <- cut(mtcars$hp,breaks=c(0,130,
+ Inf)) 
 \end_layout
 
 \begin_layout Plain Layout
 
-levels(hpCategory) <- c("HP <= 130", "HP > 130")
+levels(hpCategory) <- c("HP <= 130",
+ "HP > 130")
 \end_layout
 
 \begin_layout Plain Layout
 
-table(am , hpCategory)
+table(am ,
+ hpCategory)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4599,8 +4698,7 @@ hpCategory
 \end_layout
 
 \begin_layout Enumerate
-Gör på ett liknande sätt och beräkna den genomsnittliga vikten för bilarna
- efter både kategorin 
+Gör på ett liknande sätt och beräkna den genomsnittliga vikten för bilarna efter både kategorin 
 \family typewriter
 hpCategory
 \family default
@@ -4618,23 +4716,20 @@ Ta reda på namnet på de bilar som har manuell växellåda och 8 cylindrar.
 
 \end_deeper
 \begin_layout Chapter
-Datastruktur: Listor
+Datastruktur:
+ Listor
 \end_layout
 
 \begin_layout Standard
 Listor är en mer generell datastruktur i R.
- En lista är en struktur där varje element kan vara en godtycklig annan
- datastruktur.
- Om vi exempelvis vill arbeta med 100 olika vektorer kan vi kombinera dem
- till en lista.
- Listor används ofta för att spara mer komplexa objekt i R där vi vill ha
- flera olika typer av datastrukturer.
+ En lista är en struktur där varje element kan vara en godtycklig annan datastruktur.
+ Om vi exempelvis vill arbeta med 100 olika vektorer kan vi kombinera dem till en lista.
+ Listor används ofta för att spara mer komplexa objekt i R där vi vill ha flera olika typer av datastrukturer.
  En 
 \family typewriter
 data.frame
 \family default
- är egentligen en lista i grund och botten som består av ett antal vektorer
- som är ordnade på samma sätt.
+ är egentligen en lista i grund och botten som består av ett antal vektorer som är ordnade på samma sätt.
 \end_layout
 
 \begin_layout Enumerate
@@ -4670,7 +4765,12 @@ free <- c("Saturday","Sunday")
 
 \begin_layout Plain Layout
 
-hardwork_hours <- c(2, rep(4, 3), 6, 0, 0)
+hardwork_hours <- c(2,
+ rep(4,
+ 3),
+ 6,
+ 0,
+ 0)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4688,11 +4788,13 @@ Skapa en lista med vektorerna
 \family typewriter
 hard_work
 \family default
-, 
+,
+ 
 \family typewriter
 hours
 \family default
-, 
+,
+ 
 \family typewriter
 job
 \family default
@@ -4705,7 +4807,8 @@ free
 weekPlan
 \family default
 .
- Skapa listan nedan: 
+ Skapa listan nedan:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -4720,7 +4823,10 @@ status open
 
 \begin_layout Plain Layout
 
-weekPlan <- list(hard_work, hardwork_hours, work, free)  
+weekPlan <- list(hard_work,
+ hardwork_hours,
+ work,
+ free)  
 \end_layout
 
 \begin_layout Plain Layout
@@ -4754,7 +4860,9 @@ status open
 
 \begin_layout Plain Layout
 
-weekPlan_with_names <- list(hwork=hard_work, hours=hardwork_hours, work=work,
+weekPlan_with_names <- list(hwork=hard_work,
+ hours=hardwork_hours,
+ work=work,
  free_time=free)  
 \end_layout
 
@@ -4801,7 +4909,8 @@ Precis som i data.frames kan vi ändra namnen enkelt med indexering.
 \family typewriter
 weekPlan
 \family default
- baserat på exemplet nedan: 
+ baserat på exemplet nedan:
+ 
 \begin_inset Newline newline
 \end_inset
 
@@ -4830,8 +4939,7 @@ names(weekPlan)[1] <- "HardWorkName"
 \end_layout
 
 \begin_layout Enumerate
-För att lägga till ett element i en lista gör vi precis som med en vanlig
- vektor med 
+För att lägga till ett element i en lista gör vi precis som med en vanlig vektor med 
 \family typewriter
 c()
 \family default
@@ -4851,12 +4959,15 @@ status open
 
 \begin_layout Plain Layout
 
-myList <- list("Hej", c(TRUE, FALSE))
+myList <- list("Hej",
+ c(TRUE,
+ FALSE))
 \end_layout
 
 \begin_layout Plain Layout
 
-c(myList, list(1:5))
+c(myList,
+ list(1:5))
 \end_layout
 
 \begin_layout Plain Layout
@@ -4891,8 +5002,7 @@ myNote
 \end_layout
 
 \begin_layout Enumerate
-Har vi en lista med flera vektorer kan vi lägga ihop dessa vektorer med
- 
+Har vi en lista med flera vektorer kan vi lägga ihop dessa vektorer med 
 \family typewriter
 unlist()
 \family default
@@ -4911,7 +5021,10 @@ status open
 
 \begin_layout Plain Layout
 
-num_list <- list(3:5, 10:15, 1, 20:22)
+num_list <- list(3:5,
+ 10:15,
+ 1,
+ 20:22)
 \end_layout
 
 \begin_layout Plain Layout
@@ -4941,14 +5054,12 @@ Indexering av listor
 \begin_layout Standard
 Precis som med vektorer kan vi indexera listor.
  Dock kan det vara två saker vi vill göra.
- Antingen vill vi välja ut element i en lista (men fortsatt behålla objektet
- som en lista) eller så vill vi välja ut det objekt som ligger i listan.
+ Antingen vill vi välja ut element i en lista (men fortsatt behålla objektet som en lista) eller så vill vi välja ut det objekt som ligger i listan.
  
 \end_layout
 
 \begin_layout Standard
-För att välja ut en del av en lista (men fortfarande som en lista) används
- som vanligt hakparentes.
+För att välja ut en del av en lista (men fortfarande som en lista) används som vanligt hakparentes.
 \end_layout
 
 \begin_layout Standard
@@ -4980,7 +5091,10 @@ status open
 
 \begin_layout Plain Layout
 
-minLista <- list("Hej", 1:10, c("Hej", "Karlsson"))
+minLista <- list("Hej",
+ 1:10,
+ c("Hej",
+ "Karlsson"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -5052,8 +5166,7 @@ weekPlan
 \end_layout
 
 \begin_layout Enumerate
-Precis som med vektorer kan vi ändra element i en lista genom att använda
- hakparenteser:
+Precis som med vektorer kan vi ändra element i en lista genom att använda hakparenteser:
 \begin_inset Newline newline
 \end_inset
 
@@ -5078,7 +5191,8 @@ minLista
 
 \begin_layout Plain Layout
 
-minLista[2:3] <- list(hejsan=c(1,2,3), TRUE)
+minLista[2:3] <- list(hejsan=c(1,2,3),
+ TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5131,6 +5245,7 @@ faithful
  [
 \series bold
 Tips!
+
 \series default
  
 \family typewriter
@@ -5141,8 +5256,7 @@ data()
 \end_inset
 
 Baserat på detta dataset.
- Plocka ut de enskilda variablerna i faithful och spara dem som enskilda
- element i en lista.
+ Plocka ut de enskilda variablerna i faithful och spara dem som enskilda element i en lista.
  Undersök vilka sätt att 
 \begin_inset Quotes eld
 \end_inset
@@ -5188,8 +5302,7 @@ namn
 \end_layout
 
 \begin_layout Enumerate
-Beräkna den genomsnittliga bränsleförbrukningen för alla bilar och spara
- detta i ett element du kallar 
+Beräkna den genomsnittliga bränsleförbrukningen för alla bilar och spara detta i ett element du kallar 
 \family typewriter
 meanMPG
 \family default
@@ -5204,7 +5317,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, echo=FALSE>>=
+<<eval=TRUE,
+ echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -5237,8 +5351,7 @@ data
 \end_layout
 
 \begin_layout Enumerate
-Utgå från det data du sparat i listan ovan och beräkna den genomsnittliga
- bilvikten och spara detta i ett nytt element du kallar 
+Utgå från det data du sparat i listan ovan och beräkna den genomsnittliga bilvikten och spara detta i ett nytt element du kallar 
 \family typewriter
 meanWeight
 \family default
@@ -5253,7 +5366,8 @@ status open
 
 \begin_layout Plain Layout
 
-<<eval=TRUE, echo=FALSE>>=
+<<eval=TRUE,
+ echo=FALSE>>=
 \end_layout
 
 \begin_layout Plain Layout
@@ -5285,14 +5399,13 @@ Filhantering och grundläggande input och output (I/O)
 \end_layout
 
 \begin_layout Standard
-Det är mycket sällan vi har nytta av de inbyggda datamaterialen i R, utan
- i de flesta fall behöver vi läsa in data från olika filformat.
+Det är mycket sällan vi har nytta av de inbyggda datamaterialen i R,
+ utan i de flesta fall behöver vi läsa in data från olika filformat.
  Detta brukar kallas I/O eller input och output.
 \end_layout
 
 \begin_layout Standard
-För att läsa och skriva till filer utanför R behöver vi börja med att lära
- oss hur R kommunicerar med operativsystemets filsystem.
+För att läsa och skriva till filer utanför R behöver vi börja med att lära oss hur R kommunicerar med operativsystemets filsystem.
  Detta kan skilja sig mellan olika operativsystem hur det ser ut.
  
 \end_layout
@@ -5422,8 +5535,7 @@ myOldDir <- getwd()
 \end_layout
 
 \begin_layout Enumerate
-Välj en katalog du vill arbeta i och skriv ned sökvägen som ett textelement
- och spara som 
+Välj en katalog du vill arbeta i och skriv ned sökvägen som ett textelement och spara som 
 \family typewriter
 mittWorkingDirectory
 \family default
@@ -5435,8 +5547,7 @@ mittWorkingDirectory
 Crtl+L
 \family default
  för att visa sökvägen (path) till den aktuella mappen i caja.
- Om du inte vet sökvägen utantill är detta ett smidigt sätt att ta reda
- på den.
+ Om du inte vet sökvägen utantill är detta ett smidigt sätt att ta reda på den.
  
 \begin_inset Newline newline
 \end_inset
@@ -5444,6 +5555,7 @@ Crtl+L
 [
 \series bold
 Tips:
+
 \series default
  I R (och flera andra programmeringsspråk) har tecknet 
 \family typewriter
@@ -5451,8 +5563,8 @@ Tips:
 \backslash
 
 \family default
- en särskild betydelse, vill du skapa en sökväg behöver du antingen använda
- 
+ en särskild betydelse,
+ vill du skapa en sökväg behöver du antingen använda 
 \family typewriter
 /
 \family default
@@ -5475,8 +5587,7 @@ Tips:
 \end_layout
 
 \begin_layout Enumerate
-Det är möjligt i vissa operativsystem att manuellt söka sig fram till den
- sökväg vi vill använda oss av.
+Det är möjligt i vissa operativsystem att manuellt söka sig fram till den sökväg vi vill använda oss av.
  Detta görs då med funktionen 
 \family typewriter
 file.choose()
@@ -5505,8 +5616,7 @@ getwd()
 \end_layout
 
 \begin_layout Enumerate
-Testa sen att ändra tillbaka till den gamla working directory genom att
- använda variabeln 
+Testa sen att ändra tillbaka till den gamla working directory genom att använda variabeln 
 \family typewriter
 myOldDir
 \family default
@@ -5514,8 +5624,7 @@ myOldDir
 \end_layout
 
 \begin_layout Enumerate
-Hitta filhanteraren i RStudio och se vilka filer som ligger i några olika
- mappar.
+Hitta filhanteraren i RStudio och se vilka filer som ligger i några olika mappar.
  
 \end_layout
 
@@ -5577,7 +5686,8 @@ literal "false"
 \family typewriter
 google.csv
 \family default
-, denna fil kan du ladda ned 
+,
+ denna fil kan du ladda ned 
 \series bold
 \color blue
 
@@ -5593,12 +5703,21 @@ literal "false"
 \series default
 \color inherit
 .
+ När ni öppnat filerna i webbläsaren och spara ned filerna (
+\family typewriter
+Ctrl+S
+\family default
+) i lämplig mapp på er dator.
 \end_layout
 
 \begin_layout Enumerate
-En god vana är att först titta på data som kommer csv/txt-filer i en enkel
- filhanterare innan de läses in i R.
- I SU-salarna kan pluma användas, testa att öppna 
+En god vana är att först titta på data som kommer csv/txt-filer i en enkel filhanterare innan de läses in i R.
+ I SU-salarna kan 
+\series bold
+pluma
+\series default
+ användas,
+ testa att öppna 
 \family typewriter
 Apple.txt
 \family default
@@ -5608,8 +5727,9 @@ google.csv
 \family default
  i pluma.
  Kolla hur data verkar vara organiserat.
- Vad finns det för variabler? Vilket tecken används som avgränsare mellan
- variabler? Vilket tecken används som decimaltecken?
+ Vad finns det för variabler?
+ Vilket tecken används som avgränsare mellan variabler?
+ Vilket tecken används som decimaltecken?
 \end_layout
 
 \begin_layout Enumerate
@@ -5647,9 +5767,11 @@ sep=
 \family typewriter
 header=TRUE
 \family default
- ? [
+ ?
+ [
 \series bold
-Tips: 
+Tips:
+ 
 \series default
 läs hjälpen för 
 \family typewriter
@@ -5682,7 +5804,8 @@ status open
 
 \begin_layout Plain Layout
 
-apple <- read.table(file="Apple.txt",sep=";", header=TRUE)
+apple <- read.table(file="Apple.txt",sep=";",
+ header=TRUE)
 \end_layout
 
 \begin_layout Plain Layout
@@ -5739,18 +5862,17 @@ read.csv()
 \family typewriter
 read.csv2()
 \family default
- (det finns olika funktioner för europeisk standard och amerikans standard
- för csv-filer) istället för 
+ (det finns olika funktioner för europeisk standard och amerikans standard för csv-filer) istället för 
 \family typewriter
 read.table()
 \family default
 .
- Vilken funktion fungerar för den aktuella csv-filen? Läs i dokumentation
- hur du gör för att kontrollera om kategoriska variabler ska vara av typen
- character eller factor.
+ Vilken funktion fungerar för den aktuella csv-filen?
+ Läs i dokumentation hur du gör för att kontrollera om kategoriska variabler ska vara av typen character eller factor.
  [
 \series bold
 Tips:
+
 \series default
  
 \family typewriter
@@ -5760,12 +5882,12 @@ stringsAsFactors=
 \end_layout
 
 \begin_layout Enumerate
-För att exportera dataset gör en på ett liknande sätt som med funktionerna
- 
+För att exportera dataset gör en på ett liknande sätt som med funktionerna 
 \family typewriter
 write.csv()
 \family default
-, 
+,
+ 
 \family typewriter
 write.csv2()
 \family default
@@ -5838,7 +5960,8 @@ Gör om steg 4 och 5 men spara filerna i andra mappar och med andra namn.
 
 \begin_layout Standard
 .Rdata-filer är ett effektivt sättet att spara data som filer (jmf med SAS,
- SPSS, Excel och csv).
+ SPSS,
+ Excel och csv).
  Det är R:s dataformat och bygger på en komprimering av materialet.
  Fördelen är att vi också kan spara flera R-objekt i en och samma .Rdata-fil.
  För att arbeta med .Rdata-filer använder vi oss av 
@@ -6050,8 +6173,7 @@ ett
 \series default
  R-objekt (tex data.frame).
  Detta kan lösas genom att lägga flera R-objekt i en lista.
- Fördelen med rds-filer är att när de läses in i R så kan de sparas i ett
- godtycklig variabel.
+ Fördelen med rds-filer är att när de läses in i R så kan de sparas i ett godtycklig variabel.
  Detta kan inte Rdata-filer som har ett 
 \begin_inset Quotes sld
 \end_inset
@@ -6061,8 +6183,7 @@ fixt
 \end_inset
 
  namn när de läses in.
- I stora och komplexa funktioner kan det vara mycket användbart att jobba
- med rds-filer.
+ I stora och komplexa funktioner kan det vara mycket användbart att jobba med rds-filer.
  
 \end_layout
 
@@ -6203,7 +6324,8 @@ apple.rds
 \family typewriter
 readRDS()
 \family default
-, döp objektet till 
+,
+ döp objektet till 
 \family typewriter
 apple_new
 \family default
@@ -6245,7 +6367,8 @@ apple.rds
 \family typewriter
 readRDS()
 \family default
-, döp objektet till 
+,
+ döp objektet till 
 \family typewriter
 a
 \family default
@@ -6300,13 +6423,14 @@ storebror.rds
 \family typewriter
 readRDS()
 \family default
-, döp objektet till 
+,
+ döp objektet till 
 \family typewriter
 data_list
 \family default
 .
- Vilka objekt har du laddat in i R? Plocka ut de olika dataseten ur listan
- och spara dem som egna variabler.
+ Vilka objekt har du laddat in i R?
+ Plocka ut de olika dataseten ur listan och spara dem som egna variabler.
 \begin_inset Newline newline
 \end_inset
 
@@ -6349,14 +6473,15 @@ rm()
 \end_layout
 
 \begin_layout Enumerate
-Vad är skillnaden mellan Rdata-filer och rds-filer? Formulera svaret med
- egna ord och skriv ner det.
+Vad är skillnaden mellan Rdata-filer och rds-filer?
+ Formulera svaret med egna ord och skriv ner det.
 \end_layout
 
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body
