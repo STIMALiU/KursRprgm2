@@ -186,13 +186,17 @@ iris$Species
 ?factor
 
 text_vect<-rep(c("a","a","b","c"),each=2)
+text_vect
 is.character(text_vect)
 factor_vect<-factor(x = text_vect)
 factor_vect
 levels(factor_vect)
 is.factor(factor_vect)
 
-
+factor_vect
+factor_vect2<-factor_vect
+factor_vect2<-relevel(factor_vect2,ref = "c")
+factor_vect2
 
 y<-factor(c("a","a","c","d","d"))
 y
