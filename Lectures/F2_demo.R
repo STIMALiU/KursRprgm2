@@ -361,9 +361,12 @@ merge(x = x,y = y,by = "id")
 
 
 #-------------------------------------------------------------------------------
+# beräkna grupperad statistik
+
 data(iris)
 ?iris
 iris[1:10,]
+
 aggregate(x = iris$Sepal.Length,by=list(iris$Species),FUN = mean)
 
 
@@ -371,6 +374,7 @@ aggregate(x = iris[,-5],by=list(iris$Species),FUN = mean)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = min)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 
+aggregate(x = iris[,-5],by=list(iris$Species),FUN = median)
 
 
 
@@ -382,6 +386,7 @@ aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 
+# skapar en testmapp som ligger här:
 # /home/joswi05/Desktop/temp
 
 ?getwd
@@ -390,16 +395,17 @@ dir()
 # /home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2025/KursRprgm2/Labs/DataFiles
 
 setwd(dir = "/home/joswi05/Desktop/temp/")
+dir()
 
-# github: 
-# https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt
+
 
 # ------------------------------------------------------------------------------
 # input:
 # ------------------------------------------------------------------------------
 
-# exempelfilen ligger här:
-# "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt"
+# exempelfilen ligger här: (github)
+# https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt
+# vi laddar ned den
 
 path<-file.choose()
 print(path)
@@ -419,6 +425,7 @@ sd(x1$a3)
 
 setwd("/home/joswi05/Desktop/temp/")
 dir()
+rm(x1)
 x1<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",")
 x1
 
@@ -427,6 +434,7 @@ x2<-read.table(file = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/mai
 
 
 x3<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ".")
+x3$a3
 x3<-read.table(file = "data1.txt",header = TRUE,sep = "-",dec = ".")
 x3$a3
 
@@ -437,17 +445,21 @@ typeof(x1[,1])
 x2<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",",stringsAsFactors = FALSE)
 typeof(x2[,1])
 str(x2)
+x2<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ",",stringsAsFactors = TRUE)
+str(x2)
 typeof(x2[,1])
-
-
 
 
 ?read.csv()
 ?read.csv2()
 
+
+
+
 load(file = "testdata.Rdata")
 new_data<-readRDS(file = "testdata.rds")
 
+abc123<-readRDS(file = "testdata.rds")
 
 
 # ------------------------------------------------------------------------------
@@ -457,7 +469,9 @@ data(iris)
 head(iris)
 
 myIris<-iris[15:30,2:3]
+myIris
 
+getwd()
 write.table(x = myIris,file = "myIris1.txt")
 
 write.table(x = myIris,file = "myIris2.txt",sep = "\t",dec = ",",row.names = FALSE)
