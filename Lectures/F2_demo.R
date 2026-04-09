@@ -13,11 +13,15 @@
 
 ?matrix
 
+c(1,42,323,11,434,54,34,23,2)
+
 A1<-matrix(data = c(1,42,323,11,434,54,34,23,2),nrow = 3,ncol = 3)
 A1
+A1[,2]
 
 is.matrix(A1)
 is.vector(A1)
+
 is.matrix(FALSE)
 is.vector(FALSE)
 
@@ -55,7 +59,7 @@ A1[c(3,1),c(1,3)]
 A1[c(3,3),c(2,1)]
 
 
-A<-matrix(data = c(1,9,6,2),2,2)
+A<-matrix(data = c(1,9,6,2),nrow = 2,ncol = 2)
 A
 B<-matrix(data = c(TRUE,TRUE,TRUE,FALSE),2,2)
 B
@@ -75,6 +79,7 @@ nrow(A1)
 dim(a2)
 dim(a1)
 length(a1)
+length(A1)
 is.vector(a1)
 is.matrix(a2)
 
@@ -100,6 +105,7 @@ d[1]
 
 dim_val<-dim(A1)
 is.vector(dim_val)
+dim_val[1] # antal rader
 dim(A1)[1]
 
 dim_val[1]
@@ -157,7 +163,7 @@ data()
 data("airquality")
 ?airquality
 head(airquality,n = 3)
-tail(airquality)
+tail(airquality,n = 10)
 dim(airquality)
 
 
@@ -177,6 +183,7 @@ colnames(iris)
 iris$Sepal.Length
 
 mean(iris$Sepal.Length)
+sd(iris$Sepal.Length)
 
 iris$Sepal.Length[1:5]
 iris$Species
@@ -239,6 +246,7 @@ mtcars[1:3,c(1,3,5)]
 
 mtcars[4,3]
 mtcars$disp[4]
+
 mtcars[[3]]
 mtcars[[3]][4]
 
@@ -263,6 +271,9 @@ y
 x[1]
 y[1]
 
+x2<-x[1]
+x2
+is.list(x2)
 
 x[[1]]
 y[[1]]
@@ -303,6 +314,8 @@ storList
 
 str(storList)
 
+storList$minLista$x2[2]
+
 storList$minMat[1:2,3:4]
 storList$minLista[2]
 storList$minLista[[2]]
@@ -317,6 +330,8 @@ a<-matrix(1:4,2,2)
 b<-matrix(11:14,2,2)
 a
 b
+dim(a)
+dim(b)
 cbind(a,b)
 rbind(a,b)
 rbind(b,a)
