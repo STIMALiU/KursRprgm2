@@ -303,8 +303,6 @@
 \begin{itemize}
 \tightlist
 \item
-  Sammanfattning Föreläsning 2
-\item
   Villkorssatser
 \item
   Loopar
@@ -315,74 +313,7 @@
 \end{itemize}
 \end{frame}
 
-\section{Sammanfattning föreläsning
-2}\label{sammanfattning-fuxf6reluxe4sning-2}
 
-\begin{frame}{Matriser}
-\phantomsection\label{matriser}
-\begin{itemize}
-\tightlist
-\item
-  Två dimensionell vektor, alla element av samma typ
-\item
-  Välj index med \texttt{[ "rad" , "kolumn" ]}
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Saknas \texttt{rad} eller \texttt{kolumn} väljs hela.
-  \item
-    Om man väljer ut bara är en rad eller kolumn görs resultatet om till
-    en vektor.
-
-    \begin{itemize}
-    \tightlist
-    \item
-      För att behålla matrisstrukturen använd \texttt{drop = FALSE}
-    \end{itemize}
-  \end{itemize}
-\item
-  \texttt{length} ger antal element
-\item
-  \texttt{dim} ger dimensionerna
-\end{itemize}
-\end{frame}
-
-\begin{frame}{data.frame}
-\phantomsection\label{data.frame}
-\begin{itemize}
-\tightlist
-\item
-  Dataset, där varje variabel (kolumn) kan ha olika typer.
-\item
-  Varje variabel har ett namn.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Komma åt variabler via namnet eller ordningen.
-  \end{itemize}
-\item
-  Varje rad innehåller ett värde per kolumn.
-\item
-  Lätt att lägga till och ta bort kolumner.
-\end{itemize}
-\end{frame}
-
-\begin{frame}{Listor}
-\phantomsection\label{listor}
-\begin{itemize}
-\tightlist
-\item
-  Tänk vektor där varje element kan vara vad som helst.
-\item
-  Möjligt att namnge element.
-\item
-  \texttt{[ ]} tar fram en del av listan
-\item
-  \texttt{[[ ]]} tar fram elementet
-\end{itemize}
-\end{frame}
 
 \section{Programkontroll}\label{programkontroll}
 
@@ -522,6 +453,22 @@
 ## [1] "Hmm..."
 \end{verbatim}
 \end{frame}
+
+\begin{frame}{Villkorssatser}
+  Vi ställer frågor till programmet/data:
+  \begin{itemize}
+  \item
+    Flera oberoende ja/nej-frågor $\rightarrow$ flera oberoende if-satser
+  \item
+    Beroende ja/nej-frågor $\rightarrow$ if-else-sats
+  \item
+    Fråga med fler än två svarsalternativ $\rightarrow$ if-else-sats
+  \item
+    Bra att rita ett beslutsträd som visualiserar if-else-satser!
+  \end{itemize}
+
+\end{frame}
+
 
 \begin{frame}{Demo}
 \phantomsection\label{demo}
@@ -777,21 +724,21 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}
 \textbf{Kontrollstruktur} & \textbf{Effet} \\
 \midrule\noalign{}
 \endhead
-\texttt{next()} & Börja med nästa iteration direkt \\
-\texttt{break()} & Avbryt den aktuella / innersta loopen \\
-\texttt{stop()} & Avbryter allt och genererar ett felmeddelande \\
+\texttt{next} & Börja med nästa iteration direkt \\
+\texttt{break} & Avbryt den aktuella / innersta loopen \\
+\texttt{stop} & Avbryter allt och genererar ett felmeddelande \\
 \bottomrule\noalign{}
 \end{longtable}
 \end{frame}
 
-\begin{frame}[fragile]{next() - Exempel}
+\begin{frame}[fragile]{next - Exempel}
 \phantomsection\label{next---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{i }\OtherTok{\textless{}{-}} \DecValTok{0}
 \ControlFlowTok{while}\NormalTok{ ( i }\SpecialCharTok{\textless{}} \DecValTok{11}\NormalTok{ ) \{}
 \NormalTok{  i }\OtherTok{\textless{}{-}}\NormalTok{ i }\SpecialCharTok{+} \DecValTok{1}
-  \ControlFlowTok{if}\NormalTok{ ( i }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{ }\ControlFlowTok{next}\NormalTok{() \}}
+  \ControlFlowTok{if}\NormalTok{ ( i }\SpecialCharTok{\%\%} \DecValTok{2} \SpecialCharTok{==} \DecValTok{0}\NormalTok{) \{ }\ControlFlowTok{next}\NormalTok{ \}}
   \FunctionTok{print}\NormalTok{(i)}
 \NormalTok{\}}
 \end{Highlighting}
@@ -809,13 +756,13 @@ loopar}\label{kontrollstrukturer-fuxf6r-loopar}
 \end{verbatim}
 \end{frame}
 
-\begin{frame}[fragile]{break() - exempel}
+\begin{frame}[fragile]{break - exempel}
 \phantomsection\label{break---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ControlFlowTok{for}\NormalTok{ ( i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{ ) \{}
   \ControlFlowTok{for}\NormalTok{ ( letter }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"a"}\NormalTok{,}\StringTok{"b"}\NormalTok{,}\StringTok{"c"}\NormalTok{) ) \{}
-    \ControlFlowTok{if}\NormalTok{ ( letter }\SpecialCharTok{==} \StringTok{"b"}\NormalTok{ ) \{ }\ControlFlowTok{break}\NormalTok{() \}}
+    \ControlFlowTok{if}\NormalTok{ ( letter }\SpecialCharTok{==} \StringTok{"b"}\NormalTok{ ) \{ }\ControlFlowTok{break}\NormalTok{ \}}
     \FunctionTok{print}\NormalTok{(letter)}
 \NormalTok{  \}}
 \NormalTok{\}}

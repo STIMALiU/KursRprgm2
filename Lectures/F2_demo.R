@@ -343,6 +343,12 @@ rbind(b,a)
 
 rbind(a,a,a)
 
+x<-1:10
+y<-10:1
+A<-cbind(x,y)
+A
+
+
 ?merge
 # se:
 # example(merge)
@@ -358,6 +364,7 @@ y
 
 # slå samman och matcha baserat på id
 merge(x = x,y = y,by = "id")
+merge(x = y,y = x,by = "id")
 
 
 #-------------------------------------------------------------------------------
@@ -367,10 +374,22 @@ data(iris)
 ?iris
 iris[1:10,]
 
+mean(Sepal.Length)
+
+Sepal.Length<-iris$Sepal.Length
+Species<-iris$Species
+species_mean<-aggregate(x = Sepal.Length,by=list(Species),FUN=mean)
+
+species_mean
+
 aggregate(x = iris$Sepal.Length,by=list(iris$Species),FUN = mean)
 
+aggregate(x = iris$Sepal.Length,by=list(iris$Species),FUN = max)
 
+head(iris)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = mean)
+
+
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = min)
 aggregate(x = iris[,-5],by=list(iris$Species),FUN = sd)
 
@@ -407,15 +426,17 @@ dir()
 # https://raw.githubusercontent.com/STIMALiU/KursRprgm2/main/Labs/DataFiles/data1.txt
 # vi laddar ned den
 
-path<-file.choose()
-print(path)
+path1<-file.choose()
+print(path1)
 
 
 path<-"/home/joswi05/Desktop/temp/data1.txt"
+
 x1<-read.table(file = path,header = TRUE,sep = ";",dec = ",",)
 
 x1<-read.table(file = "/home/joswi05/Desktop/temp/data1.txt",header = TRUE,sep = ";",dec = ",",)
 
+str(x1)
 x1
 
 mean(x1$a3)
@@ -434,8 +455,12 @@ x2<-read.table(file = "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/mai
 
 
 x3<-read.table(file = "data1.txt",header = TRUE,sep = ";",dec = ".")
+x3
+str(x3)
 x3$a3
+mean(x3$a3)
 x3<-read.table(file = "data1.txt",header = TRUE,sep = "-",dec = ".")
+x3
 x3$a3
 
 str(x3)
@@ -455,7 +480,7 @@ typeof(x2[,1])
 
 
 
-
+dir()
 load(file = "testdata.Rdata")
 new_data<-readRDS(file = "testdata.rds")
 
