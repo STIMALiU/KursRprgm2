@@ -51,14 +51,11 @@ is.numeric(x)
 
 # Detta är ett exempel på kontroll av argument
 f <- function(x){
-  
   if(is.numeric(x)){
     my_mean <- mean(x)
     print(my_mean)
-    
   } else{
     print("x is not numeric")
-    
   }
 }
 
@@ -71,6 +68,9 @@ f(x = TRUE)
 f(x = 1:340)
 f(x = "abc")
 mean("abc")
+
+
+
 
 a<-TRUE
 b<-FALSE
@@ -139,10 +139,11 @@ for(i in vector){
   print(i)
 }
 
-
+vector
 for(i in vector){
   print(my_sign( x = i ))
 }
+
 
 # beror inte av loop-index "i"
 for(i in vector){
@@ -405,30 +406,30 @@ b<-my_mean(x=c(TRUE,FALSE,FALSE))
 b
 
 # skriv ut info till i konsolen 
-my_mean<-function(x){
+my_mean_var<-function(x){
   print(typeof(x))
   val1<-mean(x)
   val2<-var(x)
   y<-list(mean=val1,var=val2)
   return(y)
 }
-my_mean(x = 1:8)
-my_mean(x = c(2.1,5.56,7.9,0.32))
-my_mean(x=c(TRUE,FALSE,FALSE))
-my_mean(x=c("a","j"))
+my_mean_var(x = 1:8)
+my_mean_var(x = c(2.1,5.56,7.9,0.32))
+my_mean_var(x=c(TRUE,FALSE,FALSE))
+my_mean_var(x=c("a","j"))
 
 
 
 # ------------------------------------------------------------------------------
 # browser och debug
 
-debug(my_mean)
-my_mean(x = 1:8)
-my_mean(x=c(TRUE,FALSE,FALSE))
-undebug(my_mean)
-my_mean(x = 1:8)
+debug(my_mean_var)
+my_mean_var(x = 1:8)
+my_mean_var(x=c(TRUE,FALSE,FALSE))
+undebug(my_mean_var)
+my_mean_var(x = 1:8)
 
-my_mean<-function(x){
+my_mean_var<-function(x){
   print(typeof(x))
   val1<-mean(x)
   #browser()
@@ -436,7 +437,7 @@ my_mean<-function(x){
   y<-list(mean=val1,var=val2)
   return(y)
 }
-my_mean(x = 1:8)
+my_mean_var(x = 1:8)
 
 
 
