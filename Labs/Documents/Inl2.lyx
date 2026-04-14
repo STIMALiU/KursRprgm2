@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "Inluppg.lyx"
+literal "true"
 
 \end_inset
 
@@ -184,8 +194,7 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2025/KursRprgmTeacher/Labs/ex
-ercise_solutions/
+/home/joswi05/Dropbox/Josef/arbete/kurser/732G33_VT2026/KursRprgmTeacher/Labs/exercise_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -199,7 +208,8 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+for(sol_file in solution_files) source(file = paste0(solution_path,
+ sol_file),
  echo = FALSE)
 \end_layout
 
@@ -222,7 +232,8 @@ Inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Ladda nu ner laborationsmallen, som finns 
+Ladda nu ner laborationsmallen,
+ som finns 
 \series bold
 \color blue
 
@@ -321,8 +332,7 @@ Inlämningsuppgifter utgår ifrån att ni har gjort
 övningsuppgifterna
 \series default
  ovan först.
- Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
- inlämningsuppgifterna.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med inlämningsuppgifterna.
 \end_layout
 
 \begin_layout Itemize
@@ -335,14 +345,14 @@ problemet
 \end_inset
 
  i uppgiften.
- Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vad ska funktionen göra?
+ Beskriv problemet för er själva.
  Vissa problem är det bra att bryta ner i mindre delproblem.
  
 \end_layout
 
 \begin_layout Itemize
-Börja med att lösa problemet (eller det första delproblemet) med vanlig
- kod (dvs inte i en funktion) i ett R-script.
+Börja med att lösa problemet (eller det första delproblemet) med vanlig kod (dvs inte i en funktion) i ett R-script.
 \end_layout
 
 \begin_deeper
@@ -355,13 +365,13 @@ Lös ett delproblem i taget vid behov.
 \end_deeper
 \begin_layout Itemize
 Sätt sedan in er kod i en funktion.
- Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
- (testfallen).
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna (testfallen).
  Se till att funktionen har rätt namn och rätt namn på argumenten.
 \end_layout
 
 \begin_layout Itemize
-Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+Ta er funktion och lägg in den i kodmallen,
+ dvs i ett nytt R-script.
  Skapa variablerna 
 \family typewriter
 Namn
@@ -375,8 +385,8 @@ LiuId
 \end_layout
 
 \begin_layout Itemize
-Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
- och ID-variabler och ev.
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna,
+ namn- och ID-variabler och ev.
  kommentarer.
  
 \end_layout
@@ -402,19 +412,20 @@ hyfsat klar
 \begin_inset Quotes srd
 \end_inset
 
-, annars kommer ni att få många fel i markmyassignment, och det är svårt
- att veta var man ska börja kolla.
+,
+ annars kommer ni att få många fel i markmyassignment,
+ och det är svårt att veta var man ska börja kolla.
 \end_layout
 
 \begin_layout Itemize
-Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
- kommer ni att få många fel i markmyassignment.
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
- som ni får.
+Om ni inte klarar alla tester i markmyassignment:
+ undersök vilka felmeddelanden som ni får.
  Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
 \end_layout
 
@@ -424,8 +435,7 @@ Innan ni lämnar in:
 
 \begin_deeper
 \begin_layout Itemize
-Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
-ten.
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstexten.
  Ibland måste en viss metod användas för att lösa uppgiften.
  Ibland är vissa funktioner inte tillåtna i en viss uppgift.
  Så läs noga i varje uppgift vad som gäller.
@@ -438,11 +448,17 @@ Se till att ni klarar alla tester i markmyassignment
 \end_deeper
 \begin_layout Section*
 Dokumentation och kodstil
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Dokumentation-och-kodstil"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Från och med denna laboration och de resterade laborationerna i kursen så
- ska ni förutom att lösa angivna uppgifter också 
+Från och med Inlämining 2 och de resterade inlämningarna i kursen så ska ni förutom att lösa angivna uppgifter också 
 \series bold
 kommentera
 \series default
@@ -472,9 +488,13 @@ läsbar
 \end_layout
 
 \begin_layout Itemize
-Följ någon av kodstilarna i Datorlaboration 4.
- Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
- i den stil som ni väljer att använda.
+Följ någon av 
+\series bold
+kodstilarna
+\series default
+ i Övningsuppgifter 4.
+ Ni måste inte följa dessa exakt,
+ men koden ska se bra ut och var konsekventa i den stil som ni väljer att använda.
 \end_layout
 
 \begin_layout Itemize
@@ -502,7 +522,8 @@ Kommentarer:
 
 \begin_deeper
 \begin_layout Itemize
-Funktionshuvud: Använd mallen för 
+Funktionshuvud:
+ Använd mallen för 
 \family typewriter
 roxygen2
 \family default
@@ -532,11 +553,14 @@ Förklara kort vad funktionen gör
 \family typewriter
 @param 
 \family default
-Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+Skriv först arguments namn,
+ sen mellanslag och sen förklara kort argumentet.
  Upprepa detta för alla argument i funktionen.
- Ex: 
+ Ex:
+ 
 \family typewriter
-x Numerisk vektor, används vid beräkning av medelvärde.
+x Numerisk vektor,
+ används vid beräkning av medelvärde.
 \end_layout
 
 \begin_layout Itemize
@@ -549,7 +573,8 @@ Förklara vad funktionen returnerar
 
 \end_deeper
 \begin_layout Itemize
-Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+Kommenter i funktionen:
+ Era lösningar ska innehålla lämpliga kommenater,
  där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
  Ni behöver inte föklara alla detaljer.
  Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
@@ -557,16 +582,25 @@ Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
 \end_layout
 
 \begin_layout Itemize
-Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
- om ett år.
+Tips:
+ Tänk att det ska vara lätt att förstå er funktion långt senare,
+ tex om ett år.
  Vilka kommentarer behövs då?
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
- instruktioner för kommentarer och kodstil.
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående instruktioner för kommentarer och kodstil.
  
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Notera
+\series default
+:
+ Man ha helt rätt på markmyassignment-testerna men ändå få komplettering på inlämningen om man inte har tillräckligt bra dokumentation och kodstil.
 \end_layout
 
 \begin_layout Section
@@ -599,8 +633,9 @@ literal "false"
 \end_layout
 
 \begin_layout Standard
-För AB0 systemet gäller att en person kan antingen vara typ A, B, AB eller
- 0.
+För AB0 systemet gäller att en person kan antingen vara typ A,
+ B,
+ AB eller 0.
  Följande gäller:
 \end_layout
 
@@ -621,8 +656,7 @@ En person med typ 0 kan bara ta emot från en person med typ 0.
 \end_layout
 
 \begin_layout Standard
-För Rh systemet gäller att en person kan antingen vara positiv (+) eller
- negativ (-).
+För Rh systemet gäller att en person kan antingen vara positiv (+) eller negativ (-).
  Följande gäller:
 \end_layout
 
@@ -643,8 +677,7 @@ blood_match()
 \family typewriter
 patients
 \family default
- som talar om ifall en person kan ta emot en annan persons blod baserat
- på deras blodgrupp.
+ som talar om ifall en person kan ta emot en annan persons blod baserat på deras blodgrupp.
  Ni får givet en lista 
 \begin_inset ERT
 status open
@@ -684,8 +717,10 @@ texttt{receiver}
 
 \end_inset
 
-, en för varje person.
- Varje person har två variabler, som heter 
+,
+ en för varje person.
+ Varje person har två variabler,
+ som heter 
 \begin_inset ERT
 status open
 
@@ -711,8 +746,8 @@ texttt{rh}
 
 \end_inset
 
- som båda innehåller en textsträng, där textsträngarna ska vara A,B,AB eller
- 0 för 
+ som båda innehåller en textsträng,
+ där textsträngarna ska vara A,B,AB eller 0 för 
 \begin_inset ERT
 status open
 
@@ -759,12 +794,15 @@ status open
 
 \begin_layout Plain Layout
 
-test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+test_patientsA = list(giver = list(AB0 = "0",
+ rh = "-" ),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-	receiver = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB",
+ rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -823,7 +861,8 @@ texttt{Incompatible AB0}
 
 \end_inset
 
-, 
+,
+ 
 \begin_inset ERT
 status open
 
@@ -854,7 +893,8 @@ texttt{Incompatible AB0 and rh}
 \family typewriter
 print()
 \family default
- för att ge denna output, ni ska inte använda
+ för att ge denna output,
+ ni ska inte använda
 \family typewriter
  return()
 \family default
@@ -903,8 +943,8 @@ Testa så att argumentet patients är en lista.
 Kolla så att AB0 och rh-värdena är tillåtna.
  
 \emph on
-tips: skapa en vektor med tillåtna värden och använda %in% för att se om
- det givna värdet finns i denna vektor
+tips:
+ skapa en vektor med tillåtna värden och använda %in% för att se om det givna värdet finns i denna vektor
 \end_layout
 
 \begin_layout Enumerate
@@ -936,12 +976,15 @@ status open
 
 \begin_layout Plain Layout
 
-test_patientsA = list(giver = list(AB0 = "0", rh = "-" ), 
+test_patientsA = list(giver = list(AB0 = "0",
+ rh = "-" ),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-	receiver = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB",
+ rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -951,12 +994,15 @@ blood_match(test_patientsA)
 
 \begin_layout Plain Layout
 
-test_patientsB = list(giver = list(AB0 = "AB", rh = "+" ), 
+test_patientsB = list(giver = list(AB0 = "AB",
+ rh = "+" ),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-	receiver = list(AB0 = "0", rh = "+"))
+	receiver = list(AB0 = "0",
+ rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -966,12 +1012,15 @@ blood_match(test_patientsB)
 
 \begin_layout Plain Layout
 
-test_patientsC = list(giver = list(AB0 = "0", rh = "+" ), 
+test_patientsC = list(giver = list(AB0 = "0",
+ rh = "+" ),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-	receiver = list(AB0 = "B", rh = "-"))
+	receiver = list(AB0 = "B",
+ rh = "-"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -981,12 +1030,15 @@ blood_match(test_patientsC)
 
 \begin_layout Plain Layout
 
-test_patientsD = list(giver = list(AB0 = "A", rh = "H" ), 
+test_patientsD = list(giver = list(AB0 = "A",
+ rh = "H" ),
+ 
 \end_layout
 
 \begin_layout Plain Layout
 
-	receiver = list(AB0 = "AB", rh = "+"))
+	receiver = list(AB0 = "AB",
+ rh = "+"))
 \end_layout
 
 \begin_layout Plain Layout
@@ -1098,8 +1150,8 @@ Skapa en matris
 \end_layout
 
 \begin_layout Enumerate
-Skapa en nästlad for-loop, där en loop går över rader och en över kolumner
- i 
+Skapa en nästlad for-loop,
+ där en loop går över rader och en över kolumner i 
 \begin_inset Formula $H$
 \end_inset
 
@@ -1112,6 +1164,7 @@ Använd formel
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:hilbert"
+nolink "false"
 
 \end_inset
 
@@ -1131,10 +1184,10 @@ Returnera
 \end_layout
 
 \begin_layout Standard
-I denna uppgift är det inte tillåtet att använda sig av inbyggda funktioner
- eller R-paket som direkt beräknar Hilbertmatriser, utan ni måste skapa
- funktionen själva enligt instruktionerna ovan.
- Exempel på otillåtna funktioner är: 
+I denna uppgift är det inte tillåtet att använda sig av inbyggda funktioner eller R-paket som direkt beräknar Hilbertmatriser,
+ utan ni måste skapa funktionen själva enligt instruktionerna ovan.
+ Exempel på otillåtna funktioner är:
+ 
 \family typewriter
 Hilbert()
 \family default
@@ -1146,7 +1199,8 @@ Matrix
 \family typewriter
 pbdDMAT
 \family default
-, 
+,
+ 
 \family typewriter
 hilbert.matrix()
 \family default
@@ -1154,7 +1208,8 @@ hilbert.matrix()
 \family typewriter
 matrixcalc
 \family default
-, 
+,
+ 
 \family typewriter
 hilb()
 \family default
@@ -1178,7 +1233,8 @@ status open
 
 \begin_layout Plain Layout
 
-hilbert_matrix(nrow = 1, ncol = 4)
+hilbert_matrix(nrow = 1,
+ ncol = 4)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1187,7 +1243,8 @@ hilbert_matrix(nrow = 1, ncol = 4)
 
 \begin_layout Plain Layout
 
-hilbert_matrix(nrow = 3, ncol = 1)
+hilbert_matrix(nrow = 3,
+ ncol = 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1196,12 +1253,14 @@ hilbert_matrix(nrow = 3, ncol = 1)
 
 \begin_layout Plain Layout
 
-hilbert_matrix(nrow = 5, ncol = 2)
+hilbert_matrix(nrow = 5,
+ ncol = 2)
 \end_layout
 
 \begin_layout Plain Layout
 
-A<-hilbert_matrix(nrow = 4, ncol = 4)
+A<-hilbert_matrix(nrow = 4,
+ ncol = 4)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1211,17 +1270,20 @@ A
 
 \begin_layout Plain Layout
 
-hilbert_matrix(3, 3)
+hilbert_matrix(3,
+ 3)
 \end_layout
 
 \begin_layout Plain Layout
 
-hilbert_matrix(2, 3)
+hilbert_matrix(2,
+ 3)
 \end_layout
 
 \begin_layout Plain Layout
 
-B<-hilbert_matrix(nrow = 4, ncol = 6)
+B<-hilbert_matrix(nrow = 4,
+ ncol = 6)
 \end_layout
 
 \begin_layout Plain Layout
@@ -1249,8 +1311,36 @@ print(B)
 \end_layout
 
 \begin_layout Standard
-Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna
- och funktionerna i inlämningsuppgifterna och 
+\begin_inset VSpace 1cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se till att er kod följer riktlinjerna för 
+\begin_inset CommandInset ref
+LatexCommand nameref
+reference "sec:Dokumentation-och-kodstil"
+plural "false"
+caps "false"
+noprefix "false"
+nolink "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Tänk på att filen du lämnar in endast ska innehålla de obligatoriska variablerna och funktionerna i inlämningsuppgifterna och 
 \series bold
 inget
 \series default
@@ -1259,9 +1349,17 @@ inget
 \end_layout
 
 \begin_layout Standard
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body
