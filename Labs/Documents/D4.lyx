@@ -1698,6 +1698,16 @@ literal "false"
 
 \end_inset
 
+,
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "här"
+target "https://www.matteboken.se/lektioner/gymnasiet/matte-fortsattning-niva-1/integraler/definition-av-integraler#!/"
+literal "false"
+
+\end_inset
+
  och 
 \begin_inset CommandInset href
 LatexCommand href
@@ -1800,7 +1810,12 @@ f <- function(x) (1/3)*x^2
 
 integrate(f=f,
  lower=0,
- upper=3)
+ upper=3) 
+\end_layout
+
+\begin_layout Plain Layout
+
+# vi har en funktion som argument till en annan funktion!
 \end_layout
 
 \begin_layout Plain Layout
