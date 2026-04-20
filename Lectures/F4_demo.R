@@ -25,7 +25,16 @@ data2 <- rnorm(200)
 mean(data2)
 sd(data2)
 
+set.seed(2233)
+data3 <- rnorm(20)
+mean(data3)
+sd(data3)
 
+
+set.seed(3)
+data4 <- rnorm(50)
+mean(data4)
+sd(data4)
 
 # En enkel funktion med argument och returvärde
 compute_mea <- function(x, na.rm = TRUE) {
@@ -37,15 +46,18 @@ compute_mea <- function(x, na.rm = TRUE) {
 
 compute_mean_sd(data1)
 compute_mean_sd(data2)
+compute_mean_sd(data3)
+compute_mean_sd(data4)
 
 
 # Funktion som returnerar flera objekt via en lista
 compute_summary <- function(x) {
-  list(
+  res_list<-list(
     mean = mean(x),
     sd   = sd(x),
     n    = length(x)
   )
+  return(res_list)
 }
 
 result <- compute_summary(data_vector)
@@ -64,11 +76,12 @@ compute_summary <- function(x) {
     warning("Very few observations")
   }
   
-  list(
+  res_list<-list(
     mean = mean(x),
     sd   = sd(x),
     n    = length(x)
   )
+  return(res_list)
 }
 
 compute_summary(rnorm(10))
