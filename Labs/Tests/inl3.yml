@@ -1,9 +1,9 @@
 # Assignment 2
 name  : Inl3
-description : "Statistisk programmering med R: Inlämning 2"
+description : "Statistisk programmering med R: Inlämning 3"
 tasks:
-  classroom:
-    url: Tasks/classroom_tests.R
+  sum_of_random_dice_tests:
+    url: Tasks/sum_of_random_dice_tests.R
   give_blood:
     url: Tasks/give_blood_tests.R
 mandatory:
