@@ -194,7 +194,7 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise_solutions/
+/Users/johal95/Teaching/R programmering/KursRprgmTeacher/Labs/exercise_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -583,6 +583,13 @@ För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående i
  
 \end_layout
 
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 
 \family typewriter
@@ -827,32 +834,58 @@ status open
 
 \begin_layout Plain Layout
 
-# Ladda in data
+# Ladda in data,
+ obs 5 filer.
 \end_layout
 
 \begin_layout Plain Layout
 
-slant1 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant1.txt")
+slant1 <- readLines(
 \end_layout
 
 \begin_layout Plain Layout
 
-slant2 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant2.txt")
+	"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant1.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-slant3 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant3.txt")
+slant2 <- readLines(
 \end_layout
 
 \begin_layout Plain Layout
 
-slant4 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant4.txt")
+	"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant2.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-slant5 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant5.txt")
+slant3 <- readLines(
+\end_layout
+
+\begin_layout Plain Layout
+
+	"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant3.txt")
+\end_layout
+
+\begin_layout Plain Layout
+
+slant4 <- readLines(
+\end_layout
+
+\begin_layout Plain Layout
+
+	"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant4.txt")
+\end_layout
+
+\begin_layout Plain Layout
+
+slant5 <- readLines(
+\end_layout
+
+\begin_layout Plain Layout
+
+	"https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant5.txt")
 \end_layout
 
 \begin_layout Plain Layout
@@ -861,10 +894,73 @@ slant5 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/maste
 
 \begin_layout Plain Layout
 
+coin_test(text = slant1,
+ alpha = 0.05)
 \end_layout
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
+coin_test(text = slant2,
+ alpha = 0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+coin_test(text = slant3,
+ alpha = 0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+coin_test(text = slant4,
+ alpha = 0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+coin_test(text = slant4,
+ alpha = 0.1)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+coin_test(text = slant5,
+ alpha = 0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+res <- coin_test(text = slant5,
+ alpha = 0.05)
+\end_layout
+
+\begin_layout Plain Layout
+
+str(res)
 \end_layout
 
 \begin_layout Plain Layout

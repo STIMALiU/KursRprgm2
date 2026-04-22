@@ -86,6 +86,8 @@ test_that("Assignment: coin_test()", {
                   info="Fel: Fel i meddelandet.")
   expect_message(coin_test(text = text1, alpha = 0.05), "vi kan därför inte förkasta H0",
                   info="Fel: Fel i meddelandet.")
+  expect_message(coin_test(text = text1, alpha = 0.05), "på nivån alpha = 0.05",
+                  info="Fel: Fel i meddelandet.")
   
   expect_equal(suppressMessages(length(coin_test(text=text1, alpha = 0.05))), 4,
                   info = "Fel: Korstabellen har fel antal celler.")
@@ -102,6 +104,12 @@ test_that("Assignment: coin_test()", {
   expect_message(coin_test(text = text2, alpha = 0.05), "Testet fick p-värdet",
                   info="Fel: Fel i meddelandet.")
   expect_message(coin_test(text = text2, alpha = 0.05), "vi kan därför förkasta H0",
+                  info="Fel: Fel i meddelandet.")
+  expect_message(coin_test(text = text2, alpha = 0.05), "på nivån alpha = 0.05",
+                  info="Fel: Fel i meddelandet.")
+  expect_message(coin_test(text = text2, alpha = 0.01), "vi kan därför inte förkasta H0",
+                  info="Fel: Fel i meddelandet.")
+  expect_message(coin_test(text = text2, alpha = 0.01), "på nivån alpha = 0.01",
                   info="Fel: Fel i meddelandet.")
   
   expect_equal(suppressMessages(length(coin_test(text=text2, alpha = 0.05))), 4,
