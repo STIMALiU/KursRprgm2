@@ -1,5 +1,5 @@
-#LyX 2.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 544
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -29,10 +29,10 @@
 \begin_modules
 knitr
 \end_modules
-\maintain_unincluded_children false
+\maintain_unincluded_children no
 \language swedish
 \language_package default
-\inputencoding auto
+\inputencoding auto-legacy
 \fontencoding default
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -41,7 +41,9 @@ knitr
 \font_default_family default
 \use_non_tex_fonts true
 \font_sc false
-\font_osf false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
 \use_microtype false
@@ -54,7 +56,7 @@ knitr
 \paperfontsize default
 \spacing single
 \use_hyperref false
-\papersize a4paper
+\papersize a4
 \use_geometry true
 \use_package amsmath 1
 \use_package amssymb 1
@@ -75,7 +77,9 @@ knitr
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_formatted_ref 0
 \use_minted 0
+\use_lineno 0
 \index Index
 \shortcut idx
 \color #008000
@@ -95,11 +99,16 @@ knitr
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tablestyle default
 \tracking_changes false
 \output_changes false
+\change_bars false
+\postpone_fragile_content false
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
 \end_header
 
 \begin_body
@@ -158,6 +167,7 @@ options(digits = 5)
 \begin_inset CommandInset include
 LatexCommand input
 filename "Inluppg.lyx"
+literal "true"
 
 \end_inset
 
@@ -184,8 +194,7 @@ solution_path<-
 \begin_inset Quotes srd
 \end_inset
 
-/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise
-_solutions/
+/Users/johal95/Documents/Teaching/R programmering/KursRprgmTeacher/Labs/exercise_solutions/
 \begin_inset Quotes srd
 \end_inset
 
@@ -199,7 +208,8 @@ solution_files <- dir(solution_path)
 
 \begin_layout Plain Layout
 
-for(sol_file in solution_files) source(file = paste0(solution_path, sol_file),
+for(sol_file in solution_files) source(file = paste0(solution_path,
+ sol_file),
  echo = FALSE)
 \end_layout
 
@@ -222,7 +232,8 @@ Inlämningsuppgifter
 \end_layout
 
 \begin_layout Standard
-Ladda nu ner laborationsmallen, som finns 
+Ladda nu ner laborationsmallen,
+ som finns 
 \series bold
 \color blue
 
@@ -321,8 +332,7 @@ Inlämningsuppgifter utgår ifrån att ni har gjort
 övningsuppgifterna
 \series default
  ovan först.
- Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med
- inlämningsuppgifterna.
+ Tänk att ni ska göra minst 70 % av övningsuppgifterna innan ni börjar med inlämningsuppgifterna.
 \end_layout
 
 \begin_layout Itemize
@@ -335,14 +345,14 @@ problemet
 \end_inset
 
  i uppgiften.
- Vad ska funktionen göra? Beskriv problemet för er själva.
+ Vad ska funktionen göra?
+ Beskriv problemet för er själva.
  Vissa problem är det bra att bryta ner i mindre delproblem.
  
 \end_layout
 
 \begin_layout Itemize
-Börja med att lösa problemet (eller det första delproblemet) med vanlig
- kod (dvs inte i en funktion) i ett R-script.
+Börja med att lösa problemet (eller det första delproblemet) med vanlig kod (dvs inte i en funktion) i ett R-script.
 \end_layout
 
 \begin_deeper
@@ -355,13 +365,13 @@ Lös ett delproblem i taget vid behov.
 \end_deeper
 \begin_layout Itemize
 Sätt sedan in er kod i en funktion.
- Testa om funktionen kan återskapa de exempel som visas under beskrivningarna
- (testfallen).
+ Testa om funktionen kan återskapa de exempel som visas under beskrivningarna (testfallen).
  Se till att funktionen har rätt namn och rätt namn på argumenten.
 \end_layout
 
 \begin_layout Itemize
-Ta er funktion och lägg in den i kodmallen, dvs i ett nytt R-script.
+Ta er funktion och lägg in den i kodmallen,
+ dvs i ett nytt R-script.
  Skapa variablerna 
 \family typewriter
 Namn
@@ -375,8 +385,8 @@ LiuId
 \end_layout
 
 \begin_layout Itemize
-Kommentera bort all kod i er fil som inte är de aktuella funktionerna, namn-
- och ID-variabler och ev.
+Kommentera bort all kod i er fil som inte är de aktuella funktionerna,
+ namn- och ID-variabler och ev.
  kommentarer.
  
 \end_layout
@@ -402,19 +412,20 @@ hyfsat klar
 \begin_inset Quotes srd
 \end_inset
 
-, annars kommer ni att få många fel i markmyassignment, och det är svårt
- att veta var man ska börja kolla.
+,
+ annars kommer ni att få många fel i markmyassignment,
+ och det är svårt att veta var man ska börja kolla.
 \end_layout
 
 \begin_layout Itemize
-Det är vikitgt att funktionen rätt namn och rätt namn på argumenten, annars
- kommer ni att få många fel i markmyassignment.
+Det är vikitgt att funktionen rätt namn och rätt namn på argumenten,
+ annars kommer ni att få många fel i markmyassignment.
 \end_layout
 
 \end_deeper
 \begin_layout Itemize
-Om ni inte klarar alla tester i markmyassignment: undersök vilka felmeddelanden
- som ni får.
+Om ni inte klarar alla tester i markmyassignment:
+ undersök vilka felmeddelanden som ni får.
  Ta hjälp av lärare/labbassitenter vid behov om det är svårt att tolka.
 \end_layout
 
@@ -424,8 +435,7 @@ Innan ni lämnar in:
 
 \begin_deeper
 \begin_layout Itemize
-Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstex
-ten.
+Se till att ni har löst uppgiften på det sätt som den är beskriven i uppgiftstexten.
  Ibland måste en viss metod användas för att lösa uppgiften.
  Ibland är vissa funktioner inte tillåtna i en viss uppgift.
  Så läs noga i varje uppgift vad som gäller.
@@ -441,8 +451,7 @@ Dokumentation och kodstil
 \end_layout
 
 \begin_layout Standard
-Från och med denna laboration och de resterade laborationerna i kursen så
- ska ni förutom att lösa angivna uppgifter också 
+Från och med denna laboration och de resterade laborationerna i kursen så ska ni förutom att lösa angivna uppgifter också 
 \series bold
 kommentera
 \series default
@@ -473,8 +482,8 @@ läsbar
 
 \begin_layout Itemize
 Följ någon av kodstilarna i Datorlaboration 4.
- Ni måste inte följa dessa exakt, men koden ska se bra ut och var konsekventa
- i den stil som ni väljer att använda.
+ Ni måste inte följa dessa exakt,
+ men koden ska se bra ut och var konsekventa i den stil som ni väljer att använda.
 \end_layout
 
 \begin_layout Itemize
@@ -502,7 +511,8 @@ Kommentarer:
 
 \begin_deeper
 \begin_layout Itemize
-Funktionshuvud: Använd mallen för 
+Funktionshuvud:
+ Använd mallen för 
 \family typewriter
 roxygen2
 \family default
@@ -532,11 +542,14 @@ Förklara kort vad funktionen gör
 \family typewriter
 @param 
 \family default
-Skriv först arguments namn, sen mellanslag och sen förklara kort argumentet.
+Skriv först arguments namn,
+ sen mellanslag och sen förklara kort argumentet.
  Upprepa detta för alla argument i funktionen.
- Ex: 
+ Ex:
+ 
 \family typewriter
-x Numerisk vektor, används vid beräkning av medelvärde.
+x Numerisk vektor,
+ används vid beräkning av medelvärde.
 \end_layout
 
 \begin_layout Itemize
@@ -549,7 +562,8 @@ Förklara vad funktionen returnerar
 
 \end_deeper
 \begin_layout Itemize
-Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
+Kommenter i funktionen:
+ Era lösningar ska innehålla lämpliga kommenater,
  där ni förklarar de övergripande dragen och de viktiga stegen i er kod.
  Ni behöver inte föklara alla detaljer.
  Kommentarerna ska berätta sådant för programmeraren som inte står i koden.
@@ -557,233 +571,249 @@ Kommenter i funktionen: Era lösningar ska innehålla lämpliga kommenater,
 \end_layout
 
 \begin_layout Itemize
-Tips: Tänk att det ska vara lätt att förstå er funktion långt senare, tex
- om ett år.
+Tips:
+ Tänk att det ska vara lätt att förstå er funktion långt senare,
+ tex om ett år.
  Vilka kommentarer behövs då?
 \end_layout
 
 \end_deeper
 \begin_layout Standard
-För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående
- instruktioner för kommentarer och kodstil.
+För att bli godkänd på inlämningsuppgifterna måste ni följa ovanstående instruktioner för kommentarer och kodstil.
  
 \end_layout
 
 \begin_layout Section
 
 \family typewriter
-wordcount()
+coin_test()
 \end_layout
 
 \begin_layout Standard
-Nu är uppgiften att skapa en funktion som ska kunna räkna hur många gånger
- olika ord förekommer i texten.
- Funktionen ska heta 
+Er uppgift är att skapa en funktion 
 \family typewriter
-wordcount()
+coin_test()
 \family default
- och ha argumentet 
+ som testar om det kan finnas ett samband mellan resultaten från ett antal olika slantsinglingar som görs av flera olika personer.
+ Som argument till funktionen ska vi ha
+\end_layout
+
+\begin_layout Itemize
+
 \family typewriter
 text
 \family default
- som ska vara en 
+:
+ En text-vektor där varje rad är en slantingling utförd av en person.
+\end_layout
+
+\begin_layout Itemize
+
 \family typewriter
-character
+alpha
 \family default
--vektor.
- Funktionen ska ta en text (i form av en text vektor) och returnera en 
-\family typewriter
-data.frame
-\family default
- med två variabler 
-\family typewriter
-word
-\family default
- (textvariabel) och 
-\family typewriter
-freq
-\family default
- (integervariabel).
- 
+:
+ Signifikansvån för testet.
 \end_layout
 
 \begin_layout Standard
-I variabeln 
-\family typewriter
-word
-\family default
- ska respektive ord ingå, men med små bokstäver, och i variabeln 
-\family typewriter
-freq
-\family default
- ska frekvensen av orden framgå.
- Den 
-\family typewriter
-data.frame
-\family default
- som returneras ska vara sorterad efter variabeln 
-\family typewriter
-word
-\family default
-.
- Funktionen ska också skriva ut meningen 
-\begin_inset Quotes eld
-\end_inset
+Er data som ni har tillgång till är textfiler där varje rad är en slantsingling från en person som har dokumenterats med en textsträng på följande format:
+\end_layout
 
+\begin_layout Itemize
 
 \family typewriter
-The most common word is '[ord]' and it occurred [antal] times.
+(Namn)
 \family default
+ singlade slant,
+ 
+\family typewriter
+(klave/krona)
+\family default
+ blev resultatet!
+\end_layout
 
-\begin_inset Quotes erd
-\end_inset
+\begin_layout Standard
+Här är 
+\family typewriter
+(Namn)
+\family default
+ ett namn och 
+\family typewriter
+(klave/krona)
+\family default
+ är resultatet från slantsinglingen.
+\end_layout
 
- med 
+\begin_layout Standard
+Er uppgift blir att ta en textsträng fylld med rader som den ovan och gå igenom raderna och sammanfatta resultaten i en korstabell där varje rad är resultaten för en person där första kolumnen är antal klave och andra kolumnen antal krona.
+ När ni har skapat er korstabell ska ni genomföra ett chi2-test med funktionen 
+\family typewriter
+chisq.test()
+\family default
+ för att testa om det finns ett samband mellan de olika personerna och deras resultat.
+ Beroende på p-värdet ska ett meddelande med 
 \family typewriter
 message()
 \family default
-.
+ skrivas ut där p-värdet skrivs ut och slutsatsen av testet.
+ Se exempeln nedan på hur den ska formuleras.
 \end_layout
 
 \begin_layout Standard
+För att lösa uppgiften rekomenderas följande delar:
+\end_layout
 
-\series bold
-Tips!
-\series default
- 
+\begin_layout Enumerate
+Börja med att läsa en in av textfilerna,
+ bekanta er med hur de olika raderna ser ut.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Fundera på hur ni får ut rätt information (namn och resultat) ur varje rad.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Skriv kod som tar alla textrader och sparar resultatet i en datastruktur där varje rad är informationen,
+ namn och resulta,
+ t.ex.
+ (första raderna från 
+\family typewriter
+slant1.txt
+\family default
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Josef
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+klave
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Josef
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+klave
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Johan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+krona
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Johan
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+klave
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Använd 
 \family typewriter
 table()
-\end_layout
-
-\begin_layout Standard
-Nedan är ett förslag på hur ni kan implementera funktionen.
-\end_layout
-
-\begin_layout Enumerate
-Läs in paktet i 
-\family typewriter
-stringr
 \family default
- i den aktuella R-sessionen.
- OBS: ej installera paktet.
-\end_layout
-
-\begin_layout Enumerate
-Börja med att sätta ihop de olika textelementen till en textsträng, men
- denna gång använd mellanslag som avskiljare istället för 
-\family typewriter
-
-\backslash
-n
-\family default
-.
-\end_layout
-
-\begin_layout Enumerate
-Ta bort punkter och kommatecken i textsträngen.
- 
-\end_layout
-
-\begin_layout Enumerate
-Gör om alla ord till endast gemener.
-\end_layout
-
-\begin_layout Enumerate
-Dela upp teckensträngen med 
-\family typewriter
-str_split()
-\family default
- för att få ut respektive ord.
- [
-\series bold
-Tips!
-\series default
- Tänk på att du får ut en lista med denna funktion, inte en vektor.
- 
-\family typewriter
-unlist()
-\family default
- kan då vara till hjälp.]
-\end_layout
-
-\begin_layout Enumerate
-Räkna respektive ord och skapa en data.frame med respektive ord i kolumn
- 1 och antalet förekomster av detta ord i kolumn 2.
- Döp kolumn 1 till 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-word
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-, och kolumn 2 till 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-freq
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
- 
-\end_layout
-
-\begin_layout Enumerate
-Sortera datasetet efter 
-\family typewriter
-word
-\family default
-.
+ för att skapa en korstabell.
 \end_layout
 
 \begin_layout Enumerate
 Använd 
 \family typewriter
-str_c()
+chisq.test()
 \family default
- och 
+ för att köra chi2-test.
+ Sätt argumntet 
 \family typewriter
-message()
+correct = FALSE
 \family default
- för att baserat på datsetet ovan skriva ut följande mening 
-\begin_inset Quotes eld
-\end_inset
-
-
-\family typewriter
-The most common word is '[ord]' and it occurred [antal] times.
-\family default
-
-\begin_inset Quotes erd
-\end_inset
-
-.
+ i funktionen för att göra ett vanligt chi2-test.
 \end_layout
 
 \begin_layout Enumerate
-Returnera din 
+Jämför 
 \family typewriter
-data.frame
+p.value 
 \family default
-.
+från testet med argumentet 
+\family typewriter
+alpha
 \end_layout
 
-\begin_layout Standard
-Funktionen 
-\family typewriter
-word()
-\family default
- är inte tillåten på denna uppgift.
- Kolla om testfallen nedan fungerar:
+\begin_layout Enumerate
+Skriv ett meddelande och returnera er korstabell.
 \end_layout
 
 \begin_layout Standard
@@ -797,52 +827,32 @@ status open
 
 \begin_layout Plain Layout
 
-# Laddar ned testdata
+# Ladda in data
 \end_layout
 
 \begin_layout Plain Layout
 
-library(downloader) 
+slant1 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant1.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-transtrommer_remote <-
+slant2 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant2.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-  "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/tra
-nstrom.txt" 
+slant3 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant3.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-transtrommer_local <- paste0(getwd(), "/transtrom.txt")
+slant4 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant4.txt")
 \end_layout
 
 \begin_layout Plain Layout
 
-download(url = transtrommer_remote, destfile = transtrommer_local)
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-# Test
-\end_layout
-
-\begin_layout Plain Layout
-
-text<-readLines("transtrom.txt",encoding = "UTF-8")
-\end_layout
-
-\begin_layout Plain Layout
-
-worddata<-wordcount(text=text)
+slant5 <- readLines("https://raw.githubusercontent.com/STIMALiU/KursRprgm2/master/Labs/DataFiles/slant5.txt")
 \end_layout
 
 \begin_layout Plain Layout
@@ -851,50 +861,6 @@ worddata<-wordcount(text=text)
 
 \begin_layout Plain Layout
 
-head(worddata)
-\end_layout
-
-\begin_layout Plain Layout
-
-head(worddata[order(worddata[,2], decreasing=TRUE),])
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-head(wordcount(text=rep("a",10)))
-\end_layout
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
-
-set.seed(39) 
-\end_layout
-
-\begin_layout Plain Layout
-
-random_text<-sample(month.name,size = 60,replace = TRUE)
-\end_layout
-
-\begin_layout Plain Layout
-
-A<-wordcount(text=random_text)
-\end_layout
-
-\begin_layout Plain Layout
-
-head(A)
-\end_layout
-
-\begin_layout Plain Layout
-
-str(A)
 \end_layout
 
 \begin_layout Plain Layout
@@ -921,7 +887,8 @@ str(A)
 \begin_layout Standard
 
 \shape italic
-Grattis! Nu är du klar!
+Grattis!
+ Nu är du klar!
 \end_layout
 
 \end_body

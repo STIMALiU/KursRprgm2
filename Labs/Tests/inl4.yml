@@ -2,7 +2,7 @@
 name  : Inl4
 description : "Statistisk programmering med R: Inlämning 4"
 tasks:
-  wordcount:
-    url: Tasks/wordcount_tests.R
+  coin_test:
+    url: Tasks/coin_test_tests.R
 mandatory:
   url: mandatory_part2.R
