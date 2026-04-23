@@ -357,6 +357,11 @@ for(i in 1:12){
   print(i)
 }
 
+for(i in 1:12){
+  next
+  print(i)
+}
+
 
 # vi testar att avbryta loopen när ett visst villkor är uppfyllt
 for(i in 1:12){
@@ -433,8 +438,8 @@ my_mean_var(x = 1:8)
 my_mean_var<-function(x){
   print(typeof(x))
   val1<-mean(x)
-  #browser()
   val2<-var(x)
+  #browser()
   y<-list(mean=val1,var=val2)
   return(y)
 }
@@ -464,20 +469,24 @@ my_mean_var(x = 1:8)
 x<-1:12
 n <-length(x)
 my_sd<-function(x){
-  
+
   x_sum < - sum(x)
-  
+
   x_diff_sq<-(x-x_sum)^2
-  
+
   var<-sum(x_diff_sq)/n
-  
+
   sd_val<-sqrt(-var)
-  
+
   list(mean=x_sum,sd=var,n=n)
 }
+
 #-------------------------------------------------------------------------------
 
 my_sd(x = 1:5)
+mean(1:5)
+sd(1:5)
+
 debug(my_sd)
 my_sd(x = 1:5)
 undebug(my_sd)
