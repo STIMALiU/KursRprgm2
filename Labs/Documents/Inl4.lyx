@@ -681,6 +681,74 @@ Börja med att läsa en in av textfilerna,
 Fundera på hur ni får ut rätt information (namn och resultat) ur varje rad.
 \end_layout
 
+\begin_layout Itemize
+Studera hur datafilerna ser ut,
+ ni behöver bara lösa det för filer på detta format!
+ Men er kod ska fungera för alla 5 filer.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Slant1.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/refs/heads/main/Labs/DataFiles/slant1.txt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Slant2.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/refs/heads/main/Labs/DataFiles/slant2.txt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Slant3.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/refs/heads/main/Labs/DataFiles/slant3.txt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Slant4.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/refs/heads/main/Labs/DataFiles/slant4.txt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "Slant5.txt"
+target "https://raw.githubusercontent.com/STIMALiU/KursRprgm2/refs/heads/main/Labs/DataFiles/slant5.txt"
+literal "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \end_deeper
 \begin_layout Enumerate
 Skriv kod som tar alla textrader och sparar resultatet i en datastruktur där varje rad är informationen,
@@ -820,9 +888,27 @@ alpha
 \end_layout
 
 \begin_layout Enumerate
-Skriv ett meddelande och returnera er korstabell.
+Skriv ett meddelande och returnera er korstabell som en 
+\family typewriter
+table
+\family default
+.
 \end_layout
 
+\begin_deeper
+\begin_layout Itemize
+Om ni har skapat en matris med rätt rad och kolumnnamn så kan ni använda 
+\family typewriter
+as.table()
+\family default
+ för att konvertera till en 
+\family typewriter
+table
+\family default
+ för att få rätt på output.
+\end_layout
+
+\end_deeper
 \begin_layout Standard
 \begin_inset ERT
 status open
