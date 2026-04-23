@@ -58,7 +58,7 @@ apply(X = iris[,1:4],MARGIN = 1,FUN = sum)
 ?tapply()
 data("ChickWeight")
 ?ChickWeight
-head(ChickWeight,n = 20)
+head(ChickWeight,n = 10)
 tapply(X=ChickWeight$weight, INDEX=ChickWeight$Chick, FUN=mean)
 tapply(X=ChickWeight$weight, INDEX=ChickWeight$Diet, FUN=mean)
 
