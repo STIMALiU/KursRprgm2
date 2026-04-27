@@ -116,6 +116,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 \usepackage{caption}
 % Make caption package work with longtable
@@ -293,14 +294,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT2025},
+  pdftitle={R-programmering VT2026},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2025}
-\subtitle{Föreläsning 5}
-\author{Johan Alenlöv}
+\title{\texorpdfstring{R-programmering VT2026}{R-programmering VT2026}}
+\subtitle{\texorpdfstring{Föreläsning 5}{Föreläsning 5}}
+\author{\texorpdfstring{Johan Alenlöv}{Johan Alenlöv}}
 \date{}
 \institute{Linköpings Universitet}
 
@@ -310,7 +311,7 @@
 \section{Föreläsning 5}\label{fuxf6reluxe4sning-5}
 
 \begin{frame}{Innehåll föreläsning 5}
-\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-5}
+\protect\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-5}
 \begin{itemize}
 \tightlist
 \item
@@ -329,7 +330,7 @@
 \section{Information del 2}\label{information-del-2}
 
 \begin{frame}{R-programmering - del 2}
-\phantomsection\label{r-programmering---del-2}
+\protect\phantomsection\label{r-programmering---del-2}
 \begin{itemize}
 \tightlist
 \item
@@ -356,7 +357,7 @@
 \end{frame}
 
 \begin{frame}{R-programmering - del 2}
-\phantomsection\label{r-programmering---del-2-1}
+\protect\phantomsection\label{r-programmering---del-2-1}
 \begin{itemize}
 \tightlist
 \item
@@ -387,11 +388,19 @@
 \end{frame}
 
 \begin{frame}{R-programmering - del 2}
-\phantomsection\label{r-programmering---del-2-2}
+\protect\phantomsection\label{r-programmering---del-2-2}
 \begin{itemize}
 \tightlist
 \item
   Labbarna görs nu i par
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Anmäl er till grupper på Lisam!
+  \item
+    Fyll i gruppkontraktet
+  \end{itemize}
 \item
   Parprogrammering:
 
@@ -411,7 +420,7 @@
 \end{frame}
 
 \begin{frame}{Miniprojektet}
-\phantomsection\label{miniprojektet}
+\protect\phantomsection\label{miniprojektet}
 Info finns på kurshemsidan.
 
 \begin{itemize}
@@ -440,7 +449,7 @@ Info finns på kurshemsidan.
 \section{Basgrafik}\label{basgrafik}
 
 \begin{frame}{Grafik i R}
-\phantomsection\label{grafik-i-r}
+\protect\phantomsection\label{grafik-i-r}
 \begin{itemize}
 \tightlist
 \item
@@ -467,7 +476,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Enkel grafik: plot()}
-\phantomsection\label{enkel-grafik-plot}
+\protect\phantomsection\label{enkel-grafik-plot}
 \begin{itemize}
 \tightlist
 \item
@@ -505,7 +514,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{plot() - exempel}
-\phantomsection\label{plot---exempel}
+\protect\phantomsection\label{plot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(iris)}
@@ -518,7 +527,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Diagramtyper}
-\phantomsection\label{diagramtyper}
+\protect\phantomsection\label{diagramtyper}
 \begin{itemize}
 \tightlist
 \item
@@ -543,7 +552,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{hist() - exempel}
-\phantomsection\label{hist---exempel}
+\protect\phantomsection\label{hist---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{hist}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
@@ -554,7 +563,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{bokxplot() - exempel}
-\phantomsection\label{bokxplot---exempel}
+\protect\phantomsection\label{bokxplot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{boxplot}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Sepal.Length)}
@@ -565,7 +574,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{barplot() - exempel}
-\phantomsection\label{barplot---exempel}
+\protect\phantomsection\label{barplot---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
@@ -577,7 +586,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}[fragile]{pie() - exempel}
-\phantomsection\label{pie---exempel}
+\protect\phantomsection\label{pie---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(iris}\SpecialCharTok{$}\NormalTok{Species)}
@@ -589,7 +598,7 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Lågnivågrafik}
-\phantomsection\label{luxe5gnivuxe5grafik}
+\protect\phantomsection\label{luxe5gnivuxe5grafik}
 \begin{itemize}
 \tightlist
 \item
@@ -618,22 +627,23 @@ Info finns på kurshemsidan.
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo}
+\protect\phantomsection\label{demo}
 \begin{block}{Demo: Grafik}
-\phantomsection\label{demo-grafik}
+\protect\phantomsection\label{demo-grafik}
 \end{block}
 \end{frame}
 
 \section{Slumptal och simulering}\label{slumptal-och-simulering}
 
 \begin{frame}[fragile]{Slumptal och simulering - I}
-\phantomsection\label{slumptal-och-simulering---i}
+\protect\phantomsection\label{slumptal-och-simulering---i}
 \begin{itemize}
 \tightlist
 \item
   R har en stor uppsättning funktioner för fördelningar
 \end{itemize}
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}lll@{}}
 \toprule\noalign{}
 prefix & Beskrivning & Exempel \\
@@ -646,6 +656,7 @@ prefix & Beskrivning & Exempel \\
 \texttt{qunif()} \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 
 \begin{itemize}
 \tightlist
@@ -655,7 +666,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}{Slumptal och simulering - II}
-\phantomsection\label{slumptal-och-simulering---ii}
+\protect\phantomsection\label{slumptal-och-simulering---ii}
 \begin{itemize}
 \tightlist
 \item
@@ -682,7 +693,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}[fragile]{Slumptal och simulering - Exempel}
-\phantomsection\label{slumptal-och-simulering---exempel}
+\protect\phantomsection\label{slumptal-och-simulering---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{runif}\NormalTok{(}\AttributeTok{n =} \DecValTok{3}\NormalTok{, }\AttributeTok{min =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, }\AttributeTok{max =} \DecValTok{1}\NormalTok{)}
@@ -692,7 +703,7 @@ prefix & Beskrivning & Exempel \\
 \pause
 
 \begin{verbatim}
-## [1] -0.7349207  0.8869257 -0.5186759
+## [1] -0.9786469  0.5199427 -0.3734885
 \end{verbatim}
 
 \pause
@@ -727,7 +738,7 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}[fragile]{Slumptal och simulering - Exempel}
-\phantomsection\label{slumptal-och-simulering---exempel-1}
+\protect\phantomsection\label{slumptal-och-simulering---exempel-1}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{text }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"Johan"}\NormalTok{, }\StringTok{"Josef"}\NormalTok{, }\StringTok{"Rasmus"}\NormalTok{)}
@@ -758,9 +769,9 @@ prefix & Beskrivning & Exempel \\
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-1}
+\protect\phantomsection\label{demo-1}
 \begin{block}{Demo: Slumptal}
-\phantomsection\label{demo-slumptal}
+\protect\phantomsection\label{demo-slumptal}
 \end{block}
 \end{frame}
 
@@ -768,7 +779,7 @@ prefix & Beskrivning & Exempel \\
 Notebooks}\label{r-markdown-knitr-och-notebooks}
 
 \begin{frame}{R-Markdown, knitr och Notebooks}
-\phantomsection\label{r-markdown-knitr-och-notebooks-1}
+\protect\phantomsection\label{r-markdown-knitr-och-notebooks-1}
 \begin{itemize}
 \tightlist
 \item
@@ -801,7 +812,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{R-Markdown}
-\phantomsection\label{r-markdown}
+\protect\phantomsection\label{r-markdown}
 \begin{itemize}
 \tightlist
 \item
@@ -838,7 +849,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{knitr}
-\phantomsection\label{knitr}
+\protect\phantomsection\label{knitr}
 \begin{itemize}
 \tightlist
 \item
@@ -855,7 +866,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{R-Studio Notebooks}
-\phantomsection\label{r-studio-notebooks}
+\protect\phantomsection\label{r-studio-notebooks}
 \begin{itemize}
 \tightlist
 \item
@@ -882,16 +893,16 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-2}
+\protect\phantomsection\label{demo-2}
 \begin{block}{Demo: Markdown}
-\phantomsection\label{demo-markdown}
+\protect\phantomsection\label{demo-markdown}
 \end{block}
 \end{frame}
 
 \section{Externa data och pxweb}\label{externa-data-och-pxweb}
 
 \begin{frame}{Externa data}
-\phantomsection\label{externa-data}
+\protect\phantomsection\label{externa-data}
 \begin{itemize}
 \tightlist
 \item
@@ -916,7 +927,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{Ladda ner och läsa in från webben}
-\phantomsection\label{ladda-ner-och-luxe4sa-in-fruxe5n-webben}
+\protect\phantomsection\label{ladda-ner-och-luxe4sa-in-fruxe5n-webben}
 \begin{itemize}
 \tightlist
 \item
@@ -939,7 +950,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{Vanliga källor för data}
-\phantomsection\label{vanliga-kuxe4llor-fuxf6r-data}
+\protect\phantomsection\label{vanliga-kuxe4llor-fuxf6r-data}
 \begin{itemize}
 \tightlist
 \item
@@ -952,7 +963,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{pxweb api}
-\phantomsection\label{pxweb-api}
+\protect\phantomsection\label{pxweb-api}
 \begin{itemize}
 \tightlist
 \item
@@ -981,7 +992,7 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}[fragile]{pxweb}
-\phantomsection\label{pxweb}
+\protect\phantomsection\label{pxweb}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{install.packages}\NormalTok{(}\StringTok{"pxweb"}\NormalTok{)}
@@ -993,9 +1004,9 @@ Notebooks}\label{r-markdown-knitr-och-notebooks}
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-3}
+\protect\phantomsection\label{demo-3}
 \begin{block}{Demo: PXWEB}
-\phantomsection\label{demo-pxweb}
+\protect\phantomsection\label{demo-pxweb}
 \end{block}
 \end{frame}
 

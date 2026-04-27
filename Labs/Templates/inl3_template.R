@@ -23,25 +23,28 @@ Grupp<-""
 #'
 #' @description
 #'
-#' @param seats 
-#' @param whiteboards 
+#' @param N 
+#' @param K 
 #'
 #' @return
-classroom <- function(seats, whiteboards){
+sum_of_dice <- function(N, K){
   # Skriv din funktion här
+  # Se datorövningarna för information om denna funktion
 }
-
 
 #' Title
 #'
 #' @description
 #'
-#' @param x 
+#' @param K 
+#' @param lambda 
+#' @param my_seed 
 #'
 #' @return
-print.classroom <- function(x) {
+sum_of_random_dice <- function(K, lambda, my_seed){
   # Skriv din funktion här
 }
+
 
 # Uppgift 2 ----
 

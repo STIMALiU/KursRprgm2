@@ -24,9 +24,10 @@ Grupp<-""
 #' @description
 #'
 #' @param text 
+#' @param alpha 
 #'
 #' @return
-wordcount <- function(text){
+coin_test <- function(text, alpha){
   # Skriv din funktion här
 }
 
