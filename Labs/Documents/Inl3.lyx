@@ -656,7 +656,11 @@ set.seed()
 \end_layout
 
 \begin_layout Itemize
-Skapa en tom matris som ska innehålla resultaten,
+Skapa en tom 
+\family typewriter
+data.frame
+\family default
+ som ska innehålla resultaten,
  det ska vara 
 \family typewriter
 K

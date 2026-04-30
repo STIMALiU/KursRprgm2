@@ -1,0 +1,33 @@
+---
+title: "Sem_exempel"
+author: "Johan"
+date: '`r Sys.Date()`'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data, echo=FALSE, message=FALSE}
+library(pxweb)
+library(knitr)
+source("data_vt26.R")
+```
+
+# Rubrik 1
+
+## Rubrik 2
+
+### Rubrik 3
+
+```{r, echo=FALSE}
+kable(head(tot_df))
+```
+
+# Plot av data
+
+```{r,eval=FALSE}
+plot(x = tot_df$Befolkning, y = tot_df$`Antal forskare`, col = "blue")
+```
+
