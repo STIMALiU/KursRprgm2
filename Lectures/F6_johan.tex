@@ -1,19 +1,17 @@
 % Options for packages loaded elsewhere
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
-%
 \documentclass[
   11pt,
   ignorenonframetext,
   handout]{beamer}
+\newif\ifbibliography
 \usepackage{pgfpages}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{caption label separator}{: }
 \setbeamercolor{caption name}{fg=normal text.fg}
 \beamertemplatenavigationsymbolsempty
-% Prevent slide breaks in the middle of a paragraph
-\widowpenalties 1 10000
-\raggedbottom
+% remove section numbering
 \setbeamertemplate{part page}{
   \centering
   \begin{beamercolorbox}[sep=16pt,center]{part title}
@@ -22,16 +20,19 @@
 }
 \setbeamertemplate{section page}{
   \centering
-  \begin{beamercolorbox}[sep=12pt,center]{part title}
+  \begin{beamercolorbox}[sep=12pt,center]{section title}
     \usebeamerfont{section title}\insertsection\par
   \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
   \centering
-  \begin{beamercolorbox}[sep=8pt,center]{part title}
+  \begin{beamercolorbox}[sep=8pt,center]{subsection title}
     \usebeamerfont{subsection title}\insertsubsection\par
   \end{beamercolorbox}
 }
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
 \AtBeginPart{
   \frame{\partpage}
 }
@@ -44,7 +45,6 @@
 \AtBeginSubsection{
   \frame{\subsectionpage}
 }
-\usepackage{amsmath,amssymb}
 \usepackage{iftex}
 \ifPDFTeX
   \usepackage[T1]{fontenc}
@@ -75,8 +75,6 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
-\usepackage{xcolor}
-\newif\ifbibliography
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -118,6 +116,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 \usepackage{caption}
 % Make caption package work with longtable
@@ -127,7 +126,6 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \usetheme[progressbar=frametitle,block=fill]{metropolis} %numbering=none
 
 %%% USEFUL PACKAGES
@@ -277,21 +275,18 @@
 \newcommand\good{\color{DarkGreen}{$\blacktriangle$}} % used in lists
 \newcommand\bad{\color{red}{$\blacktriangledown$}} % used in lists
 
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage{bookmark}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT2024},
+  pdftitle={R-programmering VT2026},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT2024}
-\subtitle{Föreläsning 6}
-\author{Johan Alenlöv}
+\title{\texorpdfstring{R-programmering VT2026}{R-programmering VT2026}}
+\subtitle{\texorpdfstring{Föreläsning 6}{Föreläsning 6}}
+\author{\texorpdfstring{Johan Alenlöv}{Johan Alenlöv}}
 \date{}
 \institute{Linköpings Universitet}
 
@@ -299,7 +294,7 @@
 \frame{\titlepage}
 
 \begin{frame}{Innehåll föreläsning 6}
-\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-6}
+\protect\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-6}
 \begin{itemize}
 \tightlist
 \item
@@ -324,7 +319,7 @@
 \section{Information}\label{information}
 
 \begin{frame}{Information}
-\phantomsection\label{information-1}
+\protect\phantomsection\label{information-1}
 \begin{itemize}
 \tightlist
 \item
@@ -359,7 +354,7 @@
 \section{Programmeringsparadigm}\label{programmeringsparadigm}
 
 \begin{frame}{Programmeringsparadigm}
-\phantomsection\label{programmeringsparadigm-1}
+\protect\phantomsection\label{programmeringsparadigm-1}
 \begin{itemize}
 \item
   Finns många olika sätt att se på \imp{hur} program ska skrivas.
@@ -379,7 +374,7 @@
 \end{frame}
 
 \begin{frame}{Funktionell programmering}
-\phantomsection\label{funktionell-programmering}
+\protect\phantomsection\label{funktionell-programmering}
 \begin{itemize}
 \tightlist
 \item
@@ -420,7 +415,7 @@
 \end{frame}
 
 \begin{frame}{Objektorientering}
-\phantomsection\label{objektorientering}
+\protect\phantomsection\label{objektorientering}
 \begin{itemize}
 \tightlist
 \item
@@ -455,7 +450,7 @@
 \end{frame}
 
 \begin{frame}{Objektorientering}
-\phantomsection\label{objektorientering-1}
+\protect\phantomsection\label{objektorientering-1}
 \begin{itemize}
 \tightlist
 \item
@@ -490,7 +485,7 @@
 \end{frame}
 
 \begin{frame}{Generiska funktioner (S3)}
-\phantomsection\label{generiska-funktioner-s3}
+\protect\phantomsection\label{generiska-funktioner-s3}
 \begin{itemize}
 \tightlist
 \item
@@ -517,7 +512,7 @@
 \end{frame}
 
 \begin{frame}{Metoder}
-\phantomsection\label{metoder}
+\protect\phantomsection\label{metoder}
 \begin{itemize}
 \tightlist
 \item
@@ -542,16 +537,16 @@
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo}
+\protect\phantomsection\label{demo}
 \begin{block}{Demo: Objektorientering}
-\phantomsection\label{demo-objektorientering}
+\protect\phantomsection\label{demo-objektorientering}
 \end{block}
 \end{frame}
 
 \section{Datum och tid}\label{datum-och-tid}
 
 \begin{frame}{Datum och tid}
-\phantomsection\label{datum-och-tid-1}
+\protect\phantomsection\label{datum-och-tid-1}
 \begin{itemize}
 \tightlist
 \item
@@ -572,7 +567,7 @@
 \end{frame}
 
 \begin{frame}[fragile]{Datum och tid - Exempel}
-\phantomsection\label{datum-och-tid---exempel}
+\protect\phantomsection\label{datum-och-tid---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{my\_date }\OtherTok{\textless{}{-}} \StringTok{"2024{-}05{-}06"}
@@ -607,7 +602,7 @@
 \end{frame}
 
 \begin{frame}{lubridate}
-\phantomsection\label{lubridate}
+\protect\phantomsection\label{lubridate}
 \begin{itemize}
 \tightlist
 \item
@@ -630,7 +625,7 @@ Tre huvudsakliga delar:
 \end{frame}
 
 \begin{frame}[fragile]{lubridate - Exempel}
-\phantomsection\label{lubridate---exempel}
+\protect\phantomsection\label{lubridate---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{library}\NormalTok{(lubridate)}
@@ -665,7 +660,8 @@ Tre huvudsakliga delar:
 \end{frame}
 
 \begin{frame}[fragile]{lubridate}
-\phantomsection\label{lubridate-1}
+\protect\phantomsection\label{lubridate-1}
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 Elementordning & Funktion \\
@@ -679,15 +675,17 @@ timme, minut, sekund & \texttt{hms()} \\
 år, mån, dag, timme, min, sek & \texttt{ymd\_hms()} \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 
 Källa: Grolemund and Wickham (2011, Table 4)
 \end{frame}
 
 \begin{frame}[fragile]{lubridate}
-\phantomsection\label{lubridate-2}
+\protect\phantomsection\label{lubridate-2}
 För att ``plocka ut'' eller ändra delar av ett datum används följande
 funktioner
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}llll@{}}
 \toprule\noalign{}
 Datum & Funktion & Tidsdel & Funktion \\
@@ -701,12 +699,13 @@ månadsdag & \texttt{mday()} & & \\
 veckodag & \texttt{wday()} & & \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 
 Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{lubridate - Exempel}
-\phantomsection\label{lubridate---exempel-1}
+\protect\phantomsection\label{lubridate---exempel-1}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{idag }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2024{-}05{-}06"}\NormalTok{)}
@@ -742,7 +741,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{lubridate}
-\phantomsection\label{lubridate-3}
+\protect\phantomsection\label{lubridate-3}
 \begin{itemize}
 \tightlist
 \item
@@ -764,7 +763,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{instant och interval}
-\phantomsection\label{instant-och-interval}
+\protect\phantomsection\label{instant-och-interval}
 \textbf{Instant}
 
 \begin{itemize}
@@ -795,7 +794,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{instant och interval - Exempel}
-\phantomsection\label{instant-och-interval---exempel}
+\protect\phantomsection\label{instant-och-interval---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{inst\_1 }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2020{-}02{-}29"}\NormalTok{)}
@@ -806,12 +805,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 2020-02-29 UTC--2024-05-05 UTC
+## [1] 2020-02-29 UTC--2026-05-04 UTC
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{duration}
-\phantomsection\label{duration}
+\protect\phantomsection\label{duration}
 \begin{itemize}
 \tightlist
 \item
@@ -840,7 +839,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{duration - Exempel}
-\phantomsection\label{duration---exempel}
+\protect\phantomsection\label{duration---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{my\_interval }\SpecialCharTok{/} \FunctionTok{ddays}\NormalTok{(}\DecValTok{30}\NormalTok{)}
@@ -848,7 +847,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 50.9
+## [1] 75.2
 \end{verbatim}
 
 \begin{Shaded}
@@ -858,12 +857,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "131932800s (~4.18 years)"
+## [1] "194918400s (~6.18 years)"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}{Period}
-\phantomsection\label{period}
+\protect\phantomsection\label{period}
 \begin{itemize}
 \tightlist
 \item
@@ -892,7 +891,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}[fragile]{Period - Exempel}
-\phantomsection\label{period---exempel}
+\protect\phantomsection\label{period---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{months}\NormalTok{(}\DecValTok{3}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{weeks}\NormalTok{(}\DecValTok{2}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{days}\NormalTok{(}\DecValTok{1}\NormalTok{)}
@@ -910,7 +909,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 12
+## [1] 18
 \end{verbatim}
 
 \begin{Shaded}
@@ -920,12 +919,12 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "4y 2m 6d 0H 0M 0S"
+## [1] "6y 2m 5d 0H 0M 0S"
 \end{verbatim}
 \end{frame}
 
 \begin{frame}[fragile]{Att räknamed tid - Exempel}
-\phantomsection\label{att-ruxe4knamed-tid---exempel}
+\protect\phantomsection\label{att-ruxe4knamed-tid---exempel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{course\_start }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\StringTok{"2022{-}01{-}24"}\NormalTok{)}
@@ -959,16 +958,16 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-1}
+\protect\phantomsection\label{demo-1}
 \begin{block}{Demo: Datum och Tid}
-\phantomsection\label{demo-datum-och-tid}
+\protect\phantomsection\label{demo-datum-och-tid}
 \end{block}
 \end{frame}
 
 \section{Linjär algebra}\label{linjuxe4r-algebra}
 
 \begin{frame}{Matriser}
-\phantomsection\label{matriser}
+\protect\phantomsection\label{matriser}
 \begin{itemize}
 \tightlist
 \item
@@ -997,7 +996,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Linjär algebra}
-\phantomsection\label{linjuxe4r-algebra-1}
+\protect\phantomsection\label{linjuxe4r-algebra-1}
 \begin{itemize}
 \tightlist
 \item
@@ -1035,7 +1034,7 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Linjär algebra - paketet Matrix}
-\phantomsection\label{linjuxe4r-algebra---paketet-matrix}
+\protect\phantomsection\label{linjuxe4r-algebra---paketet-matrix}
 \begin{itemize}
 \tightlist
 \item
@@ -1056,9 +1055,9 @@ Källa: Grolemund and Wickham (2011, Table 5)
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-2}
+\protect\phantomsection\label{demo-2}
 \begin{block}{Demo: Linjär Algebra}
-\phantomsection\label{demo-linjuxe4r-algebra}
+\protect\phantomsection\label{demo-linjuxe4r-algebra}
 \end{block}
 \end{frame}
 
