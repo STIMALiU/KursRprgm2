@@ -116,6 +116,7 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
 \usepackage{calc} % for calculating minipage widths
 \usepackage{caption}
 % Make caption package work with longtable
@@ -293,14 +294,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={R-programmering VT25},
+  pdftitle={R-programmering VT26},
   pdfauthor={Johan Alenlöv},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{R-programmering VT25}
-\subtitle{Föreläsning 7}
-\author{Johan Alenlöv}
+\title{\texorpdfstring{R-programmering VT26}{R-programmering VT26}}
+\subtitle{\texorpdfstring{Föreläsning 7}{Föreläsning 7}}
+\author{\texorpdfstring{Johan Alenlöv}{Johan Alenlöv}}
 \date{}
 \institute{Linköpings Universitet}
 
@@ -310,7 +311,7 @@
 \section{Föreläsning 7}\label{fuxf6reluxe4sning-7}
 
 \begin{frame}{Innehåll föreläsning 7}
-\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-7}
+\protect\phantomsection\label{innehuxe5ll-fuxf6reluxe4sning-7}
 \begin{itemize}
 \tightlist
 \item
@@ -325,7 +326,7 @@
 \section{ggplot2}\label{ggplot2}
 
 \begin{frame}{ggplot2}
-\phantomsection\label{ggplot2-1}
+\protect\phantomsection\label{ggplot2-1}
 \begin{itemize}
 \tightlist
 \item
@@ -340,7 +341,7 @@
 \end{frame}
 
 \begin{frame}{Grammar of Graphics}
-\phantomsection\label{grammar-of-graphics}
+\protect\phantomsection\label{grammar-of-graphics}
 \begin{itemize}
 \tightlist
 \item
@@ -359,7 +360,7 @@
 \end{frame}
 
 \begin{frame}{ggplot2}
-\phantomsection\label{ggplot2-2}
+\protect\phantomsection\label{ggplot2-2}
 \begin{itemize}
 \tightlist
 \item
@@ -384,13 +385,13 @@
 \end{frame}
 
 \begin{frame}{ggplot2}
-\phantomsection\label{ggplot2-3}
-\pandocbounded{\includegraphics[keepaspectratio]{images/grammar-of-graphics.png}}
+\protect\phantomsection\label{ggplot2-3}
+\pandocbounded{\includegraphics[keepaspectratio,alt={alt text}]{images/grammar-of-graphics.png}}
 Bild från ``R for the rest of us''
 \end{frame}
 
 \begin{frame}{ggplot2}
-\phantomsection\label{ggplot2-4}
+\protect\phantomsection\label{ggplot2-4}
 \begin{itemize}
 \tightlist
 \item
@@ -425,7 +426,7 @@ Bild från ``R for the rest of us''
 \end{frame}
 
 \begin{frame}{Grammar of Graphics}
-\phantomsection\label{grammar-of-graphics-1}
+\protect\phantomsection\label{grammar-of-graphics-1}
 \begin{quote}
 ''In brief, the grammar tells us that a statistical graphic is a mapping
 from data to aesthetic attributes (colour, shape, size) of geometric
@@ -438,9 +439,10 @@ system.''
 \end{frame}
 
 \begin{frame}[fragile]{\textbf{aes}thetic (aes)}
-\phantomsection\label{aesthetic-aes}
+\protect\phantomsection\label{aesthetic-aes}
 Kopplar ihop färg, form och utseende till data
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 \texttt{aes} & Beskrivning \\
@@ -453,12 +455,14 @@ Kopplar ihop färg, form och utseende till data
 \texttt{shape} & form \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 \end{frame}
 
 \begin{frame}[fragile]{geometric (geom)}
-\phantomsection\label{geometric-geom}
+\protect\phantomsection\label{geometric-geom}
 Vilken geometrisk representation ska användas
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 \texttt{geom} & Beskrivning \\
@@ -471,12 +475,14 @@ Vilken geometrisk representation ska användas
 \texttt{geom\_histogram} & Histogram \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 \end{frame}
 
 \begin{frame}[fragile]{aes och geom}
-\phantomsection\label{aes-och-geom}
+\protect\phantomsection\label{aes-och-geom}
 Finns även speciella aesthetics för vissa geoms
 
+{\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}ll@{}}
 \toprule\noalign{}
 \texttt{geom} & \texttt{aes} \\
@@ -487,10 +493,11 @@ Finns även speciella aesthetics för vissa geoms
 \texttt{geom\_bar} & y min, y max, fill color, outline color \\
 \bottomrule\noalign{}
 \end{longtable}
+}
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - I}
-\phantomsection\label{exempel---i}
+\protect\phantomsection\label{exempel---i}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -503,7 +510,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - II}
-\phantomsection\label{exempel---ii}
+\protect\phantomsection\label{exempel---ii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -516,7 +523,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - III}
-\phantomsection\label{exempel---iii}
+\protect\phantomsection\label{exempel---iii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -529,7 +536,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - IV}
-\phantomsection\label{exempel---iv}
+\protect\phantomsection\label{exempel---iv}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -543,7 +550,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - V}
-\phantomsection\label{exempel---v}
+\protect\phantomsection\label{exempel---v}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -557,7 +564,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - VI}
-\phantomsection\label{exempel---vi}
+\protect\phantomsection\label{exempel---vi}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}\AttributeTok{data =}\NormalTok{ Nile) }\SpecialCharTok{+} 
@@ -572,7 +579,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - VII : Teman}
-\phantomsection\label{exempel---vii-teman}
+\protect\phantomsection\label{exempel---vii-teman}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p }\SpecialCharTok{+} \FunctionTok{theme\_bw}\NormalTok{()}
@@ -583,7 +590,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - VIII : Teman}
-\phantomsection\label{exempel---viii-teman}
+\protect\phantomsection\label{exempel---viii-teman}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p }\SpecialCharTok{+} \FunctionTok{theme\_calc}\NormalTok{()}
@@ -594,18 +601,28 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - IX : Teman}
-\phantomsection\label{exempel---ix-teman}
+\protect\phantomsection\label{exempel---ix-teman}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p }\SpecialCharTok{+} \FunctionTok{theme\_clean}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Warning: The `size` argument of `element_line()` is deprecated as of ggplot2 3.4.0.
+## i Please use the `linewidth` argument instead.
+## i The deprecated feature was likely used in the ggthemes package.
+##   Please report the issue at <https://github.com/jrnold/ggthemes/issues>.
+## This warning is displayed once per session.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
 \pandocbounded{\includegraphics[keepaspectratio]{F7_johan_files/figure-beamer/unnamed-chunk-10-1.pdf}}
 \end{frame}
 
 \begin{frame}[fragile]{Exempel - X : Teman}
-\phantomsection\label{exempel---x-teman}
+\protect\phantomsection\label{exempel---x-teman}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{p }\SpecialCharTok{+} \FunctionTok{theme\_minimal}\NormalTok{()}
@@ -616,7 +633,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}{\texttt{qplot}}
-\phantomsection\label{section}
+\protect\phantomsection\label{section}
 \begin{itemize}
 \tightlist
 \item
@@ -629,16 +646,16 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo}
+\protect\phantomsection\label{demo}
 \begin{block}{Demo: ggplot}
-\phantomsection\label{demo-ggplot}
+\protect\phantomsection\label{demo-ggplot}
 \end{block}
 \end{frame}
 
 \section{Statistik}\label{statistik}
 
 \begin{frame}{Enklare statistika tester}
-\phantomsection\label{enklare-statistika-tester}
+\protect\phantomsection\label{enklare-statistika-tester}
 \begin{itemize}
 \tightlist
 \item
@@ -673,7 +690,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel: t.test() - I}
-\phantomsection\label{exempel-t.test---i}
+\protect\phantomsection\label{exempel-t.test---i}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{data}\NormalTok{(}\StringTok{"chickwts"}\NormalTok{)}
@@ -700,7 +717,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel: t.test() - II}
-\phantomsection\label{exempel-t.test---ii}
+\protect\phantomsection\label{exempel-t.test---ii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{t.test}\NormalTok{(horsebean, }\AttributeTok{alternative =} \StringTok{"two.sided"}\NormalTok{,}
@@ -724,7 +741,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Exempel: t.test() - III}
-\phantomsection\label{exempel-t.test---iii}
+\protect\phantomsection\label{exempel-t.test---iii}
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{t.test}\NormalTok{(horsebean, sunflower,}
@@ -749,16 +766,16 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-1}
+\protect\phantomsection\label{demo-1}
 \begin{block}{Demo: Statistik}
-\phantomsection\label{demo-statistik}
+\protect\phantomsection\label{demo-statistik}
 \end{block}
 \end{frame}
 
 \section{Linjär regression}\label{linjuxe4r-regression}
 
 \begin{frame}[fragile]{Linjär regression}
-\phantomsection\label{linjuxe4r-regression-1}
+\protect\phantomsection\label{linjuxe4r-regression-1}
 \begin{itemize}
 \tightlist
 \item
@@ -791,7 +808,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Linjär regression - Anpassa en modell}
-\phantomsection\label{linjuxe4r-regression---anpassa-en-modell}
+\protect\phantomsection\label{linjuxe4r-regression---anpassa-en-modell}
 \begin{itemize}
 \tightlist
 \item
@@ -828,7 +845,7 @@ Finns även speciella aesthetics för vissa geoms
 \end{frame}
 
 \begin{frame}[fragile]{Linjär regression - Analysera modellen}
-\phantomsection\label{linjuxe4r-regression---analysera-modellen}
+\protect\phantomsection\label{linjuxe4r-regression---analysera-modellen}
 \begin{itemize}
 \tightlist
 \item
@@ -855,7 +872,7 @@ Exempel:
 \end{frame}
 
 \begin{frame}[fragile]{Linjär regression - Diagnostisera}
-\phantomsection\label{linjuxe4r-regression---diagnostisera}
+\protect\phantomsection\label{linjuxe4r-regression---diagnostisera}
 \begin{itemize}
 \tightlist
 \item
@@ -872,7 +889,7 @@ Exempel:
 \end{frame}
 
 \begin{frame}{Linjär regression - Använda modellen}
-\phantomsection\label{linjuxe4r-regression---anvuxe4nda-modellen}
+\protect\phantomsection\label{linjuxe4r-regression---anvuxe4nda-modellen}
 \begin{itemize}
 \tightlist
 \item
@@ -901,9 +918,9 @@ Exempel:
 \end{frame}
 
 \begin{frame}{Demo}
-\phantomsection\label{demo-2}
+\protect\phantomsection\label{demo-2}
 \begin{block}{Demo: Linjär regression}
-\phantomsection\label{demo-linjuxe4r-regression}
+\protect\phantomsection\label{demo-linjuxe4r-regression}
 \end{block}
 \end{frame}
 

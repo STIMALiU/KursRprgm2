@@ -1,5 +1,5 @@
 ---
-title: "R-programmering VT25"
+title: "R-programmering VT26"
 subtitle: "Föreläsning 7"
 author: "Johan Alenlöv"
 institute: "Linköpings Universitet"
